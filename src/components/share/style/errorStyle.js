@@ -28,13 +28,12 @@ export const errorStyle = makeStyles((theme) => ({
         float:'left',
     },
     item4:{
-        padding: '0.5em',
+        padding: '0px',
         width:'17.75em',
         height:'1,0475em',
         margin : '0px',
         border: '0px',
         float:'left',
-        paddingRight:'1em',
     }, 
     item5:{
         float:'none',

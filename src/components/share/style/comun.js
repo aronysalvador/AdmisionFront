@@ -7,7 +7,7 @@ export const comun = makeStyles((theme) => ({
         margin : '0px',
         border: '0px',
         padding: '0px',
-        backgroundColor : "#F8F9FA",
+        backgroundColor : "#FFFFFF",
     },
     tituloACHS:{
         fontFamily: 'sfUiDisplayCufonfonts',

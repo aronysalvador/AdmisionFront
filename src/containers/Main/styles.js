@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles'
     paper: {
       marginTop: '0 auto',
       padding: '1em',
-      backgroundColor: "#F8F9FA"
+      backgroundColor: "#FFFFFF"
     },
   }));
 
