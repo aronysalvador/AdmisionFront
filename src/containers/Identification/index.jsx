@@ -7,7 +7,6 @@ import Link from '@material-ui/core/Link'
 import IdentificationForm from '../../components/Identification/identificationForm'
 import {identificationStyle} from '../../components/share/style/identificationStyle'
 import {comun} from '../../components/share/style/comun'
-import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
 const Identification = (props) => {
@@ -16,26 +15,26 @@ const Identification = (props) => {
     const classes = identificationStyle();
     const comunClass = comun();  
 
-    return (<Box component="div" m={1} className={classes.root}>
-                <Box component="div" m={1} className={classes.item1}>
+    return (<div className={comunClass.root}>
+                <div className={classes.item1}>
                     <Typography variant="p" component="p" className={comunClass.tituloACHS}>
                             ACHS
                     </Typography>
-                </Box>
-                <Box component="div" m={1} className={classes.item2} />
-                <Box component="div" m={1} className={classes.item3}>
+                </div> 
+                <div className={classes.item2} />
+                <div className={classes.item3}>
                     <Link href="#" onClick={()=> dispatch(handleSetStep(--addmissionForm.step))}>
                         <ArrowBackIosIcon style={{ color: "#373737" }} />
                     </Link>
-                </Box>
-                <Box component="div" m={1} className={classes.item4}>
+                </div> 
+                <div className={classes.item4}>
                     <BorderLinearProgress variant="determinate" value={addmissionForm.percentage} />
-                </Box>
-                <Box component="div" m={1} className={classes.item5} />
-                <Box component="div" m={1} className={classes.item6}>
+                </div> 
+                <div className={classes.item5} />
+                <div className={classes.item6}>
                     <IdentificationForm />  
-                </Box>
-            </Box>
+                </div> 
+            </div> 
     );
 }
 

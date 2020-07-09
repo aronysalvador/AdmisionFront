@@ -7,7 +7,6 @@ import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 import {siniestroStyle} from '../../components/share/style/siniestroStyle'
 import Button from "@material-ui/core/Button"
-import Box from '@material-ui/core/Box'
 import {comun} from '../../components/share/style/comun'
 
 const Identification = (props) => {
@@ -16,46 +15,46 @@ const Identification = (props) => {
     const classes = siniestroStyle(); 
     const comunClass = comun();   
 
-    return (<Box component="div" m={1} className={classes.root}>
-                <Box component="div" m={1} className={classes.item1}>
+    return (<div component="div" className={comunClass.root}>
+                <div component="div" className={classes.item1}>
                     <Typography variant="p" component="p" className={comunClass.tituloACHS}>
                             ACHS
                     </Typography>
-                </Box>
-                <Box component="div" m={1} className={classes.item2} />
-                <Box component="div" m={1} className={classes.item3}>
+                </div>
+                <div component="div" className={classes.item2} />
+                <div component="div" className={classes.item3}>
                     <Link href="#" onClick={()=> dispatch(handleSetStep(--addmissionForm.step))}>
                         <ArrowBackIosIcon style={{ color: "#373737" }} />
                     </Link>
-                </Box>
-                <Box component="div" m={1} className={classes.item4}>
+                </div>
+                <div component="div" className={classes.item4}>
                     <BorderLinearProgress variant="determinate" value={addmissionForm.percentage} />
-                </Box>
-                <Box component="div" m={1} className={classes.item5} />
-                <Box component="div" m={1} className={classes.item6}>
+                </div>
+                <div component="div" className={classes.item5} />
+                <div component="div" className={classes.item6}>
                     <Typography variant="p" component="p" className={comunClass.pregunta}>
                         ¿Qué problema tuvo?
                     </Typography>
-                </Box>
-                <Box component="div" m={1} className={classes.item7} />
-                <Box component="div" m={1} className={classes.item8}>
+                </div>
+                <div component="div" className={classes.item7} />
+                <div component="div" className={classes.item8}>
                     <Button className={classes.button} variant="contained">
                         <img alt="Accidente de Trabajo" src="./static/trabajo.png" className={classes.img} />&nbsp;Accidente Trabajo
                     </Button>
-                </Box>
-                <Box component="div" m={1} className={classes.item9} />
-                <Box component="div" m={1} className={classes.item8}>
+                </div>
+                <div component="div" className={classes.item9} />
+                <div component="div" className={classes.item8}>
                     <Button className={classes.button} variant="contained">
                         <img alt="Accidente de Trayecto" src="./static/trayecto.png" className={classes.img}/>&nbsp;Accidente Trayecto 
                     </Button>
-                </Box>
-                <Box component="div" m={1} className={classes.item9} />
-                <Box component="div" m={1} className={classes.item8}>
+                </div>
+                <div component="div" className={classes.item9} />
+                <div component="div" className={classes.item8}>
                     <Button  className={classes.button} variant="contained">
                         <img alt="Enfermedad Profesional" src="./static/ep.png" className={classes.img} />&nbsp;Enfermedad Profesional
                     </Button>
-                </Box>                                
-            </Box>
+                </div>                                
+            </div>
         );
     }
 

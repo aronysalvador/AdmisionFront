@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-export const identificationStyle = makeStyles((theme) => ({
+export const errorStyle = makeStyles((theme) => ({
     root: {
         width: '22.5em',
         height: '40em',
@@ -28,13 +28,13 @@ export const identificationStyle = makeStyles((theme) => ({
         float:'left',
     },
     item4:{
-        paddingTop: '0.5em',
-        padding: '0',
+        padding: '0.5em',
         width:'17.75em',
         height:'1,0475em',
         margin : '0px',
         border: '0px',
         float:'left',
+        paddingRight:'1em',
     }, 
     item5:{
         float:'none',
@@ -44,7 +44,15 @@ export const identificationStyle = makeStyles((theme) => ({
     },
     item6:{
         height:'36.72625em',
-        margin : '0px',
+        margin : 'auto 0',
         border: '0px',
-    },                
+    },  
+    segurito:{
+        width : "20.6em",
+        padding:"1.2em"
+    },
+    item7:{
+        padding : '1em',
+        border: '0px',
+    },                 
   }))

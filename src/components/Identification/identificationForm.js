@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField'
 import Button from "@material-ui/core/Button"
 import {Rut, formateaRut} from "../../helpers/rut"
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
 import {identificationStyle} from '../../components/share/style/identificationContentStyle'
 import {comun} from '../../components/share/style/comun'
 
@@ -27,14 +26,13 @@ const form = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-
-      <Box component="div" m={1} className={classes.item1}>
+      <div  className={classes.item1}>
         <Typography variant="p" component="p" className={classesComun.pregunta}>
           Ingresa el RUT del paciente
         </Typography>
-      </Box>
-      <Box component="div" m={1} className={classes.item2} />
-      <Box component="div" m={1} className={classes.item3}>
+      </div>
+      <div  className={classes.item2} />
+      <div  className={classes.item3}>
         <TextField
               id="rut"
               label="Rut"
@@ -47,13 +45,13 @@ const form = props => {
               variant="outlined"
               fullWidth
           />
-      </Box>
-      <Box component="div" m={1} className={classes.item4} />
-      <Box component="div" m={1} className={classes.item5}>
+      </div>
+      <div  className={classes.item4} />
+      <div  className={classes.item5}>
         <Button className={comunClass.boton} variant="contained" disabled={isSubmitting} type="submit">
               Continuar
         </Button>
-      </Box>
+      </div>
     </form>
   )}
 

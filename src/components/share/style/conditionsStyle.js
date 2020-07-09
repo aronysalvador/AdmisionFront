@@ -78,6 +78,12 @@ export const conditionsStyle = makeStyles((theme) => ({
         border: '0px',
         overflow: 'auto',
     }, 
+    item10:{
+        height:'3em',
+        margin : '0px',
+        border: '0px',
+        overflow: 'auto',
+    },
     condiciones2 :{
         fontFamily: 'Catamaran',
         fontStyle: 'normal',

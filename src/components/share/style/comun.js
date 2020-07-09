@@ -1,6 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const comun = makeStyles((theme) => ({
+    root: {
+        width: '22.5em',
+        height: '40em',
+        margin : '0px',
+        border: '0px',
+        padding: '0px',
+        backgroundColor : "#F8F9FA",
+    },
     tituloACHS:{
         fontFamily: 'sfUiDisplayCufonfonts',
         fontStyle: 'normal',

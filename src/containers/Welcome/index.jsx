@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
 import {welcomeStyle} from '../../components/share/style/welcomeStyle'
 import Link from '@material-ui/core/Link'
-import Box from '@material-ui/core/Box'
 import '../../css/catamaranFont.css'
 import '../../css/sfUiDisplayCufonfonts.css'
 import {comun} from '../../components/share/style/comun'
@@ -18,17 +17,17 @@ const Welcome = (props) => {
     const comunClass = comun();  
     
     return (
-            <Box component="div" m={1} className={classes.root}>
-                <Box component="div" m={1} className={classes.item1}>
+            <div   className={comunClass.root}>
+                <div   className={classes.item1}>
                     <img alt="Ejecutivo de admisión" src="static/admisionista.jpg" className={classes.avatar} />
-                </Box>
-                <Box component="div" m={1} className={classes.item2}>
+                </div>
+                <div   className={classes.item2}>
                     <Typography variant="p" component="p" className={classes.bienvenido}>
                         Bienvenido/a
                     </Typography>
-                </Box>
-                <Box component="div" m={1} className={classes.item3} />
-                <Box component="div" m={1} className={classes.item4}>
+                </div>
+                <div   className={classes.item3} />
+                <div   className={classes.item4}>
                     <Typography variant="p" component="p" className={classes.admisionText}>
                             Vamos a hacer una admisión:
                             <br />
@@ -39,18 +38,18 @@ const Welcome = (props) => {
                             <br />
                             - Adipiscing velit et, non sed curabitur    
                     </Typography>
-                </Box>
-                <Box component="div" m={1} className={classes.item5} />
-                <Box component="div" m={1} className={classes.item6}>
+                </div>
+                <div   className={classes.item5} />
+                <div   className={classes.item6}>
                         <Button
                             className={comunClass.boton}
                             variant="contained"
                             onClick={()=> dispatch(handleSetStep(++addmissionForm.step))}>
                             Empecemos
                         </Button>
-                </Box>
-                <Box component="div" m={1} className={classes.item7} />
-                <Box component="div" m={1} className={classes.item8}>
+                </div>
+                <div   className={classes.item7} />
+                <div   className={classes.item8}>
                     <Typography variant="p" component="p" display="block" className={classes.terminos} >
                         Al hacer click en Empecemos,
                     </Typography>
@@ -60,8 +59,8 @@ const Welcome = (props) => {
                         <u>Términos y condiciones</u>
                         </Link>
                     </Typography>
-                </Box>
-            </Box>   
+                </div>
+            </div>   
     );
 }
 
