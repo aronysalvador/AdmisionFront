@@ -1,4 +1,4 @@
-import {SET_STEP, UPDATE_FORM, UPDATE_ALL} from '../types/addmissionFormType'
+import {SET_STEP, UPDATE_FORM} from '../types/addmissionFormType'
 import Axios from 'axios';
 import {formateaRut} from '../../helpers/rut'
 
@@ -14,29 +14,12 @@ export const setStep = (step,percentage) => {
     }
 }
 
-export const updateForm = (stateType, value, step, percentage) => {
+export const updateForm = (stateType, value) => {
     return {
         type: UPDATE_FORM,
         payload: {
             stateType,
             value,
-            step,
-            percentage
-        }
-    }
-}
-
-export const updateAll = (object) => {
-    return {
-        type: UPDATE_ALL,
-        payload: {
-            stateType : object.stateType,
-            value : object.value,
-            step : object.step,
-            percentage : object.percentage,
-            empresa : object.empresa,
-            rutEmpresa : object.rutEmpresa,
-            isAfiliado: object.isAfiliado
         }
     }
 }
@@ -53,7 +36,8 @@ const getPercentage = (step) =>{
 
 export const formatRut = (rut) =>{
     return (dispatch) => {
-        dispatch(updateForm("rut",formateaRut(rut),2,getPercentage(2)))
+        dispatch(setStep(2,getPercentage(2)))
+        dispatch(updateForm("rut",formateaRut(rut)))
     }
 }
 
@@ -62,27 +46,17 @@ export const saveRut = (rut) => {
         Axios.get(`http://ci-desa-msorquestador.eastus.azurecontainer.io/api/employee/isAfiliado?rut=${rut}`).then((result) => {
             let isAfiliado = result.data.content[0].isAfiliado
             if(isAfiliado){
-                let obv= {
-                    stateType : "rut",
-                    value : rut,
-                    step : 3,
-                    percentage : getPercentage(3),
-                    empresa : result.data.content[0].RutEmpresa,
-                    rutEmpresa : result.data.content[0].NombreEmpresa,
-                    isAfiliado: "Si"
-                }
-                dispatch(updateAll(obv))
+                dispatch(setStep(3,getPercentage(3)))
+                dispatch(updateForm("rut",formateaRut(rut)))
+                dispatch(updateForm("empresa",result.data.content[0].RutEmpresa))
+                dispatch(updateForm("rutEmpresa",result.data.content[0].NombreEmpresa))
+                dispatch(updateForm("isAfiliado","Si"))
             }else{
-                let obv= {
-                    stateType : "",
-                    value : "",
-                    step : 500,
-                    percentage : 0,
-                    empresa : "",
-                    rutEmpresa : "",
-                    isAfiliado: "No"
-                }
-                dispatch(updateAll(obv))
+                dispatch(setStep(500,0))
+                dispatch(updateForm("rut","",))
+                dispatch(updateForm("empresa",""))
+                dispatch(updateForm("rutEmpresa",""))
+                dispatch(updateForm("isAfiliado",""))
             }
         })
     }
