@@ -6,8 +6,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from "@material-ui/core/Button"
 import {Rut, formateaRut} from "../../helpers/rut"
 import Typography from '@material-ui/core/Typography'
-import {identificationStyle} from '../../components/share/style/identificationContentStyle'
-import {comun} from '../../components/share/style/comun'
+import {getComunStyle} from '../../css/comun'
+import {getSpaceStyle} from '../../css/spaceStyle'
 
 const form = props => {
   const {
@@ -20,19 +20,18 @@ const form = props => {
     handleSubmit
   } = props;
 
-  const classes = identificationStyle(); 
-  const classesComun =  comun();
-  const comunClass = comun(); 
+  const classesComun =  getComunStyle()
+  const spaceStyle = getSpaceStyle()
 
   return (
     <form onSubmit={handleSubmit}>
-      <div  className={classes.item1}>
+      <div>
         <Typography variant="p" component="p" className={classesComun.pregunta}>
           Ingresa el RUT del paciente
         </Typography>
       </div>
-      <div  className={classes.item2} />
-      <div  className={classes.item3}>
+      <div  className={spaceStyle.space2} />
+      <div>
         <TextField
               id="rut"
               label="Rut"
@@ -46,9 +45,10 @@ const form = props => {
               fullWidth
           />
       </div>
-      <div  className={classes.item4} />
-      <div  className={classes.item5}>
-        <Button className={comunClass.boton} variant="contained" disabled={isSubmitting} type="submit">
+      <div  className={spaceStyle.space12} />
+      <div  className={spaceStyle.space4} />
+      <div>
+        <Button className={classesComun.buttonAchs} variant="contained" disabled={isSubmitting} type="submit">
               Continuar
         </Button>
       </div>

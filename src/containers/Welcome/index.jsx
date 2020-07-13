@@ -3,32 +3,35 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
-import {welcomeStyle} from '../../components/share/style/welcomeStyle'
+import {getWelcomeStyle} from '../../css/welcomeStyle'
 import Link from '@material-ui/core/Link'
+import {getComunStyle} from '../../css/comun'
+import {getSpaceStyle} from '../../css/spaceStyle'
 import '../../css/catamaranFont.css'
 import '../../css/sfUiDisplayCufonfonts.css'
-import {comun} from '../../components/share/style/comun'
 
 const Welcome = (props) => {
 
     const { dispatch, addmissionForm } = props
 
-    const classes = welcomeStyle();  
-    const comunClass = comun();  
+    const welcomeStyle = getWelcomeStyle();  
+    const comunStyle = getComunStyle();  
+    const spaceStyle = getSpaceStyle();
     
     return (
-            <div   className={comunClass.root}>
-                <div   className={classes.item1}>
-                    <img alt="Ejecutivo de admisión" src="static/admisionista.jpg" className={classes.avatar} />
+            <div className={comunStyle.root}>
+                <div className={spaceStyle.space4} />
+                <div   className={welcomeStyle.avatarContainer}>
+                    <img alt="Ejecutivo de admisión" src="static/admisionista.jpg" className={welcomeStyle.avatar} />
                 </div>
-                <div   className={classes.item2}>
-                    <Typography variant="p" component="p" className={classes.bienvenido}>
+                <div className={spaceStyle.space4} />
+                <div   className={welcomeStyle.bienvenidoContainer}>
+                    <Typography variant="p" component="p" className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}>
                         Bienvenido/a
                     </Typography>
                 </div>
-                <div   className={classes.item3} />
-                <div   className={classes.item4}>
-                    <Typography variant="p" component="p" className={classes.admisionText}>
+                <div>
+                    <Typography variant="p" component="p" className={[comunStyle.textAchsContent,welcomeStyle.admisionText]}>
                             Vamos a hacer una admisión:
                             <br />
                             <br />
@@ -39,24 +42,24 @@ const Welcome = (props) => {
                             - Adipiscing velit et, non sed curabitur    
                     </Typography>
                 </div>
-                <div   className={classes.item5} />
-                <div   className={classes.item6}>
+                <div className={spaceStyle.space5} />
+                <div>
                         <Button
-                            className={comunClass.boton}
+                            className={comunStyle.buttonAchs}
                             variant="contained"
                             onClick={()=> dispatch(handleSetStep(++addmissionForm.step))}>
                             Empecemos
                         </Button>
                 </div>
-                <div   className={classes.item7} />
-                <div   className={classes.item8}>
-                    <Typography variant="p" component="p" display="block" className={classes.terminos} >
+                <div className={spaceStyle.spaceMin1} />
+                <div>
+                    <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
                         Al hacer click en Empecemos,
                     </Typography>
-                    <Typography variant="p" component="p" display="block" className={classes.terminos} >
+                    <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
                         aceptas nuestros  
-                        <Link className={classes.terminosLink} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
-                        <u>Términos y condiciones</u>
+                        <Link className={[comunStyle.textAchsContent,welcomeStyle.terminos,welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
+                        Términos y condiciones
                         </Link>
                     </Typography>
                 </div>

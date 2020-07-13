@@ -1,13 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-export const comun = makeStyles((theme) => ({
+export const getComunStyle = makeStyles((theme) => ({
     root: {
         width: '22.5em',
         height: '40em',
-        margin : '0px',
-        border: '0px',
-        padding: '0px',
         backgroundColor : "#FFFFFF",
+    },
+    textAchsContent:{
+        fontFamily: 'Catamaran',
+        fontStyle:'normal',
+        color: '#373737',
     },
     tituloACHS:{
         fontFamily: 'sfUiDisplayCufonfonts',
@@ -25,13 +27,10 @@ export const comun = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'flex-end',
     },
-    boton:{
+    buttonAchs:{
         width:'100%',
-        height: '3em',
         background: '#007A33',
         borderRadius: '0.25',
-        border: '0px',
-        padding: '0px',
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
@@ -39,5 +38,26 @@ export const comun = makeStyles((theme) => ({
         lineHeight: '1.125em',
         color:'#FFFFFF',
         textTransform: 'capitalize',
-    } 
+        height: '3.5em',
+    },
+    buttonVolverContainer:{
+        width:'20%',
+        float:'left',
+    },
+    buttonVolverContainerBarra:{
+        width:'20%',
+        float:'left',
+    },
+    barraContainer:{
+        paddingTop: '0.5em',
+        width:'17.75em',
+        float:'left',
+    },
+    buttonVolverColor:{
+        color: '#373737'
+    },
+    cleanFloat:{
+        float:'none',
+        clear:'both',
+    }
   }))
