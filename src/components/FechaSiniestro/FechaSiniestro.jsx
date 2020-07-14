@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { meses } from "../../util/meses";
+import { meses, getActualDate } from "../../util/meses";
 
 const FechaSiniestro = () => {
   const [days, setDays] = useState(() => {
@@ -17,6 +17,8 @@ const FechaSiniestro = () => {
   const [monthLastDay, setMonthLastDay] = useState(() => {
     return new Date(year, month, 0).getDate();
   });
+
+  const { actualDay, actualMonth, actualYear } = getActualDate();
 
   useEffect(() => {
     if (days < 1) {
@@ -44,7 +46,15 @@ const FechaSiniestro = () => {
   }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);
-  console.log({ days, monthName, year, monthLastDay });
+  console.log({
+    days,
+    monthName,
+    year,
+    monthLastDay,
+    actualDay,
+    actualMonth,
+    actualYear,
+  });
 
   return (
     <div className="fecha-container">
@@ -62,6 +72,7 @@ const FechaSiniestro = () => {
       </div>
       <div className="caja">
         <button
+          disabled={days === actualDay && month === actualMonth}
           onClick={() => {
             setDays((d) => ++d);
           }}

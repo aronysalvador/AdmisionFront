@@ -12,3 +12,12 @@ export const meses = [
   { id: 11, name: "Noviembre" },
   { id: 12, name: "Diciembre" },
 ];
+
+export function getActualDate() {
+  const date = new Date();
+  return {
+    actualDay: date.getDate(),
+    actualMonth: date.getMonth() + 1,
+    actualYear: date.getFullYear(),
+  };
+}
