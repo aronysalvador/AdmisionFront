@@ -1,7 +1,8 @@
 import React from "react";
+import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestro";
 
 const FechaHoraSiniestro = () => {
-  return <div>Hello</div>;
+  return <FechaSiniestro />;
 };
 
 export default FechaHoraSiniestro;
