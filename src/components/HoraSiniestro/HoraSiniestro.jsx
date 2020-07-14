@@ -10,6 +10,13 @@ const HoraSiniestro = () => {
     return new Date().getMinutes();
   });
 
+  useEffect(() => {
+    if (horas > 23) setHoras(0);
+  }, [horas]);
+
+  useEffect(() => {
+    if (minutos > 59) setMinutos(0);
+  }, [minutos]);
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       <Grid
@@ -32,7 +39,9 @@ const HoraSiniestro = () => {
           </Button>
         </div>
 
-        <div style={{ textAlign: "center" }}>{horas}</div>
+        <div style={{ textAlign: "center" }}>
+          {horas < 10 ? "0" + horas : horas}
+        </div>
 
         <div>
           <Button
@@ -65,7 +74,9 @@ const HoraSiniestro = () => {
           </Button>
         </div>
 
-        <div style={{ textAlign: "center" }}>{minutos}</div>
+        <div style={{ textAlign: "center" }}>
+          {minutos < 10 ? `0${minutos}` : minutos}
+        </div>
 
         <div>
           <Button
