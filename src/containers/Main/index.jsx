@@ -11,6 +11,8 @@ import PacienteNoAfiliadoError from "../Error/pacienteNoAfiliadoError";
 import Consitions from "../Conditions/index";
 import Resumen from "../Resumen/index";
 import FechaHoraSiniestro from "../FechaHoraSiniestro/FechaHoraSiniestro";
+import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
+import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -30,6 +32,10 @@ const Main = (props) => {
         return <Resumen />;
       case 6:
         return <FechaHoraSiniestro />;
+      case 7:
+        return <LugarExactoSiniestro />;
+      case 8:
+        return <LugarReferenciaSiniestro />;
       case 500:
         return <PacienteNoAfiliadoError />;
       default:
