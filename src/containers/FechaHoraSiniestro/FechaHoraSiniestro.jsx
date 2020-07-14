@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestro";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import { Button, Typography } from "@material-ui/core";
