@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 const FechaSiniestro = () => {
@@ -60,25 +60,41 @@ const FechaSiniestro = () => {
   });
 
   return (
-    <div className="fecha-container">
-      <div className="caja">
+    <Grid
+      container
+      direction="row"
+      justify="space-between"
+      alignItems="center"
+      style={{
+        borderStyle: "solid",
+        borderSpacing: "2px",
+        borderColor: "lightgray",
+        borderRadius: "10px",
+        padding: "10px",
+      }}
+    >
+      <Grid item>
         <Button
-          style={{ backgroundColor: "#00B2A9" }}
           variant="contained"
           size="small"
           onClick={() => {
             setDays((d) => --d);
           }}
         >
-          <KeyboardArrowLeft style={{ color: "#FFFFFF" }} />
+          <KeyboardArrowLeft />
         </Button>
-      </div>
-      <div className="caja">
-        <span>{`${days} ${monthName}`}</span>
-      </div>
-      <div className="caja">
+      </Grid>
+      <Grid item>
+        <span
+          style={{
+            fontFamily: "Helvetica",
+            fontSize: "18px",
+            fontWeight: "bold",
+          }}
+        >{`${days} ${monthName}`}</span>
+      </Grid>
+      <Grid item>
         <Button
-          style={{ backgroundColor: "#00B2A9" }}
           variant="contained"
           size="small"
           disabled={days === actualDay && month === actualMonth}
@@ -86,10 +102,10 @@ const FechaSiniestro = () => {
             setDays((d) => ++d);
           }}
         >
-          <KeyboardArrowRight style={{ color: "#FFFFFF" }} />
+          <KeyboardArrowRight />
         </Button>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 
