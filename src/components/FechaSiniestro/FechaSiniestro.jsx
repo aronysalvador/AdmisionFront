@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
+import { Button } from "@material-ui/core";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 const FechaSiniestro = () => {
   const [days, setDays] = useState(() => {
@@ -46,6 +48,7 @@ const FechaSiniestro = () => {
   }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);
+
   console.log({
     days,
     monthName,
@@ -59,26 +62,32 @@ const FechaSiniestro = () => {
   return (
     <div className="fecha-container">
       <div className="caja">
-        <button
+        <Button
+          style={{ backgroundColor: "#00B2A9" }}
+          variant="contained"
+          size="small"
           onClick={() => {
             setDays((d) => --d);
           }}
         >
-          Down
-        </button>
+          <KeyboardArrowLeft style={{ color: "#FFFFFF" }} />
+        </Button>
       </div>
       <div className="caja">
         <span>{`${days} ${monthName}`}</span>
       </div>
       <div className="caja">
-        <button
+        <Button
+          style={{ backgroundColor: "#00B2A9" }}
+          variant="contained"
+          size="small"
           disabled={days === actualDay && month === actualMonth}
           onClick={() => {
             setDays((d) => ++d);
           }}
         >
-          Up
-        </button>
+          <KeyboardArrowRight style={{ color: "#FFFFFF" }} />
+        </Button>
       </div>
     </div>
   );
