@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { meses, getActualDate } from "../../util/meses";
+import { meses, getActualDate } from "../../util/FechasUtils";
 
 const FechaSiniestro = () => {
   const [days, setDays] = useState(() => {
