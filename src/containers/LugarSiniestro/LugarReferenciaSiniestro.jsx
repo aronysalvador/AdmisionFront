@@ -16,7 +16,7 @@ const LugarReferenciaSiniestro = () => {
     shallowEqual
   );
   const { root, buttonAchs, pregunta } = getComunStyle();
-  const { mobileLabel } = siniestroStyle();
+  const { mobileLabel, mobileCaption } = siniestroStyle();
 
   return (
     <div className={root}>
@@ -29,12 +29,10 @@ const LugarReferenciaSiniestro = () => {
       </Typography>
 
       <Typography className={mobileLabel}>referencia</Typography>
-      <TextField
-        variant="outlined"
-        size="small"
-        fullWidth
-        helperText="Piso 21, Area 453, Puesto 12A"
-      />
+      <TextField variant="outlined" size="small" fullWidth />
+      <Typography className={mobileCaption}>
+        Piso 21, Area 453, Puesto 12A
+      </Typography>
       <Button className={buttonAchs}>Siguiente</Button>
     </div>
   );

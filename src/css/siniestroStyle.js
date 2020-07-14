@@ -106,4 +106,12 @@ export const siniestroStyle = makeStyles((theme) => ({
     textTransform: "uppercase",
     color: "#787878",
   },
+  mobileCaption: {
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "13px",
+    lineHeight: "16px",
+    color: "#787878",
+  },
 }));
