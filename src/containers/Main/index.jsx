@@ -9,7 +9,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import useStyles from '../../css/styles'
 import PacienteNoAfiliadoError from '../Error/pacienteNoAfiliadoError'
 import Consitions from '../Conditions/index'
-import Resumen from '../Resumen/index'
+import PersonalData from '../PersonalData/index'
+import LoadPersonalData from '../PersonalData/loadPersonalData'
 
 
 const Main = (props) => {
@@ -26,9 +27,11 @@ const Main = (props) => {
             case 3: 
               return <Sinister /> 
             case 4: 
-              return <Consitions /> 
+              return <Consitions />
             case 5: 
-              return <Resumen />                             
+              return <LoadPersonalData />                
+            case 6: 
+              return <PersonalData />                             
             case 500: 
               return <PacienteNoAfiliadoError />                            
             default:

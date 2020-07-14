@@ -14,7 +14,6 @@ const Cabecera = (props) => {
 
     return (<div><div className={comunClass.logoAchsContainer}>
                     <Typography variant="p" component="p" className={comunClass.tituloACHS}>
-                            ACHS
                     </Typography>
                 </div> 
                 <div  className={spaceStyle.space1} />

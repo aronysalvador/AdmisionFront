@@ -4,7 +4,7 @@ export const getComunStyle = makeStyles((theme) => ({
     root: {
         width: '22.5em',
         height: '40em',
-        backgroundColor : "#FFFFFF",
+        backgroundColor : "#F8F9FA",
     },
     textAchsContent:{
         fontFamily: 'Catamaran',

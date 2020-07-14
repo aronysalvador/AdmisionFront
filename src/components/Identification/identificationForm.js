@@ -1,7 +1,7 @@
 import React from 'react'
 import { withFormik } from "formik";
 import { connect } from 'react-redux'
-import { saveRut } from '../../redux/actions/AdmissionAction'
+import { updateForm,handleSetStep } from '../../redux/actions/AdmissionAction'
 import TextField from '@material-ui/core/TextField'
 import Button from "@material-ui/core/Button"
 import {Rut, formateaRut} from "../../helpers/rut"
@@ -74,7 +74,8 @@ const IdentificationForm = withFormik({
     handleSubmit: (values, {props,setSubmitting}) => {
       setSubmitting = false
       values.rut = formateaRut(values.rut)
-      props.dispatch(saveRut(Rut.clean(values.rut)))
+      props.dispatch(updateForm('rut',Rut.clean(values.rut)))
+      props.dispatch(handleSetStep(3))
     }
   })(form)
 
