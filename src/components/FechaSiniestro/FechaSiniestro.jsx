@@ -3,7 +3,7 @@ import { meses, getActualDate } from "../../util/FechasUtils";
 import { Button, Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
-const FechaSiniestro = () => {
+const FechaSiniestro = ({ onChange }) => {
   const [days, setDays] = useState(() => {
     return new Date().getDate();
   });
@@ -45,6 +45,7 @@ const FechaSiniestro = () => {
         setMonthLastDay(new Date(year, month + 1, 0).getDate());
       }
     }
+    onChange({ days, month, year });
   }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);

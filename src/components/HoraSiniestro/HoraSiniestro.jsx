@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 
-const HoraSiniestro = () => {
+const HoraSiniestro = ({ onChange }) => {
   const [horas, setHoras] = useState(() => {
     return new Date().getHours();
   });
@@ -13,12 +13,15 @@ const HoraSiniestro = () => {
   useEffect(() => {
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
-  }, [horas]);
-
-  useEffect(() => {
     if (minutos > 59) setMinutos(0);
     if (minutos < 0) setMinutos(59);
-  }, [minutos]);
+    onChange({ horas, minutos });
+  }, [horas, minutos]);
+
+  // useEffect(() => {
+  //   if (minutos > 59) setMinutos(0);
+  //   if (minutos < 0) setMinutos(59);
+  // }, [minutos]);
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       <Grid

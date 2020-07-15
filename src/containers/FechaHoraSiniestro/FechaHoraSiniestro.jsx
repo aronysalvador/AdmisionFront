@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestro";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import { Button, Typography } from "@material-ui/core";
@@ -12,6 +12,8 @@ import {
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const FechaHoraSiniestro = () => {
+  const [fechaSiniestro, setFechaSiniestro] = useState({});
+  const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta } = getComunStyle();
 
   const { step, percentage } = useSelector(
@@ -19,6 +21,13 @@ const FechaHoraSiniestro = () => {
     shallowEqual
   );
 
+  function setFechaValueSiniestro(value) {
+    setFechaSiniestro({ ...value });
+  }
+
+  function setHoraValueSiniestro(value) {
+    setHoraSiniestro({ ...value });
+  }
   return (
     <div className={root}>
       <Cabecera
@@ -28,8 +37,8 @@ const FechaHoraSiniestro = () => {
       <Typography className={pregunta}>
         Escribe la fecha y hora del accidente
       </Typography>
-      <FechaSiniestro />
-      <HoraSiniestro />
+      <FechaSiniestro onChange={setFechaValueSiniestro} />
+      <HoraSiniestro onChange={setHoraValueSiniestro} />
       <Button className={buttonAchs}>Siguiente</Button>
     </div>
   );
