@@ -11,7 +11,7 @@ import PacienteNoAfiliadoError from '../Error/pacienteNoAfiliadoError'
 import Consitions from '../Conditions/index'
 import PersonalData from '../PersonalData/index'
 import LoadPersonalData from '../PersonalData/loadPersonalData'
-
+import Session from '../Session/index'
 
 const Main = (props) => {
 
@@ -20,7 +20,9 @@ const Main = (props) => {
 
     const renderForm = (step) => {
         switch(step){
-            case 1: 
+            case 0: 
+              return <Session />
+           case 1: 
               return <Welcome />
             case 2: 
               return <Identification />
