@@ -38,7 +38,9 @@ const LugarExactoSiniestro = () => {
 
       <Typography className={mobileLabel}>Dirección accidente</Typography>
       <AutoComplete
-        getOptionSelected={(option, value) => console.log({ option, value })}
+        onChange={(event, value) => {
+          console.log({ value });
+        }}
         size="small"
         fullWidth
         options={sucursalesList}
