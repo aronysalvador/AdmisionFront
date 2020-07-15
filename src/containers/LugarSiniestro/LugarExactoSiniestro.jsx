@@ -2,23 +2,30 @@ import React, { useState, useEffect } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
-import {
-  useDispatch as dispatch,
-  useSelector,
-  shallowEqual,
-} from "react-redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { LocationOn } from "@material-ui/icons";
 import AutoComplete from "@material-ui/lab/Autocomplete";
+import { getSucursalesEmpresaSiniestro } from "./../../redux/actions/SucursalesEmpresaSiniestro";
 
 const LugarExactoSiniestro = () => {
+  const dispatch = useDispatch();
   const { step, percentage } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel } = siniestroStyle();
+
+  useEffect(() => {
+    dispatch(getSucursalesEmpresaSiniestro(""));
+  }, []);
+
+  const { data: sucursalesList } = useSelector(
+    (state) => state.sucursalesEmpresaSiniestro,
+    shallowEqual
+  );
   return (
     <div className={root}>
       <Cabecera
@@ -34,8 +41,8 @@ const LugarExactoSiniestro = () => {
         getOptionSelected={(option, value) => console.log({ option, value })}
         size="small"
         fullWidth
-        options={[{ id: 1, name: "Av Carlos Valdovinos" }]}
-        getOptionLabel={(option) => option.name}
+        options={sucursalesList}
+        getOptionLabel={(option) => option.direccion}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div
