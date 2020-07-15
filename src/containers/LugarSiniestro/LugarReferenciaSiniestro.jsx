@@ -29,7 +29,7 @@ const LugarReferenciaSiniestro = () => {
       </Typography>
 
       <Typography className={mobileLabel}>referencia</Typography>
-      <TextField variant="outlined" size="small" fullWidth />
+      <TextField variant="outlined" size="small" margin="dense" fullWidth />
       <Typography className={mobileCaption}>
         Piso 21, Area 453, Puesto 12A
       </Typography>
