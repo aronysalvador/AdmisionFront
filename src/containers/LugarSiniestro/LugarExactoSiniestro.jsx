@@ -7,9 +7,13 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { LocationOn } from "@material-ui/icons";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getSucursalesEmpresaSiniestro } from "./../../redux/actions/SucursalesEmpresaSiniestro";
+import {
+  getSucursalesEmpresaSiniestro,
+  setSucursalEmpresaSiniestro,
+} from "./../../redux/actions/SucursalesEmpresaSiniestro";
 
 const LugarExactoSiniestro = () => {
+  const [sucursal, setSucursal] = useState({});
   const dispatch = useDispatch();
   const { step, percentage } = useSelector(
     (state) => state.addmissionForm,
@@ -39,7 +43,7 @@ const LugarExactoSiniestro = () => {
       <Typography className={mobileLabel}>Dirección accidente</Typography>
       <AutoComplete
         onChange={(event, value) => {
-          console.log({ value });
+          setSucursal(value);
         }}
         size="small"
         fullWidth
@@ -54,7 +58,15 @@ const LugarExactoSiniestro = () => {
       >
         <LocationOn />
       </div>
-      <Button className={buttonAchs}>Siguiente</Button>
+      <Button
+        className={buttonAchs}
+        onClick={() => {
+          dispatch(setSucursalEmpresaSiniestro(sucursal));
+          dispatch(handleSetStep(step + 1));
+        }}
+      >
+        Siguiente
+      </Button>
     </div>
   );
 };
