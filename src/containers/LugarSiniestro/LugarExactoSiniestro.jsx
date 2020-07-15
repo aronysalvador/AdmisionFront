@@ -31,14 +31,12 @@ const LugarExactoSiniestro = () => {
 
       <Typography className={mobileLabel}>Dirección accidente</Typography>
       <AutoComplete
+        getOptionSelected={(option, value) => console.log({ option, value })}
         size="small"
         fullWidth
         options={[{ id: 1, name: "Av Carlos Valdovinos" }]}
         getOptionLabel={(option) => option.name}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
-        onChange={(e) => {
-          console.log(e);
-        }}
       />
       <div
         onClick={() => {
