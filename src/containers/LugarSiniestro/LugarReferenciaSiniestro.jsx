@@ -30,7 +30,9 @@ const LugarReferenciaSiniestro = () => {
         ...y especifica una referencia del lugar
       </Typography>
 
-      <Typography className={mobileLabel}>referencia</Typography>
+      <Typography className={mobileLabel} variant="subtitle2">
+        referencia
+      </Typography>
       <TextField
         value={lugarReferencia}
         variant="outlined"
@@ -39,7 +41,7 @@ const LugarReferenciaSiniestro = () => {
         fullWidth
         onChange={(e) => setLugarReferencia(e.target.value)}
       />
-      <Typography className={mobileCaption}>
+      <Typography className={mobileCaption} variant="subtitle1">
         Piso 21, Area 453, Puesto 12A
       </Typography>
       <Button
