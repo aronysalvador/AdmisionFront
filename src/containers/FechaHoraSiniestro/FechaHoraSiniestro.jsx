@@ -5,7 +5,7 @@ import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { setFechaHoraSiniestroAction } from "./../../redux/actions/FechaHoraSiniestro";
 
 const FechaHoraSiniestro = () => {
@@ -40,7 +40,10 @@ const FechaHoraSiniestro = () => {
         className={buttonAchs}
         onClick={() => {
           dispatch(
-            setFechaHoraSiniestroAction({ ...fechaSiniestro, ...horaSiniestro })
+            updateForm("fechaHoraSiniestro", {
+              ...fechaSiniestro,
+              ...horaSiniestro,
+            })
           );
           dispatch(handleSetStep(step + 1));
         }}
