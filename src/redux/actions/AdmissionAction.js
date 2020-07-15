@@ -2,7 +2,7 @@ import {SET_STEP, UPDATE_FORM} from '../types/addmissionFormType'
 import Axios from 'axios';
 import {formateaRut} from '../../helpers/rut'
 
-const totalSteps = 4
+const totalSteps = 8
 
 export const setStep = (step,percentage) => {
     return {
@@ -34,6 +34,7 @@ const getPercentage = (step) =>{
     return step * 100 / totalSteps
 }
 
+
 export const formatRut = (rut) =>{
     return (dispatch) => {
         dispatch(setStep(2,getPercentage(2)))
@@ -46,8 +47,7 @@ export const saveRut = (rut) => {
         Axios.get(`http://ci-desa-msorquestador.eastus.azurecontainer.io/api/employee/isAfiliado?rut=${rut}`).then((result) => {
             let isAfiliado = result.data.content[0].isAfiliado
             if(isAfiliado){
-                dispatch(setStep(3,getPercentage(3)))
-                dispatch(updateForm("rut",formateaRut(rut)))
+                dispatch(handleSetStep(6))
                 dispatch(updateForm("empresa",result.data.content[0].RutEmpresa))
                 dispatch(updateForm("rutEmpresa",result.data.content[0].NombreEmpresa))
                 dispatch(updateForm("isAfiliado","Si"))
@@ -58,6 +58,8 @@ export const saveRut = (rut) => {
                 dispatch(updateForm("rutEmpresa",""))
                 dispatch(updateForm("isAfiliado",""))
             }
+        }).catch((error) => {
+            console.log("error")
         })
     }
 }
