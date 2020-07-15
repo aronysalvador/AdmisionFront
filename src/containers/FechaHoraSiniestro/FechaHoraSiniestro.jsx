@@ -38,11 +38,12 @@ const FechaHoraSiniestro = () => {
       <HoraSiniestro onChange={setHoraValueSiniestro} />
       <Button
         className={buttonAchs}
-        onClick={() =>
+        onClick={() => {
           dispatch(
             setFechaHoraSiniestroAction({ ...fechaSiniestro, ...horaSiniestro })
-          )
-        }
+          );
+          dispatch(handleSetStep(step + 1));
+        }}
       >
         Siguiente
       </Button>
