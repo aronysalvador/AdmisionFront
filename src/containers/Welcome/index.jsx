@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
+import { login,isExistAccount,getAccount } from '../../redux/actions/microsoft.action'
 import {getWelcomeStyle} from '../../css/welcomeStyle'
 import Link from '@material-ui/core/Link'
 import {getComunStyle} from '../../css/comun'
@@ -12,11 +13,29 @@ import '../../css/sfUiDisplayCufonfonts.css'
 
 const Welcome = (props) => {
 
-    const { dispatch, addmissionForm } = props
+    const { dispatch, addmissionForm, microsoft } = props
+
+    console.log(addmissionForm)
+    console.log("microsoft", microsoft)
 
     const welcomeStyle = getWelcomeStyle();  
     const comunStyle = getComunStyle();  
     const spaceStyle = getSpaceStyle();
+
+    const usermsal = getAccount()
+    const scopes = ["user.read"]
+
+    useEffect(() => {
+        /*const reqMsal = async () => {
+            if (usermsal) {
+              await dispatch(isExistAccount(scopes))
+            }
+        }
+        reqMsal() */
+        const obj = dispatch(getAccount())
+        console.log("obj",obj)
+        //dispatch(login())
+      },[])
     
     return (
             <div className={comunStyle.root}>
@@ -67,7 +86,7 @@ const Welcome = (props) => {
     );
 }
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoft }) {
     return {
         addmissionForm : addmissionForm
     }

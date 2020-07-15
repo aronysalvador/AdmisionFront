@@ -42,6 +42,9 @@ export const formatRut = (rut) =>{
 }
 
 export const saveRut = (rut) => {
+    //  export const saveRut=(rut)=>async(dispatch,getState)=>{
+    //const {} = getState()
+    //}
     return (dispatch) => {
         Axios.get(`http://ci-desa-msorquestador.eastus.azurecontainer.io/api/employee/isAfiliado?rut=${rut}`).then((result) => {
             let isAfiliado = result.data.content[0].isAfiliado
