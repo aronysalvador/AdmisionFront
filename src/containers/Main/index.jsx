@@ -31,7 +31,7 @@ const Main = (props) => {
             case 5: 
               return <LoadPersonalData />                
             case 6: 
-              return <PersonalData />                             
+              return <PersonalData />                              
             case 500: 
               return <PacienteNoAfiliadoError />                            
             default:
