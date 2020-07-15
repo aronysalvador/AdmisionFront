@@ -10,17 +10,12 @@ import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getSucursalesEmpresaSiniestro } from "./../../redux/actions/SucursalesEmpresaSiniestro";
 
 const LugarExactoSiniestro = () => {
-  // const { data: sucursalReload } = useSelector(
-  //   (state) => state.sucursalEmpresaSiniestro,
-  //   shallowEqual
-  // );
-  const [sucursal, setSucursal] = useState("");
-  const dispatch = useDispatch();
+  const {
+    addmissionForm: { step, percentage, sucursalEmpresaSiniestro },
+  } = useSelector((state) => state, shallowEqual);
 
-  const { step, percentage } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+  const [sucursal, setSucursal] = useState(sucursalEmpresaSiniestro);
+  const dispatch = useDispatch();
 
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel } = siniestroStyle();
