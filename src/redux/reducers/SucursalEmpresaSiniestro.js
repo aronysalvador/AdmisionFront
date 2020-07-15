@@ -1,7 +1,7 @@
 import {
-  GET_SUCURSALES_EMPRESA_SINIESTRO_INIT,
-  GET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS,
-  GET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE,
+  SET_SUCURSALES_EMPRESA_SINIESTRO_INIT,
+  SET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS,
+  SET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE,
 } from "../types/SucursalesEmpresaSiniestroTypes";
 
 const INITIAL_STATE = {
@@ -10,22 +10,22 @@ const INITIAL_STATE = {
   error: null,
 };
 
-export default function sucursalesEmpresaSiniestro(
+export default function sucursalEmpresaSiniestro(
   state = INITIAL_STATE,
   action
 ) {
   switch (action.type) {
-    case GET_SUCURSALES_EMPRESA_SINIESTRO_INIT:
+    case SET_SUCURSALES_EMPRESA_SINIESTRO_INIT:
       return { ...state, loading: true };
 
-    case GET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS:
+    case SET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS:
       return {
         ...state,
         data: action.payload,
         loading: false,
       };
 
-    case GET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE:
+    case SET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE:
       return { ...state, error: action.payload, loading: false };
 
     default:
