@@ -10,7 +10,7 @@ import useStyles from '../../css/styles'
 import PacienteNoAfiliadoError from '../Error/pacienteNoAfiliadoError'
 import Consitions from '../Conditions/index'
 import PersonalData from '../PersonalData/index'
-import LoadPersonalData from '../PersonalData/loadPersonalData'
+import LoadPersonalData from '../Load/loadPersonalData'
 import Session from '../Session/index'
 
 const Main = (props) => {
