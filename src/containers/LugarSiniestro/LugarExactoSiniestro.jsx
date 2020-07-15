@@ -15,8 +15,14 @@ import {
 const LugarExactoSiniestro = () => {
   const [sucursal, setSucursal] = useState({});
   const dispatch = useDispatch();
+
   const { step, percentage } = useSelector(
     (state) => state.addmissionForm,
+    shallowEqual
+  );
+
+  const { data: sucursalReload } = useSelector(
+    (state) => state.sucursalEmpresaSiniestro,
     shallowEqual
   );
   const { root, buttonAchs, pregunta } = getComunStyle();
@@ -42,6 +48,7 @@ const LugarExactoSiniestro = () => {
 
       <Typography className={mobileLabel}>Dirección accidente</Typography>
       <AutoComplete
+        value={sucursalReload}
         onChange={(event, value) => {
           setSucursal(value);
         }}
