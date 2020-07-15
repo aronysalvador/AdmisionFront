@@ -7,6 +7,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { siniestroStyle } from "../../css/siniestroStyle";
 
 const LugarReferenciaSiniestro = () => {
+  const [lugarReferencia, setLugarReferencia] = useState("");
   const dispatch = useDispatch();
   const { step, percentage } = useSelector(
     (state) => state.addmissionForm,
@@ -26,7 +27,14 @@ const LugarReferenciaSiniestro = () => {
       </Typography>
 
       <Typography className={mobileLabel}>referencia</Typography>
-      <TextField variant="outlined" size="small" margin="dense" fullWidth />
+      <TextField
+        value={lugarReferencia}
+        variant="outlined"
+        size="small"
+        margin="dense"
+        fullWidth
+        onChange={(e) => setLugarReferencia(e.target.value)}
+      />
       <Typography className={mobileCaption}>
         Piso 21, Area 453, Puesto 12A
       </Typography>
