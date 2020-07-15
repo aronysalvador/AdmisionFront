@@ -6,7 +6,6 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { setFechaHoraSiniestroAction } from "./../../redux/actions/FechaHoraSiniestro";
 
 const FechaHoraSiniestro = () => {
   const [fechaSiniestro, setFechaSiniestro] = useState({});
