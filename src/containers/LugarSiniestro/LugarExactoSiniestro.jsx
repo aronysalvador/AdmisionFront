@@ -13,7 +13,11 @@ import {
 } from "./../../redux/actions/SucursalesEmpresaSiniestro";
 
 const LugarExactoSiniestro = () => {
-  const [sucursal, setSucursal] = useState({});
+  const { data: sucursalReload } = useSelector(
+    (state) => state.sucursalEmpresaSiniestro,
+    shallowEqual
+  );
+  const [sucursal, setSucursal] = useState(sucursalReload);
   const dispatch = useDispatch();
 
   const { step, percentage } = useSelector(
@@ -21,10 +25,6 @@ const LugarExactoSiniestro = () => {
     shallowEqual
   );
 
-  const { data: sucursalReload } = useSelector(
-    (state) => state.sucursalEmpresaSiniestro,
-    shallowEqual
-  );
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel } = siniestroStyle();
 
@@ -48,7 +48,7 @@ const LugarExactoSiniestro = () => {
 
       <Typography className={mobileLabel}>Dirección accidente</Typography>
       <AutoComplete
-        value={sucursalReload}
+        value={sucursal}
         onChange={(event, value) => {
           setSucursal(value);
         }}
@@ -58,13 +58,8 @@ const LugarExactoSiniestro = () => {
         getOptionLabel={(option) => option.direccion}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
-      <div
-        onClick={() => {
-          alert("xx");
-        }}
-      >
-        <LocationOn />
-      </div>
+
+      <LocationOn />
       <Button
         className={buttonAchs}
         onClick={() => {
