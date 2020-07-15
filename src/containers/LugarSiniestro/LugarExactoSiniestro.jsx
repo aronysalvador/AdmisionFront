@@ -61,7 +61,7 @@ const LugarExactoSiniestro = () => {
         className={buttonAchs}
         onClick={() => {
           dispatch(updateForm("sucursalEmpresaSiniestro", sucursal));
-          // dispatch(handleSetStep(step + 1));
+          dispatch(handleSetStep(step + 1));
         }}
       >
         Siguiente
