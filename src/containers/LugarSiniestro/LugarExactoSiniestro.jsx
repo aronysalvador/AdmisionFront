@@ -33,7 +33,7 @@ const LugarExactoSiniestro = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--step))}
+        dispatch={() => dispatch(handleSetStep(step - 1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

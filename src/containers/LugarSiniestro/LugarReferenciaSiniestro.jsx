@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
-import {
-  useDispatch as dispatch,
-  useSelector,
-  shallowEqual,
-} from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { siniestroStyle } from "../../css/siniestroStyle";
 
 const LugarReferenciaSiniestro = () => {
+  const dispatch = useDispatch();
   const { step, percentage } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
@@ -21,7 +18,7 @@ const LugarReferenciaSiniestro = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--step))}
+        dispatch={() => dispatch(handleSetStep(step - 1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
