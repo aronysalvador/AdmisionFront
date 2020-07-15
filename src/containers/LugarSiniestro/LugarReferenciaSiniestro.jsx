@@ -5,14 +5,18 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { siniestroStyle } from "../../css/siniestroStyle";
+import { updateForm } from "../../redux/actions/AdmissionAction";
 
 const LugarReferenciaSiniestro = () => {
-  const [lugarReferencia, setLugarReferencia] = useState("");
-  const dispatch = useDispatch();
-  const { step, percentage } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
+  const {
+    addmissionForm: { step, percentage, lugarReferenciaSiniestro },
+  } = useSelector((state) => state, shallowEqual);
+
+  const [lugarReferencia, setLugarReferencia] = useState(
+    lugarReferenciaSiniestro
   );
+  const dispatch = useDispatch();
+
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel, mobileCaption } = siniestroStyle();
 
@@ -38,7 +42,14 @@ const LugarReferenciaSiniestro = () => {
       <Typography className={mobileCaption}>
         Piso 21, Area 453, Puesto 12A
       </Typography>
-      <Button className={buttonAchs}>Siguiente</Button>
+      <Button
+        className={buttonAchs}
+        onClick={() =>
+          dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia))
+        }
+      >
+        Siguiente
+      </Button>
     </div>
   );
 };
