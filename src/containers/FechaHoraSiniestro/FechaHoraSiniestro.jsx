@@ -39,7 +39,12 @@ const FechaHoraSiniestro = () => {
       </Typography>
       <FechaSiniestro onChange={setFechaValueSiniestro} />
       <HoraSiniestro onChange={setHoraValueSiniestro} />
-      <Button className={buttonAchs}>Siguiente</Button>
+      <Button
+        className={buttonAchs}
+        onClick={() => dispatch({ ...fechaSiniestro, ...horaSiniestro })}
+      >
+        Siguiente
+      </Button>
     </div>
   );
 };
