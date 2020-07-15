@@ -18,7 +18,7 @@ export default function fechaHoraSiniestro(state = INITIAL_STATE, action) {
     case SET_FECHA_HORA_SINIESTRO_SUCCESS:
       return {
         ...state,
-        status: action.payload,
+        data: action.payload,
         loading: false,
       };
 

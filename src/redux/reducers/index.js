@@ -4,5 +4,5 @@ import fechaHoraSiniestro from "../reducers/FechaHoraSiniestroReducer";
 
 export default combineReducers({
   addmissionForm,
-  fechaHoraSiniestroReducer: fechaHoraSiniestro,
+  fechaHoraSiniestro,
 });

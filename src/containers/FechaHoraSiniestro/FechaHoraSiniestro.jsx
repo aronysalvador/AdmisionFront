@@ -4,18 +4,15 @@ import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
-import {
-  useDispatch as dispatch,
-  useSelector,
-  shallowEqual,
-} from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { setFechaHoraSiniestroAction } from "./../../redux/actions/FechaHoraSiniestro";
 
 const FechaHoraSiniestro = () => {
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta } = getComunStyle();
-
+  const dispatch = useDispatch();
   const { step, percentage } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
@@ -41,7 +38,11 @@ const FechaHoraSiniestro = () => {
       <HoraSiniestro onChange={setHoraValueSiniestro} />
       <Button
         className={buttonAchs}
-        onClick={() => dispatch({ ...fechaSiniestro, ...horaSiniestro })}
+        onClick={() =>
+          dispatch(
+            setFechaHoraSiniestroAction({ ...fechaSiniestro, ...horaSiniestro })
+          )
+        }
       >
         Siguiente
       </Button>
