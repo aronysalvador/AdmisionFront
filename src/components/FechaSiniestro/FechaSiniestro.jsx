@@ -50,16 +50,6 @@ const FechaSiniestro = ({ onChange }) => {
 
   const { name: monthName } = meses.find((x) => x.id === month);
 
-  console.log({
-    days,
-    monthName,
-    year,
-    monthLastDay,
-    actualDay,
-    actualMonth,
-    actualYear,
-  });
-
   return (
     <Grid
       container
