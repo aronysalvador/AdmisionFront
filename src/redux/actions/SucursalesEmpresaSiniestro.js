@@ -2,9 +2,6 @@ import {
   GET_SUCURSALES_EMPRESA_SINIESTRO_INIT,
   GET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS,
   GET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE,
-  SET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE,
-  SET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS,
-  SET_SUCURSALES_EMPRESA_SINIESTRO_INIT,
 } from "../types/SucursalesEmpresaSiniestroTypes";
 
 import { getSucursalesUsuarios } from "../../util/fakeApi";
@@ -25,9 +22,4 @@ export const getSucursalesEmpresaSiniestro = (rut) => async (dispatch) => {
         payload: error,
       })
     );
-};
-
-export const setSucursalEmpresaSiniestro = (values) => async (dispatch) => {
-  dispatch({ type: SET_SUCURSALES_EMPRESA_SINIESTRO_INIT });
-  dispatch({ type: SET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS, payload: values });
 };
