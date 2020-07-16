@@ -10,6 +10,8 @@ import useStyles from '../../css/styles'
 import PacienteNoAfiliadoError from '../Error/pacienteNoAfiliadoError'
 import Consitions from '../Conditions/index'
 import Resumen from '../Resumen/index'
+import HealthForecast from '../HealthForecast/index'
+import HealthForecastIsapre from '../HealthForecastIsapre/index'
 
 
 const Main = (props) => {
@@ -17,23 +19,37 @@ const Main = (props) => {
     const classes = useStyles();
     const { addmissionForm } = props
 
+    // const renderForm = (step) => {
+    //     switch(step){
+    //         case 1: 
+    //           return <Welcome />
+    //         case 2: 
+    //           return <Identification />
+    //         case 3: 
+    //           return <Sinister /> 
+    //         case 4: 
+    //           return <Consitions /> 
+    //         case 5: 
+    //           return <Resumen />                             
+    //         case 500: 
+    //           return <PacienteNoAfiliadoError />                            
+    //         default:
+    //           return <div>Error</div> 
+    //     }
+    // }
+
     const renderForm = (step) => {
-        switch(step){
-            case 1: 
-              return <Welcome />
-            case 2: 
-              return <Identification />
-            case 3: 
-              return <Sinister /> 
-            case 4: 
-              return <Consitions /> 
-            case 5: 
-              return <Resumen />                             
-            case 500: 
-              return <PacienteNoAfiliadoError />                            
-            default:
-              return <div>Error</div> 
-        }
+      switch(step){
+          case 1: 
+            return <HealthForecast />
+          case 2: 
+          return <HealthForecastIsapre />
+                                    
+          case 500: 
+            return <PacienteNoAfiliadoError />                            
+          default:
+            return <div>Error</div> 
+      }
     }
 
     return (

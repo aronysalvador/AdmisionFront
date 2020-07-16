@@ -1,4 +1,8 @@
-import {SET_STEP,UPDATE_FORM} from '../types/addmissionFormType'
+import {
+    SET_STEP, 
+    UPDATE_FORM,
+    SEND_ISAPRES
+} from '../types/addmissionFormType'
 import {AdmissionForm} from '../models/AdmissionForm'
 
 export default function payload(state = AdmissionForm, action) {
@@ -14,7 +18,14 @@ export default function payload(state = AdmissionForm, action) {
             return{
                 ...state,
                 [action.payload.stateType]: action.payload.value
-            }          
+            }  
+
+
+        case SEND_ISAPRES:
+            return{
+                ...state,
+                isapreSeleccionado : action.payload
+            } 
         default:
             return state;
     }

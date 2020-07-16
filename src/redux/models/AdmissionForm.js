@@ -4,5 +4,7 @@ export const AdmissionForm = {
     rut : "",
     isAfiliado : "",
     empresa : "",
-    rutEmpresa : ""
+    rutEmpresa : "",
+    isapreSeleccionado : null,
+   
 }
