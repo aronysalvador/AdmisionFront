@@ -15,11 +15,12 @@ import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
-
+import AccidentPlaceForm from '../Questions/lugarAccidente'
+import AccidentDescription from '../Questions/descripcionAccidente'
+import AccidentObjectForm from '../Questions/objetoAccidente'
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm } = props;
-
   const renderForm = (step) => {
     switch (step) {
       case 1:
@@ -42,6 +43,12 @@ const Main = (props) => {
         return <HealthForecast />;
       case 10:
         return <HealthForecastIsapre />;
+      case 11: 
+        return <AccidentPlaceForm />            
+      case 12: 
+        return <AccidentDescription /> 
+      case 13: 
+        return <AccidentObjectForm />                                               
       case 500:
         return <PacienteNoAfiliadoError />;
       default:
@@ -57,6 +64,7 @@ const Main = (props) => {
           {renderForm(addmissionForm.step)}
         </Paper>
       </div>
+           
     </MuiThemeProvider>
   );
 };

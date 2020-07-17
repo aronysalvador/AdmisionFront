@@ -6,5 +6,7 @@ export const AdmissionForm = {
     empresa : "",
     rutEmpresa : "",
     isapreSeleccionado : null,
-   
+    lugarAccidente :"",
+    objetoAccidente: "",
+    descripcionAccidente: ""
 }
