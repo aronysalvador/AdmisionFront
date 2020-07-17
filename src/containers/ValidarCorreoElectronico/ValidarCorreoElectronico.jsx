@@ -13,18 +13,18 @@ const ValidarCorreoElectronico = () => {
     addmissionForm: { step, percentage, usuarioEmail },
   } = useSelector((state) => state, shallowEqual);
 
+  let stepx = step;
   const [userEmail, setUserEmail] = useState(() => {
     return !usuarioEmail ? "" : usuarioEmail;
   });
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel } = siniestroStyle();
 
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(step - 1))}
+        dispatch={() => dispatch(handleSetStep(--stepx))}
         percentage={percentage}
       />
       <Typography className={pregunta}>Por último, escribe tu email</Typography>
@@ -48,7 +48,7 @@ const ValidarCorreoElectronico = () => {
         onClick={() =>
           isEmailValid &&
           dispatch(updateForm("emailusuario", userEmail)) &&
-          dispatch(handleSetStep(step + 1))
+          dispatch(handleSetStep(++stepx))
         }
       >
         Siguiente
