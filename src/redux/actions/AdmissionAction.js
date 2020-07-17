@@ -1,4 +1,8 @@
-import {SET_STEP, UPDATE_FORM} from '../types/addmissionFormType'
+import {
+    SET_STEP, 
+    UPDATE_FORM,
+    SEND_ISAPRES
+} from '../types/addmissionFormType'
 import Axios from 'axios';
 import {formateaRut} from '../../helpers/rut'
 
@@ -66,3 +70,15 @@ export const saveRut = (rut) => {
         })
     }
 }
+
+//Envia la Isapres Seleccionada
+export function sendIsapres(id) {
+    return (dispatch) => {
+        dispatch( sendCallIsapres(id) );
+    }
+}
+
+const sendCallIsapres = id => ({
+    type:SEND_ISAPRES,
+    payload: id
+})

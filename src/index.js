@@ -4,10 +4,19 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import middleware from './redux/middleware'
 import reducer from './redux/reducers'
-import { createStore } from 'redux'
+import { createStore,applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 
-const store = createStore(reducer, middleware);
+// const store = createStore(reducer, middleware);
+const store = createStore(
+  reducer, 
+  compose( applyMiddleware(thunk),
+    typeof window === 'object' &&
+    typeof window.__REDUX_DEVTOOLS_EXTENSION__  !== 'undefined' ?
+    window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+  )
+);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
