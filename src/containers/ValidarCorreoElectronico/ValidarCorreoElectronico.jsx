@@ -46,7 +46,9 @@ const ValidarCorreoElectronico = () => {
         className={buttonAchs}
         disabled={userEmail.length === 0 || !isEmailValid}
         onClick={() =>
-          isEmailValid && dispatch(updateForm("emailusuario", userEmail))
+          isEmailValid &&
+          dispatch(updateForm("emailusuario", userEmail)) &&
+          dispatch(handleSetStep(step + 1))
         }
       >
         Siguiente
