@@ -1,5 +1,8 @@
-import { combineReducers } from 'redux'
-import addmissionForm from '../reducers/AdmissionFormReducers'
-import microsoftReducer from '../reducers/microsoft.reducer'
+import { combineReducers } from "redux";
+import addmissionForm from "../reducers/AdmissionFormReducers";
+import sucursalesEmpresaSiniestro from "./SucursalesEmpresaSiniestro";
 
-export default combineReducers({ addmissionForm, microsoftReducer });
+export default combineReducers({
+  addmissionForm,
+  sucursalesEmpresaSiniestro,
+});
