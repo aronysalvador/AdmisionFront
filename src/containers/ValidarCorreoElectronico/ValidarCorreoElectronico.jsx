@@ -5,13 +5,19 @@ import { getComunStyle } from "../../css/comun";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { validateEmailFormat } from "../../helpers/email";
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
   const {
-    addmissionForm: { step, percentage },
+    addmissionForm: { step, percentage, usuarioEmail },
   } = useSelector((state) => state, shallowEqual);
 
+  const [userEmail, setUserEmail] = useState(() => {
+    return !usuarioEmail ? "" : usuarioEmail;
+  });
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel } = siniestroStyle();
 
@@ -24,18 +30,24 @@ const ValidarCorreoElectronico = () => {
       <Typography className={pregunta}>Por último, escribe tu email</Typography>
       <Typography className={mobileLabel}>Email</Typography>
       <TextField
-        // value={lugarReferencia}
+        value={userEmail}
         variant="outlined"
         size="small"
         margin="dense"
         fullWidth
-        // onChange={(e) => setLugarReferencia(e.target.value)}
+        helperText={!isEmailValid && "Escriba un email valido"}
+        error={!isEmailValid}
+        onChange={(e) => {
+          setIsEmailValid(validateEmailFormat(e.target.value));
+          setUserEmail(e.target.value);
+        }}
       />
       <Button
         className={buttonAchs}
-        // onClick={() =>
-        //   dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia))
-        // }
+        disabled={userEmail.length === 0 || !isEmailValid}
+        onClick={() =>
+          isEmailValid && dispatch(updateForm("emailusuario", userEmail))
+        }
       >
         Siguiente
       </Button>
