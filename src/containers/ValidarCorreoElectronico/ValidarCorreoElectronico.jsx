@@ -22,6 +22,23 @@ const ValidarCorreoElectronico = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>Por último, escribe tu email</Typography>
+      <Typography className={mobileLabel}>Email</Typography>
+      <TextField
+        // value={lugarReferencia}
+        variant="outlined"
+        size="small"
+        margin="dense"
+        fullWidth
+        // onChange={(e) => setLugarReferencia(e.target.value)}
+      />
+      <Button
+        className={buttonAchs}
+        // onClick={() =>
+        //   dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia))
+        // }
+      >
+        Siguiente
+      </Button>
     </div>
   );
 };
