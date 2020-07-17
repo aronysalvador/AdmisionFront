@@ -19,6 +19,7 @@ import HealthForecastIsapre from "../HealthForecastIsapre/index";
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm } = props;
+  console.log({ addmissionForm });
 
   const renderForm = (step) => {
     switch (step) {

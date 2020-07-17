@@ -1,10 +1,9 @@
 export const AdmissionForm = {
-    step : 9,
-    percentage : 0,
-    rut : "",
-    isAfiliado : "",
-    empresa : "",
-    rutEmpresa : "",
-    isapreSeleccionado : null,
-   
-}
+  step: 6,
+  percentage: 0,
+  rut: "",
+  isAfiliado: "",
+  empresa: "",
+  rutEmpresa: "",
+  isapreSeleccionado: null,
+};

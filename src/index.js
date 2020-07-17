@@ -6,18 +6,11 @@ import middleware from "./redux/middleware";
 import reducer from "./redux/reducers";
 import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { PersistGate } from "redux-persist/integration/react";
 
 // const store = createStore(reducer, middleware);
-const persistConfig = {
-  key: "root",
-  storage,
-};
-const persistReducer1 = persistReducer(persistConfig, reducer);
+
 const store = createStore(
-  persistReducer1,
+  reducer,
   compose(
     middleware,
     typeof window === "object" &&
@@ -27,13 +20,10 @@ const store = createStore(
   )
 );
 
-let persistor = persistStore(store);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store} pers>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
