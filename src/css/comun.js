@@ -59,5 +59,8 @@ export const getComunStyle = makeStyles((theme) => ({
     cleanFloat:{
         float:'none',
         clear:'both',
+    },
+    pullRight: {
+        float: 'right'
     }
   }))

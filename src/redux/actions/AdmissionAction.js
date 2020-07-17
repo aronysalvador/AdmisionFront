@@ -2,7 +2,9 @@ import {SET_STEP, UPDATE_FORM} from '../types/addmissionFormType'
 import Axios from 'axios';
 import {formateaRut} from '../../helpers/rut'
 
-const totalSteps = 4
+const totalSteps = 9
+
+//3 corresponden a preguntas del accidente.
 
 export const setStep = (step,percentage) => {
     return {
@@ -31,7 +33,7 @@ export const handleSetStep = (step) =>{
 }
 
 const getPercentage = (step) =>{
-    return step * 100 / totalSteps
+    return step * 100 / parseFloat(totalSteps)
 }
 
 export const formatRut = (rut) =>{
@@ -61,3 +63,13 @@ export const saveRut = (rut) => {
         })
     }
 }
+
+export  const saveAnswer = (answerType, answerValue, step) =>{
+    console.log("SAVE ANSWER ACTION");
+    return (dispatch) => {
+        dispatch(updateForm(answerType,answerValue))
+        dispatch(handleSetStep(step))  
+    }
+         
+}
+

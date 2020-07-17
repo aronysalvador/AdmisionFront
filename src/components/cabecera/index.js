@@ -13,7 +13,7 @@ const Cabecera = (props) => {
     const spaceStyle = getSpaceStyle()
 
     return (<div><div className={comunClass.logoAchsContainer}>
-                    <Typography variant="p" component="p" className={comunClass.tituloACHS}>
+                    <Typography variant="h1" component="h1" className={comunClass.tituloACHS}>
                             ACHS
                     </Typography>
                 </div> 

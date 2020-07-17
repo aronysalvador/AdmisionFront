@@ -10,13 +10,15 @@ import useStyles from '../../css/styles'
 import PacienteNoAfiliadoError from '../Error/pacienteNoAfiliadoError'
 import Consitions from '../Conditions/index'
 import Resumen from '../Resumen/index'
+import AccidentPlaceForm from '../Questions/lugarAccidente'
+import AccidentDescription from '../Questions/descripcionAccidente'
+import AccidentObjectForm from '../Questions/objetoAccidente'
 
 
 const Main = (props) => {
 
     const classes = useStyles();
     const { addmissionForm } = props
-
     const renderForm = (step) => {
         switch(step){
             case 1: 
@@ -28,7 +30,13 @@ const Main = (props) => {
             case 4: 
               return <Consitions /> 
             case 5: 
-              return <Resumen />                             
+              return <Resumen />
+            case 6: 
+              return <AccidentPlaceForm />            
+            case 7: 
+              return <AccidentDescription /> 
+            case 8: 
+              return <AccidentObjectForm />                                               
             case 500: 
               return <PacienteNoAfiliadoError />                            
             default:
@@ -38,12 +46,15 @@ const Main = (props) => {
 
     return (
         <MuiThemeProvider>
+          <div>
             <CssBaseline />
             <div className={classes.layout}>
               <Paper className={classes.paper}>
                 {renderForm(addmissionForm.step)}
               </Paper>
             </div>
+          </div>
+           
         </MuiThemeProvider>
     )
 }
