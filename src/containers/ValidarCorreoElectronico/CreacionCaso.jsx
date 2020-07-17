@@ -1,9 +1,10 @@
 import React from "react";
-
+import { getComunStyle } from "../../css/comun";
 const CrearCaso = () => {
+  const { root } = getComunStyle();
   return (
-    <dib className="root">
-      <h1>Estamos creando tu caso</h1>
+    <dib className={root}>
+      <span>Estamos creando su caso</span>
     </dib>
   );
 };
