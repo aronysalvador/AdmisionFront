@@ -28,7 +28,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     }, []);
 
     const getIsapres = useSelector(state => state.previsionForm.isapres);
-
+    
     const clickSendIsapres = (id) => {
         dispatch1( sendIsapres(id) );
     }
@@ -50,10 +50,10 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   className={classesComun.buttonAchs} 
                   variant="contained"  
                   type="submit"
-                  value={getIsapres.length != 0 ? getIsapres[0].id : null}
+                  value={ getIsapres.length !== 0 ? getIsapres[0].id : null}
                   onClick={() => clickSendIsapres(getIsapres[0].id)}
                   >
-                      {getIsapres.length != 0 ? <p>{getIsapres[0].nombre}</p>: null}
+                      {(getIsapres.length !== 0)  ? <p>{getIsapres[0].nombre}</p>: null}
                   </Button>
                 </div>  
 
@@ -74,21 +74,21 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   className={classesComun.buttonAchsRight} 
                   variant="contained"  
                   type="submit"                 
-                  value={getIsapres.length != 0 ? getIsapres[1].id : null}
+                  value={getIsapres.length !== 0 ? getIsapres[1].id : null}
                   onClick={() => clickSendIsapres(getIsapres[1].id)}
                   >
 
-                        {getIsapres.length != 0 ? <p>{getIsapres[1].nombre}</p>: null}
+                        {getIsapres.length !== 0 ? <p>{getIsapres[1].nombre}</p>: null}
                      
                   </Button>
                   <Button 
                   className={classesComun.buttonAchsLeft}
                    variant="contained"  
                    type="submit"
-                   value={getIsapres.length != 0 ? getIsapres[2].id : null}
+                   value={getIsapres.length !== 0 ? getIsapres[2].id : null}
                    onClick={() => clickSendIsapres(getIsapres[2].id)}
                    >
-                       {getIsapres.length != 0 ? <p>{getIsapres[2].nombre}</p>: null}
+                       {getIsapres.length !== 0 ? <p>{getIsapres[2].nombre}</p>: null}
                   </Button>  
                                     
                 </div> 
@@ -100,19 +100,19 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   className={classesComun.buttonAchsRight} 
                   variant="contained"  
                   type="submit"
-                  value={getIsapres.length != 0 ? getIsapres[3].id : null}
+                  value={getIsapres.length !== 0 ? getIsapres[3].id : null}
                   onClick={() => clickSendIsapres(getIsapres[3].id)}
                   >
-                      {getIsapres.length != 0 ? <p>{getIsapres[3].nombre}</p>: null}
+                      {getIsapres.length !== 0 ? <p>{getIsapres[3].nombre}</p>: null}
                   </Button>
                   <Button 
                   className={classesComun.buttonAchsLeft} 
                   variant="contained" 
                   type="submit"
-                  value={getIsapres.length != 0 ? getIsapres[4].id : null}
+                  value={getIsapres.length !== 0 ? getIsapres[4].id : null}
                   onClick={() => clickSendIsapres(getIsapres[4].id)}
                    >
-                      {getIsapres.length != 0 ? <p>{getIsapres[4].nombre}</p>: null}
+                      {getIsapres.length !== 0 ? <p>{getIsapres[4].nombre}</p>: null}
                   </Button>                        
                 </div>
 
@@ -123,19 +123,19 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   className={classesComun.buttonAchsRight} 
                   variant="contained"  
                   type="submit"
-                  value={getIsapres.length != 0 ? getIsapres[5].id : null}
+                  value={getIsapres.length !== 0 ? getIsapres[5].id : null}
                   onClick={() => clickSendIsapres(getIsapres[5].id)}
                   >
-                      {getIsapres.length != 0 ? <p>{getIsapres[5].nombre}</p>: null}
+                      {getIsapres.length !== 0 ? <p>{getIsapres[5].nombre}</p>: null}
                   </Button>
                   <Button 
                   className={classesComun.buttonAchsLeft} 
                   variant="contained"  
                   type="submit"
-                  value={getIsapres.length != 0 ? getIsapres[6].id : null}
+                  value={getIsapres.length !== 0 ? getIsapres[6].id : null}
                   onClick={() => clickSendIsapres(getIsapres[6].id)}
                   >
-                      {getIsapres.length != 0 ? <p>{getIsapres[6].nombre}</p>: null}
+                      {getIsapres.length !== 0 ? <p>{getIsapres[6].nombre}</p>: null}
                   </Button>                      
                 </div>
 
