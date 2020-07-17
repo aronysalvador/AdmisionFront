@@ -15,6 +15,7 @@ import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
+import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -43,6 +44,8 @@ const Main = (props) => {
         return <HealthForecast />;
       case 10:
         return <HealthForecastIsapre />;
+      case 11:
+        return <ValidarCorreoElectronico />;
       case 500:
         return <PacienteNoAfiliadoError />;
       default:
