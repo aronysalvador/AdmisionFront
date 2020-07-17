@@ -1,20 +1,20 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Welcome from '../Welcome/index'
-import Identification from '../Identification/index'
-import Sinister from '../Sinister/index'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Paper from '@material-ui/core/Paper'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import useStyles from '../../css/styles'
-import PacienteNoAfiliadoError from '../Error/pacienteNoAfiliadoError'
-import Consitions from '../Conditions/index'
-import Resumen from '../Resumen/index'
+import React from "react";
+import { connect } from "react-redux";
+import Welcome from "../Welcome/index";
+import Identification from "../Identification/index";
+import Sinister from "../Sinister/index";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Paper from "@material-ui/core/Paper";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import useStyles from "../../css/styles";
+import PacienteNoAfiliadoError from "../Error/pacienteNoAfiliadoError";
+import Consitions from "../Conditions/index";
+import Resumen from "../Resumen/index";
 import FechaHoraSiniestro from "../FechaHoraSiniestro/FechaHoraSiniestro";
 import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
-import HealthForecast from '../HealthForecast/index'
-import HealthForecastIsapre from '../HealthForecastIsapre/index'
+import HealthForecast from "../HealthForecast/index";
+import HealthForecastIsapre from "../HealthForecastIsapre/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -38,15 +38,15 @@ const Main = (props) => {
         return <LugarExactoSiniestro />;
       case 8:
         return <LugarReferenciaSiniestro />;
-         case 9: 
-              return <HealthForecast />
-            case 10:               
-            return <HealthForecastIsapre /
-            case 500:
-            return <PacienteNoAfiliadoError />;
-            default:
-            return <div>Error</div>;
-            }
+      case 9:
+        return <HealthForecast />;
+      case 10:
+        return <HealthForecastIsapre />;
+      case 500:
+        return <PacienteNoAfiliadoError />;
+      default:
+        return <div>Error</div>;
+    }
   };
 
   return (
