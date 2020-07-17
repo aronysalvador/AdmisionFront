@@ -142,7 +142,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                 <div  className={spaceStyle.space4} />
 
                 <div>
-                  <Button className={classesComun.buttonAchs2} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(2))}>
+                  <Button className={classesComun.buttonAchs2} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(10))}>
                       Otra Isapre
                   </Button>
                 </div>   

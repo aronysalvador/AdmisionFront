@@ -1,7 +1,7 @@
 import {
-    SEARCH_ISAPRES,
+    SEARCH_ISAPRES_INIT,
     SEARCH_ISAPRES_SUCCESS,
-    SEARCH_ISAPRES_ERROR,
+    SEARCH_ISAPRES_FAILURE,
 } from '../types/addmissionFormType'
 import {PrevisionForm} from '../models/PrevisionForm'
 
@@ -9,7 +9,7 @@ export default function payload(state = PrevisionForm, action) {
 
     switch (action.type) {
       
-        case SEARCH_ISAPRES:
+        case SEARCH_ISAPRES_INIT:
             return{
                 ...state,
                 loading: action.payload
@@ -21,7 +21,7 @@ export default function payload(state = PrevisionForm, action) {
                 error: null,
                 isapres : action.payload
             } 
-        case SEARCH_ISAPRES_ERROR:
+        case SEARCH_ISAPRES_FAILURE:
             return{
                 ...state,
                 loading: false,

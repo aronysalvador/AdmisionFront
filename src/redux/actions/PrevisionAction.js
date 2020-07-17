@@ -1,30 +1,22 @@
 import {
-    SEARCH_ISAPRES,
+    SEARCH_ISAPRES_INIT,
     SEARCH_ISAPRES_SUCCESS,
-    SEARCH_ISAPRES_ERROR,
+    SEARCH_ISAPRES_FAILURE,
 } from '../types/addmissionFormType'
-import Axios from 'axios';
+import {getIsapres} from '../../util/fakeApi'
 
-//Consultar Isapres de API
-export function searchIsapres (isapres) {
-    return async (dispatch) => {
-        dispatch(  searchIsapresAll() );
 
-        try {
-            const response = await Axios.get('http://localhost:4000/isapres');
-            dispatch( successCallIsapres(response.data) )
-        } catch (error) {
-            console.log(error);
-            dispatch( errorCallIsapres() )
-           
-        }
-    }
-}
-
-const searchIsapresAll = () => ({
-    type: SEARCH_ISAPRES,
+export const searchIsapres = () =>async(dispatch) =>{
+    dispatch(  {
+    type: SEARCH_ISAPRES_INIT,
     payload: true
-}) 
+} );
+    getIsapres().then((response) => {
+        dispatch( successCallIsapres(response) )
+    }).catch((error) => {
+        dispatch( errorCallIsapres() )
+    })
+    }
 
 const successCallIsapres = (isapres) => ({
     type: SEARCH_ISAPRES_SUCCESS,
@@ -32,5 +24,5 @@ const successCallIsapres = (isapres) => ({
 })
 
 const errorCallIsapres = () => ({
-    type: SEARCH_ISAPRES_ERROR
+    type: SEARCH_ISAPRES_FAILURE
 })
