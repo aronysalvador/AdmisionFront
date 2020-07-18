@@ -1,6 +1,5 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { connect } from 'react-redux'
-import Welcome from '../Welcome/index'
 import Identification from '../Identification/index'
 import Sinister from '../Sinister/index'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -11,30 +10,41 @@ import PacienteNoAfiliadoError from '../Error/pacienteNoAfiliadoError'
 import Consitions from '../Conditions/index'
 import PersonalData from '../PersonalData/index'
 import LoadPersonalData from '../Load/loadPersonalData'
-import Session from '../Session/index'
+import Session from '../Welcome/Session'
+import Load from '../Load/load'
+import WelcomeEjecutivo from '../Welcome/WelcomeEjecutivo'
+import { getAccount } from '../../redux/actions/microsoft.action'
+
 
 const Main = (props) => {
 
     const classes = useStyles();
-    const { addmissionForm } = props
+    const { addmissionForm,dispatch } = props
+
+    const localGetAccount = () => dispatch(getAccount())
+
+    useEffect(() => {localGetAccount()},[]);
 
     const renderForm = (step) => {
+
         switch(step){
+          case -1: 
+              return <Load />
             case 0: 
               return <Session />
            case 1: 
-              return <Welcome />
+              return <WelcomeEjecutivo />
             case 2: 
               return <Identification />
             case 3: 
               return <Sinister /> 
             case 4: 
               return <Consitions />
-            case 5: 
+            case 5:    
               return <LoadPersonalData />                
             case 6: 
               return <PersonalData />                              
-            case 500: 
+            case 500:   
               return <PacienteNoAfiliadoError />                            
             default:
               return <div>Error</div> 

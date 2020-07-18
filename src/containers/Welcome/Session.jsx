@@ -12,7 +12,6 @@ import { login } from '../../redux/actions/microsoft.action'
 const Session = (props) => {
 
     const { dispatch} = props
-
     const welcomeStyle = getWelcomeStyle()  
     const comunStyle = getComunStyle()  
     const spaceStyle = getSpaceStyle()
@@ -37,7 +36,7 @@ const Session = (props) => {
                         <Button
                             className={comunStyle.buttonAchs}
                             variant="contained"
-                            onClick={()=> dispatch(login())}>
+                            onClick={()=> dispatch(login(["user.read"]))}>
                             Ingresar
                         </Button>
                 </div>
