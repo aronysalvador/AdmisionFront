@@ -11,7 +11,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import storageSession from "redux-persist/lib/storage/session";
 
 const persistConfig = {
-  key: "root",
+  key: "addmissionForm",
   storage: storageSession,
 };
 const persistedReducer = persistReducer(persistConfig, reducer);
