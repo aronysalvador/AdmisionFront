@@ -42,6 +42,11 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     const loading = useSelector(state => state.previsionForm.loading);
 
     const clickSendIsapres = () => {
+
+        if( isapres === null){
+            console.log('Necesita llenar los campos');
+            return;
+        }
         dispatch1( sendIsapres(isapres.id) );
     }
 
@@ -74,7 +79,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                             }}
                             getOptionSelected={(option, value) => option.nombre === value.nombre}
                             getOptionLabel={(option) => option.nombre}
-                            options={getIsapres.length != 0 ? getIsapres : null}
+                            options={getIsapres.length != 0 ? getIsapres : []}
                             loading={loading}
                             value={isapres}
                             onChange={(event, newValue) => {

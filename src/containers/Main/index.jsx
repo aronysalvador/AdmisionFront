@@ -15,6 +15,10 @@ import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
+import QuestionWitness from "../QuestionWitness/index";
+import DataWitness from "../DataWitness/index";
+import QuestionResponsable from "../QuestionResponsable/index";
+import DataResponsable from "../DataResponsable/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -42,10 +46,19 @@ const Main = (props) => {
         return <HealthForecast />;
       case 10:
         return <HealthForecastIsapre />;
+      case 11:
+        return <QuestionWitness />;
+      case 12:
+        return <DataWitness />;
+      case 13:
+        return <QuestionResponsable />;
+      case 14:
+        return <DataResponsable />;
       case 500:
         return <PacienteNoAfiliadoError />;
       default:
         return <div>Error</div>;
+
     }
   };
 
