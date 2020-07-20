@@ -11,6 +11,7 @@ import {getSpaceStyle} from '../../css/spaceStyle'
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
 
+
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta } = getComunStyle();
@@ -27,10 +28,11 @@ const FechaHoraSiniestro = () => {
   function setHoraValueSiniestro(value) {
     setHoraSiniestro({ ...value });
   }
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--step))}
+        dispatch={() => dispatch(handleSetStep(8))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

@@ -48,11 +48,12 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
             return;
         }
         dispatch1( sendIsapres(isapres.id) );
+        dispatch(handleSetStep(8))
     }
 
     return (
             <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={100} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(6))} percentage={addmissionForm.percentage} />
                 <form>
                     <div>
                         <Typography variant="p" component="p" className={classesComun.pregunta}>

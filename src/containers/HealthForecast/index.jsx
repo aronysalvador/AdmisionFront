@@ -30,7 +30,8 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     const getIsapres = useSelector(state => state.previsionForm.isapres);
     
     const clickSendIsapres = (id) => {
-        dispatch1( sendIsapres(id) );
+        dispatch1( sendIsapres(id) )
+        dispatch(handleSetStep(8))
     }
 
     const classesComun = getComunStyle()
@@ -38,7 +39,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
 
     return (
             <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={100} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(5.1))} percentage={addmissionForm.percentage} />
                 <div>
                     <Typography variant="p" component="p" className={classesComun.pregunta}>
                     Selecciona tu prevision de salud
@@ -142,7 +143,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                 <div  className={spaceStyle.space4} />
 
                 <div>
-                  <Button className={classesComun.buttonAchs2} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(10))}>
+                  <Button className={classesComun.buttonAchs2} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(7))}>
                       Otra Isapre
                   </Button>
                 </div>   

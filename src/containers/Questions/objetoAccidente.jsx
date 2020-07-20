@@ -13,7 +13,7 @@ const AccidentObjectForm = (props) => {
 
     const saveAnswer = (value) =>{
         dispatch(updateForm("objetoAccidente",value))
-        dispatch(handleSetStep(500))        
+        dispatch(handleSetStep(15))        
     }
  
 

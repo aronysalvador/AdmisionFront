@@ -29,6 +29,7 @@ import DataWitness from "../DataWitness/index";
 import QuestionResponsable from "../QuestionResponsable/index";
 import DataResponsable from "../DataResponsable/index";
 import FechaHoraResponsable from '../FechaHoraResponsable/index';
+import Tony from '../Tony/index';
 
 
 
@@ -58,37 +59,36 @@ const Main = (props) => {
               return <Consitions />
             case 5:    
               return <LoadPersonalData />                
-            case 51: 
+            case 5.1: 
               return <PersonalData />   
             case 6:
-                return <FechaHoraSiniestro />;
+                return <HealthForecast />
             case 7:
-                return <LugarExactoSiniestro />;
-            case 8:
-                return <LugarReferenciaSiniestro />;
+                return <HealthForecastIsapre />
+            case 8: //Tony
+                return <Tony />
             case 9:
-                return <HealthForecast />;
+                return <FechaHoraSiniestro />
             case 10:
-                return <HealthForecastIsapre />;
-
-            case 11: 
-                return <AccidentPlaceForm />            
+                return <LugarExactoSiniestro />
+            case 11:
+                return <LugarReferenciaSiniestro />
             case 12: 
-                return <AccidentDescription /> 
+                return <AccidentPlaceForm />            
             case 13: 
+                return <AccidentDescription /> 
+            case 14: 
                 return <AccidentObjectForm />                                               
-
-      case 14:
-        return <QuestionWitness />;
-      case 15:
-        return <DataWitness />;
-      case 16:
-        return <QuestionResponsable />;
-      case 17:
-        return <DataResponsable />;
-      case 18:
-        return <FechaHoraResponsable />;
-
+            case 15:
+              return <QuestionWitness />
+            case 16:
+              return <DataWitness />
+            case 17:
+              return <QuestionResponsable />
+            case 18:
+              return <DataResponsable />
+            case 19:
+              return <FechaHoraResponsable />
             case 500:
                 return <PacienteNoAfiliadoError />                                                      
             default:

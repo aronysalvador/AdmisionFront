@@ -8,7 +8,7 @@ import { siniestroStyle } from "../../css/siniestroStyle";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 
 const LugarReferenciaSiniestro = () => {
-  const {
+  let {
     addmissionForm: { step, percentage, lugarReferenciaSiniestro },
   } = useSelector((state) => state, shallowEqual);
 
@@ -46,8 +46,10 @@ const LugarReferenciaSiniestro = () => {
       </Typography>
       <Button
         className={buttonAchs}
-        onClick={() =>
-          dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia))
+        onClick={() => {
+            dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia))
+            dispatch(handleSetStep(++step))
+          }
         }
       >
         Siguiente
