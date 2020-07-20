@@ -31,7 +31,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     const spaceStyle = getSpaceStyle();
 
     const tituloResponsable = "Responsable";
-    const contenidoResponsable = [addmissionForm.responsable.nombre,<br />,addmissionForm.responsable.cargo];
+    const contenidoResponsable = [addmissionForm.responsable.nombre,<br />,addmissionForm.responsable.cargo, <br />,'Avisado el '+addmissionForm.fechaHoraResponsable.days +'-'+ addmissionForm.fechaHoraResponsable.month +'-'+ addmissionForm.fechaHoraResponsable.year];
 
     return (
             <div className={classesComun.root}>

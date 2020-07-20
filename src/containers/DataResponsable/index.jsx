@@ -48,7 +48,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
         }
 
         dispatch1( sendResponsable(nombre , cargos.cargo) );
-        dispatch(handleSetStep(13));
+        dispatch(handleSetStep(15));
     }
 
     return (
@@ -136,7 +136,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
 
                 <div>
                   <Button className={classesComun.buttonAchs} variant="contained"  type="submit" onClick={()=>  clickSendResponsable()}>
-                      Agregar Responsable
+                      Siguiente
                   </Button>
                 </div>  
                            

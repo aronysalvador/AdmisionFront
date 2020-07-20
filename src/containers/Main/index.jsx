@@ -19,6 +19,7 @@ import QuestionWitness from "../QuestionWitness/index";
 import DataWitness from "../DataWitness/index";
 import QuestionResponsable from "../QuestionResponsable/index";
 import DataResponsable from "../DataResponsable/index";
+import FechaHoraResponsable from '../FechaHoraResponsable/index';
 
 const Main = (props) => {
   const classes = useStyles();
@@ -54,6 +55,8 @@ const Main = (props) => {
         return <QuestionResponsable />;
       case 14:
         return <DataResponsable />;
+      case 15:
+        return <FechaHoraResponsable />;
       case 500:
         return <PacienteNoAfiliadoError />;
       default:
