@@ -34,6 +34,7 @@ export const login = scopes => async dispatch => {
     dispatch({type: MSAL_SUCCESS,payload: userMsal,})
     dispatch(handleSetStep(1))
   } catch (err) {
+    console.log("************************ login() => err ",err)
     let error = {}
 
     if (typeof err === 'string') {
@@ -60,6 +61,7 @@ export const logout = () => async(dispatch) => {
 
 export const getAccount = () => async (dispatch) => {
   const usermsal = msalservice.getAccount()
+  console.log("********************** getAccount() => usermsal ",usermsal)
   const step = usermsal === null ? 0 : 1
   dispatch(handleSetStep(step))
   return usermsal

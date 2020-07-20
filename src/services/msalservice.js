@@ -2,7 +2,7 @@ import * as Msal from 'msal'
 
 const msalConfig = {
   auth: {
-    clientId: "2cc60262-0026-48a5-ac2a-a088e9704f30",
+    clientId: "4e942a7f-082a-4293-9e67-02049d21697b",
     postLogoutRedirectUri:"http://localhost:3000/",
   },
   cache: {
