@@ -9,10 +9,12 @@ import { Provider } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storageSession from "redux-persist/lib/storage/session";
+import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 const persistConfig = {
   key: "addmissionForm",
   storage: storageSession,
+  stateReconciler: autoMergeLevel2,
 };
 const persistedReducer = persistReducer(persistConfig, reducer);
 const store = createStore(
