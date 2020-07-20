@@ -11,7 +11,8 @@ export const searchIsapres = () =>async(dispatch) =>{
     type: SEARCH_ISAPRES_INIT,
     payload: true
 } );
-    getIsapres().then((response) => {
+   
+getIsapres().then((response) => {
         dispatch( successCallIsapres(response) )
     }).catch((error) => {
         dispatch( errorCallIsapres() )

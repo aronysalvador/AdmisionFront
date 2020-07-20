@@ -1,7 +1,9 @@
 import {
     SET_STEP, 
     UPDATE_FORM,
-    SEND_ISAPRES
+    SEND_ISAPRES,
+    SEND_TESTIGO,
+    SEND_RESPONSABLE
 } from '../types/addmissionFormType'
 import {AdmissionForm} from '../models/AdmissionForm'
 
@@ -25,6 +27,17 @@ export default function payload(state = AdmissionForm, action) {
             return{
                 ...state,
                 isapreSeleccionado : action.payload
+            }
+            
+        case SEND_TESTIGO:
+            return{
+                ...state,
+                testigos : action.payload
+            }            
+        case SEND_RESPONSABLE:
+            return{
+                ...state,
+                responsable : action.payload
             } 
         default:
             return state;

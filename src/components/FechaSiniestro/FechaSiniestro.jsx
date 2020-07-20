@@ -3,6 +3,7 @@ import { meses, getActualDate } from "../../util/FechasUtils";
 import { Button, Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight, ArrowLeft } from "@material-ui/icons";
 import IconButton from '@material-ui/core/IconButton';
+import { getComunStyle } from "../../css/comun";
 
 const FechaSiniestro = ({ onChange }) => {
   const [days, setDays] = useState(() => {
@@ -22,6 +23,8 @@ const FechaSiniestro = ({ onChange }) => {
   });
 
   const { actualDay, actualMonth, actualYear } = getActualDate();
+  const { arrowsACHS } = getComunStyle();
+
 
 
   useEffect(() => {
@@ -78,7 +81,7 @@ const FechaSiniestro = ({ onChange }) => {
             color: "white",
             background: "#00B2A9"
           }}
-         >
+          >
           <KeyboardArrowLeft />
         </IconButton>
       </Grid>

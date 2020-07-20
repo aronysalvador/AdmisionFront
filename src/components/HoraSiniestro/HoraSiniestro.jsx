@@ -29,7 +29,7 @@ const HoraSiniestro = ({ onChange }) => {
           background: "white",
           borderRadius: "10px",
           padding: "8px",
-          border: "2px solid lightgray"
+           border: "2px solid lightgray"
         }}
       >
         <div style={{ textAlign: "center", fontSize: "12px" }}>hora</div>

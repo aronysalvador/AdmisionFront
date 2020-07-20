@@ -1,7 +1,9 @@
 import {
     SET_STEP, 
     UPDATE_FORM,
-    SEND_ISAPRES
+    SEND_ISAPRES,
+    SEND_TESTIGO,
+    SEND_RESPONSABLE
 } from '../types/addmissionFormType'
 import Axios from 'axios';
 import {formateaRut} from '../../helpers/rut'
@@ -88,4 +90,35 @@ export function sendIsapres(id) {
 const sendCallIsapres = id => ({
     type:SEND_ISAPRES,
     payload: id
+})
+
+
+//Envia Datos de Testigos
+export function sendCargo(name, cargo) {
+    return (dispatch) => {
+        dispatch( sendCallTestigo(name, cargo) );
+    }
+}
+
+const sendCallTestigo = (name, cargo) => ({
+    type:SEND_TESTIGO,
+    payload: {
+        nombre: name,
+        cargo : cargo
+    }
+})
+
+//Envia Datos de Testigos
+export function sendResponsable(name, cargo) {
+    return (dispatch) => {
+        dispatch( sendCallResponsable(name, cargo) );
+    }
+}
+
+const sendCallResponsable = (name, cargo) => ({
+    type:SEND_RESPONSABLE,
+    payload: {
+        nombre: name,
+        cargo : cargo
+    }
 })

@@ -19,9 +19,17 @@ import WelcomeEjecutivo from '../Welcome/WelcomeEjecutivo'
 import { getAccount } from '../../redux/actions/microsoft.action'
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
+
 import AccidentPlaceForm from '../Questions/lugarAccidente'
 import AccidentDescription from '../Questions/descripcionAccidente'
 import AccidentObjectForm from '../Questions/objetoAccidente'
+
+import QuestionWitness from "../QuestionWitness/index";
+import DataWitness from "../DataWitness/index";
+import QuestionResponsable from "../QuestionResponsable/index";
+import DataResponsable from "../DataResponsable/index";
+import FechaHoraResponsable from '../FechaHoraResponsable/index';
+
 
 
 const Main = (props) => {
@@ -62,18 +70,32 @@ const Main = (props) => {
                 return <HealthForecast />;
             case 10:
                 return <HealthForecastIsapre />;
+
             case 11: 
                 return <AccidentPlaceForm />            
             case 12: 
                 return <AccidentDescription /> 
             case 13: 
                 return <AccidentObjectForm />                                               
+
+      case 14:
+        return <QuestionWitness />;
+      case 15:
+        return <DataWitness />;
+      case 16:
+        return <QuestionResponsable />;
+      case 17:
+        return <DataResponsable />;
+      case 18:
+        return <FechaHoraResponsable />;
+
             case 500:
                 return <PacienteNoAfiliadoError />                                                      
             default:
               return <div>Error</div> 
         
         }
+
     }
 
     return (
