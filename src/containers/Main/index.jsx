@@ -30,8 +30,8 @@ import QuestionResponsable from "../QuestionResponsable/index";
 import DataResponsable from "../DataResponsable/index";
 import FechaHoraResponsable from '../FechaHoraResponsable/index';
 import Tony from '../Tony/index';
-
-
+import BoxQuestionWitness from '../QuestionWitness/BoxQuestionWitness'
+import BoxQuestionResponsable from '../QuestionResponsable/BoxQuestionResponsable'
 
 const Main = (props) => {
 
@@ -81,10 +81,14 @@ const Main = (props) => {
                 return <AccidentObjectForm />                                               
             case 15:
               return <QuestionWitness />
+            case 15.1:
+                return <BoxQuestionWitness />              
             case 16:
               return <DataWitness />
             case 17:
               return <QuestionResponsable />
+            case 17.1:
+                return <BoxQuestionResponsable />              
             case 18:
               return <DataResponsable />
             case 19:
