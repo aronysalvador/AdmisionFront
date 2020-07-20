@@ -7,6 +7,7 @@ import {getSpaceStyle} from '../../css/spaceStyle';
 import Cabecera from '../../components/cabecera/index';
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
 import BoxACHSEditDelete from '../../components/share/BoxACHSEditDelete/index';
+import QuestionTestigoResponsable from '../../components/questions/QuestionTestigoResponsable'
 
 //Action de Redux
 import {sendIsapres} from '../../redux/actions/AdmissionAction'
@@ -34,56 +35,14 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     const contenidoResponsable = [addmissionForm.responsable.nombre,<br />,addmissionForm.responsable.cargo, <br />,'Avisado el '+addmissionForm.fechaHoraResponsable.days +'-'+ addmissionForm.fechaHoraResponsable.month +'-'+ addmissionForm.fechaHoraResponsable.year];
 
     return (
-            <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={100} />
-                <div>
-                    <Typography variant="p" component="p" className={classesComun.pregunta}>
-                    Ya ¿Le contaste lo sucedido al responsable en tu empresa?
-                    </Typography>
-                </div> 
-
-
-                { getResponsable.length === 0 
-                    ? 
-                    <div  className={spaceStyle.space12} />
-                    :
-                    <>
-                        <div>
-                        <div className={spaceStyle.space1} />
-                            <BoxACHSEditDelete titulo={tituloResponsable}  contenido={contenidoResponsable}/> 
-                        
-                        </div>  
-                    </>
-                }
-               
-
-                { getResponsable.length === 0 
-                    ?  <>
-                        <div>
-                            <Button className={classesComun.buttonAchs} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(14))}>
-                                Agregar responsable
-                            </Button>
-                        </div>  
-                
-                        <div  className={spaceStyle.space1} />
-
-                        <div>
-                            <Button className={classesComun.buttonAchs2} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(10))}>
-                                No avise a nadie
-                            </Button>
-                        </div> 
-                    </>
-                    : 
-                    <>
-                        <div  className={spaceStyle.space12} />
-                        <div>
-                            <Button className={classesComun.buttonAchs} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(12))}>
-                                Siguiente
-                            </Button>
-                        </div> 
-                    </> 
-                }                     
-            </div>
+        <div className={classesComun.root}>
+        <Cabecera dispatch={() => dispatch(handleSetStep(15))} percentage={addmissionForm.percentage} />
+        <QuestionTestigoResponsable titulo={'Ya ¿Le contaste lo sucedido al responsable en tu empresa?'}
+                                     accionButoonA={() => dispatch(handleSetStep(18))}
+                                     accionButoonB={() => dispatch(handleSetStep(500))}
+                                     tituloA={'Agregar responsable'}
+                                     tituloB={'No avise a nadie'} />
+    </div>
     );
 }
 
@@ -92,6 +51,5 @@ function mapStateToProps({ addmissionForm }) {
         addmissionForm : addmissionForm
     }
 }
-
 export default connect(mapStateToProps)(QuestionResponsable);
 

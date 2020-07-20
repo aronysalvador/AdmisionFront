@@ -1,19 +1,13 @@
 import React, {useState , useEffect} from 'react';
 import { connect , useDispatch , useSelector} from 'react-redux';
-import Button from "@material-ui/core/Button";
-import Typography from '@material-ui/core/Typography';
 import {getComunStyle} from '../../css/comun';
 import {getSpaceStyle} from '../../css/spaceStyle';
 import Cabecera from '../../components/cabecera/index';
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
-import QuestionTestigoResponsable from '../../components/questions/QuestionTestigoResponsable'
+import BoxTestigosResponsable from '../../components/questions/BoxTestigosResponsable'
 
   const QuestionWitness = (props) => {
     const { dispatch,addmissionForm } = props
-
-    //State
-    const dispatch1 = useDispatch();
-    const getTestigos = useSelector(state => state.addmissionForm.testigos)
 
     const classesComun = getComunStyle()
     const spaceStyle = getSpaceStyle()
@@ -24,12 +18,11 @@ import QuestionTestigoResponsable from '../../components/questions/QuestionTesti
 
     return (
             <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(14))} percentage={addmissionForm.percentage} />
-                <QuestionTestigoResponsable titulo={'Entendido ¿Alguien fue testigo de lo que sucedió?'}
-                                             accionButoonA={() => dispatch(handleSetStep(16))}
-                                             accionButoonB={() => dispatch(handleSetStep(17))}
-                                             tituloA={'Agregar Testigo'}
-                                             tituloB={'No hubo Testigos'} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(15))} percentage={addmissionForm.percentage} />
+                <BoxTestigosResponsable titulo={'Entendido ¿Alguien fue testigo de lo que sucedió?'}
+                                        tituloTestigo={tituloTestigo}
+                                        contenidoTestigo={contenidoTestigo}
+                                        irA={() =>dispatch(handleSetStep(17))} />
             </div>
     );
 }

@@ -9,7 +9,7 @@ import Axios from 'axios';
 import {formateaRut} from '../../helpers/rut'
 
 
-const totalSteps = 17
+const totalSteps = 19
 
 export const setStep = (step,percentage) => {
     return {

@@ -27,7 +27,7 @@ const FechaHoraResponsable = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--step))}
+        dispatch={() => dispatch(handleSetStep(18))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -44,7 +44,7 @@ const FechaHoraResponsable = () => {
               ...horaSiniestro,
             })
           );
-          dispatch(handleSetStep(13));
+          dispatch(handleSetStep(17.1));
         }}
       >
         Siguiente

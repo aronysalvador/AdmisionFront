@@ -48,7 +48,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
         }
 
         dispatch1( sendCargo(nombre , cargos.cargo) );
-        dispatch(handleSetStep(15));
+        dispatch(handleSetStep(15.1));
     }
 
     return (

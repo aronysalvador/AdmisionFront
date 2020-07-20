@@ -48,12 +48,12 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
         }
 
         dispatch1( sendResponsable(nombre , cargos.cargo) );
-        dispatch(handleSetStep(15));
+        dispatch(handleSetStep(19));
     }
 
     return (
             <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={100} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(17))} percentage={addmissionForm.percentage} />
                 <div>
                     <Typography variant="p" component="p" className={classesComun.pregunta}>
                     Ingresa los datos del Responsable

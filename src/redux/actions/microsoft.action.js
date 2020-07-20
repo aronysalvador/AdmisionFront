@@ -62,6 +62,6 @@ export const getAccount = () => async (dispatch) => {
   const usermsal = msalservice.getAccount()
   const step = usermsal === null ? 0 : 1
   //dispatch(handleSetStep(step))
-  dispatch(handleSetStep(-1))
+  dispatch(handleSetStep(0))
   return usermsal
 }
