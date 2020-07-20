@@ -14,7 +14,9 @@ const LugarExactoSiniestro = () => {
     addmissionForm: { step, percentage, sucursalEmpresaSiniestro },
   } = useSelector((state) => state, shallowEqual);
 
-  const [sucursal, setSucursal] = useState(sucursalEmpresaSiniestro);
+  const [sucursal, setSucursal] = useState(() => {
+    return !sucursalEmpresaSiniestro ? "" : sucursalEmpresaSiniestro;
+  });
   const dispatch = useDispatch();
 
   const { root, buttonAchs, pregunta } = getComunStyle();
@@ -28,6 +30,9 @@ const LugarExactoSiniestro = () => {
     (state) => state.sucursalesEmpresaSiniestro,
     shallowEqual
   );
+
+  const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true);
+
   return (
     <div className={root}>
       <Cabecera
@@ -54,6 +59,7 @@ const LugarExactoSiniestro = () => {
       <LocationOn />
       <Button
         className={buttonAchs}
+        disabled={!sucursal || !isLugarExactoAccidenteValid}
         onClick={() => {
           dispatch(updateForm("sucursalEmpresaSiniestro", sucursal));
           dispatch(handleSetStep(step + 1));
