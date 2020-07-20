@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
 import { Button, Grid } from "@material-ui/core";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { KeyboardArrowLeft, KeyboardArrowRight, ArrowLeft } from "@material-ui/icons";
+import IconButton from '@material-ui/core/IconButton';
 
 const FechaSiniestro = ({ onChange }) => {
   const [days, setDays] = useState(() => {
@@ -21,6 +22,7 @@ const FechaSiniestro = ({ onChange }) => {
   });
 
   const { actualDay, actualMonth, actualYear } = getActualDate();
+
 
   useEffect(() => {
     if (days < 1) {
@@ -57,23 +59,28 @@ const FechaSiniestro = ({ onChange }) => {
       justify="space-between"
       alignItems="center"
       style={{
-        borderStyle: "solid",
-        borderSpacing: "2px",
-        borderColor: "lightgray",
+        borderSpacing: "1px",
         borderRadius: "10px",
         padding: "10px",
+        border: "2px solid lightgray"
       }}
     >
       <Grid item>
-        <Button
+        <IconButton
+          aria-label="Ir atrás"
           variant="contained"
-          size="small"
+          component="span"
+          color="primary"
           onClick={() => {
             setDays((d) => --d);
           }}
-        >
+          style={{
+            color: "white",
+            background: "#00B2A9"
+          }}
+         >
           <KeyboardArrowLeft />
-        </Button>
+        </IconButton>
       </Grid>
       <Grid item>
         <span
@@ -81,20 +88,33 @@ const FechaSiniestro = ({ onChange }) => {
             fontFamily: "Helvetica",
             fontSize: "18px",
             fontWeight: "bold",
+            float: "left",
+            clear: "left"
           }}
         >{`${days} ${monthName}`}</span>
+        <span
+          style={{
+            display: "block",
+            textAlign: "center"
+          }}
+        >{days === actualDay && month === actualMonth ? "Hoy" : ""}</span>
       </Grid>
       <Grid item>
-        <Button
+        <IconButton
+          aria-label="Ir adelante"
+          component="span"
           variant="contained"
-          size="small"
           disabled={days === actualDay && month === actualMonth}
           onClick={() => {
             setDays((d) => ++d);
           }}
+          style={{
+            color: "white",
+            background: "#00B2A9"
+          }}
         >
           <KeyboardArrowRight />
-        </Button>
+        </IconButton>
       </Grid>
     </Grid>
   );
