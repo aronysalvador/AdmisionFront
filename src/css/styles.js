@@ -8,12 +8,12 @@ import { makeStyles } from '@material-ui/core/styles'
       margin:'auto',
       width: '25.5em',
       border:'0',
-      backgroundColor:'#FAFAFA',
+      backgroundColor:'#F8F9FA',
     },
     paper: {
       marginTop: '0 auto',
       padding: '1em',
-      backgroundColor: "#FFFFFF"
+      backgroundColor: "#F8F9FA"
     },
   }));
 

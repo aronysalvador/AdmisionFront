@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import BoxACHS from '../../components/share/BoxACHS/index'
 
-
 const PersonalData = (props) => {
     const { dispatch, addmissionForm } = props
     const comunClass = getComunStyle()

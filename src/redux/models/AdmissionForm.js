@@ -1,12 +1,14 @@
 export const AdmissionForm = {
-    step : 9,
-    percentage : 0,
-    rut : "",
-    isAfiliado : "",
-    empresa : "",
-    rutEmpresa : "",
-    isapreSeleccionado : null,
-    lugarAccidente :"",
+    step: 9,
+    percentage: 0,
+    rut: "",
+    isAfiliado: "",
+    empresa: "",
+    rutEmpresa: "",
+    isapreSeleccionado: null,
+    lugarAccidente:"",
     objetoAccidente: "",
-    descripcionAccidente: ""
+    descripcionAccidente: "",
+    rutEmpresa: "",
+    lugarAccidente: ""
 }
