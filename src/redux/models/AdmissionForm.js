@@ -9,6 +9,4 @@ export const AdmissionForm = {
     lugarAccidente:"",
     objetoAccidente: "",
     descripcionAccidente: "",
-    rutEmpresa: "",
-    lugarAccidente: ""
 }

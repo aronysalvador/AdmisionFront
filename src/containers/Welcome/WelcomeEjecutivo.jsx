@@ -37,8 +37,7 @@ const siniestroStyle = makeStyles((theme) => ({
 
 const Session = (props) => {
 
-    console.log("props",props)
-
+    
 
     const { dispatch, microsoftReducer} = props
     const custom = siniestroStyle()
