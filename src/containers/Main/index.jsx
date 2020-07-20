@@ -50,7 +50,7 @@ const Main = (props) => {
               return <Consitions />
             case 5:    
               return <LoadPersonalData />                
-            case 5.1: 
+            case 51: 
               return <PersonalData />   
             case 6:
                 return <FechaHoraSiniestro />;

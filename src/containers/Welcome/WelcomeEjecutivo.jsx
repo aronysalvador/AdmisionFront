@@ -40,6 +40,9 @@ const Session = (props) => {
     
 
     const { dispatch, microsoftReducer} = props
+
+    console.log("***********************************",microsoftReducer)
+
     const custom = siniestroStyle()
     const welcomeStyle = getWelcomeStyle()  
     const comunStyle = getComunStyle()  
