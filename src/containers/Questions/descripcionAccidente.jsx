@@ -9,6 +9,7 @@ import QuestionForm from '../../components/questions/questionForm'
 const AccidentDescriptionForm = (props) => {
 
     const { dispatch, addmissionForm } = props 
+    const {descripcionAccidente} = addmissionForm
     const comunClass = getComunStyle();
 
     const saveAnswer = (value) =>{
@@ -24,7 +25,8 @@ const AccidentDescriptionForm = (props) => {
                 titulo={"Completa las siguientes frases"} 
                 pregunta={"Lo que ocurrió fue que... y la lesión que presenta es ..."} 
                 placeholder={"Sufre caída y la consecuencia fue una contusión - metió la mano en caldera y sufre quemadura - frena bruscamente para evitar chocar y la consecuencia fue una contusión"} 
-                accion={saveAnswer}/> 
+                accion={saveAnswer}
+                valueFromState={descripcionAccidente}/> 
         </div>
     </div> 
     );

@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react'
+import React, {useState } from 'react'
 import { connect, useSelector } from 'react-redux'
 import TextField from '@material-ui/core/TextField'
 import Button from "@material-ui/core/Button"
@@ -8,15 +8,13 @@ import {getSpaceStyle} from '../../css/spaceStyle'
 
 
 const FormQuestion = props => {
-  const {
-    titulo,
-    pregunta,
-    placeholder,
-    accion, 
-    question1
-  } = props;
+  const {titulo,pregunta,placeholder,accion, valueFromState} = props;
   
-  const [localValue, setLocalValue] = useState("")
+  //const [localValue, setLocalValue] = useState("")
+  const [localValue, setLocalValue] = useState(() => {
+    return !valueFromState ? '' : valueFromState
+  })
+
   const onChangeHandler = event => {
     setLocalValue(event.target.value);
   };
@@ -27,16 +25,6 @@ const FormQuestion = props => {
     return localValue.length < 5;
   }
 
-  //Cargar state al iniciar
-
-
-  const mensaje = useSelector(state => state.addmissionForm.question1)
-  debugger
-  console.log('estsssss'+mensaje)
-  useEffect(() => {
-    //setLocalValue(mensaje)
-  }, [])
-
   return (
     <form onSubmit={ () => accion(localValue)}>
         <div>
@@ -46,9 +34,8 @@ const FormQuestion = props => {
         </div>
         <div>
             <Typography variant="h2" component="h2" className={classesComun.pregunta}>
-                
                 {pregunta}
-                    </Typography>
+            </Typography>
         </div>
         <div>
             <TextField
