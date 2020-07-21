@@ -62,10 +62,9 @@ const FechaSiniestro = ({ onChange }) => {
       justify="space-between"
       alignItems="center"
       style={{
-        borderSpacing: "1px",
+        background: "white",
         borderRadius: "10px",
         padding: "10px",
-        border: "2px solid lightgray"
       }}
     >
       <Grid item>

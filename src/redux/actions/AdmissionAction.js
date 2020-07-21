@@ -9,7 +9,7 @@ import Axios from 'axios';
 import {formateaRut} from '../../helpers/rut'
 
 
-const totalSteps = 8
+const totalSteps = 17
 
 export const setStep = (step,percentage) => {
     return {
@@ -54,7 +54,7 @@ export const saveRut = (rut) => {
         Axios.get(`http://ci-desa-msorquestador.eastus.azurecontainer.io/api/employee/isAfiliado?rut=${rut}`).then((result) => {
             let isAfiliado = result.data.content[0].isAfiliado
             if(isAfiliado){
-                dispatch(handleSetStep(6))
+                dispatch(handleSetStep(5.1))
                 dispatch(updateForm("empresa",result.data.content[0].RutEmpresa))
                 dispatch(updateForm("rutEmpresa",result.data.content[0].NombreEmpresa))
                 dispatch(updateForm("isAfiliado","Si"))
@@ -83,7 +83,8 @@ export  const saveAnswer = (answerType, answerValue, step) =>{
 //Envia la Isapres Seleccionada
 export function sendIsapres(id) {
     return (dispatch) => {
-        dispatch( sendCallIsapres(id) );
+        dispatch( sendCallIsapres(id) )
+        dispatch(handleSetStep(6))
     }
 }
 

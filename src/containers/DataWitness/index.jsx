@@ -48,21 +48,21 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
         }
 
         dispatch1( sendCargo(nombre , cargos.cargo) );
-        dispatch(handleSetStep(11));
+        dispatch(handleSetStep(15));
     }
 
     return (
             <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={100} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(--addmissionForm.step))} percentage={addmissionForm.percentage} />
                 <div>
                     <Typography variant="p" component="p" className={classesComun.pregunta}>
                     Ingresa los datos del testigo
                     </Typography>
                 </div> 
-                <div  className={spaceStyle.space1} />
+                <div  className={spaceStyle.space2} />
 
                 <div>
-                    <Typography variant="p" component="p" className={[classesComun.textAchsContent,welcomeStyle.admisionText]}>
+                    <Typography variant="p" component="p" variant="subtitle2" className={[classesComun.tituloTextbox]}>
                             NOMBRE              
                     </Typography>
                 </div>
@@ -85,7 +85,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                 <div  className={spaceStyle.space1} />
 
                 <div>
-                    <Typography variant="p" component="p" className={[classesComun.textAchsContent,welcomeStyle.admisionText]}>
+                    <Typography variant="p" component="p" variant="subtitle2" className={[classesComun.tituloTextbox]}>
                             CARGO            
                     </Typography>
                 </div>
@@ -132,9 +132,8 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
 
                 
 
-                <div  className={spaceStyle.space10} />
 
-                <div>
+                <div className={classesComun.bottomElement}>
                   <Button className={classesComun.buttonAchs} variant="contained"  type="submit" onClick={()=>  clickSendCargo()}>
                       Agregar Testigo
                   </Button>

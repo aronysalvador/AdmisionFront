@@ -6,9 +6,10 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { updateForm } from "../../redux/actions/AdmissionAction";
+import { getSpaceStyle } from "../../css/spaceStyle";
 
 const LugarReferenciaSiniestro = () => {
-  const {
+  let {
     addmissionForm: { step, percentage, lugarReferenciaSiniestro },
   } = useSelector((state) => state, shallowEqual);
 
@@ -17,9 +18,9 @@ const LugarReferenciaSiniestro = () => {
   );
   const dispatch = useDispatch();
 
-  const { root, buttonAchs, pregunta } = getComunStyle();
-  const { mobileLabel, mobileCaption } = siniestroStyle();
-
+  const { root, buttonAchs, pregunta, tituloTextbox, bottomElement } = getComunStyle();
+  const { mobileCaption } = siniestroStyle();
+  const spaceStyle = getSpaceStyle();
   return (
     <div className={root}>
       <Cabecera
@@ -29,8 +30,8 @@ const LugarReferenciaSiniestro = () => {
       <Typography className={pregunta}>
         ...y especifica una referencia del lugar
       </Typography>
-
-      <Typography className={mobileLabel} variant="subtitle2">
+      <div className={spaceStyle.space2} />
+      <Typography className={tituloTextbox} variant="subtitle2">
         referencia
       </Typography>
       <TextField
@@ -42,16 +43,19 @@ const LugarReferenciaSiniestro = () => {
         onChange={(e) => setLugarReferencia(e.target.value)}
       />
       <Typography className={mobileCaption} variant="subtitle1">
-        Piso 21, Area 453, Puesto 12A
+        Ejemplo: Piso 21, Area 453, Puesto 12A
       </Typography>
-      <Button
-        className={buttonAchs}
-        onClick={() =>
-          dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia))
-        }
-      >
-        Siguiente
-      </Button>
+      <div className={bottomElement}>
+        <Button
+          className={buttonAchs}
+          onClick={() => {
+            dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+            dispatch(handleSetStep(++step));
+          }}
+        >
+          Siguiente
+        </Button>
+      </div>
     </div>
   );
 };

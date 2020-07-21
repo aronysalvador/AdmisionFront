@@ -2,23 +2,24 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export const getComunStyle = makeStyles((theme) => ({
     root: {
+        position: 'relative',
         width: '22.5em',
         height: '40em',
-        backgroundColor : "#F8F9FA",
+        backgroundColor: "#F8F9FA",
     },
-    textAchsContent:{
+    textAchsContent: {
         fontFamily: 'Catamaran',
-        fontStyle:'normal',
+        fontStyle: 'normal',
         color: '#373737',
     },
-    tituloACHS:{
+    tituloACHS: {
         fontFamily: 'sfUiDisplayCufonfonts',
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: '0.75em',
         lineHeight: '0.875em',
     },
-    pregunta:{
+    pregunta: {
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
@@ -27,8 +28,8 @@ export const getComunStyle = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'flex-end',
     },
-    buttonAchs:{
-        width:'100%',
+    buttonAchs: {
+        width: '100%',
         background: '#007A33',
         borderRadius: '0.25',
         fontFamily: 'Catamaran',
@@ -36,12 +37,16 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '1.125em',
         lineHeight: '1.125em',
-        color:'#FFFFFF',
+        color: '#FFFFFF',
         textTransform: 'capitalize',
         height: '3.5em',
+        "&:hover": {
+            background: "#104F28"
+        }
     },
-    buttonAchs2:{
-        width:'100%',
+
+    buttonAchs2: {
+        width: '100%',
         background: '#FFFFFF',
         border: '2px solid #007A33',
         boxSizing: 'border-box',
@@ -51,12 +56,12 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '1.125em',
         lineHeight: '1.125em',
-        color:'#007A33',
+        color: '#007A33',
         textTransform: 'capitalize',
         height: '3.5em',
     },
-    buttonAchsRight:{
-        width:'46%',
+    buttonAchsRight: {
+        width: '46%',
         background: '#007A33',
         borderRadius: '0.25',
         fontFamily: 'Catamaran',
@@ -64,13 +69,13 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '1.125em',
         lineHeight: '1.125em',
-        color:'#FFFFFF',
+        color: '#FFFFFF',
         textTransform: 'capitalize',
         height: '3.5em',
         float: 'right'
     },
-    buttonAchsLeft:{
-        width:'46%',
+    buttonAchsLeft: {
+        width: '46%',
         background: '#007A33',
         borderRadius: '0.25',
         fontFamily: 'Catamaran',
@@ -78,54 +83,48 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '1.125em',
         lineHeight: '1.125em',
-        color:'#FFFFFF',
+        color: '#FFFFFF',
         textTransform: 'capitalize',
         height: '3.5em',
         float: 'left'
     },
-    buttonVolverContainer:{
-        width:'20%',
-        float:'left',
+    buttonVolverContainer: {
+        width: '20%',
+        float: 'left',
     },
-    buttonVolverContainerBarra:{
-        width:'20%',
-        float:'left',
+    buttonVolverContainerBarra: {
+        width: '20%',
+        float: 'left',
     },
-    barraContainer:{
+    barraContainer: {
         paddingTop: '0.5em',
-        width:'17.75em',
-        float:'left',
+        width: '17.75em',
+        float: 'left',
     },
-    buttonVolverColor:{
+    buttonVolverColor: {
         color: '#373737'
     },
-    cleanFloat:{
-        float:'none',
-        clear:'both',
-    },
-    linePrevisionLeft: {
-        border: '1px solid #000000',
-        transform: 'rotate(-180deg)',
-        width: '45%',
-        float: 'left'
-    },
-    linePrevisionCenter: {
-        width: '5%',
-        fontFamily: 'Catamaran',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '12px',
-        lineHeight: '14px',
-
-    },
-    linePrevisionRight: {
-        border: '1px solid #000000',
-        transform: 'rotate(-180deg)',
-        width: '45%',
-        float: 'right'
+    cleanFloat: {
+        float: 'none',
+        clear: 'both',
     },
     pullRight: {
         float: 'right'
+    },
+    bottomElement: {
+        position: 'absolute',
+        right: '0',
+        left: '0',
+        bottom: '0'
+    },
+    tituloTextbox: {
+        letterSpacing: '2px',
+        fontSize : '0.75em',
+        fontWeight: 'normal',
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        color: '#373737',
+        textTransform: 'uppercase'
     }
 
-  }))
+}))

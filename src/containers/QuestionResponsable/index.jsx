@@ -56,9 +56,10 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                     </>
                 }
                
-
+               <div className={classesComun.bottomElement}>
                 { getResponsable.length === 0 
                     ?  <>
+                  
                         <div>
                             <Button className={classesComun.buttonAchs} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(14))}>
                                 Agregar responsable
@@ -82,7 +83,8 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                             </Button>
                         </div> 
                     </> 
-                }                     
+                }
+                </div>                     
             </div>
     );
 }

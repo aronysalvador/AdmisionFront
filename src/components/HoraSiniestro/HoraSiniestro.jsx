@@ -28,8 +28,7 @@ const HoraSiniestro = ({ onChange }) => {
         style={{
           background: "white",
           borderRadius: "10px",
-          padding: "8px",
-           border: "2px solid lightgray"
+          padding: "8px"
         }}
       >
         <div style={{ textAlign: "center", fontSize: "12px" }}>hora</div>
@@ -69,8 +68,7 @@ const HoraSiniestro = ({ onChange }) => {
           background: "white",
           borderRadius: "10px",
           padding: "8px",
-          marginLeft: "20px",
-          border: "2px solid lightgray"
+          marginLeft: "20px"
         }}
       >
         <div style={{ textAlign: "center", fontSize: "12px" }}>minutos</div>
