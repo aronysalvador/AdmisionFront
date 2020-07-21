@@ -21,7 +21,6 @@ import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
 import CrearCaso from "../ValidarCorreoElectronico/CreacionCaso";
-import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
 import AccidentPlaceForm from "../Questions/lugarAccidente";
 import AccidentDescription from "../Questions/descripcionAccidente";
 import AccidentObjectForm from "../Questions/objetoAccidente";

@@ -4,6 +4,7 @@ import {
   SEND_ISAPRES,
   SEND_TESTIGO,
   SEND_RESPONSABLE,
+  LOAD_STATE_SESSIONSTORAGE,
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
