@@ -6,20 +6,21 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import {getSpaceStyle} from '../../css/spaceStyle'
+import { getSpaceStyle } from "../../css/spaceStyle";
 
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
 
+  const { step, percentage, fechaHoraSiniestro } = useSelector(
+    (state) => state.addmissionForm,
+    shallowEqual
+  );
+  const { days, month, year, horas, minutos } = fechaHoraSiniestro;
 
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta } = getComunStyle();
   const dispatch = useDispatch();
-  const { step, percentage } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
 
   function setFechaValueSiniestro(value) {
     setFechaSiniestro({ ...value });
@@ -38,10 +39,19 @@ const FechaHoraSiniestro = () => {
       <Typography className={pregunta}>
         Escribe la fecha y hora del accidente
       </Typography>
-      <div  className={spaceStyle.space2} />
-      <FechaSiniestro onChange={setFechaValueSiniestro} />
-      <div  className={spaceStyle.space1} />
-      <HoraSiniestro onChange={setHoraValueSiniestro} />
+      <div className={spaceStyle.space2} />
+      <FechaSiniestro
+        onChange={setFechaValueSiniestro}
+        daysFromState={days}
+        monthFromState={month}
+        yearFromState={year}
+      />
+      <div className={spaceStyle.space1} />
+      <HoraSiniestro
+        onChange={setHoraValueSiniestro}
+        horasFromState={horas}
+        minutosFromState={minutos}
+      />
       <div className={spaceStyle.space2} />
       <Button
         className={buttonAchs}
