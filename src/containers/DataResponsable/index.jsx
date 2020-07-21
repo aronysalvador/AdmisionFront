@@ -25,7 +25,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
      //State
     const [nombre , saveNombre] = useState('');
     const [cargos , saveCargos] = useState('');
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     const dispatch1 = useDispatch();
 
@@ -33,7 +33,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
         //Call Action
         const consultaCargos = () => dispatch1( searchCargos() );
         consultaCargos();
-
+        // eslint-disable-next-line no-use-before-define
     }, []);
 
     const getCargos = useSelector(state => state.cargosForm.cargos);
@@ -104,7 +104,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                             }}
                             getOptionSelected={(option, value) => option.cargo === value.cargo}
                             getOptionLabel={(option) => option.cargo}
-                            options={getCargos.length != 0 ? getCargos : []}
+                            options={getCargos.length !== 0 ? getCargos : []}
                             loading={loading}
                             value={cargos}
                             onChange={(event, newValue) => {

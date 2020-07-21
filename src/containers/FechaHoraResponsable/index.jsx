@@ -12,7 +12,7 @@ const FechaHoraResponsable = () => {
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta } = getComunStyle();
   const dispatch = useDispatch();
-  const { step, percentage } = useSelector(
+  const {  percentage } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );

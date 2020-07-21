@@ -80,7 +80,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                             }}
                             getOptionSelected={(option, value) => option.nombre === value.nombre}
                             getOptionLabel={(option) => option.nombre}
-                            options={getIsapres.length != 0 ? getIsapres : []}
+                            options={getIsapres.length !== 0 ? getIsapres : []}
                             loading={loading}
                             value={isapres}
                             onChange={(event, newValue) => {
