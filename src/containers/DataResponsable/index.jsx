@@ -17,14 +17,19 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
 
   const DataResponsable = (props) => {
     const { dispatch,addmissionForm } = props
+    const {responsable} = addmissionForm
 
     const welcomeStyle = getWelcomeStyle();  
     const classesComun = getComunStyle();
     const spaceStyle = getSpaceStyle();
 
      //State
-    const [nombre , saveNombre] = useState('');
-    const [cargos , saveCargos] = useState('');
+    const [nombre , saveNombre] = useState(() => {
+        return !responsable ? '' : responsable.nombre;
+      });
+    const [cargos , saveCargos] = useState(() => {
+        return !responsable ? '' : responsable.cargo;
+      });
     const [open, setOpen] = useState(false);
 
     const dispatch1 = useDispatch();
@@ -47,7 +52,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
             return;
         }
 
-        dispatch1( sendResponsable(nombre , cargos.cargo) );
+        dispatch1( sendResponsable(nombre , cargos) );
         dispatch(handleSetStep(19));
     }
 
@@ -70,12 +75,9 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                 <div>
                     <TextField
                         id="nombre"
-                        // label="Rut"
-                        // value={formateaRut(values.rut)}
-                        onChange={e => saveNombre(e.target.value)}
-                        
+                        value={nombre}
+                        onChange={e => saveNombre(e.target.value)}             
                         helperText="Ejemplo: Luis Morales"
-                        // error={touched.rut && Boolean(errors.rut)}
                         margin="dense"
                         variant="outlined"
                         fullWidth

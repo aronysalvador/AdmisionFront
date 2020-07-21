@@ -8,14 +8,17 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
 const FechaHoraResponsable = () => {
+  const {  percentage, fechaHoraResponsable  } = useSelector(
+    (state) => state.addmissionForm,
+    shallowEqual
+  );
+  const { days, month, year, horas, minutos } = fechaHoraResponsable;
+
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta } = getComunStyle();
   const dispatch = useDispatch();
-  const {  percentage } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+  
 
   function setFechaValueSiniestro(value) {
     setFechaSiniestro({ ...value });
@@ -33,8 +36,17 @@ const FechaHoraResponsable = () => {
       <Typography className={pregunta}>
         Escribe la fecha y hora en que avisaste al responsable
       </Typography>
-      <FechaSiniestro onChange={setFechaValueSiniestro} />
-      <HoraSiniestro onChange={setHoraValueSiniestro} />
+      <FechaSiniestro
+      onChange={setFechaValueSiniestro}
+      daysFromState={days}
+      monthFromState={month}
+      yearFromState={year} />
+
+      <HoraSiniestro 
+      onChange={setHoraValueSiniestro}
+      horasFromState={horas}
+      minutosFromState={minutos} />
+
       <Button
         className={buttonAchs}
         onClick={() => {
