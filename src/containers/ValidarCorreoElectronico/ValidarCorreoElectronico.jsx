@@ -10,25 +10,18 @@ import { validateEmailFormat } from "../../helpers/email";
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
   const {
-    addmissionForm: { step, percentage, usuarioEmail },
+    addmissionForm: { step, percentage, emailusuario },
   } = useSelector((state) => state, shallowEqual);
-
+console.log({emailusuario})
 
 
   let stepx = step;
   const [userEmail, setUserEmail] = useState(() => {
-    return !usuarioEmail ? "" : usuarioEmail;
+    return !emailusuario ? "" : emailusuario;
   });
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel } = siniestroStyle();
-
-  //Cargar state al iniciar
-   const email = useSelector(state => state.addmissionForm.emailusuario)
-
-  useEffect(() => {
-    setUserEmail(email)
-  }, [])
 
   return (
     <div className={root}>
