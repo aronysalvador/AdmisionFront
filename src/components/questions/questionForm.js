@@ -1,19 +1,19 @@
-import React, {useState } from 'react'
-import { withFormik } from "formik";
-import { connect } from 'react-redux'
+import React, {useState, useEffect } from 'react'
+import { connect, useSelector } from 'react-redux'
 import TextField from '@material-ui/core/TextField'
 import Button from "@material-ui/core/Button"
 import Typography from '@material-ui/core/Typography'
 import {getComunStyle} from '../../css/comun'
 import {getSpaceStyle} from '../../css/spaceStyle'
-import { Accordion } from '@material-ui/core';
+
 
 const FormQuestion = props => {
   const {
     titulo,
     pregunta,
     placeholder,
-    accion
+    accion, 
+    question1
   } = props;
   
   const [localValue, setLocalValue] = useState("")
@@ -26,6 +26,16 @@ const FormQuestion = props => {
   const isDisabled = () =>{
     return localValue.length < 5;
   }
+
+  //Cargar state al iniciar
+
+
+  const mensaje = useSelector(state => state.addmissionForm.question1)
+  debugger
+  console.log('estsssss'+mensaje)
+  useEffect(() => {
+    //setLocalValue(mensaje)
+  }, [])
 
   return (
     <form onSubmit={ () => accion(localValue)}>

@@ -13,6 +13,8 @@ const ValidarCorreoElectronico = () => {
     addmissionForm: { step, percentage, usuarioEmail },
   } = useSelector((state) => state, shallowEqual);
 
+
+
   let stepx = step;
   const [userEmail, setUserEmail] = useState(() => {
     return !usuarioEmail ? "" : usuarioEmail;
@@ -20,6 +22,13 @@ const ValidarCorreoElectronico = () => {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, pregunta } = getComunStyle();
   const { mobileLabel } = siniestroStyle();
+
+  //Cargar state al iniciar
+   const email = useSelector(state => state.addmissionForm.emailusuario)
+
+  useEffect(() => {
+    setUserEmail(email)
+  }, [])
 
   return (
     <div className={root}>
@@ -44,7 +53,7 @@ const ValidarCorreoElectronico = () => {
       />
       <Button
         className={buttonAchs}
-        disabled={userEmail.length === 0 || !isEmailValid}
+        disabled={userEmail === undefined || userEmail.length === 0 || !isEmailValid}
         onClick={() =>
           isEmailValid &&
           dispatch(updateForm("emailusuario", userEmail)) &&
