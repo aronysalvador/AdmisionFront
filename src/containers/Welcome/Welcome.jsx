@@ -1,9 +1,8 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
-import { login,isExistAccount,getAccount } from '../../redux/actions/microsoft.action'
 import {getWelcomeStyle} from '../../css/welcomeStyle'
 import Link from '@material-ui/core/Link'
 import {getComunStyle} from '../../css/comun'
@@ -13,30 +12,12 @@ import '../../css/sfUiDisplayCufonfonts.css'
 
 const Welcome = (props) => {
 
-    const { dispatch, addmissionForm, microsoft } = props
+    const { dispatch, addmissionForm} = props
 
-    console.log(addmissionForm)
-    console.log("microsoft", microsoft)
+    const welcomeStyle = getWelcomeStyle()  
+    const comunStyle = getComunStyle()  
+    const spaceStyle = getSpaceStyle()
 
-    const welcomeStyle = getWelcomeStyle();  
-    const comunStyle = getComunStyle();  
-    const spaceStyle = getSpaceStyle();
-
-    const usermsal = getAccount()
-    const scopes = ["user.read"]
-
-    useEffect(() => {
-        /*const reqMsal = async () => {
-            if (usermsal) {
-              await dispatch(isExistAccount(scopes))
-            }
-        }
-        reqMsal() */
-        const obj = dispatch(getAccount())
-        console.log("obj",obj)
-        //dispatch(login())
-      },[])
-    
     return (
             <div className={comunStyle.root}>
                 <div className={spaceStyle.space4} />
@@ -86,9 +67,19 @@ const Welcome = (props) => {
     );
 }
 
-function mapStateToProps({ addmissionForm, microsoft }) {
+function mapStateToProps({ addmissionForm}) {
     return {
         addmissionForm : addmissionForm
     }
 }
-export default connect(mapStateToProps)(Welcome);
+export default connect(mapStateToProps)(Welcome)
+
+
+    /*
+import { login,isExistAccount,getAccount } from '../../redux/actions/microsoft.action'
+    {useEffect}
+    useEffect(() => {
+        const obj = dispatch(getAccount())
+        console.log("obj",obj)
+      },[])
+    */

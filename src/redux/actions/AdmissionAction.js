@@ -2,12 +2,13 @@ import {
   SET_STEP,
   UPDATE_FORM,
   SEND_ISAPRES,
-  LOAD_STATE_SESSIONSTORAGE,
+  SEND_TESTIGO,
+  SEND_RESPONSABLE,
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
 
-const totalSteps = 8;
+const totalSteps = 19;
 
 export const loadStateFromSessionStorage = (state) => {
   return {
@@ -41,9 +42,8 @@ export const handleSetStep = (step) => {
     dispatch(setStep(step, getPercentage(step)));
   };
 };
-
 const getPercentage = (step) => {
-  return (step * 100) / totalSteps;
+  return (step * 100) / parseFloat(totalSteps);
 };
 
 export const formatRut = (rut) => {
@@ -54,9 +54,6 @@ export const formatRut = (rut) => {
 };
 
 export const saveRut = (rut) => {
-  //  export const saveRut=(rut)=>async(dispatch,getState)=>{
-  //const {} = getState()
-  //}
   return (dispatch) => {
     Axios.get(
       `http://ci-desa-msorquestador.eastus.azurecontainer.io/api/employee/isAfiliado?rut=${rut}`
@@ -64,7 +61,7 @@ export const saveRut = (rut) => {
       .then((result) => {
         let isAfiliado = result.data.content[0].isAfiliado;
         if (isAfiliado) {
-          dispatch(handleSetStep(6));
+          dispatch(handleSetStep(5.1));
           dispatch(updateForm("empresa", result.data.content[0].RutEmpresa));
           dispatch(
             updateForm("rutEmpresa", result.data.content[0].NombreEmpresa)
@@ -84,14 +81,53 @@ export const saveRut = (rut) => {
   };
 };
 
+export const saveAnswer = (answerType, answerValue, step) => {
+  console.log("SAVE ANSWER ACTION");
+  return (dispatch) => {
+    dispatch(updateForm(answerType, answerValue));
+    dispatch(handleSetStep(step));
+  };
+};
+
 //Envia la Isapres Seleccionada
 export function sendIsapres(id) {
   return (dispatch) => {
     dispatch(sendCallIsapres(id));
+    dispatch(handleSetStep(6));
   };
 }
 
 const sendCallIsapres = (id) => ({
   type: SEND_ISAPRES,
   payload: id,
+});
+
+//Envia Datos de Testigos
+export function sendCargo(name, cargo) {
+  return (dispatch) => {
+    dispatch(sendCallTestigo(name, cargo));
+  };
+}
+
+const sendCallTestigo = (name, cargo) => ({
+  type: SEND_TESTIGO,
+  payload: {
+    nombre: name,
+    cargo: cargo,
+  },
+});
+
+//Envia Datos de Testigos
+export function sendResponsable(name, cargo) {
+  return (dispatch) => {
+    dispatch(sendCallResponsable(name, cargo));
+  };
+}
+
+const sendCallResponsable = (name, cargo) => ({
+  type: SEND_RESPONSABLE,
+  payload: {
+    nombre: name,
+    cargo: cargo,
+  },
 });

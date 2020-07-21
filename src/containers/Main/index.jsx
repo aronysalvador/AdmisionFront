@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Welcome from "../Welcome/index";
 import Identification from "../Identification/index";
 import Sinister from "../Sinister/index";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,24 +8,51 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import useStyles from "../../css/styles";
 import PacienteNoAfiliadoError from "../Error/pacienteNoAfiliadoError";
 import Consitions from "../Conditions/index";
-import Resumen from "../Resumen/index";
+import PersonalData from "../PersonalData/index";
+import LoadPersonalData from "../Load/loadPersonalData";
+import Session from "../Welcome/Session";
 import FechaHoraSiniestro from "../FechaHoraSiniestro/FechaHoraSiniestro";
 import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
+import Load from "../Load/load";
+import WelcomeEjecutivo from "../Welcome/WelcomeEjecutivo";
+import { getAccount } from "../../redux/actions/microsoft.action";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
 import CrearCaso from "../ValidarCorreoElectronico/CreacionCaso";
+import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
+import AccidentPlaceForm from "../Questions/lugarAccidente";
+import AccidentDescription from "../Questions/descripcionAccidente";
+import AccidentObjectForm from "../Questions/objetoAccidente";
+
+import QuestionWitness from "../QuestionWitness/index";
+import DataWitness from "../DataWitness/index";
+import QuestionResponsable from "../QuestionResponsable/index";
+import DataResponsable from "../DataResponsable/index";
+import FechaHoraResponsable from "../FechaHoraResponsable/index";
+import Tony from "../Tony/index";
+import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
+import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
 
 const Main = (props) => {
   const classes = useStyles();
-  const { addmissionForm } = props;
-  console.log({ addmissionForm });
+  const { addmissionForm, dispatch } = props;
+
+  const localGetAccount = () => dispatch(getAccount());
+
+  useEffect(() => {
+    localGetAccount();
+  }, []);
 
   const renderForm = (step) => {
     switch (step) {
+      case -1:
+        return <Load />;
+      case 0:
+        return <Session />;
       case 1:
-        return <Welcome />;
+        return <WelcomeEjecutivo />;
       case 2:
         return <Identification />;
       case 3:
@@ -34,21 +60,41 @@ const Main = (props) => {
       case 4:
         return <Consitions />;
       case 5:
-        return <Resumen />;
+        return <LoadPersonalData />;
+      case 5.1:
+        return <PersonalData />;
       case 6:
-        return <FechaHoraSiniestro />;
-      case 7:
-        return <LugarExactoSiniestro />;
-      case 8:
-        return <LugarReferenciaSiniestro />;
-      case 9:
         return <HealthForecast />;
-      case 10:
+      case 7:
         return <HealthForecastIsapre />;
-      case 11:
+      case 8: //Tony
         return <ValidarCorreoElectronico />;
+      case 9:
+        return <FechaHoraSiniestro />;
+      case 10:
+        return <LugarExactoSiniestro />;
+      case 11:
+        return <LugarReferenciaSiniestro />;
       case 12:
-        return <CrearCaso />;
+        return <AccidentPlaceForm />;
+      case 13:
+        return <AccidentDescription />;
+      case 14:
+        return <AccidentObjectForm />;
+      case 15:
+        return <QuestionWitness />;
+      case 15.1:
+        return <BoxQuestionWitness />;
+      case 16:
+        return <DataWitness />;
+      case 17:
+        return <QuestionResponsable />;
+      case 17.1:
+        return <BoxQuestionResponsable />;
+      case 18:
+        return <DataResponsable />;
+      case 19:
+        return <FechaHoraResponsable />;
       case 500:
         return <PacienteNoAfiliadoError />;
       default:

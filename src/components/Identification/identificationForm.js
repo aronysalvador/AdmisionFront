@@ -26,7 +26,7 @@ const form = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Typography variant="p" component="p" className={classesComun.pregunta}>
+        <Typography variant="h1" component="h1" className={classesComun.pregunta}>
           Ingresa el RUT del paciente
         </Typography>
       </div>
@@ -67,7 +67,7 @@ const IdentificationForm = withFormik({
       if (typeof values.rut !== 'undefined' && values.rut.length < 1) {
         errors.rut = 'Debe ingresar su RUT'
       }else if (!Rut.validaRut(formateaRut(values.rut))){
-        errors.rut = 'El RUT ingresao no es valido';
+        errors.rut = 'El RUT ingresado no es valido';
       }        
       return errors
     },

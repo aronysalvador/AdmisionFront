@@ -14,112 +14,98 @@ export const getSucursalesUsuarios = async (rut) => {
 
 const isapres = [
   {
-    "id": 1,
-    "nombre": "COLMENA GOLDEN CROSS SOCIEDAD A"
+    "id": 1,"nombre": "COLMENA GOLDEN CROSS SOCIEDAD A"
   },
   {
-    "nombre": "COOPERATIVA DE SALUD PROMEPART",
-    "id": 2
+    "nombre": "COOPERATIVA DE SALUD PROMEPART","id": 2
   },
   {
-    "nombre": "INSTITUCIÓN DE SALUD PREVISIONA",
-    "id": 3
+    "nombre": "INSTITUCIÓN DE SALUD PREVISIONA","id": 3
   },
   {
-    "nombre": "INSTITUTO DE SALUD PREVISIONA",
-    "id": 4
+    "nombre": "INSTITUTO DE SALUD PREVISIONA","id": 4
   },
   {
-    "nombre": "ISAPRE BANMEDICA SOCIEDAD ANONI",
-    "id": 5
+    "nombre": "ISAPRE BANMEDICA SOCIEDAD ANONI","id": 5
   },
   {
-    "nombre": "ISAPRE CHUQUICAMATA LTDA.",
-    "id": 6
+    "nombre": "ISAPRE CHUQUICAMATA LTDA.","id": 6
   },
   {
-    "nombre": "ISAPRE CONSALUD S.A.",
-    "id": 7
+    "nombre": "ISAPRE CONSALUD S.A.", "id": 7
   },
   {
-    "nombre": "ISAPRE CRISOL SOCIEDAD ANONIMA",
-    "id": 8
+    "nombre": "ISAPRE CRISOL SOCIEDAD ANONIMA","id": 8
   },
   {
-    "nombre": "ISAPRE CRUZ BLANCA SOCIEDAD ANOCB",
-    "id": 9
+    "nombre": "ISAPRE CRUZ BLANCA SOCIEDAD ANOCB", "id": 9
   },
   {
-    "nombre": "ISAPREE VIDA PLENA SOCIEDAD ANO",
-    "id": 10
+    "nombre": "ISAPREE VIDA PLENA SOCIEDAD ANO","id": 10
   },
   {
-    "nombre": "ISAPRE FUNDACION",
-    "id": 11
+    "nombre": "ISAPRE FUNDACION","id": 11
   },
   {
-    "nombre": "ISAPRE GALENICA SOCIEDAD ANONIM",
-    "id": 12
+    "nombre": "ISAPRE GALENICA SOCIEDAD ANONIM","id": 12
   },
   {
-    "nombre": "ISAPRE GENESIS SOCIEDAD ANONIMA",
-    "id": 13
+    "nombre": "ISAPRE GENESIS SOCIEDAD ANONIMA","id": 13
   },
   {
-    "nombre": "ISAPRE ISAMEDICA SOCIEDAD ANONI",
-    "id": 14
+    "nombre": "ISAPRE ISAMEDICA SOCIEDAD ANONI","id": 14
   },
   {
-    "nombre": "ISAPRE LA ARAUCANA SOCIEDAD ANO",
-    "id": 15
+    "nombre": "ISAPRE LA ARAUCANA SOCIEDAD ANO", "id": 15
   },
   {
-    "nombre": "ISAPRE MASTER SALUD SOCIEDAD AN",
-    "id": 16
+    "nombre": "ISAPRE MASTER SALUD SOCIEDAD AN","id": 16
   },
   {
-    "nombre": "ISAPRE MASVIDA SOCIEDAD ANONIMA.",
-    "id": 17
+    "nombre": "ISAPRE MASVIDA SOCIEDAD ANONIMA.","id": 17
   },
   {
-    "nombre": "ISAPRE NORMEDICA SOCIEDAD ANONI",
-    "id": 18
+    "nombre": "ISAPRE NORMEDICA SOCIEDAD ANONI","id": 18
   },
   {
-    "nombre": "ISAPRE NORTE GRANDE LTDA",
-    "id": 19
+    "nombre": "ISAPRE NORTE GRANDE LTDA","id": 19
   },
   {
-    "nombre": "ISAPRE RIO BLANCO LTDA",
-    "id": 20
+    "nombre": "ISAPRE RIO BLANCO LTDA","id": 20
   },
   {
-    "nombre": "ISAPRE SFERA SOCIEDAD ANONIMA",
-    "id": 21
+    "nombre": "ISAPRE SFERA SOCIEDAD ANONIMA", "id": 21
   },
   {
-    "nombre": "JEF.EJE.ADM.FONDOS DE SALUD DE",
-    "id": 22
+    "nombre": "JEF.EJE.ADM.FONDOS DE SALUD DE","id": 22
   },
   {
-    "nombre": "ISAPRE MASTER SALUD SOCIEDAD AN",
-    "id": 23
+    "nombre": "ISAPRE MASTER SALUD SOCIEDAD AN","id": 23
   },
   {
-    "nombre": "NUEVA MASVIDA SA ",
-    "id": 24
+    "nombre": "NUEVA MASVIDA SA ","id": 24
   },
   {
-    "nombre": "SAN LORENZO ISAPRE LTDA.",
-    "id": 25
+    "nombre": "SAN LORENZO ISAPRE LTDA.","id": 25
   },
   {
-    "nombre": "VIDA TRES SOCIEDAD ANONIMA",
-    "id": 26
+    "nombre": "VIDA TRES SOCIEDAD ANONIMA","id": 26
   }
 ];
 
-export const getIsapres = async (rut) => {
+export const getIsapres = async () => {
   return isapres;
 };
 
+const cargos = [
+  { id: 1, cargo : "Mesero" },
+  { id: 2, cargo: "Cocinero" },
+  { id: 3, cargo: "Ayudante de Cocina" },
+  { id: 4, cargo: "Chef" },
+  { id: 5, cargo: "Administrador de caja" },
+  { id: 6, cargo: "Gerente" },
+];
+
+export const getCargos = async () => {
+  return cargos;
+};

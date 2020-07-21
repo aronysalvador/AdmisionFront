@@ -8,7 +8,7 @@ import { siniestroStyle } from "../../css/siniestroStyle";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 
 const LugarReferenciaSiniestro = () => {
-  const {
+  let {
     addmissionForm: { step, percentage, lugarReferenciaSiniestro },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;

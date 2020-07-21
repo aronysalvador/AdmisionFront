@@ -42,12 +42,18 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     const loading = useSelector(state => state.previsionForm.loading);
 
     const clickSendIsapres = () => {
+
+        if( isapres === null){
+            console.log('Necesita llenar los campos');
+            return;
+        }
         dispatch1( sendIsapres(isapres.id) );
+        dispatch(handleSetStep(8))
     }
 
     return (
             <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={100} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(6))} percentage={addmissionForm.percentage} />
                 <form>
                     <div>
                         <Typography variant="p" component="p" className={classesComun.pregunta}>
@@ -74,7 +80,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                             }}
                             getOptionSelected={(option, value) => option.nombre === value.nombre}
                             getOptionLabel={(option) => option.nombre}
-                            options={getIsapres.length != 0 ? getIsapres : null}
+                            options={getIsapres.length != 0 ? getIsapres : []}
                             loading={loading}
                             value={isapres}
                             onChange={(event, newValue) => {

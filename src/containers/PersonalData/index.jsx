@@ -6,7 +6,7 @@ import Cabecera from '../../components/cabecera/index'
 import Typography from '@material-ui/core/Typography'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import BoxACHS from '../../components/share/BoxACHS/index'
-
+import Button from '@material-ui/core/Button'
 
 const PersonalData = (props) => {
     const { dispatch, addmissionForm } = props
@@ -34,7 +34,13 @@ const PersonalData = (props) => {
                 <div className={spaceStyle.spaceMin1} />
                 <BoxACHS titulo={tituloDireccion}  contenido={contenidoDireccion}/> 
                 <div className={spaceStyle.spaceMin1} />
-                <BoxACHS titulo={tituloTelefono}  contenido={contenidoTelefono}/> 
+                <BoxACHS titulo={tituloTelefono}  contenido={contenidoTelefono}/>
+                <Button
+                        className={comunClass.buttonAchs}
+                        variant="contained"
+                        onClick={() => dispatch(handleSetStep(6))}>
+                        Si, es correcta
+                </Button> 
             </div>
     );
 }

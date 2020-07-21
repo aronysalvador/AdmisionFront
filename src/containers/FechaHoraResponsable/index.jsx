@@ -6,12 +6,8 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import {getSpaceStyle} from '../../css/spaceStyle'
 
-const FechaHoraSiniestro = () => {
-  const spaceStyle = getSpaceStyle();
-
-
+const FechaHoraResponsable = () => {
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta } = getComunStyle();
@@ -28,31 +24,27 @@ const FechaHoraSiniestro = () => {
   function setHoraValueSiniestro(value) {
     setHoraSiniestro({ ...value });
   }
-
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(8))}
+        dispatch={() => dispatch(handleSetStep(18))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Escribe la fecha y hora del accidente
+        Escribe la fecha y hora en que avisaste al responsable
       </Typography>
-      <div  className={spaceStyle.space2} />
       <FechaSiniestro onChange={setFechaValueSiniestro} />
-      <div  className={spaceStyle.space1} />
       <HoraSiniestro onChange={setHoraValueSiniestro} />
-      <div className={spaceStyle.space2} />
       <Button
         className={buttonAchs}
         onClick={() => {
           dispatch(
-            updateForm("fechaHoraSiniestro", {
+            updateForm("fechaHoraResponsable", {
               ...fechaSiniestro,
               ...horaSiniestro,
             })
           );
-          dispatch(handleSetStep(step + 1));
+          dispatch(handleSetStep(17.1));
         }}
       >
         Siguiente
@@ -61,4 +53,4 @@ const FechaHoraSiniestro = () => {
   );
 };
 
-export default FechaHoraSiniestro;
+export default FechaHoraResponsable;

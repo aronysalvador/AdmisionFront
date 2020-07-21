@@ -123,6 +123,9 @@ export const getComunStyle = makeStyles((theme) => ({
         transform: 'rotate(-180deg)',
         width: '45%',
         float: 'right'
+    },
+    pullRight: {
+        float: 'right'
     }
 
   }))
