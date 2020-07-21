@@ -1,7 +1,6 @@
-import React, {useState , useEffect} from 'react';
-import { connect , useDispatch , useSelector} from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 import {getComunStyle} from '../../css/comun';
-import {getSpaceStyle} from '../../css/spaceStyle';
 import Cabecera from '../../components/cabecera/index';
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
 import BoxTestigosResponsable from '../../components/questions/BoxTestigosResponsable'
@@ -10,10 +9,8 @@ import BoxTestigosResponsable from '../../components/questions/BoxTestigosRespon
     const { dispatch,addmissionForm } = props
 
     const classesComun = getComunStyle()
-    const spaceStyle = getSpaceStyle()
 
     const tituloTestigo = "Responsable"
-    const tituloResponsable = "Responsable";
     const contenidoResponsable = [addmissionForm.responsable.nombre,<br />,addmissionForm.responsable.cargo, <br />,'Avisado el '+addmissionForm.fechaHoraResponsable.days +'-'+ addmissionForm.fechaHoraResponsable.month +'-'+ addmissionForm.fechaHoraResponsable.year];
 
 

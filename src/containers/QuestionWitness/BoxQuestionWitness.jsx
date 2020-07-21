@@ -1,7 +1,6 @@
-import React, {useState , useEffect} from 'react';
-import { connect , useDispatch , useSelector} from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 import {getComunStyle} from '../../css/comun';
-import {getSpaceStyle} from '../../css/spaceStyle';
 import Cabecera from '../../components/cabecera/index';
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
 import BoxTestigosResponsable from '../../components/questions/BoxTestigosResponsable'
@@ -10,7 +9,6 @@ import BoxTestigosResponsable from '../../components/questions/BoxTestigosRespon
     const { dispatch,addmissionForm } = props
 
     const classesComun = getComunStyle()
-    const spaceStyle = getSpaceStyle()
 
     const tituloTestigo = "Testigo"
     const contenidoTestigo = [addmissionForm.testigos.nombre,<br />,addmissionForm.testigos.cargo]
@@ -18,7 +16,7 @@ import BoxTestigosResponsable from '../../components/questions/BoxTestigosRespon
 
     return (
             <div className={classesComun.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(15))} percentage={addmissionForm.percentage} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(16))} percentage={addmissionForm.percentage} />
                 <BoxTestigosResponsable titulo={'Entendido ¿Alguien fue testigo de lo que sucedió?'}
                                         tituloTestigo={tituloTestigo}
                                         contenidoTestigo={contenidoTestigo}

@@ -1,4 +1,4 @@
-import React, {useState , useEffect} from 'react'
+import React, { useEffect} from 'react'
 import { connect , useDispatch , useSelector} from 'react-redux'
 import Button from "@material-ui/core/Button"
 import Typography from '@material-ui/core/Typography'
@@ -13,9 +13,6 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
 
   const HealthForecast = (props) => {
     const { dispatch,addmissionForm } = props
-
-    //State
-    const [isapres , saveIsapres] = useState('');
 
     const dispatch1 = useDispatch();
 

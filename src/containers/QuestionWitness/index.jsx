@@ -1,9 +1,6 @@
-import React, {useState , useEffect} from 'react';
-import { connect , useDispatch , useSelector} from 'react-redux';
-import Button from "@material-ui/core/Button";
-import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import { connect } from 'react-redux';
 import {getComunStyle} from '../../css/comun';
-import {getSpaceStyle} from '../../css/spaceStyle';
 import Cabecera from '../../components/cabecera/index';
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
 import QuestionTestigoResponsable from '../../components/questions/QuestionTestigoResponsable'
@@ -11,16 +8,7 @@ import QuestionTestigoResponsable from '../../components/questions/QuestionTesti
   const QuestionWitness = (props) => {
     const { dispatch,addmissionForm } = props
 
-    //State
-    const dispatch1 = useDispatch();
-    const getTestigos = useSelector(state => state.addmissionForm.testigos)
-
     const classesComun = getComunStyle()
-    const spaceStyle = getSpaceStyle()
-
-    const tituloTestigo = "Testigo"
-    const contenidoTestigo = [addmissionForm.testigos.nombre,<br />,addmissionForm.testigos.cargo]
-
 
     return (
             <div className={classesComun.root}>
