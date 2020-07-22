@@ -8,6 +8,7 @@ import { siniestroStyle } from "../../css/siniestroStyle";
 import { LocationOn } from "@material-ui/icons";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getSucursalesEmpresaSiniestro } from "./../../redux/actions/SucursalesEmpresaSiniestro";
+import { getSpaceStyle } from "../../css/spaceStyle";
 
 const LugarExactoSiniestro = () => {
   const {
@@ -19,8 +20,14 @@ const LugarExactoSiniestro = () => {
   });
   const dispatch = useDispatch();
 
-  const { root, buttonAchs, pregunta } = getComunStyle();
-  const { mobileLabel } = siniestroStyle();
+  const {
+    root,
+    buttonAchs,
+    pregunta,
+    tituloTextbox,
+    bottomElement,
+  } = getComunStyle();
+  const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
     dispatch(getSucursalesEmpresaSiniestro(""));
@@ -42,8 +49,10 @@ const LugarExactoSiniestro = () => {
       <Typography className={pregunta}>
         Señala el lugar exacto del accidente
       </Typography>
-
-      <Typography className={mobileLabel}>Dirección accidente</Typography>
+      <div className={spaceStyle.space2} />
+      <Typography className={tituloTextbox} variant="subtitle2">
+        Dirección accidente
+      </Typography>
       <AutoComplete
         value={sucursal}
         onChange={(event, value) => {
@@ -57,16 +66,18 @@ const LugarExactoSiniestro = () => {
       />
 
       <LocationOn />
-      <Button
-        className={buttonAchs}
-        disabled={!sucursal || !isLugarExactoAccidenteValid}
-        onClick={() => {
-          dispatch(updateForm("sucursalEmpresaSiniestro", sucursal));
-          dispatch(handleSetStep(step + 1));
-        }}
-      >
-        Siguiente
-      </Button>
+      <div className={bottomElement}>
+        <Button
+          className={buttonAchs}
+          disabled={!sucursal || !isLugarExactoAccidenteValid}
+          onClick={() => {
+            dispatch(updateForm("sucursalEmpresaSiniestro", sucursal));
+            dispatch(handleSetStep(step + 1));
+          }}
+        >
+          Siguiente
+        </Button>
+      </div>
     </div>
   );
 };

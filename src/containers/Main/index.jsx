@@ -20,17 +20,14 @@ import { getAccount } from "../../redux/actions/microsoft.action";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
-import CrearCaso from "../ValidarCorreoElectronico/CreacionCaso";
 import AccidentPlaceForm from "../Questions/lugarAccidente";
 import AccidentDescription from "../Questions/descripcionAccidente";
 import AccidentObjectForm from "../Questions/objetoAccidente";
-
 import QuestionWitness from "../QuestionWitness/index";
 import DataWitness from "../DataWitness/index";
 import QuestionResponsable from "../QuestionResponsable/index";
 import DataResponsable from "../DataResponsable/index";
 import FechaHoraResponsable from "../FechaHoraResponsable/index";
-import Tony from "../Tony/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
 

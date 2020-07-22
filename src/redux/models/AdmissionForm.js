@@ -15,5 +15,5 @@ export const AdmissionForm = {
   testigos: [],
   responsable: [],
   fechaHoraResponsable: {},
-  fechaHoraSiniestro: { }
+  fechaHoraSiniestro: {},
 };

@@ -19,7 +19,7 @@ const FechaHoraSiniestro = () => {
 
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
-  const { buttonAchs, root, pregunta } = getComunStyle();
+  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const dispatch = useDispatch();
 
   function setFechaValueSiniestro(value) {
@@ -52,21 +52,22 @@ const FechaHoraSiniestro = () => {
         horasFromState={horas}
         minutosFromState={minutos}
       />
-      <div className={spaceStyle.space2} />
-      <Button
-        className={buttonAchs}
-        onClick={() => {
-          dispatch(
-            updateForm("fechaHoraSiniestro", {
-              ...fechaSiniestro,
-              ...horaSiniestro,
-            })
-          );
-          dispatch(handleSetStep(step + 1));
-        }}
-      >
-        Siguiente
-      </Button>
+      <div className={bottomElement}>
+        <Button
+          className={buttonAchs}
+          onClick={() => {
+            dispatch(
+              updateForm("fechaHoraSiniestro", {
+                ...fechaSiniestro,
+                ...horaSiniestro,
+              })
+            );
+            dispatch(handleSetStep(step + 1));
+          }}
+        >
+          Siguiente
+        </Button>
+      </div>
     </div>
   );
 };
