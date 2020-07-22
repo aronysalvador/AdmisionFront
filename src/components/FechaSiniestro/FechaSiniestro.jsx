@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
-import {  Grid } from "@material-ui/core";
-import {
-  KeyboardArrowLeft,
-  KeyboardArrowRight
-} from "@material-ui/icons";
+import { Grid } from "@material-ui/core";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 
 const FechaSiniestro = ({
@@ -29,9 +26,7 @@ const FechaSiniestro = ({
     return new Date(year, month, 0).getDate();
   });
 
-  const { actualDay, actualMonth} = getActualDate();
-
-
+  const { actualDay, actualMonth } = getActualDate();
 
   useEffect(() => {
     if (days < 1) {
@@ -70,7 +65,7 @@ const FechaSiniestro = ({
       style={{
         background: "white",
         borderRadius: "10px",
-        padding: "10px"
+        padding: "10px",
       }}
     >
       <Grid item>

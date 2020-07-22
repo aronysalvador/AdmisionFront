@@ -21,7 +21,13 @@ const LugarReferenciaSiniestro = () => {
 
   const dispatch = useDispatch();
 
-  const { root, buttonAchs, pregunta, tituloTextbox, bottomElement } = getComunStyle();
+  const {
+    root,
+    buttonAchs,
+    pregunta,
+    tituloTextbox,
+    bottomElement,
+  } = getComunStyle();
   const { mobileCaption } = siniestroStyle();
   const spaceStyle = getSpaceStyle();
   return (
@@ -59,12 +65,12 @@ const LugarReferenciaSiniestro = () => {
       </Typography>
       <div className={bottomElement}>
         <Button
-        disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
-        className={buttonAchs}
-        onClick={() => {
-          dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-          dispatch(handleSetStep(++stepx));
-        }}
+          disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
+          className={buttonAchs}
+          onClick={() => {
+            dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+            dispatch(handleSetStep(++stepx));
+          }}
         >
           Siguiente
         </Button>
