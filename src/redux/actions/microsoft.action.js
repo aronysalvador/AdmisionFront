@@ -59,8 +59,9 @@ export const login = (scopes) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  msalservice.logout();
+  sessionStorage.clear();
   dispatch(handleSetStep(0));
+  msalservice.logout();
 };
 
 export const getAccount = () => async (dispatch) => {
