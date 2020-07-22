@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
-import { Button, Grid } from "@material-ui/core";
+import {  Grid } from "@material-ui/core";
 import {
   KeyboardArrowLeft,
-  KeyboardArrowRight,
-  ArrowLeft,
+  KeyboardArrowRight
 } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
-import { getComunStyle } from "../../css/comun";
 
 const FechaSiniestro = ({
   onChange,
@@ -31,8 +29,8 @@ const FechaSiniestro = ({
     return new Date(year, month, 0).getDate();
   });
 
-  const { actualDay, actualMonth, actualYear } = getActualDate();
-  const { arrowsACHS } = getComunStyle();
+  const { actualDay, actualMonth} = getActualDate();
+
 
   useEffect(() => {
     if (days < 1) {

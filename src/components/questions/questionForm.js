@@ -1,11 +1,8 @@
 import React, {useState } from 'react'
-import { connect, useSelector } from 'react-redux'
 import TextField from '@material-ui/core/TextField'
 import Button from "@material-ui/core/Button"
 import Typography from '@material-ui/core/Typography'
 import {getComunStyle} from '../../css/comun'
-import {getSpaceStyle} from '../../css/spaceStyle'
-
 
 const FormQuestion = props => {
   const {titulo,pregunta,placeholder,accion, valueFromState} = props;
@@ -19,7 +16,7 @@ const FormQuestion = props => {
     setLocalValue(event.target.value);
   };
   const classesComun =  getComunStyle()
-  const spaceStyle = getSpaceStyle()
+
 
   const isDisabled = () =>{
     return localValue.length < 5;

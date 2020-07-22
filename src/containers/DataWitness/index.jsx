@@ -32,15 +32,13 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
       });
     const [open, setOpen] = useState(false);
 
-    // eslint-disable-next-line no-use-before-define
     const dispatch1 = useDispatch();
 
     useEffect( () => {       
         //Call Action
         const consultaCargos = () => dispatch1( searchCargos() );
         consultaCargos();
-        // eslint-disable-next-line no-use-before-define
-    }, []);
+    }, []);// eslint-disable-line no-use-before-define
 
     const getCargos = useSelector(state => state.cargosForm.cargos);
 
