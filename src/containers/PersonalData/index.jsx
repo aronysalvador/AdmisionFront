@@ -16,16 +16,16 @@ const PersonalData = (props) => {
   const tituloEmpresa = "Empresa";
   const contenidoEmpresa = [
     addmissionForm.empresa,
-    <br />,
-    <br />,
+    addmissionForm.SucursalEmpresa,
+    addmissionForm.DireccionEmpresa,
     addmissionForm.rutEmpresa,
   ];
-
+ 
   const tituloDireccion = "Dirección particular";
-  const contenidoDireccion = [<br />, <br />];
-
+  const contenidoDireccion = [addmissionForm.direccionParticular];
+ 
   const tituloTelefono = "Teléfono personal";
-  const contenidoTelefono = [<br />];
+  const contenidoTelefono = [addmissionForm.telefonoParticular];
 
   return (
     <div className={comunClass.root}>

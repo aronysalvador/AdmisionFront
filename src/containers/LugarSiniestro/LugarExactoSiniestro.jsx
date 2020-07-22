@@ -69,6 +69,7 @@ const LugarExactoSiniestro = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
+          variant="contained"
           disabled={!sucursal || !isLugarExactoAccidenteValid}
           onClick={() => {
             dispatch(updateForm("sucursalEmpresaSiniestro", sucursal));

@@ -67,7 +67,7 @@ const HealthForecastIsapre = (props) => {
           >
             Escribe tu ISAPRE
           </Typography>
-        </div>
+        </div> 
         <div className={spaceStyle.space2} />
         <div>
           <Typography
@@ -125,6 +125,7 @@ const HealthForecastIsapre = (props) => {
         </div>
         <div className={classesComun.bottomElement}>
           <Button
+           disabled={!isapres}
             className={classesComun.buttonAchs}
             variant="contained"
             onClick={() => clickSendIsapres()}

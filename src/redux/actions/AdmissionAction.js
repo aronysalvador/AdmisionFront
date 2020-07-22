@@ -57,11 +57,9 @@ export const formatRut = (rut) => {
 export const saveRut = (rut) => {
   return (dispatch) => {
     Axios.get(
-      `http://ci-desa-msorquestador.eastus.azurecontainer.io/api/sap/isAfiliado?rut=${rut}`
+      `https://wa-desa-msorquestador.azurewebsites.net/api/sap/isAfiliado?rut=${rut}`
     )
       .then((result) => {
-
-        //telefonoParticular":"955183205"}],"status":200,"mensaje":"Operacion exitosa"}
 
         let isAfiliado = result.data.content[0].IsAfiliado;
         if (isAfiliado) {

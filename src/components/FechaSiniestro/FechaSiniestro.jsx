@@ -3,6 +3,7 @@ import { meses, getActualDate } from "../../util/FechasUtils";
 import { Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
 
 const FechaSiniestro = ({
   onChange,
@@ -55,6 +56,18 @@ const FechaSiniestro = ({
   }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);
+
+  const getUseStyles = makeStyles({
+    flechas: {
+      color: "white",
+      background: "#00B2A9",
+      "&:hover": {
+        background: "#00B2A9",
+      },
+    },
+  });
+
+  const useStyles = getUseStyles();
 
   return (
     <Grid
@@ -113,10 +126,7 @@ const FechaSiniestro = ({
           onClick={() => {
             setDays((d) => ++d);
           }}
-          style={{
-            color: "white",
-            background: "#00B2A9",
-          }}
+          className={useStyles.flechas}
         >
           <KeyboardArrowRight />
         </IconButton>
