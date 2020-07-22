@@ -3,7 +3,7 @@ import {
     SEARCH_ISAPRES_SUCCESS,
     SEARCH_ISAPRES_FAILURE,
 } from '../types/addmissionFormType'
-import {getIsapres} from '../../util/fakeApi'
+import Axios from "axios";
 
 
 export const searchIsapres = () =>async(dispatch) =>{
@@ -12,8 +12,11 @@ export const searchIsapres = () =>async(dispatch) =>{
     payload: true
 } );
    
-getIsapres().then((response) => {
-        dispatch( successCallIsapres(response) )
+Axios.get(
+    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/isapres`
+  )
+.then((response) => {
+        dispatch( successCallIsapres(response.data.content[0]) )
     }).catch((error) => {
         dispatch( errorCallIsapres() )
     })

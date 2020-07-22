@@ -3,16 +3,19 @@ import {
     SEARCH_POSITION_SUCCESS,
     SEARCH_POSITION_FAILURE
 } from "../types/witnessResponsableType";
-import {getCargos} from '../../util/fakeApi';
+import Axios from "axios";
 
 export const searchCargos = () =>async(dispatch) =>{
     dispatch(  {
     type: SEARCH_POSITION_INIT,
     payload: true
 } );
-   
-getCargos().then((response) => {
-        dispatch( successCallCargos(response) )
+
+Axios.get(
+    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/cargos`
+  )
+.then((response) => {
+        dispatch( successCallCargos(response.data.content[0]) )
     }).catch((error) => {
         dispatch( errorCallCargos() )
     })

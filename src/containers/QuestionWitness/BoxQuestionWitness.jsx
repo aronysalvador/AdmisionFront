@@ -7,13 +7,11 @@ import BoxTestigosResponsable from '../../components/questions/BoxTestigosRespon
 
   const QuestionWitness = (props) => {
     const { dispatch,addmissionForm } = props
-
     const classesComun = getComunStyle()
-
+   
     const tituloTestigo = "Testigo"
-    const contenidoTestigo = [addmissionForm.testigos.nombre,<br />,addmissionForm.testigos.cargo.cargo]
-
-
+    const contenidoTestigo = [addmissionForm.testigos.nombre,<br />, addmissionForm.testigos.cargo.cargo]
+            
     return (
             <div className={classesComun.root}>
                 <Cabecera dispatch={() => dispatch(handleSetStep(16))} percentage={addmissionForm.percentage} />
