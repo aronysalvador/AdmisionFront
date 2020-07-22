@@ -47,7 +47,7 @@ const HealthForecast = (props) => {
       <div className={spaceStyle.space1} />
       <div>
         <Button
-          className={classesComun.buttonAchs}
+          className={[classesComun.buttonAchs, classesComun.pregunta_temp]}
           variant="contained"
           type="submit"
           value={getIsapres.length !== 0 ? getIsapres[0].id : null}
