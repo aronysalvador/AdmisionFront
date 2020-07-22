@@ -18,7 +18,7 @@ const Session = (props) => {
 
     return (
             <div className={comunStyle.root}>
-                <div>
+                <div className={comunStyle.bottomElement}>
                 <Button
                             className={comunStyle.buttonAchs}
                             variant="contained"

@@ -11,6 +11,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
 
+  const comunStyle = getComunStyle();
   const { step, percentage, fechaHoraSiniestro } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
@@ -52,21 +53,23 @@ const FechaHoraSiniestro = () => {
         horasFromState={horas}
         minutosFromState={minutos}
       />
-      <div className={spaceStyle.space2} />
-      <Button
-        className={buttonAchs}
-        onClick={() => {
-          dispatch(
-            updateForm("fechaHoraSiniestro", {
-              ...fechaSiniestro,
-              ...horaSiniestro,
-            })
-          );
-          dispatch(handleSetStep(step + 1));
-        }}
-      >
-        Siguiente
-      </Button>
+      <div className={comunStyle.bottomElement}>
+
+        <Button
+          className={buttonAchs}
+          onClick={() => {
+            dispatch(
+              updateForm("fechaHoraSiniestro", {
+                ...fechaSiniestro,
+                ...horaSiniestro,
+              })
+            );
+            dispatch(handleSetStep(step + 1));
+          }}
+        >
+          Siguiente
+        </Button>
+      </div>
     </div>
   );
 };

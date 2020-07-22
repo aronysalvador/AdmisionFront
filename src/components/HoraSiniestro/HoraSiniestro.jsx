@@ -28,8 +28,7 @@ const HoraSiniestro = ({ onChange, horasFromState, minutosFromState }) => {
         style={{
           background: "white",
           borderRadius: "10px",
-          padding: "8px",
-          border: "2px solid lightgray",
+          padding: "8px"
         }}
       >
         <div style={{ textAlign: "center", fontSize: "12px" }}>hora</div>
@@ -72,10 +71,8 @@ const HoraSiniestro = ({ onChange, horasFromState, minutosFromState }) => {
       <Grid
         item
         style={{
-          borderStyle: "solid",
           background: "white",
           borderRadius: "10px",
-          borderColor: "lightgray",
           padding: "8px",
           marginLeft: "20px",
         }}

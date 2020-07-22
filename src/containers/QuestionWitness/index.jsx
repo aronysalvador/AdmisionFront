@@ -5,28 +5,27 @@ import Cabecera from '../../components/cabecera/index';
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
 import QuestionTestigoResponsable from '../../components/questions/QuestionTestigoResponsable'
 
-  const QuestionWitness = (props) => {
-    const { dispatch,addmissionForm } = props
+const QuestionWitness = (props) => {
+  const { dispatch, addmissionForm } = props;
 
     const classesComun = getComunStyle()
 
-    return (
-            <div className={classesComun.root}>
+  return (
+    <div className={classesComun.root}>
                 <Cabecera dispatch={() => dispatch(handleSetStep(14))} percentage={addmissionForm.percentage} />
                 <QuestionTestigoResponsable titulo={'Entendido ¿Alguien fue testigo de lo que sucedió?'}
                                              accionButoonA={() => dispatch(handleSetStep(16))}
                                              accionButoonB={() => dispatch(handleSetStep(17))}
                                              tituloA={'Agregar Testigo'}
                                              tituloB={'No hubo Testigos'} />
-            </div>
-    );
-}
+    </div>
+  );
+};
 
 function mapStateToProps({ addmissionForm }) {
-    return {
-        addmissionForm : addmissionForm
-    }
+  return {
+    addmissionForm: addmissionForm,
+  };
 }
 
 export default connect(mapStateToProps)(QuestionWitness);
-

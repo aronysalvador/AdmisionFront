@@ -11,6 +11,7 @@ const AccidentDescriptionForm = (props) => {
     const { dispatch, addmissionForm } = props 
     const {descripcionAccidente} = addmissionForm
     const comunClass = getComunStyle();
+    
 
     const saveAnswer = (value) =>{
         dispatch(updateForm("descripcionAccidente",value))

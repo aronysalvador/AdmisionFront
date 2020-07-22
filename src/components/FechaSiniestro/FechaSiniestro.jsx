@@ -32,6 +32,7 @@ const FechaSiniestro = ({
   const { actualDay, actualMonth} = getActualDate();
 
 
+
   useEffect(() => {
     if (days < 1) {
       if (month === 1 && days < 1) {
@@ -67,10 +68,9 @@ const FechaSiniestro = ({
       justify="space-between"
       alignItems="center"
       style={{
-        borderSpacing: "1px",
+        background: "white",
         borderRadius: "10px",
-        padding: "10px",
-        border: "2px solid lightgray",
+        padding: "10px"
       }}
     >
       <Grid item>

@@ -35,12 +35,14 @@ const PersonalData = (props) => {
                 <BoxACHS titulo={tituloDireccion}  contenido={contenidoDireccion}/> 
                 <div className={spaceStyle.spaceMin1} />
                 <BoxACHS titulo={tituloTelefono}  contenido={contenidoTelefono}/>
+                <div className={comunClass.bottomElement}>
                 <Button
                         className={comunClass.buttonAchs}
                         variant="contained"
                         onClick={() => dispatch(handleSetStep(6))}>
                         Si, es correcta
                 </Button> 
+                </div>             
             </div>
     );
 }

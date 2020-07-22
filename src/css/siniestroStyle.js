@@ -85,6 +85,11 @@ export const siniestroStyle = makeStyles((theme) => ({
     textTransform: "capitalize",
     textAlign: "left",
     justifyContent: "flex-start",
+    paddingBottom: '15px',
+    paddingTop: '15px',
+    "&:hover": {
+      background: "#104F28"
+    }
   },
   item9: {
     height: "2.5625em",

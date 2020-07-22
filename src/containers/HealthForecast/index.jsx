@@ -6,6 +6,7 @@ import {getComunStyle} from '../../css/comun'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import Cabecera from '../../components/cabecera/index'
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
+import Divider from '@material-ui/core/Divider';
 
 //Action de Redux
 import {sendIsapres} from '../../redux/actions/AdmissionAction'
@@ -34,6 +35,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     const classesComun = getComunStyle()
     const spaceStyle = getSpaceStyle()
 
+     
     return (
             <div className={classesComun.root}>
                 <Cabecera dispatch={() => dispatch(handleSetStep(5.1))} percentage={addmissionForm.percentage} />
@@ -57,14 +59,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
 
                 <div  className={spaceStyle.space2} /> 
 
-                <div>
-                    <div className={classesComun.linePrevisionLeft}></div>
-
-                    
-
-                    <div className={classesComun.linePrevisionRight}></div>
-                </div>
-  
+                <Divider />
                 <div  className={spaceStyle.space2} />
 
                 <div>
@@ -139,7 +134,8 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
 
                 <div  className={spaceStyle.space4} />
 
-                <div>
+
+                <div className={classesComun.bottomElement}>
                   <Button className={classesComun.buttonAchs2} variant="contained"  type="submit" onClick={()=> dispatch(handleSetStep(7))}>
                       Otra Isapre
                   </Button>

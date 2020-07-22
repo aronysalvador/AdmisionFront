@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles({
     tituloConteiner: {
@@ -23,6 +24,8 @@ const useStyles = makeStyles({
         alignItems: 'center',
         color: '#F8F9FA',
         padding :'0.25em 0.25em 0.25em 0.8em',
+        justifyContent: 'space-between',
+        marginRight: '5px'
     },
     contentConteiner:{
         left: '21.5em',
@@ -56,7 +59,9 @@ const BoxACHS = (props) => {
                     <div className={classes.tituloConteiner}>
                         <Typography color="textSecondary" gutterBottom className={classes.tituloText}>
                             {titulo}
+                            <EditIcon />
                         </Typography>
+                      
                     </div>
                     <div className={classes.contentConteiner}>
                         <Typography color="textSecondary" gutterBottom className={classes.contentText}>

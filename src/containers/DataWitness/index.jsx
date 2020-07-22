@@ -63,10 +63,10 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                     Ingresa los datos del testigo
                     </Typography>
                 </div> 
-                <div  className={spaceStyle.space1} />
+                <div  className={spaceStyle.space2} />
 
                 <div>
-                    <Typography variant="p" component="p" className={[classesComun.textAchsContent,welcomeStyle.admisionText]}>
+                    <Typography variant="p" component="p" variant="subtitle2" className={[classesComun.tituloTextbox]}>
                             NOMBRE              
                     </Typography>
                 </div>
@@ -86,7 +86,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                 <div  className={spaceStyle.space1} />
 
                 <div>
-                    <Typography variant="p" component="p" className={[classesComun.textAchsContent,welcomeStyle.admisionText]}>
+                    <Typography variant="p" component="p" variant="subtitle2" className={[classesComun.tituloTextbox]}>
                             CARGO            
                     </Typography>
                 </div>
@@ -131,9 +131,10 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                             />
                 </div>
 
-                <div  className={spaceStyle.space10} />
+                
 
-                <div>
+
+                <div className={classesComun.bottomElement}>
                   <Button className={classesComun.buttonAchs} variant="contained"  type="submit" onClick={()=>  clickSendCargo()}>
                       Agregar Testigo
                   </Button>
