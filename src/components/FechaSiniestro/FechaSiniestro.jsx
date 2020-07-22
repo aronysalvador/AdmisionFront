@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
-import { Button, Grid } from "@material-ui/core";
-import { KeyboardArrowLeft, KeyboardArrowRight, ArrowLeft } from "@material-ui/icons";
-import IconButton from '@material-ui/core/IconButton';
-import { getComunStyle } from "../../css/comun";
+import {  Grid } from "@material-ui/core";
+import {
+  KeyboardArrowLeft,
+  KeyboardArrowRight
+} from "@material-ui/icons";
+import IconButton from "@material-ui/core/IconButton";
 
-const FechaSiniestro = ({ onChange }) => {
+const FechaSiniestro = ({
+  onChange,
+  daysFromState,
+  monthFromState,
+  yearFromState,
+}) => {
   const [days, setDays] = useState(() => {
-    return new Date().getDate();
+    return !daysFromState ? new Date().getDate() : daysFromState;
   });
 
   const [month, setMonth] = useState(() => {
-    return new Date().getMonth() + 1;
+    return !monthFromState ? new Date().getMonth() + 1 : monthFromState;
   });
 
   const [year, setYear] = useState(() => {
-    return new Date().getFullYear();
+    return !yearFromState ? new Date().getFullYear() : yearFromState;
   });
 
   const [monthLastDay, setMonthLastDay] = useState(() => {
     return new Date(year, month, 0).getDate();
   });
 
-  const { actualDay, actualMonth, actualYear } = getActualDate();
-  const { arrowsACHS } = getComunStyle();
+  const { actualDay, actualMonth} = getActualDate();
 
 
   useEffect(() => {
@@ -64,7 +70,7 @@ const FechaSiniestro = ({ onChange }) => {
         borderSpacing: "1px",
         borderRadius: "10px",
         padding: "10px",
-        border: "2px solid lightgray"
+        border: "2px solid lightgray",
       }}
     >
       <Grid item>
@@ -78,9 +84,9 @@ const FechaSiniestro = ({ onChange }) => {
           }}
           style={{
             color: "white",
-            background: "#00B2A9"
+            background: "#00B2A9",
           }}
-          >
+        >
           <KeyboardArrowLeft />
         </IconButton>
       </Grid>
@@ -91,15 +97,17 @@ const FechaSiniestro = ({ onChange }) => {
             fontSize: "18px",
             fontWeight: "bold",
             float: "left",
-            clear: "left"
+            clear: "left",
           }}
         >{`${days} ${monthName}`}</span>
         <span
           style={{
             display: "block",
-            textAlign: "center"
+            textAlign: "center",
           }}
-        >{days === actualDay && month === actualMonth ? "Hoy" : ""}</span>
+        >
+          {days === actualDay && month === actualMonth ? "Hoy" : ""}
+        </span>
       </Grid>
       <Grid item>
         <IconButton
@@ -112,7 +120,7 @@ const FechaSiniestro = ({ onChange }) => {
           }}
           style={{
             color: "white",
-            background: "#00B2A9"
+            background: "#00B2A9",
           }}
         >
           <KeyboardArrowRight />

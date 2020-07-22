@@ -17,25 +17,28 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
 
   const DataWitness = (props) => {
     const { dispatch,addmissionForm } = props
+    const {testigos} = addmissionForm
 
     const welcomeStyle = getWelcomeStyle();  
     const classesComun = getComunStyle();
     const spaceStyle = getSpaceStyle();
 
      //State
-    const [nombre , saveNombre] = useState('');
-    const [cargos , saveCargos] = useState('');
+    const [nombre , saveNombre] = useState(() => {
+        return !testigos ? '' : testigos.nombre;
+      });
+    const [cargos , saveCargos] = useState(() => {
+        return !testigos ? '' : testigos.cargo;
+      });
     const [open, setOpen] = useState(false);
 
-    // eslint-disable-next-line no-use-before-define
     const dispatch1 = useDispatch();
 
     useEffect( () => {       
         //Call Action
         const consultaCargos = () => dispatch1( searchCargos() );
         consultaCargos();
-        // eslint-disable-next-line no-use-before-define
-    }, []);
+    }, []);// eslint-disable-line no-use-before-define
 
     const getCargos = useSelector(state => state.cargosForm.cargos);
 
@@ -48,7 +51,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
             return;
         }
 
-        dispatch1( sendCargo(nombre , cargos.cargo) );
+        dispatch1( sendCargo(nombre , cargos) );
         dispatch(handleSetStep(15.1));
     }
 
@@ -71,12 +74,9 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                 <div>
                     <TextField
                         id="nombre"
-                        // label="Rut"
-                        // value={formateaRut(values.rut)}
-                        onChange={e => saveNombre(e.target.value)}
-                        
+                        value={nombre}
+                        onChange={e => saveNombre(e.target.value)}                       
                         helperText="Ejemplo: Luis Morales"
-                        // error={touched.rut && Boolean(errors.rut)}
                         margin="dense"
                         variant="outlined"
                         fullWidth
@@ -105,7 +105,7 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                             }}
                             getOptionSelected={(option, value) => option.cargo === value.cargo}
                             getOptionLabel={(option) => option.cargo}
-                            options={getCargos.length !== 0 ? getCargos : []}
+                            options={!getCargos ? [] : getCargos}
                             loading={loading}
                             value={cargos}
                             onChange={(event, newValue) => {
@@ -130,8 +130,6 @@ import {searchCargos} from '../../redux/actions/WitnessResponsableAction';
                             fullWidth
                             />
                 </div>
-
-                
 
                 <div  className={spaceStyle.space10} />
 

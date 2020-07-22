@@ -9,6 +9,7 @@ import QuestionForm from '../../components/questions/questionForm'
 const AccidentObjectForm = (props) => {
 
     const { dispatch, addmissionForm } = props
+    const {objetoAccidente} = addmissionForm
     const comunClass = getComunStyle();
 
     const saveAnswer = (value) =>{
@@ -24,7 +25,8 @@ const AccidentObjectForm = (props) => {
                 titulo={"Completa las siguientes frases"} 
                 pregunta={"Se accidentó con ..."} 
                 placeholder={"Ejemplo: Con la escalera - con el suelo - al caer tineta en el pie"} 
-                accion={saveAnswer}/> 
+                accion={saveAnswer}
+                valueFromState={objetoAccidente}/> 
         </div>
     </div> 
     );

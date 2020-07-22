@@ -1,27 +1,22 @@
 import React, {useState } from 'react'
-import { withFormik } from "formik";
-import { connect } from 'react-redux'
 import TextField from '@material-ui/core/TextField'
 import Button from "@material-ui/core/Button"
 import Typography from '@material-ui/core/Typography'
 import {getComunStyle} from '../../css/comun'
-import {getSpaceStyle} from '../../css/spaceStyle'
-import { Accordion } from '@material-ui/core';
 
 const FormQuestion = props => {
-  const {
-    titulo,
-    pregunta,
-    placeholder,
-    accion
-  } = props;
+  const {titulo,pregunta,placeholder,accion, valueFromState} = props;
   
-  const [localValue, setLocalValue] = useState("")
+  //const [localValue, setLocalValue] = useState("")
+  const [localValue, setLocalValue] = useState(() => {
+    return !valueFromState ? '' : valueFromState
+  })
+
   const onChangeHandler = event => {
     setLocalValue(event.target.value);
   };
   const classesComun =  getComunStyle()
-  const spaceStyle = getSpaceStyle()
+
 
   const isDisabled = () =>{
     return localValue.length < 5;
@@ -36,9 +31,8 @@ const FormQuestion = props => {
         </div>
         <div>
             <Typography variant="h2" component="h2" className={classesComun.pregunta}>
-                
                 {pregunta}
-                    </Typography>
+            </Typography>
         </div>
         <div>
             <TextField

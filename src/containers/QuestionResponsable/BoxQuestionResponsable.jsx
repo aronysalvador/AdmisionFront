@@ -11,7 +11,7 @@ import BoxTestigosResponsable from '../../components/questions/BoxTestigosRespon
     const classesComun = getComunStyle()
 
     const tituloTestigo = "Responsable"
-    const contenidoResponsable = [addmissionForm.responsable.nombre,<br />,addmissionForm.responsable.cargo, <br />,'Avisado el '+addmissionForm.fechaHoraResponsable.days +'-'+ addmissionForm.fechaHoraResponsable.month +'-'+ addmissionForm.fechaHoraResponsable.year];
+    const contenidoResponsable = [addmissionForm.responsable.nombre,<br />,addmissionForm.responsable.cargo.cargo, <br />,'Avisado el '+addmissionForm.fechaHoraResponsable.days +'-'+ addmissionForm.fechaHoraResponsable.month +'-'+ addmissionForm.fechaHoraResponsable.year];
 
 
     return (

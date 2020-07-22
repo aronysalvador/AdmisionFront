@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
@@ -10,12 +10,14 @@ import { validateEmailFormat } from "../../helpers/email";
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
   const {
-    addmissionForm: { step, percentage, usuarioEmail },
+    addmissionForm: { step, percentage, emailusuario },
   } = useSelector((state) => state, shallowEqual);
+console.log({emailusuario})
+
 
   let stepx = step;
   const [userEmail, setUserEmail] = useState(() => {
-    return !usuarioEmail ? "" : usuarioEmail;
+    return !emailusuario ? "" : emailusuario;
   });
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, pregunta } = getComunStyle();
@@ -44,7 +46,7 @@ const ValidarCorreoElectronico = () => {
       />
       <Button
         className={buttonAchs}
-        disabled={userEmail.length === 0 || !isEmailValid}
+        disabled={userEmail === undefined || userEmail.length === 0 || !isEmailValid}
         onClick={() =>
           isEmailValid &&
           dispatch(updateForm("emailusuario", userEmail)) &&

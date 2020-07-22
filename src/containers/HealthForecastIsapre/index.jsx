@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { connect , useDispatch , useSelector} from 'react-redux'
+import { connect , useDispatch , useSelector, shallowEqual} from 'react-redux'
 import Button from "@material-ui/core/Button"
 import Typography from '@material-ui/core/Typography'
 import {getComunStyle} from '../../css/comun'
@@ -16,21 +16,21 @@ import {sendIsapres} from '../../redux/actions/AdmissionAction'
 import {searchIsapres} from '../../redux/actions/PrevisionAction'
 
   const HealthForecastIsapre = (props) => {
+    const {isapreSeleccionado} = useSelector(state => state.addmissionForm , shallowEqual);
     const { dispatch,addmissionForm } = props
 
     const welcomeStyle = getWelcomeStyle();  
     const classesComun = getComunStyle()
     const spaceStyle = getSpaceStyle()
 
-
     //State
-    const [isapres , saveIsapres] = useState('');
-    const [open, setOpen] = useState(true);
-    
+    const [isapres , saveIsapres] = useState((isapreSeleccionado));
+    const [open, setOpen] = useState(false);
+    const [isIsapresValid, setIsIsapresValid] = useState(true);
+
     const dispatch1 = useDispatch();
 
-    useEffect( () => {
-        
+    useEffect( () => {      
         //Call Action
         const consultaIsapres = () => dispatch1( searchIsapres() );
         consultaIsapres();
@@ -44,10 +44,10 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
     const clickSendIsapres = () => {
 
         if( isapres === null){
-            console.log('Necesita llenar los campos');
+            setIsIsapresValid(false)
             return;
         }
-        dispatch1( sendIsapres(isapres.id) );
+        dispatch1( sendIsapres(isapres) );
         dispatch(handleSetStep(8))
     }
 
@@ -66,8 +66,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                                 ISAPRE               
                         </Typography>
                     </div>
-                    <div>
-                        
+                    <div>               
                         <Autocomplete
                             id="asynchronous-demo"
                             style={{ width: 300 }}
@@ -89,7 +88,8 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                             renderInput={(params) => (
                                 <TextField
                                 {...params}
-                                
+                                error={!isIsapresValid}
+                                helperText={!isIsapresValid && "Escriba o Seleccione al menos una Isapres"}
                                 variant="outlined"
                                 InputProps={{
                                     ...params.InputProps,

@@ -49,7 +49,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   variant="contained"  
                   type="submit"
                   value={ getIsapres.length !== 0 ? getIsapres[0].id : null}
-                  onClick={() => clickSendIsapres(getIsapres[0].id)}
+                  onClick={() => clickSendIsapres(getIsapres[0])}
                   >
                       {(getIsapres.length !== 0)  ? <p>{getIsapres[0].nombre}</p>: null}
                   </Button>
@@ -73,7 +73,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   variant="contained"  
                   type="submit"                 
                   value={getIsapres.length !== 0 ? getIsapres[1].id : null}
-                  onClick={() => clickSendIsapres(getIsapres[1].id)}
+                  onClick={() => clickSendIsapres(getIsapres[1])}
                   >
 
                         {getIsapres.length !== 0 ? <p>{getIsapres[1].nombre}</p>: null}
@@ -84,7 +84,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                    variant="contained"  
                    type="submit"
                    value={getIsapres.length !== 0 ? getIsapres[2].id : null}
-                   onClick={() => clickSendIsapres(getIsapres[2].id)}
+                   onClick={() => clickSendIsapres(getIsapres[2])}
                    >
                        {getIsapres.length !== 0 ? <p>{getIsapres[2].nombre}</p>: null}
                   </Button>  
@@ -99,7 +99,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   variant="contained"  
                   type="submit"
                   value={getIsapres.length !== 0 ? getIsapres[3].id : null}
-                  onClick={() => clickSendIsapres(getIsapres[3].id)}
+                  onClick={() => clickSendIsapres(getIsapres[3])}
                   >
                       {getIsapres.length !== 0 ? <p>{getIsapres[3].nombre}</p>: null}
                   </Button>
@@ -108,7 +108,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   variant="contained" 
                   type="submit"
                   value={getIsapres.length !== 0 ? getIsapres[4].id : null}
-                  onClick={() => clickSendIsapres(getIsapres[4].id)}
+                  onClick={() => clickSendIsapres(getIsapres[4])}
                    >
                       {getIsapres.length !== 0 ? <p>{getIsapres[4].nombre}</p>: null}
                   </Button>                        
@@ -122,7 +122,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   variant="contained"  
                   type="submit"
                   value={getIsapres.length !== 0 ? getIsapres[5].id : null}
-                  onClick={() => clickSendIsapres(getIsapres[5].id)}
+                  onClick={() => clickSendIsapres(getIsapres[5])}
                   >
                       {getIsapres.length !== 0 ? <p>{getIsapres[5].nombre}</p>: null}
                   </Button>
@@ -131,7 +131,7 @@ import {searchIsapres} from '../../redux/actions/PrevisionAction'
                   variant="contained"  
                   type="submit"
                   value={getIsapres.length !== 0 ? getIsapres[6].id : null}
-                  onClick={() => clickSendIsapres(getIsapres[6].id)}
+                  onClick={() => clickSendIsapres(getIsapres[6])}
                   >
                       {getIsapres.length !== 0 ? <p>{getIsapres[6].nombre}</p>: null}
                   </Button>                      

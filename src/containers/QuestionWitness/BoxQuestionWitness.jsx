@@ -11,7 +11,7 @@ import BoxTestigosResponsable from '../../components/questions/BoxTestigosRespon
     const classesComun = getComunStyle()
 
     const tituloTestigo = "Testigo"
-    const contenidoTestigo = [addmissionForm.testigos.nombre,<br />,addmissionForm.testigos.cargo]
+    const contenidoTestigo = [addmissionForm.testigos.nombre,<br />,addmissionForm.testigos.cargo.cargo]
 
 
     return (

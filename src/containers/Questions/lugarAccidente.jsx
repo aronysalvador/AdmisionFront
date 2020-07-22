@@ -11,6 +11,8 @@ const AccidentPlaceForm = (props) => {
     const { dispatch, addmissionForm } = props
     const comunClass = getComunStyle();
 
+    const {lugarAccidente} = addmissionForm
+
     const saveAnswer = (value) =>{
         dispatch(updateForm("lugarAccidente",value))
         dispatch(handleSetStep(++addmissionForm.step))        
@@ -23,7 +25,8 @@ const AccidentPlaceForm = (props) => {
             <QuestionForm  titulo={"Completa las siguientes frases"} 
                 pregunta={"Al momento del accidente estaba ..."} 
                 placeholder={"Ejemplo: Caminando por el patio del colegio, corriendo para alcanzar la micro, sentado en mi escritorio"} 
-                accion={saveAnswer}/> 
+                accion={saveAnswer}
+                valueFromState={lugarAccidente}/> 
         </div>
     </div> 
     );
