@@ -57,23 +57,36 @@ export const formatRut = (rut) => {
 export const saveRut = (rut) => {
   return (dispatch) => {
     Axios.get(
-      `http://ci-desa-msorquestador.eastus.azurecontainer.io/api/employee/isAfiliado?rut=${rut}`
+      `http://ci-desa-msorquestador.eastus.azurecontainer.io/api/sap/isAfiliado?rut=${rut}`
     )
       .then((result) => {
-        let isAfiliado = result.data.content[0].isAfiliado;
+
+        //telefonoParticular":"955183205"}],"status":200,"mensaje":"Operacion exitosa"}
+
+        let isAfiliado = result.data.content[0].IsAfiliado;
         if (isAfiliado) {
           dispatch(handleSetStep(5.1));
-          dispatch(updateForm("empresa", result.data.content[0].RutEmpresa));
+          dispatch(updateForm("empresa", result.data.content[0].NombreEmpresa));
           dispatch(
-            updateForm("rutEmpresa", result.data.content[0].NombreEmpresa)
+            updateForm("rutEmpresa", result.data.content[0].RutPagador)
           );
-          dispatch(updateForm("isAfiliado", "Si"));
+          dispatch(updateForm("isAfiliado", "Si"))
+          dispatch(updateForm("SucursalEmpresa", result.data.content[0].SucursalEmpresa))
+          dispatch(updateForm("DireccionEmpresa", result.data.content[0].DireccionEmpresa))
+          dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa))
+          dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular))
+          dispatch(updateForm("telefonoParticular", result.data.content[0].telefonoParticular))
         } else {
-          dispatch(setStep(500, 0));
-          dispatch(updateForm("rut", ""));
-          dispatch(updateForm("empresa", ""));
-          dispatch(updateForm("rutEmpresa", ""));
-          dispatch(updateForm("isAfiliado", ""));
+          dispatch(setStep(500, 0))
+          dispatch(updateForm("rut", ""))
+          dispatch(updateForm("empresa", ""))
+          dispatch(updateForm("rutEmpresa", ""))
+          dispatch(updateForm("isAfiliado", "No"))
+          dispatch(updateForm("SucursalEmpresa",""))
+          dispatch(updateForm("DireccionEmpresa",""))
+          dispatch(updateForm("comunaEmpresa", ""))
+          dispatch(updateForm("direccionParticular", ""))
+          dispatch(updateForm("telefonoParticular", ""))        
         }
       })
       .catch((error) => {
