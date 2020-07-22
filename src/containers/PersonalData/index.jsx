@@ -21,10 +21,10 @@ const PersonalData = (props) => {
     addmissionForm.rutEmpresa,
   ];
 
-  const tituloDireccion = "Direcci&oacute;n particular";
+  const tituloDireccion = "Dirección particular";
   const contenidoDireccion = [<br />, <br />];
 
-  const tituloTelefono = "Tel&eacute;fono personal";
+  const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [<br />];
 
   return (
