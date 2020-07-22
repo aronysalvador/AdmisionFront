@@ -6,6 +6,7 @@ import { siniestroStyle } from "../../css/siniestroStyle";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { validateEmailFormat } from "../../helpers/email";
+import { getSpaceStyle } from "../../css/spaceStyle";
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const ValidarCorreoElectronico = () => {
   });
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, pregunta, bottomElement } = getComunStyle();
+  const spaceStyle = getSpaceStyle();
   const { mobileLabel } = siniestroStyle();
 
   return (
@@ -29,6 +31,7 @@ const ValidarCorreoElectronico = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>Por último, escribe tu email</Typography>
+      <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>
       <TextField
         value={userEmail}
@@ -46,6 +49,7 @@ const ValidarCorreoElectronico = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
+          variant="contained"
           disabled={
             userEmail === undefined || userEmail.length === 0 || !isEmailValid
           }

@@ -116,6 +116,9 @@ const FechaSiniestro = ({
           style={{
             color: "white",
             background: "#00B2A9",
+            "&:hover": {
+              background: "red !important"
+            }
           }}
         >
           <KeyboardArrowRight />

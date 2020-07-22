@@ -67,6 +67,7 @@ const LugarReferenciaSiniestro = () => {
         <Button
           disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
           className={buttonAchs}
+          variant="contained"
           onClick={() => {
             dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
             dispatch(handleSetStep(++stepx));

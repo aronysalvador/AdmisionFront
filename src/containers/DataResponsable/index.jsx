@@ -72,7 +72,7 @@ const DataResponsable = (props) => {
         <Typography
           variant="p"
           component="p"
-          className={[classesComun.textAchsContent, welcomeStyle.admisionText]}
+          className={[classesComun.tituloTextbox]}
         >
           NOMBRE
         </Typography>
@@ -96,7 +96,7 @@ const DataResponsable = (props) => {
         <Typography
           variant="p"
           component="p"
-          className={[classesComun.textAchsContent, welcomeStyle.admisionText]}
+          className={[classesComun.tituloTextbox]}
         >
           CARGO
         </Typography>
@@ -105,7 +105,7 @@ const DataResponsable = (props) => {
       <div>
         <Autocomplete
           id="asynchronous-demo"
-          style={{ width: 310, height: 50 }}
+          style={{ width: 310, height: 40 }}
           open={open}
           onOpen={() => {
             setOpen(true);
