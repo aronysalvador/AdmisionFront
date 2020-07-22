@@ -28,7 +28,7 @@ const HoraSiniestro = ({ onChange, horasFromState, minutosFromState }) => {
         style={{
           background: "white",
           borderRadius: "10px",
-          padding: "8px"
+          padding: "8px",
         }}
       >
         <div style={{ textAlign: "center", fontSize: "12px" }}>hora</div>

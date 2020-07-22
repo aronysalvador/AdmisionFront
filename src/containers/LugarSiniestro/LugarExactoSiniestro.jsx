@@ -51,7 +51,7 @@ const LugarExactoSiniestro = () => {
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="subtitle2">
-        Direcci&oacute;n accidente
+        Dirección accidente
       </Typography>
       <AutoComplete
         value={sucursal}
@@ -69,8 +69,8 @@ const LugarExactoSiniestro = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
-        disabled={!sucursal || !isLugarExactoAccidenteValid}
-        onClick={() => {
+          disabled={!sucursal || !isLugarExactoAccidenteValid}
+          onClick={() => {
             dispatch(updateForm("sucursalEmpresaSiniestro", sucursal));
             dispatch(handleSetStep(step + 1));
           }}
