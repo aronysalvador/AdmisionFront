@@ -28,6 +28,9 @@ export const getComunStyle = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'flex-end',
     },
+    pregunta_temp: {
+        fontSize: '1.1em !important',
+    },
     buttonAchs: {
         width: '100%',
         background: '#007A33',
@@ -67,12 +70,16 @@ export const getComunStyle = makeStyles((theme) => ({
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: '1.125em',
+        fontSize: '0.75em',
+        // fontSize: '1.125em',
         lineHeight: '1.125em',
         color: '#FFFFFF',
         textTransform: 'capitalize',
-        height: '3.5em',
-        float: 'right'
+        height: '4.8em',
+        float: 'right',
+        "&:hover": {
+            background: "#104F28"
+        }
     },
     buttonAchsLeft: {
         width: '46%',
@@ -81,12 +88,16 @@ export const getComunStyle = makeStyles((theme) => ({
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: '1.125em',
+        fontSize: '0.75em',
+        // fontSize: '1.125em',
         lineHeight: '1.125em',
         color: '#FFFFFF',
         textTransform: 'capitalize',
-        height: '3.5em',
-        float: 'left'
+        height: '4.8em',
+        float: 'left',
+        "&:hover": {
+            background: "#104F28"
+        }
     },
     buttonVolverContainer: {
         width: '20%',
