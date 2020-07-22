@@ -91,10 +91,16 @@ const Main = (props) => {
         return <DataResponsable />;
       case 19:
         return <FechaHoraResponsable />;
-      case 500:
+      case 500: {
+        sessionStorage.clear()
         return <PacienteNoAfiliadoError />;
-      default:
+      }
+        
+      default:{
+        sessionStorage.clear()
         return <div>Error</div>;
+      }
+        
     }
   };
 
