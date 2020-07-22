@@ -29,6 +29,9 @@ const siniestroStyle = makeStyles((theme) => ({
     textTransform: "capitalize",
     textAlign: "left",
     justifyContent: "flex-start",
+    "&:hover": {
+      background: "#104F28"
+  }
   },
   img: {
     height: "1.5em",
