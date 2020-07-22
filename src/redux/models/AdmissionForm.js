@@ -12,7 +12,7 @@ export const AdmissionForm = {
   objetoAccidente: "",
   descripcionAccidente: "",
 
-  testigos: [],
+  testigos: { cargo: ''},
   responsable: [],
   fechaHoraResponsable: {},
   fechaHoraSiniestro: {},
