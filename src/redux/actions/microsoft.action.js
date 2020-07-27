@@ -23,9 +23,7 @@ export const login = (scopes) => async (dispatch) => {
     await msalservice.loginPopup({ scopes, prompt: "select_account" });
     const user = await getUserProfile(scopes);
     const userTempArray = user.displayName.split(",");
-
     let iniciales = "";
-    console.log(userTempArray);
     if (Array.isArray(userTempArray) && userTempArray.length === 2) {
       iniciales =
         String(userTempArray[1]).trim().charAt(0) +
@@ -40,7 +38,6 @@ export const login = (scopes) => async (dispatch) => {
     dispatch(handleSetStep(1));
   } catch (err) {
     let error = {};
-
     if (typeof err === "string") {
       const errParts = err.split("|");
       error =
@@ -53,8 +50,8 @@ export const login = (scopes) => async (dispatch) => {
         debug: JSON.stringify(err),
       };
     }
+    alert(error.message)
     dispatch({ type: MSAL_FAILURE, payload: { error } });
-    dispatch(handleSetStep(5001));
   }
 };
 
