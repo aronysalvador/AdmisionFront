@@ -21,24 +21,24 @@ const SeleccionarSucursalTrabajo = () => {
       numero: 789,
       comunaNombre: "Providencia",
     },
-    // {
-    //   id: 3,
-    //   nombreSucursal: "Av Cobres Vitacura",
-    //   numero: 7890,
-    //   comunaNombre: "Vitacura",
-    // },
-    // {
-    //   id: 4,
-    //   nombreSucursal: "Plaza Maipu",
-    //   numero: 2000,
-    //   comunaNombre: "Maipu",
-    // },
-    // {
-    //   id: 5,
-    //   nombreSucursal: "Vicuña Mackenna",
-    //   numero: 1200,
-    //   comunaNombre: "La Florida",
-    // },
+    {
+      id: 3,
+      nombreSucursal: "Av Cobres Vitacura",
+      numero: 7890,
+      comunaNombre: "Vitacura",
+    },
+    {
+      id: 4,
+      nombreSucursal: "Plaza Maipu",
+      numero: 2000,
+      comunaNombre: "Maipu",
+    },
+    {
+      id: 5,
+      nombreSucursal: "Vicuña Mackenna",
+      numero: 1200,
+      comunaNombre: "La Florida",
+    },
   ];
 
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const SeleccionarSucursalTrabajo = () => {
           justifyContent: "space-between",
           alignItems: "center",
           flexDirection: "row",
-          flexWrap: "nowrap",
+          flexWrap: "wrap",
         }}
       >
         {sucursales.map((sucursal) => (

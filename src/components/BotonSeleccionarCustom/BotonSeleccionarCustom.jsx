@@ -5,6 +5,7 @@ const BotonSeleccionarCustom = ({ nombreSucursal, numero, comunaNombre }) => {
   return (
     <div
       style={{
+        marginTop: "10px",
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
