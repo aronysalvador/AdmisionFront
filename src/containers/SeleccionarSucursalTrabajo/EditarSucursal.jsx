@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { sucursalesOficina } from "../../util/fakeApi";
 import SeleccionarSucursalTrabajo from "./SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./SeleccionarComuna";
