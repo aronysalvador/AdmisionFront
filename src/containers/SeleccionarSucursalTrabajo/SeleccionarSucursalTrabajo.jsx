@@ -5,6 +5,7 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
+import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 
 const SeleccionarSucursalTrabajo = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,11 @@ const SeleccionarSucursalTrabajo = () => {
       <Typography className={pregunta}>
         Selecciona la sucursal en donde trabajas
       </Typography>
+      <BotonSeleccionarCustom
+        nombreSucursal={"Av C. Valdovinos"}
+        numero={"1523"}
+        comunaNombre={"Santiago"}
+      />
     </div>
   );
 };
