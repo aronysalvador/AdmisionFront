@@ -136,6 +136,20 @@ export const getComunStyle = makeStyles((theme) => ({
         fontStyle: 'normal',
         color: '#373737',
         textTransform: 'uppercase'
+    },
+    default_tabStyle:{
+        background: '#007A33',
+        height:'30px',
+        borderRadius: '4px'
+    },
+    active_tabStyle:{
+        fontSize:11,
+        color: 'white',
+        backgroundColor: 'red',
+    },
+    tab_principal: {
+        height: '30px  !impotant'
     }
+
 
 }))
