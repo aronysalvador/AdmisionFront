@@ -30,6 +30,7 @@ import DataResponsable from "../DataResponsable/index";
 import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
+import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -91,16 +92,17 @@ const Main = (props) => {
         return <DataResponsable />;
       case 19:
         return <FechaHoraResponsable />;
+      case 100: //Tony Agregar seleccionar sucursal
+        return <SeleccionarSucursalTrabajo />;
       case 500: {
-        sessionStorage.clear()
+        sessionStorage.clear();
         return <PacienteNoAfiliadoError />;
       }
-        
-      default:{
-        sessionStorage.clear()
+
+      default: {
+        sessionStorage.clear();
         return <div>Error</div>;
       }
-        
     }
   };
 
