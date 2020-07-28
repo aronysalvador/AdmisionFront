@@ -6,6 +6,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
+import CardSucursal from "../../components/CardSucursal/CardSucursal";
 
 const SeleccionarComuna = () => {
   const comunas = [
@@ -23,7 +24,13 @@ const SeleccionarComuna = () => {
     { key: 13112, value: "La Pintana", parent: 13000 },
   ];
   const dispatch = useDispatch();
-  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+  const {
+    buttonAchs,
+    root,
+    pregunta,
+    bottomElement,
+    tituloTextbox,
+  } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const { step, percentage } = useSelector(
@@ -39,6 +46,10 @@ const SeleccionarComuna = () => {
       <Typography className={pregunta}>
         Selecciona la comuna en donde trabajas
       </Typography>
+      <div className={spaceStyle.space2}></div>
+      <Typography className={tituloTextbox} variant="subtitle2">
+        Comuna
+      </Typography>
       <AutoComplete
         onChange={(event, value) => {
           console.log({ value });
@@ -49,6 +60,8 @@ const SeleccionarComuna = () => {
         getOptionLabel={(option) => option.value}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
+      <div className={spaceStyle.space2}></div>
+      <CardSucursal />
       <div className={bottomElement}>
         <Button className={buttonAchs} variant="contained" disabled={false}>
           Confirmar
