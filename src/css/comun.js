@@ -136,6 +136,14 @@ export const getComunStyle = makeStyles((theme) => ({
         fontStyle: 'normal',
         color: '#373737',
         textTransform: 'uppercase'
+    },
+    tituloSelectorFecha: {
+        letterSpacing: '2px',
+        fontSize : '0.875em',
+        fontWeight: 'bold',
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        color: '#373737',
     }
 
 }))

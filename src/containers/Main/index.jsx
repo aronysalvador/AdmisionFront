@@ -20,9 +20,9 @@ import { getAccount } from "../../redux/actions/microsoft.action";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
-import AccidentPlaceForm from "../Questions/lugarAccidente";
-import AccidentDescription from "../Questions/descripcionAccidente";
-import AccidentObjectForm from "../Questions/objetoAccidente";
+import AccidentPlaceForm from "../Questions/LugarAccidente";
+import AccidentDescription from "../Questions/DescripcionAccidente";
+import AccidentObjectForm from "../Questions/ObjetoAccidente";
 import QuestionWitness from "../QuestionWitness/index";
 import DataWitness from "../DataWitness/index";
 import QuestionResponsable from "../QuestionResponsable/index";
@@ -30,6 +30,7 @@ import DataResponsable from "../DataResponsable/index";
 import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
+import JornadaLaboralContainer from "../JornadaLaboral/Index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -91,6 +92,8 @@ const Main = (props) => {
         return <DataResponsable />;
       case 19:
         return <FechaHoraResponsable />;
+      case 20:
+        return <JornadaLaboralContainer />;
       case 500: {
         sessionStorage.clear()
         return <PacienteNoAfiliadoError />;

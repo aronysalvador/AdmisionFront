@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import QuestionTestigoResponsable from "../../components/questions/QuestionTestigoResponsable";
+import QuestionTestigoResponsable from "../../components/Questions/QuestionTestigoResponsable";
 
 const QuestionResponsable = (props) => {
   const { dispatch, addmissionForm } = props;

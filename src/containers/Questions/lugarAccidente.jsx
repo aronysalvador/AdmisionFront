@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
-import QuestionForm from "../../components/questions/questionForm";
+import QuestionForm from "../../components/Questions/questionForm";
 
 const AccidentPlaceForm = (props) => {
   const { dispatch, addmissionForm } = props;
