@@ -94,8 +94,8 @@ const Main = (props) => {
       case 19:
         return <FechaHoraResponsable />;
       case 100: //Tony Agregar seleccionar sucursal
-        // return <SeleccionarSucursalTrabajo />;
-        return <SeleccionarComuna />;
+        return <SeleccionarSucursalTrabajo />;
+      // return <SeleccionarComuna />;
       case 500: {
         sessionStorage.clear();
         return <PacienteNoAfiliadoError />;

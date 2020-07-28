@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
+import { getComunStyle } from "../../css/comun";
 
 const BotonSeleccionarCustom = ({ nombreSucursal, numero, comunaNombre }) => {
+  const [isSelected, setIsSelected] = useState(false);
+  const { botonSeleccionado } = getComunStyle();
   return (
     <div
+      onClick={() => setIsSelected((selected) => !selected)}
+      className={isSelected === true ? botonSeleccionado : ""}
       style={{
         marginTop: "10px",
         display: "flex",
@@ -13,7 +18,7 @@ const BotonSeleccionarCustom = ({ nombreSucursal, numero, comunaNombre }) => {
         width: "45%",
         height: "100px",
         borderStyle: "solid",
-        borderColor: "black",
+        borderColor: "#787878",
         borderSpacing: "2px",
         borderRadius: "10px",
         paddingTop: "15px",
@@ -21,13 +26,10 @@ const BotonSeleccionarCustom = ({ nombreSucursal, numero, comunaNombre }) => {
       }}
     >
       <div style={{ textAlign: "center" }}>
-        <span style={{ fontSize: "14px", color: "black" }}>
-          {nombreSucursal}
-        </span>{" "}
-        <br />
-        <span style={{ fontSize: "14px", color: "black" }}>{numero}</span>
+        <span style={{ fontSize: "14px" }}>{nombreSucursal}</span> <br />
+        <span style={{ fontSize: "14px" }}>{numero}</span>
       </div>
-      <span style={{ fontSize: "12px", color: "gray" }}>{comunaNombre}</span>
+      <span style={{ fontSize: "12px" }}>{comunaNombre}</span>
     </div>
   );
 };
