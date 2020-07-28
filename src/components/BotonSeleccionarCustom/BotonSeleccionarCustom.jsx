@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ButtonBase } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 const BotonSeleccionarCustom = ({ nombreSucursal, numero, comunaNombre }) => {
   return (

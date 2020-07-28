@@ -8,6 +8,39 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 
 const SeleccionarSucursalTrabajo = () => {
+  const sucursales = [
+    {
+      id: 1,
+      nombreSucursal: "Av Vicuña Mackenna",
+      numero: 1200,
+      comunaNombre: "Santiago",
+    },
+    {
+      id: 2,
+      nombreSucursal: "Padre Mariano",
+      numero: 789,
+      comunaNombre: "Providencia",
+    },
+    // {
+    //   id: 3,
+    //   nombreSucursal: "Av Cobres Vitacura",
+    //   numero: 7890,
+    //   comunaNombre: "Vitacura",
+    // },
+    // {
+    //   id: 4,
+    //   nombreSucursal: "Plaza Maipu",
+    //   numero: 2000,
+    //   comunaNombre: "Maipu",
+    // },
+    // {
+    //   id: 5,
+    //   nombreSucursal: "Vicuña Mackenna",
+    //   numero: 1200,
+    //   comunaNombre: "La Florida",
+    // },
+  ];
+
   const dispatch = useDispatch();
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -26,11 +59,20 @@ const SeleccionarSucursalTrabajo = () => {
       <Typography className={pregunta}>
         Selecciona la sucursal en donde trabajas
       </Typography>
-      <BotonSeleccionarCustom
-        nombreSucursal={"Av C. Valdovinos"}
-        numero={"1523"}
-        comunaNombre={"Santiago"}
-      />
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexDirection: "row",
+          flexWrap: "nowrap",
+        }}
+      >
+        {sucursales.map((sucursal) => (
+          <BotonSeleccionarCustom {...sucursal} />
+        ))}
+      </div>
     </div>
   );
 };
