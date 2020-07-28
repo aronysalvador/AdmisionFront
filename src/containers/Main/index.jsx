@@ -96,6 +96,9 @@ const Main = (props) => {
       case 100: //Tony Agregar seleccionar sucursal
         // return <SeleccionarSucursalTrabajo />;
         return <SeleccionarComuna />;
+      case 101: //Tony Agregar seleccionar sucursal
+        // return <SeleccionarSucursalTrabajo />;
+        return <SeleccionarSucursalTrabajo />;
       case 500: {
         sessionStorage.clear();
         return <PacienteNoAfiliadoError />;

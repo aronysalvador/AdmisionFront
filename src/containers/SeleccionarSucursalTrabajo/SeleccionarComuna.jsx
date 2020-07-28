@@ -25,6 +25,8 @@ const SeleccionarComuna = () => {
     { key: 13112, value: "La Pintana", parent: 13000 },
   ];
   const [numeroSucursales, setNumeroSucursales] = useState(0);
+  const [sucursales, setSucursales] = useState([]);
+  const [comuna, setComuna] = useState({});
   const dispatch = useDispatch();
   const {
     buttonAchs,
@@ -39,6 +41,7 @@ const SeleccionarComuna = () => {
     (state) => state.addmissionForm,
     shallowEqual
   );
+  let stepx = step;
   return (
     <div className={root}>
       <Cabecera
@@ -54,11 +57,13 @@ const SeleccionarComuna = () => {
       </Typography>
       <AutoComplete
         onChange={(event, value) => {
-          const numeroSucursalesComuna = sucursalesOficina.filter(
+          const sucursalesComuna = sucursalesOficina.filter(
             (x) => x.key == value?.key
-          ).length;
-          setNumeroSucursales(numeroSucursalesComuna);
-          console.log({ value, numeroSucursalesComuna });
+          );
+          setNumeroSucursales(sucursalesComuna.length);
+          setSucursales(sucursalesComuna);
+          setComuna(value);
+          console.log({ value, sucursalesComuna });
         }}
         size="small"
         fullWidth
@@ -69,7 +74,17 @@ const SeleccionarComuna = () => {
       <div className={spaceStyle.space2}></div>
       {numeroSucursales === 1 ? <CardSucursal /> : null}
       <div className={bottomElement}>
-        <Button className={buttonAchs} variant="contained" disabled={false}>
+        <Button
+          className={buttonAchs}
+          variant="contained"
+          disabled={false}
+          onClick={() => {
+            dispatch(updateForm("cantidadSucursales", numeroSucursales));
+            dispatch(updateForm("sucursales", sucursales));
+            dispatch(updateForm("comunaSucursal", comuna));
+            dispatch(handleSetStep(++stepx));
+          }}
+        >
           Confirmar
         </Button>
       </div>

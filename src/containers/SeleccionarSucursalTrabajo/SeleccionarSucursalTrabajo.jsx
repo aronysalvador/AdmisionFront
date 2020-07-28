@@ -21,7 +21,7 @@ const SeleccionarSucursalTrabajo = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(8))}
+        dispatch={() => dispatch(handleSetStep(100))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
