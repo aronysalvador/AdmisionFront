@@ -7,6 +7,7 @@ import { getComunStyle } from "../../css/comun";
 import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
+import { sucursalesOficina } from "../../util/fakeApi";
 
 const SeleccionarComuna = () => {
   const comunas = [
@@ -23,6 +24,7 @@ const SeleccionarComuna = () => {
     { key: 13111, value: "La Granja", parent: 13000 },
     { key: 13112, value: "La Pintana", parent: 13000 },
   ];
+  const [numeroSucursales, setNumeroSucursales] = useState(0);
   const dispatch = useDispatch();
   const {
     buttonAchs,
@@ -52,7 +54,11 @@ const SeleccionarComuna = () => {
       </Typography>
       <AutoComplete
         onChange={(event, value) => {
-          console.log({ value });
+          const numeroSucursalesComuna = sucursalesOficina.filter(
+            (x) => x.key == value?.key
+          ).length;
+          setNumeroSucursales(numeroSucursalesComuna);
+          console.log({ value, numeroSucursalesComuna });
         }}
         size="small"
         fullWidth
@@ -61,7 +67,7 @@ const SeleccionarComuna = () => {
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={spaceStyle.space2}></div>
-      <CardSucursal />
+      {numeroSucursales === 1 ? <CardSucursal /> : null}
       <div className={bottomElement}>
         <Button className={buttonAchs} variant="contained" disabled={false}>
           Confirmar

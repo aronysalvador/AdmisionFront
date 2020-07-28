@@ -6,43 +6,11 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
+import { sucursalesOficina } from "../../util/fakeApi";
 
 const SeleccionarSucursalTrabajo = () => {
-  const sucursales = [
-    {
-      id: 1,
-      nombreSucursal: "Av Vicuña Mackenna",
-      numero: 1200,
-      comunaNombre: "Santiago",
-    },
-    {
-      id: 2,
-      nombreSucursal: "Padre Mariano",
-      numero: 789,
-      comunaNombre: "Providencia",
-    },
-    {
-      id: 3,
-      nombreSucursal: "Av Cobres Vitacura",
-      numero: 7890,
-      comunaNombre: "Vitacura",
-    },
-    {
-      id: 4,
-      nombreSucursal: "Plaza Maipu",
-      numero: 2000,
-      comunaNombre: "Maipu",
-    },
-    {
-      id: 5,
-      nombreSucursal: "Vicuña Mackenna",
-      numero: 1200,
-      comunaNombre: "La Florida",
-    },
-  ];
-
   const dispatch = useDispatch();
-  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+  const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const { step, percentage } = useSelector(
@@ -69,7 +37,7 @@ const SeleccionarSucursalTrabajo = () => {
           flexWrap: "wrap",
         }}
       >
-        {sucursales.map((sucursal) => (
+        {sucursalesOficina.map((sucursal) => (
           <BotonSeleccionarCustom {...sucursal} />
         ))}
       </div>
