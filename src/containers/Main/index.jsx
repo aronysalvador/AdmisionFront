@@ -33,6 +33,7 @@ import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsabl
 import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
 import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
+import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -99,7 +100,7 @@ const Main = (props) => {
         return <EditarSucursal />;
       case 101: //Tony Agregar seleccionar sucursal
         // return <SeleccionarSucursalTrabajo />;
-        return <SeleccionarSucursalTrabajo />;
+        return <RouteComuna />;
       case 500: {
         sessionStorage.clear();
         return <PacienteNoAfiliadoError />;

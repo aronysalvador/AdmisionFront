@@ -12,7 +12,8 @@ const EditarSucursal = () => {
     (state) => state.addmissionForm,
     shallowEqual
   );
-  if (cantidadSucursales <= 6) return <SeleccionarSucursalTrabajo />;
+  if (cantidadSucursales <= 6)
+    return <SeleccionarSucursalTrabajo sucursalesEmpresa={sucursalesOficina} />;
   if (cantidadSucursales > 6) return <SeleccionarComuna />;
   return <div>No tiene sucursales</div>;
 };

@@ -8,7 +8,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { sucursalesOficina } from "../../util/fakeApi";
 
-const SeleccionarSucursalTrabajo = () => {
+const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const dispatch = useDispatch();
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -37,7 +37,7 @@ const SeleccionarSucursalTrabajo = () => {
           flexWrap: "wrap",
         }}
       >
-        {sucursalesOficina.map((sucursal) => (
+        {sucursalesEmpresa.map((sucursal) => (
           <BotonSeleccionarCustom key={sucursal.id} {...sucursal} />
         ))}
       </div>
