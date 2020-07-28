@@ -41,6 +41,13 @@ export const sucursalesOficina = [
     comunaNombre: "La Florida",
   },
   {
+    id: 7,
+    key: "13000",
+    nombreSucursal: "Mall Florida Center",
+    numero: 2000,
+    comunaNombre: "La Florida",
+  },
+  {
     id: 5,
     key: "13109",
     nombreSucursal: "Americo Vespucio",

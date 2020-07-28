@@ -32,6 +32,7 @@ import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
 import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
+import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -95,7 +96,7 @@ const Main = (props) => {
         return <FechaHoraResponsable />;
       case 100: //Tony Agregar seleccionar sucursal
         // return <SeleccionarSucursalTrabajo />;
-        return <SeleccionarComuna />;
+        return <EditarSucursal />;
       case 101: //Tony Agregar seleccionar sucursal
         // return <SeleccionarSucursalTrabajo />;
         return <SeleccionarSucursalTrabajo />;
