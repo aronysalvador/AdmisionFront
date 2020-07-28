@@ -4,7 +4,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { Typography, TextField } from "@material-ui/core";
+import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const SeleccionarComuna = () => {
@@ -40,12 +40,20 @@ const SeleccionarComuna = () => {
         Selecciona la comuna en donde trabajas
       </Typography>
       <AutoComplete
+        onChange={(event, value) => {
+          console.log({ value });
+        }}
         size="small"
         fullWidth
         options={comunas}
         getOptionLabel={(option) => option.value}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
+      <div className={bottomElement}>
+        <Button className={buttonAchs} variant="contained" disabled={false}>
+          Confirmar
+        </Button>
+      </div>
     </div>
   );
 };
