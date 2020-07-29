@@ -6,11 +6,17 @@ import { getRazonSocialPrincipal } from "./../../redux/actions/RazonSocialAction
 
 const RazonSocial = () => {
   const {
-    addmissionForm: { step, percentage, razonSocialForm, empresa },
+    addmissionForm: {
+      step,
+      percentage,
+      razonSocialForm,
+      sucursalEmpresaSiniestro,
+      empresa,
+    },
   } = useSelector((state) => state, shallowEqual);
 
-  const [sucursal, setSucursal] = useState(() => {
-    return !razonSocialForm ? "" : razonSocialForm;
+  const [razonSocial, setRazonSocial] = useState(() => {
+    return !razonSocialForm ? empresa : razonSocialForm;
   });
 
   const [valueError, setValueError] = useState(() => {
@@ -24,16 +30,16 @@ const RazonSocial = () => {
     dispatch(getRazonSocialPrincipal(""));
   }, []);
 
-  const { data: sucursalesList } = useSelector(
+  const { data: razonSocialList } = useSelector(
     (state) => state.razonSocialForm,
     shallowEqual
   );
 
   return (
     <AutoComplete
-      value={sucursal}
+      value={razonSocial}
       onChange={(event, value) => {
-        setSucursal(value);
+        setRazonSocial(value);
         {
           value ? setValueError(value.nombre) : setValueError("");
         }
@@ -44,7 +50,7 @@ const RazonSocial = () => {
       }}
       freeSolo
       style={{ width: 300 }}
-      options={sucursalesList}
+      options={razonSocialList}
       getOptionLabel={(option) => option.nombre}
       renderInput={(params) => (
         <TextField
