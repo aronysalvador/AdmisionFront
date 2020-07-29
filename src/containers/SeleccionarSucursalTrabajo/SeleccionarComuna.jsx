@@ -80,9 +80,13 @@ const SeleccionarComuna = () => {
           disabled={false}
           onClick={() => {
             dispatch(updateForm("cantidadSucursales", numeroSucursales));
-            dispatch(updateForm("sucursales", sucursales));
             dispatch(updateForm("comunaSucursal", comuna));
-            dispatch(handleSetStep(++stepx));
+            if (numeroSucursales > 1) {
+              dispatch(updateForm("sucursales", sucursales));
+            }
+            if (numeroSucursales === 1) {
+              dispatch(updateForm("SucursalEmpresa", sucursales[0]));
+            }
           }}
         >
           Confirmar
