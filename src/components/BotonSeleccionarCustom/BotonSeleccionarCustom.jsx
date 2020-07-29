@@ -1,13 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
+import { useDispatch } from "react-redux";
+import { updateForm } from "../../redux/actions/AdmissionAction";
 
-const BotonSeleccionarCustom = ({ nombreSucursal, numero, comunaNombre }) => {
+const BotonSeleccionarCustom = ({
+  nombreSucursal,
+  numero,
+  comunaNombre,
+  key,
+}) => {
+  const sucursal = {
+    nombreSucursal,
+    numero,
+    comunaNombre,
+    key,
+  };
+  const dispatch = useDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const { botonSeleccionado } = getComunStyle();
+  console.log({ sucursal });
   return (
     <div
-      onClick={() => setIsSelected((selected) => !selected)}
+      onClick={() => {
+        setIsSelected((selected) => !selected);
+        dispatch(updateForm("SucursalEmpresa", sucursal));
+      }}
       className={isSelected === true ? botonSeleccionado : ""}
       style={{
         marginTop: "10px",
