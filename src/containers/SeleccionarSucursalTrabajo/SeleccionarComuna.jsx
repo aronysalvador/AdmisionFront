@@ -83,6 +83,7 @@ const SeleccionarComuna = () => {
             dispatch(updateForm("comunaSucursal", comuna));
             if (numeroSucursales > 1) {
               dispatch(updateForm("sucursales", sucursales));
+              dispatch(handleSetStep(++stepx));
             }
             if (numeroSucursales === 1) {
               dispatch(updateForm("SucursalEmpresa", sucursales[0]));

@@ -51,7 +51,9 @@ const EditarDireccionSucursal = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
-          onClick={() => dispatch("SucursalEmpresa", sucursalEmpresa)}
+          onClick={() =>
+            dispatch(updateForm("SucursalEmpresa", sucursalEmpresa))
+          }
         >
           Confirmar
         </Button>
