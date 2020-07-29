@@ -7,7 +7,9 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { siniestroStyle } from "../../css/siniestroStyle";
 const EditarTelefono = () => {
-  const [telefono, setTelefono] = useState(null);
+  const [telefono, setTelefono] = useState(() => "+569");
+  const [telefonoIsValid, setTelefonoIsValid] = useState(false);
+
   const {
     addmissionForm: { step, percentage, sucursales },
   } = useSelector((state) => state, shallowEqual);
@@ -38,6 +40,7 @@ const EditarTelefono = () => {
         teléfono
       </Typography>
       <TextField
+        value={telefono}
         type="phone"
         variant="outlined"
         size="small"
@@ -52,7 +55,11 @@ const EditarTelefono = () => {
       />
 
       <div className={bottomElement}>
-        <Button variant="contained" className={buttonAchs} disabled={!telefono}>
+        <Button
+          variant="contained"
+          className={buttonAchs}
+          disabled={!telefonoIsValid}
+        >
           Confirmar
         </Button>
       </div>
