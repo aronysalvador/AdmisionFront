@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {getComunStyle} from '../../css/comun';
 import Cabecera from '../../components/cabecera/index';
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
-import BoxTestigosResponsable from '../../components/questions/BoxTestigosResponsable'
+import BoxTestigosResponsable from '../../components/Questions/BoxTestigosResponsable'
 
   const QuestionWitness = (props) => {
     const { dispatch,addmissionForm } = props
