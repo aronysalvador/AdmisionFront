@@ -26,7 +26,7 @@ const SeleccionarComuna = () => {
   ];
   const [numeroSucursales, setNumeroSucursales] = useState(0);
   const [sucursales, setSucursales] = useState([]);
-  const [comuna, setComuna] = useState({});
+  const [comuna, setComuna] = useState(null);
   const dispatch = useDispatch();
   const {
     buttonAchs,
@@ -77,7 +77,7 @@ const SeleccionarComuna = () => {
         <Button
           className={buttonAchs}
           variant="contained"
-          disabled={false}
+          disabled={!comuna}
           onClick={() => {
             dispatch(updateForm("cantidadSucursales", numeroSucursales));
             dispatch(updateForm("comunaSucursal", comuna));
