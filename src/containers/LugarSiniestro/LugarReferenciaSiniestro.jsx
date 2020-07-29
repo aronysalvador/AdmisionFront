@@ -60,7 +60,7 @@ const LugarReferenciaSiniestro = () => {
           setLugarReferencia(texto);
         }}
       />
-      <Typography className={mobileCaption} variant="subtitle1">
+      <Typography className={mobileCaption} variant="h2">
         Ejemplo: Piso 21, Area 453, Puesto 12A
       </Typography>
       <div className={bottomElement}>
