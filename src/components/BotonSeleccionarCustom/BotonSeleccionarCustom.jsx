@@ -24,7 +24,8 @@ const BotonSeleccionarCustom = ({
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-        dispatch(updateForm("SucursalEmpresa", sucursal));
+
+        dispatch(updateForm("SucursalEmpresa", !isSelected ? sucursal : {}));
       }}
       className={isSelected === true ? botonSeleccionado : ""}
       style={{
