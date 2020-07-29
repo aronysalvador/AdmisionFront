@@ -5,7 +5,7 @@ import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-
+import { siniestroStyle } from "../../css/siniestroStyle";
 const EditarTelefono = () => {
   const [telefono, setTelefono] = useState(null);
   const {
@@ -21,6 +21,7 @@ const EditarTelefono = () => {
     tituloTextbox,
     bottomElement,
   } = getComunStyle();
+  const { mobileCaption } = siniestroStyle;
   const spaceStyle = getSpaceStyle();
 
   return (
@@ -43,14 +44,13 @@ const EditarTelefono = () => {
         margin="dense"
         required
         fullWidth
+        helperText={"Ingresa tu numero personal"}
         onChange={(e) => {
           let texto = e.target.value;
           setTelefono(texto);
         }}
       />
-      <Typography className={mobileCaption} variant="h2">
-        Ejemplo: Piso 21, Area 453, Puesto 12A
-      </Typography>
+
       <div className={bottomElement}>
         <Button variant="contained" className={buttonAchs} disabled={!telefono}>
           Confirmar
