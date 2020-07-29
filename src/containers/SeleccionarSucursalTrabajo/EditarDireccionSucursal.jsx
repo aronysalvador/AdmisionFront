@@ -8,7 +8,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const EditarDireccionSucursal = () => {
-  const [sucursalEmpresa, setSucursalEmpresa] = useState();
+  const [sucursalEmpresa, setSucursalEmpresa] = useState({});
 
   const {
     addmissionForm: { step, percentage, sucursales },
@@ -30,11 +30,11 @@ const EditarDireccionSucursal = () => {
         dispatch={() => dispatch(handleSetStep(--stepx))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
+      <Typography className={pregunta} variant="h2">
         Ingresa dirección de la sucursal
       </Typography>
       <div className={spaceStyle.space2} />
-      <Typography className={tituloTextbox} variant="subtitle2">
+      <Typography className={tituloTextbox} variant="h2">
         Dirección
       </Typography>
       <AutoComplete
@@ -45,11 +45,12 @@ const EditarDireccionSucursal = () => {
         size="small"
         fullWidth
         options={sucursales}
-        getOptionLabel={(option) => option.nombreSucursal}
+        getOptionLabel={(option) => option?.nombreSucursal}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={bottomElement}>
         <Button
+          disabled={!sucursalEmpresa}
           className={buttonAchs}
           onClick={() =>
             dispatch(updateForm("SucursalEmpresa", sucursalEmpresa))
