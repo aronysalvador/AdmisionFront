@@ -105,3 +105,22 @@ export const sucursalesOficina = [
   //   comunaNombre: "La Florida",
   // },
 ];
+
+const razonSocial = [
+  { id: 1, nombre: "ACHS S.A" },
+  { id: 2, nombre: "FALABELLA S.A" },
+  { id: 3, nombre: "BANCO ESTADO S.A" },
+  { id: 4, nombre: "BANCO BICE S.A" },
+  { id: 5, nombre: "RIPLEY S.A" },
+  { id: 6, nombre: "PARIS S.A" },
+  { id: 7, nombre: "WALMART S.A" },
+  { id: 8, nombre: "CLINICA SANTA MARIA S.A" },
+  { id: 9, nombre: "FUSIONA S.A" },
+  { id: 10, nombre: "TOTTUS S.A" },
+  { id: 11, nombre: "KAUFMANN S.A" },
+  { id: 12, nombre: "CLINICA ALEMANA" },
+];
+
+export const getRazonSocial = async () => {
+  return razonSocial;
+};
