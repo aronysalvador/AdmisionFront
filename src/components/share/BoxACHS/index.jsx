@@ -2,6 +2,8 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import EditIcon from '@material-ui/icons/Edit';
+import { useDispatch } from "react-redux";
+import { handleSetStep } from "../../../redux/actions/AdmissionAction";
 
 const useStyles = makeStyles({
     tituloConteiner: {
@@ -54,12 +56,15 @@ const useStyles = makeStyles({
 const BoxACHS = (props) => {
     const { titulo, contenido } = props
     const classes = useStyles()
+
+    const dispatch = useDispatch();
     return (<div>
                 <div>
                     <div className={classes.tituloConteiner}>
                         <Typography color="textSecondary" gutterBottom className={classes.tituloText}>
                             {titulo}
-                            <EditIcon />
+                            <EditIcon 
+                            onClick={() => dispatch(handleSetStep(30))} />
                         </Typography>
                       
                     </div>

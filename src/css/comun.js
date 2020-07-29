@@ -137,5 +137,4 @@ export const getComunStyle = makeStyles((theme) => ({
         color: '#373737',
         textTransform: 'uppercase'
     }
-
 }))
