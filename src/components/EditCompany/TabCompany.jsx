@@ -8,6 +8,35 @@ import { makeStyles } from "@material-ui/core/styles";
 import IdentificationCompany from './identificationCompany';
 import RazonSocial from './RazonSocial';
 
+const useStyles = makeStyles({
+    root: {     
+        minHeight:30,
+        height: 30,
+        background: '#F4F4F4',
+        border: '2px solid #007A33',
+        boxSizing: 'border-box',
+        borderRadius: '4px',
+
+        color: '#007A33',
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        lineHeight: '18px',
+    },
+    root2: {     
+        minHeight:30,
+        height: 30,
+        background: '#007A33',
+        borderRadius: 4,
+        color: '#F8F9FA',
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: 16
+    }
+  });
+
 const TabCompany = (props) => {
 
     const [value, setValue] = useState(0);
@@ -18,17 +47,18 @@ const TabCompany = (props) => {
 
     function TabPanel(props) {
         const { children, value, index, ...other } = props;
-    
+ 
         return (
         <div
             role="tabpanel"
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
-            
+  
         >
             {value === index && (
-            <Box p={1}>
+            <Box p={1}
+            >
                 <Typography>{children}</Typography>
             </Box>
             )}
@@ -37,14 +67,7 @@ const TabCompany = (props) => {
     }
 
     const classesComun = getComunStyle();
-
-    const getUseStyles = makeStyles({
-        root: {
-          height: " 20px !important"
-        },
-      });
-    
-    const useStyles = getUseStyles();
+    const classes = useStyles();
       
     return (
       <div>
@@ -52,24 +75,23 @@ const TabCompany = (props) => {
           value={value}
           onChange={handleChange}
           indicatorColor="#E18F68"
-          useStyles = {{
-              root: useStyles.root
-          }}
         >
-          <Tab  className=
-            {value ===0 ? classesComun.default_tabStyle :classesComun.active_tab}
+          <Tab
+            classes={value ===0 ? {root: classes.root2} : {root: classes.root}} 
             label="Razon Social"/>
+          
           <Tab 
-          className={value===1 ? classesComun.default_tabStyle :classesComun.active_tab}
+          classes={value ===1 ? {root: classes.root2} : {root: classes.root}}  
           label="Rut"/>
           
         </Tabs>
 
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0}
+        >
             <Typography
                 variant="p"
                 component="p"
-                className={[classesComun.tituloTextbox]}
+                className={classesComun.tituloTextbox}
             >
                 Razón Social
             </Typography>
