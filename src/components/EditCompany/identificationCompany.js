@@ -1,24 +1,19 @@
 import React from 'react'
 import { withFormik } from "formik";
-import { connect , useSelector, shallowEqual  } from 'react-redux'
-import { updateForm,handleSetStep } from '../../redux/actions/AdmissionAction'
+import { connect   } from 'react-redux'
+import { updateForm} from '../../redux/actions/AdmissionAction'
 import TextField from '@material-ui/core/TextField'
 import {Rut, formateaRut} from "../../helpers/rut"
-import {getSpaceStyle} from '../../css/spaceStyle'
 
 const form = props => {
   const {
     values,
     touched,
     errors,
-    isSubmitting,
     handleChange,
-    handleBlur,
-    handleSubmit,
+    handleBlur
   } = props;
 
-
-  const spaceStyle = getSpaceStyle()
 
   return (
         <TextField

@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Button, Typography, TextField } from "@material-ui/core";
-import Cabecera from "../../components/cabecera/index";
+import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { siniestroStyle } from "../../css/siniestroStyle";
-import { LocationOn } from "@material-ui/icons";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getSucursalesEmpresaSiniestro } from "./../../redux/actions/SucursalesEmpresaSiniestro";
-import { getSpaceStyle } from "../../css/spaceStyle";
 
 const RazonSocial = () => {
   const {
-    addmissionForm: { step, percentage, sucursalEmpresaSiniestro },
+    addmissionForm: { step, percentage, sucursalEmpresaSiniestro, empresa },
   } = useSelector((state) => state, shallowEqual);
 
   const [sucursal, setSucursal] = useState(() => {
@@ -25,7 +20,6 @@ const RazonSocial = () => {
 
   const dispatch = useDispatch();
 
-  const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
     dispatch(getSucursalesEmpresaSiniestro(""));
