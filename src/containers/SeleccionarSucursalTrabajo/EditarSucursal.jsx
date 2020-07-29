@@ -13,7 +13,8 @@ const EditarSucursal = () => {
   );
   if (cantidadSucursales <= 6)
     return <SeleccionarSucursalTrabajo sucursalesEmpresa={sucursalesOficina} />;
-  if (cantidadSucursales > 6) return <SeleccionarComuna />;
+  if (cantidadSucursales >= 6)
+    return <SeleccionarComuna sucursalesEmpresa={sucursalesOficina} />;
   return <div>No tiene sucursales</div>;
 };
 
