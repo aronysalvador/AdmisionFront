@@ -8,7 +8,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const EditarDireccionSucursal = () => {
-  const [sucursalEmpresa, setSucursalEmpresa] = useState({});
+  const [sucursalEmpresa, setSucursalEmpresa] = useState(null);
 
   const {
     addmissionForm: { step, percentage, sucursales },
@@ -50,6 +50,7 @@ const EditarDireccionSucursal = () => {
       />
       <div className={bottomElement}>
         <Button
+          variant="contained"
           disabled={!sucursalEmpresa}
           className={buttonAchs}
           onClick={() =>
