@@ -96,7 +96,7 @@ const Main = (props) => {
         return <FechaHoraResponsable />;
 
       case 30:
-        return <EditCompany />;
+        return <EditCompany />; 
       
       case 500: {
         sessionStorage.clear();
