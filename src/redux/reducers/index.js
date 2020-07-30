@@ -5,6 +5,7 @@ import previsionForm from "../reducers/PrevisionReducer";
 import microsoftReducer from "../reducers/microsoft.reducer";
 import cargosForm from "../reducers/WitnessResponsableReducer";
 import razonSocialForm from "../reducers/RazonSocialReducer";
+import afpForm from "../reducers/AfpReducer";
 
 export default combineReducers({
   addmissionForm,
@@ -13,4 +14,5 @@ export default combineReducers({
   microsoftReducer,
   cargosForm,
   razonSocialForm,
+  afpForm,
 });

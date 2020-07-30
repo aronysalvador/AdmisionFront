@@ -6,13 +6,7 @@ import { getRazonSocialPrincipal } from "./../../redux/actions/RazonSocialAction
 
 const RazonSocial = () => {
   const {
-    addmissionForm: {
-      step,
-      percentage,
-      razonSocialForm,
-      sucursalEmpresaSiniestro,
-      empresa,
-    },
+    addmissionForm: { razonSocialForm, empresa },
   } = useSelector((state) => state, shallowEqual);
 
   const [razonSocial, setRazonSocial] = useState(() => {

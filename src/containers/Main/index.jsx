@@ -37,6 +37,7 @@ import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 
 import EditCompany from "../EditCompany/index";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
+import Afp from "../Afp/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -106,18 +107,17 @@ const Main = (props) => {
         // return <SeleccionarSucursalTrabajo />;
         return <RouteComuna />;
       case 30:
-        return <EditCompany />; 
-      
+        return <EditCompany />;
+      case 31:
+        return <Afp />;
+
       case 500: {
         sessionStorage.clear();
         return <PacienteNoAfiliadoError />;
       }
 
       case 20:
-      return <JornadaLaboralContainer />;
-     
-        
-      
+        return <JornadaLaboralContainer />;
 
       default: {
         sessionStorage.clear();
