@@ -32,8 +32,8 @@ const TrabajoActualContainer = () => {
   const dispatch = useDispatch();
 
   function setTrabajoActual(value) {
-    console.log("setjtrabajoActual", value);
-    setIngresoTrabajo(value);
+    let formattedDate = new Date(value.anio, value.mes, 1);
+    setIngresoTrabajo(formattedDate);
   }
   return (
     <div className={root}>
