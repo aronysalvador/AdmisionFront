@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestro";
-import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
+import React from "react";
 import TabCompany from "../../components/EditCompany/TabCompany";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -11,26 +9,14 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 
 const EditCompany = () => {
   const spaceStyle = getSpaceStyle();
-  
 
   const { step, percentage } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
 
-
-  const [fechaSiniestro, setFechaSiniestro] = useState({});
-  const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const dispatch = useDispatch();
-
-  function setFechaValueSiniestro(value) {
-    setFechaSiniestro({ ...value });
-  }
-
-  function setHoraValueSiniestro(value) {
-    setHoraSiniestro({ ...value });
-  }
 
   return (
     <div className={root}>
@@ -39,17 +25,16 @@ const EditCompany = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-       Ingresa la Razón Social o RUT de la empresa en donde trabajas
+        Ingresa la Razón Social o RUT de la empresa en donde trabajas
       </Typography>
       <div className={spaceStyle.space2} />
 
-      <TabCompany/>
+      <TabCompany />
 
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
           onClick={() => {
-
             dispatch(handleSetStep(step + 1));
           }}
         >
