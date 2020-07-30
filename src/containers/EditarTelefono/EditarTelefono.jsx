@@ -74,6 +74,7 @@ const EditarTelefono = () => {
           disabled={!telefonoIsValid}
           onClick={() => {
             dispatch(updateForm("TelefonoEmpleado", telefono));
+            dispatch(handleSetStep(++stepx));
           }}
         >
           Confirmar
