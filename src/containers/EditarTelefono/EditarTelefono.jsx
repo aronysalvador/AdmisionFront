@@ -6,6 +6,13 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { siniestroStyle } from "../../css/siniestroStyle";
+import {
+  validatePhoneNumberFormat,
+  formatPhoneNumber,
+} from "../../helpers/telefono";
+import InputMasked from "./InputMasked";
+import Mask from "./phone";
+
 const EditarTelefono = () => {
   const [telefono, setTelefono] = useState(() => "+569");
   const [telefonoIsValid, setTelefonoIsValid] = useState(false);
@@ -25,6 +32,7 @@ const EditarTelefono = () => {
   } = getComunStyle();
   const { mobileCaption } = siniestroStyle;
   const spaceStyle = getSpaceStyle();
+  const input = React.createRef();
 
   return (
     <div className={root}>
@@ -40,6 +48,7 @@ const EditarTelefono = () => {
         teléfono
       </Typography>
       <TextField
+        ref={input}
         value={telefono}
         type="phone"
         variant="outlined"
@@ -50,6 +59,16 @@ const EditarTelefono = () => {
         helperText={"Ingresa tu numero personal"}
         onChange={(e) => {
           let texto = e.target.value;
+          setTelefonoIsValid(validatePhoneNumberFormat(texto));
+          setTelefono(texto);
+        }}
+      />
+      <InputMasked
+        input={input}
+        mask={Mask.advanced}
+        onAccept={(value, mask) => {
+          let texto = value;
+          setTelefonoIsValid(validatePhoneNumberFormat(texto));
           setTelefono(texto);
         }}
       />
