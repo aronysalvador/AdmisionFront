@@ -40,7 +40,6 @@ export default function InputMasked({ mask, input, ...props }) {
       className="rs-input"
       mask={IMask.createMask(mask)}
       {...props}
-      inputRef={(el) => (TextField = el)}
     />
   );
 }

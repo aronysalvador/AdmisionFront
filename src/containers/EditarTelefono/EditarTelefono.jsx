@@ -63,7 +63,7 @@ const EditarTelefono = () => {
           setTelefono(texto);
         }}
       />
-      <InputMasked
+      {/* <InputMasked
         input={input}
         mask={Mask.advanced}
         onAccept={(value, mask) => {
@@ -71,7 +71,7 @@ const EditarTelefono = () => {
           setTelefonoIsValid(validatePhoneNumberFormat(texto));
           setTelefono(texto);
         }}
-      />
+      /> */}
 
       <div className={bottomElement}>
         <Button
