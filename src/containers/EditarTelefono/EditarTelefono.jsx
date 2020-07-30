@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { siniestroStyle } from "../../css/siniestroStyle";
-import {
-  validatePhoneNumberFormat,
-  formatPhoneNumber,
-} from "../../helpers/telefono";
 import InputMasked from "./InputMasked";
 import Mask from "./phone";
+import { Pipes } from "./phone";
 
 const EditarTelefono = () => {
-  const [telefono, setTelefono] = useState(() => "+569");
-  const [telefonoIsValid, setTelefonoIsValid] = useState(false);
-
   const {
-    addmissionForm: { step, percentage, sucursales },
+    addmissionForm: { step, percentage, TelefonoEmpleado },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
+
   const dispatch = useDispatch();
+
+  const [telefono, setTelefono] = useState(() => {
+    return TelefonoEmpleado ? TelefonoEmpleado : "+56 9";
+  });
+  const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
+    return TelefonoEmpleado ? true : false;
+  });
 
   const {
     root,
@@ -32,7 +34,16 @@ const EditarTelefono = () => {
   } = getComunStyle();
   const { mobileCaption } = siniestroStyle;
   const spaceStyle = getSpaceStyle();
-  const input = React.createRef();
+
+  const handleOnChange = (e) => {
+    const value = e.target.value;
+    if (value !== telefono) {
+      const result = Pipes.advanced(value);
+      const isValid = /^\+?56\d{9}$/.test(result.replace(/\s/g, ""));
+      setTelefono(result);
+      setTelefonoIsValid(isValid);
+    }
+  };
 
   return (
     <div className={root}>
@@ -47,9 +58,13 @@ const EditarTelefono = () => {
       <Typography className={tituloTextbox} variant="h2">
         teléfono
       </Typography>
+
       <InputMasked
         mask={Mask.advanced}
         setTelefonoIsValid={setTelefonoIsValid}
+        setTelefono={setTelefono}
+        handleOnChange={handleOnChange}
+        telefono={telefono}
       />
 
       <div className={bottomElement}>
@@ -57,6 +72,9 @@ const EditarTelefono = () => {
           variant="contained"
           className={buttonAchs}
           disabled={!telefonoIsValid}
+          onClick={() => {
+            dispatch(updateForm("TelefonoEmpleado", telefono));
+          }}
         >
           Confirmar
         </Button>
