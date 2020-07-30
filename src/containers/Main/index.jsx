@@ -30,11 +30,11 @@ import DataResponsable from "../DataResponsable/index";
 import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
+import TrabajoActualContainer from "../TrabajoActual";
 import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
 import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
 import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
-
 import EditCompany from "../EditCompany/index";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
@@ -108,21 +108,25 @@ const Main = (props) => {
         return <RouteComuna />;
       case 30:
         return <EditCompany />;
+
       case 31:
         return <Afp />;
 
       case 500: {
-        sessionStorage.clear();
+        sessionStorage.clear()
         return <PacienteNoAfiliadoError />;
       }
 
-      case 20:
+      case 50:
         return <JornadaLaboralContainer />;
-
-      default: {
-        sessionStorage.clear();
+      case 51:
+        return <TrabajoActualContainer />
+        
+      default:{
+        sessionStorage.clear()
         return <div>Error</div>;
       }
+        
     }
   };
 
