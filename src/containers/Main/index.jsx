@@ -38,6 +38,7 @@ import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 import EditCompany from "../EditCompany/index";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
+import EditarTelefono from "../EditarTelefono/EditarTelefono";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -106,11 +107,15 @@ const Main = (props) => {
       case 101: //Tony Agregar seleccionar sucursal
         // return <SeleccionarSucursalTrabajo />;
         return <RouteComuna />;
+      case 102: //Tony Editar numero telefonico
+        return <EditarTelefono />;
       case 30:
         return <EditCompany />;
 
       case 31:
         return <Afp />;
+
+
 
       case 500: {
         sessionStorage.clear()
@@ -122,8 +127,11 @@ const Main = (props) => {
       case 51:
         return <TrabajoActualContainer />
         
-      default:{
-        sessionStorage.clear()
+     
+
+
+      default: {
+        sessionStorage.clear();
         return <div>Error</div>;
       }
         

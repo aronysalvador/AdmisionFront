@@ -1,0 +1,87 @@
+import React, { useState } from "react";
+import { getComunStyle } from "../../css/comun";
+import { Button, Typography } from "@material-ui/core";
+import Cabecera from "../../components/cabecera/index";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { getSpaceStyle } from "../../css/spaceStyle";
+import { siniestroStyle } from "../../css/siniestroStyle";
+import InputMasked from "./InputMasked";
+import Mask from "./phone";
+import { Pipes } from "./phone";
+
+const EditarTelefono = () => {
+  const {
+    addmissionForm: { step, percentage, TelefonoEmpleado },
+  } = useSelector((state) => state, shallowEqual);
+  let stepx = step;
+
+  const dispatch = useDispatch();
+
+  const [telefono, setTelefono] = useState(() => {
+    return TelefonoEmpleado ? TelefonoEmpleado : "+56 9";
+  });
+  const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
+    return TelefonoEmpleado ? true : false;
+  });
+
+  const {
+    root,
+    buttonAchs,
+    pregunta,
+    tituloTextbox,
+    bottomElement,
+  } = getComunStyle();
+  const { mobileCaption } = siniestroStyle;
+  const spaceStyle = getSpaceStyle();
+
+  const handleOnChange = (e) => {
+    const value = e.target.value;
+    if (value !== telefono) {
+      const result = Pipes.advanced(value);
+      const isValid = /^\+?56\d{9}$/.test(result.replace(/\s/g, ""));
+      setTelefono(result);
+      setTelefonoIsValid(isValid);
+    }
+  };
+
+  return (
+    <div className={root}>
+      <Cabecera
+        dispatch={() => dispatch(handleSetStep(--stepx))}
+        percentage={percentage}
+      />
+      <Typography className={pregunta} variant="h2">
+        Ingresa tu teléfono personal
+      </Typography>
+      <div className={spaceStyle.space2} />
+      <Typography className={tituloTextbox} variant="h2">
+        teléfono
+      </Typography>
+
+      <InputMasked
+        mask={Mask.advanced}
+        setTelefonoIsValid={setTelefonoIsValid}
+        setTelefono={setTelefono}
+        handleOnChange={handleOnChange}
+        telefono={telefono}
+      />
+
+      <div className={bottomElement}>
+        <Button
+          variant="contained"
+          className={buttonAchs}
+          disabled={!telefonoIsValid}
+          onClick={() => {
+            dispatch(updateForm("TelefonoEmpleado", telefono));
+            dispatch(handleSetStep(++stepx));
+          }}
+        >
+          Confirmar
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default EditarTelefono;
