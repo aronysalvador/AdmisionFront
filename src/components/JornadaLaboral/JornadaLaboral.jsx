@@ -31,7 +31,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           item
           style={{
             borderRadius: "10px",
-            padding: "8px 20px",
+            padding: "8px 25px",
           }}
         >
           <div
@@ -46,7 +46,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           style={{
             background: "white",
             borderRadius: "10px",
-            padding: "8px 20px",
+            padding: "8px 25px",
           }}
         >
           <div>
@@ -62,15 +62,15 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           </div>
           <div className={spaceStyle.space1} />
           <div style={{ textAlign: "center" }}>
-            <div
-              style={{ fontSize: "9px", paddingBottom: "5px", opacity: "0.5" }}
-            >
-              {indiceInicio > 0 ? horarios[indiceInicio - 1] : "-"}
-            </div>
-            {horarios[indiceInicio]}
-            <div style={{ fontSize: "9px", paddingTop: "5px", opacity: "0.5" }}>
-            {indiceInicio < 44 ? horarios[indiceInicio +1] : "-"}
-            </div>
+          <div className={comunStyle.selectorRuedaItemsCostados}>{indiceInicio > 1 ? horarios[indiceInicio - 2] : "-"}</div>
+          <div className={comunStyle.selectorRuedaItemsCostados}>{indiceInicio > 0 ? horarios[indiceInicio - 1] : "-"}</div>
+          
+          <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
+          <div className={comunStyle.selectorRuedaItemPrincipal}> {horarios[indiceInicio]}</div>
+            <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
+
+            <div className={comunStyle.selectorRuedaItemsCostados}> {indiceInicio < 44 ? horarios[indiceInicio +1] : "-"}</div>
+            <div className={comunStyle.selectorRuedaItemsCostados}> {indiceInicio < 43 ? horarios[indiceInicio +2] : "-"}</div>
           </div>
           <div className={spaceStyle.space1} />
           <div>
@@ -91,7 +91,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           item
           style={{
             borderRadius: "10px",
-            padding: "8px 20px",
+            padding: "8px 25px",
             marginLeft: "20px",
           }}
         >
@@ -107,7 +107,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           style={{
             background: "white",
             borderRadius: "10px",
-            padding: "8px 20px",
+            padding: "8px 25px",
             marginLeft: "20px",
           }}
         >
@@ -124,15 +124,15 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           </div>
           <div className={spaceStyle.space1} />
           <div style={{ textAlign: "center" }}>
-            <div
-              style={{ fontSize: "9px", paddingBottom: "5px", opacity: "0.5" }}
-            >
-               {indiceFin > 0 ? horarios[indiceFin - 1] : "-"}
-            </div>
-            {horarios[indiceFin]}
-            <div style={{ fontSize: "9px", paddingTop: "5px", opacity: "0.5" }}>
-            {indiceFin < 44 ? horarios[indiceFin +1] : "-"}
-            </div>
+            <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin > 1 ? horarios[indiceFin - 2] : "-"}</div>
+            <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin > 0 ? horarios[indiceFin - 1] : "-"}</div>
+
+            <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
+            <div className={comunStyle.selectorRuedaItemPrincipal}>{horarios[indiceFin]}</div>
+            <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
+
+            <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin < 44 ? horarios[indiceFin +1] : "-"}</div>
+            <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin < 43 ? horarios[indiceFin +2] : "-"}</div>
           </div>
           <div className={spaceStyle.space1} />
           <div>

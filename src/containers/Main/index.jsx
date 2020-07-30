@@ -30,12 +30,7 @@ import DataResponsable from "../DataResponsable/index";
 import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
-import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
-import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
-import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
-import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
-
-import EditCompany from "../EditCompany/index";
+import TrabajoActualContainer from "../TrabajoActual";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
 
 const Main = (props) => {
@@ -98,31 +93,21 @@ const Main = (props) => {
         return <DataResponsable />;
       case 19:
         return <FechaHoraResponsable />;
-
-      case 100: //Tony Agregar seleccionar sucursal
-        // return <SeleccionarSucursalTrabajo />;
-        return <EditarSucursal />;
-      case 101: //Tony Agregar seleccionar sucursal
-        // return <SeleccionarSucursalTrabajo />;
-        return <RouteComuna />;
-      case 30:
-        return <EditCompany />; 
-      
       case 500: {
-        sessionStorage.clear();
+        sessionStorage.clear()
         return <PacienteNoAfiliadoError />;
       }
 
-      case 20:
-      return <JornadaLaboralContainer />;
-     
+      case 50:
+        return <JornadaLaboralContainer />;
+      case 51:
+        return <TrabajoActualContainer />
         
-      
-
-      default: {
-        sessionStorage.clear();
+      default:{
+        sessionStorage.clear()
         return <div>Error</div>;
       }
+        
     }
   };
 

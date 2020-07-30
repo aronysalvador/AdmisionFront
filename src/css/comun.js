@@ -129,24 +129,22 @@ export const getComunStyle = makeStyles((theme) => ({
     bottom: "0",
   },
   tituloTextbox: {
-
-        letterSpacing: '2px',
-        fontSize : '0.75em',
-        fontWeight: 'normal',
-        fontFamily: 'Catamaran',
-        fontStyle: 'normal',
-        color: '#373737',
-        textTransform: 'uppercase'
-    },
-    tituloSelectorFecha: {
-        letterSpacing: '2px',
-        fontSize : '0.875em',
-        fontWeight: 'bold',
-        fontFamily: 'Catamaran',
-        fontStyle: 'normal',
-        color: '#373737',
-    },
-
+    letterSpacing: "2px",
+    fontSize: "0.75em",
+    fontWeight: "normal",
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    color: "#373737",
+    textTransform: "uppercase",
+  },
+  tituloSelectorFecha: {
+    letterSpacing: "2px",
+    fontSize: "0.875em",
+    fontWeight: "bold",
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    color: "#373737",
+  },
 
   botonSeleccionado: {
     background: "#DFF3F2",
@@ -154,5 +152,21 @@ export const getComunStyle = makeStyles((theme) => ({
     boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
     borderRadius: "10px",
     color: "#007A33",
+  },
+
+  selectorRuedaItemPrincipal: {
+    color: "#007A33",
+    fontSize: "1.250em",
+  },
+
+  selectorRuedaBordesItemPrincipal: {
+    margin: "0",
+    opacity: "0.2",
+  },
+
+  selectorRuedaItemsCostados: {
+    fontSize: "1em",
+    paddingBottom: "5px",
+    opacity: "0.5",
   },
 }));
