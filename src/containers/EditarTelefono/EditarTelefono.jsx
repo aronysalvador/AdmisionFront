@@ -10,7 +10,8 @@ import {
   validatePhoneNumberFormat,
   formatPhoneNumber,
 } from "../../helpers/telefono";
-import InputMask from "react-input-mask";
+import InputMasked from "./InputMasked";
+import Mask from "./phone";
 
 const EditarTelefono = () => {
   const [telefono, setTelefono] = useState(() => "+569");
@@ -46,20 +47,9 @@ const EditarTelefono = () => {
       <Typography className={tituloTextbox} variant="h2">
         teléfono
       </Typography>
-      <TextField
-        value={telefono}
-        type="phone"
-        variant="outlined"
-        size="small"
-        margin="dense"
-        required
-        fullWidth
-        helperText={"Ingresa tu numero personal"}
-        onChange={(e) => {
-          let texto = e.target.value;
-          setTelefonoIsValid(validatePhoneNumberFormat(texto));
-          setTelefono(texto);
-        }}
+      <InputMasked
+        mask={Mask.advanced}
+        setTelefonoIsValid={setTelefonoIsValid}
       />
 
       <div className={bottomElement}>
