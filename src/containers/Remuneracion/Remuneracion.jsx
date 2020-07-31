@@ -22,7 +22,7 @@ const Remuneracion = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Selecciona la sucursal en donde trabajas
+        ¿Que tipo de remuneración tienes?
       </Typography>
     </div>
   );

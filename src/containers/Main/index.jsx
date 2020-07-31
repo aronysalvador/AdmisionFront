@@ -41,6 +41,7 @@ import Afp from "../Afp/index";
 import EditarTelefono from "../EditarTelefono/EditarTelefono";
 import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
 import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
+import Remuneracion from "../Remuneracion/Remuneracion";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -113,6 +114,8 @@ const Main = (props) => {
         return <EditarTelefono />;
       case 103:
         return <TrabajoHabitual />;
+      case 104:
+        return <Remuneracion />;
 
       case 30:
         return <EditCompany />;
