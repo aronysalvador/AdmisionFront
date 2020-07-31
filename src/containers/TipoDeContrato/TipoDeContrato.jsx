@@ -6,7 +6,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { sucursalesOficina } from "../../util/fakeApi";
+import { getTiposDeContrato } from "../../util/fakeApi";
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
 const TipoDeContrato = () => {
@@ -37,13 +37,13 @@ const TipoDeContrato = () => {
           flexWrap: "wrap",
         }}
       >
-        {sucursalesEmpresa.map((sucursal) => (
+        {getTiposDeContrato.map((contrato) => (
           <BotonSeleccionarCustom
-            key={sucursal.id}
-            data={sucursal}
+            key={contrato.id}
+            data={contrato}
             itemForm={"SucursalEmpresa"}
           >
-            <BotonSeleccionarCustomSucursalItem {...sucursal} />
+            <BotonSeleccionarCustomSucursalItem {...contrato} />
           </BotonSeleccionarCustom>
         ))}
       </div>
