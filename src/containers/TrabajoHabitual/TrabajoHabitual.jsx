@@ -5,6 +5,7 @@ import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import TrabajoHabitualCard from "./TrabajoHabitualCard";
 
 const TrabajoHabitual = () => {
   const {
@@ -40,6 +41,8 @@ const TrabajoHabitual = () => {
       </Typography>
 
       <div className={bottomElement}>
+        <TrabajoHabitualCard />
+        <div className={spaceStyle.spaceMin1}></div>
         <Button variant="contained" className={buttonAchs}>
           Si
         </Button>
