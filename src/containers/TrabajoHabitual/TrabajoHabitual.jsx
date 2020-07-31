@@ -11,7 +11,7 @@ const TrabajoHabitual = () => {
   const {
     addmissionForm: { step, percentage, desarrollarTrabajoHabitual },
   } = useSelector((state) => state, shallowEqual);
-
+  let stepx = step;
   const [trabajoHabitual, setTrabajoHabitual] = useState(() => {
     return !desarrollarTrabajoHabitual ? "" : desarrollarTrabajoHabitual;
   });
@@ -28,6 +28,7 @@ const TrabajoHabitual = () => {
 
   const handleOnClick = (respuesta) => {
     dispatch(updateForm("desarrollarTrabajoHabitual", respuesta));
+    dispatch(handleSetStep(++stepx));
   };
 
   return (
