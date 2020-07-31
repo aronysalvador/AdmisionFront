@@ -27,4 +27,5 @@ export const AdmissionForm = {
   finJornadaLaboral: "",
   ingresoTrabajoActual: "",
   desarrollarTrabajoHabitual: "",
+  tipoRemuneracion: {},
 };
