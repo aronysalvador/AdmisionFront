@@ -13,7 +13,7 @@ const TipoDeContrato = () => {
   const dispatch = useDispatch();
   const { root, pregunta } = getComunStyle();
 
-  const { step, percentage, tipoRemuneracion } = useSelector(
+  const { step, percentage, tipoDeContrato } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -41,6 +41,7 @@ const TipoDeContrato = () => {
             key={contrato.id}
             data={contrato}
             itemForm={"tipoDeContrato"}
+            selected={tipoDeContrato.id === contrato.id}
           >
             <BotonSeleccionarCustomItem {...contrato} />
           </BotonSeleccionarCustom>
