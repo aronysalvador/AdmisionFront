@@ -28,4 +28,5 @@ export const AdmissionForm = {
   ingresoTrabajoActual: "",
   desarrollarTrabajoHabitual: "",
   tipoRemuneracion: {},
+  tipoDeContrato: {},
 };
