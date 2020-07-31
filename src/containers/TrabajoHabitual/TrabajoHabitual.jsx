@@ -9,11 +9,11 @@ import TrabajoHabitualCard from "./TrabajoHabitualCard";
 
 const TrabajoHabitual = () => {
   const {
-    addmissionForm: { step, percentage, sucursalEmpresaSiniestro },
+    addmissionForm: { step, percentage, desarrollarTrabajoHabitual },
   } = useSelector((state) => state, shallowEqual);
 
-  const [sucursal, setSucursal] = useState(() => {
-    return !sucursalEmpresaSiniestro ? "" : sucursalEmpresaSiniestro;
+  const [trabajoHabitual, setTrabajoHabitual] = useState(() => {
+    return !desarrollarTrabajoHabitual ? "" : desarrollarTrabajoHabitual;
   });
   const dispatch = useDispatch();
 
@@ -21,11 +21,14 @@ const TrabajoHabitual = () => {
     root,
     buttonAchs,
     pregunta,
-    tituloTextbox,
     bottomElement,
     buttonAchs2,
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
+
+  const handleOnClick = (respuesta) => {
+    dispatch(updateForm("desarrollarTrabajoHabitual", respuesta));
+  };
 
   return (
     <div className={root}>
@@ -43,11 +46,19 @@ const TrabajoHabitual = () => {
       <div className={bottomElement}>
         <TrabajoHabitualCard />
         <div className={spaceStyle.spaceMin1}></div>
-        <Button variant="contained" className={buttonAchs}>
+        <Button
+          variant="contained"
+          className={buttonAchs}
+          onClick={() => handleOnClick("Si")}
+        >
           Si
         </Button>
         <div className={spaceStyle.spaceMin1}></div>
-        <Button className={buttonAchs2} variant="outlined">
+        <Button
+          className={buttonAchs2}
+          variant="outlined"
+          onClick={() => handleOnClick("No")}
+        >
           No lo estaba
         </Button>
       </div>
