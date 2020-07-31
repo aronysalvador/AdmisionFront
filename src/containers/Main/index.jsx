@@ -42,6 +42,7 @@ import EditarTelefono from "../EditarTelefono/EditarTelefono";
 import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
 import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 import Remuneracion from "../Remuneracion/Remuneracion";
+import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -116,6 +117,8 @@ const Main = (props) => {
         return <TrabajoHabitual />;
       case 104:
         return <Remuneracion />;
+      case 105:
+        return <TipoDeContrato />;
 
       case 30:
         return <EditCompany />;
