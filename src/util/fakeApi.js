@@ -148,3 +148,14 @@ const tipoRemuneracion = [
 export const getTiposRemuneracion = () => {
   return tipoRemuneracion;
 };
+
+const tiposDeContrato = [
+  { id: 1, nombre: "Indefinido", selected: false },
+  { id: 2, nombre: "Plazo fijo", selected: false },
+  { id: 3, nombre: "Por obra", selected: false },
+  { id: 4, nombre: "Temporada", selected: false },
+];
+
+export const getTiposDeContrato = () => {
+  return tiposDeContrato;
+};
