@@ -11,8 +11,7 @@ import BotonSeleccionarCustomSucursalItem from "../../components/BotonSelecciona
 
 const TipoDeContrato = () => {
   const dispatch = useDispatch();
-  const { root, pregunta, bottomElement } = getComunStyle();
-  const spaceStyle = getSpaceStyle();
+  const { root, pregunta } = getComunStyle();
 
   const { step, percentage, sucursales } = useSelector(
     (state) => state.addmissionForm,
@@ -22,7 +21,7 @@ const TipoDeContrato = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(100))}
+        dispatch={() => dispatch(handleSetStep(step - 1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -41,7 +40,7 @@ const TipoDeContrato = () => {
           <BotonSeleccionarCustom
             key={contrato.id}
             data={contrato}
-            itemForm={"SucursalEmpresa"}
+            itemForm={"tipoDeContrato"}
           >
             <BotonSeleccionarCustomSucursalItem {...contrato} />
           </BotonSeleccionarCustom>
