@@ -41,6 +41,7 @@ const Remuneracion = () => {
           <BotonSeleccionarCustom
             key={remuneracion.id}
             data={remuneracion}
+            selected={remuneracion.selected}
             itemForm={"tipoRemuneracion"}
           >
             <BotonSeleccionarCustomItem {...remuneracion} />

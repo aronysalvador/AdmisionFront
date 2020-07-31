@@ -4,17 +4,21 @@ import { useDispatch } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 
 const BotonSeleccionarCustom = (props) => {
+  const { data, itemForm, selected } = props;
   const dispatch = useDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const { botonSeleccionado } = getComunStyle();
-  const { data, itemForm } = props;
 
   return (
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
+        console.log({ isSelected });
         dispatch(
-          updateForm(itemForm, !isSelected ? { ...data, ...isSelected } : {})
+          updateForm(
+            itemForm,
+            !isSelected ? { ...data, selected: !isSelected } : {}
+          )
         );
       }}
       className={isSelected === true ? botonSeleccionado : ""}
