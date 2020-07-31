@@ -13,7 +13,7 @@ const BotonSeleccionarCustom = (props) => {
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-        console.log({ isSelected });
+
         dispatch(
           updateForm(
             itemForm,
