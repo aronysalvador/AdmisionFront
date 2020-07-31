@@ -7,6 +7,7 @@ import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { sucursalesOficina } from "../../util/fakeApi";
+import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const dispatch = useDispatch();
@@ -38,7 +39,13 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
         }}
       >
         {sucursalesEmpresa.map((sucursal) => (
-          <BotonSeleccionarCustom key={sucursal.id} {...sucursal} />
+          <BotonSeleccionarCustom
+            key={sucursal.id}
+            data={sucursal}
+            itemForm={"SucursalEmpresa"}
+          >
+            <BotonSeleccionarCustomSucursalItem {...sucursal} />
+          </BotonSeleccionarCustom>
         ))}
       </div>
     </div>

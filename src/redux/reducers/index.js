@@ -6,6 +6,7 @@ import microsoftReducer from "../reducers/microsoft.reducer";
 import cargosForm from "../reducers/WitnessResponsableReducer";
 import razonSocialForm from "../reducers/RazonSocialReducer";
 import afpForm from "../reducers/AfpReducer";
+import tipoJornadaLaboralForm from "../reducers/TipoJornadaLaboralReducer";
 
 export default combineReducers({
   addmissionForm,
@@ -15,4 +16,5 @@ export default combineReducers({
   cargosForm,
   razonSocialForm,
   afpForm,
+  tipoJornadaLaboralForm,
 });

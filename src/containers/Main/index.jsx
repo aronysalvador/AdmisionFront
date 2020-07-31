@@ -40,6 +40,7 @@ import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
 import EditarTelefono from "../EditarTelefono/EditarTelefono";
 import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
+import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -112,11 +113,13 @@ const Main = (props) => {
         return <EditarTelefono />;
       case 103:
         return <TrabajoHabitual />;
+
       case 30:
         return <EditCompany />;
-
       case 31:
         return <Afp />;
+      case 32:
+        return <TipoJornadaLaboral />;
 
       case 500: {
         sessionStorage.clear();
