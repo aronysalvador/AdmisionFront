@@ -1,5 +1,5 @@
 export const AdmissionForm = {
-  step: 103,
+  step: 104,
 
   percentage: 0,
   rut: "",
@@ -27,4 +27,5 @@ export const AdmissionForm = {
   finJornadaLaboral: "",
   ingresoTrabajoActual: "",
   desarrollarTrabajoHabitual: "",
+  tipoRemuneracion: {},
 };
