@@ -19,9 +19,9 @@ export const getAFP = () => async (dispatch) => {
       dispatch(errorCallAFP());
     });
 
-  const successCallAFP = (isapres) => ({
+  const successCallAFP = (afp) => ({
     type: GET_AFP_SUCCESS,
-    payload: isapres,
+    payload: afp,
   });
 
   const errorCallAFP = () => ({

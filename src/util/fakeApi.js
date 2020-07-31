@@ -124,3 +124,17 @@ const razonSocial = [
 export const getRazonSocial = async () => {
   return razonSocial;
 };
+
+const jornadaLaboral = [
+  { id: 1, nombre: "Lunes a Viernes" },
+  { id: 2, nombre: "Lunes a Sábado" },
+  { id: 3, nombre: "Lunes - Domingo" },
+  { id: 4, nombre: "Turno Rotativo" },
+  { id: 5, nombre: "Medio tiempo" },
+  { id: 6, nombre: "Cesante" },
+  { id: 7, nombre: "Trabajo a distancia" },
+];
+
+export const getTipoJornadaLaboral = async () => {
+  return jornadaLaboral;
+};

@@ -1,31 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "@material-ui/core";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { useDispatch } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 
-const BotonSeleccionarCustom = ({
-  nombreSucursal,
-  numero,
-  comunaNombre,
-  key,
-}) => {
-  const sucursal = {
-    nombreSucursal,
-    numero,
-    comunaNombre,
-    key,
-  };
+const BotonSeleccionarCustom = (props) => {
   const dispatch = useDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const { botonSeleccionado } = getComunStyle();
-  console.log({ sucursal });
+  const { data, itemForm } = props;
+
   return (
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
 
-        dispatch(updateForm("SucursalEmpresa", !isSelected ? sucursal : {}));
+        dispatch(updateForm(itemForm, !isSelected ? data : {}));
       }}
       className={isSelected === true ? botonSeleccionado : ""}
       style={{
@@ -44,11 +33,7 @@ const BotonSeleccionarCustom = ({
         paddingBottom: "10px",
       }}
     >
-      <div style={{ textAlign: "center" }}>
-        <span style={{ fontSize: "14px" }}>{nombreSucursal}</span> <br />
-        <span style={{ fontSize: "14px" }}>{numero}</span>
-      </div>
-      <span style={{ fontSize: "12px" }}>{comunaNombre}</span>
+      {props.children}
     </div>
   );
 };

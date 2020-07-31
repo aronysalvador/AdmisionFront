@@ -39,6 +39,7 @@ import EditCompany from "../EditCompany/index";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
 import EditarTelefono from "../EditarTelefono/EditarTelefono";
+import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -109,32 +110,28 @@ const Main = (props) => {
         return <RouteComuna />;
       case 102: //Tony Editar numero telefonico
         return <EditarTelefono />;
+
       case 30:
         return <EditCompany />;
-
       case 31:
         return <Afp />;
-
-
+      case 32:
+        return <TipoJornadaLaboral />;
 
       case 500: {
-        sessionStorage.clear()
+        sessionStorage.clear();
         return <PacienteNoAfiliadoError />;
       }
 
       case 50:
         return <JornadaLaboralContainer />;
       case 51:
-        return <TrabajoActualContainer />
-        
-     
-
+        return <TrabajoActualContainer />;
 
       default: {
         sessionStorage.clear();
         return <div>Error</div>;
       }
-        
     }
   };
 
