@@ -1,5 +1,5 @@
 export const AdmissionForm = {
-  step: 104,
+  step: 105,
 
   percentage: 0,
   rut: "",

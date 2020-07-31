@@ -7,13 +7,13 @@ import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { getTiposDeContrato } from "../../util/fakeApi";
-import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
+import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 
 const TipoDeContrato = () => {
   const dispatch = useDispatch();
   const { root, pregunta } = getComunStyle();
 
-  const { step, percentage, sucursales } = useSelector(
+  const { step, percentage, tipoRemuneracion } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -36,13 +36,13 @@ const TipoDeContrato = () => {
           flexWrap: "wrap",
         }}
       >
-        {getTiposDeContrato.map((contrato) => (
+        {getTiposDeContrato().map((contrato) => (
           <BotonSeleccionarCustom
             key={contrato.id}
             data={contrato}
             itemForm={"tipoDeContrato"}
           >
-            <BotonSeleccionarCustomSucursalItem {...contrato} />
+            <BotonSeleccionarCustomItem {...contrato} />
           </BotonSeleccionarCustom>
         ))}
       </div>
