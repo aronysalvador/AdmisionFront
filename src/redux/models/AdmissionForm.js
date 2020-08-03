@@ -29,4 +29,7 @@ export const AdmissionForm = {
   desarrollarTrabajoHabitual: "",
   tipoRemuneracion: {},
   tipoDeContrato: {},
+
+  //State de Cargo
+  cargoForm: "",
 };
