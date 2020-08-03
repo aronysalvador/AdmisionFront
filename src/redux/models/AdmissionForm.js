@@ -1,8 +1,5 @@
 export const AdmissionForm = {
- 
- 
-
-  step: 100,
+  step: 34,
 
   percentage: 0,
   rut: "",
@@ -32,4 +29,7 @@ export const AdmissionForm = {
   desarrollarTrabajoHabitual: "",
   tipoRemuneracion: {},
   tipoDeContrato: {},
+
+  //State de Cargo
+  cargoForm: "",
 };
