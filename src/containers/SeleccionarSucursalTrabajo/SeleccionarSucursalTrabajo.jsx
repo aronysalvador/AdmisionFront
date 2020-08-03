@@ -10,6 +10,9 @@ import { sucursalesOficina } from "../../util/fakeApi";
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
+  const [sucursalesEmpresaData, setSucursalesEmpresaData] = useState([
+    ...sucursalesEmpresa,
+  ]);
   const dispatch = useDispatch();
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -38,7 +41,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
           flexWrap: "wrap",
         }}
       >
-        {sucursalesEmpresa.map((sucursal) => (
+        {sucursalesEmpresaData.map((sucursal) => (
           <BotonSeleccionarCustom
             key={sucursal.id}
             data={sucursal}
