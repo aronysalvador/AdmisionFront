@@ -9,7 +9,7 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
 
-const TipoJornadaLaboral = () => {
+const CategoriaOcupacional = () => {
   const {
     addmissionForm: { step, percentage, tipoJornadaLaboralForm },
   } = useSelector((state) => state, shallowEqual);
@@ -44,7 +44,7 @@ const TipoJornadaLaboral = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Selecciona la opción que mejor defina la jornada laboral del paciente
+        Selecciona tu categoría ocupacional
       </Typography>
 
       <div
@@ -70,4 +70,4 @@ const TipoJornadaLaboral = () => {
   );
 };
 
-export default TipoJornadaLaboral;
+export default CategoriaOcupacional;
