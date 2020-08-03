@@ -44,6 +44,7 @@ import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 import Remuneracion from "../Remuneracion/Remuneracion";
 import CategoriaOcupacional from "../CategoriaOcupacional/index";
 import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
+import Cargo from "../Cargo/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -129,6 +130,8 @@ const Main = (props) => {
         return <TipoJornadaLaboral />;
       case 33:
         return <CategoriaOcupacional />;
+      case 34:
+        return <Cargo />;
 
       case 500: {
         sessionStorage.clear();
