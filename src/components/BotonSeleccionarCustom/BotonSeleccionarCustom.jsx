@@ -8,9 +8,7 @@ const BotonSeleccionarCustom = (props) => {
 
   const dispatch = useDispatch();
 
-  const [isSelected, setIsSelected] = useState(() => {
-    return !selected ? false : true;
-  });
+  const [isSelected, setIsSelected] = useState(selected);
   const { botonSeleccionado } = getComunStyle();
 
   return (
