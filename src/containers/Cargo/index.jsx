@@ -17,6 +17,8 @@ const Cargo = () => {
     return !cargoForm ? "" : cargoForm;
   });
 
+  const [error, setError] = useState(false);
+
   const {
     buttonAchs,
     root,
@@ -27,6 +29,17 @@ const Cargo = () => {
   const spaceStyle = getSpaceStyle();
 
   const dispatch = useDispatch();
+
+  const clickSendCargo = () => {
+    //Validar Formulario
+    if (cargo.length < 5) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    dispatch(updateForm("cargoForm", cargo));
+    //dispatch(handleSetStep(step + 1));
+  };
 
   return (
     <div className={root}>
@@ -47,9 +60,15 @@ const Cargo = () => {
           id="cargo"
           value={cargo}
           onChange={(e) => saveCargo(e.target.value)}
-          helperText="Ejemplo:Analista,Operario,Maestro"
+          helperText={
+            error
+              ? "Debe ingresar al menos 5 caracteres"
+              : "Ejemplo:Analista,Operario,Maestro"
+          }
+          error={error}
           margin="dense"
           variant="outlined"
+          inputProps={{ maxLength: 25 }}
           fullWidth
         />
       </div>
@@ -58,10 +77,7 @@ const Cargo = () => {
         <Button
           className={buttonAchs}
           isabled={!cargo}
-          onClick={() => {
-            dispatch(updateForm("cargoForm", cargo));
-            //dispatch(handleSetStep(step + 1));
-          }}
+          onClick={() => clickSendCargo()}
         >
           Siguiente
         </Button>
