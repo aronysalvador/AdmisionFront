@@ -7,6 +7,7 @@ import cargosForm from "../reducers/WitnessResponsableReducer";
 import razonSocialForm from "../reducers/RazonSocialReducer";
 import afpForm from "../reducers/AfpReducer";
 import tipoJornadaLaboralForm from "../reducers/TipoJornadaLaboralReducer";
+import categoriaOcupacionalForm from "../reducers/CategoriaOcupacionalReducer";
 
 export default combineReducers({
   addmissionForm,
@@ -17,4 +18,5 @@ export default combineReducers({
   razonSocialForm,
   afpForm,
   tipoJornadaLaboralForm,
+  categoriaOcupacionalForm,
 });

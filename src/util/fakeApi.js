@@ -141,10 +141,22 @@ export const getTipoJornadaLaboral = async () => {
 
 const tipoRemuneracion = [
   { id: 1, nombre: "Salario Fijo", selected: false },
-  { id: 2, nombre: "Por comisión", selected: false },
+  { id: 2, nombre: "Por comision", selected: false },
   { id: 3, nombre: "Honorarios", selected: false },
 ];
 
 export const getTiposRemuneracion = () => {
   return tipoRemuneracion;
+};
+
+const categoriaOcupacional = [
+  { id: 1, nombre: "Empleador" },
+  { id: 2, nombre: "Trabajador Dependiente" },
+  { id: 3, nombre: "Trabajador Independiente" },
+  { id: 4, nombre: "Familiar no remunerado" },
+  { id: 5, nombre: "Trabajador voluntario" },
+];
+
+export const getCategoriaOcupacional = async () => {
+  return categoriaOcupacional;
 };

@@ -6,25 +6,25 @@ import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
-import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
+import { getCategoriaOcupacionalPrincipal } from "./../../redux/actions/CategoriaOcupacionalAction";
 
-const TipoJornadaLaboral = () => {
+const CategoriaOcupacional = () => {
   const {
-    addmissionForm: { step, percentage, tipoJornadaForm },
+    addmissionForm: { step, percentage, categoriaOcupacionalForm },
   } = useSelector((state) => state, shallowEqual);
 
-  const [tipoJornadaLaboral, setTipoJornadaLaboral] = useState(() => {
-    return !tipoJornadaForm ? "" : tipoJornadaForm;
+  const [categoriaOcupacional, setcategoriaOcupacional] = useState(() => {
+    return !categoriaOcupacionalForm ? "" : categoriaOcupacionalForm;
   });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getJornadaLaboralPrincipal(""));
+    dispatch(getCategoriaOcupacionalPrincipal(""));
   }, []);
 
-  const { data: tipoJornadaList } = useSelector(
-    (state) => state.tipoJornadaLaboralForm,
+  const { data: categoriaList } = useSelector(
+    (state) => state.categoriaOcupacionalForm,
     shallowEqual
   );
 
@@ -37,7 +37,7 @@ const TipoJornadaLaboral = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Selecciona la opción que mejor defina la jornada laboral del paciente
+        Selecciona tu categoría ocupacional
       </Typography>
 
       <div
@@ -49,14 +49,14 @@ const TipoJornadaLaboral = () => {
           flexWrap: "wrap",
         }}
       >
-        {tipoJornadaList.map((tipoJornada) => (
+        {categoriaList.map((categoria) => (
           <BotonSeleccionarCustom
-            key={tipoJornada.id}
-            data={tipoJornada}
-            itemForm={"tipoJornadaForm"}
-            selected={tipoJornada.id === tipoJornadaLaboral.id}
+            key={categoria.id}
+            data={categoria}
+            itemForm={"categoriaOcupacionalForm"}
+            selected={categoria.id === categoriaOcupacional.id}
           >
-            <BotonSeleccionarCustomItem {...tipoJornada} />
+            <BotonSeleccionarCustomItem {...categoria} />
           </BotonSeleccionarCustom>
         ))}
       </div>
@@ -64,4 +64,4 @@ const TipoJornadaLaboral = () => {
   );
 };
 
-export default TipoJornadaLaboral;
+export default CategoriaOcupacional;

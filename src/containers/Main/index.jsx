@@ -42,6 +42,7 @@ import EditarTelefono from "../EditarTelefono/EditarTelefono";
 import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
 import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 import Remuneracion from "../Remuneracion/Remuneracion";
+import CategoriaOcupacional from "../CategoriaOcupacional/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -123,6 +124,8 @@ const Main = (props) => {
         return <Afp />;
       case 32:
         return <TipoJornadaLaboral />;
+      case 33:
+        return <CategoriaOcupacional />;
 
       case 500: {
         sessionStorage.clear();
