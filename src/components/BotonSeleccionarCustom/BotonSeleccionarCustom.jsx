@@ -23,7 +23,7 @@ const BotonSeleccionarCustom = (props) => {
           )
         );
       }}
-      className={isSelected === true ? botonSeleccionado : ""}
+      className={isSelected ? botonSeleccionado : ""}
       style={{
         marginTop: "10px",
         display: "flex",
