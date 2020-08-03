@@ -140,9 +140,9 @@ export const getTipoJornadaLaboral = async () => {
 };
 
 const tipoRemuneracion = [
-  { id: 1, nombre: "Salario Fijo", selected: false },
-  { id: 2, nombre: "Por comisión", selected: false },
-  { id: 3, nombre: "Honorarios", selected: false },
+  { id: 1, nombre: "Salario Fijo" },
+  { id: 2, nombre: "Por comisión" },
+  { id: 3, nombre: "Honorarios" },
 ];
 
 export const getTiposRemuneracion = () => {
@@ -150,10 +150,10 @@ export const getTiposRemuneracion = () => {
 };
 
 const tiposDeContrato = [
-  { id: 1, nombre: "Indefinido", selected: false },
-  { id: 2, nombre: "Plazo fijo", selected: false },
-  { id: 3, nombre: "Por obra", selected: false },
-  { id: 4, nombre: "Temporada", selected: false },
+  { id: 1, nombre: "Indefinido" },
+  { id: 2, nombre: "Plazo fijo" },
+  { id: 3, nombre: "Por obra" },
+  { id: 4, nombre: "Temporada" },
 ];
 
 export const getTiposDeContrato = () => {
