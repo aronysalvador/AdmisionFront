@@ -138,3 +138,16 @@ const jornadaLaboral = [
 export const getTipoJornadaLaboral = async () => {
   return jornadaLaboral;
 };
+
+const categoriaOcupacional = [
+  { id: 1, nombre: "Empleador" },
+  { id: 2, nombre: "Trabajador Dependiente" },
+  { id: 3, nombre: "Trabajador Independiente" },
+  { id: 4, nombre: "Familiar no remunerado" },
+  { id: 5, nombre: "Trabajador voluntario" },
+];
+
+export const getCategoriaOcupacional = async () => {
+  return categoriaOcupacional;
+};
+getCategoriaOcupacional;
