@@ -143,6 +143,7 @@ const tipoRemuneracion = [
   { id: 1, nombre: "Salario Fijo", selected: false },
   { id: 2, nombre: "Por comision", selected: false },
   { id: 3, nombre: "Honorarios", selected: false },
+
 ];
 
 export const getTiposRemuneracion = () => {
@@ -159,4 +160,16 @@ const categoriaOcupacional = [
 
 export const getCategoriaOcupacional = async () => {
   return categoriaOcupacional;
+};
+
+
+const tiposDeContrato = [
+  { id: 1, nombre: "Indefinido" },
+  { id: 2, nombre: "Plazo fijo" },
+  { id: 3, nombre: "Por obra" },
+  { id: 4, nombre: "Temporada" },
+];
+
+export const getTiposDeContrato = () => {
+  return tiposDeContrato;
 };

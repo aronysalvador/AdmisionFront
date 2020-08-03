@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -6,15 +6,14 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { sucursalesOficina } from "../../util/fakeApi";
-import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
+import { getTiposDeContrato } from "../../util/fakeApi";
+import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 
-const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
+const TipoDeContrato = () => {
   const dispatch = useDispatch();
-  const { root, pregunta, bottomElement } = getComunStyle();
-  const spaceStyle = getSpaceStyle();
+  const { root, pregunta } = getComunStyle();
 
-  const { step, percentage, SucursalEmpresa } = useSelector(
+  const { step, percentage, tipoDeContrato } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -22,13 +21,12 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(100))}
+        dispatch={() => dispatch(handleSetStep(step - 1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Selecciona la sucursal en donde trabajas
+        ¿Que tipo de contrato tienes?
       </Typography>
-
       <div
         style={{
           display: "flex",
@@ -38,14 +36,14 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
           flexWrap: "wrap",
         }}
       >
-        {sucursalesEmpresa.map((sucursal) => (
+        {getTiposDeContrato().map((contrato) => (
           <BotonSeleccionarCustom
-            key={sucursal.id}
-            data={sucursal}
-            itemForm={"SucursalEmpresa"}
-            selected={sucursal.id === SucursalEmpresa.id}
+            key={contrato.id}
+            data={contrato}
+            itemForm={"tipoDeContrato"}
+            selected={tipoDeContrato.id === contrato.id}
           >
-            <BotonSeleccionarCustomSucursalItem {...sucursal} />
+            <BotonSeleccionarCustomItem {...contrato} />
           </BotonSeleccionarCustom>
         ))}
       </div>
@@ -53,4 +51,4 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   );
 };
 
-export default SeleccionarSucursalTrabajo;
+export default TipoDeContrato;

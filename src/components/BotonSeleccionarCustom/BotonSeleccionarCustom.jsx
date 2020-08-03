@@ -5,10 +5,11 @@ import { updateForm } from "../../redux/actions/AdmissionAction";
 
 const BotonSeleccionarCustom = (props) => {
   const { data, itemForm, selected } = props;
+
   const dispatch = useDispatch();
-  const { botonSeleccionado } = getComunStyle();
-  const { data, itemForm, selected } = props;
+
   const [isSelected, setIsSelected] = useState(selected);
+  const { botonSeleccionado } = getComunStyle();
 
   return (
     <div

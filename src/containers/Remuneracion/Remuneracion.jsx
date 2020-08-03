@@ -14,7 +14,7 @@ const Remuneracion = () => {
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage } = useSelector(
+  const { step, percentage, tipoRemuneracion } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -43,6 +43,7 @@ const Remuneracion = () => {
             data={remuneracion}
             selected={remuneracion.selected}
             itemForm={"tipoRemuneracion"}
+            selected={remuneracion.id === tipoRemuneracion.id}
           >
             <BotonSeleccionarCustomItem {...remuneracion} />
           </BotonSeleccionarCustom>
