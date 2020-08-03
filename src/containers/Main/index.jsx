@@ -31,17 +31,19 @@ import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
 import TrabajoActualContainer from "../TrabajoActual";
-import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
-import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
-import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
-import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
-import EditCompany from "../EditCompany/index";
-import JornadaLaboralContainer from "../JornadaLaboral/Index";
-import Afp from "../Afp/index";
-import EditarTelefono from "../EditarTelefono/EditarTelefono";
-import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
-import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
-import Remuneracion from "../Remuneracion/Remuneracion";
+//import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
+//import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
+import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal"
+import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna"
+import EditCompany from "../EditCompany/index"
+import JornadaLaboralContainer from "../JornadaLaboral/Index"
+import Afp from "../Afp/index"
+import EditarTelefono from "../EditarTelefono/EditarTelefono"
+import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual"
+import TipoJornadaLaboral from "../TipoJornadaLaboral/index"
+import Remuneracion from "../Remuneracion/Remuneracion"
+import DireccionParticular from "../DireccionParticular/index";
+
 
 const Main = (props) => {
   const classes = useStyles();
@@ -133,6 +135,9 @@ const Main = (props) => {
         return <JornadaLaboralContainer />;
       case 51:
         return <TrabajoActualContainer />;
+
+      case 10001: 
+        return <DireccionParticular />
 
       default: {
         sessionStorage.clear();

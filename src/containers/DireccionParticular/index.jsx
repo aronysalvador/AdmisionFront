@@ -7,14 +7,19 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import { getSpaceStyle } from "../../css/spaceStyle"
 import DireccionGeo from '../../components/share/DireccionGeo'
 
-const LugarExactoSiniestro = () => {
+const DireccionParticular = () => {
   const {
-    addmissionForm: { step, percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro },
+    addmissionForm: { step, percentage, direccionParticular,urlMapaDireccionParticular },
   } = useSelector((state) => state, shallowEqual)
 
-  const [sucursal, setSucursal] = useState(() => {
-    return !sucursalEmpresaSiniestro ? "" : sucursalEmpresaSiniestro
+  const [direccion, setDireccion] = useState(() => {
+    return !direccionParticular ? "" : direccionParticular
   })
+
+  const setUrl = (urlMapa) =>{
+    dispatch(updateForm("urlMapaDireccionParticular", urlMapa))
+  }
+
   const dispatch = useDispatch()
 
   const {
@@ -26,9 +31,7 @@ const LugarExactoSiniestro = () => {
   } = getComunStyle()
   const spaceStyle = getSpaceStyle()
 
-  const setUrl = (urlMapa) =>{
-    dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
-  }
+
 
   const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true)
 
@@ -39,30 +42,30 @@ const LugarExactoSiniestro = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Señala el lugar exacto del accidente
+        Ingresa tu dirección particular
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="subtitle2">
-        Dirección accidente
+        Dirección particular
       </Typography>
 
-      <DireccionGeo direccion={sucursal} setUrl={setUrl} setDireccion={setSucursal} />
-      {(sucursal !== null)?<img src={urlMapasucursalEmpresaSiniestro} />:<div />}
+      <DireccionGeo direccion={direccion} setUrl={setUrl} setDireccion={setDireccion} />
+      {(direccion !== null)?<img src={urlMapaDireccionParticular} />:<div />}
 
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
           variant="contained"
-          disabled={!sucursal || !isLugarExactoAccidenteValid}
+          disabled={!direccion || !isLugarExactoAccidenteValid}
           onClick={() => {
-            dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
+            dispatch(updateForm("direccionParticular", direccion))
             dispatch(handleSetStep(step + 1))
           }}
         >
-          Siguiente
+          Confirmar
         </Button>
       </div>
     </div>
   )
 }
-export default LugarExactoSiniestro
+export default DireccionParticular
