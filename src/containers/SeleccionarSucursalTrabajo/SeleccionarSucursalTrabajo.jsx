@@ -47,7 +47,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             key={sucursal.id}
             data={sucursal}
             itemForm={"SucursalEmpresa"}
-            selected={sucursal.id === SucursalEmpresa.id}
+            selected={sucursal.id == SucursalEmpresa.id}
           >
             <BotonSeleccionarCustomSucursalItem {...sucursal} />
           </BotonSeleccionarCustom>

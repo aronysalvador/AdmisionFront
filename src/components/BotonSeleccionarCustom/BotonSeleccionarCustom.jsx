@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getComunStyle } from "../../css/comun";
 import { useDispatch } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
@@ -8,8 +8,12 @@ const BotonSeleccionarCustom = (props) => {
 
   const dispatch = useDispatch();
 
-  const [isSelected, setIsSelected] = useState(selected);
+  const [isSelected, setIsSelected] = useState();
   const { botonSeleccionado } = getComunStyle();
+
+  useEffect(() => {
+    setIsSelected(selected);
+  }, [selected]);
 
   return (
     <div
