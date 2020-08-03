@@ -14,7 +14,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, sucursales } = useSelector(
+  const { step, percentage, SucursalEmpresa } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -43,6 +43,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             key={sucursal.id}
             data={sucursal}
             itemForm={"SucursalEmpresa"}
+            selected={sucursal.id === SucursalEmpresa.id}
           >
             <BotonSeleccionarCustomSucursalItem {...sucursal} />
           </BotonSeleccionarCustom>
