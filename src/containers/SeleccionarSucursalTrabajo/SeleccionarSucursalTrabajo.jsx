@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { sucursalesOficina } from "../../util/fakeApi";
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
