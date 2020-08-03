@@ -150,4 +150,3 @@ const categoriaOcupacional = [
 export const getCategoriaOcupacional = async () => {
   return categoriaOcupacional;
 };
-getCategoriaOcupacional;

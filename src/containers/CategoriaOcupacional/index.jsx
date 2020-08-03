@@ -7,25 +7,25 @@ import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
-import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
+import { getCategoriaOcupacionalPrincipal } from "./../../redux/actions/CategoriaOcupacionalAction";
 
 const CategoriaOcupacional = () => {
   const {
-    addmissionForm: { step, percentage, tipoJornadaLaboralForm },
+    addmissionForm: { step, percentage, categoriaOcupacionalForm },
   } = useSelector((state) => state, shallowEqual);
 
   const [tipoJornadaLaboral, setTipoJornadaLaboral] = useState(() => {
-    return !tipoJornadaLaboralForm ? "" : tipoJornadaLaboralForm;
+    return !categoriaOcupacionalForm ? "" : categoriaOcupacionalForm;
   });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getJornadaLaboralPrincipal(""));
+    dispatch(getCategoriaOcupacionalPrincipal(""));
   }, []);
 
-  const { data: tipoJornadaList } = useSelector(
-    (state) => state.tipoJornadaLaboralForm,
+  const { data: categoriaList } = useSelector(
+    (state) => state.categoriaOcupacionalForm,
     shallowEqual
   );
 
@@ -56,13 +56,13 @@ const CategoriaOcupacional = () => {
           flexWrap: "wrap",
         }}
       >
-        {tipoJornadaList.map((tipoJornada) => (
+        {categoriaList.map((categoria) => (
           <BotonSeleccionarCustom
-            key={tipoJornada.id}
-            data={tipoJornada}
-            itemForm={"tipoJornadaForm"}
+            key={categoria.id}
+            data={categoria}
+            itemForm={"categoriaOcupacionalForm"}
           >
-            <BotonSeleccionarCustomItem {...tipoJornada} />
+            <BotonSeleccionarCustomItem {...categoria} />
           </BotonSeleccionarCustom>
         ))}
       </div>
