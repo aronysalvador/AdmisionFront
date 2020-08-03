@@ -13,7 +13,7 @@ const CategoriaOcupacional = () => {
     addmissionForm: { step, percentage, categoriaOcupacionalForm },
   } = useSelector((state) => state, shallowEqual);
 
-  const [tipoJornadaLaboral, setTipoJornadaLaboral] = useState(() => {
+  const [categoriaOcupacional, setcategoriaOcupacional] = useState(() => {
     return !categoriaOcupacionalForm ? "" : categoriaOcupacionalForm;
   });
 
@@ -54,6 +54,7 @@ const CategoriaOcupacional = () => {
             key={categoria.id}
             data={categoria}
             itemForm={"categoriaOcupacionalForm"}
+            selected={categoria.id === categoriaOcupacional.id}
           >
             <BotonSeleccionarCustomItem {...categoria} />
           </BotonSeleccionarCustom>

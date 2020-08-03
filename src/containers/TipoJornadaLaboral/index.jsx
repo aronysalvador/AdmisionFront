@@ -10,11 +10,11 @@ import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLab
 
 const TipoJornadaLaboral = () => {
   const {
-    addmissionForm: { step, percentage, tipoJornadaLaboralForm },
+    addmissionForm: { step, percentage, tipoJornadaForm },
   } = useSelector((state) => state, shallowEqual);
 
   const [tipoJornadaLaboral, setTipoJornadaLaboral] = useState(() => {
-    return !tipoJornadaLaboralForm ? "" : tipoJornadaLaboralForm;
+    return !tipoJornadaForm ? "" : tipoJornadaForm;
   });
 
   const dispatch = useDispatch();
@@ -54,6 +54,7 @@ const TipoJornadaLaboral = () => {
             key={tipoJornada.id}
             data={tipoJornada}
             itemForm={"tipoJornadaForm"}
+            selected={tipoJornada.id === tipoJornadaLaboral.id}
           >
             <BotonSeleccionarCustomItem {...tipoJornada} />
           </BotonSeleccionarCustom>
