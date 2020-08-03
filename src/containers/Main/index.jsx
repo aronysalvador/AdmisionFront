@@ -46,6 +46,8 @@ import CategoriaOcupacional from "../CategoriaOcupacional/index";
 import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
 import Cargo from "../Cargo/index";
 
+import DireccionParticular from "../DireccionParticular/index";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, dispatch } = props;
@@ -142,6 +144,9 @@ const Main = (props) => {
         return <JornadaLaboralContainer />;
       case 51:
         return <TrabajoActualContainer />;
+
+      case 10001: 
+        return <DireccionParticular />
 
       default: {
         sessionStorage.clear();
