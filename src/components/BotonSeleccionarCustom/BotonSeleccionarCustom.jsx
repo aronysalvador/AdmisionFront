@@ -25,9 +25,9 @@ const BotonSeleccionarCustom = (props) => {
           updateForm(
             itemForm,
             !isSelected ? { ...data, selected: !isSelected } : {}
-          ) 
+          )
         );
-        dispatch(handleSetStep(step)) 
+        dispatch(handleSetStep(step));
       }}
       className={isSelected ? botonSeleccionado : ""}
       style={{
@@ -37,7 +37,7 @@ const BotonSeleccionarCustom = (props) => {
         alignItems: "center",
         flexDirection: "column",
         width: "45%",
-        height: "100px",
+        height: "90px",
         borderStyle: "solid",
         borderColor: "#787878",
         borderSpacing: "2px",
