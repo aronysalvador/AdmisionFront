@@ -45,7 +45,7 @@ const SeleccionarComuna = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(8))}
+        dispatch={() => dispatch(handleSetStep(5.4))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -83,10 +83,11 @@ const SeleccionarComuna = () => {
             dispatch(updateForm("comunaSucursal", comuna));
             if (numeroSucursales > 1) {
               dispatch(updateForm("sucursales", sucursales));
-              dispatch(handleSetStep(++stepx));
+              dispatch(handleSetStep(5.6));
             }
             if (numeroSucursales === 1) {
               dispatch(updateForm("SucursalEmpresa", sucursales[0]));
+              dispatch(handleSetStep(5.1));
             }
           }}
         >

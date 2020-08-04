@@ -56,7 +56,6 @@ const useStyles = makeStyles({
 const BoxACHS = (props) => {
     const { titulo, contenido,step } = props
     const classes = useStyles()
-
     const dispatch = useDispatch();
     return (<div>
                 <div>

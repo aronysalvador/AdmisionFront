@@ -38,7 +38,7 @@ const DireccionParticular = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(step - 1))}
+        dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -59,7 +59,7 @@ const DireccionParticular = () => {
           disabled={!direccion || !isLugarExactoAccidenteValid}
           onClick={() => {
             dispatch(updateForm("direccionParticular", direccion))
-            dispatch(handleSetStep(step + 1))
+            dispatch(handleSetStep(5.1))
           }}
         >
           Confirmar

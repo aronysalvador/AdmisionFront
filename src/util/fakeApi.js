@@ -32,7 +32,7 @@ export const sucursalesOficina = [
     nombreSucursal: "Ciudad Empresarial",
     numero: 7890,
     comunaNombre: "Huechuraba",
-  },/*
+  },
   {
     id: 4,
     key: "13000",
@@ -96,14 +96,14 @@ export const sucursalesOficina = [
     nombreSucursal: "La Florida 5",
     numero: 2000,
     comunaNombre: "La Florida",
-  }, */
-  // {
-  //   id: 14,
-  //   key: "13110",
-  //   nombreSucursal: "La Florida 6",
-  //   numero: 2000,
-  //   comunaNombre: "La Florida",
-  // },
+  }, 
+   {
+     id: 14,
+     key: "13110",
+     nombreSucursal: "La Florida 6",
+     numero: 2000,
+     comunaNombre: "La Florida",
+   },
 ];
 
 const razonSocial = [

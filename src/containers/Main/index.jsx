@@ -58,6 +58,7 @@ const Main = (props) => {
     localGetAccount();
   }, []);
 
+  
   const renderForm = (step) => {
     switch (step) {
       case -1:
@@ -84,8 +85,7 @@ const Main = (props) => {
         return <EditCompany />;
       case 5.5:
         return <EditarSucursal />;
-      case 101: //Tony Agregar seleccionar sucursal
-        // return <SeleccionarSucursalTrabajo />;
+      case 5.6: 
         return <RouteComuna />;
       case 6:
           return <AccidentPlaceForm />;
@@ -172,4 +172,7 @@ export default connect(mapStateToProps)(Main);
 /**
  * 
  return <SeleccionarSucursalTrabajo />;
+
+
+
  */
