@@ -14,7 +14,7 @@ const BoxQuestionResponsable = (props) => {
   const contenidoResponsable = [
     addmissionForm.responsable.nombre,
     <br />,
-    addmissionForm.responsable.cargo.cargo,
+    addmissionForm?.responsable?.cargo?.cargo,
     <br />,
     "Avisado el " +
       addmissionForm.fechaHoraResponsable.days +
@@ -27,7 +27,7 @@ const BoxQuestionResponsable = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
+        dispatch={() => dispatch(handleSetStep(14.1))}
         percentage={addmissionForm.percentage}
       />
       <BoxTestigosResponsable
