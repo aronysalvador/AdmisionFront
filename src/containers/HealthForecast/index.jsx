@@ -27,7 +27,7 @@ const HealthForecast = (props) => {
 
   const clickSendIsapres = (id) => {
     dispatch1(sendIsapres(id));
-    dispatch(handleSetStep(8));
+    dispatch(handleSetStep(20));
   };
 
   const classesComun = getComunStyle();
@@ -36,7 +36,7 @@ const HealthForecast = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.1))}
+        dispatch={() => dispatch(handleSetStep(18))}
         percentage={addmissionForm.percentage}
       />
       <div>
@@ -134,7 +134,7 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchs2}
           variant="contained"
           type="submit"
-          onClick={() => dispatch(handleSetStep(7))}
+          onClick={() => dispatch(handleSetStep(19.1))}
         >
           Otra Isapre
         </Button>

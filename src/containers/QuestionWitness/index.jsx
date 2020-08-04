@@ -6,20 +6,20 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import QuestionTestigoResponsable from "../../components/Questions/QuestionTestigoResponsable";
 
 const QuestionWitness = (props) => {
-  const { dispatch, addmissionForm } = props;
+  const { dispatch, addmissionForm, step } = props;
 
   const classesComun = getComunStyle();
 
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(14))}
+        dispatch={() => dispatch(handleSetStep(--step))}
         percentage={addmissionForm.percentage}
       />
       <QuestionTestigoResponsable
         titulo={"Entendido ¿Alguien fue testigo de lo que sucedió?"}
-        accionButoonA={() => dispatch(handleSetStep(16))}
-        accionButoonB={() => dispatch(handleSetStep(17))}
+        accionButoonA={() => dispatch(handleSetStep(14))}
+        accionButoonB={() => dispatch(handleSetStep(15))}
         tituloA={"Agregar Testigo"}
         tituloB={"No hubo Testigos"}
       />

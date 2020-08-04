@@ -9,7 +9,7 @@ import {
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
 
-const totalSteps = 19;
+const totalSteps = 27;
 
 export const loadStateFromSessionStorage = (state) => {
   return {

@@ -18,7 +18,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, SucursalEmpresa } = useSelector(
+  const { percentage, SucursalEmpresa } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -26,7 +26,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(100))}
+        dispatch={() => dispatch(handleSetStep(5.4))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -48,6 +48,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             data={sucursal}
             itemForm={"SucursalEmpresa"}
             selected={sucursal.id == SucursalEmpresa.id}
+            step={5.1}
           >
             <BotonSeleccionarCustomSucursalItem {...sucursal} />
           </BotonSeleccionarCustom>

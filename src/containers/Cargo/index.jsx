@@ -38,13 +38,13 @@ const Cargo = () => {
     }
     setError(false);
     dispatch(updateForm("cargoForm", cargo));
-    //dispatch(handleSetStep(step + 1));
+    dispatch(handleSetStep(step + 1));
   };
 
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.1))}
+        dispatch={() => dispatch(handleSetStep(21))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

@@ -35,7 +35,7 @@ const EditCompany = () => {
         <Button
           className={buttonAchs}
           onClick={() => {
-            dispatch(handleSetStep(step + 1));
+            dispatch(handleSetStep(5.5));
           }}
         >
           Siguiente

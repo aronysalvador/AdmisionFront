@@ -18,7 +18,7 @@ import BoxTestigosResponsable from '../../components/Questions/BoxTestigosRespon
                 <BoxTestigosResponsable titulo={'Entendido ¿Alguien fue testigo de lo que sucedió?'}
                                         tituloTestigo={tituloTestigo}
                                         contenidoTestigo={contenidoTestigo}
-                                        irA={() =>dispatch(handleSetStep(17))} />
+                                        irA={() =>dispatch(handleSetStep(15))} />
             </div>
     );
 }

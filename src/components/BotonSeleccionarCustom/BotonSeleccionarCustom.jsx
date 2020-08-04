@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getComunStyle } from "../../css/comun";
 import { useDispatch } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const BotonSeleccionarCustom = (props) => {
-  const { data, itemForm, selected } = props;
+  const { data, itemForm, selected, step } = props;
 
   const dispatch = useDispatch();
 
@@ -24,8 +25,9 @@ const BotonSeleccionarCustom = (props) => {
           updateForm(
             itemForm,
             !isSelected ? { ...data, selected: !isSelected } : {}
-          )
+          ) 
         );
+        dispatch(handleSetStep(step)) 
       }}
       className={isSelected ? botonSeleccionado : ""}
       style={{

@@ -42,6 +42,7 @@ const TipoDeContrato = () => {
             data={contrato}
             itemForm={"tipoDeContrato"}
             selected={tipoDeContrato.id === contrato.id}
+            step={25}
           >
             <BotonSeleccionarCustomItem {...contrato} />
           </BotonSeleccionarCustom>

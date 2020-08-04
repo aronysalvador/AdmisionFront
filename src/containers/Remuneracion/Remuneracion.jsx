@@ -44,6 +44,7 @@ const Remuneracion = () => {
             selected={remuneracion.selected}
             itemForm={"tipoRemuneracion"}
             selected={remuneracion.id === tipoRemuneracion.id}
+            step={26}
           >
             <BotonSeleccionarCustomItem {...remuneracion} />
           </BotonSeleccionarCustom>
