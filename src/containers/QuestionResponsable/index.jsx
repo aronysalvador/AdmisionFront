@@ -9,17 +9,22 @@ const QuestionResponsable = (props) => {
   const { dispatch, addmissionForm } = props;
 
   const classesComun = getComunStyle();
+  /*
+  completar
+  console.log("*****************" , addmissionForm)
+  let back = (addmissionForm?.testigos === undefined && addmissionForm.testigos.cargo === "") ? 13 : 14.1*/
 
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(15.1))}
+         
+        dispatch={() => dispatch(handleSetStep(14.1))}
         percentage={addmissionForm.percentage}
       />
       <QuestionTestigoResponsable
         titulo={"Ya ¿Le contaste lo sucedido al responsable en tu empresa?"}
-        accionButoonA={() => dispatch(handleSetStep(18))}
-        accionButoonB={() => dispatch(handleSetStep(500))}
+        accionButoonA={() => dispatch(handleSetStep(16))}
+        accionButoonB={() => dispatch(handleSetStep(18))}
         tituloA={"Agregar responsable"}
         tituloB={"No avise a nadie"}
       />

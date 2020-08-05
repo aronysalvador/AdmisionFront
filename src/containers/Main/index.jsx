@@ -44,6 +44,9 @@ import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 import Remuneracion from "../Remuneracion/Remuneracion";
 import CategoriaOcupacional from "../CategoriaOcupacional/index";
 import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
+import Cargo from "../Cargo/index";
+
+import DireccionParticular from "../DireccionParticular/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -55,6 +58,7 @@ const Main = (props) => {
     localGetAccount();
   }, []);
 
+  
   const renderForm = (step) => {
     switch (step) {
       case -1:
@@ -64,85 +68,83 @@ const Main = (props) => {
       case 1:
         return <WelcomeEjecutivo />;
       case 2:
-        return <Identification />;
+        return <Sinister />
       case 3:
-        return <Sinister />;
+        return <Identification />
       case 4:
         return <Consitions />;
       case 5:
         return <LoadPersonalData />;
       case 5.1:
         return <PersonalData />;
+      case 5.2: 
+        return <DireccionParticular />
+      case 5.3: 
+        return <EditarTelefono />;
+      case 5.4:
+        return <EditCompany />;
+      case 5.5:
+        return <EditarSucursal />;
+      case 5.6: 
+        return <RouteComuna />;
       case 6:
-        return <HealthForecast />;
+          return <AccidentPlaceForm />;
       case 7:
-        return <HealthForecastIsapre />;
-      case 8: //Tony
-        return <ValidarCorreoElectronico />;
+          return <AccidentDescription />;
+      case 8:
+          return <AccidentObjectForm />;  
       case 9:
-        return <FechaHoraSiniestro />;
+          return <FechaHoraSiniestro />;
       case 10:
-        return <LugarExactoSiniestro />;
+           return <TrabajoHabitual />;
       case 11:
-        return <LugarReferenciaSiniestro />;
+          return <LugarExactoSiniestro />;
       case 12:
-        return <AccidentPlaceForm />;
+          return <LugarReferenciaSiniestro />;
       case 13:
-        return <AccidentDescription />;
+        return <QuestionWitness />;  
       case 14:
-        return <AccidentObjectForm />;
-      case 15:
-        return <QuestionWitness />;
-      case 15.1:
-        return <BoxQuestionWitness />;
-      case 16:
         return <DataWitness />;
-      case 17:
+      case 14.1:
+          return <BoxQuestionWitness />
+      case 15:
         return <QuestionResponsable />;
+      case 16:
+          return <DataResponsable />;
+      case 17:
+        return <FechaHoraResponsable />;
       case 17.1:
         return <BoxQuestionResponsable />;
       case 18:
-        return <DataResponsable />;
+        return <Afp />;  
       case 19:
-        return <FechaHoraResponsable />;
-
-      case 100: //Tony Agregar seleccionar sucursal
-        // return <SeleccionarSucursalTrabajo />;
-        return <EditarSucursal />;
-      case 101: //Tony Agregar seleccionar sucursal
-        // return <SeleccionarSucursalTrabajo />;
-        return <RouteComuna />;
-      case 102: //Tony Editar numero telefonico
-        return <EditarTelefono />;
-      case 103:
-        return <TrabajoHabitual />;
-      case 104:
-        return <Remuneracion />;
-      case 105:
-        return <TipoDeContrato />;
-
-      case 30:
-        return <EditCompany />;
-      case 31:
-        return <Afp />;
-      case 32:
+        return <HealthForecast />;
+      case 19.1:
+        return <HealthForecastIsapre />;
+      case 20:
         return <TipoJornadaLaboral />;
-      case 33:
-        return <CategoriaOcupacional />;
-
+      case 21:
+        return <JornadaLaboralContainer />;
+      case 22:
+        return <Cargo />; 
+      case 23:
+        return <CategoriaOcupacional />; 
+      case 24:
+        return <TipoDeContrato />;
+      case 25:
+          return <Remuneracion />;
+      case 26:
+          return <TrabajoActualContainer />; 
+      case 27: 
+        return <ValidarCorreoElectronico />;
       case 500: {
         sessionStorage.clear();
         return <PacienteNoAfiliadoError />;
       }
 
-      case 50:
-        return <JornadaLaboralContainer />;
-      case 51:
-        return <TrabajoActualContainer />;
-
       default: {
         sessionStorage.clear();
-        return <div>Error</div>;
+        return <PacienteNoAfiliadoError />
       }
     }
   };
@@ -166,3 +168,11 @@ function mapStateToProps({ addmissionForm }) {
 }
 
 export default connect(mapStateToProps)(Main);
+
+/**
+ * 
+ return <SeleccionarSucursalTrabajo />;
+
+
+
+ */

@@ -31,14 +31,14 @@ const JornadaLaboralContainer = () => {
   const dispatch = useDispatch();
 
   function setJornadaLaboral(value) {
-    console.log("setjornadalaboral", value);
     setInicioJornada(value.horaInicio);
     setFinJornada(value.horaFin);
   }
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(19))}
+        dispatch={() => dispatch(handleSetStep(20))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

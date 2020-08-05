@@ -49,13 +49,13 @@ const HealthForecastIsapre = (props) => {
       return;
     }
     dispatch1(sendIsapres(isapres));
-    dispatch(handleSetStep(8));
+    dispatch(handleSetStep(20));
   };
 
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(6))}
+        dispatch={() => dispatch(handleSetStep(19))}
         percentage={addmissionForm.percentage}
       />
       <form>

@@ -1,7 +1,4 @@
 export const AdmissionForm = {
-
-
-
     step: 0,
 
     percentage: 0,
@@ -31,5 +28,12 @@ export const AdmissionForm = {
     ingresoTrabajoActual: "",
     desarrollarTrabajoHabitual: "",
     tipoRemuneracion: {},
+
     tipoDeContrato: {},
+
+    //State de Cargo
+    cargoForm: "",
+    //Lugar Exacto Sinietsro
+    sucursalEmpresaSiniestro: "",
+    urlMapasucursalEmpresaSiniestro: "",
 };

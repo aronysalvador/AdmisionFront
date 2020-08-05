@@ -52,7 +52,7 @@ const DataWitness = (props) => {
     }
 
     dispatch1(sendCargo(nombre, cargos));
-    dispatch(handleSetStep(15.1));
+    dispatch(handleSetStep(14.1));
   };
 
   return (

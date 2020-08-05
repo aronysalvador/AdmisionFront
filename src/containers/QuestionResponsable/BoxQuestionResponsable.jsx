@@ -14,7 +14,7 @@ const BoxQuestionResponsable = (props) => {
   const contenidoResponsable = [
     addmissionForm.responsable.nombre,
     <br />,
-    addmissionForm.responsable.cargo.cargo,
+    addmissionForm?.responsable?.cargo?.cargo,
     <br />,
     "Avisado el " +
       addmissionForm.fechaHoraResponsable.days +
@@ -27,14 +27,14 @@ const BoxQuestionResponsable = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(19))}
+        dispatch={() => dispatch(handleSetStep(14.1))}
         percentage={addmissionForm.percentage}
       />
       <BoxTestigosResponsable
         titulo={"¿Le contaste lo sucedido al responsable en tu empresa?"}
         tituloTestigo={tituloTestigo}
         contenidoTestigo={contenidoResponsable}
-        irA={() => dispatch(handleSetStep(500))}
+        irA={() => dispatch(handleSetStep(18))}
       />
     </div>
   );

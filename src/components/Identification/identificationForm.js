@@ -89,7 +89,7 @@ const IdentificationForm = withFormik({
         setSubmitting = false
         values.rut = formateaRut(values.rut)
         props.dispatch(updateForm('rut', Rut.clean(values.rut)))
-        props.dispatch(handleSetStep(3))
+        props.dispatch(handleSetStep(5))
     }
 })(form)
 

@@ -48,7 +48,7 @@ const EditarTelefono = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--stepx))}
+        dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
       <Typography className={pregunta} variant="h2">
@@ -74,7 +74,7 @@ const EditarTelefono = () => {
           disabled={!telefonoIsValid}
           onClick={() => {
             dispatch(updateForm("TelefonoEmpleado", telefono));
-            dispatch(handleSetStep(++stepx));
+            dispatch(handleSetStep(5.1));
           }}
         >
           Confirmar

@@ -25,9 +25,9 @@ const Remuneracion = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        ¿Que tipo de remuneración tienes?
+        ¿Qué tipo de remuneración tienes?
       </Typography>
-
+      <div className={spaceStyle.space2} />
       <div
         style={{
           display: "flex",
@@ -44,6 +44,7 @@ const Remuneracion = () => {
             selected={remuneracion.selected}
             itemForm={"tipoRemuneracion"}
             selected={remuneracion.id === tipoRemuneracion.id}
+            step={26}
           >
             <BotonSeleccionarCustomItem {...remuneracion} />
           </BotonSeleccionarCustom>

@@ -39,11 +39,11 @@ const PersonalData = (props) => {
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
-      <BoxACHS titulo={tituloEmpresa} contenido={contenidoEmpresa} />
+      <BoxACHS titulo={tituloEmpresa} contenido={contenidoEmpresa} step={5.4} />
       <div className={spaceStyle.spaceMin1} />
-      <BoxACHS titulo={tituloDireccion} contenido={contenidoDireccion} />
+      <BoxACHS titulo={tituloDireccion} contenido={contenidoDireccion} step={5.2} />
       <div className={spaceStyle.spaceMin1} />
-      <BoxACHS titulo={tituloTelefono} contenido={contenidoTelefono} />
+      <BoxACHS titulo={tituloTelefono} contenido={contenidoTelefono} step={5.3} />
 
       <div className={comunClass.bottomElement}>
         <Button
