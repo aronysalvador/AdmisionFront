@@ -1,35 +1,35 @@
 export const AdmissionForm = {
- 
- 
 
-  step: 100,
 
-  percentage: 0,
-  rut: "",
-  isAfiliado: "",
-  empresa: "",
-  rutEmpresa: "",
-  isapreSeleccionado: {},
 
-  lugarAccidente: "",
-  objetoAccidente: "",
-  descripcionAccidente: "",
+    step: 1,
 
-  testigos: { cargo: "" },
-  responsable: [],
-  fechaHoraResponsable: {},
-  fechaHoraSiniestro: {},
+    percentage: 0,
+    rut: "",
+    isAfiliado: "",
+    empresa: "",
+    rutEmpresa: "",
+    isapreSeleccionado: {},
 
-  SucursalEmpresa: "",
-  DireccionEmpresa: "",
-  comunaEmpresa: "",
-  direccionParticular: "",
-  telefonoParticular: "",
+    lugarAccidente: "",
+    objetoAccidente: "",
+    descripcionAccidente: "",
 
-  inicioJornadaLaboral: "",
-  finJornadaLaboral: "",
-  ingresoTrabajoActual: "",
-  desarrollarTrabajoHabitual: "",
-  tipoRemuneracion: {},
-  tipoDeContrato: {},
+    testigos: { cargo: "" },
+    responsable: [],
+    fechaHoraResponsable: {},
+    fechaHoraSiniestro: {},
+
+    SucursalEmpresa: "",
+    DireccionEmpresa: "",
+    comunaEmpresa: "",
+    direccionParticular: "",
+    telefonoParticular: "",
+
+    inicioJornadaLaboral: "",
+    finJornadaLaboral: "",
+    ingresoTrabajoActual: "",
+    desarrollarTrabajoHabitual: "",
+    tipoRemuneracion: {},
+    tipoDeContrato: {},
 };
