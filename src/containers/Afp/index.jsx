@@ -62,7 +62,7 @@ const Afp = () => {
         }}
         style={{ width: 300 }}
         options={afpList}
-        getOptionLabel={(option) => option.value}
+        getOptionLabel={(option) => option.nombre}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
 

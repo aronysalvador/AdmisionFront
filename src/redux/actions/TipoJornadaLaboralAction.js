@@ -3,7 +3,7 @@ import {
   GET_JORNADA_LABORAL_SUCCESS,
   GET_JORNADA_LABORAL_FAILURE,
 } from "../types/tipoJornadaLaboralType";
-//import Axios from "axios";
+import Axios from "axios";
 import { getTipoJornadaLaboral } from "../../util/fakeApi";
 
 export const getJornadaLaboralPrincipal = () => async (dispatch) => {
@@ -12,10 +12,11 @@ export const getJornadaLaboralPrincipal = () => async (dispatch) => {
     payload: true,
   });
 
-  //Axios.get(`http://fa-desa-tele-admision-datamaster.azurewebsites.net/api/AFP`)
-  getTipoJornadaLaboral()
+  Axios.get(
+    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/jornadaTrabajo`
+  )
     .then((response) => {
-      dispatch(successCallTipoJornada(response));
+      dispatch(successCallTipoJornada(response.data.content[0]));
     })
     .catch((error) => {
       dispatch(errorCallTipoJornada());
