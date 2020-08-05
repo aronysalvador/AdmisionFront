@@ -23,8 +23,8 @@ const AccidentDescriptionForm = (props) => {
       />
       <div>
         <QuestionForm
-          titulo={"Completa las siguientes frases"}
-          pregunta={"Lo que ocurrió fue que... y la lesión que presenta es ..."}
+          titulo={"Completa la siguiente frase"}
+          pregunta={"Lo que ocurrió fue que... y la lesión que presenta es..."}
           placeholder={
             "Sufre caída y la consecuencia fue una contusión - metió la mano en caldera y sufre quemadura - frena bruscamente para evitar chocar y la consecuencia fue una contusión"
           }

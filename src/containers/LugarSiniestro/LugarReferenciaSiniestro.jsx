@@ -45,7 +45,7 @@ const LugarReferenciaSiniestro = () => {
       </Typography>
       <TextField
         helperText={
-          !isLugarReferenciaValid && "Debe escribir un lugar de referencia"
+          !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
         }
         error={!isLugarReferenciaValid}
         value={lugarReferencia}

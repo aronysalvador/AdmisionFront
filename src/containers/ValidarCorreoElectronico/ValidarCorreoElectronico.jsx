@@ -39,7 +39,7 @@ const ValidarCorreoElectronico = () => {
         size="small"
         margin="dense"
         fullWidth
-        helperText={!isEmailValid && "Escriba un email valido"}
+        helperText={!isEmailValid && "Escriba un email válido"}
         error={!isEmailValid}
         onChange={(e) => {
           setIsEmailValid(validateEmailFormat(e.target.value));

@@ -24,8 +24,8 @@ const AccidentPlaceForm = (props) => {
       />
       <div>
         <QuestionForm
-          titulo={"Completa las siguientes frases:"}
-          pregunta={"Al momento del accidente estaba ..."}
+          titulo={"Completa la siguiente frase"}
+          pregunta={"Al momento del accidente estaba..."}
           placeholder={
             "Ejemplo: Caminando por el patio del colegio, corriendo para alcanzar la micro, sentado en mi escritorio"
           }

@@ -104,7 +104,7 @@ const HealthForecastIsapre = (props) => {
                 {...params}
                 error={!isIsapresValid}
                 helperText={
-                  !isIsapresValid && "Escriba o Seleccione al menos una Isapres"
+                  !isIsapresValid && "Escribe o Selecciona al menos una Isapre"
                 }
                 variant="outlined"
                 InputProps={{
