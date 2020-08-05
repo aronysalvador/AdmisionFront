@@ -42,6 +42,9 @@ const useStyles = makeStyles({
 });
 
 const TabCompany = (props) => {
+
+  const {setRutEmpresaForm,rutEmpresaForm}  = props
+
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -111,7 +114,7 @@ const TabCompany = (props) => {
         </Typography>
 
         <div>
-          <IdentificationCompany />
+          <IdentificationCompany rutEmpresaForm={rutEmpresaForm} setRutEmpresaForm={setRutEmpresaForm}/>
         </div>
       </TabPanel>
     </div>

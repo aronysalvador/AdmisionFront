@@ -68,11 +68,9 @@ const BoxACHS = (props) => {
                       
                     </div>
                     <div className={classes.contentConteiner}>
-                        <Typography color="textSecondary" gutterBottom className={classes.contentText}>
-                            {contenido.map((value) => {
-                            return <div>{value}</div>
-                            })}
-                        </Typography>
+                        {contenido.map((item,index) => {
+                            return <div id={index}>{item}</div>
+                        })}
                     </div>
                 </div>
             </div>

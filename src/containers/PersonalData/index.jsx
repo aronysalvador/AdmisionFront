@@ -15,7 +15,7 @@ const PersonalData = (props) => {
 
   const tituloEmpresa = "Empresa";
   const contenidoEmpresa = [
-    addmissionForm.empresa,
+    addmissionForm.razonSocialForm,
     addmissionForm.SucursalEmpresa,
     addmissionForm.DireccionEmpresa,
     addmissionForm.rutEmpresa,
@@ -23,9 +23,11 @@ const PersonalData = (props) => {
  
   const tituloDireccion = "Dirección particular";
   const contenidoDireccion = [addmissionForm.direccionParticular];
+  //console.log("contenidoDireccion",contenidoDireccion)
  
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
+  //console.log("telefonoParticular",contenidoTelefono)
 
   return (
     <div className={comunClass.root}>
@@ -60,7 +62,7 @@ const PersonalData = (props) => {
 
 function mapStateToProps({ addmissionForm }) {
   return {
-    addmissionForm: addmissionForm,
+    addmissionForm: addmissionForm, 
   };
 }
 

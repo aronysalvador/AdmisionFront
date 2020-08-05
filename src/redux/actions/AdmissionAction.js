@@ -64,7 +64,7 @@ export const saveRut = (rut) => {
         let isAfiliado = result.data.content[0].IsAfiliado;
         if (isAfiliado) {
           dispatch(handleSetStep(5.1));
-          dispatch(updateForm("empresa", result.data.content[0].NombreEmpresa));
+          dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
           dispatch(
             updateForm("rutEmpresa", result.data.content[0].RutPagador)
           );
@@ -77,7 +77,7 @@ export const saveRut = (rut) => {
         } else {
           dispatch(setStep(500, 0))
           dispatch(updateForm("rut", ""))
-          dispatch(updateForm("empresa", ""))
+          dispatch(updateForm("razonSocialForm", ""))
           dispatch(updateForm("rutEmpresa", ""))
           dispatch(updateForm("isAfiliado", "No"))
           dispatch(updateForm("SucursalEmpresa",""))

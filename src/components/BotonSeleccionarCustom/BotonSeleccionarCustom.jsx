@@ -20,13 +20,21 @@ const BotonSeleccionarCustom = (props) => {
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
+        const { comunaNombre, nombreSucursal, numero } = data;
+        const sucursalTexto = `${nombreSucursal},${numero}, ${comunaNombre} `
 
         dispatch(
           updateForm(
             itemForm,
-            !isSelected ? { ...data, selected: !isSelected } : {}
+            sucursalTexto
           )
         );
+        updateForm(
+          "SucursalEmpresaObjecto",
+          !isSelected ? { ...data, selected: !isSelected } : {}
+        );
+
+
         dispatch(handleSetStep(step));
       }}
       className={isSelected ? botonSeleccionado : ""}
