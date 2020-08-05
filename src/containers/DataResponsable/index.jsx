@@ -17,7 +17,7 @@ import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
 
 const DataResponsable = (props) => {
   const { dispatch, addmissionForm } = props;
-  const { responsable } = addmissionForm;
+  const { responsable,step } = addmissionForm;
 
   const welcomeStyle = getWelcomeStyle();
   const classesComun = getComunStyle();
@@ -52,13 +52,13 @@ const DataResponsable = (props) => {
     }
 
     dispatch1(sendResponsable(nombre, cargos));
-    dispatch(handleSetStep(19));
+    dispatch(handleSetStep(step + 1));
   };
 
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(17))}
+        dispatch={() => dispatch(handleSetStep(--step))}
         percentage={addmissionForm.percentage}
       />
       <div>

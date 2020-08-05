@@ -25,7 +25,7 @@ const Identification = (props) => {
                 </div>
                 <div className={spaceStyle.space2} />
                 <div>
-                    <Button className={classes.button} variant="contained" onClick={()=> dispatch(handleSetStep(5))}>
+                    <Button className={classes.button} variant="contained" onClick={()=> dispatch(handleSetStep(3))}>
                         <img alt="Accidente de Trabajo" src="./static/trabajo.png" className={classes.img} />&nbsp;Accidente Trabajo
                     </Button>
                 </div>

@@ -38,7 +38,7 @@ const TrabajoActualContainer = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(19))}
+        dispatch={() => dispatch(handleSetStep(25))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

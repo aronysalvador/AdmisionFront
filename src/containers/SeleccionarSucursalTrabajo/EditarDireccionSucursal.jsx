@@ -53,8 +53,10 @@ const EditarDireccionSucursal = () => {
           variant="contained"
           disabled={!sucursalEmpresa}
           className={buttonAchs}
-          onClick={() =>
+          onClick={() => {
             dispatch(updateForm("SucursalEmpresa", sucursalEmpresa))
+            dispatch(handleSetStep(5.1));
+          }
           }
         >
           Confirmar

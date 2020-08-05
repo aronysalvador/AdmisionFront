@@ -15,7 +15,7 @@ const PersonalData = (props) => {
 
   const tituloEmpresa = "Empresa";
   const contenidoEmpresa = [
-    addmissionForm.empresa,
+    addmissionForm.razonSocialForm,
     addmissionForm.SucursalEmpresa,
     addmissionForm.DireccionEmpresa,
     addmissionForm.rutEmpresa,
@@ -23,9 +23,11 @@ const PersonalData = (props) => {
  
   const tituloDireccion = "Dirección particular";
   const contenidoDireccion = [addmissionForm.direccionParticular];
+  //console.log("contenidoDireccion",contenidoDireccion)
  
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
+  //console.log("telefonoParticular",contenidoTelefono)
 
   return (
     <div className={comunClass.root}>
@@ -39,11 +41,11 @@ const PersonalData = (props) => {
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
-      <BoxACHS titulo={tituloEmpresa} contenido={contenidoEmpresa} />
+      <BoxACHS titulo={tituloEmpresa} contenido={contenidoEmpresa} step={5.4} />
       <div className={spaceStyle.spaceMin1} />
-      <BoxACHS titulo={tituloDireccion} contenido={contenidoDireccion} />
+      <BoxACHS titulo={tituloDireccion} contenido={contenidoDireccion} step={5.2} />
       <div className={spaceStyle.spaceMin1} />
-      <BoxACHS titulo={tituloTelefono} contenido={contenidoTelefono} />
+      <BoxACHS titulo={tituloTelefono} contenido={contenidoTelefono} step={5.3} />
 
       <div className={comunClass.bottomElement}>
         <Button
@@ -60,7 +62,7 @@ const PersonalData = (props) => {
 
 function mapStateToProps({ addmissionForm }) {
   return {
-    addmissionForm: addmissionForm,
+    addmissionForm: addmissionForm, 
   };
 }
 

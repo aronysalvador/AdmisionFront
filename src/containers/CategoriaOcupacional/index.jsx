@@ -33,7 +33,7 @@ const CategoriaOcupacional = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(100))}
+        dispatch={() => dispatch(handleSetStep(22))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -55,6 +55,7 @@ const CategoriaOcupacional = () => {
             data={categoria}
             itemForm={"categoriaOcupacionalForm"}
             selected={categoria.id === categoriaOcupacional.id}
+            step={24}
           >
             <BotonSeleccionarCustomItem {...categoria} />
           </BotonSeleccionarCustom>
