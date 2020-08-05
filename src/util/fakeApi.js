@@ -141,7 +141,7 @@ export const getTipoJornadaLaboral = async () => {
 
 const tipoRemuneracion = [
   { id: 1, nombre: "Salario Fijo", selected: false },
-  { id: 2, nombre: "Por comision", selected: false },
+  { id: 2, nombre: "Por comisión", selected: false },
   { id: 3, nombre: "Honorarios", selected: false },
 
 ];

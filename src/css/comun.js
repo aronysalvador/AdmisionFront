@@ -147,8 +147,8 @@ export const getComunStyle = makeStyles((theme) => ({
   },
 
   botonSeleccionado: {
-    background: "#DFF3F2",
-    border: "2px solid #007A33",
+    background: "#DFF3F2 !important",
+    border: "2px solid #007A33 !important",
     boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
     borderRadius: "10px",
     color: "#007A33",

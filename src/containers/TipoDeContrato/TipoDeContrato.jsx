@@ -12,7 +12,7 @@ import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/
 const TipoDeContrato = () => {
   const dispatch = useDispatch();
   const { root, pregunta } = getComunStyle();
-
+  const spaceStyle = getSpaceStyle();
   const { step, percentage, tipoDeContrato } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
@@ -27,6 +27,7 @@ const TipoDeContrato = () => {
       <Typography className={pregunta}>
         ¿Que tipo de contrato tienes?
       </Typography>
+      <div className={spaceStyle.space2} />
       <div
         style={{
           display: "flex",

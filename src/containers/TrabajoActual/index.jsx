@@ -62,7 +62,7 @@ const TrabajoActualContainer = () => {
             dispatch(handleSetStep(step + 1));
           }}
         >
-          Siguiente
+          Confirmar
         </Button>
       </div>
     </div>

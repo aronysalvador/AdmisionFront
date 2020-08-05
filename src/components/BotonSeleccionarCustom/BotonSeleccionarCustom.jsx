@@ -20,14 +20,17 @@ const BotonSeleccionarCustom = (props) => {
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-
-        dispatch(
-          updateForm(
-            itemForm,
-            !isSelected ? { ...data, selected: !isSelected } : {}
-          )
-        );
-        dispatch(handleSetStep(step));
+        if(!isSelected)
+        {
+          dispatch(
+            updateForm(
+              itemForm,
+              !isSelected ? { ...data, selected: !isSelected } : {}
+            )
+          );
+          dispatch(handleSetStep(step));
+        }
+        
       }}
       className={isSelected ? botonSeleccionado : ""}
       style={{
@@ -44,6 +47,8 @@ const BotonSeleccionarCustom = (props) => {
         borderRadius: "10px",
         paddingTop: "15px",
         paddingBottom: "10px",
+        backgroundColor: "#F4F4F4",
+        padding: "2px"
       }}
     >
       {props.children}
