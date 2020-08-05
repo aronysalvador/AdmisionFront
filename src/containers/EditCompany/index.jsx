@@ -31,15 +31,14 @@ const EditCompany = () => {
       </Typography>
       <div className={spaceStyle.space2} />
 
-      <TabCompany rutEmpresaForm={rutEmpresaForm} setRutEmpresaForm={setRutEmpresaForm} />
+      <TabCompany />
 
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
           onClick={() => {
-            
             dispatch(handleSetStep(5.5));
-            dispatch(updateForm("rutEmpresa",rutEmpresaForm))
+            //dispatch(updateForm("rutEmpresa",rutEmpresaForm))
           }}
         >
           Siguiente
