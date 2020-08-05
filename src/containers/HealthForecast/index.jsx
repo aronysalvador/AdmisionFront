@@ -58,8 +58,11 @@ const HealthForecast = (props) => {
       </div>
 
       <div className={spaceStyle.space2} />
-
-      <Divider />
+      <div className={classesComun.flexDivider}>
+      <Divider className={classesComun.mediumDivider} />  
+      <em className={classesComun.emMargin}> o </em>
+     
+      <Divider className={classesComun.mediumDivider} /> </div>
       <div className={spaceStyle.space2} />
 
       <div>

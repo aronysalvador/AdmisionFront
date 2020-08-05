@@ -19,8 +19,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         textAlign: 'center',
     },
     avatar: {
-        width: '80px',
-        height: '80px',
+        width: '5em',
+        height: '5em',
         verticalAlign: 'middle',
     },
 
@@ -61,7 +61,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         borderRadius: '50%',
         display: 'inline-flex',
         marginLeft: '-5%',
-        marginTop: '-15%',
+        // marginTop: '-15%',
         "&:hover": {
             background: '#104F28',
         },

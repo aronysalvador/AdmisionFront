@@ -14,40 +14,6 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import EditIcon from "@material-ui/icons/Edit";
 import Fab from "@material-ui/core/Fab";
 
-// const siniestroStyle = makeStyles((theme) => ({
-//   button: {
-//     width: "100%",
-//     height: "4em",
-//     background: "#007A33",
-//     boxShadow: "0.125em 0.125em 0.375em rgba(203, 203, 203, 0.4)",
-//     borderRadius: "0.25em",
-//     fontFamily: "Catamaran",
-//     fontStyle: "normal",
-//     fontWeight: "bold",
-//     fontSize: "1em",
-//     lineHeight: "1.125em",
-//     color: "#FFFFFF",
-//     textTransform: "capitalize",
-//     textAlign: "left",
-//     justifyContent: "flex-start",
-//     "&:hover": {
-//       background: "#104F28"
-//   }
-//   },
-//   img: {
-//     height: "1.5em",
-//     width: "1.5em",
-//     color: "#007A33",
-//     background: "white",
-//     borderRadius: "50%",
-//     marginRight: "10px",
-//     padding: "7px",
-//     "&:hover": {
-//       background: "white",
-//     },
-//   },
-// }));
-
 const Session = (props) => {
   const { dispatch, microsoftReducer } = props;
   // const custom = siniestroStyle();
@@ -57,7 +23,7 @@ const Session = (props) => {
 
   return (
     <div className={comunStyle.root}>
-      <div className={spaceStyle.space4} />
+      <div className={spaceStyle.space2} />
       <div className={welcomeStyle.avatarContainer}>
         <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
       </div>
@@ -93,6 +59,7 @@ const Session = (props) => {
           &nbsp;Centro Alameda
         </Button>
       </div>
+      <div className={spaceStyle.space4} />
       <div className={comunStyle.bottomElement}>
         <div>
           <Button
