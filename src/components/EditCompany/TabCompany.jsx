@@ -15,8 +15,8 @@ const useStyles = makeStyles({
     background: "#F4F4F4",
     border: "2px solid #007A33",
     boxSizing: "border-box",
-    borderRadius: "4px",
-
+    borderTopRightRadius: "15px",
+    borderBottomRightRadius: "15px",
     color: "#007A33",
     fontFamily: "Catamaran",
     fontStyle: "normal",
@@ -30,7 +30,8 @@ const useStyles = makeStyles({
     minHeight: 30,
     height: 30,
     background: "#007A33",
-    borderRadius: 4,
+    borderTopLeftRadius: "15px",
+    borderBottomLeftRadius: "15px",
     color: "#F8F9FA",
     fontFamily: "Catamaran",
     fontStyle: "normal",
@@ -38,6 +39,38 @@ const useStyles = makeStyles({
     fontSize: 16,
     minWidth: 155,
     width: 155,
+  },
+  root3: {
+    minHeight: 30,
+    height: 30,
+    background: "#007A33",
+    borderTopRightRadius: "15px",
+    borderBottomRightRadius: "15px",
+    color: "#F8F9FA",
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: 16,
+    minWidth: 155,
+    width: 155,
+  },
+  root4: {
+    minHeight: 30,
+    height: 30,
+    background: "#F4F4F4",
+    border: "2px solid #007A33",
+    boxSizing: "border-box",
+    borderTopLeftRadius: "15px",
+    borderBottomLeftRadius: "15px",
+    color: "#007A33",
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "16px",
+    lineHeight: "18px",
+    minWidth: 155,
+    width: 155,
+    verticalAlign:"midle",
   },
 });
 
@@ -77,14 +110,14 @@ const TabCompany = (props) => {
       <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68">
         <Tab
           classes={
-            value === 0 ? { root: classes.root2 } : { root: classes.root }
+            value === 0 ? { root: classes.root2 } : { root: classes.root4 }
           }
           label="Razon Social"
         />
 
         <Tab
           classes={
-            value === 1 ? { root: classes.root2 } : { root: classes.root }
+            value === 1 ? { root: classes.root3 } : { root: classes.root }
           }
           label="Rut"
         />
