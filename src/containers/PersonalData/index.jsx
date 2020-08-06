@@ -26,8 +26,8 @@ const PersonalData = (props) => {
   //console.log("contenidoDireccion",contenidoDireccion)
 
   const tituloTelefono = "Teléfono personal";
-  const contenidoTelefono = [addmissionForm.telefonoParticular];
-  //console.log("telefonoParticular",contenidoTelefono)
+  const contenidoTelefono = [addmissionForm.TelefonoEmpleado];
+  console.log("telefonoParticular", contenidoTelefono);
 
   return (
     <div className={comunClass.root}>
@@ -58,7 +58,7 @@ const PersonalData = (props) => {
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}
-           //variant="contained"
+          //variant="contained"
           onClick={() => dispatch(handleSetStep(6))}
         >
           Si, es correcta
