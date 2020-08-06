@@ -10,6 +10,7 @@ import BotonSeleccionarCustomSucursalItem from "../../components/BotonSelecciona
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   console.log({ sucursalesEmpresa });
+
   const [sucursalesEmpresaData, setSucursalesEmpresaData] = useState(
     sucursalesEmpresa
   );
@@ -46,7 +47,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
           flexWrap: "wrap",
         }}
       >
-        {sucursalesEmpresaData.map((sucursal) => (
+        {sucursalesEmpresa.map((sucursal) => (
           <BotonSeleccionarCustom
             key={sucursal.id}
             data={sucursal}

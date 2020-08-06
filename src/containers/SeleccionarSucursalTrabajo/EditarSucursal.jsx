@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { sucursalesOficina } from "../../util/fakeApi";
+// import { sucursalesOficina } from "../../util/fakeApi";
 import SeleccionarSucursalTrabajo from "./SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./SeleccionarComuna";
 import { getSucursales } from "../../redux/actions/SucursalesAction";
@@ -23,7 +23,8 @@ const EditarSucursal = () => {
   );
 
   console.log({ sucursalesList });
-  const [cantidadSucursales] = useState(() => 5);
+
+  const [cantidadSucursales] = useState(() => sucursalesList.slice(0, 4));
 
   if (cantidadSucursales <= 6)
     return (
