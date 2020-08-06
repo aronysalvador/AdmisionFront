@@ -37,7 +37,7 @@ const BotonSeleccionarCustom = (props) => {
             )
           );
         }
-        //dispatch(handleSetStep(step));
+        dispatch(handleSetStep(step));
       }}
       className={isSelected ? botonSeleccionado : ""}
       style={{
