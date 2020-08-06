@@ -5,13 +5,17 @@ import {
 } from "../types/comunaType";
 import Axios from "axios";
 
+export const getData = async () => {
+  return Axios.get(process.env.REACT_APP_COMUNA);
+};
+
 export const getComuna = () => async (dispatch) => {
   dispatch({
     type: GET_COMUNA_INIT,
     payload: true,
   });
 
-  Axios.get(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/comunas`)
+  getData()
     .then((response) => {
       dispatch(successCallComuna(response.data.content[0]));
     })
