@@ -41,9 +41,6 @@ const Afp = () => {
 
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
 
-
-  console.log("AFP...............", afpList);
-
   return (
     <div className={root}>
       <Cabecera
@@ -63,8 +60,9 @@ const Afp = () => {
         onChange={(event, value) => {
           setAFP(value);
         }}
+        style={{ width: 300 }}
         options={afpList}
-        // getOptionLabel={(option) => option.value}
+        getOptionLabel={(option) => option.nombre}
         renderInput={(params) => (
           <TextField
             {...params}
