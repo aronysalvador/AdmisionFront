@@ -29,7 +29,7 @@ const Session = (props) => {
       </div>
       <Fab size="small" aria-label="edit" className={welcomeStyle.imgEdit}>
   <EditIcon /></Fab>
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
       <div className={welcomeStyle.bienvenidoContainer}>
         <Typography
           variant="p"
@@ -59,7 +59,7 @@ const Session = (props) => {
           &nbsp;Centro Alameda
         </Button>
       </div>
-      <div className={spaceStyle.space4} />
+      <div className={spaceStyle.space3} />
       <div className={comunStyle.bottomElement}>
         <div>
           <Button
