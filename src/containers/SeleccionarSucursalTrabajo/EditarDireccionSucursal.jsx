@@ -8,11 +8,11 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const EditarDireccionSucursal = () => {
-  const [sucursalEmpresa, setSucursalEmpresa] = useState(null);
-
   const {
-    addmissionForm: { step, percentage, sucursales },
+    addmissionForm: { step, percentage, sucursales, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
+  const [sucursalEmpresa, setSucursalEmpresa] = useState(SucursalEmpresaObjeto);
+
   let stepx = step;
   const dispatch = useDispatch();
 
@@ -56,6 +56,7 @@ const EditarDireccionSucursal = () => {
           className={buttonAchs}
           onClick={() => {
             dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
+            dispatch(updateForm("SucursalEmpresaObjeto", sucursalEmpresa));
             dispatch(handleSetStep(5.1));
           }}
         >

@@ -36,4 +36,5 @@ export const AdmissionForm = {
   //Lugar Exacto Sinietsro
   sucursalEmpresaSiniestro: "",
   urlMapasucursalEmpresaSiniestro: "",
+  SucursalEmpresaObjeto: {},
 };
