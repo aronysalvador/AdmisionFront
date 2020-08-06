@@ -6,15 +6,17 @@ import {
 import Axios from "axios";
 import { getCategoriaOcupacional } from "../../util/fakeApi";
 
+export const getData = async() =>{
+  return  Axios.get(process.env.REACT_APP_CATEGORIA_OCUPACIONAL)
+}
+
 export const getCategoriaOcupacionalPrincipal = () => async (dispatch) => {
   dispatch({
     type: GET_CATEGORIAOCUPACIONAL_INIT,
     payload: true,
   });
 
-  Axios.get(
-    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/categoriaOcupacional`
-  )
+  getData()
     .then((response) => {
       dispatch(successCallCategoria(response.data.content[0]));
     })

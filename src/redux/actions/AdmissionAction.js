@@ -54,11 +54,14 @@ export const formatRut = (rut) => {
   };
 };
 
+export const obtenerData = async(rut)=>{
+  return Axios.get(process.env.REACT_APP_AFILIADO+`?rut=${rut}`)
+}
+
 export const saveRut = (rut) => {
   return (dispatch) => {
-    Axios.get(
-      `https://wa-desa-msorquestador.azurewebsites.net/api/sap/isAfiliado?rut=${rut}`
-    )
+
+    obtenerData(rut)
       .then((result) => {
 
         let isAfiliado = result.data.content[0].IsAfiliado;

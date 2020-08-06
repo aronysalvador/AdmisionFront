@@ -5,15 +5,17 @@ import {
 } from "../types/tipoRemuneracionType";
 import Axios from "axios";
 
+export const getData = async()=>{
+  return  Axios.get(process.env.REACT_APP_TIPO_REMUNERACIONES)
+}
+
 export const getRemuneracion = () => async (dispatch) => {
   dispatch({
     type: GET_REMUNERACION_INIT,
     payload: true,
   });
 
-  Axios.get(
-    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/tipoRemuneracion`
-  )
+  getData()
     .then((response) => {
       dispatch(successCallRemuneracion(response.data.content[0]));
     })
