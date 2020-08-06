@@ -41,7 +41,6 @@ const EditarDireccionSucursal = () => {
         value={sucursalEmpresa}
         onChange={(event, value) => {
           setSucursalEmpresa(value);
-          console.log({ value });
         }}
         size="small"
         fullWidth
