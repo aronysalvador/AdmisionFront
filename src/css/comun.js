@@ -144,7 +144,7 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     tituloSelectorFecha: {
         letterSpacing: "2px",
-        fontSize: "0.875em",
+        fontSize: "0.750em",
         fontWeight: "bold",
         fontFamily: "Catamaran",
         fontStyle: "normal",

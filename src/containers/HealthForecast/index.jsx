@@ -60,7 +60,7 @@ const HealthForecast = (props) => {
       <div className={spaceStyle.space2} />
       <div className={classesComun.flexDivider}>
       <Divider className={classesComun.mediumDivider} />  
-      <em className={classesComun.emMargin}> o </em>
+      <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
      
       <Divider className={classesComun.mediumDivider} /> </div>
       <div className={spaceStyle.space2} />

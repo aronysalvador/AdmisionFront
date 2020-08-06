@@ -23,7 +23,7 @@ const AccidentObjectForm = (props) => {
       />
       <div>
         <QuestionForm
-          titulo={"Se accidentó con..." }
+          titulo={"Se accidentó ocurrió con..." }
           pregunta={<br/>}
           placeholder={
             "Ejemplo: Con la escalera - con el suelo - al caer tineta en el pie"

@@ -69,7 +69,6 @@ const form = (props) => {
 };
 
 const IdentificationForm = withFormik({
-<<<<<<< HEAD
   mapPropsToValues: ({ rut }) => {
     return {
       rut: rut || "",
@@ -81,28 +80,6 @@ const IdentificationForm = withFormik({
       errors.rut = "Debe ingresar el RUT del Paciente";
     } else if (!Rut.validaRut(formateaRut(values.rut))) {
       errors.rut = "Ingresa un RUT válido";
-=======
-
-    mapPropsToValues: ({ rut }) => {
-        return {
-            rut: rut || ""
-        };
-    },
-    validate: (values) => {
-        const errors = {}
-        if (typeof values.rut !== 'undefined' && values.rut.length < 1) {
-            errors.rut = 'Debe ingresar el RUT del Paciente'
-        } else if (!Rut.validaRut(formateaRut(values.rut))) {
-            errors.rut = 'Ingresa un RUT válido';
-        }
-        return errors
-    },
-    handleSubmit: (values, { props, setSubmitting }) => {
-        setSubmitting = false
-        values.rut = formateaRut(values.rut)
-        props.dispatch(updateForm('rut', Rut.clean(values.rut)))
-        props.dispatch(handleSetStep(5))
->>>>>>> feature/feature/gelen
     }
     return errors;
   },
