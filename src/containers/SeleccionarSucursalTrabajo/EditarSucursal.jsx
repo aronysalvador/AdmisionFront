@@ -22,18 +22,10 @@ const EditarSucursal = () => {
     shallowEqual
   );
 
-  console.log({ sucursalesList });
-
-  const [cantidadSucursales] = useState(() => 9);
-
-  if (cantidadSucursales <= 6)
-    return (
-      <SeleccionarSucursalTrabajo
-        sucursalesEmpresa={sucursalesList.slice(0, 4)}
-      />
-    );
-  if (cantidadSucursales >= 6)
-    return <SeleccionarComuna sucursalesEmpresa={sucursalesList.slice(0, 9)} />;
+  if (sucursalesList?.length <= 6)
+    return <SeleccionarSucursalTrabajo sucursalesEmpresa={sucursalesList} />;
+  if (sucursalesList?.length >= 6)
+    return <SeleccionarComuna sucursalesEmpresa={sucursalesList} />;
   return <div>No tiene sucursales</div>;
 };
 
