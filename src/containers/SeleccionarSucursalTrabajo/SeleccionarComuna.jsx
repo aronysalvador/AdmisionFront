@@ -8,6 +8,7 @@ import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
 import { sucursalesOficina } from "../../util/fakeApi";
+import getComuna from "../../redux/actions/ComunaAction";
 
 const SeleccionarComuna = () => {
   const comunas = [
@@ -19,15 +20,26 @@ const SeleccionarComuna = () => {
     { key: 13106, value: "Estación Central", parent: 13000 },
     { key: 13107, value: "Huechuraba", parent: 13000 },
     { key: 13108, value: "Independencia", parent: 13000 },
-    { key: 13109, value: "La Cisterna", parent: 13000 },
     { key: 13110, value: "La Florida", parent: 13000 },
     { key: 13111, value: "La Granja", parent: 13000 },
     { key: 13112, value: "La Pintana", parent: 13000 },
   ];
-  const { step, percentage, comunaSucursal } = useSelector(
+
+  const { step, percentage, comunaSucursal, rutEmpresa } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
+
+  // useEffect(() => {
+  //   dispatch(getSucursales(rutEmpresa));
+  //   //dispatch(getComuna(""));
+  // }, []);
+
+  // const { data: comunaList } = useSelector(
+  //   (state) => state.afpForm,
+  //   shallowEqual
+  // );
+
   const [numeroSucursales, setNumeroSucursales] = useState(0);
   const [sucursales, setSucursales] = useState([]);
   const [comuna, setComuna] = useState(comunaSucursal);

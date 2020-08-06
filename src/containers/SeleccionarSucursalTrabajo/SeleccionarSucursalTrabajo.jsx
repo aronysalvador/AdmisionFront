@@ -9,11 +9,11 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
-  const [sucursalesEmpresaData, setSucursalesEmpresaData] = useState(() =>
-    sucursalesEmpresa.map((y) => {
-      return { ...y, isSelected: false };
-    })
+  console.log({ sucursalesEmpresa });
+  const [sucursalesEmpresaData, setSucursalesEmpresaData] = useState(
+    sucursalesEmpresa
   );
+
   const dispatch = useDispatch();
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
