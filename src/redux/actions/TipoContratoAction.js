@@ -5,15 +5,17 @@ import {
 } from "../types/TipoContratoType";
 import Axios from "axios";
 
+export const getData = async() => {
+  return  Axios.get(process.env.REACT_APP_TIPO_CONTRATO)
+}
+
 export const getContrato = () => async (dispatch) => {
   dispatch({
     type: GET_TIPOCONTRATO_INIT,
     payload: true,
   });
 
-  Axios.get(
-    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/tipoContrato`
-  )
+  getData()
     .then((response) => {
       dispatch(successCallContrato(response.data.content[0]));
     })

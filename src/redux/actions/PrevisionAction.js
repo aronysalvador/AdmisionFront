@@ -5,13 +5,17 @@ import {
 } from "../types/addmissionFormType";
 import Axios from "axios";
 
+export const fetchData = async () => {     
+  return await Axios.get(process.env.REACT_APP_ISAPRES);
+};
+
 export const searchIsapres = () => async (dispatch) => {
   dispatch({
     type: SEARCH_ISAPRES_INIT,
     payload: true,
   });
 
-  Axios.get(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/isapres`)
+  fetchData()
     .then((response) => {
       dispatch(successCallIsapres(response.data.content[0]));
     })

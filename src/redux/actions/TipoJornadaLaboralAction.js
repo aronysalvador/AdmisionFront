@@ -6,15 +6,17 @@ import {
 import Axios from "axios";
 import { getTipoJornadaLaboral } from "../../util/fakeApi";
 
+export const getData = async() => {
+  return   Axios.get(process.env.REACT_APP_JORNADA_TRABAJO)
+}
+
 export const getJornadaLaboralPrincipal = () => async (dispatch) => {
   dispatch({
     type: GET_JORNADA_LABORAL_INIT,
     payload: true,
   });
 
-  Axios.get(
-    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/jornadaTrabajo`
-  )
+  getData()
     .then((response) => {
       dispatch(successCallTipoJornada(response.data.content[0]));
     })
