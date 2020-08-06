@@ -45,7 +45,7 @@ const EditarDireccionSucursal = () => {
         size="small"
         fullWidth
         options={sucursales}
-        getOptionLabel={(option) => option?.nombreSucursal}
+        getOptionLabel={(option) => option?.nombre}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={bottomElement}>
@@ -54,10 +54,9 @@ const EditarDireccionSucursal = () => {
           disabled={!sucursalEmpresa}
           className={buttonAchs}
           onClick={() => {
-            dispatch(updateForm("SucursalEmpresa", sucursalEmpresa))
+            dispatch(updateForm("SucursalEmpresa", sucursalEmpresa));
             dispatch(handleSetStep(5.1));
-          }
-          }
+          }}
         >
           Confirmar
         </Button>
