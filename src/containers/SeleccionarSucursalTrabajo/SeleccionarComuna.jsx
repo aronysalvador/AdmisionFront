@@ -39,12 +39,12 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
-    const xx = sucursalesEmpresa.map((sucursal) =>
+    const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
       comunaList.find((x) => x.codigo_comuna === sucursal.id_comuna)
     );
 
-    setListaComunas(xx);
-    console.log({ sucursalesEmpresa, comunaList, xx });
+    setListaComunas(comunasSucursal);
+    console.log({ sucursalesEmpresa, comunaList, xx: comunasSucursal });
   }, [sucursalesEmpresa, comunaList]);
 
   return (
