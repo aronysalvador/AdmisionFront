@@ -9,23 +9,15 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
-  console.log({ sucursalesEmpresa });
-
-  const [sucursalesEmpresaData, setSucursalesEmpresaData] = useState(
-    sucursalesEmpresa
-  );
-
   const dispatch = useDispatch();
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { percentage, SucursalEmpresa } = useSelector(
+  const { percentage, SucursalEmpresa: SucursalEmpresaObjeto } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
   const handlerGuradarSucursalTexto = (itemForm, data, step) => {
-    // const { comunaNombre, nombreSucursal, numero } = data;
-    // const sucursalTexto = `${nombreSucursal},${numero}, ${comunaNombre}`;
     const { nombre } = data;
     const sucursalTexto = nombre;
     dispatch(updateForm(itemForm, sucursalTexto));
@@ -54,7 +46,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             key={sucursal.id}
             data={sucursal}
             itemForm={"SucursalEmpresa"}
-            selected={sucursal.id == SucursalEmpresa.id}
+            selected={sucursal.id == SucursalEmpresaObjeto.id}
             step={5.1}
             handlerGuardarData={handlerGuradarSucursalTexto}
           >

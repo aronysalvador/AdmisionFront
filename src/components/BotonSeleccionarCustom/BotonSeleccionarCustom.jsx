@@ -25,7 +25,7 @@ const BotonSeleccionarCustom = (props) => {
           handlerGuardarData(itemForm, data, step);
           dispatch(
             updateForm(
-              itemForm,
+              "SucursalEmpresaObjeto",
               !isSelected ? { ...data, selected: !isSelected } : {}
             )
           );
