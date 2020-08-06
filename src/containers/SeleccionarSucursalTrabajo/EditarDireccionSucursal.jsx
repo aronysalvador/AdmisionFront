@@ -41,6 +41,7 @@ const EditarDireccionSucursal = () => {
         value={sucursalEmpresa}
         onChange={(event, value) => {
           setSucursalEmpresa(value);
+          console.log({ value });
         }}
         size="small"
         fullWidth
@@ -54,7 +55,7 @@ const EditarDireccionSucursal = () => {
           disabled={!sucursalEmpresa}
           className={buttonAchs}
           onClick={() => {
-            dispatch(updateForm("SucursalEmpresa", sucursalEmpresa));
+            dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
             dispatch(handleSetStep(5.1));
           }}
         >
