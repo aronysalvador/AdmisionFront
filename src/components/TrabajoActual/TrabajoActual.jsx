@@ -16,6 +16,8 @@ const TrabajoActual = ({
   });
 
   const [indiceAnio, setIndiceAnio] = useState(() => {
+    
+    console.log("INDICE ANIO ES", indiceAnioFromState);
     return !indiceAnioFromState ? 0 : indiceAnioFromState;
   });
 

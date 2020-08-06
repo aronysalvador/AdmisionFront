@@ -10,11 +10,11 @@ import TrabajoActual from "../../components/TrabajoActual/TrabajoActual";
 const TrabajoActualContainer = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage } = useSelector(
+  const { step, percentage, ingresoTrabajoActual } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
-  const [ingresoTrabajoActual, setIngresoTrabajo] = useState({});
+  const [ingresoTrabajoActualValue, setIngresoTrabajo] = useState(ingresoTrabajoActual);
   const [meses, setMes] = useState(() => {
     return ['Ene', 'Feb', 'Mar','Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];    
   });
@@ -34,6 +34,12 @@ const TrabajoActualContainer = () => {
     let formattedDate = new Date(value.anio, value.mes, 1);
     setIngresoTrabajo(formattedDate);
   }
+
+  function getAnioIndex(){
+    return anios.indexOf(new Date(ingresoTrabajoActualValue).getFullYear());
+  }
+
+
   return (
     <div className={root}>
       <Cabecera
@@ -48,15 +54,15 @@ const TrabajoActualContainer = () => {
         onChange={setTrabajoActual}
         meses={meses}
         anios={anios}
-        indiceMesFromState={0}
-        indiceAnioFromState={anios.length-1}
+        indiceMesFromState={new Date(ingresoTrabajoActualValue).getMonth()}
+        indiceAnioFromState={getAnioIndex() == -1 ? anios.length - 1 : getAnioIndex()}  
       />  
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
           onClick={() => {
             dispatch(
-              updateForm("ingresoTrabajoActual", ingresoTrabajoActual)
+              updateForm("ingresoTrabajoActual", ingresoTrabajoActualValue)
             );
             dispatch(handleSetStep(step + 1));
           }}
