@@ -81,7 +81,6 @@ const HealthForecastIsapre = (props) => {
         <div>
           <Autocomplete
             id="asynchronous-demo"
-            style={{ width: 300 }}
             open={open}
             onOpen={() => {
               setOpen(true);
@@ -104,7 +103,7 @@ const HealthForecastIsapre = (props) => {
                 {...params}
                 error={!isIsapresValid}
                 helperText={
-                  !isIsapresValid && "Escriba o Seleccione al menos una Isapres"
+                  !isIsapresValid && "Escribe o Selecciona al menos una Isapre"
                 }
                 variant="outlined"
                 InputProps={{
@@ -117,6 +116,12 @@ const HealthForecastIsapre = (props) => {
                       {params.InputProps.endAdornment}
                     </React.Fragment>
                   ),
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
                 }}
               />
             )}

@@ -39,7 +39,7 @@ const FechaHoraSiniestro = () => {
       <Typography className={pregunta}>
         Escribe la fecha y hora del accidente
       </Typography>
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space3} />
       <FechaSiniestro
         onChange={setFechaValueSiniestro}
         daysFromState={days}

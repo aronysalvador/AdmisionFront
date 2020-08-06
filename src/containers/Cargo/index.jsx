@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
+import { TextField, InputAdornment } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import ClearIcon from '@material-ui/icons/Clear';
+import { IconButton } from "material-ui";
 
 const Cargo = () => {
   const {
@@ -70,6 +72,19 @@ const Cargo = () => {
           variant="outlined"
           inputProps={{ maxLength: 25 }}
           fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => {
+                      saveCargo("");
+                    }}
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+            ),
+          }}
         />
       </div>
 

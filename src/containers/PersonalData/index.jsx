@@ -58,7 +58,7 @@ const PersonalData = (props) => {
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}
-          variant="contained"
+           //variant="contained"
           onClick={() => dispatch(handleSetStep(6))}
         >
           Si, es correcta

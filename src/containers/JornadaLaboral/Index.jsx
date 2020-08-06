@@ -31,10 +31,10 @@ const JornadaLaboralContainer = () => {
   const dispatch = useDispatch();
 
   function setJornadaLaboral(value) {
-    console.log("setjornadalaboral", value);
     setInicioJornada(value.horaInicio);
     setFinJornada(value.horaFin);
   }
+
   return (
     <div className={root}>
       <Cabecera

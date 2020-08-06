@@ -63,7 +63,21 @@ const Afp = () => {
         style={{ width: 300 }}
         options={afpList}
         getOptionLabel={(option) => option.nombre}
-        renderInput={(params) => <TextField {...params} variant="outlined" />}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            InputProps={{
+              ...params.InputProps,
+              style: {
+                paddingTop: "3px",
+                paddingBottom: "3px",
+                paddingLeft: "5xp",
+                marginTop: "7px",
+              },
+            }}
+          />
+        )}
       />
 
       <div className={bottomElement}>

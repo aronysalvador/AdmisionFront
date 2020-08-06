@@ -14,6 +14,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 //Action de Redux
 import { sendResponsable } from "../../redux/actions/AdmissionAction";
 import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
+import { InputAdornment } from "@material-ui/core";
+import { IconButton } from "material-ui";
+import ClearIcon from '@material-ui/icons/Clear';
 
 const DataResponsable = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -74,7 +77,7 @@ const DataResponsable = (props) => {
           component="p"
           className={[classesComun.tituloTextbox]}
         >
-          NOMBRE
+          Nombre
         </Typography>
       </div>
 
@@ -87,6 +90,19 @@ const DataResponsable = (props) => {
           margin="dense"
           variant="outlined"
           fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => {
+                      saveNombre("");
+                    }}
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+            ),
+          }}
         />
       </div>
 
@@ -98,14 +114,15 @@ const DataResponsable = (props) => {
           component="p"
           className={[classesComun.tituloTextbox]}
         >
-          CARGO
+          Cargo
         </Typography>
       </div>
 
       <div>
         <Autocomplete
           id="asynchronous-demo"
-          style={{ width: 310, height: 40 }}
+          style={{ width: '100%' }}
+          // style={{ width: 310, height: 40 }}
           open={open}
           onOpen={() => {
             setOpen(true);
@@ -136,6 +153,12 @@ const DataResponsable = (props) => {
                     {params.InputProps.endAdornment}
                   </React.Fragment>
                 ),
+                style: {
+                  paddingTop: "3px",
+                  paddingBottom: "3px",
+                  paddingLeft: "5xp",
+                  marginTop: "7px"
+                },
               }}
             />
           )}

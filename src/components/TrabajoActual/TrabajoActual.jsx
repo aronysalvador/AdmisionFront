@@ -51,8 +51,8 @@ const TrabajoActual = ({
   //con MouseUp detengo la selección
   const onMouseUp = () => {
     clearTimeout(TRef.current);
-    start = 600
-  }
+    start = 600;
+  };
 
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
@@ -128,7 +128,7 @@ const TrabajoActual = ({
             <Button
               disabled={
                 indiceMes > 10 ||
-                (anios[indiceAnio] == fechaActual.getFullYear() &&
+                (anios[indiceAnio] === fechaActual.getFullYear() &&
                   indiceMes > fechaActual.getMonth() - 1)
               }
               variant="text"
@@ -173,7 +173,7 @@ const TrabajoActual = ({
               onMouseDown={() => {
                 longPressDown();
               }}
-              onMouseUp={()=>{
+              onMouseUp={() => {
                 onMouseUp();
               }}
             >
@@ -214,10 +214,12 @@ const TrabajoActual = ({
               variant="text"
               disabled={anios[indiceAnio] >= fechaActual.getFullYear()}
               onClick={() => {
+                console.log("CLICK DOWN");
                 //Si la fecha seleccionada es mayor a la fecha actual, se vuelve a establecer la fecha con el mes actual
+               
                 if (
                   indiceMes > fechaActual.getMonth() - 1 &&
-                  anios[indiceAnio + 1] == fechaActual.getFullYear()
+                  anios[indiceAnio] + 1 === fechaActual.getFullYear()
                 ) {
                   setIndiceMes((x) => fechaActual.getMonth());
                 }
@@ -225,7 +227,7 @@ const TrabajoActual = ({
               onMouseDown={() => {
                 longPressUp();
               }}
-              onMouseUp={()=>{
+              onMouseUp={() => {
                 onMouseUp();
               }}
             >

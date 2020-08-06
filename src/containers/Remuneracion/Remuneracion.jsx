@@ -35,9 +35,9 @@ const Remuneracion = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        ¿Que tipo de remuneración tienes?
+        ¿Qué tipo de remuneración tienes?
       </Typography>
-
+      <div className={spaceStyle.space2} />
       <div
         style={{
           display: "flex",
