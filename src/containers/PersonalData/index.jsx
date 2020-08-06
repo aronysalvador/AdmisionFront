@@ -16,7 +16,7 @@ const PersonalData = (props) => {
   const tituloEmpresa = "Empresa";
   const contenidoEmpresa = [
     addmissionForm.razonSocialForm,
-    addmissionForm.SucursalEmpresa,
+    // addmissionForm.SucursalEmpresa,
     addmissionForm.DireccionEmpresa,
     addmissionForm.rutEmpresa,
   ];
