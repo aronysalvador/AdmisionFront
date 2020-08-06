@@ -10,6 +10,8 @@ import tipoJornadaLaboralForm from "../reducers/TipoJornadaLaboralReducer";
 import categoriaOcupacionalForm from "../reducers/CategoriaOcupacionalReducer";
 import tipoRemuneracionForm from "../reducers/TipoRemuneracionReducer";
 import tipoContratoForm from "../reducers/TipoContratoReducer";
+import comunaForm from "../reducers/ComunaReducer";
+import sucursalesForm from "../reducers/SucursalesReducer";
 
 export default combineReducers({
   addmissionForm,
@@ -23,4 +25,6 @@ export default combineReducers({
   categoriaOcupacionalForm,
   tipoRemuneracionForm,
   tipoContratoForm,
+  comunaForm,
+  sucursalesForm,
 });

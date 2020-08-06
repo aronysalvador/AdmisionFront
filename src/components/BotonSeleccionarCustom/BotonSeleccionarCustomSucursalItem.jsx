@@ -1,17 +1,13 @@
 import React from "react";
 
-const BotonSeleccionarCustomSucursalItem = ({
-  nombreSucursal,
-  numero,
-  comunaNombre,
-}) => {
+const BotonSeleccionarCustomSucursalItem = ({ nombre, codigo, id_region }) => {
   return (
     <>
       <div style={{ textAlign: "center" }}>
-        <span style={{ fontSize: "14px" }}>{nombreSucursal}</span> <br />
-        <span style={{ fontSize: "14px" }}>{numero}</span>
+        <span style={{ fontSize: "14px" }}>{nombre}</span> <br />
+        <span style={{ fontSize: "14px" }}>{codigo}</span>
       </div>
-      <span style={{ fontSize: "12px" }}>{comunaNombre}</span>
+      <span style={{ fontSize: "12px" }}>{id_region}</span>
     </>
   );
 };

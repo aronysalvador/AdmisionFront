@@ -20,9 +20,15 @@ const BotonSeleccionarCustom = (props) => {
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-        console.log({ itemForm });
+
         if (itemForm === "SucursalEmpresa") {
           handlerGuardarData(itemForm, data, step);
+          dispatch(
+            updateForm(
+              "SucursalEmpresaObjeto",
+              !isSelected ? { ...data, selected: !isSelected } : {}
+            )
+          );
         } else {
           dispatch(
             updateForm(
