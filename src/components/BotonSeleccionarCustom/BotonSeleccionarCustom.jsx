@@ -20,17 +20,18 @@ const BotonSeleccionarCustom = (props) => {
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-        if(!isSelected)
-        {
-          dispatch(
-            updateForm(
-              itemForm,
-              !isSelected ? { ...data, selected: !isSelected } : {}
-            )
+        if (!isSelected) {
+          const { comunaNombre, nombreSucursal, numero } = data;
+          const sucursalTexto = `${nombreSucursal},${numero}, ${comunaNombre} `;
+
+          dispatch(updateForm(itemForm, sucursalTexto));
+          updateForm(
+            "SucursalEmpresaObjecto",
+            !isSelected ? { ...data, selected: !isSelected } : {}
           );
+
           dispatch(handleSetStep(step));
         }
-        
       }}
       className={isSelected ? botonSeleccionado : ""}
       style={{
@@ -48,7 +49,7 @@ const BotonSeleccionarCustom = (props) => {
         paddingTop: "15px",
         paddingBottom: "10px",
         backgroundColor: "#F4F4F4",
-        padding: "2px"
+        padding: "2px",
       }}
     >
       {props.children}

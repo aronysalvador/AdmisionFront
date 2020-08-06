@@ -11,9 +11,9 @@ export const getAFP = () => async (dispatch) => {
     payload: true,
   });
 
-  Axios.get(`http://fa-desa-tele-admision-datamaster.azurewebsites.net/api/AFP`)
+  Axios.get(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/afp`)
     .then((response) => {
-      dispatch(successCallAFP(response.data.content));
+      dispatch(successCallAFP(response.data.content[0]));
     })
     .catch((error) => {
       dispatch(errorCallAFP());

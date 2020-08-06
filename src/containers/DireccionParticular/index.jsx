@@ -9,11 +9,11 @@ import DireccionGeo from '../../components/share/DireccionGeo'
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { step, percentage, direccionParticular,urlMapaDireccionParticular },
+    addmissionForm: { step, percentage, direccionParticular,urlMapaDireccionParticular,direccionParticularObj },
   } = useSelector((state) => state, shallowEqual)
 
   const [direccion, setDireccion] = useState(() => {
-    return !direccionParticular ? "" : direccionParticular
+    return !direccionParticularObj ? "" : direccionParticularObj
   })
 
   const setUrl = (urlMapa) =>{
@@ -58,7 +58,8 @@ const DireccionParticular = () => {
           variant="contained"
           disabled={!direccion || !isLugarExactoAccidenteValid}
           onClick={() => {
-            dispatch(updateForm("direccionParticular", direccion))
+            dispatch(updateForm("direccionParticular", direccion.description))
+            dispatch(updateForm("direccionParticularObj", direccion))
             dispatch(handleSetStep(5.1))
           }}
         >

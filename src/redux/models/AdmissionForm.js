@@ -1,5 +1,9 @@
 export const AdmissionForm = {
+<<<<<<< HEAD
     step: 3,
+=======
+    step: 0,
+>>>>>>> feature/feature/gelen
 
     percentage: 0,
     rut: "",

@@ -3,7 +3,7 @@ import {
   GET_CATEGORIAOCUPACIONAL_SUCCESS,
   GET_CATEGORIAOCUPACIONAL_FAILURE,
 } from "../types/categoriaOcupacionalType";
-//import Axios from "axios";
+import Axios from "axios";
 import { getCategoriaOcupacional } from "../../util/fakeApi";
 
 export const getCategoriaOcupacionalPrincipal = () => async (dispatch) => {
@@ -12,10 +12,11 @@ export const getCategoriaOcupacionalPrincipal = () => async (dispatch) => {
     payload: true,
   });
 
-  //Axios.get(`http://fa-desa-tele-admision-datamaster.azurewebsites.net/api/AFP`)
-  getCategoriaOcupacional()
+  Axios.get(
+    `https://wa-desa-msorquestador.azurewebsites.net/api/sap/categoriaOcupacional`
+  )
     .then((response) => {
-      dispatch(successCallCategoria(response));
+      dispatch(successCallCategoria(response.data.content[0]));
     })
     .catch((error) => {
       dispatch(errorCallCategoria());

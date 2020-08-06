@@ -61,6 +61,7 @@ const Afp = () => {
           setAFP(value);
         }}
         options={afpList}
+<<<<<<< HEAD
         getOptionLabel={(option) => option.value}
         renderInput={(params) => (
           <TextField
@@ -77,6 +78,10 @@ const Afp = () => {
             }}
           />
         )}
+=======
+        getOptionLabel={(option) => option.nombre}
+        renderInput={(params) => <TextField {...params} variant="outlined" />}
+>>>>>>> feature/feature/gelen
       />
 
       <div className={bottomElement}>
