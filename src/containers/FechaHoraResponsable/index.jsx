@@ -32,7 +32,7 @@ const FechaHoraResponsable = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(18))}
+        dispatch={() => dispatch(handleSetStep(16))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

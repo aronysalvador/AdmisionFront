@@ -27,7 +27,7 @@ const BoxQuestionResponsable = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(14.1))}
+        dispatch={() => dispatch(handleSetStep(17))}
         percentage={addmissionForm.percentage}
       />
       <BoxTestigosResponsable

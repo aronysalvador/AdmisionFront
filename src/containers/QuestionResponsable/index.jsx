@@ -17,7 +17,6 @@ const QuestionResponsable = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-         
         dispatch={() => dispatch(handleSetStep(14.1))}
         percentage={addmissionForm.percentage}
       />

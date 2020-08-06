@@ -16,11 +16,11 @@ import { sendResponsable } from "../../redux/actions/AdmissionAction";
 import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
-import ClearIcon from '@material-ui/icons/Clear';
+import ClearIcon from "@material-ui/icons/Clear";
 
 const DataResponsable = (props) => {
   const { dispatch, addmissionForm } = props;
-  const { responsable,step } = addmissionForm;
+  const { responsable, step } = addmissionForm;
 
   const welcomeStyle = getWelcomeStyle();
   const classesComun = getComunStyle();
@@ -61,7 +61,7 @@ const DataResponsable = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--step))}
+        dispatch={() => dispatch(handleSetStep(15))}
         percentage={addmissionForm.percentage}
       />
       <div>
@@ -93,14 +93,14 @@ const DataResponsable = (props) => {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => {
-                      saveNombre("");
-                    }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+                <IconButton
+                  onClick={() => {
+                    saveNombre("");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
             ),
           }}
         />
@@ -121,7 +121,7 @@ const DataResponsable = (props) => {
       <div>
         <Autocomplete
           id="asynchronous-demo"
-          style={{ width: '100%' }}
+          style={{ width: "100%" }}
           // style={{ width: 310, height: 40 }}
           open={open}
           onOpen={() => {
@@ -157,7 +157,7 @@ const DataResponsable = (props) => {
                   paddingTop: "3px",
                   paddingBottom: "3px",
                   paddingLeft: "5xp",
-                  marginTop: "7px"
+                  marginTop: "7px",
                 },
               }}
             />

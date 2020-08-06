@@ -16,7 +16,7 @@ import { sendCargo } from "../../redux/actions/AdmissionAction";
 import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
-import ClearIcon from '@material-ui/icons/Clear';
+import ClearIcon from "@material-ui/icons/Clear";
 
 const DataWitness = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -61,7 +61,7 @@ const DataWitness = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
+        dispatch={() => dispatch(handleSetStep(13))}
         percentage={addmissionForm.percentage}
       />
       <div>
@@ -94,14 +94,14 @@ const DataWitness = (props) => {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => {
-                      saveNombre("");
-                    }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+                <IconButton
+                  onClick={() => {
+                    saveNombre("");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
             ),
           }}
         />
@@ -139,7 +139,7 @@ const DataWitness = (props) => {
             saveCargos(newValue);
           }}
           renderInput={(params) => (
-            <TextField             
+            <TextField
               {...params}
               helperText="Ejemplo: Vigilante,Jefe,Agente"
               variant="outlined"
@@ -157,7 +157,7 @@ const DataWitness = (props) => {
                   paddingTop: "3px",
                   paddingBottom: "3px",
                   paddingLeft: "5xp",
-                  marginTop: "7px"
+                  marginTop: "7px",
                 },
               }}
             />
