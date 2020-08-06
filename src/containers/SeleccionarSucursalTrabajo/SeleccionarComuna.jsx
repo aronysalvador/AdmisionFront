@@ -42,6 +42,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     const xx = sucursalesEmpresa.map((sucursal) =>
       comunaList.find((x) => x.codigo_comuna === sucursal.id_comuna)
     );
+
     setListaComunas(xx);
     console.log({ sucursalesEmpresa, comunaList, xx });
   }, [sucursalesEmpresa, comunaList]);

@@ -6,7 +6,7 @@ import {
 import Axios from "axios";
 
 export const obtenerData = async (rut) => {
-  return Axios.get(process.env.REACT_APP_SUCURSALES + `${rut}`);
+  return Axios.get(`${process.env.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`);
 };
 
 export const getSucursales = (rut) => async (dispatch) => {
@@ -15,9 +15,6 @@ export const getSucursales = (rut) => async (dispatch) => {
     payload: true,
   });
 
-  // Axios.get(
-  //   `https://wa-desa-msorquestador.azurewebsites.net/api/sap/sucursales?rutEmpresa=${rut}`
-  // )
   obtenerData(rut)
     .then((response) => {
       dispatch(successCallSucursales(response.data.content[0]));
