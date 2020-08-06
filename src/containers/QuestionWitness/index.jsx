@@ -20,8 +20,8 @@ const QuestionWitness = (props) => {
         titulo={"Entendido ¿Alguien fue testigo de lo que sucedió?"}
         accionButoonA={() => dispatch(handleSetStep(14))}
         accionButoonB={() => dispatch(handleSetStep(15))}
-        tituloA={"Agregar Testigo"}
-        tituloB={"No hubo Testigos"}
+        tituloA={"Agregar testigo"}
+        tituloB={"No hubo testigos"}
       />
     </div>
   );

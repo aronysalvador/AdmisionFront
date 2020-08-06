@@ -41,7 +41,7 @@ const Session = (props) => {
           {microsoftReducer.userMsal.displayName}
         </Typography>
       </div>
-      <div className={spaceStyle.space3} />
+      <div className={spaceStyle.space1} />
       <div>
         <Typography
           variant="p"

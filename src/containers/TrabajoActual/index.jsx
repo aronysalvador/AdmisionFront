@@ -5,7 +5,6 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import JornadaLaboral from "../../components/JornadaLaboral/JornadaLaboral";
 import TrabajoActual from "../../components/TrabajoActual/TrabajoActual";
 
 const TrabajoActualContainer = () => {
@@ -21,7 +20,7 @@ const TrabajoActualContainer = () => {
   });
   const [anios, setAnio] = useState(() => {
     let anios = [];
-    let i = 1980;
+    let i = 1975;
     for (i; i <= new Date().getFullYear(); i++) {
       anios.push(i);
     }

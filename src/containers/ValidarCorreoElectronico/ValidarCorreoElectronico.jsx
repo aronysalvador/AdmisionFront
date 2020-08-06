@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Typography, TextField, InputAdornment, IconButton  } from "@material-ui/core";
-import DeleteIcon from '@material-ui/icons/Delete';
 import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
 import { siniestroStyle } from "../../css/siniestroStyle";
@@ -8,7 +7,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { validateEmailFormat } from "../../helpers/email";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { RemoveCircle, HighlightOff, HighlightOffOutlined, HighlightOffRounded, HighlightOffSharp, HighlightOffTwoTone } from "@material-ui/icons";
+import ClearIcon from '@material-ui/icons/Clear';
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -55,7 +54,7 @@ const ValidarCorreoElectronico = () => {
                     setUserEmail("");
                   }}
                 >
-                  <HighlightOff />
+                  <ClearIcon />
                 </IconButton>
               </InputAdornment>
           ),

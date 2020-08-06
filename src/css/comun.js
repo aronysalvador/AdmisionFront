@@ -31,6 +31,12 @@ export const getComunStyle = makeStyles((theme) => ({
     pregunta_temp: {
         fontSize: "1.1em !important",
     },
+    googleMap: {
+        width: "100%",
+        borderRadius: "20px",
+        padding:  "10px"
+    },
+
     buttonAchs: {
         width: "100%",
         background: "#007A33",
@@ -41,7 +47,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: "1.125em",
         lineHeight: "1.125em",
         color: "#FFFFFF",
-        textTransform: "capitalize",
+         textTransform: "inherit",
         height: "3.5em",
         "&:hover": {
             background: "#104F28",
@@ -60,7 +66,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: "1.125em",
         lineHeight: "1.125em",
         color: "#007A33",
-        textTransform: "capitalize",
+        textTransform: "inherit",
         height: "3.5em",
     },
     buttonAchsRight: {
@@ -135,7 +141,6 @@ export const getComunStyle = makeStyles((theme) => ({
         fontFamily: "Catamaran",
         fontStyle: "normal",
         color: "#373737",
-        textTransform: "uppercase",
     },
     tituloSelectorFecha: {
         letterSpacing: "2px",
@@ -169,22 +174,8 @@ export const getComunStyle = makeStyles((theme) => ({
         paddingBottom: "5px",
         opacity: "0.5",
     },
-    buttonAchs2: {
-        width: "100%",
-        background: "#FFFFFF",
-        border: "2px solid #007A33",
-        boxSizing: "border-box",
-        borderRadius: "4px",
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "1.125em",
-        lineHeight: "1.125em",
-        color: "#007A33",
-        textTransform: "capitalize",
-        height: "3.5em",
-    },
     borderBox: {
+        border: "yellow",
         "&:hover": {
             border: "#007A33",
         },
@@ -198,5 +189,5 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     emMargin: {
         margin: '0.5em',
-    },
+    }
 }));

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField } from "@material-ui/core";
+import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { IconButton } from "material-ui";
+import ClearIcon from '@material-ui/icons/Clear';
 
 const LugarReferenciaSiniestro = () => {
   let {
@@ -40,8 +42,8 @@ const LugarReferenciaSiniestro = () => {
         ...y especifica una referencia del lugar
       </Typography>
       <div className={spaceStyle.space2} />
-      <Typography className={tituloTextbox} variant="subtitle2">
-        referencia
+      <Typography className={tituloTextbox}>
+        Referencia
       </Typography>
       <TextField
         helperText={
@@ -58,6 +60,19 @@ const LugarReferenciaSiniestro = () => {
           let texto = e.target.value;
           setIsLugarReferenciaValid(texto.length > 0);
           setLugarReferencia(texto);
+        }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+                <IconButton
+                  onClick={() => {
+                    setLugarReferencia("");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+          ),
         }}
       />
       <Typography className={mobileCaption} variant="subtitle1">

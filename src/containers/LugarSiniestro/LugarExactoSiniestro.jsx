@@ -26,6 +26,8 @@ const LugarExactoSiniestro = () => {
   } = getComunStyle()
   const spaceStyle = getSpaceStyle()
 
+  const { googleMap } = getComunStyle()
+
   const setUrl = (urlMapa) =>{
     dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
   }
@@ -47,7 +49,7 @@ const LugarExactoSiniestro = () => {
       </Typography>
 
       <DireccionGeo direccion={sucursal} setUrl={setUrl} setDireccion={setSucursal} />
-      {(sucursal !== null)?<img src={urlMapasucursalEmpresaSiniestro} />:<div />}
+      {(sucursal !== null)?<img className={googleMap}  src={urlMapasucursalEmpresaSiniestro} />:<div />}
 
       <div className={bottomElement}>
         <Button

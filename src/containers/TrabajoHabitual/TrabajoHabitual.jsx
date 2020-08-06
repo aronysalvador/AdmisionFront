@@ -57,7 +57,7 @@ const TrabajoHabitual = () => {
         <div className={spaceStyle.spaceMin1}></div>
         <Button
           className={buttonAchs2}
-          variant="outlined"
+          //variant="outlined"
           onClick={() => handleOnClick("No")}
         >
           No lo estaba

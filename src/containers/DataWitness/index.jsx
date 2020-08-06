@@ -14,6 +14,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 //Action de Redux
 import { sendCargo } from "../../redux/actions/AdmissionAction";
 import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
+import { InputAdornment } from "@material-ui/core";
+import { IconButton } from "material-ui";
+import ClearIcon from '@material-ui/icons/Clear';
 
 const DataWitness = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -75,7 +78,7 @@ const DataWitness = (props) => {
           variant="subtitle2"
           className={[classesComun.tituloTextbox]}
         >
-          NOMBRE
+          Nombre
         </Typography>
       </div>
 
@@ -88,6 +91,19 @@ const DataWitness = (props) => {
           margin="dense"
           variant="outlined"
           fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => {
+                      saveNombre("");
+                    }}
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+            ),
+          }}
         />
       </div>
 
@@ -100,14 +116,13 @@ const DataWitness = (props) => {
           variant="subtitle2"
           className={[classesComun.tituloTextbox]}
         >
-          CARGO
+          Cargo
         </Typography>
       </div>
 
       <div>
         <Autocomplete
           id="asynchronous-demo"
-          style={{ width: 310, height: 50 }}
           open={open}
           onOpen={() => {
             setOpen(true);
@@ -124,7 +139,7 @@ const DataWitness = (props) => {
             saveCargos(newValue);
           }}
           renderInput={(params) => (
-            <TextField
+            <TextField             
               {...params}
               helperText="Ejemplo: Vigilante,Jefe,Agente"
               variant="outlined"
@@ -138,6 +153,12 @@ const DataWitness = (props) => {
                     {params.InputProps.endAdornment}
                   </React.Fragment>
                 ),
+                style: {
+                  paddingTop: "3px",
+                  paddingBottom: "3px",
+                  paddingLeft: "5xp",
+                  marginTop: "7px"
+                },
               }}
             />
           )}

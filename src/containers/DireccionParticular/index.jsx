@@ -31,7 +31,7 @@ const DireccionParticular = () => {
   } = getComunStyle()
   const spaceStyle = getSpaceStyle()
 
-
+  const { googleMap } = getComunStyle()
 
   const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true)
 
@@ -50,7 +50,7 @@ const DireccionParticular = () => {
       </Typography>
 
       <DireccionGeo direccion={direccion} setUrl={setUrl} setDireccion={setDireccion} />
-      {(direccion !== null)?<img src={urlMapaDireccionParticular} />:<div />}
+      {(direccion !== null)?<img className={googleMap} src={urlMapaDireccionParticular} />:<div />}
 
       <div className={bottomElement}>
         <Button
