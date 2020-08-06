@@ -24,9 +24,13 @@ const SeleccionarComuna = () => {
     { key: 13111, value: "La Granja", parent: 13000 },
     { key: 13112, value: "La Pintana", parent: 13000 },
   ];
+  const { step, percentage, comunaSucursal } = useSelector(
+    (state) => state.addmissionForm,
+    shallowEqual
+  );
   const [numeroSucursales, setNumeroSucursales] = useState(0);
   const [sucursales, setSucursales] = useState([]);
-  const [comuna, setComuna] = useState(null);
+  const [comuna, setComuna] = useState(comunaSucursal);
   const dispatch = useDispatch();
   const {
     buttonAchs,
@@ -37,10 +41,6 @@ const SeleccionarComuna = () => {
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
   let stepx = step;
   return (
     <div className={root}>
@@ -56,6 +56,7 @@ const SeleccionarComuna = () => {
         Comuna
       </Typography>
       <AutoComplete
+        value={comuna}
         onChange={(event, value) => {
           const sucursalesComuna = sucursalesOficina.filter(
             (x) => x.key == value?.key

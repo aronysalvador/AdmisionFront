@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
@@ -22,7 +22,11 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
     (state) => state.addmissionForm,
     shallowEqual
   );
-
+  const handlerGuradarSucursalTexto = (itemForm, data, step) => {
+    const { comunaNombre, nombreSucursal, numero } = data;
+    const sucursalTexto = `${nombreSucursal},${numero}, ${comunaNombre}`;
+    dispatch(updateForm(itemForm, sucursalTexto));
+  };
   return (
     <div className={root}>
       <Cabecera
@@ -49,6 +53,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             itemForm={"SucursalEmpresa"}
             selected={sucursal.id == SucursalEmpresa.id}
             step={5.1}
+            handlerGuardarData={handlerGuradarSucursalTexto}
           >
             <BotonSeleccionarCustomSucursalItem {...sucursal} />
           </BotonSeleccionarCustom>

@@ -5,7 +5,7 @@ import { updateForm } from "../../redux/actions/AdmissionAction";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const BotonSeleccionarCustom = (props) => {
-  const { data, itemForm, selected, step } = props;
+  const { data, itemForm, selected, step, handlerGuardarData } = props;
 
   const dispatch = useDispatch();
 
@@ -15,26 +15,22 @@ const BotonSeleccionarCustom = (props) => {
   useEffect(() => {
     setIsSelected(selected);
   }, [selected]);
-
+  console.log({ data, isSelected });
   return (
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-        const { comunaNombre, nombreSucursal, numero } = data;
-        const sucursalTexto = `${nombreSucursal},${numero}, ${comunaNombre} `
-
-        dispatch(
-          updateForm(
-            itemForm,
-            sucursalTexto
-          )
-        );
-        updateForm(
-          "SucursalEmpresaObjecto",
-          !isSelected ? { ...data, selected: !isSelected } : {}
-        );
-
-
+        console.log({ itemForm });
+        if (itemForm === "SucursalEmpresa") {
+          handlerGuardarData(itemForm, data, step);
+        } else {
+          dispatch(
+            updateForm(
+              itemForm,
+              !isSelected ? { ...data, selected: !isSelected } : {}
+            )
+          );
+        }
         dispatch(handleSetStep(step));
       }}
       className={isSelected ? botonSeleccionado : ""}
