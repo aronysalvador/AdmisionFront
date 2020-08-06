@@ -82,8 +82,9 @@ const Afp = () => {
 
       <div className={bottomElement}>
         <Button
+          variant="contained"
           className={buttonAchs}
-          isabled={!afp}
+          disabled={!afp}
           onClick={() => {
             dispatch(updateForm("afpForm", afp));
             dispatch(handleSetStep(19));
