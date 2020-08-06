@@ -70,6 +70,15 @@ const RazonSocial = () => {
           }
           error={inputValue !== valueError}
           variant="outlined"
+          InputProps={{
+            ...params.InputProps,
+            style: {
+              paddingTop: "3px",
+              paddingBottom: "3px",
+              paddingLeft: "5xp",
+              marginTop: "7px",
+            },
+          }}
         />
       )}
     />

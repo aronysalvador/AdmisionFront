@@ -20,24 +20,26 @@ const BotonSeleccionarCustom = (props) => {
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-
-        if (itemForm === "SucursalEmpresa") {
-          handlerGuardarData(itemForm, data, step);
-          dispatch(
-            updateForm(
-              "SucursalEmpresaObjeto",
-              !isSelected ? { ...data, selected: !isSelected } : {}
-            )
-          );
-        } else {
-          dispatch(
-            updateForm(
-              itemForm,
-              !isSelected ? { ...data, selected: !isSelected } : {}
-            )
-          );
+        if(!isSelected) {
+          if (itemForm === "SucursalEmpresa") {
+            handlerGuardarData(itemForm, data, step);
+            dispatch(
+              updateForm(
+                "SucursalEmpresaObjeto",
+                !isSelected ? { ...data, selected: !isSelected } : {}
+              )
+            );
+          } else {
+            dispatch(
+              updateForm(
+                itemForm,
+                !isSelected ? { ...data, selected: !isSelected } : {}
+              )
+            );
+          }
+          dispatch(handleSetStep(step));
         }
-        dispatch(handleSetStep(step));
+        
       }}
       className={isSelected ? botonSeleccionado : ""}
       style={{
