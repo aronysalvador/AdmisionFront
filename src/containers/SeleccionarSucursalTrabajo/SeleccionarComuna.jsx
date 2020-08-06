@@ -8,9 +8,9 @@ import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
 import { sucursalesOficina } from "../../util/fakeApi";
-import getComuna from "../../redux/actions/ComunaAction";
+import { getComuna } from "../../redux/actions/ComunaAction";
 
-const SeleccionarComuna = () => {
+const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const comunas = [
     { key: 13101, value: "Santiago Centro", parent: 13000 },
     { key: 13102, value: "Cerrillos", parent: 13000 },
@@ -30,19 +30,19 @@ const SeleccionarComuna = () => {
     shallowEqual
   );
 
-  // useEffect(() => {
-  //   dispatch(getSucursales(rutEmpresa));
-  //   //dispatch(getComuna(""));
-  // }, []);
+  useEffect(() => {
+    dispatch(getComuna(""));
+  }, []);
 
-  // const { data: comunaList } = useSelector(
-  //   (state) => state.afpForm,
-  //   shallowEqual
-  // );
+  const { data: comunaList } = useSelector(
+    (state) => state.comunaForm,
+    shallowEqual
+  );
 
   const [numeroSucursales, setNumeroSucursales] = useState(0);
   const [sucursales, setSucursales] = useState([]);
   const [comuna, setComuna] = useState(comunaSucursal);
+  const [listaComunas, setListaComunas] = useState([]);
   const dispatch = useDispatch();
   const {
     buttonAchs,
@@ -53,7 +53,14 @@ const SeleccionarComuna = () => {
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  let stepx = step;
+  useEffect(() => {
+    const xx = sucursalesEmpresa.map((sucursal) =>
+      comunaList.find((x) => x.codigo_comuna === sucursal.id_comuna)
+    );
+    setListaComunas(xx);
+    console.log({ sucursalesEmpresa, comunaList, xx });
+  }, [sucursalesEmpresa, comunaList]);
+
   return (
     <div className={root}>
       <Cabecera
@@ -70,8 +77,8 @@ const SeleccionarComuna = () => {
       <AutoComplete
         value={comuna}
         onChange={(event, value) => {
-          const sucursalesComuna = sucursalesOficina.filter(
-            (x) => x.key == value?.key
+          const sucursalesComuna = sucursalesEmpresa.filter(
+            (x) => x.id_comuna == value?.codigo_comuna
           );
           setNumeroSucursales(sucursalesComuna.length);
           setSucursales(sucursalesComuna);
@@ -80,8 +87,8 @@ const SeleccionarComuna = () => {
         }}
         size="small"
         fullWidth
-        options={comunas}
-        getOptionLabel={(option) => option.value}
+        options={listaComunas}
+        getOptionLabel={(option) => option.nombre}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={spaceStyle.space2}></div>
