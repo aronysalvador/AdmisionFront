@@ -62,8 +62,7 @@ const BoxACHS = (props) => {
                     <div className={classes.tituloConteiner}>
                         <Typography color="textSecondary" gutterBottom className={classes.tituloText}>
                             {titulo}
-                            <EditIcon 
-                            onClick={() => dispatch(handleSetStep(step))} />
+                            <EditIcon style={{cursor : "pointer"}} onClick={() => dispatch(handleSetStep(step))} />
                         </Typography>
                       
                     </div>
