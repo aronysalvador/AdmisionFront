@@ -42,21 +42,24 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     /*const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
       comunaList.find((x) => x.codigo_comuna === sucursal.id_comuna)
     );*/
-
-    const comunasSucursal = []
-    for(let i = 0  ; i < sucursalesEmpresa.length; i++){
-      for(let j = 0 ; j < comunaList.length; j ++){
-        if(comunaList[j].codigo_comuna === sucursalesEmpresa[i].id_comuna){
-          comunasSucursal.push(comunaList[j])
+    console.log({ sucursalesEmpresa });
+    const comunasSucursal = [];
+    for (let i = 0; i < sucursalesEmpresa.length; i++) {
+      for (let j = 0; j < comunaList.length; j++) {
+        if (comunaList[j].codigo_comuna === sucursalesEmpresa[i].id_comuna) {
+          comunasSucursal.push(comunaList[j]);
         }
       }
     }
-    setListaComunas(comunasSucursal);
-    console.log({ sucursalesEmpresa, comunaList, xx: comunasSucursal });
+    const uniqueAddresses = Array.from(
+      new Set(comunasSucursal.map((a) => a.id))
+    ).map((id) => {
+      return comunasSucursal.find((a) => a.id === id);
+    });
+
+    console.log({ uniqueAddresses });
+    setListaComunas(uniqueAddresses);
   }, [sucursalesEmpresa, comunaList]);
-
-  
-
 
   return (
     <div className={root}>
@@ -74,9 +77,14 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       <AutoComplete
         value={comuna}
         onChange={(event, value) => {
+          console.log({ value });
           const sucursalesComuna = sucursalesEmpresa.filter(
-            (x) => x.id_comuna == value?.codigo_comuna
+            (x) =>
+              x.id_comuna == value?.codigo_comuna &&
+              value?.codigo_region == x.codigo_region
           );
+
+          console.log({ sucursalesComuna });
           setNumeroSucursales(sucursalesComuna.length);
           setSucursales(sucursalesComuna);
           setComuna(value);
