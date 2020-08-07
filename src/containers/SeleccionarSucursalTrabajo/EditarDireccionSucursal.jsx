@@ -56,6 +56,8 @@ const EditarDireccionSucursal = () => {
           onClick={() => {
             dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
             dispatch(updateForm("SucursalEmpresaObjeto", sucursalEmpresa));
+            dispatch(updateForm("DireccionEmpresa", sucursalEmpresa.direccion));
+
             dispatch(handleSetStep(5.1));
           }}
         >

@@ -11,7 +11,6 @@ import { getComuna } from "../../redux/actions/ComunaAction";
 
 const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
-    step,
     percentage,
     comunaSucursal,
     rutEmpresa,
@@ -119,6 +118,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               dispatch(updateForm("sucursales", sucursales));
               dispatch(updateForm("SucursalEmpresaObjeto", sucursales[0]));
               dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
+              dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
               dispatch(handleSetStep(5.1));
             }
           }}
