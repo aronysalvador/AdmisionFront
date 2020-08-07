@@ -10,10 +10,14 @@ import CardSucursal from "../../components/CardSucursal/CardSucursal";
 import { getComuna } from "../../redux/actions/ComunaAction";
 
 const SeleccionarComuna = ({ sucursalesEmpresa }) => {
-  const { step, percentage, comunaSucursal, rutEmpresa } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+  const {
+    step,
+    percentage,
+    comunaSucursal,
+    rutEmpresa,
+    cantidadSucursales,
+    sucursales: sucursales2,
+  } = useSelector((state) => state.addmissionForm, shallowEqual);
 
   useEffect(() => {
     dispatch(getComuna(""));
@@ -24,8 +28,8 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     shallowEqual
   );
 
-  const [numeroSucursales, setNumeroSucursales] = useState(0);
-  const [sucursales, setSucursales] = useState([]);
+  const [numeroSucursales, setNumeroSucursales] = useState(cantidadSucursales);
+  const [sucursales, setSucursales] = useState(sucursales2);
   const [comuna, setComuna] = useState(comunaSucursal);
   const [listaComunas, setListaComunas] = useState([]);
   const dispatch = useDispatch();
@@ -84,7 +88,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               value?.codigo_region == x.codigo_region
           );
 
-          console.log({ sucursalesComuna });
+          console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
           setNumeroSucursales(sucursalesComuna.length);
           setSucursales(sucursalesComuna);
           setComuna(value);

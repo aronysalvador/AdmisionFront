@@ -46,7 +46,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             key={sucursal.id}
             data={sucursal}
             itemForm={"SucursalEmpresa"}
-            selected={sucursal.id == SucursalEmpresaObjeto.id}
+            selected={sucursal.codigo == SucursalEmpresaObjeto.codigo}
             step={5.1}
             handlerGuardarData={handlerGuradarSucursalTexto}
           >
