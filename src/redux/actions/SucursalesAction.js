@@ -17,7 +17,7 @@ export const getSucursales = (rut) => async (dispatch) => {
 
   obtenerData(rut)
     .then((response) => {
-      dispatch(successCallSucursales(response.data.content[0]));
+      dispatch(successCallSucursales(response.data));
     })
     .catch((error) => {
       dispatch(errorCallSucursales());

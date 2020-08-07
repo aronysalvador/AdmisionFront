@@ -16,6 +16,7 @@ const EditarSucursal = () => {
     dispatch(getSucursales(rutEmpresa));
   }, []);
 
+
   const { data: sucursalesList } = useSelector(
     (state) => state.sucursalesForm,
     shallowEqual

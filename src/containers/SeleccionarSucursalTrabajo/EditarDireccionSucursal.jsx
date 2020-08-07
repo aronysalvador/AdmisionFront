@@ -27,7 +27,7 @@ const EditarDireccionSucursal = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--stepx))}
+        dispatch={() => dispatch(handleSetStep(5.5))}
         percentage={percentage}
       />
       <Typography className={pregunta} variant="h2">
@@ -45,7 +45,7 @@ const EditarDireccionSucursal = () => {
         size="small"
         fullWidth
         options={sucursales}
-        getOptionLabel={(option) => option?.nombre}
+        getOptionLabel={(option) => option?.direccion}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={bottomElement}>

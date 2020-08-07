@@ -39,13 +39,24 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
-    const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
+    /*const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
       comunaList.find((x) => x.codigo_comuna === sucursal.id_comuna)
-    );
+    );*/
 
+    const comunasSucursal = []
+    for(let i = 0  ; i < sucursalesEmpresa.length; i++){
+      for(let j = 0 ; j < comunaList.length; j ++){
+        if(comunaList[j].codigo_comuna === sucursalesEmpresa[i].id_comuna){
+          comunasSucursal.push(comunaList[j])
+        }
+      }
+    }
     setListaComunas(comunasSucursal);
     console.log({ sucursalesEmpresa, comunaList, xx: comunasSucursal });
   }, [sucursalesEmpresa, comunaList]);
+
+  
+
 
   return (
     <div className={root}>
