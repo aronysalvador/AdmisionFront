@@ -100,7 +100,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={spaceStyle.space2}></div>
-      {numeroSucursales === 1 ? <CardSucursal /> : null}
+      {numeroSucursales === 1 ? (
+        <CardSucursal sucursales={sucursales[0]} />
+      ) : null}
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
@@ -114,7 +116,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               dispatch(handleSetStep(5.6));
             }
             if (numeroSucursales === 1) {
-              dispatch(updateForm("SucursalEmpresa", sucursales[0]));
+              dispatch(updateForm("sucursales", sucursales));
+              dispatch(updateForm("SucursalEmpresaObjeto", sucursales[0]));
+              dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
               dispatch(handleSetStep(5.1));
             }
           }}

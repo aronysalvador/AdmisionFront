@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const CardSucursal = () => {
+const CardSucursal = ({ sucursales }) => {
+  const { nombre, codigo, direccion } = sucursales;
   return (
     <div
       style={{
@@ -10,9 +11,9 @@ const CardSucursal = () => {
       }}
     >
       <h3 style={{ color: "#007A33", fontSize: "20px" }}>Sucursal</h3>
-      <div style={{ fontSize: "16px" }}>Av Carlos Valdovinos 560</div>
-      <div style={{ fontSize: "16px" }}>Santiago,Región Metropolitana</div>
-      <div style={{ fontSize: "16px" }}>RUT: 25.951.215-8</div>
+      <div style={{ fontSize: "16px" }}>{nombre}</div>
+      <div style={{ fontSize: "16px" }}>{direccion}</div>
+      <div style={{ fontSize: "16px" }}>{codigo}</div>
     </div>
   );
 };
