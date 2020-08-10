@@ -66,7 +66,22 @@ export const saveRut = (rut) => {
 
         let isAfiliado = result.data.content[0].IsAfiliado;
         if (isAfiliado) {
-          dispatch(handleSetStep(5.1));
+          //dispatch(handleSetStep(5.1));
+          var STEP = '';
+          if(!result.data.content[0].NombreEmpresa || !result.data.content[0].SucursalEmpresa || !result.data.content[0].DireccionEmpresa || !result.data.content[0].RutPagador){ // si falta info de la empresa
+            STEP=5.4   //form empresa
+          }
+          else if(!result.data.content[0].direccionParticular){ // si no tiene direccion
+            STEP=5.2     //form direccion
+          }
+          else if(!result.data.content[0].telefonoParticular){ // si no tiene telefono
+            STEP=5.3    //form telefono
+          }
+          else{ // si todos los datos relevantes están llenos
+            STEP=5.1     // resumen data
+          }
+          dispatch(handleSetStep(STEP));
+          
           dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
           dispatch(
             updateForm("rutEmpresa", result.data.content[0].RutPagador)
@@ -77,6 +92,8 @@ export const saveRut = (rut) => {
           dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa))
           dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular))
           dispatch(updateForm("telefonoParticular", result.data.content[0].telefonoParticular))
+
+
         } else {
           dispatch(setStep(500, 0))
           dispatch(updateForm("rut", ""))
@@ -91,7 +108,7 @@ export const saveRut = (rut) => {
         }
       })
       .catch((error) => {
-        console.log("error");
+        console.log("error: "+String(error));
       });
   };
 };
