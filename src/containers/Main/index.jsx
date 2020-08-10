@@ -48,6 +48,8 @@ import Cargo from "../Cargo/index";
 
 import DireccionParticular from "../DireccionParticular/index";
 
+import AlertaCalificacion from "../AlertaCalificacion/index";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, dispatch } = props;
@@ -58,7 +60,6 @@ const Main = (props) => {
     localGetAccount();
   }, []);
 
-  
   const renderForm = (step) => {
     switch (step) {
       case -1:
@@ -68,55 +69,55 @@ const Main = (props) => {
       case 1:
         return <WelcomeEjecutivo />;
       case 2:
-        return <Sinister />
+        return <Sinister />;
       case 3:
-        return <Identification />
+        return <Identification />;
       case 4:
         return <Consitions />;
       case 5:
         return <LoadPersonalData />;
       case 5.1:
         return <PersonalData />;
-      case 5.2: 
-        return <DireccionParticular />
-      case 5.3: 
+      case 5.2:
+        return <DireccionParticular />;
+      case 5.3:
         return <EditarTelefono />;
       case 5.4:
         return <EditCompany />;
       case 5.5:
         return <EditarSucursal />;
-      case 5.6: 
+      case 5.6:
         return <RouteComuna />;
       case 6:
-          return <AccidentPlaceForm />;
+        return <AccidentPlaceForm />;
       case 7:
-          return <AccidentDescription />;
+        return <AccidentDescription />;
       case 8:
-          return <AccidentObjectForm />;  
+        return <AccidentObjectForm />;
       case 9:
-          return <FechaHoraSiniestro />;
+        return <FechaHoraSiniestro />;
       case 10:
-           return <TrabajoHabitual />;
+        return <TrabajoHabitual />;
       case 11:
-          return <LugarExactoSiniestro />;
+        return <LugarExactoSiniestro />;
       case 12:
-          return <LugarReferenciaSiniestro />;
+        return <LugarReferenciaSiniestro />;
       case 13:
-        return <QuestionWitness />;  
+        return <QuestionWitness />;
       case 14:
         return <DataWitness />;
       case 14.1:
-          return <BoxQuestionWitness />
+        return <BoxQuestionWitness />;
       case 15:
         return <QuestionResponsable />;
       case 16:
-          return <DataResponsable />;
+        return <DataResponsable />;
       case 17:
         return <FechaHoraResponsable />;
       case 17.1:
         return <BoxQuestionResponsable />;
       case 18:
-        return <Afp />;  
+        return <Afp />;
       case 19:
         return <HealthForecast />;
       case 19.1:
@@ -126,17 +127,21 @@ const Main = (props) => {
       case 21:
         return <JornadaLaboralContainer />;
       case 22:
-        return <Cargo />; 
+        return <Cargo />;
       case 23:
-        return <CategoriaOcupacional />; 
+        return <CategoriaOcupacional />;
       case 24:
         return <TipoDeContrato />;
       case 25:
-          return <Remuneracion />;
+        return <Remuneracion />;
       case 26:
-          return <TrabajoActualContainer />; 
-      case 27: 
+        return <TrabajoActualContainer />;
+      case 27:
         return <ValidarCorreoElectronico />;
+
+      case 90:
+        return <AlertaCalificacion />;
+
       case 500: {
         sessionStorage.clear();
         return <PacienteNoAfiliadoError />;
@@ -144,7 +149,7 @@ const Main = (props) => {
 
       default: {
         sessionStorage.clear();
-        return <PacienteNoAfiliadoError />
+        return <PacienteNoAfiliadoError />;
       }
     }
   };
