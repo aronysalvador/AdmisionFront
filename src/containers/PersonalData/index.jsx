@@ -61,7 +61,7 @@ const PersonalData = (props) => {
           //variant="contained"
           onClick={() => dispatch(handleSetStep(6))}
         >
-          Si, es correcta
+          Sí, es correcta
         </Button>
       </div>
     </div>
