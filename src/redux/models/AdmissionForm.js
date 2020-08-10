@@ -1,5 +1,5 @@
 export const AdmissionForm = {
-  step: 0, //Inicio
+  step: 13, //Inicio
 
   percentage: 0,
   rut: "",
@@ -12,7 +12,7 @@ export const AdmissionForm = {
   objetoAccidente: "",
   descripcionAccidente: "",
 
-  testigos: { cargo: "" },
+  testigos: { nombre: "", cargo: "" },
   responsable: [],
   fechaHoraResponsable: {},
   fechaHoraSiniestro: {},

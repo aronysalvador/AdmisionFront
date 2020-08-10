@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 //Action de Redux
 import { sendResponsable } from "../../redux/actions/AdmissionAction";
@@ -18,11 +15,13 @@ import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 
-const DataResponsable = (props) => {
-  const { dispatch, addmissionForm } = props;
-  const { responsable, step } = addmissionForm;
+const DataResponsable = () => {
+  const {
+    addmissionForm: { responsable, percentage, step },
+  } = useSelector((state) => state, shallowEqual);
 
-  const welcomeStyle = getWelcomeStyle();
+  const dispatch = useDispatch();
+
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -35,26 +34,15 @@ const DataResponsable = (props) => {
   });
   const [open, setOpen] = useState(false);
 
-  const dispatch1 = useDispatch();
-
   useEffect(() => {
     //Call Action
-    const consultaCargos = () => dispatch1(searchCargos()); // eslint-disable-line no-use-before-define
+    const consultaCargos = () => dispatch(searchCargos()); // eslint-disable-line no-use-before-define
     consultaCargos();
   }, []);
 
-  const getCargos = useSelector((state) => state.cargosForm.cargos);
-
-  const loading = useSelector((state) => state.cargosForm.loading);
-
   const clickSendResponsable = () => {
-    //Validar Formulario
-    if (nombre.trim() === "" || cargos === null) {
-      console.log("Necesita llenar los campos");
-      return;
-    }
-
-    dispatch1(sendResponsable(nombre, cargos));
+    dispatch(sendResponsable(nombre, cargos));
+    dispatch(updateForm("responsableForm", nombre + "-" + cargos));
     dispatch(handleSetStep(step + 1));
   };
 
@@ -62,7 +50,7 @@ const DataResponsable = (props) => {
     <div className={classesComun.root}>
       <Cabecera
         dispatch={() => dispatch(handleSetStep(15))}
-        percentage={addmissionForm.percentage}
+        percentage={percentage}
       />
       <div>
         <Typography variant="p" component="p" className={classesComun.pregunta}>
@@ -114,55 +102,32 @@ const DataResponsable = (props) => {
           component="p"
           className={[classesComun.tituloTextbox]}
         >
-          Cargo
+          Cargo - Relación
         </Typography>
       </div>
 
       <div>
-        <Autocomplete
-          id="asynchronous-demo"
-          style={{ width: "100%" }}
-          // style={{ width: 310, height: 40 }}
-          open={open}
-          onOpen={() => {
-            setOpen(true);
-          }}
-          onClose={() => {
-            setOpen(false);
-          }}
-          getOptionSelected={(option, value) => option.cargo === value.cargo}
-          getOptionLabel={(option) => option.cargo}
-          options={getCargos.length !== 0 ? getCargos : []}
-          loading={loading}
+        <TextField
+          id="cargos"
           value={cargos}
-          onChange={(event, newValue) => {
-            saveCargos(newValue);
-          }}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              helperText="Ejemplo: Analista,Jefe de area,prevensionista,etc"
-              variant="outlined"
-              InputProps={{
-                ...params.InputProps,
-                endAdornment: (
-                  <React.Fragment>
-                    {loading ? (
-                      <CircularProgress color="inherit" size={20} />
-                    ) : null}
-                    {params.InputProps.endAdornment}
-                  </React.Fragment>
-                ),
-                style: {
-                  paddingTop: "3px",
-                  paddingBottom: "3px",
-                  paddingLeft: "5xp",
-                  marginTop: "7px",
-                },
-              }}
-            />
-          )}
+          onChange={(e) => saveCargos(e.target.value)}
+          helperText="Ejemplo: Jefe de área, Prevencionista"
+          margin="dense"
+          variant="outlined"
           fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => {
+                    saveCargos("");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </div>
 
@@ -171,6 +136,7 @@ const DataResponsable = (props) => {
           className={classesComun.buttonAchs}
           variant="contained"
           type="submit"
+          disabled={!nombre}
           onClick={() => clickSendResponsable()}
         >
           Siguiente
@@ -180,10 +146,4 @@ const DataResponsable = (props) => {
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
-  return {
-    addmissionForm: addmissionForm,
-  };
-}
-
-export default connect(mapStateToProps)(DataResponsable);
+export default DataResponsable;

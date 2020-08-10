@@ -14,7 +14,7 @@ const BoxQuestionResponsable = (props) => {
   const contenidoResponsable = [
     addmissionForm.responsable.nombre,
     <br />,
-    addmissionForm?.responsable?.cargo?.cargo,
+    addmissionForm?.responsable?.cargo,
     <br />,
     "Avisado el " +
       addmissionForm.fechaHoraResponsable.days +
