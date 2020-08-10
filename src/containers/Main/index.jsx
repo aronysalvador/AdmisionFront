@@ -47,6 +47,9 @@ import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
 import Cargo from "../Cargo/index";
 
 import DireccionParticular from "../DireccionParticular/index";
+import Achs from "../IdentificacionACHS/index";
+import SessionAchs from "../IdentificacionACHS/WelcomeAchs"
+
 
 const Main = (props) => {
   const classes = useStyles();
@@ -137,6 +140,10 @@ const Main = (props) => {
           return <TrabajoActualContainer />; 
       case 27: 
         return <ValidarCorreoElectronico />;
+      case 40:
+        return <Achs />;
+      case 41:
+        return <SessionAchs />;
       case 500: {
         sessionStorage.clear();
         return <PacienteNoAfiliadoError />;

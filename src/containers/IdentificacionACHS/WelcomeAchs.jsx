@@ -8,15 +8,12 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
-import { makeStyles } from "@material-ui/core/styles";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import EditIcon from "@material-ui/icons/Edit";
-import Fab from "@material-ui/core/Fab";
 
-const Session = (props) => {
+const SessionAchs = (props) => {
   const { dispatch, microsoftReducer } = props;
-  // const custom = siniestroStyle();
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -27,37 +24,77 @@ const Session = (props) => {
       <div className={welcomeStyle.avatarContainer}>
         <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
       </div>
-      <Fab size="small" aria-label="edit" className={welcomeStyle.imgEdit}>
-  <EditIcon /></Fab>
-      <div className={spaceStyle.space1} />
+      
+      <div className={spaceStyle.space2} />
       <div className={welcomeStyle.bienvenidoContainer}>
         <Typography
           variant="p"
           component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
+          className={[comunStyle.textAchsContent, comunStyle.textCenter, welcomeStyle.admisionText]}
         >
           Hola,
-          <br />
+        </Typography>
+      </div>
+      
+      <div className={welcomeStyle.bienvenidoContainer}>
+        <Typography
+          variant="p"
+          component="p"
+          className={[comunStyle.textAchsContent, comunStyle.textCenter, welcomeStyle.bienvenidoAchs]}
+        >
           {microsoftReducer.userMsal.displayName}
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
+      
       <div>
         <Typography
           variant="p"
           component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
+          className={[comunStyle.textAchsContent, comunStyle.textCenter, welcomeStyle.admisionText]}
         >
-          Te encuentras en
+          Admisionista
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
       <div>
-        <Button className={welcomeStyle.button} variant="contained" onClick={() => dispatch(handleSetStep(40))}>
-          <EditIcon className={welcomeStyle.img} />
-          {/* <img alt="Centro Alameda" src="./static/editar.png" className={custom.img} /> */}
-          &nbsp;Centro Alameda
-        </Button>
+      <div
+      style={{
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "45%",
+        height: "90px",
+        borderStyle: "solid",
+        borderColor: "#787878",
+        borderSpacing: "2px",
+        borderRadius: "10px",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+      }}
+    >
+      CENTRO
+    </div>
+    <div
+      style={{
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "45%",
+        height: "90px",
+        borderStyle: "solid",
+        borderColor: "#787878",
+        borderSpacing: "2px",
+        borderRadius: "10px",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+      }}
+    >
+      CENTRO
+    </div>
       </div>
       <div className={spaceStyle.space3} />
       <div className={comunStyle.bottomElement}>
@@ -91,4 +128,4 @@ function mapStateToProps({ addmissionForm, microsoftReducer }) {
     microsoftReducer: microsoftReducer,
   };
 }
-export default connect(mapStateToProps)(Session);
+export default connect(mapStateToProps)(SessionAchs);

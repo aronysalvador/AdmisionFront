@@ -5,9 +5,14 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         borderColor: '#FF00FF',
         paddingLeft: '8em',
         display: 'inline-flex',
+        alignContent: "center",
     },
     bienvenido: {
         fontSize: '2em',
+        fontWeight: 'bold',
+    },
+    bienvenidoAchs: {
+        fontSize: '1.5em',
         fontWeight: 'bold',
     },
     admisionText: {
@@ -61,7 +66,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         borderRadius: '50%',
         display: 'inline-flex',
         marginLeft: '-5%',
-        // marginTop: '-15%',
         "&:hover": {
             background: '#104F28',
         },

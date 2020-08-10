@@ -7,6 +7,9 @@ export const getComunStyle = makeStyles((theme) => ({
         height: "40em",
         backgroundColor: "#F8F9FA",
     },
+    textCenter: {
+        textAlign: "center"
+    },
     textAchsContent: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -34,7 +37,7 @@ export const getComunStyle = makeStyles((theme) => ({
     googleMap: {
         width: "100%",
         borderRadius: "20px",
-        padding:  "10px"
+        padding: "10px"
     },
 
     buttonAchs: {
@@ -47,7 +50,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: "1.125em",
         lineHeight: "1.125em",
         color: "#FFFFFF",
-         textTransform: "inherit",
+        textTransform: "inherit",
         height: "3.5em",
         "&:hover": {
             background: "#104F28",
