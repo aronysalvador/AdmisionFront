@@ -34,7 +34,6 @@ const FechaHoraSiniestro = () => {
 
   function setHoraValueSiniestro(value) {
     value.minutos = minutosArray[value.indiceMinutos];
-    value.indiceMinutos = any;
     setHoraSiniestro({ ...value });
   }
 
