@@ -67,17 +67,6 @@ export const saveRut = (rut) => {
         let isAfiliado = result.data.content[0].IsAfiliado;
         if (isAfiliado) {
           //dispatch(handleSetStep(5.1));
-          dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
-          dispatch(
-            updateForm("rutEmpresa", result.data.content[0].RutPagador)
-          );
-          dispatch(updateForm("isAfiliado", "Si"))
-          dispatch(updateForm("SucursalEmpresa", result.data.content[0].SucursalEmpresa))
-          dispatch(updateForm("DireccionEmpresa", result.data.content[0].DireccionEmpresa))
-          dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa))
-          dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular))
-          dispatch(updateForm("telefonoParticular", result.data.content[0].telefonoParticular))
-
           var STEP = '';
           if(!result.data.content[0].NombreEmpresa || !result.data.content[0].SucursalEmpresa || !result.data.content[0].DireccionEmpresa || !result.data.content[0].RutPagador){ // si falta info de la empresa
             STEP=5.4   //form empresa
@@ -92,6 +81,19 @@ export const saveRut = (rut) => {
             STEP=5.1     // resumen data
           }
           dispatch(handleSetStep(STEP));
+          
+          dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
+          dispatch(
+            updateForm("rutEmpresa", result.data.content[0].RutPagador)
+          );
+          dispatch(updateForm("isAfiliado", "Si"))
+          dispatch(updateForm("SucursalEmpresa", result.data.content[0].SucursalEmpresa))
+          dispatch(updateForm("DireccionEmpresa", result.data.content[0].DireccionEmpresa))
+          dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa))
+          dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular))
+          dispatch(updateForm("telefonoParticular", result.data.content[0].telefonoParticular))
+
+
         } else {
           dispatch(setStep(500, 0))
           dispatch(updateForm("rut", ""))
