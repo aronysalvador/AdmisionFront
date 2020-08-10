@@ -7,6 +7,14 @@ export const getComunStyle = makeStyles((theme) => ({
         height: "40em",
         backgroundColor: "#F8F9FA",
     },
+    rootBegin: {
+        position: "relative",
+        width: "25.5em",
+        height: "40em",
+        // background:  "linear-gradient(110deg, #F8F9FA, 50%, #E5F5F4, 50%);" ,
+        background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
+        padding: 0,
+    },
     textAchsContent: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
