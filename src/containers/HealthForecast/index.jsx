@@ -41,7 +41,7 @@ const HealthForecast = (props) => {
       />
       <div>
         <Typography variant="p" component="p" className={classesComun.pregunta}>
-          Selecciona tu prevision de salud
+          Selecciona tu Previsión de salud
         </Typography>
       </div>
       <div className={spaceStyle.space1} />

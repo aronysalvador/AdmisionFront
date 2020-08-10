@@ -17,7 +17,7 @@ const QuestionWitness = (props) => {
         percentage={addmissionForm.percentage}
       />
       <QuestionTestigoResponsable
-        titulo={"Entendido ¿Alguien fue testigo de lo que sucedió?"}
+        titulo={"Entendido, ¿Alguien fue testigo de lo que sucedió?"}
         accionButoonA={() => dispatch(handleSetStep(14))}
         accionButoonB={() => dispatch(handleSetStep(15))}
         tituloA={"Agregar testigo"}

@@ -13,7 +13,7 @@ const QuestionWitness = (props) => {
   const contenidoTestigo = [
     addmissionForm.testigos.nombre,
     <br />,
-    addmissionForm.testigos.cargo.cargo,
+    addmissionForm.testigos.cargo,
   ];
 
   return (

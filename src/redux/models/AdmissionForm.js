@@ -1,5 +1,9 @@
 export const AdmissionForm = {
+<<<<<<< HEAD
   step: 9, //Inicio
+=======
+  step: 13, //Inicio
+>>>>>>> d7236ab8c54491aaf2f0f456ea68b66741295c7f
 
   percentage: 0,
   rut: "",
@@ -12,7 +16,7 @@ export const AdmissionForm = {
   objetoAccidente: "",
   descripcionAccidente: "",
 
-  testigos: { cargo: "" },
+  testigos: { nombre: "", cargo: "" },
   responsable: [],
   fechaHoraResponsable: {},
   fechaHoraSiniestro: {},
