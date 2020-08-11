@@ -396,7 +396,8 @@ const Main = (props) => {
             </div>
           </div>
         );
-      case 1001:
+
+      case 1000:
         return (
           <div className={layout}>
             <div className={paper}>
@@ -404,7 +405,7 @@ const Main = (props) => {
             </div>
           </div>
         );
-      case 1000:
+      case 1001:
         return (
           <div className={layout}>
             <div className={paper}>

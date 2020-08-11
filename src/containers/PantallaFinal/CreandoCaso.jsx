@@ -50,7 +50,7 @@ const CreandoCaso = (props) => {
   useEffect(() => {
     // dispatch(saveRut(addmissionForm.rut));
     setTimeout(() => {
-      dispatch(handleSetStep(1000));
+      dispatch(handleSetStep(1001));
     }, 6000);
   });
 
