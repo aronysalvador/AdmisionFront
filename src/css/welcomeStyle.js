@@ -7,6 +7,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         display: 'inline-flex',
         alignContent: "center",
     },
+    avatarContainerRight: {
+        borderColor: '#FF00FF',
+        float: 'right'
+    },
     bienvenido: {
         fontSize: '2em',
         fontWeight: 'bold',
@@ -70,4 +74,42 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             background: '#104F28',
         },
     },
+
+    beginContainer:{
+        padding: '1.5em',
+    },
+    TextContainer:{
+        padding: '1.5em 1.5em 0 1.5em',
+        marginTop:'30px'
+    },
+    titleContainer:{
+        padding: '1em',
+        background: '#FFFFFF',
+        boxShadow: '2px 2px 10px rgba(203, 203, 203, 0.4)',
+        borderRadius: '10px',
+
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    txtBegin:{
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '32px',
+        lineHeight: '34px',
+        color: '#007A33'
+    },
+    titleBegin:{
+        textAlign: 'center',
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        lineHeight: '20px',
+        color: '#000000',
+        marginLeft: '10px'
+    }
+
 }))
