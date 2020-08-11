@@ -19,7 +19,7 @@ const AccidentPlaceForm = (props) => {
   return (
     <div className={comunClass.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.1))}
+        dispatch={() => dispatch(handleSetStep(5.7))}
         percentage={addmissionForm.percentage}
       />
       <div>
