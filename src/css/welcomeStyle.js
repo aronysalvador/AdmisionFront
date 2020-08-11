@@ -32,7 +32,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         height: '5em',
         verticalAlign: 'middle',
     },
-
     button: {
         width: '100%',
         height: '4em',
@@ -74,26 +73,23 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             background: '#104F28',
         },
     },
-
-    beginContainer:{
+    beginContainer: {
         padding: '1.5em',
     },
-    TextContainer:{
+    TextContainer: {
         padding: '1.5em 1.5em 0 1.5em',
-        marginTop:'30px'
+        marginTop: '30px'
     },
-    titleContainer:{
+    titleContainer: {
         padding: '1em',
         background: '#FFFFFF',
         boxShadow: '2px 2px 10px rgba(203, 203, 203, 0.4)',
         borderRadius: '10px',
-
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    txtBegin:{
+    txtBegin: {
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
@@ -101,7 +97,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         lineHeight: '34px',
         color: '#007A33'
     },
-    titleBegin:{
+    titleBegin: {
         textAlign: 'center',
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
@@ -110,6 +106,37 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         lineHeight: '20px',
         color: '#000000',
         marginLeft: '10px'
+    },
+    boxCentroAchs: {
+        margin: "7px",
+        display: "inline-flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "45%",
+        height: "90px",
+        borderStyle: "solid",
+        borderColor: "#007A33",
+        borderSpacing: "2px",
+        borderRadius: "10px",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+        color: "#007A33",
+        fontSize: "1.125em",
+        fontWeight: "normal",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+    },
+    textBoxAchs: {
+        fontSize: "0.875em !important"
+    },
+    backgroundBoxAchs: {
+        backgroundColor: "#DFF3F2 !important",
+        padding: "0 !importat"
+    },
+    starIcon: {
+        display: "flex-center",
+        borderRadius: "8em"
     }
 
-}))
+}));

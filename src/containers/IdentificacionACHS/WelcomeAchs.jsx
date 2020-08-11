@@ -10,114 +10,134 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import EditIcon from "@material-ui/icons/Edit";
+import { getAFP } from "../../redux/actions/AfpAction";
+
+import { makeStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
+import StarIcon from '@material-ui/icons/Star';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const SessionAchs = (props) => {
-  const { dispatch, microsoftReducer } = props;
+  const { dispatch, microsoftReducer, afpForm } = props;
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const classes = useStyles();
 
   return (
     <div className={comunStyle.root}>
+      <div className={welcomeStyle.backgroundBoxAchs}>
       <div className={spaceStyle.space2} />
       <div className={welcomeStyle.avatarContainer}>
-        <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
+        <Avatar className={welcomeStyle.avatar}>
+          {microsoftReducer.userMsal.iniciales}
+        </Avatar>
       </div>
-      
+
       <div className={spaceStyle.space2} />
       <div className={welcomeStyle.bienvenidoContainer}>
         <Typography
           variant="p"
           component="p"
-          className={[comunStyle.textAchsContent, comunStyle.textCenter, welcomeStyle.admisionText]}
+          className={[
+            comunStyle.textAchsContent,
+            comunStyle.textCenter,
+            welcomeStyle.admisionText,
+          ]}
         >
           Hola,
         </Typography>
       </div>
-      
+
       <div className={welcomeStyle.bienvenidoContainer}>
         <Typography
           variant="p"
           component="p"
-          className={[comunStyle.textAchsContent, comunStyle.textCenter, welcomeStyle.bienvenidoAchs]}
+          className={[
+            comunStyle.textAchsContent,
+            comunStyle.textCenter,
+            welcomeStyle.bienvenidoAchs,
+          ]}
         >
           {microsoftReducer.userMsal.displayName}
         </Typography>
       </div>
-      
+
       <div>
         <Typography
           variant="p"
           component="p"
-          className={[comunStyle.textAchsContent, comunStyle.textCenter, welcomeStyle.admisionText]}
+          className={[
+            comunStyle.textAchsContent,
+            comunStyle.textCenter,
+            welcomeStyle.admisionText,
+          ]}
         >
           Admisionista
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
+      
       <div>
-      <div
-      style={{
-        marginTop: "10px",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        flexDirection: "column",
-        width: "45%",
-        height: "90px",
-        borderStyle: "solid",
-        borderColor: "#787878",
-        borderSpacing: "2px",
-        borderRadius: "10px",
-        paddingTop: "15px",
-        paddingBottom: "10px",
-      }}
-    >
-      CENTRO
+        <Button
+          variant="contained"
+          size="small"
+          className={classes.button, welcomeStyle.starIcon}
+          startIcon={<StarIcon />}
+        >
+          4.9
+      </Button>
     </div>
-    <div
-      style={{
-        marginTop: "10px",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        flexDirection: "column",
-        width: "45%",
-        height: "90px",
-        borderStyle: "solid",
-        borderColor: "#787878",
-        borderSpacing: "2px",
-        borderRadius: "10px",
-        paddingTop: "15px",
-        paddingBottom: "10px",
-      }}
-    >
-      CENTRO
-    </div>
+    <div className={spaceStyle.space1} />
+      <div>
+        <div className={welcomeStyle.boxCentroAchs}>
+          <img
+            alt="Centro ACHS"
+            src="./static/hospital.png"
+            style={{ color: "#007A33" }}
+          />
+          afpForm
+          <div className={welcomeStyle.textBoxAchs}>Centro</div>
+        </div>
+        <div className={welcomeStyle.boxCentroAchs}>
+          <img
+            alt="Tiempo Admisión Promedio"
+            src="./static/check.png"
+            style={{ width:"20px", height:"20px" }}
+          />
+          8 minutos
+          <div className={welcomeStyle.textBoxAchs}>Admisión promedio</div>
+        </div>
       </div>
       <div className={spaceStyle.space3} />
-      <div className={comunStyle.bottomElement}>
-        <div>
-          <Button
-            className={comunStyle.buttonAchs}
-            variant="contained"
-            onClick={() => dispatch(handleSetStep(2))}
-          >
-            Nueva admisión
-          </Button>
-        </div>
-        <div className={spaceStyle.space1} />
-        <div>
-          <Button
-            className={comunStyle.buttonAchs2}
-            variant="contained"
-            onClick={() => dispatch(logout())}
-          >
-            Cerrar sesión
-          </Button>
-        </div>
       </div>
+      
+          <div className={comunStyle.bottomElement}>
+            <div>
+              <Button
+                className={comunStyle.buttonAchs}
+                variant="contained"
+                onClick={() => dispatch(handleSetStep(2))}
+              >
+                Nueva admisión
+              </Button>
+            </div>
+            <div className={spaceStyle.space1} />
+            <div>
+              <Button
+                className={comunStyle.buttonAchs2}
+                variant="contained"
+                onClick={() => dispatch(logout())}
+              >
+                Cerrar sesión
+              </Button>
+            </div>
+        
+      </div> 
     </div>
   );
 };

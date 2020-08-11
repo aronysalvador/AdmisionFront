@@ -201,4 +201,9 @@ export const getComunStyle = makeStyles((theme) => ({
     textCenter: {
         textAlign: "center",
     },
+    paper: {
+        marginTop: '0 auto',
+        padding: '1em',
+        backgroundColor: "#F8F9FA"
+    },
 }));

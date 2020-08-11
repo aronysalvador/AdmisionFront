@@ -379,9 +379,21 @@ const Main = (props) => {
           </div>
         );
       case 40:
-        return <Achs />;
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <Achs />
+            </div>
+          </div>
+        );
       case 41:
-        return <SessionAchs />;
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <SessionAchs />
+            </div>
+        </div>
+        );
       case 500: {
         sessionStorage.clear();
         return (
