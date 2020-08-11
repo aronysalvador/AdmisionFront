@@ -12,7 +12,6 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CheckIcon from "@material-ui/icons/Check";
 import Fab from "@material-ui/core/Fab";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
-import { ErrorOutline } from "@material-ui/icons";
 
 const AlertaCalificacion = (props) => {
   const { dispatch } = props;
@@ -23,7 +22,6 @@ const AlertaCalificacion = (props) => {
 
   const {
     container,
-    cardIconContainer,
     cardTextContainer2,
     cardText,
     cardText2,
