@@ -33,7 +33,7 @@ const TipoJornadaLaboral = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(19.1))}
+        dispatch={() => dispatch(handleSetStep(19.2))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
