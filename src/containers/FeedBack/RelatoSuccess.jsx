@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Indiciaciones from "../../components/Indicaciones";
+import Cabecera from "../../components/cabecera/index";
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
@@ -19,6 +20,7 @@ const RelatoSuccess = (props) =>{
         <div className={comunStyle.rootBegin}>
 
             <div className={welcomeStyle.beginContainer}>
+               <Cabecera dispatch={() => dispatch(handleSetStep(19))} percentage={-1} noSpace={true} />
                <div className={spaceStyle.space2} >
                     <div className={welcomeStyle.avatarContainerRight}>
                         <Avatar className={welcomeStyle.avatarBegin}>{microsoftReducer.userMsal.iniciales}</Avatar>
