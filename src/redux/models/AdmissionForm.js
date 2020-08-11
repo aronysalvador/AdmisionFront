@@ -1,5 +1,9 @@
 export const AdmissionForm = {
+<<<<<<< HEAD
   step: 0, //Inicio
+=======
+  step: 4, //Inicio
+>>>>>>> develop
 
   percentage: 0,
   rut: "",

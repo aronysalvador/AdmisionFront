@@ -26,9 +26,19 @@ const FechaHoraResponsable = () => {
     setFechaSiniestro({ ...value });
   }
 
+  // function setHoraValueSiniestro(value) {
+  //   setHoraSiniestro({ ...value });
+  // }
+
   function setHoraValueSiniestro(value) {
+    value.minutos = minutosArray[value.indiceMinutos];
     setHoraSiniestro({ ...value });
   }
+
+  const [minutosArray, setMinutos] = useState(() => {
+    return [0, 10, 20, 30, 40, 50];
+  })
+
   return (
     <div className={root}>
       <Cabecera
@@ -49,7 +59,8 @@ const FechaHoraResponsable = () => {
       <HoraSiniestro
         onChange={setHoraValueSiniestro}
         horasFromState={horas}
-        minutosFromState={minutos}
+        indiceMinutosFromState={minutosArray.indexOf(minutos)}
+        minutos={minutosArray}
       />
       <div className={bottomElement}>
         <Button
