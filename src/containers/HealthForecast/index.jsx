@@ -27,7 +27,7 @@ const HealthForecast = (props) => {
 
   const clickSendIsapres = (id) => {
     dispatch1(sendIsapres(id));
-    dispatch(handleSetStep(20));
+    dispatch(handleSetStep(19.2));
   };
 
   const classesComun = getComunStyle();
