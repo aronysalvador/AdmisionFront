@@ -41,7 +41,7 @@ const PantallaFinal = (props) => {
           component="h1"
           className={welcomeStyle.txtBegin}
         >
-          ¡Empecemos!
+          Accidente ingresado
         </Typography>
       </div>
 
@@ -66,11 +66,11 @@ const PantallaFinal = (props) => {
           component="h5"
           className={welcomeStyle.subTitleBegin}
         >
-          Por ahora ten en cuenta:
+          Pide al paciente:
         </Typography>
 
         <IndiciacionesPacientes
-          data={[
+          indicaciones={[
             {
               icono: "espera.svg",
               textoPrimario: "Esperar en sala",
