@@ -173,7 +173,33 @@ export const getTiposDeContrato = () => {
 };
 
 const razonAlerta = [
-  { key: 1, nombre: "Posible causa no laboral" },
+  {
+    key: 1,
+    nombre: "Posible causa no laboral",
+    tipo: [
+      {
+        key: 1,
+        nombre:
+          "Accidente sin presentación oportuna, sin testigo y aviso tardío a empresa",
+      },
+      {
+        key: 2,
+        nombre: "Accidente en Trámites personales",
+      },
+      {
+        key: 3,
+        nombre: "Accidente ocurrido en el extranjero",
+      },
+      {
+        key: 4,
+        nombre: "Actividad Deportiva y/o Recreativa",
+      },
+      {
+        key: 5,
+        nombre: "Broma en el Lugar de Trabajo",
+      },
+    ],
+  },
   { key: 2, nombre: "Dirigente sindical en cometido gremial" },
   { key: 3, nombre: "Trabajo a distancia" },
   { key: 4, nombre: "Fuerza mayor extraña" },

@@ -15,12 +15,12 @@ const BotonSeleccionarCustom = (props) => {
   useEffect(() => {
     setIsSelected(selected);
   }, [selected]);
-  console.log({ data, isSelected });
+
   return (
     <div
       onClick={() => {
         setIsSelected((selected) => !selected);
-        if(!isSelected) {
+        if (!isSelected) {
           if (itemForm === "SucursalEmpresa") {
             handlerGuardarData(itemForm, data, step);
             dispatch(
@@ -29,6 +29,19 @@ const BotonSeleccionarCustom = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
+            dispatch(handleSetStep(step));
+          } else if (itemForm === "razonAlertaForm") {
+            if (data.key === 1) {
+              dispatch(handleSetStep(90.2));
+            } else {
+              dispatch(
+                updateForm(
+                  itemForm,
+                  !isSelected ? { ...data, selected: !isSelected } : {}
+                )
+              );
+              dispatch(handleSetStep(90.3));
+            }
           } else {
             dispatch(
               updateForm(
@@ -36,10 +49,10 @@ const BotonSeleccionarCustom = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
+            dispatch(handleSetStep(step));
           }
-          dispatch(handleSetStep(step));
+          //dispatch(handleSetStep(step));
         }
-        
       }}
       className={isSelected ? botonSeleccionado : ""}
       style={{

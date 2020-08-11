@@ -50,6 +50,7 @@ import DireccionParticular from "../DireccionParticular/index";
 
 import AlertaCalificacion from "../AlertaCalificacion/index";
 import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
+import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 
 const Main = (props) => {
@@ -145,6 +146,8 @@ const Main = (props) => {
         return <AlertaCalificacion />;
       case 90.1:
         return <AlertaCalificacionRazon />;
+      case 90.2:
+        return <CausaNolaboral />;
       case 90.3:
         return <LoadRazonAlerta />;
 

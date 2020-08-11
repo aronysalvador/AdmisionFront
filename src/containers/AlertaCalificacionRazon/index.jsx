@@ -30,6 +30,14 @@ const AlertaCalificacionRazon = () => {
 
   const { root, pregunta } = getComunStyle();
 
+  // const handlerGuradarSucursalTexto = (itemForm, data, step) => {
+
+  //   // const { nombre, direccion } = data;
+  //   // const sucursalTexto = nombre;
+  //   // dispatch(updateForm(itemForm, sucursalTexto));
+  //   // dispatch(updateForm("DireccionEmpresa", direccion));
+  // };
+
   return (
     <div className={root}>
       <Cabecera
@@ -55,7 +63,6 @@ const AlertaCalificacionRazon = () => {
             data={razonAlerta}
             itemForm={"razonAlertaForm"}
             selected={razonAlerta.key === tipoJornadaLaboral.id}
-            step={90.3}
           >
             <BotonSeleccionarCustomItem {...razonAlerta} />
           </BotonSeleccionarCustom>
