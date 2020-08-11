@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Button, Typography, TextField, InputAdornment, IconButton  } from "@material-ui/core";
+import {
+  Button,
+  Typography,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
 import { siniestroStyle } from "../../css/siniestroStyle";
@@ -7,7 +13,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { validateEmailFormat } from "../../helpers/email";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import ClearIcon from '@material-ui/icons/Clear';
+import ClearIcon from "@material-ui/icons/Clear";
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -31,7 +37,12 @@ const ValidarCorreoElectronico = () => {
         dispatch={() => dispatch(handleSetStep(--stepx))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>Por último, escribe tu email</Typography>
+      <Typography className={pregunta}>
+        Enviaremos los documentos al <br />
+      </Typography>
+      <Typography className={pregunta}>
+        siguiente&nbsp;<span style={{ color: "#03bb85" }}>e-mail</span>{" "}
+      </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>
       <TextField
@@ -49,14 +60,14 @@ const ValidarCorreoElectronico = () => {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-                <IconButton
-                  onClick={() => {
-                    setUserEmail("");
-                  }}
-                >
-                  <ClearIcon />
-                </IconButton>
-              </InputAdornment>
+              <IconButton
+                onClick={() => {
+                  setUserEmail("");
+                }}
+              >
+                <ClearIcon />
+              </IconButton>
+            </InputAdornment>
           ),
         }}
       />
@@ -70,10 +81,10 @@ const ValidarCorreoElectronico = () => {
           onClick={() =>
             isEmailValid &&
             dispatch(updateForm("emailusuario", userEmail)) &&
-            dispatch(handleSetStep(++stepx))
+            dispatch(handleSetStep(1000))
           }
         >
-          Siguiente
+          Crear Caso
         </Button>
       </div>
     </div>
