@@ -42,7 +42,7 @@ export const getComunStyle = makeStyles((theme) => ({
     googleMap: {
         width: "100%",
         borderRadius: "20px",
-        padding: "10px"
+        padding: "10px",
     },
 
     buttonAchs: {
@@ -77,6 +77,7 @@ export const getComunStyle = makeStyles((theme) => ({
         textTransform: "inherit",
         height: "3.5em",
     },
+
     buttonAchsRight: {
         width: "46%",
         background: "#007A33",
@@ -189,14 +190,43 @@ export const getComunStyle = makeStyles((theme) => ({
         },
     },
     mediumDivider: {
-        width: '47%',
+        width: "47%",
     },
     flexDivider: {
-        display: 'flex',
-        alignItems: 'center',
+        display: "flex",
+        alignItems: "center",
     },
     emMargin: {
-        margin: '0.5em',
+        margin: "0.5em",
+    },
+    pantallaFinalBotones: {
+        borderRadius: "10px",
+        height: "3em",
+    },
+    cajaRutSiniestroContainer: {
+        width: "48%",
+        border: "1px solid #787878",
+        borderRadius: "10px",
+        padding: "10px",
+        height: "60px",
+        paddingBottom: "5px",
+        backgroundColor: "#FFFFFF",
+    },
+    cajaRutSiniestroItem: {
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "left",
+        flexDirection: "column",
+    },
+    cajaRutSiniestroTextoPrimario: {
+        color: "#373737",
+        fontWeight: "bold",
+        fontSize: "15px",
+    },
+    cajaRutSiniestroTextoSecundario: {
+        color: "#787878",
+        fontWeight: "bold",
+        fontSize: "15px",
     },
     textCenter: {
         textAlign: "center",

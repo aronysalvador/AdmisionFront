@@ -26,6 +26,12 @@ const Cabecera = (props) => {
                     {(percentage !== -1) ? <BorderLinearProgress variant="determinate" value={percentage} /> : <div />}
                 </div> 
                 <div className={comunClass.cleanFloat} />
-                <div  className={spaceStyle.space2} /></div>)
+
+                    {props.noSpace ? null : (
+                    <div  className={spaceStyle.space2} />
+                    )}
+                
+                </div>
+                )
 }
 export default Cabecera
