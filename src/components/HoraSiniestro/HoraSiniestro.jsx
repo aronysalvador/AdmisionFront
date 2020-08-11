@@ -28,7 +28,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
     if (indiceMinutos == minutos.length) setIndiceMinutos(0);
     if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
     onChange({ horas, indiceMinutos });
-  }, [horas, indiceMinutos]);
+  }, [horas, minutos[indiceMinutos]]);
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
