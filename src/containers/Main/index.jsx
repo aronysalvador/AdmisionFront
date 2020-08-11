@@ -52,6 +52,7 @@ import RelatoSuccess from "../FeedBack/RelatoSuccess";
 
 import DireccionParticular from "../DireccionParticular/index";
 import PantallaFinal from "../PantallaFinal/PantallaFinal";
+import CreandoCaso from "../PantallaFinal/CreandoCaso";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -179,11 +180,11 @@ const Main = (props) => {
             </div>
           </div>
         );
-      case 5.7: 
+      case 5.7:
         return (
           <div className={layoutFix}>
             <div className={layoutFix}>
-                <PersonalSuccess />
+              <PersonalSuccess />
             </div>
           </div>
         );
@@ -327,7 +328,7 @@ const Main = (props) => {
         return (
           <div className={layoutFix}>
             <div className={paperFix}>
-               <RelatoSuccess />
+              <RelatoSuccess />
             </div>
           </div>
         );
@@ -392,6 +393,14 @@ const Main = (props) => {
           <div className={layout}>
             <div className={paper}>
               <ValidarCorreoElectronico />
+            </div>
+          </div>
+        );
+      case 1001:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <CreandoCaso />
             </div>
           </div>
         );

@@ -59,11 +59,7 @@ const CreandoCaso = (props) => {
     <div className={comunClass.root}>
       <div className={spaceStyle.space5} />
       <div className={useStyles.center}>
-        <img
-          alt="load"
-          src="./static/validandoDatos.png"
-          className={useStyles.img}
-        />
+        <img alt="load" src="./static/caso2.png" className={useStyles.img} />
       </div>
       <div className={spaceStyle.space3} />
       <Typography
@@ -71,9 +67,9 @@ const CreandoCaso = (props) => {
         gutterBottom
         className={useStyles.text1}
       >
-        Estamos validando
+        Estamos creando
         <br />
-        tus datos
+        tu caso
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography

@@ -81,7 +81,7 @@ const ValidarCorreoElectronico = () => {
           onClick={() =>
             isEmailValid &&
             dispatch(updateForm("emailusuario", userEmail)) &&
-            dispatch(handleSetStep(++stepx))
+            dispatch(handleSetStep(1001))
           }
         >
           Crear Caso
