@@ -12,7 +12,7 @@ import { Pipes } from "./phone";
 
 const EditarTelefono = () => {
   const {
-    addmissionForm: { step, percentage, TelefonoEmpleado },
+    addmissionForm: { step, percentage, telefonoParticular: TelefonoEmpleado },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
 
@@ -73,7 +73,7 @@ const EditarTelefono = () => {
           className={buttonAchs}
           disabled={!telefonoIsValid}
           onClick={() => {
-            dispatch(updateForm("TelefonoEmpleado", telefono));
+            dispatch(updateForm("telefonoParticular", telefono));
             dispatch(handleSetStep(5.1));
           }}
         >

@@ -7,6 +7,7 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { any } from "prop-types";
 
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
@@ -20,6 +21,11 @@ const FechaHoraSiniestro = () => {
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+
+  const [minutosArray, setMinutos] = useState(() => {
+    return [0, 10, 20, 30, 40, 50];
+  })
+
   const dispatch = useDispatch();
 
   function setFechaValueSiniestro(value) {
@@ -27,6 +33,7 @@ const FechaHoraSiniestro = () => {
   }
 
   function setHoraValueSiniestro(value) {
+    value.minutos = minutosArray[value.indiceMinutos];
     setHoraSiniestro({ ...value });
   }
 
@@ -50,7 +57,8 @@ const FechaHoraSiniestro = () => {
       <HoraSiniestro
         onChange={setHoraValueSiniestro}
         horasFromState={horas}
-        minutosFromState={minutos}
+        indiceMinutosFromState={minutosArray.indexOf(minutos)}
+        minutos={minutosArray}
       />
       <div className={bottomElement}>
         <Button
