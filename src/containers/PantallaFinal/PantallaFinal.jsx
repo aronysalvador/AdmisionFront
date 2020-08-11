@@ -75,16 +75,19 @@ const PantallaFinal = (props) => {
               icono: "espera.svg",
               textoPrimario: "Esperar en sala",
               textoSecundario: "al llamado del doctor",
+              clase: welcomeStyle.divRowBottom,
             },
             {
               icono: "sms.svg",
               textoPrimario: "Recordarle su número SGP",
               textoSecundario: " y el modo de conectarse al WI-FI",
+              clase: welcomeStyle.divRowBottom,
             },
             {
               icono: "work.svg",
               textoPrimario: "Si presenta dolor",
               textoSecundario: " avisa a los TENS",
+              clase: welcomeStyle.divRow,
             },
           ]}
         />

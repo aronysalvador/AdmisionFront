@@ -7,8 +7,8 @@ const IndiciacionesPacientes = ({ indicaciones }) => {
 
   return (
     <div className={welcomeStyle.titleContainerCards}>
-      {indicaciones.map(({ icono, textoPrimario, textoSecundario }) => (
-        <div className={welcomeStyle.divRowBottom}>
+      {indicaciones.map(({ icono, textoPrimario, textoSecundario, clase }) => (
+        <div className={clase}>
           <img src={`./static/${icono}`} alt="" />
           <div className={welcomeStyle.itemBegin}>
             <Typography
