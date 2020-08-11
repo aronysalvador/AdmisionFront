@@ -39,7 +39,7 @@ const PersonalData = (props) => {
       STEP=5.3    //form telefono
     }
     else{ // si todos los datos relevantes están llenos
-      STEP=6  // next
+      STEP=5.7  // pantalla exito
     }    
     dispatch(handleSetStep(STEP));
   }

@@ -47,6 +47,9 @@ import CategoriaOcupacional from "../CategoriaOcupacional/index";
 import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
 import Cargo from "../Cargo/index";
 
+import PersonalSuccess from "../FeedBack/PersonalSuccess";
+import RelatoSuccess from "../FeedBack/RelatoSuccess";
+
 import DireccionParticular from "../DireccionParticular/index";
 import PantallaFinal from "../PantallaFinal/PantallaFinal";
 
@@ -173,6 +176,14 @@ const Main = (props) => {
           <div className={layout}>
             <div className={paper}>
               <RouteComuna />
+            </div>
+          </div>
+        );
+      case 5.7: 
+        return (
+          <div className={layoutFix}>
+            <div className={layoutFix}>
+                <PersonalSuccess />
             </div>
           </div>
         );
@@ -309,6 +320,14 @@ const Main = (props) => {
           <div className={layout}>
             <div className={paper}>
               <HealthForecastIsapre />
+            </div>
+          </div>
+        );
+      case 19.2:
+        return (
+          <div className={layoutFix}>
+            <div className={paperFix}>
+               <RelatoSuccess />
             </div>
           </div>
         );
