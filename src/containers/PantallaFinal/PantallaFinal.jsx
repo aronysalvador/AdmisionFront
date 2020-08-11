@@ -32,6 +32,11 @@ const PantallaFinal = (props) => {
       </div>
 
       <div className={welcomeStyle.TextContainer}>
+        <img
+          alt="Excelente"
+          src="static/icon-check.png"
+          className={welcomeStyle.iconCircular}
+        />
         <Typography
           variant="h1"
           component="h1"
@@ -52,18 +57,6 @@ const PantallaFinal = (props) => {
             textoSecundario="Rut paciente"
           />
         </div>
-        {/* <div className={welcomeStyle.titleContainer}>
-          <div className={welcomeStyle.divRow}>
-            <ThumbUpIcon />
-            <Typography
-              variant="p"
-              component="p"
-              className={welcomeStyle.titleBegin}
-            >
-              Mantén una actitud positiva
-            </Typography>
-          </div>
-        </div> */}
       </div>
 
       <div className={welcomeStyle.beginContainer}>
@@ -101,37 +94,22 @@ const PantallaFinal = (props) => {
         <div className={welcomeStyle.bottomBegin}>
           <Button
             className={comunStyle.buttonAchs}
+            style={{ borderRadius: "10px", height: "3em" }}
             variant="contained"
             onClick={() => dispatch(handleSetStep(2))}
           >
-            Entendido
+            Firma de documentos en SAP
           </Button>
-        </div>
+          <div className={spaceStyle.spaceMin1}></div>
 
-        <div className={welcomeStyle.beginContainer}>
-          <Typography
-            variant="p"
-            component="p"
-            display="block"
-            className={[comunStyle.textAchsContent, welcomeStyle.terminos]}
+          <Button
+            variant="contained"
+            style={{ borderRadius: "10px", height: "3em" }}
+            className={comunStyle.buttonAchs2}
+            size="small"
           >
-            Al hacer click en empezar,
-            <Link
-              className={[
-                comunStyle.textAchsContent,
-                welcomeStyle.terminos,
-                welcomeStyle.terminos,
-              ]}
-              component="button"
-              variant="body2"
-              onClick={() => dispatch(handleSetStep(4))}
-            >
-              aceptas nuestros{" "}
-              <span style={{ textDecoration: "underline" }}>
-                Términos y condiciones
-              </span>
-            </Link>
-          </Typography>
+            Ingresar nueva admision
+          </Button>
         </div>
       </div>
     </div>

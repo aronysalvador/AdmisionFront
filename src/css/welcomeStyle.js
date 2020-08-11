@@ -82,8 +82,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     padding: "0.5em 1em 0 1em",
   },
   TextContainer: {
-    padding: "1.5em 1.5em 0 1.5em",
-    marginTop: "2px",
+    padding: "0em 1.5em 0 1.5em",
+    // marginTop: "2px",
   },
   titleContainer: {
     padding: "0.5em 1.5em 0.5em 1.5em",
@@ -157,12 +157,17 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     maxWidth: "210px",
   },
   bottomBegin: {
-    marginTop: "20px",
+    marginTop: "10px",
   },
   rutSiniestroContainer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+  },
+  iconCircular: {
+    width: "54px",
+    height: "54px",
+    verticalAlign: "middle",
   },
 }));

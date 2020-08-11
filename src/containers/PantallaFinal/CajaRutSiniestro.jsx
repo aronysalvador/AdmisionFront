@@ -8,7 +8,7 @@ const CajaRutSiniestro = ({ textoPrincipal, textoSecundario }) => {
         border: "1px solid #787878",
         borderRadius: "10px",
         padding: "10px",
-        height: "65px",
+        height: "60px",
         paddingBottom: "5px",
         backgroundColor: "#FFFFFF",
       }}
