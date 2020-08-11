@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { saveRut } from "../../redux/actions/AdmissionAction";
+import { saveRut, handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const getUseStyles = makeStyles({
   center: {
@@ -47,9 +47,12 @@ const getUseStyles = makeStyles({
 const CreandoCaso = (props) => {
   const { addmissionForm, dispatch } = props;
 
-  // useEffect(() => {
-  //     dispatch(saveRut(addmissionForm.rut));
-  // });
+  useEffect(() => {
+    // dispatch(saveRut(addmissionForm.rut));
+    setTimeout(() => {
+      dispatch(handleSetStep(1000));
+    }, 6000);
+  });
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
