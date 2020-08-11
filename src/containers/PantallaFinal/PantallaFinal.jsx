@@ -11,7 +11,7 @@ import Cabecera from "../../components/cabecera/index";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import IndiciacionesPacientes from "./IndiciacionesPaciente";
+import IndiciacionesPacientes from "../../components/Indicaciones";
 
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer } = props;
