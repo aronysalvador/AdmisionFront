@@ -203,4 +203,29 @@ export const getComunStyle = makeStyles((theme) => ({
     borderRadius: "10px",
     height: "3em",
   },
+  cajaRutSiniestroContainer: {
+    width: "48%",
+    border: "1px solid #787878",
+    borderRadius: "10px",
+    padding: "10px",
+    height: "60px",
+    paddingBottom: "5px",
+    backgroundColor: "#FFFFFF",
+  },
+  cajaRutSiniestroItem: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "left",
+    flexDirection: "column",
+  },
+  cajaRutSiniestroTextoPrimario: {
+    color: "#373737",
+    fontWeight: "bold",
+    fontSize: "15px",
+  },
+  cajaRutSiniestroTextoSecundario: {
+    color: "#787878",
+    fontWeight: "bold",
+    fontSize: "15px",
+  },
 }));

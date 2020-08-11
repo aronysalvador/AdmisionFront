@@ -1,34 +1,15 @@
 import React from "react";
+import { getComunStyle } from "../../css/comun";
 
 const CajaRutSiniestro = ({ textoPrincipal, textoSecundario }) => {
+  const comunStyle = getComunStyle();
   return (
-    <div
-      style={{
-        width: "48%",
-        border: "1px solid #787878",
-        borderRadius: "10px",
-        padding: "10px",
-        height: "60px",
-        paddingBottom: "5px",
-        backgroundColor: "#FFFFFF",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "left",
-          flexDirection: "column",
-        }}
-      >
-        <span
-          style={{ color: "#373737", fontWeight: "bold", fontSize: "17px" }}
-        >
+    <div className={comunStyle.cajaRutSiniestroContainer}>
+      <div className={comunStyle.cajaRutSiniestroItem}>
+        <span className={comunStyle.cajaRutSiniestroTextoPrimario}>
           {textoPrincipal}
         </span>
-        <span
-          style={{ color: "#787878", fontWeight: "bold", fontSize: "13px" }}
-        >
+        <span className={comunStyle.cajaRutSiniestroTextoSecundario}>
           {textoSecundario}
         </span>
       </div>
