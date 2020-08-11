@@ -4,11 +4,11 @@ const CajaRutSiniestro = ({ textoPrincipal, textoSecundario }) => {
   return (
     <div
       style={{
-        width: "47%",
+        width: "48%",
         border: "1px solid #787878",
         borderRadius: "10px",
         padding: "10px",
-        height: "60px",
+        height: "65px",
         paddingBottom: "5px",
         backgroundColor: "#FFFFFF",
       }}

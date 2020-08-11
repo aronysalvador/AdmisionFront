@@ -40,18 +40,19 @@ const PantallaFinal = (props) => {
           Accidente ingresado
         </Typography>
       </div>
-      <div>
-        <CajaRutSiniestro
-          textoPrincipal="1234567"
-          textoSecundario="ID Siniestro"
-        />
-        <CajaRutSiniestro
-          textoPrincipal="25.951.215-8"
-          textoSecundario="Rut paciente"
-        />
-      </div>
+
       <div className={welcomeStyle.beginContainerCard}>
-        <div className={welcomeStyle.titleContainer}>
+        <div className={welcomeStyle.rutSiniestroContainer}>
+          <CajaRutSiniestro
+            textoPrincipal="1234567"
+            textoSecundario="ID Siniestro"
+          />
+          <CajaRutSiniestro
+            textoPrincipal="25.951.215-8"
+            textoSecundario="Rut paciente"
+          />
+        </div>
+        {/* <div className={welcomeStyle.titleContainer}>
           <div className={welcomeStyle.divRow}>
             <ThumbUpIcon />
             <Typography
@@ -62,7 +63,7 @@ const PantallaFinal = (props) => {
               Mantén una actitud positiva
             </Typography>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className={welcomeStyle.beginContainer}>
