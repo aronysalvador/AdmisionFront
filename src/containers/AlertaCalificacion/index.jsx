@@ -9,12 +9,13 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { useDispatch } from "react-redux";
 import CheckIcon from "@material-ui/icons/Check";
 import Fab from "@material-ui/core/Fab";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
 
 const AlertaCalificacion = (props) => {
-  const { dispatch } = props;
+  const dispatch = useDispatch();
   // const custom = siniestroStyle();
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
@@ -77,7 +78,7 @@ const AlertaCalificacion = (props) => {
           <Button
             className={comunStyle.buttonAchs2}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(2))}
+            onClick={() => dispatch(handleSetStep(90.1))}
           >
             El relato no es coherente
           </Button>
