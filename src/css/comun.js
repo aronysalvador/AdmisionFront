@@ -199,4 +199,8 @@ export const getComunStyle = makeStyles((theme) => ({
   emMargin: {
     margin: "0.5em",
   },
+  pantallaFinalBotones: {
+    borderRadius: "10px",
+    height: "3em",
+  },
 }));

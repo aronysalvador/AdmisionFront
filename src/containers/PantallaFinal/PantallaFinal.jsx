@@ -3,10 +3,7 @@ import { connect } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import Link from "@material-ui/core/Link";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import Cabecera from "../../components/cabecera/index";
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
@@ -93,8 +90,7 @@ const PantallaFinal = (props) => {
 
         <div className={welcomeStyle.bottomBegin}>
           <Button
-            className={comunStyle.buttonAchs}
-            style={{ borderRadius: "10px", height: "3em" }}
+            className={[comunStyle.buttonAchs, comunStyle.pantallaFinalBotones]}
             variant="contained"
             onClick={() => dispatch(handleSetStep(2))}
           >
@@ -104,8 +100,10 @@ const PantallaFinal = (props) => {
 
           <Button
             variant="contained"
-            style={{ borderRadius: "10px", height: "3em" }}
-            className={comunStyle.buttonAchs2}
+            className={[
+              comunStyle.buttonAchs2,
+              comunStyle.pantallaFinalBotones,
+            ]}
             size="small"
           >
             Ingresar nueva admision
