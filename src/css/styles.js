@@ -15,6 +15,18 @@ import { makeStyles } from '@material-ui/core/styles'
       padding: '1em',
       backgroundColor: "#F8F9FA"
     },
+
+    layoutFix: {
+      margin:'auto',
+      width: '25.5em',
+      border:'0',
+      backgroundColor:'#F8F9FA',
+    },
+    paperFix: {
+      marginTop: '0 auto',
+      backgroundColor: "#F8F9FA"
+    },
+
   }));
 
   export default useStyles;

@@ -1,7 +1,4 @@
 export const AdmissionForm = {
-
-
-
   step: 0, //Inicio
 
   percentage: 0,
