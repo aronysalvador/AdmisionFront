@@ -12,6 +12,7 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import IndiciacionesPacientes from "../../components/Indicaciones";
+import CajaRutSiniestro from "./CajaRutSiniestro";
 
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -21,11 +22,6 @@ const PantallaFinal = (props) => {
   return (
     <div className={comunStyle.rootBegin}>
       <div className={welcomeStyle.beginContainer}>
-        <Cabecera
-          dispatch={() => dispatch(handleSetStep(1))}
-          percentage={-1}
-          noSpace={true}
-        />
         <div className={spaceStyle.space2}>
           <div className={welcomeStyle.avatarContainerRight}>
             <Avatar className={welcomeStyle.avatarBegin}>
@@ -44,7 +40,16 @@ const PantallaFinal = (props) => {
           Accidente ingresado
         </Typography>
       </div>
-
+      <div>
+        <CajaRutSiniestro
+          textoPrincipal="1234567"
+          textoSecundario="ID Siniestro"
+        />
+        <CajaRutSiniestro
+          textoPrincipal="25.951.215-8"
+          textoSecundario="Rut paciente"
+        />
+      </div>
       <div className={welcomeStyle.beginContainerCard}>
         <div className={welcomeStyle.titleContainer}>
           <div className={welcomeStyle.divRow}>
