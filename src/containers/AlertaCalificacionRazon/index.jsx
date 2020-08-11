@@ -55,7 +55,7 @@ const AlertaCalificacionRazon = () => {
             data={razonAlerta}
             itemForm={"razonAlertaForm"}
             selected={razonAlerta.key === tipoJornadaLaboral.id}
-            step={90}
+            step={90.3}
           >
             <BotonSeleccionarCustomItem {...razonAlerta} />
           </BotonSeleccionarCustom>

@@ -49,7 +49,8 @@ import Cargo from "../Cargo/index";
 import DireccionParticular from "../DireccionParticular/index";
 
 import AlertaCalificacion from "../AlertaCalificacion/index";
-import AlertaCalificacionRazon from "../AlertaCalificacionRazon";
+import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
+import LoadRazonAlerta from "../Load/loadRazonAlerta";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -142,9 +143,10 @@ const Main = (props) => {
 
       case 90:
         return <AlertaCalificacion />;
-
       case 90.1:
         return <AlertaCalificacionRazon />;
+      case 90.3:
+        return <LoadRazonAlerta />;
 
       case 500: {
         sessionStorage.clear();

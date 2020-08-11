@@ -42,7 +42,7 @@ const AlertaCalificacion = (props) => {
         <Typography
           variant="p"
           component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
+          className={[comunStyle.textAchsContentGreen, welcomeStyle.bienvenido]}
         >
           ¡WOW!
           <br />
