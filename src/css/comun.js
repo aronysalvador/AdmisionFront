@@ -7,6 +7,12 @@ export const getComunStyle = makeStyles((theme) => ({
         height: "40em",
         backgroundColor: "#F8F9FA",
     },
+    rootBlack: {
+        position: "relative",
+        width: "22.5em",
+        height: "40em",
+        backgroundColor: "#373737",
+    },
     textAchsContent: {
         fontFamily: "Catamaran",
         fontStyle: "normal",

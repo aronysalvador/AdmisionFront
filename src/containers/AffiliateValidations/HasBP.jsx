@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { saveRut } from "../../redux/actions/AdmissionAction";
+import { Button, Typography } from "@material-ui/core";
 
 const getUseStyles = makeStyles({
   center: {
@@ -44,12 +44,12 @@ const getUseStyles = makeStyles({
   },
 });
 
-const LoadPersonalData = (props) => {
+const HasBP = (props) => {
   const { addmissionForm, dispatch } = props;
 
   useEffect(() => {
     console.log("MANDO EL RUT: ", addmissionForm.rut);
-    dispatch(saveRut(addmissionForm.rut));
+    //dispatch(saveRut(addmissionForm.rut));
   });
 
   const spaceStyle = getSpaceStyle();
@@ -57,8 +57,8 @@ const LoadPersonalData = (props) => {
   const comunClass = getComunStyle();
 
   return (
-    <div className={comunClass.root}>
-      <div className={spaceStyle.space5} />
+    <div className={comunClass.rootBlack}>
+      <div className={spaceStyle.space2} />
       <div className={useStyles.center}>
         <img
           alt="load"
@@ -72,9 +72,7 @@ const LoadPersonalData = (props) => {
         gutterBottom
         className={useStyles.text1}
       >
-        Estamos validando
-        <br />
-        tus datos
+       ¡Atención!
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography
@@ -82,14 +80,24 @@ const LoadPersonalData = (props) => {
         gutterBottom
         className={useStyles.text2}
       >
-        Un momento por favor
+        Este paciente no tiene un BP creado
       </Typography>
-      <div className={useStyles.center2}>
-        <img
-          alt="load"
-          src="./static/Loader_1.gif"
-          className={useStyles.img2}
-        />
+      <Typography
+        color="textSecondary"
+        gutterBottom
+        className={useStyles.text2}
+      >
+        Atiéndelo usando SAP
+      </Typography>
+      <div className={comunClass.bottomElement}>
+        <Button
+          className={comunClass.buttonAchs}
+          onClick={() => {
+            //dispatch(handleSetStep(17.1));
+          }}
+        >
+          Siguiente
+        </Button>
       </div>
     </div>
   );
@@ -99,4 +107,4 @@ const mapStateToProps = ({ addmissionForm }) => {
     addmissionForm: addmissionForm,
   };
 };
-export default connect(mapStateToProps)(LoadPersonalData);
+export default connect(mapStateToProps)(HasBP);

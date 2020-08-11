@@ -8,6 +8,7 @@ import {
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
+import { getAffiliateValidations } from "../../util/fakeApi";
 
 const totalSteps = 27;
 
@@ -66,17 +67,36 @@ export const saveRut = (rut) => {
 
         let isAfiliado = result.data.content[0].IsAfiliado;
         if (isAfiliado) {
-          dispatch(handleSetStep(5.1));
-          dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
-          dispatch(
-            updateForm("rutEmpresa", result.data.content[0].RutPagador)
-          );
-          dispatch(updateForm("isAfiliado", "Si"))
-          dispatch(updateForm("SucursalEmpresa", result.data.content[0].SucursalEmpresa))
-          dispatch(updateForm("DireccionEmpresa", result.data.content[0].DireccionEmpresa))
-          dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa))
-          dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular))
-          dispatch(updateForm("telefonoParticular", result.data.content[0].telefonoParticular))
+
+          getAffiliateValidations(rut).then((result)=>{
+            console.log("fakeApi", result);
+            if(!result.hasBP) {
+              dispatch(handleSetStep(5.7));
+            }
+            else if(result.citas.length > 0) {
+              dispatch(handleSetStep(5.8));
+            }
+            else if(result.siniestros.length > 0) {
+              dispatch(handleSetStep(5.9));
+            }
+            else { 
+              
+              //se establece step 5.1 solo si el rut de afiliado tiene BP, no tiene citas ni siniestros pendientes
+              dispatch(handleSetStep(5.1));
+              dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
+              dispatch(
+                updateForm("rutEmpresa", result.data.content[0].RutPagador)
+              );
+              dispatch(updateForm("isAfiliado", "Si"))
+              dispatch(updateForm("SucursalEmpresa", result.data.content[0].SucursalEmpresa))
+              dispatch(updateForm("DireccionEmpresa", result.data.content[0].DireccionEmpresa))
+              dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa))
+              dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular))
+              dispatch(updateForm("telefonoParticular", result.data.content[0].telefonoParticular))
+            }
+          })
+
+          
         } else {
           dispatch(setStep(500, 0))
           dispatch(updateForm("rut", ""))

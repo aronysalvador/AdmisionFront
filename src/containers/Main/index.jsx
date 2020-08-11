@@ -47,6 +47,9 @@ import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
 import Cargo from "../Cargo/index";
 
 import DireccionParticular from "../DireccionParticular/index";
+import HasBP from "../AffiliateValidations/HasBP";
+import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
+import HasSinister from "../AffiliateValidations/HasSinister";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -87,6 +90,12 @@ const Main = (props) => {
         return <EditarSucursal />;
       case 5.6: 
         return <RouteComuna />;
+      case 5.7:
+        return <HasBP />
+      case 5.8:
+        return <HasScheduledMeet />
+      case 5.9:
+        return <HasSinister />
       case 6:
           return <AccidentPlaceForm />;
       case 7:

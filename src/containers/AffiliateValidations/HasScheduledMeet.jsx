@@ -44,7 +44,7 @@ const getUseStyles = makeStyles({
   },
 });
 
-const LoadPersonalData = (props) => {
+const HasScheduledMeet = (props) => {
   const { addmissionForm, dispatch } = props;
 
   useEffect(() => {
@@ -99,4 +99,4 @@ const mapStateToProps = ({ addmissionForm }) => {
     addmissionForm: addmissionForm,
   };
 };
-export default connect(mapStateToProps)(LoadPersonalData);
+export default connect(mapStateToProps)(HasScheduledMeet);
