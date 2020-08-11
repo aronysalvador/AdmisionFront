@@ -5,6 +5,7 @@ import {
     SEND_TESTIGO,
     SEND_RESPONSABLE,
     LOAD_STATE_SESSIONSTORAGE,
+    SEND_CENTROACHS,
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
@@ -158,5 +159,22 @@ const sendCallResponsable = (name, cargo) => ({
     payload: {
         nombre: name,
         cargo: cargo,
+    },
+});
+
+//Envia Datos de Centro ACHS
+export function sendCentroAchs(nombre, codigo, uoMedica, uoTratamiento) {
+    return (dispatch) => {
+        dispatch(sendCallCentroAchs(nombre, codigo, uoMedica, uoTratamiento));
+    };
+}
+
+const sendCallCentroAchs = (nombre, codigo, uoMedica, uoTratamiento) => ({
+    type: SEND_CENTROACHS,
+    payload: {
+        nombre: nombre,
+        codigo: codigo,
+        uoMedica: uoMedica,
+        uoTratamiento: uoTratamiento,
     },
 });

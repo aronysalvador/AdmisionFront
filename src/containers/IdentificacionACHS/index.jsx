@@ -9,6 +9,8 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
+import { sendCentroAchs } from "../../redux/actions/AdmissionAction";
+
 /*
 REVISARE EL 
   const {
@@ -17,7 +19,7 @@ REVISARE EL
 */
 const Achs = () => {
   const {
-    addmissionForm: { percentage, afpForm },
+    addmissionForm: { percentage, afpForm, centroAchs },
   } = useSelector((state) => state, shallowEqual);
 
   const {
@@ -40,6 +42,17 @@ const Achs = () => {
   }, []);
 
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
+
+  //State
+
+  const nombre = useState(() => {
+    return !centroAchs ? "" : centroAchs.nombre;
+  });
+
+  const clickSendAchs = () => {
+    dispatch(sendCentroAchs(nombre));
+    dispatch(updateForm("achsForm", nombre));
+  };
 
   return (
     <div className={root}>
@@ -84,9 +97,10 @@ const Achs = () => {
         <Button
           variant="contained"
           className={buttonAchs}
+          type="submit"
           disabled={!afp}
           onClick={() => {
-            dispatch(updateForm("afpForm", afp));
+            clickSendAchs()
             dispatch(handleSetStep(41));
           }}
         >
