@@ -9,7 +9,7 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import CheckIcon from "@material-ui/icons/Check";
 import Fab from "@material-ui/core/Fab";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
 import { ErrorOutline } from "@material-ui/icons";
@@ -24,20 +24,21 @@ const AlertaCalificacion = (props) => {
   const {
     container,
     cardIconContainer,
-    cardTextContainer,
+    cardTextContainer2,
     cardText,
+    cardText2,
+    iconVector,
   } = getTrabajoHabitualCardStyle();
 
   return (
     <div className={comunStyle.root}>
-      <div className={spaceStyle.space2} />
-      <div className={welcomeStyle.avatarContainer}>
+      <div className={welcomeStyle.avatarContainer2}>
         <Avatar className={welcomeStyle.avatar}>AS</Avatar>
       </div>
-      <Fab size="small" aria-label="edit" className={welcomeStyle.imgEdit}>
-        <CheckCircleIcon />
-      </Fab>
       <div className={spaceStyle.space1} />
+      <Fab size="small" aria-label="edit" className={welcomeStyle.imgCheck}>
+        <CheckIcon />
+      </Fab>
       <div className={welcomeStyle.bienvenidoContainer}>
         <Typography
           variant="p"
@@ -61,13 +62,14 @@ const AlertaCalificacion = (props) => {
       </div>
 
       <div className={container}>
-        <div className={cardIconContainer}>
-          <ErrorOutline />
+        <div className={iconVector}>
+          <img alt="Ejecutivo de admisión" src="static/iconVector.png" />
         </div>
-        <div className={cardTextContainer}>
-          <span className={cardText}>
-            Pide un e-mail al paciente, los documentos serán enviados ahí
-          </span>
+
+        <div className={cardTextContainer2}>
+          <span className={cardText2}>Pide un e-mail al paciente,</span>
+          <br />
+          <span className={cardText}>los documentos serán enviados ahí</span>
         </div>
       </div>
 
