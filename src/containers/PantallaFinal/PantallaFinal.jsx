@@ -99,6 +99,7 @@ const PantallaFinal = (props) => {
           <div className={spaceStyle.spaceMin1}></div>
 
           <Button
+            onClick={() => dispatch(handleSetStep(1))}
             variant="contained"
             className={[
               comunStyle.buttonAchs2,
