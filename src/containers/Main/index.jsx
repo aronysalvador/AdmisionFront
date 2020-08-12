@@ -58,6 +58,7 @@ import AlertaCalificacion from "../AlertaCalificacion/index";
 import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
 import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
+import ErrorCaso from "../PantallaFinal/ErrorCaso";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -417,6 +418,14 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <PantallaFinal />
+            </Paper>
+          </div>
+        );
+      case 1002:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <ErrorCaso />
             </Paper>
           </div>
         );
