@@ -60,6 +60,8 @@ import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
 
+import Profesion from "../Profesion/index";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, dispatch } = props;
@@ -461,6 +463,15 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <LoadRazonAlerta />
+            </Paper>
+          </div>
+        );
+
+      case 100:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <Profesion />
             </Paper>
           </div>
         );
