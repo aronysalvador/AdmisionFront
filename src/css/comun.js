@@ -234,6 +234,36 @@ export const getComunStyle = makeStyles((theme) => ({
     color: "#787878",
     fontWeight: "bold",
     fontSize: "15px",
-  }
+  },
+
+  titleBlack:{
+    fontFamily: 'Catamaran',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: '20px',
+    lineHeight: '28px',
+    color:' #373737'
+  },
+  titleBlue:{
+    fontFamily: 'Catamaran',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: '20px',
+    lineHeight: '28px',
+    color:' #00b2a9'
+  },
+  txtGreen:{
+    fontFamily: 'Helvetica',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '22px',
+    color: '#007A33'
+  },
+  iconLocation: {
+    marginRight: '10px',
+    maxHeight: "15px",
+    verticalAlign: "middle",
+  },
 
 }));
