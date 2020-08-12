@@ -54,6 +54,12 @@ import DireccionParticular from "../DireccionParticular/index";
 import PantallaFinal from "../PantallaFinal/PantallaFinal";
 import CreandoCaso from "../PantallaFinal/CreandoCaso";
 
+import AlertaCalificacion from "../AlertaCalificacion/index";
+import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
+import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
+import LoadRazonAlerta from "../Load/loadRazonAlerta";
+import ErrorCaso from "../PantallaFinal/ErrorCaso";
+
 import Achs from "../IdentificacionACHS/index";
 import SessionAchs from "../IdentificacionACHS/WelcomeAchs"
 
@@ -74,9 +80,9 @@ const Main = (props) => {
       case -1:
         return (
           <div className={layout}>
-             <Paper className={paper}>
+            <Paper className={paper}>
               <Load />
-             </Paper>
+            </Paper>
           </div>
         );
       case 0:
@@ -92,7 +98,7 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <WelcomeEjecutivo />
-              </Paper>
+            </Paper>
           </div>
         );
       case 1.1:
@@ -186,9 +192,9 @@ const Main = (props) => {
       case 5.7:
         return (
           <div className={layoutFix}>
-            <div className={layoutFix}>
+            <Paper className={paperFix}>
               <PersonalSuccess />
-            </div>
+            </Paper>
           </div>
         );
       case 6:
@@ -223,6 +229,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
       case 10:
         return (
           <div className={layout}>
@@ -231,6 +238,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
       case 11:
         return (
           <div className={layout}>
@@ -403,36 +411,80 @@ const Main = (props) => {
       case 1000:
         return (
           <div className={layout}>
-
-            <div className={paper}>
+            <Paper className={paper}>
               <CreandoCaso />
-            </div>
+            </Paper>
           </div>
         );
       case 1001:
         return (
-          <div className={layout}>
-            <div className={paper}>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
               <PantallaFinal />
-            </div>
+            </Paper>
           </div>
         );
-      case 40:
+      case 1002:
         return (
           <div className={layout}>
-            <div className={paper}>
-              <Achs />
-            </div>
+            <Paper className={paper}>
+              <ErrorCaso />
+            </Paper>
           </div>
         );
-      case 41:
+
+      case 90:
         return (
           <div className={layout}>
-            <div className={paper}>
-              <SessionAchs />
-            </div>
-        </div>
+            <Paper className={paper}>
+              <AlertaCalificacion />
+            </Paper>
+          </div>
         );
+      case 90.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AlertaCalificacionRazon />
+            </Paper>
+          </div>
+        );
+
+      case 90.2:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CausaNolaboral />
+            </Paper>
+          </div>
+        );
+
+      case 90.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LoadRazonAlerta />
+            </Paper>
+          </div>
+        );
+
+        case 40:
+          return (
+            <div className={layout}>
+              <div className={paper}>
+                <Achs />
+              </div>
+            </div>
+          );
+        case 41:
+          return (
+            <div className={layout}>
+              <div className={paper}>
+                <SessionAchs />
+              </div>
+          </div>
+          );
+
       case 500: {
         sessionStorage.clear();
         return (
@@ -460,7 +512,7 @@ const Main = (props) => {
   return (
     <MuiThemeProvider>
       <CssBaseline />
-     {renderForm(addmissionForm.step)}
+      {renderForm(addmissionForm.step)}
     </MuiThemeProvider>
   );
 };

@@ -44,7 +44,11 @@ export const getComunStyle = makeStyles((theme) => ({
         borderRadius: "20px",
         padding: "10px",
     },
-
+    textAchsContentGreen: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        color: "#007A33",
+    },
     buttonAchs: {
         width: "100%",
         background: "#007A33",
@@ -61,7 +65,6 @@ export const getComunStyle = makeStyles((theme) => ({
             background: "#104F28",
         },
     },
-
     buttonAchs2: {
         width: "100%",
         background: "#FFFFFF",
@@ -77,7 +80,6 @@ export const getComunStyle = makeStyles((theme) => ({
         textTransform: "inherit",
         height: "3.5em",
     },
-
     buttonAchsRight: {
         width: "46%",
         background: "#007A33",
@@ -159,7 +161,6 @@ export const getComunStyle = makeStyles((theme) => ({
         fontStyle: "normal",
         color: "#373737",
     },
-
     botonSeleccionado: {
         background: "#DFF3F2 !important",
         border: "2px solid #007A33 !important",
@@ -167,17 +168,14 @@ export const getComunStyle = makeStyles((theme) => ({
         borderRadius: "10px",
         color: "#007A33",
     },
-
     selectorRuedaItemPrincipal: {
         color: "#007A33",
         fontSize: "1.250em",
     },
-
     selectorRuedaBordesItemPrincipal: {
         margin: "0",
         opacity: "0.2",
     },
-
     selectorRuedaItemsCostados: {
         fontSize: "1em",
         paddingBottom: "5px",

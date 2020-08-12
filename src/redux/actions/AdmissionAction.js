@@ -56,53 +56,83 @@ export const formatRut = (rut) => {
 };
 
 export const obtenerData = async(rut) => {
-    return Axios.get(process.env.REACT_APP_AFILIADO + `?rut=${rut}`)
-}
+    return Axios.get(process.env.REACT_APP_AFILIADO + `?rut=${rut}`);
+};
 
 export const saveRut = (rut) => {
     return (dispatch) => {
-
         obtenerData(rut)
             .then((result) => {
-
                 let isAfiliado = result.data.content[0].IsAfiliado;
                 if (isAfiliado) {
                     //dispatch(handleSetStep(5.1));
-                    var STEP = '';
-                    if (!result.data.content[0].NombreEmpresa || !result.data.content[0].SucursalEmpresa || !result.data.content[0].DireccionEmpresa || !result.data.content[0].RutPagador) { // si falta info de la empresa
-                        STEP = 5.4 //form empresa
-                    } else if (!result.data.content[0].direccionParticular) { // si no tiene direccion
-                        STEP = 5.2 //form direccion
-                    } else if (!result.data.content[0].telefonoParticular) { // si no tiene telefono
-                        STEP = 5.3 //form telefono
-                    } else { // si todos los datos relevantes están llenos
-                        STEP = 5.1 // resumen data
+                    var STEP = "";
+                    if (!result.data.content[0].NombreEmpresa ||
+                        !result.data.content[0].SucursalEmpresa ||
+                        !result.data.content[0].DireccionEmpresa ||
+                        !result.data.content[0].RutPagador
+                    ) {
+                        // si falta info de la empresa
+                        STEP = 5.4; //form empresa
+                    } else if (!result.data.content[0].direccionParticular) {
+                        // si no tiene direccion
+                        STEP = 5.2; //form direccion
+                    } else if (!result.data.content[0].telefonoParticular ||
+                        result.data.content[0].telefonoParticular === "0"
+                    ) {
+                        // si no tiene telefono
+                        STEP = 5.3; //form telefono
+                    } else {
+                        // si todos los datos relevantes están llenos
+                        STEP = 5.1; // resumen data
                     }
                     dispatch(handleSetStep(STEP));
 
-                    dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
                     dispatch(
-                        updateForm("rutEmpresa", result.data.content[0].RutPagador)
+                        updateForm("razonSocialForm", result.data.content[0].NombreEmpresa)
                     );
-                    dispatch(updateForm("isAfiliado", "Si"))
-                    dispatch(updateForm("SucursalEmpresa", result.data.content[0].SucursalEmpresa))
-                    dispatch(updateForm("DireccionEmpresa", result.data.content[0].DireccionEmpresa))
-                    dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa))
-                    dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular))
-                    dispatch(updateForm("telefonoParticular", result.data.content[0].telefonoParticular))
-
-
+                    dispatch(updateForm("rutEmpresa", result.data.content[0].RutPagador));
+                    dispatch(updateForm("isAfiliado", "Si"));
+                    dispatch(
+                        updateForm(
+                            "SucursalEmpresa",
+                            result.data.content[0].SucursalEmpresa
+                        )
+                    );
+                    dispatch(
+                        updateForm(
+                            "DireccionEmpresa",
+                            result.data.content[0].DireccionEmpresa
+                        )
+                    );
+                    dispatch(
+                        updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa)
+                    );
+                    dispatch(
+                        updateForm(
+                            "direccionParticular",
+                            result.data.content[0].direccionParticular
+                        )
+                    );
+                    dispatch(
+                        updateForm(
+                            "telefonoParticular",
+                            result.data.content[0].telefonoParticular === "0" ?
+                            "" :
+                            result.data.content[0].telefonoParticular
+                        )
+                    );
                 } else {
-                    dispatch(setStep(500, 0))
-                    dispatch(updateForm("rut", ""))
-                    dispatch(updateForm("razonSocialForm", ""))
-                    dispatch(updateForm("rutEmpresa", ""))
-                    dispatch(updateForm("isAfiliado", "No"))
-                    dispatch(updateForm("SucursalEmpresa", ""))
-                    dispatch(updateForm("DireccionEmpresa", ""))
-                    dispatch(updateForm("comunaEmpresa", ""))
-                    dispatch(updateForm("direccionParticular", ""))
-                    dispatch(updateForm("telefonoParticular", ""))
+                    dispatch(setStep(500, 0));
+                    dispatch(updateForm("rut", ""));
+                    dispatch(updateForm("razonSocialForm", ""));
+                    dispatch(updateForm("rutEmpresa", ""));
+                    dispatch(updateForm("isAfiliado", "No"));
+                    dispatch(updateForm("SucursalEmpresa", ""));
+                    dispatch(updateForm("DireccionEmpresa", ""));
+                    dispatch(updateForm("comunaEmpresa", ""));
+                    dispatch(updateForm("direccionParticular", ""));
+                    dispatch(updateForm("telefonoParticular", ""));
                 }
             })
             .catch((error) => {
