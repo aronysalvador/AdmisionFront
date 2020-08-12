@@ -10,6 +10,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     borderColor: "#FF00FF",
     float: "right",
   },
+  
+  avatarContainer2: {
+    borderColor: "#FF00FF",
+    paddingLeft: "14em",
+    display: "inline-flex",
+  },
   bienvenido: {
     fontSize: "2em",
     fontWeight: "bold",
@@ -33,7 +39,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         width: '54px',
         height: '54px',
         verticalAlign: 'middle',
-    },
+  },
     
     avatarBegin: {
         width: '3.5em',
@@ -57,8 +63,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     justifyContent: "flex-start",
     "&:hover": {
       background: "#104F28",
-    },
   },
+
   img: {
     height: "1.5em",
     width: "1.5em",
@@ -172,10 +178,20 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+      background: "#104F28",
+    },
+  
+  imgCheck: {
+    color: "white",
+    background: "#007A33",
+    borderRadius: "50%",
+    display: "inline-flex",
+    "&:hover": {
+      background: "#104F28"}
   },
   iconCircular: {
     width: "54px",
     height: "54px",
-    verticalAlign: "middle",
-  },
-}));
+    verticalAlign: "middle"
+  }
+  }}));

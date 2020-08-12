@@ -15,10 +15,17 @@ export const getComunStyle = makeStyles((theme) => ({
     background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
     padding: 0,
   },
+  
+
   textAchsContent: {
     fontFamily: "Catamaran",
     fontStyle: "normal",
     color: "#373737",
+  },
+  textAchsContentGreen: {
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    color: "#007A33",
   },
   tituloACHS: {
     fontFamily: "sfUiDisplayCufonfonts",
@@ -227,5 +234,6 @@ export const getComunStyle = makeStyles((theme) => ({
     color: "#787878",
     fontWeight: "bold",
     fontSize: "15px",
-  },
+  }
+
 }));

@@ -54,6 +54,11 @@ import DireccionParticular from "../DireccionParticular/index";
 import PantallaFinal from "../PantallaFinal/PantallaFinal";
 import CreandoCaso from "../PantallaFinal/CreandoCaso";
 
+import AlertaCalificacion from "../AlertaCalificacion/index";
+import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
+import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
+import LoadRazonAlerta from "../Load/loadRazonAlerta";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, dispatch } = props;
@@ -220,6 +225,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+        
       case 10:
         return (
           <div className={layout}>
@@ -228,6 +234,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+     
       case 11:
         return (
           <div className={layout}>
@@ -414,6 +421,35 @@ const Main = (props) => {
             </div>
           </div>
         );
+
+      case 90:
+       return(<div className={layout}>
+            <div className={paper}>
+            <AlertaCalificacion />
+            </div>
+          </div>) ;
+      case 90.1:
+      return(<div className={layout}>
+            <div className={paper}>
+            <AlertaCalificacionRazon />
+            </div>
+          </div>) ;
+        
+      case 90.2:
+      return(<div className={layout}>
+            <div className={paper}>
+            <CausaNolaboral />
+            </div>
+          </div>)
+        
+      case 90.3:
+        return(<div className={layout}>
+            <div className={paper}>
+            <LoadRazonAlerta />
+            </div>
+          </div>)
+        
+
       case 500: {
         sessionStorage.clear();
         return (
