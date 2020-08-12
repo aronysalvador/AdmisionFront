@@ -4,6 +4,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const HasBP = (props) => {
   //const { addmissionForm, dispatch } = props;
@@ -11,6 +12,8 @@ const HasBP = (props) => {
   useEffect(() => {
     //dispatch(saveRut(addmissionForm.rut));
   });
+
+  const { dispatch } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();

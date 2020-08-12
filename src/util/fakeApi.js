@@ -172,7 +172,6 @@ export const getTiposDeContrato = () => {
   return tiposDeContrato;
 };
 
-<<<<<<< HEAD
 
 export const getAffiliateValidations = async (rut) => {
   return {
@@ -219,7 +218,6 @@ export const getAffiliateValidations = async (rut) => {
     ]
   }
 };
-=======
 const razonAlerta = [
   {
     key: 1,
@@ -258,4 +256,3 @@ const razonAlerta = [
 export const getRazonAlerta = async () => {
   return razonAlerta;
 };
->>>>>>> develop
