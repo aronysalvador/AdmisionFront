@@ -407,52 +407,52 @@ const Main = (props) => {
       case 1000:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <CreandoCaso />
-            </div>
+            </Paper>
           </div>
         );
       case 1001:
         return (
-          <div className={layout}>
-            <div className={paper}>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
               <PantallaFinal />
-            </div>
+            </Paper>
           </div>
         );
 
       case 90:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <AlertaCalificacion />
-            </div>
+            </Paper>
           </div>
         );
       case 90.1:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <AlertaCalificacionRazon />
-            </div>
+            </Paper>
           </div>
         );
 
       case 90.2:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <CausaNolaboral />
-            </div>
+            </Paper>
           </div>
         );
 
       case 90.3:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <LoadRazonAlerta />
-            </div>
+            </Paper>
           </div>
         );
 
