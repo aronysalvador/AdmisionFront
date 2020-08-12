@@ -53,7 +53,11 @@ const ErrorCaso = (props) => {
     <div className={comunClass.root}>
       <div className={spaceStyle.space5} />
       <div className={useStyles.center}>
-        <img alt="load" src="./static/caso2.png" className={useStyles.img} />
+        <img
+          alt="load"
+          src="./static/WarningErrorCaso.png"
+          className={useStyles.img}
+        />
       </div>
       <div className={spaceStyle.space3} />
       <Typography
@@ -61,9 +65,9 @@ const ErrorCaso = (props) => {
         gutterBottom
         className={useStyles.text1}
       >
-        Estamos creando
+        Ha ocurrido un error
         <br />
-        tu caso
+        creando tu caso
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography
@@ -71,15 +75,15 @@ const ErrorCaso = (props) => {
         gutterBottom
         className={useStyles.text2}
       >
-        Un momento por favor
+        Por favor, vuelve a intentarlo
       </Typography>
-      <div className={useStyles.center2}>
+      {/* <div className={useStyles.center2}>
         <img
           alt="load"
           src="./static/Loader_1.gif"
           className={useStyles.img2}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
