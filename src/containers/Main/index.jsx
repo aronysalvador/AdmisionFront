@@ -47,7 +47,18 @@ import CategoriaOcupacional from "../CategoriaOcupacional/index";
 import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
 import Cargo from "../Cargo/index";
 
+import PersonalSuccess from "../FeedBack/PersonalSuccess";
+import RelatoSuccess from "../FeedBack/RelatoSuccess";
+
 import DireccionParticular from "../DireccionParticular/index";
+import PantallaFinal from "../PantallaFinal/PantallaFinal";
+import CreandoCaso from "../PantallaFinal/CreandoCaso";
+
+import AlertaCalificacion from "../AlertaCalificacion/index";
+import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
+import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
+import LoadRazonAlerta from "../Load/loadRazonAlerta";
+import ErrorCaso from "../PantallaFinal/ErrorCaso";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -59,329 +70,408 @@ const Main = (props) => {
     localGetAccount();
   }, []);
 
-  const { layout, paper, layoutFix, paperFix } = classes
-  
+  const { layout, paper, layoutFix, paperFix } = classes;
+
   const renderForm = (step) => {
     switch (step) {
       case -1:
         return (
-        <div className={layout}>
-          <div className={paper}>
-            <Load />
+          <div className={layout}>
+            <Paper className={paper}>
+              <Load />
+            </Paper>
           </div>
-        </div>
         );
       case 0:
         return (
           <div className={layout}>
-            <div className={paper}>
-            <Session />
-            </div>
+            <Paper className={paper}>
+              <Session />
+            </Paper>
           </div>
         );
       case 1:
         return (
           <div className={layout}>
-            <div className={paper}>
-               <WelcomeEjecutivo />
-            </div>
+            <Paper className={paper}>
+              <WelcomeEjecutivo />
+            </Paper>
           </div>
-        );        
+        );
       case 1.1:
         return (
           <div className={layoutFix}>
-            <div className={paperFix}>
+            <Paper className={paperFix}>
               <Start />
-            </div>
+            </Paper>
           </div>
-        )
+        );
       case 2:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <Sinister />
-            </div> 
-          </div> 
-            )
+            </Paper>
+          </div>
+        );
       case 3:
         return (
-        <div className={layout}>
-          <div className={paper}>
-            <Identification />
+          <div className={layout}>
+            <Paper className={paper}>
+              <Identification />
+            </Paper>
           </div>
-        </div>
-        )
+        );
       case 4:
         return (
           <div className={layout}>
-            <div className={paper}>
-               <Consitions />
-            </div>
+            <Paper className={paper}>
+              <Consitions />
+            </Paper>
           </div>
         );
       case 5:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <LoadPersonalData />
-            </div>
+            </Paper>
           </div>
         );
       case 5.1:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <PersonalData />
-            </div>
+            </Paper>
           </div>
         );
-      case 5.2: 
+      case 5.2:
         return (
           <div className={layout}>
-            <div className={paper}>
-               <DireccionParticular />
-            </div>
+            <Paper className={paper}>
+              <DireccionParticular />
+            </Paper>
           </div>
-        )
-      case 5.3: 
+        );
+      case 5.3:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <EditarTelefono />
-            </div>
+            </Paper>
           </div>
         );
       case 5.4:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <EditCompany />
-            </div>
+            </Paper>
           </div>
         );
       case 5.5:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <EditarSucursal />
-            </div>
+            </Paper>
           </div>
         );
-      case 5.6: 
+      case 5.6:
         return (
           <div className={layout}>
-            <div className={paper}>
-                <RouteComuna />
-            </div>
+            <Paper className={paper}>
+              <RouteComuna />
+            </Paper>
+          </div>
+        );
+      case 5.7:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <PersonalSuccess />
+            </Paper>
           </div>
         );
       case 6:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <AccidentPlaceForm />
-              </div>
-            </div>
-          );
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AccidentPlaceForm />
+            </Paper>
+          </div>
+        );
       case 7:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <AccidentDescription />
-              </div>
-            </div>
-          );
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AccidentDescription />
+            </Paper>
+          </div>
+        );
       case 8:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <AccidentObjectForm />
-              </div>
-            </div>
-          );  
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AccidentObjectForm />
+            </Paper>
+          </div>
+        );
       case 9:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <FechaHoraSiniestro />
-              </div>
-            </div>
-          );
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <FechaHoraSiniestro />
+            </Paper>
+          </div>
+        );
+
       case 10:
-           return (
-            <div className={layout}>
-              <div className={paper}>
-                <TrabajoHabitual />
-              </div>
-            </div>
-           );
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TrabajoHabitual />
+            </Paper>
+          </div>
+        );
+
       case 11:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <LugarExactoSiniestro />
-              </div>
-            </div>
-          );
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarExactoSiniestro />
+            </Paper>
+          </div>
+        );
       case 12:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <LugarReferenciaSiniestro />
-              </div>
-            </div>
-          );
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarReferenciaSiniestro />
+            </Paper>
+          </div>
+        );
       case 13:
         return (
           <div className={layout}>
-            <div className={paper}>
-               <QuestionWitness />
-            </div>
+            <Paper className={paper}>
+              <QuestionWitness />
+            </Paper>
           </div>
-        );  
+        );
       case 14:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <DataWitness />
-            </div>
+            </Paper>
           </div>
         );
       case 14.1:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <BoxQuestionWitness />
-              </div>
-            </div>
-          )
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <BoxQuestionWitness />
+            </Paper>
+          </div>
+        );
       case 15:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <QuestionResponsable />
-            </div>
+            </Paper>
           </div>
         );
       case 16:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <DataResponsable />
-              </div>
-            </div>
-          );
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <DataResponsable />
+            </Paper>
+          </div>
+        );
       case 17:
         return (
           <div className={layout}>
-            <div className={paper}>
-                <FechaHoraResponsable />
-            </div>
+            <Paper className={paper}>
+              <FechaHoraResponsable />
+            </Paper>
           </div>
         );
       case 17.1:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <BoxQuestionResponsable />
-            </div>
+            </Paper>
           </div>
         );
       case 18:
         return (
           <div className={layout}>
-            <div className={paper}>
-             <Afp />
-            </div>
+            <Paper className={paper}>
+              <Afp />
+            </Paper>
           </div>
-        );  
+        );
       case 19:
         return (
           <div className={layout}>
-            <div className={paper}>
-                <HealthForecast />
-            </div>
+            <Paper className={paper}>
+              <HealthForecast />
+            </Paper>
           </div>
         );
       case 19.1:
         return (
           <div className={layout}>
-            <div className={paper}>
-             <HealthForecastIsapre />
-            </div>
+            <Paper className={paper}>
+              <HealthForecastIsapre />
+            </Paper>
+          </div>
+        );
+      case 19.2:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <RelatoSuccess />
+            </Paper>
           </div>
         );
       case 20:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <TipoJornadaLaboral />
-            </div>
+            </Paper>
           </div>
         );
       case 21:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <JornadaLaboralContainer />
-            </div>
+            </Paper>
           </div>
         );
       case 22:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <Cargo />
-            </div>
+            </Paper>
           </div>
-        ); 
+        );
       case 23:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <CategoriaOcupacional />
-            </div>
+            </Paper>
           </div>
-        ); 
+        );
       case 24:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <TipoDeContrato />
-            </div>
+            </Paper>
           </div>
         );
       case 25:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <Remuneracion />
-              </div>
-            </div>
-          );
-      case 26:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-               <TrabajoActualContainer />
-              </div>
-            </div>
-          ); 
-      case 27: 
         return (
           <div className={layout}>
-            <div className={paper}>
-               <ValidarCorreoElectronico />
-            </div>
+            <Paper className={paper}>
+              <Remuneracion />
+            </Paper>
           </div>
         );
+      case 26:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TrabajoActualContainer />
+            </Paper>
+          </div>
+        );
+      case 27:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <ValidarCorreoElectronico />
+            </Paper>
+          </div>
+        );
+
+      case 1000:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CreandoCaso />
+            </Paper>
+          </div>
+        );
+      case 1001:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <PantallaFinal />
+            </Paper>
+          </div>
+        );
+      case 1002:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <ErrorCaso />
+            </Paper>
+          </div>
+        );
+
+      case 90:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AlertaCalificacion />
+            </Paper>
+          </div>
+        );
+      case 90.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AlertaCalificacionRazon />
+            </Paper>
+          </div>
+        );
+
+      case 90.2:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CausaNolaboral />
+            </Paper>
+          </div>
+        );
+
+      case 90.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LoadRazonAlerta />
+            </Paper>
+          </div>
+        );
+
       case 500: {
         sessionStorage.clear();
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <PacienteNoAfiliadoError />
-            </div>
+            </Paper>
           </div>
         );
       }
@@ -390,11 +480,11 @@ const Main = (props) => {
         sessionStorage.clear();
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <PacienteNoAfiliadoError />
-            </div>
+            </Paper>
           </div>
-        )
+        );
       }
     }
   };
@@ -402,9 +492,7 @@ const Main = (props) => {
   return (
     <MuiThemeProvider>
       <CssBaseline />
-        <Paper>
-          {renderForm(addmissionForm.step)}
-        </Paper>
+      {renderForm(addmissionForm.step)}
     </MuiThemeProvider>
   );
 };

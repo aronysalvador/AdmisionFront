@@ -49,7 +49,7 @@ const HealthForecastIsapre = (props) => {
       return;
     }
     dispatch1(sendIsapres(isapres));
-    dispatch(handleSetStep(20));
+    dispatch(handleSetStep(19.2));
   };
 
   return (

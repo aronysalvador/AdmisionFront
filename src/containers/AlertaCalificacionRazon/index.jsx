@@ -6,38 +6,46 @@ import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
-import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
+import { getRazonAlertaPrincipal } from "./../../redux/actions/AlertaCalificacionRazonAction";
 
-const TipoJornadaLaboral = () => {
+const AlertaCalificacionRazon = () => {
   const {
-    addmissionForm: { step, percentage, tipoJornadaForm },
+    addmissionForm: { step, percentage, razonAlertaForm },
   } = useSelector((state) => state, shallowEqual);
 
   const [tipoJornadaLaboral, setTipoJornadaLaboral] = useState(() => {
-    return !tipoJornadaForm ? "" : tipoJornadaForm;
+    return !razonAlertaForm ? "" : razonAlertaForm;
   });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getJornadaLaboralPrincipal(""));
+    dispatch(getRazonAlertaPrincipal(""));
   }, []);
 
-  const { data: tipoJornadaList } = useSelector(
-    (state) => state.tipoJornadaLaboralForm,
+  const { data: razonAlertaList } = useSelector(
+    (state) => state.razonAlertaForm,
     shallowEqual
   );
 
   const { root, pregunta } = getComunStyle();
 
+  // const handlerGuradarSucursalTexto = (itemForm, data, step) => {
+
+  //   // const { nombre, direccion } = data;
+  //   // const sucursalTexto = nombre;
+  //   // dispatch(updateForm(itemForm, sucursalTexto));
+  //   // dispatch(updateForm("DireccionEmpresa", direccion));
+  // };
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(19.2))}
+        dispatch={() => dispatch(handleSetStep(90))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Selecciona la opción que mejor defina la jornada laboral del paciente
+        Selecciona la razón de la alerta
       </Typography>
 
       <div
@@ -49,15 +57,14 @@ const TipoJornadaLaboral = () => {
           flexWrap: "wrap",
         }}
       >
-        {tipoJornadaList.map((tipoJornada) => (
+        {razonAlertaList.map((razonAlerta) => (
           <BotonSeleccionarCustom
-            key={tipoJornada.id}
-            data={tipoJornada}
-            itemForm={"tipoJornadaForm"}
-            selected={tipoJornada.id === tipoJornadaLaboral.id}
-            step={21}
+            key={razonAlerta.key}
+            data={razonAlerta}
+            itemForm={"razonAlertaForm"}
+            selected={razonAlerta.key === tipoJornadaLaboral.id}
           >
-            <BotonSeleccionarCustomItem {...tipoJornada} />
+            <BotonSeleccionarCustomItem {...razonAlerta} />
           </BotonSeleccionarCustom>
         ))}
       </div>
@@ -65,4 +72,4 @@ const TipoJornadaLaboral = () => {
   );
 };
 
-export default TipoJornadaLaboral;
+export default AlertaCalificacionRazon;
