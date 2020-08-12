@@ -27,23 +27,31 @@ const PersonalData = (props) => {
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
 
-  const handleNext = () =>{
-    var STEP = '';
-    if(!addmissionForm.razonSocialForm || !addmissionForm.SucursalEmpresa || !addmissionForm.DireccionEmpresa || !addmissionForm.rutEmpresa){ // si falta info de la empresa
-      STEP=5.4   //form empresa
+  const handleNext = () => {
+    var STEP = "";
+    if (
+      !addmissionForm.razonSocialForm ||
+      !addmissionForm.SucursalEmpresa ||
+      !addmissionForm.DireccionEmpresa ||
+      !addmissionForm.rutEmpresa
+    ) {
+      // si falta info de la empresa
+      STEP = 5.4; //form empresa
+    } else if (!addmissionForm.direccionParticular) {
+      // si no tiene direccion
+      STEP = 5.2; //form direccion
+    } else if (
+      !addmissionForm.telefonoParticular ||
+      addmissionForm.telefonoParticular === "0"
+    ) {
+      // si no tiene telefono
+      STEP = 5.3; //form telefono
+    } else {
+      // si todos los datos relevantes están llenos
+      STEP = 5.7; // pantalla exito
     }
-    else if(!addmissionForm.direccionParticular){ // si no tiene direccion
-      STEP=5.2    //form direccion
-    }
-    else if(!addmissionForm.telefonoParticular){ // si no tiene telefono
-      STEP=5.3    //form telefono
-    }
-    else{ // si todos los datos relevantes están llenos
-      STEP=5.7  // pantalla exito
-    }    
     dispatch(handleSetStep(STEP));
-  }
-  
+  };
 
   return (
     <div className={comunClass.root}>
@@ -75,7 +83,7 @@ const PersonalData = (props) => {
         <Button
           className={comunClass.buttonAchs}
           //variant="contained"
-          onClick={() => handleNext() }
+          onClick={() => handleNext()}
         >
           Sí, es correcta
         </Button>
