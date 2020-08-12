@@ -37,7 +37,11 @@ export const AdmissionForm = {
   sucursalEmpresaSiniestro: "",
   urlMapasucursalEmpresaSiniestro: "",
   SucursalEmpresaObjeto: {},
+<<<<<<< HEAD
 
   siniestros: [],
   siniestroDetalle: {}
 };
+=======
+};
+>>>>>>> develop

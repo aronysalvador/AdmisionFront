@@ -42,7 +42,7 @@ const PersonalData = (props) => {
   return (
     <div className={comunClass.root}>
       <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.9))}
+        dispatch={() => dispatch(handleSetStep(5.83))}
         color="#373737"
       />
       <div className={spaceStyle.space2} />
@@ -64,7 +64,7 @@ const PersonalData = (props) => {
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}
-            onClick={() => dispatch(handleSetStep(5.93)) }
+            onClick={() => dispatch(handleSetStep(5.9)) }
         >
           Continuar en SAP
         </Button>

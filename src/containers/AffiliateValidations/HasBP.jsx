@@ -52,7 +52,7 @@ const HasBP = (props) => {
         <Button
           className={blackStyle.buttonFooter}
           onClick={() => {
-            //dispatch(handleSetStep(17.1));
+            dispatch(handleSetStep(5.9));
           }}
         >
           Continuar en SAP

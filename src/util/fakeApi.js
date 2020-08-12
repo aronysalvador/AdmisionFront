@@ -96,14 +96,14 @@ export const sucursalesOficina = [
     nombreSucursal: "La Florida 5",
     numero: 2000,
     comunaNombre: "La Florida",
-  }, 
-   {
-     id: 14,
-     key: "13110",
-     nombreSucursal: "La Florida 6",
-     numero: 2000,
-     comunaNombre: "La Florida",
-   },
+  },
+  {
+    id: 14,
+    key: "13110",
+    nombreSucursal: "La Florida 6",
+    numero: 2000,
+    comunaNombre: "La Florida",
+  },
 ];
 
 const razonSocial = [
@@ -143,7 +143,6 @@ const tipoRemuneracion = [
   { id: 1, nombre: "Salario Fijo", selected: false },
   { id: 2, nombre: "Por comisión", selected: false },
   { id: 3, nombre: "Honorarios", selected: false },
-
 ];
 
 export const getTiposRemuneracion = () => {
@@ -162,7 +161,6 @@ export const getCategoriaOcupacional = async () => {
   return categoriaOcupacional;
 };
 
-
 const tiposDeContrato = [
   { id: 1, nombre: "Indefinido" },
   { id: 2, nombre: "Plazo fijo" },
@@ -174,6 +172,7 @@ export const getTiposDeContrato = () => {
   return tiposDeContrato;
 };
 
+<<<<<<< HEAD
 
 export const getAffiliateValidations = async (rut) => {
   return {
@@ -220,3 +219,43 @@ export const getAffiliateValidations = async (rut) => {
     ]
   }
 };
+=======
+const razonAlerta = [
+  {
+    key: 1,
+    nombre: "Posible causa no laboral",
+    tipo: [
+      {
+        key: 1,
+        nombre:
+          "Accidente sin presentación oportuna, sin testigo y aviso tardío a empresa",
+      },
+      {
+        key: 2,
+        nombre: "Accidente en Trámites personales",
+      },
+      {
+        key: 3,
+        nombre: "Accidente ocurrido en el extranjero",
+      },
+      {
+        key: 4,
+        nombre: "Actividad Deportiva y/o Recreativa",
+      },
+      {
+        key: 5,
+        nombre: "Broma en el Lugar de Trabajo",
+      },
+    ],
+  },
+  { key: 2, nombre: "Dirigente sindical en cometido gremial" },
+  { key: 3, nombre: "Trabajo a distancia" },
+  { key: 4, nombre: "Fuerza mayor extraña" },
+  { key: 5, nombre: "Accidente en control médico" },
+  { key: 6, nombre: "No registra alerta" },
+];
+
+export const getRazonAlerta = async () => {
+  return razonAlerta;
+};
+>>>>>>> develop

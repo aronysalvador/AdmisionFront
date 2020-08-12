@@ -3,17 +3,15 @@ import { connect } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import Link from '@material-ui/core/Link'
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import Cabecera from "../../components/cabecera/index";
 import Indiciaciones from "../../components/Indicaciones";
+import Cabecera from "../../components/cabecera/index";
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
-const Start = (props) =>{
+const PersonalSuccess = (props) =>{
     const { dispatch,microsoftReducer } = props;
     const welcomeStyle = getWelcomeStyle();
     const comunStyle = getComunStyle();
@@ -22,8 +20,8 @@ const Start = (props) =>{
         <div className={comunStyle.rootBegin}>
 
             <div className={welcomeStyle.beginContainer}>
-            <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} noSpace={true} />
-                <div className={spaceStyle.space2} >
+              <Cabecera dispatch={() => dispatch(handleSetStep(5.1))} percentage={-1} noSpace={true} />
+               <div className={spaceStyle.space2} >
                     <div className={welcomeStyle.avatarContainerRight}>
                         <Avatar className={welcomeStyle.avatarBegin}>{microsoftReducer.userMsal.iniciales}</Avatar>
                     </div>
@@ -31,29 +29,23 @@ const Start = (props) =>{
             </div>            
 
             <div className={welcomeStyle.TextContainer}>
+                <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
                 <Typography
                 variant="h1"
                 component="h1"
                 className={welcomeStyle.txtBegin}
                 >
-                    ¡Empecemos!
+                    ¡Excelente!
+                </Typography>
+                <Typography
+                variant="h1"
+                component="h1"
+                className={welcomeStyle.txtBegin}
+                >
+                    Usuario Identificado
                 </Typography>
             </div>
 
-            <div className={welcomeStyle.beginContainerCard}>
-                <div className={welcomeStyle.titleContainer}>
-                    <div className={welcomeStyle.divRow}>
-                        <ThumbUpIcon />   
-                        <Typography
-                        variant="p"
-                        component="p"
-                        className={welcomeStyle.titleBegin}
-                        >
-                            Mantén una actitud positiva
-                        </Typography>
-                    </div>
-                </div>
-            </div>
 
             <div className={welcomeStyle.beginContainer}>
                 <Typography
@@ -61,27 +53,27 @@ const Start = (props) =>{
                     component="h5"
                     className={welcomeStyle.subTitleBegin}
                     >
-                   Por ahora ten en cuenta:
+                 Ahora capturarás el relato:
                 </Typography>
         
                 <Indiciaciones
                     indicaciones={[
                         {
                             icono: "espera.svg",
-                            textoPrimario: "Identificar al paciente",
-                            textoSecundario: "recibirás todo para ser atendido",
+                            textoPrimario: "Completa las frases",
+                            textoSecundario: "mientras escuchas con atención",
                             clase: welcomeStyle.divRowBottom,
                         },
                         {
                             icono: "sms.svg",
-                            textoPrimario: "Tomar el relato",
-                            textoSecundario: "incluso al llegar al centro ACHS",
+                            textoPrimario: "Transcribe con fidelidad",
+                            textoSecundario: "usando los tiempos verbales sugeridos",
                             clase: welcomeStyle.divRowBottom,
                         },
                         {
                             icono: "work.svg",
-                            textoPrimario: "Solicitud de datos",
-                            textoSecundario: "pero no tendrás que esperar en sala",
+                            textoPrimario: "Mantén la autenticidad",
+                            textoSecundario: "sin alterar los sucesos",
                             clase: welcomeStyle.divRow,
                         },
                     ]}
@@ -91,20 +83,12 @@ const Start = (props) =>{
                     <Button
                         className={comunStyle.buttonAchs}
                         variant="contained"
-                        onClick={() => dispatch(handleSetStep(2))}
+                        onClick={() => dispatch(handleSetStep(6))}
                     >
-                    Entendido
+                    Capturar el relato
                     </Button>
                 </div>
 
-                <div className={welcomeStyle.beginContainer}>
-                    <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
-                        Al hacer click en empezar,  
-                        <Link className={[comunStyle.textAchsContent,welcomeStyle.terminos,welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
-                            aceptas nuestros  <span style={{textDecoration: 'underline'}}>Términos y condiciones</span>
-                        </Link>
-                    </Typography>
-                </div>
 
             </div> 
         </div>
@@ -117,4 +101,4 @@ function mapStateToProps({ addmissionForm, microsoftReducer}) {
         microsoftReducer: microsoftReducer
     }
 }
-export default connect(mapStateToProps)(Start)
+export default connect(mapStateToProps)(PersonalSuccess)
