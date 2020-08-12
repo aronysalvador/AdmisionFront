@@ -12,19 +12,21 @@ import tipoRemuneracionForm from "../reducers/TipoRemuneracionReducer";
 import tipoContratoForm from "../reducers/TipoContratoReducer";
 import comunaForm from "../reducers/ComunaReducer";
 import sucursalesForm from "../reducers/SucursalesReducer";
+import centrosAchsForm from "../reducers/CentrosAchsReducer";
 
 export default combineReducers({
-  addmissionForm,
-  sucursalesEmpresaSiniestro,
-  previsionForm,
-  microsoftReducer,
-  cargosForm,
-  razonSocialForm,
-  afpForm,
-  tipoJornadaLaboralForm,
-  categoriaOcupacionalForm,
-  tipoRemuneracionForm,
-  tipoContratoForm,
-  comunaForm,
-  sucursalesForm,
+    addmissionForm,
+    sucursalesEmpresaSiniestro,
+    previsionForm,
+    microsoftReducer,
+    cargosForm,
+    razonSocialForm,
+    afpForm,
+    tipoJornadaLaboralForm,
+    categoriaOcupacionalForm,
+    tipoRemuneracionForm,
+    tipoContratoForm,
+    comunaForm,
+    sucursalesForm,
+    centrosAchsForm,
 });

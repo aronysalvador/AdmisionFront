@@ -37,5 +37,5 @@ export const AdmissionForm = {
     sucursalEmpresaSiniestro: "",
     urlMapasucursalEmpresaSiniestro: "",
     SucursalEmpresaObjeto: {},
-    centroAchs: { nombre: "", codigo: "", uoMedica: "", uoTratamiento: "" },
+    centrosForm: {},
 };

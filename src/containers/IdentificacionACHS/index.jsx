@@ -2,24 +2,17 @@ import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getAFP } from "./../../redux/actions/AfpAction";
+import { getCentros } from "./../../redux/actions/CentrosAchsAction";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
-import { sendCentroAchs } from "../../redux/actions/AdmissionAction";
 
-/*
-REVISARE EL 
-  const {
-    addmissionForm: { percentage, afpForm },
-  } = useSelector((state) => state, shallowEqual);
-*/
 const Achs = () => {
   const {
-    addmissionForm: { percentage, afpForm, centroAchs },
+    addmissionForm: { percentage, centrosForm },
   } = useSelector((state) => state, shallowEqual);
 
   const {
@@ -31,28 +24,17 @@ const Achs = () => {
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const [afp, setAFP] = useState(() => {
-    return !afpForm ? "" : afpForm;
+  const [centros, setCENTROS] = useState(() => {
+    return !centrosForm ? "" : centrosForm;
   });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAFP(""));
+    dispatch(getCentros(""));
   }, []);
 
-  const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
-
-  //State
-
-  const nombre = useState(() => {
-    return !centroAchs ? "" : centroAchs.nombre;
-  });
-
-  const clickSendAchs = () => {
-    dispatch(sendCentroAchs(nombre));
-    dispatch(updateForm("achsForm", nombre));
-  };
+  const { data: centrosList } = useSelector((state) => state.centrosAchsForm, shallowEqual);
 
   return (
     <div className={root}>
@@ -69,12 +51,12 @@ const Achs = () => {
         Centro
       </Typography>
       <AutoComplete
-        value={afp}
+        value={centros}
         onChange={(event, value) => {
-          setAFP(value);
+          setCENTROS(value);
         }}
         style={{ width: 300 }}
-        options={afpList}
+        options={centrosList}
         getOptionLabel={(option) => option.nombre}
         renderInput={(params) => (
           <TextField
@@ -98,9 +80,9 @@ const Achs = () => {
           variant="contained"
           className={buttonAchs}
           type="submit"
-          disabled={!afp}
+          disabled={!centros}
           onClick={() => {
-            clickSendAchs()
+            dispatch(updateForm("centrosForm", centros));
             dispatch(handleSetStep(41));
           }}
         >

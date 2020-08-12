@@ -9,7 +9,7 @@ import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
@@ -28,9 +28,9 @@ const SessionAchs = (props) => {
   const spaceStyle = getSpaceStyle();
   const classes = useStyles();
 
-  // const contenidoCentroAchs = [
-  //   addmissionForm.centroAchs.nombre,
-  // ];
+  const contenidoCentroAchs = [
+    addmissionForm.centrosForm.nombre,
+  ];
 
   return (
     <div className={comunStyle.root}>
@@ -103,7 +103,7 @@ const SessionAchs = (props) => {
             src="./static/hospital.png"
             style={{ color: "#007A33" }}
           />
-          contenidoCentroAchs
+          { contenidoCentroAchs }
           <div className={welcomeStyle.textBoxAchs}>Centro</div>
         </div>
         <div className={welcomeStyle.boxCentroAchs}>
