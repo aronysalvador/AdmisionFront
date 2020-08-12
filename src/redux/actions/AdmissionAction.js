@@ -118,7 +118,9 @@ export const saveRut = (rut) => {
           dispatch(
             updateForm(
               "telefonoParticular",
-              result.data.content[0].telefonoParticular
+              result.data.content[0].telefonoParticular === "0"
+                ? ""
+                : result.data.content[0].telefonoParticular
             )
           );
         } else {
