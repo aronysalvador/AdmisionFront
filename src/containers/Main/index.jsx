@@ -76,9 +76,9 @@ const Main = (props) => {
       case -1:
         return (
           <div className={layout}>
-             <Paper className={paper}>
+            <Paper className={paper}>
               <Load />
-             </Paper>
+            </Paper>
           </div>
         );
       case 0:
@@ -94,7 +94,7 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <WelcomeEjecutivo />
-              </Paper>
+            </Paper>
           </div>
         );
       case 1.1:
@@ -225,7 +225,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-        
+
       case 10:
         return (
           <div className={layout}>
@@ -234,7 +234,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-     
+
       case 11:
         return (
           <div className={layout}>
@@ -407,7 +407,6 @@ const Main = (props) => {
       case 1000:
         return (
           <div className={layout}>
-
             <div className={paper}>
               <CreandoCaso />
             </div>
@@ -423,32 +422,39 @@ const Main = (props) => {
         );
 
       case 90:
-       return(<div className={layout}>
+        return (
+          <div className={layout}>
             <div className={paper}>
-            <AlertaCalificacion />
+              <AlertaCalificacion />
             </div>
-          </div>) ;
+          </div>
+        );
       case 90.1:
-      return(<div className={layout}>
+        return (
+          <div className={layout}>
             <div className={paper}>
-            <AlertaCalificacionRazon />
+              <AlertaCalificacionRazon />
             </div>
-          </div>) ;
-        
+          </div>
+        );
+
       case 90.2:
-      return(<div className={layout}>
+        return (
+          <div className={layout}>
             <div className={paper}>
-            <CausaNolaboral />
+              <CausaNolaboral />
             </div>
-          </div>)
-        
+          </div>
+        );
+
       case 90.3:
-        return(<div className={layout}>
+        return (
+          <div className={layout}>
             <div className={paper}>
-            <LoadRazonAlerta />
+              <LoadRazonAlerta />
             </div>
-          </div>)
-        
+          </div>
+        );
 
       case 500: {
         sessionStorage.clear();
@@ -477,7 +483,7 @@ const Main = (props) => {
   return (
     <MuiThemeProvider>
       <CssBaseline />
-     {renderForm(addmissionForm.step)}
+      {renderForm(addmissionForm.step)}
     </MuiThemeProvider>
   );
 };
