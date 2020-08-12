@@ -179,7 +179,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     boxCentroAchs: {
         margin: "7px",
         display: "inline-flex",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         alignItems: "center",
         flexDirection: "column",
         width: "45%",
@@ -188,23 +188,45 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         borderColor: "#007A33",
         borderSpacing: "2px",
         borderRadius: "10px",
-        paddingTop: "15px",
+        paddingTop: "5px",
         paddingBottom: "10px",
         color: "#007A33",
-        fontSize: "1.125em",
+        fontSize: "1.1em",
         fontWeight: "normal",
         fontFamily: "Catamaran",
         fontStyle: "normal",
+        backgroundColor: "#FFFFFF",
     },
     textBoxAchs: {
         fontSize: "0.875em !important"
     },
     backgroundBoxAchs: {
         backgroundColor: "#DFF3F2 !important",
-        padding: "0 !importat"
+        //padding: "0 !importat"
     },
     starIcon: {
-        display: "flex-center",
-        borderRadius: "8em"
-    }
+        display: "flex",
+        borderRadius: "1em",
+        color: "#373737",
+        fontSize: "1.14em",
+        fontWeight: "normal",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        backgroundColor: "#FFFFFF"
+    },
+    star: {
+        color: "#00B2A9 !important",
+    },
+    backPosicion: {
+        marginLeft: "0.5em",
+    },
+    bienvenidoAchs: {
+        fontSize: "1.5em",
+        fontWeight: "bold",
+    },
+    marginStar: {
+        display: "table",
+        marginLeft: "auto",
+        marginRight: "auto",
+    },
 }));
