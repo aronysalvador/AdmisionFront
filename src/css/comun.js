@@ -7,13 +7,6 @@ export const getComunStyle = makeStyles((theme) => ({
         height: "40em",
         backgroundColor: "#F8F9FA",
     },
-<<<<<<< HEAD
-    rootBlack: {
-        position: "relative",
-        width: "22.5em",
-        height: "40em",
-        backgroundColor: "#373737",
-=======
     rootBegin: {
         position: "relative",
         width: "25.5em",
@@ -21,7 +14,6 @@ export const getComunStyle = makeStyles((theme) => ({
         // background:  "linear-gradient(110deg, #F8F9FA, 50%, #E5F5F4, 50%);" ,
         background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
         padding: 0,
->>>>>>> develop
     },
     textAchsContent: {
         fontFamily: "Catamaran",
@@ -68,6 +60,7 @@ export const getComunStyle = makeStyles((theme) => ({
         "&:hover": {
             background: "#104F28",
         },
+        marginTop: "5px"
     },
 
     buttonAchs2: {
@@ -84,6 +77,7 @@ export const getComunStyle = makeStyles((theme) => ({
         color: "#007A33",
         textTransform: "inherit",
         height: "3.5em",
+        marginTop: "5px"
     },
     buttonAchsRight: {
         width: "46%",
@@ -205,5 +199,9 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     emMargin: {
         margin: '0.5em',
+    },
+    textoResaltado: {
+        color: "#00b2a9",
+        margin: "0 5px"
     }
 }));

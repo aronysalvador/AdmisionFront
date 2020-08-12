@@ -1,9 +1,5 @@
 export const AdmissionForm = {
-<<<<<<< HEAD
-  step: 0, //Inicio
-=======
-  step: 4, //Inicio
->>>>>>> develop
+  step: 3, //Inicio
 
   percentage: 0,
   rut: "",
@@ -41,4 +37,7 @@ export const AdmissionForm = {
   sucursalEmpresaSiniestro: "",
   urlMapasucursalEmpresaSiniestro: "",
   SucursalEmpresaObjeto: {},
+
+  siniestros: [],
+  siniestroDetalle: {}
 };

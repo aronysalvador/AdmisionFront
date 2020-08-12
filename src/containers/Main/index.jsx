@@ -51,6 +51,9 @@ import DireccionParticular from "../DireccionParticular/index";
 import HasBP from "../AffiliateValidations/HasBP";
 import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
 import HasSinister from "../AffiliateValidations/HasSinister";
+import HasSinisterDetail from "../AffiliateValidations/HasSinisterDetail";
+import HasSinisterList from "../AffiliateValidations/HasSinisterList";
+import ContinueSAP from "../AffiliateValidations/ContinueSAP";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -62,7 +65,14 @@ const Main = (props) => {
     localGetAccount();
   }, []);
 
-  const { layout, paper, layoutFix, paperFix } = classes;
+  const {
+    layout,
+    paper,
+    layoutFix,
+    paperFix,
+    blackLayout,
+    paperNoColor,
+  } = classes;
 
   const renderForm = (step) => {
     switch (step) {
@@ -179,23 +189,53 @@ const Main = (props) => {
           </div>
         );
       case 5.7:
-        <div className={layout}>
-          <div className={paper}>
-            return <HasBP />;
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasBP />
+            </div>
           </div>
-        </div>;
+        );
       case 5.8:
-        <div className={layout}>
-          <div className={paper}>
-            return <HasScheduledMeet />;
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasScheduledMeet />
+            </div>
           </div>
-        </div>;
+        );
       case 5.9:
-        <div className={layout}>
-          <div className={paper}>
-            return <HasSinister />;
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasSinister />
+            </div>
           </div>
-        </div>;
+        );
+      case 5.91:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <HasSinisterList />
+            </div>
+          </div>
+        );
+      case 5.92:
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasSinisterDetail />
+            </div>
+          </div>
+        );
+      case 5.93:
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <ContinueSAP />
+            </div>
+          </div>
+        );
       case 6:
         return (
           <div className={layout}>

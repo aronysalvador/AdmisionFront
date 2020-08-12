@@ -4,10 +4,9 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
-import { handleSetStep } from '../../redux/actions/AdmissionAction'
 
-const HasSinister = (props) => {
-  const { addmissionForm, dispatch } = props;
+const ContinueSAP = (props) => {
+  //const { addmissionForm, dispatch } = props;
 
   useEffect(() => {
     //dispatch(saveRut(addmissionForm.rut));
@@ -22,7 +21,7 @@ const HasSinister = (props) => {
       <div className={spaceStyle.space2} />
         <img
           alt="load"
-          src="./static/siniestro.png"
+          src="./static/error-siniestro.svg"
           className={blackStyle.img}
         />
       <div className={spaceStyle.space3} />
@@ -33,32 +32,22 @@ const HasSinister = (props) => {
       >
        ¡Atención!
       </Typography>
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
       <Typography
         color="textSecondary"
         gutterBottom
         className={blackStyle.textMessage}
       >
-        Este paciente ya tiene un siniestro
+        Entendido Continíua en SAP
       </Typography>
-      <div className={spaceStyle.space3} />
+      <div className={spaceStyle.space2} />
       <Typography
         color="textSecondary"
         gutterBottom
         className={blackStyle.textFinal}
       >
-        Puedes:
+        Atiéndelo usando SAP
       </Typography>
-      <div className={comunClass.bottomElement}>
-        <Button
-          className={blackStyle.buttonFooter}
-          onClick={() => {
-            dispatch(handleSetStep(5.91));
-          }}
-        >
-          Ver sus(s) siniestro(s)
-        </Button>
-      </div>
     </div>
   );
 };
@@ -67,4 +56,4 @@ const mapStateToProps = ({ addmissionForm }) => {
     addmissionForm: addmissionForm,
   };
 };
-export default connect(mapStateToProps)(HasSinister);
+export default connect(mapStateToProps)(ContinueSAP);

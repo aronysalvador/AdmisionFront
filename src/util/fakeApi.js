@@ -194,27 +194,29 @@ export const getAffiliateValidations = async (rut) => {
     ],
     siniestros: [
       {
-        id: 1,
-        descripcion: 'Trabajo',
-        fecha: '10-08-2020 17:00',
+        id: 17454785,
+        descripcion: 'Trayecto',
+        fecha: '13 Jun 2020',
         CUN: 'CUN',
         codigoUnicoNacionalExterno: 'CUNE',
         cesa: 'CeSa',
         interLComercial: 'InterLComercial',
         tipoLey: 'Tipo Ley',
-        reposoActivo: true
+        reposoActivo: true,
+        hora: '13:24'
       },
       {
-        id: 2,
+        id: 24457874,
         descripcion: 'Trabajo',
-        fecha: '09-08-2020 16:00',
+        fecha: '13 Jun 2020',
         CUN: 'CUN',
         codigoUnicoNacionalExterno: 'CUNE',
         cesa: 'CeSa',
         interLComercial: 'InterLComercial',
         tipoLey: 'Tipo Ley',
-        reposoActivo: true
-      },
+        reposoActivo: true,
+        hora: '18:23'
+      }
     ]
   }
 };
