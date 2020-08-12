@@ -188,9 +188,9 @@ const Main = (props) => {
       case 5.7:
         return (
           <div className={layoutFix}>
-            <div className={layoutFix}>
+            <Paper className={paperFix}>
               <PersonalSuccess />
-            </div>
+            </Paper>
           </div>
         );
       case 6:
