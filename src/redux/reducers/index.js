@@ -13,6 +13,7 @@ import tipoContratoForm from "../reducers/TipoContratoReducer";
 import comunaForm from "../reducers/ComunaReducer";
 import sucursalesForm from "../reducers/SucursalesReducer";
 import razonAlertaForm from "../reducers/AlertaCalificacionRazonReducer";
+import profesionForm from "../reducers/ProfesionReducer";
 
 export default combineReducers({
   addmissionForm,
@@ -29,4 +30,5 @@ export default combineReducers({
   comunaForm,
   sucursalesForm,
   razonAlertaForm,
+  profesionForm,
 });

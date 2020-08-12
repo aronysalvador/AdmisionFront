@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getAFP } from "./../../redux/actions/AfpAction";
+import { getProfesion } from "./../../redux/actions/ProfesionAction";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -36,10 +36,13 @@ const Profesion = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAFP(""));
+    dispatch(getProfesion(""));
   }, []);
 
-  const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
+  const { data: afpList } = useSelector(
+    (state) => state.profesionForm,
+    shallowEqual
+  );
 
   return (
     <div className={root}>
