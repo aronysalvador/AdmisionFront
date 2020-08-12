@@ -5,7 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { saveRut, handleSetStep } from "../../redux/actions/AdmissionAction";
-
+import { Button } from "@material-ui/core";
+import { useDispatch } from "react-redux";
 const getUseStyles = makeStyles({
   center: {
     paddingLeft: "3.4375em",
@@ -48,7 +49,7 @@ const ErrorCaso = (props) => {
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();
-
+  const dispatch = useDispatch();
   return (
     <div className={comunClass.root}>
       <div className={spaceStyle.space5} />
@@ -77,13 +78,15 @@ const ErrorCaso = (props) => {
       >
         Por favor, vuelve a intentarlo
       </Typography>
-      {/* <div className={useStyles.center2}>
-        <img
-          alt="load"
-          src="./static/Loader_1.gif"
-          className={useStyles.img2}
-        />
-      </div> */}
+      <div className={comunClass.bottomElement}>
+        <Button
+          onClick={() => dispatch(handleSetStep(1))}
+          className={comunClass.buttonAchs2}
+          style={{ borderRadius: "10px" }}
+        >
+          Volver al inicio
+        </Button>
+      </div>
     </div>
   );
 };
