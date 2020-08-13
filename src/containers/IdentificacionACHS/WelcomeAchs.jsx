@@ -130,7 +130,7 @@ const SessionAchs = (props) => {
             <Button
               className={comunStyle.buttonAchs}
               variant="contained"
-              onClick={() => dispatch(handleSetStep(2))}
+              onClick={() => dispatch(handleSetStep(5.7))}
             >
               Nueva admisión
             </Button>

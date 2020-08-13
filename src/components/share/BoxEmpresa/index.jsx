@@ -57,12 +57,22 @@ const useStyles = makeStyles({
         fontWeight: 'bold',
         fontSize: '1.4em',
         lineHeight: '1.25',
-        paddingBottom: '0.5em'
     },
+    textRazonSocial: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '1em',
+        lineHeight: '1.25',
+        color: '#00B2A9',
+    },
+    spaceBotton: {
+        paddingBottom: '0.5em'
+    }
   });
 
-const BoxACHS = (props) => {
-    const { titulo, contenido,step } = props
+const BoxEmpresa = (props) => {
+    const { titulo, contenidoDireccionEmpresa, contenidoRazonSocialForm, contenidoRutEmpresa, step } = props
     const classes = useStyles()
     const dispatch = useDispatch();
     return (<div>
@@ -75,12 +85,19 @@ const BoxACHS = (props) => {
                       
                     </div>
                     <div className={classes.contentConteiner}>
-                        {contenido.map((item,index) => {
+                        {contenidoDireccionEmpresa.map((item,index) => {
                             return <div id={index} className={classes.textDireccion}>{item}</div>
                         })}
+                        {contenidoRazonSocialForm.map((item,index) => {
+                            return <div id={index} className={classes.textRazonSocial}>{item}</div>
+                        })}
+                        {contenidoRutEmpresa.map((item,index) => {
+                            return <div id={index} className={classes.textRazonSocial}>{item}</div>
+                        })}
                     </div>
+                    
                 </div>
             </div>
     );
 }
-export default BoxACHS;
+export default BoxEmpresa;
