@@ -1,49 +1,45 @@
 export const AdmissionForm = {
+  step: 0, //Inicio
 
-    step: 0, //Inicio
+  percentage: 0,
+  rut: "",
+  isAfiliado: "",
+  empresa: "",
+  rutEmpresa: "",
+  isapreSeleccionado: {},
 
+  lugarAccidente: "",
+  objetoAccidente: "",
+  descripcionAccidente: "",
 
-    percentage: 0,
-    rut: "",
-    isAfiliado: "",
-    empresa: "",
-    rutEmpresa: "",
-    isapreSeleccionado: {},
+  testigos: { nombre: "", cargo: "" },
+  responsable: [],
+  fechaHoraResponsable: {},
+  fechaHoraSiniestro: {},
 
-    lugarAccidente: "",
-    objetoAccidente: "",
-    descripcionAccidente: "",
+  SucursalEmpresa: "",
+  DireccionEmpresa: "",
+  comunaEmpresa: "",
+  direccionParticular: "",
+  telefonoParticular: "",
 
-    testigos: { nombre: "", cargo: "" },
-    responsable: [],
-    fechaHoraResponsable: {},
-    fechaHoraSiniestro: {},
+  inicioJornadaLaboral: "",
+  finJornadaLaboral: "",
+  ingresoTrabajoActual: "",
+  desarrollarTrabajoHabitual: "",
+  tipoRemuneracion: {},
 
-    SucursalEmpresa: "",
-    DireccionEmpresa: "",
-    comunaEmpresa: "",
-    direccionParticular: "",
-    telefonoParticular: "",
+  tipoDeContrato: {},
 
-    inicioJornadaLaboral: "",
-    finJornadaLaboral: "",
-    ingresoTrabajoActual: "",
-    desarrollarTrabajoHabitual: "",
-    tipoRemuneracion: {},
+  //State de Cargo
+  cargoForm: "",
+  //Lugar Exacto Sinietsro
+  sucursalEmpresaSiniestro: "",
+  urlMapasucursalEmpresaSiniestro: "",
+  SucursalEmpresaObjeto: {},
 
-    tipoDeContrato: {},
-
-    //State de Cargo
-    cargoForm: "",
-    //Lugar Exacto Sinietsro
-    sucursalEmpresaSiniestro: "",
-    urlMapasucursalEmpresaSiniestro: "",
-    SucursalEmpresaObjeto: {},
-
-    centrosForm: {},
-
+  centrosForm: {},
 
   siniestros: [],
-  siniestroDetalle: {}
-
+  siniestroDetalle: {},
 };

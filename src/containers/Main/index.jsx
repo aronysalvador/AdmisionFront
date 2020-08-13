@@ -68,7 +68,9 @@ import ErrorCaso from "../PantallaFinal/ErrorCaso";
 import SameDateSinister from "../AffiliateValidations/SameDateSinister";
 
 import Achs from "../IdentificacionACHS/index";
-import SessionAchs from "../IdentificacionACHS/WelcomeAchs"
+import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
+
+import Profesion from "../Profesion/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -413,6 +415,15 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
+      case 19.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <Profesion />
+            </Paper>
+          </div>
+        );
       case 20:
         return (
           <div className={layout}>
@@ -538,22 +549,31 @@ const Main = (props) => {
           </div>
         );
 
-        case 40:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <Achs />
-              </div>
+      case 40:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <Achs />
             </div>
-          );
-        case 41:
-          return (
-            <div className={layout}>
-              <div className={paper}>
-                <SessionAchs />
-              </div>
           </div>
-          );
+        );
+      case 41:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <SessionAchs />
+            </div>
+          </div>
+        );
+
+      case 100:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <Profesion />
+            </Paper>
+          </div>
+        );
 
       case 500: {
         sessionStorage.clear();
