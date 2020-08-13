@@ -6,7 +6,7 @@ import {
 import Axios from "axios";
 
 export const getData = async () => {
-  return Axios.get(process.env.REACT_APP_AFP);
+  return Axios.get(process.env.REACT_APP_PROFESION);
 };
 
 export const getProfesion = () => async (dispatch) => {
@@ -17,7 +17,7 @@ export const getProfesion = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallProfesion(response.data.content[0]));
+      dispatch(successCallProfesion(response.data.content.response));
     })
     .catch((error) => {
       dispatch(errorCallProfesion());

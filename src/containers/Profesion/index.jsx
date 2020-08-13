@@ -9,15 +9,9 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
-/*
-REVISARE EL 
-  const {
-    addmissionForm: { percentage, afpForm },
-  } = useSelector((state) => state, shallowEqual);
-*/
 const Profesion = () => {
   const {
-    addmissionForm: { percentage, afpForm },
+    addmissionForm: { percentage, profesionForm },
   } = useSelector((state) => state, shallowEqual);
 
   const {
@@ -29,8 +23,8 @@ const Profesion = () => {
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const [afp, setAFP] = useState(() => {
-    return !afpForm ? "" : afpForm;
+  const [profesion, setProfesion] = useState(() => {
+    return !profesionForm ? "" : profesionForm;
   });
 
   const dispatch = useDispatch();
@@ -39,7 +33,7 @@ const Profesion = () => {
     dispatch(getProfesion(""));
   }, []);
 
-  const { data: afpList } = useSelector(
+  const { data: profesionList } = useSelector(
     (state) => state.profesionForm,
     shallowEqual
   );
@@ -59,12 +53,12 @@ const Profesion = () => {
         Profesión
       </Typography>
       <AutoComplete
-        value={afp}
+        value={profesion}
         onChange={(event, value) => {
-          setAFP(value);
+          setProfesion(value);
         }}
         style={{ width: 300 }}
-        options={afpList}
+        options={profesionList}
         getOptionLabel={(option) => option.nombre}
         renderInput={(params) => (
           <TextField
@@ -87,9 +81,9 @@ const Profesion = () => {
         <Button
           variant="contained"
           className={buttonAchs}
-          disabled={!afp}
+          disabled={!profesion}
           onClick={() => {
-            dispatch(updateForm("afpForm", afp));
+            dispatch(updateForm("profesionForm", profesion));
             dispatch(handleSetStep(90));
           }}
         >
