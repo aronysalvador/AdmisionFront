@@ -9,6 +9,7 @@ import {
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
+import { getAffiliateValidations } from "../../util/fakeApi";
 
 const totalSteps = 27;
 
@@ -63,66 +64,100 @@ export const saveRut = (rut) => {
     return (dispatch) => {
         obtenerData(rut)
             .then((result) => {
-                let isAfiliado = result.data.content[0].IsAfiliado;
+
+        console.log("REUSLT", result);
+        let isAfiliado = result.data.content.response.IsAfiliado;
                 if (isAfiliado) {
-                    //dispatch(handleSetStep(5.1));
-                    var STEP = "";
-                    if (!result.data.content[0].NombreEmpresa ||
-                        !result.data.content[0].SucursalEmpresa ||
-                        !result.data.content[0].DireccionEmpresa ||
-                        !result.data.content[0].RutPagador
-                    ) {
-                        // si falta info de la empresa
-                        STEP = 5.4; //form empresa
-                    } else if (!result.data.content[0].direccionParticular) {
-                        // si no tiene direccion
-                        STEP = 5.2; //form direccion
-                    } else if (!result.data.content[0].telefonoParticular ||
-                        result.data.content[0].telefonoParticular === "0"
-                    ) {
-                        // si no tiene telefono
-                        STEP = 5.3; //form telefono
-                    } else {
-                        // si todos los datos relevantes están llenos
-                        STEP = 5.1; // resumen data
-                    }
-                    dispatch(handleSetStep(STEP));
+          console.log("RESULTADO OBTENER DATA", result);
+
+          dispatch(updateForm("citas", result.data.content.response.citas));
+          dispatch(updateForm("siniestros", result.data.content.response.siniestros));
 
                     dispatch(
-                        updateForm("razonSocialForm", result.data.content[0].NombreEmpresa)
+
+            updateForm("razonSocialForm", result.data.content.response.NombreEmpresa)
+
                     );
-                    dispatch(updateForm("rutEmpresa", result.data.content[0].RutPagador));
+
+          dispatch(updateForm("rutEmpresa", result.data.content.response.RutPagador));
+
                     dispatch(updateForm("isAfiliado", "Si"));
                     dispatch(
                         updateForm(
                             "SucursalEmpresa",
-                            result.data.content[0].SucursalEmpresa
+
+              result.data.content.response.SucursalEmpresa
+
                         )
                     );
                     dispatch(
                         updateForm(
                             "DireccionEmpresa",
-                            result.data.content[0].DireccionEmpresa
+
+              result.data.content.response.DireccionEmpresa
+
                         )
                     );
                     dispatch(
-                        updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa)
+
+            updateForm("comunaEmpresa", result.data.content.response.comunaEmpresa)
+
                     );
                     dispatch(
                         updateForm(
                             "direccionParticular",
-                            result.data.content[0].direccionParticular
+
+              result.data.content.response.direccionParticular
+
                         )
                     );
+
                     dispatch(
                         updateForm(
                             "telefonoParticular",
-                            result.data.content[0].telefonoParticular === "0" ?
-                            "" :
-                            result.data.content[0].telefonoParticular
+
+              result.data.content.response.telefonoParticular === "0"
+                ? ""
+                : result.data.content.response.telefonoParticular
+
                         )
                     );
-                } else {
+
+
+          if (!result.data.content.response.BpCreado && false) { 
+            dispatch(handleSetStep(5.81));
+          } else if (result.data.content.response.citas.length > 0 && false) {
+            dispatch(handleSetStep(5.82));
+          } else if (result.data.content.response.siniestros.length > 0 && false) {
+            dispatch(handleSetStep(5.83));
+          } else {
+            //pasó todas las validaciones
+            var STEP = "";
+            if (
+              !result.data.content.response.NombreEmpresa ||
+              !result.data.content.response.SucursalEmpresa ||
+              !result.data.content.response.DireccionEmpresa ||
+              !result.data.content.response.RutPagador
+            ) {
+              // si falta info de la empresa
+              STEP = 5.4; //form empresa
+            } else if (!result.data.content.response.direccionParticular) {
+              // si no tiene direccion
+              STEP = 5.2; //form direccion
+            } else if (
+              !result.data.content.response.telefonoParticular ||
+              result.data.content.response.telefonoParticular === "0"
+            ) {
+              // si no tiene telefono
+              STEP = 5.3; //form telefono
+            } else {
+              // si todos los datos relevantes están llenos
+              STEP = 5.1; // resumen data
+            }
+            dispatch(handleSetStep(STEP));
+          }
+        } else {
+
                     dispatch(setStep(500, 0));
                     dispatch(updateForm("rut", ""));
                     dispatch(updateForm("razonSocialForm", ""));
@@ -142,7 +177,8 @@ export const saveRut = (rut) => {
 };
 
 export const saveAnswer = (answerType, answerValue, step) => {
-    console.log("SAVE ANSWER ACTION");
+
+
     return (dispatch) => {
         dispatch(updateForm(answerType, answerValue));
         dispatch(handleSetStep(step));
