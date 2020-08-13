@@ -64,7 +64,8 @@ export const getComunStyle = makeStyles((theme) => ({
         "&:hover": {
             background: "#104F28",
         },
-    },
+        marginTop: "5px",
+  },
     buttonAchs2: {
         width: "100%",
         background: "#FFFFFF",
@@ -79,7 +80,10 @@ export const getComunStyle = makeStyles((theme) => ({
         color: "#007A33",
         textTransform: "inherit",
         height: "3.5em",
-    },
+
+    marginTop: "5px",
+  },
+
     buttonAchsRight: {
         width: "46%",
         background: "#007A33",
@@ -234,4 +238,8 @@ export const getComunStyle = makeStyles((theme) => ({
         padding: '1em',
         backgroundColor: "#F8F9FA"
     },
+  textoResaltado: {
+    margin: "0 5px",
+    color: "#00b2a9"
+  }
 }));

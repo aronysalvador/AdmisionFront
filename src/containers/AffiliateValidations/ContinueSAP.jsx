@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { saveRut } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const getUseStyles = makeStyles({
   center: {
@@ -44,13 +44,14 @@ const getUseStyles = makeStyles({
   },
 });
 
-const LoadPersonalData = (props) => {
-  const { addmissionForm, dispatch } = props;
+const ContinueSAP = (props) => {
+  const { dispatch } = props;
 
   useEffect(() => {
-    console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);
-    dispatch(saveRut(addmissionForm.rut));
-  },[]);
+    setTimeout(() => {
+      dispatch(handleSetStep(1.1));
+    }, 4000);
+  });
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
@@ -60,11 +61,7 @@ const LoadPersonalData = (props) => {
     <div className={comunClass.root}>
       <div className={spaceStyle.space5} />
       <div className={useStyles.center}>
-        <img
-          alt="load"
-          src="./static/validandoDatos.png"
-          className={useStyles.img}
-        />
+        <img alt="load" src="./static/exito.png" className={useStyles.img} />
       </div>
       <div className={spaceStyle.space3} />
       <Typography
@@ -72,9 +69,9 @@ const LoadPersonalData = (props) => {
         gutterBottom
         className={useStyles.text1}
       >
-        Estamos validando
+        Entendido
         <br />
-        tus datos
+        Continúa en SAP
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography
@@ -95,8 +92,8 @@ const LoadPersonalData = (props) => {
   );
 };
 const mapStateToProps = ({ addmissionForm }) => {
-  return {
+  return { 
     addmissionForm: addmissionForm,
   };
 };
-export default connect(mapStateToProps)(LoadPersonalData);
+export default connect(mapStateToProps)(ContinueSAP);

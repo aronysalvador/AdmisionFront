@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { saveRut } from "../../redux/actions/AdmissionAction";
+import { saveRut, handleSetStep } from "../../redux/actions/AdmissionAction";
+import { Button } from "@material-ui/core";
 
 const getUseStyles = makeStyles({
   center: {
@@ -34,6 +35,10 @@ const getUseStyles = makeStyles({
     alignItems: "center",
     color: "#081C15",
   },
+  text3: {
+    color: "#007A33",
+    padding: "0 50px"
+  },
   center2: {
     paddingLeft: "7.625em",
     paddingRight: "7.625em",
@@ -44,13 +49,8 @@ const getUseStyles = makeStyles({
   },
 });
 
-const LoadPersonalData = (props) => {
+const SameDateSinister = (props) => {
   const { addmissionForm, dispatch } = props;
-
-  useEffect(() => {
-    console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);
-    dispatch(saveRut(addmissionForm.rut));
-  },[]);
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
@@ -60,11 +60,7 @@ const LoadPersonalData = (props) => {
     <div className={comunClass.root}>
       <div className={spaceStyle.space5} />
       <div className={useStyles.center}>
-        <img
-          alt="load"
-          src="./static/validandoDatos.png"
-          className={useStyles.img}
-        />
+        <img alt="load" src="./static/notificacion.png" className={useStyles.img} />
       </div>
       <div className={spaceStyle.space3} />
       <Typography
@@ -72,24 +68,25 @@ const LoadPersonalData = (props) => {
         gutterBottom
         className={useStyles.text1}
       >
-        Estamos validando
-        <br />
-        tus datos
+        ¡Atención!
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography
         color="textSecondary"
         gutterBottom
-        className={useStyles.text2}
+        className={[useStyles.text3, useStyles.text2]}
       >
-        Un momento por favor
+        Este paciente tiene un siniestro activo en la misma fecha
       </Typography>
-      <div className={useStyles.center2}>
-        <img
-          alt="load"
-          src="./static/Loader_1.gif"
-          className={useStyles.img2}
-        />
+
+      
+      <div className={comunClass.bottomElement}>
+        <Button
+          className={comunClass.buttonAchs}
+            onClick={() => dispatch(handleSetStep(5.1)) }
+        >
+          Entendido
+        </Button>
       </div>
     </div>
   );
@@ -99,4 +96,4 @@ const mapStateToProps = ({ addmissionForm }) => {
     addmissionForm: addmissionForm,
   };
 };
-export default connect(mapStateToProps)(LoadPersonalData);
+export default connect(mapStateToProps)(SameDateSinister);
