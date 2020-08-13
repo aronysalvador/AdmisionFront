@@ -247,8 +247,8 @@ const Main = (props) => {
 
       case 11.1:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
               <LugarSiniestroMapaSelection />
             </Paper>
           </div>

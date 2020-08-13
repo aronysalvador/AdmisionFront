@@ -15,6 +15,12 @@ export const getComunStyle = makeStyles((theme) => ({
     background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
     padding: 0,
   },
+  rootContainer: {
+    position: "relative",
+    width: "25.5em",
+    height: "40em",
+    backgroundColor: "#F8F9FA",
+  },
   
 
   textAchsContent: {

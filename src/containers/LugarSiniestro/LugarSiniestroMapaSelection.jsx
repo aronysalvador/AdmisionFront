@@ -8,7 +8,16 @@ import Mapa from '../../components/share/DireccionGeo/Mapa'
 
 const LugarSiniestroMapaSelection = () => {
 
+  const [direccion, setDireccion]=useState(null)
+  const [placeId, setPlaceId]=useState(null)
+  const [mapa, setMapa]=useState(null)
+
   const dispatch = useDispatch()
+
+  const {
+    addmissionForm: {  percentage },
+  } = useSelector((state) => state, shallowEqual)
+
 
   useEffect(()=>{
       getLocation()
@@ -17,8 +26,16 @@ const LugarSiniestroMapaSelection = () => {
   const [coords, setCoords]= useState(null)
 
   const getLocation = () => {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    // {maximumAge:60000, timeout:5000, enableHighAccuracy:true}
+
     navigator.geolocation.getCurrentPosition(
         function(position) {
+          console.log("coords")
           console.log(position.coords)
             setCoords({
                 latitude: position.coords.latitude,
@@ -27,41 +44,80 @@ const LugarSiniestroMapaSelection = () => {
         },
         function(error) {
              console.error("Error Code = " + error.code + " - " + error.message);
-        }
+             setCoords({
+              latitude: 'notset',
+              longitude: 'notset',
+            })
+        },
+        options
     );
   }
 
-  const {
-    root,
-    buttonAchs,   
-    bottomElement,
-  } = getComunStyle()
+  const comun = getComunStyle()
+
+  const handleSelect = async() => {
+    // console.log(direccion)
+    // console.log(placeId)
+    googleMapsGetMap(placeId)
+    dispatch(updateForm("sucursalEmpresaSiniestro", 
+    {
+      description: direccion,
+      place_id: placeId, 
+      reference: placeId, 
+      structured_formatting:{
+        main_text: direccion.split(',')[0],
+        secondary_text: direccion.split(',')[1]+', '+direccion.split(',')[2]
+      },
+      types: [
+        "street_address",
+        "geocode" 
+      ]
+    }
+    ))
+
+    dispatch(handleSetStep(11))
+   
+  }
+
+  const googleMapsGetMap = async(placeId) => {
+    if(placeId){
+      console.log("place")
+      let urlMapa =  `https://wa-desa-msorquestador.azurewebsites.net/api/geo/getMapaEstatico?id=${placeId}&size=300x280`
+      dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
+    }else{
+      console.log("no place")
+    }
+}
 
 
   return (
-    <div className={root}>
+    <div className={comun.rootContainer}> 
       <Cabecera
         dispatch={() => dispatch(handleSetStep(11))}
-        percentage={-1}
+        percentage={percentage}
+        noSpace={true}
       />
 
         {coords ? (
                <Mapa 
                 lat={coords.latitude}
                 lng={coords.longitude}
+                direccion={direccion}
+                setDireccion={setDireccion}
+                setPlaceId={setPlaceId}                
                />
         ) : (
            <Typography>Cargando....</Typography>
         )}
 
 
-      <div className={bottomElement}>
+      <div className={comun.bottomElement} style={{padding: '0 20px 20px 20px'}}>
         <Button
-          className={buttonAchs}
+          className={comun.buttonAchs}
           variant="contained"
-        //   disabled={!sucursal || !isLugarExactoAccidenteValid}
+          disabled={direccion ? false : true}
           onClick={() => {
-          console.log("select")
+            handleSelect()
           }}
         >
           Seleccionar dirección

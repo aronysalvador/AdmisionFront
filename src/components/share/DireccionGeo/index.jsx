@@ -82,6 +82,7 @@ const DireccionGeo = (props) => {
                       if(newValue.description==='Fijar en el mapa'){
                         showDinamicMap()
                       }else{
+                        console.log(newValue)
                         setDireccion(newValue);
                         googleMapsGetMap(newValue)
                       }     

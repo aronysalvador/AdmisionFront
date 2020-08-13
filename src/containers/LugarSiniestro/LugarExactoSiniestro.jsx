@@ -12,7 +12,7 @@ const LugarExactoSiniestro = () => {
   } = useSelector((state) => state, shallowEqual)
 
   const [sucursal, setSucursal] = useState(() => {
-    return !sucursalEmpresaSiniestro ? "" : sucursalEmpresaSiniestro
+    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : ""
   })
   const [mapaUrl, setMapaUrl] = useState(() => {
     return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : ""
