@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { saveRut, handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const getUseStyles = makeStyles({
   center: {
@@ -45,7 +45,7 @@ const getUseStyles = makeStyles({
 });
 
 const ContinueSAP = (props) => {
-  const { addmissionForm, dispatch } = props;
+  const { dispatch } = props;
 
   useEffect(() => {
     setTimeout(() => {
@@ -92,7 +92,7 @@ const ContinueSAP = (props) => {
   );
 };
 const mapStateToProps = ({ addmissionForm }) => {
-  return {
+  return { 
     addmissionForm: addmissionForm,
   };
 };

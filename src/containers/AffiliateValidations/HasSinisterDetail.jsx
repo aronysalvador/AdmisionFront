@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography } from "@material-ui/core";
+import {  Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
-import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 
@@ -17,7 +16,6 @@ const HasSinisterDetail = (props) => {
   });
 
   const spaceStyle = getSpaceStyle();
-  const comunClass = getComunStyle();
   const blackStyle = getBlackTheme();
 
   return (
@@ -94,7 +92,7 @@ const HasSinisterDetail = (props) => {
         <Typography
           color="textSecondary"
           gutterBottom
-          className={blackStyle.textDetailSimple}
+          className={blackStyle.textDetailSimple} 
         >
           Paciente
         </Typography>

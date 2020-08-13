@@ -65,6 +65,7 @@ import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
 import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
+import SameDateSinister from "../AffiliateValidations/SameDateSinister";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -144,8 +145,6 @@ const Main = (props) => {
           </div>
         );
       case 5:
-        
-        console.log("5")
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -210,7 +209,6 @@ const Main = (props) => {
           </div>
         );
       case 5.81:
-        console.log("5.81")
         return (
           <div className={blackLayout}>
             <div className={paperNoColor}>
@@ -219,8 +217,7 @@ const Main = (props) => {
           </div>
         );
       case 5.82:
-        console.log("5.82")
-        return (         
+        return (
           <div className={blackLayout}>
             <div className={paperNoColor}>
               <HasScheduledMeet />
@@ -228,7 +225,6 @@ const Main = (props) => {
           </div>
         );
       case 5.83:
-        console.log("5.83")
         return (
           <div className={blackLayout}>
             <div className={paperNoColor}>
@@ -249,6 +245,14 @@ const Main = (props) => {
           <div className={blackLayout}>
             <div className={paperNoColor}>
               <HasSinisterDetail />
+            </div>
+          </div>
+        );
+      case 5.833:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <SameDateSinister />
             </div>
           </div>
         );

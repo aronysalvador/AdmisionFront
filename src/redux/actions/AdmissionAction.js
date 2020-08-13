@@ -63,56 +63,72 @@ export const saveRut = (rut) => {
   return (dispatch) => {
     obtenerData(rut)
       .then((result) => {
-        let isAfiliado = result.data.content[0].IsAfiliado;
+        console.log("REUSLT", result);
+        let isAfiliado = result.data.content.response.IsAfiliado;
         if (isAfiliado) {
           console.log("RESULTADO OBTENER DATA", result);
 
-          dispatch(updateForm("citas", result.data.content[0].citas));
-          dispatch(updateForm("siniestros", result.data.content[0].siniestros));
-
-          dispatch(updateForm("razonSocialForm", result.data.content[0].NombreEmpresa));
-          
-          console.log("razon social");
-
-          dispatch(updateForm("rutEmpresa", result.data.content[0].RutPagador));
-          console.log("rut empresa");
-
+          dispatch(updateForm("citas", result.data.content.response.citas));
+          dispatch(updateForm("siniestros", result.data.content.response.siniestros));
+          dispatch(
+            updateForm("razonSocialForm", result.data.content.response.NombreEmpresa)
+          );
+          dispatch(updateForm("rutEmpresa", result.data.content.response.RutPagador));
           dispatch(updateForm("isAfiliado", "Si"));
+          dispatch(
+            updateForm(
+              "SucursalEmpresa",
+              result.data.content.response.SucursalEmpresa
+            )
+          );
+          dispatch(
+            updateForm(
+              "DireccionEmpresa",
+              result.data.content.response.DireccionEmpresa
+            )
+          );
+          dispatch(
+            updateForm("comunaEmpresa", result.data.content.response.comunaEmpresa)
+          );
+          dispatch(
+            updateForm(
+              "direccionParticular",
+              result.data.content.response.direccionParticular
+            )
+          );
 
-          dispatch(updateForm("SucursalEmpresa", result.data.content[0].SucursalEmpresa));
-          console.log("sucursal empresa");
+          dispatch(
+            updateForm(
+              "telefonoParticular",
+              result.data.content.response.telefonoParticular === "0"
+                ? ""
+                : result.data.content.response.telefonoParticular
+            )
+          );
 
-          dispatch(updateForm("DireccionEmpresa", result.data.content[0].DireccionEmpresa));
-          dispatch(updateForm("comunaEmpresa", result.data.content[0].comunaEmpresa));
-          dispatch(updateForm("direccionParticular", result.data.content[0].direccionParticular));
-
-          dispatch( updateForm("telefonoParticular",result.data.content[0].telefonoParticular === "0" ? "": result.data.content[0].telefonoParticular));
-          console.log("telefono particular");
-
-          //dispatch(handleSetStep(5.9));
-          if (result.data.content[0].BpCreado) {
+          if (!result.data.content.response.BpCreado && false) { 
             dispatch(handleSetStep(5.81));
-          } else if (result.data.content[0].citas.length > 0) {
+          } else if (result.data.content.response.citas.length > 0 && false) {
             dispatch(handleSetStep(5.82));
-          } else if (result.data.content[0].siniestros.length > 0) {
+          } else if (result.data.content.response.siniestros.length > 0 && false) {
             dispatch(handleSetStep(5.83));
           } else {
             //pasó todas las validaciones
             var STEP = "";
             if (
-              !result.data.content[0].NombreEmpresa ||
-              !result.data.content[0].SucursalEmpresa ||
-              !result.data.content[0].DireccionEmpresa ||
-              !result.data.content[0].RutPagador
+              !result.data.content.response.NombreEmpresa ||
+              !result.data.content.response.SucursalEmpresa ||
+              !result.data.content.response.DireccionEmpresa ||
+              !result.data.content.response.RutPagador
             ) {
               // si falta info de la empresa
               STEP = 5.4; //form empresa
-            } else if (!result.data.content[0].direccionParticular) {
+            } else if (!result.data.content.response.direccionParticular) {
               // si no tiene direccion
               STEP = 5.2; //form direccion
             } else if (
-              !result.data.content[0].telefonoParticular ||
-              result.data.content[0].telefonoParticular === "0"
+              !result.data.content.response.telefonoParticular ||
+              result.data.content.response.telefonoParticular === "0"
             ) {
               // si no tiene telefono
               STEP = 5.3; //form telefono

@@ -6,7 +6,7 @@ import Link from "@material-ui/core/Link";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const CabeceraSinBarra = (props) => {
-  const { dispatch, percentage, color } = props;
+  const { dispatch, color } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 

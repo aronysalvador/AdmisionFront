@@ -6,7 +6,6 @@ export const getBlackTheme = makeStyles((theme) => ({
     width: "22.5em",
     height: "40em",
     display: "flex",
-    position: "relative",
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -68,7 +67,6 @@ export const getBlackTheme = makeStyles((theme) => ({
   buttonFooter: {
     width: "100%",
     background: "#FFFFFF",
-    borderRadius: "0.25",
     fontFamily: "Catamaran",
     fontStyle: "normal",
     fontWeight: "bold",
@@ -86,7 +84,6 @@ export const getBlackTheme = makeStyles((theme) => ({
   buttonFooter2: {
     marginTop: "5px",
     width: "100%",
-    borderRadius: "0.25",
     fontFamily: "Catamaran",
     fontStyle: "normal",
     fontWeight: "bold",

@@ -13,8 +13,25 @@ const PersonalData = (props) => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const tituloEmpresa = "Empresa";
-  const contenidoSiniestro = addmissionForm.siniestros;
+  const contenidoSiniestros = addmissionForm.siniestros;
+
+  
+  const handleNext = () => {
+    let fechaActual = new Date();
+    fechaActual.setHours(0,0,0,0);
+    let busqueda = contenidoSiniestros.find((x) => {
+        // let nuevaFecha = new Date(Date.parse("08-13-2020 17:00"));
+        let nuevaFecha = new Date(Date.parse(x.fecha));
+        nuevaFecha.setHours(0,0,0,0);    
+        
+        return nuevaFecha.getTime() === fechaActual.getTime()});
+    if(busqueda === undefined){
+        dispatch(handleSetStep(5.1));
+    }
+    else {
+        dispatch(handleSetStep(5.833));
+    }
+  };
 
   //   const tituloDireccion = "Dirección particular";
   //   const contenidoDireccion = [addmissionForm.direccionParticular];
@@ -50,14 +67,14 @@ const PersonalData = (props) => {
         <Typography variant="p" component="p" className={comunClass.pregunta}>
           Antonio Romero tiene
           <div className={comunClass.textoResaltado}>
-            {contenidoSiniestro.length} episodios
+            {contenidoSiniestros.length} episodios
           </div>
           activos
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
 
-      {contenidoSiniestro.map((siniestro) => (
+      {contenidoSiniestros.map((siniestro) => (
         <CardSiniestro siniestro={siniestro}></CardSiniestro>
       ))}
 
@@ -70,7 +87,7 @@ const PersonalData = (props) => {
         </Button>
         <Button
           className={comunClass.buttonAchs2}
-          onClick={() => dispatch(handleSetStep(5.1))}
+          onClick={() => handleNext()}
           //variant="contained"
           //onClick={() => handleNext() }
         >
