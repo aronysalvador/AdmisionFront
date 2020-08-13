@@ -53,7 +53,7 @@ const Session = (props) => {
       </div>
       <div className={spaceStyle.space1} />
       <div>
-        <Button className={welcomeStyle.button} variant="contained">
+        <Button className={welcomeStyle.button} variant="contained" onClick={() => dispatch(handleSetStep(40))}>
           <EditIcon className={welcomeStyle.img} />
           {/* <img alt="Centro Alameda" src="./static/editar.png" className={custom.img} /> */}
           &nbsp;Centro Alameda

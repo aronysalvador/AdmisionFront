@@ -7,7 +7,6 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { any } from "prop-types";
 
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();

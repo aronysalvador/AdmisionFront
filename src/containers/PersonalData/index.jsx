@@ -65,7 +65,7 @@ const PersonalData = (props) => {
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
-      <BoxACHS titulo={tituloEmpresa} contenido={contenidoEmpresa} step={5.4} />
+      <BoxACHS contenido={contenidoEmpresa} titulo={tituloEmpresa} step={5.4} />
       <div className={spaceStyle.spaceMin1} />
       <BoxACHS
         titulo={tituloDireccion}

@@ -51,6 +51,12 @@ import PersonalSuccess from "../FeedBack/PersonalSuccess";
 import RelatoSuccess from "../FeedBack/RelatoSuccess";
 
 import DireccionParticular from "../DireccionParticular/index";
+import HasBP from "../AffiliateValidations/HasBP";
+import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
+import HasSinister from "../AffiliateValidations/HasSinister";
+import HasSinisterDetail from "../AffiliateValidations/HasSinisterDetail";
+import HasSinisterList from "../AffiliateValidations/HasSinisterList";
+import ContinueSAP from "../AffiliateValidations/ContinueSAP";
 import PantallaFinal from "../PantallaFinal/PantallaFinal";
 import CreandoCaso from "../PantallaFinal/CreandoCaso";
 
@@ -59,6 +65,10 @@ import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
 import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
+import SameDateSinister from "../AffiliateValidations/SameDateSinister";
+
+import Achs from "../IdentificacionACHS/index";
+import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 
 import Profesion from "../Profesion/index";
 
@@ -72,7 +82,14 @@ const Main = (props) => {
     localGetAccount();
   }, []);
 
-  const { layout, paper, layoutFix, paperFix } = classes;
+  const {
+    layout,
+    paper,
+    layoutFix,
+    paperFix,
+    blackLayout,
+    paperNoColor,
+  } = classes;
 
   const renderForm = (step) => {
     switch (step) {
@@ -194,6 +211,62 @@ const Main = (props) => {
             <Paper className={paperFix}>
               <PersonalSuccess />
             </Paper>
+          </div>
+        );
+      case 5.81:
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasBP />
+            </div>
+          </div>
+        );
+      case 5.82:
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasScheduledMeet />
+            </div>
+          </div>
+        );
+      case 5.83:
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasSinister />
+            </div>
+          </div>
+        );
+      case 5.831:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <HasSinisterList />
+            </div>
+          </div>
+        );
+      case 5.832:
+        return (
+          <div className={blackLayout}>
+            <div className={paperNoColor}>
+              <HasSinisterDetail />
+            </div>
+          </div>
+        );
+      case 5.833:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <SameDateSinister />
+            </div>
+          </div>
+        );
+      case 5.9:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <ContinueSAP />
+            </div>
           </div>
         );
       case 6:
@@ -464,6 +537,23 @@ const Main = (props) => {
             <Paper className={paper}>
               <LoadRazonAlerta />
             </Paper>
+          </div>
+        );
+
+      case 40:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <Achs />
+            </div>
+          </div>
+        );
+      case 41:
+        return (
+          <div className={layout}>
+            <div className={paper}>
+              <SessionAchs />
+            </div>
           </div>
         );
 

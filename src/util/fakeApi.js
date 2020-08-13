@@ -172,6 +172,52 @@ export const getTiposDeContrato = () => {
   return tiposDeContrato;
 };
 
+
+export const getAffiliateValidations = async (rut) => {
+  return {
+    id: 1, 
+    BPValue: '1002615349',
+    rutAfiliado: rut,
+    citas: [
+      {
+        fecha: '10-08-2020 17:00',
+        lugar: 'Puente Alto',
+        unidad: 'Cirugía'
+      },
+      {
+        fecha: '08-08-2020 13:00',
+        lugar: 'Providencia',
+        unidad: 'Dermatología'
+      }
+    ],
+    siniestros: [
+      {
+        id: 17454785,
+        descripcion: 'Trayecto',
+        fecha: '13 Jun 2020',
+        CUN: 'CUN',
+        codigoUnicoNacionalExterno: 'CUNE',
+        cesa: 'CeSa',
+        interLComercial: 'InterLComercial',
+        tipoLey: 'Tipo Ley',
+        reposoActivo: true,
+        hora: '13:24'
+      },
+      {
+        id: 24457874,
+        descripcion: 'Trabajo',
+        fecha: '13 Jun 2020',
+        CUN: 'CUN',
+        codigoUnicoNacionalExterno: 'CUNE',
+        cesa: 'CeSa',
+        interLComercial: 'InterLComercial',
+        tipoLey: 'Tipo Ley',
+        reposoActivo: true,
+        hora: '18:23'
+      }
+    ]
+  }
+};
 const razonAlerta = [
   {
     key: 1,
