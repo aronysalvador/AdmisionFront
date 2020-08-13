@@ -60,6 +60,9 @@ import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
 
+import Achs from "../IdentificacionACHS/index";
+import SessionAchs from "../IdentificacionACHS/WelcomeAchs"
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, dispatch } = props;
@@ -464,6 +467,23 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
+        case 40:
+          return (
+            <div className={layout}>
+              <div className={paper}>
+                <Achs />
+              </div>
+            </div>
+          );
+        case 41:
+          return (
+            <div className={layout}>
+              <div className={paper}>
+                <SessionAchs />
+              </div>
+          </div>
+          );
 
       case 500: {
         sessionStorage.clear();
