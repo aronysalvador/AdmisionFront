@@ -41,7 +41,7 @@ const Profesion = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(17.1))}
+        dispatch={() => dispatch(handleSetStep(19.2))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -84,7 +84,7 @@ const Profesion = () => {
           disabled={!profesion}
           onClick={() => {
             dispatch(updateForm("profesionForm", profesion));
-            dispatch(handleSetStep(90));
+            dispatch(handleSetStep(20));
           }}
         >
           Siguiente
