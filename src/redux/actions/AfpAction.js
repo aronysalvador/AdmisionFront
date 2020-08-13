@@ -17,7 +17,7 @@ export const getAFP = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallAFP(response.data.content.response));
+      dispatch(successCallAFP(response.data.content[0]));
     })
     .catch((error) => {
       dispatch(errorCallAFP());
