@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef,useEffect} from "react";
 import { withFormik } from "formik";
 import { connect } from "react-redux";
 import { updateForm, handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -9,13 +9,44 @@ import Typography from "@material-ui/core/Typography";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
+class Campo extends React.Component{
+  simulateClick(e) {
+    e.click()    
+  }
+  render(){
+    // return <div className="UFIInputContainer"
+    // ref={this.simulateClick} onClick={()=> console.log('clicked')}>
+    //   hello
+    //   </div>
+
+      return(
+        <TextField className="UFIInputContainer"  ref={this.simulateClick} onClick={()=> console.log('clicked 5')} inputProps={{ inputMode: 'numeric', autoFocus: true}}  />
+      )
+  }
+}
+
+// const Campo = () => {
+
+//   const searchRef = useRef(null);
+
+//   useEffect(() => {
+//     setTimeout(() => { console.log("focus"); searchRef.current.focus() }, 2000)
+//     }, []);
+
+//     return(
+//       <TextField  
+//       inputProps={{ inputMode: 'numeric'}}
+//        inputRef={searchRef} />
+//     )
+// }
+
 const form = (props) => {
   const {
     values,
     touched,
     errors,
-    isSubmitting,
-    handleChange,
+    isSubmitting, 
+    handleChange, 
     handleBlur,
     handleSubmit,
   } = props;
@@ -23,7 +54,10 @@ const form = (props) => {
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
+
+
   return (
+
     <form onSubmit={handleSubmit}>
       <div>
         <Typography
@@ -35,8 +69,12 @@ const form = (props) => {
         </Typography>{" "}
       </div>{" "}
       <div className={spaceStyle.space2} />{" "}
+
+
+    <Campo />
+
       <Typography className={classesComun.tituloTextbox}>
-        RUT
+        RUT..
       </Typography>
       <div>
         <TextField
@@ -50,6 +88,7 @@ const form = (props) => {
           margin="dense"
           variant="outlined"
           fullWidth
+          // inputProps={{ inputMode: 'numeric', autoFocus: true}}
         />
       </div>{" "}
       <div className={spaceStyle.space12} />{" "}
