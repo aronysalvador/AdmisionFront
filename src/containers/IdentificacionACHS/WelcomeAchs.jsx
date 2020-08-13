@@ -12,8 +12,6 @@ import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import { makeStyles } from '@material-ui/core/styles';
-import Fab from "@material-ui/core/Fab";
-import EditIcon from "@material-ui/icons/Edit";
 import StarIcon from '@material-ui/icons/Star';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +44,7 @@ const SessionAchs = (props) => {
             {microsoftReducer.userMsal.iniciales}
           </Avatar>
         </div>
-        <Fab size="small" aria-label="edit" className={welcomeStyle.imgEdit}><EditIcon /></Fab>
+        
         <div className={spaceStyle.space1} />
         <div className={welcomeStyle.bienvenidoContainer}>
           <Typography
