@@ -6,6 +6,7 @@ import Cabecera from "../../components/cabecera/index";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHS from "../../components/share/BoxACHS/index";
+import BoxEmpresa from "../../components/share/BoxEmpresa/index";
 import Button from "@material-ui/core/Button";
 
 const PersonalData = (props) => {
@@ -13,13 +14,16 @@ const PersonalData = (props) => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const tituloEmpresa = "Empresa";
-  const contenidoEmpresa = [
-    addmissionForm.razonSocialForm,
-    addmissionForm.SucursalEmpresa,
-    addmissionForm.DireccionEmpresa,
-    addmissionForm.rutEmpresa,
-  ];
+  const tituloEmpresa = "Dirección de la Sucursal";
+  // const contenidoEmpresa = [
+  //   addmissionForm.DireccionEmpresa,
+  //   addmissionForm.SucursalEmpresa,
+  //   addmissionForm.razonSocialForm,
+  //   addmissionForm.rutEmpresa,
+  // ];
+  const contenidoDireccionEmpresa = [addmissionForm.DireccionEmpresa];
+  const contenidoRazonSocialForm = [addmissionForm.razonSocialForm];
+  const contenidoRutEmpresa = [addmissionForm.rutEmpresa];
 
   const tituloDireccion = "Dirección particular";
   const contenidoDireccion = [addmissionForm.direccionParticular];
@@ -61,11 +65,16 @@ const PersonalData = (props) => {
       />
       <div>
         <Typography variant="p" component="p" className={comunClass.pregunta}>
-          Por favor, verifica la información
+          Pide al paciente que verifique sus datos:
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
-      <BoxACHS contenido={contenidoEmpresa} titulo={tituloEmpresa} step={5.4} />
+      <BoxEmpresa 
+        contenidoDireccionEmpresa={contenidoDireccionEmpresa} 
+        contenidoRazonSocialForm={contenidoRazonSocialForm} 
+        contenidoRutEmpresa={contenidoRutEmpresa} 
+        titulo={tituloEmpresa} 
+        step={5.4} />
       <div className={spaceStyle.spaceMin1} />
       <BoxACHS
         titulo={tituloDireccion}
