@@ -4,7 +4,7 @@ import { Button, Typography, TextField } from "@material-ui/core"
 import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
-import DireccionGeo from '../../components/share/DireccionGeo'
+import Mapa from '../../components/share/DireccionGeo/Mapa'
 
 const LugarSiniestroMapaSelection = () => {
 
@@ -14,11 +14,12 @@ const LugarSiniestroMapaSelection = () => {
       getLocation()
   },[])
 
-  const [coords, setCoords]= useState()
+  const [coords, setCoords]= useState(null)
 
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition(
         function(position) {
+          console.log(position.coords)
             setCoords({
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
@@ -43,6 +44,15 @@ const LugarSiniestroMapaSelection = () => {
         dispatch={() => dispatch(handleSetStep(11))}
         percentage={-1}
       />
+
+        {coords ? (
+               <Mapa 
+                lat={coords.latitude}
+                lng={coords.longitude}
+               />
+        ) : (
+           <Typography>Cargando....</Typography>
+        )}
 
 
       <div className={bottomElement}>
