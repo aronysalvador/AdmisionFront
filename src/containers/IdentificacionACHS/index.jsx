@@ -9,7 +9,6 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
-
 const Achs = () => {
   const {
     addmissionForm: { percentage, centrosForm },
@@ -34,7 +33,10 @@ const Achs = () => {
     dispatch(getCentros(""));
   }, []);
 
-  const { data: centrosList } = useSelector((state) => state.centrosAchsForm, shallowEqual);
+  const { data: centrosList } = useSelector(
+    (state) => state.centrosAchsForm,
+    shallowEqual
+  );
 
   return (
     <div className={root}>
@@ -42,9 +44,7 @@ const Achs = () => {
         dispatch={() => dispatch(handleSetStep(1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Te encuentras en: 
-      </Typography>
+      <Typography className={pregunta}>Te encuentras en:</Typography>
       <div className={spaceStyle.space2} />
 
       <Typography className={tituloTextbox} variant="subtitle2">
