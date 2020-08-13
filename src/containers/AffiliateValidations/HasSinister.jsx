@@ -53,7 +53,7 @@ const HasSinister = (props) => {
         <Button
           className={blackStyle.buttonFooter}
           onClick={() => {
-            dispatch(handleSetStep(5.91));
+            dispatch(handleSetStep(5.831));
           }}
         >
           Ver sus(s) siniestro(s)

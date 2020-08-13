@@ -30,7 +30,7 @@ export const getBlackTheme = makeStyles((theme) => ({
     lineHeight: "1.250em",
     alignItems: "center",
     color: "#06D6A0",
-    padding: "0em 4em"
+    padding: "0em 4em",
   },
 
   textDetailSimple: {
@@ -46,7 +46,7 @@ export const getBlackTheme = makeStyles((theme) => ({
     fontFamily: "Catamaran",
     fontStyle: "normal",
     fontSize: "1em",
-    lineHeight: "1em",    
+    lineHeight: "1em",
     fontWeight: "bold",
     alignItems: "center",
     color: "#FFFFFF",
@@ -80,6 +80,25 @@ export const getBlackTheme = makeStyles((theme) => ({
     height: "3.5em",
     "&:hover": {
       background: "#FFFFFF",
+    },
   },
+
+  buttonFooter2: {
+    marginTop: "5px",
+    width: "100%",
+    borderRadius: "0.25",
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "1.125em",
+    lineHeight: "1.125em",
+    color: "#FFFFFF",
+    border: "1px solid white",
+    textTransform: "inherit",
+    borderRadius: "10px",
+    height: "3.5em",
+    "&:hover": {
+      background: "transparent",
+    },
   },
 }));

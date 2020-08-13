@@ -16,6 +16,41 @@ export const getComunStyle = makeStyles((theme) => ({
     padding: 0,
   },
 
+  textAchsContent: {
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    color: "#373737",
+  },
+  textAchsContentGreen: {
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    color: "#007A33",
+  },
+  tituloACHS: {
+    fontFamily: "sfUiDisplayCufonfonts",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "0.75em",
+    lineHeight: "0.875em",
+  },
+  pregunta: {
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "1.25em",
+    lineHeight: "1.75em",
+    display: "flex",
+    alignItems: "flex-end",
+  },
+  pregunta_temp: {
+    fontSize: "1.1em !important",
+  },
+  googleMap: {
+    width: "100%",
+    borderRadius: "20px",
+    padding: "10px",
+  },
+  
   buttonAchs: {
     width: "100%",
     background: "#007A33",
@@ -199,4 +234,8 @@ export const getComunStyle = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: "15px",
   },
+  textoResaltado: {
+    margin: "0 5px",
+    color: "#00b2a9"
+  }
 }));

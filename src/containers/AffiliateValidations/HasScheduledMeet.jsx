@@ -1,95 +1,72 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { saveRut } from "../../redux/actions/AdmissionAction";
-
-const getUseStyles = makeStyles({
-  center: {
-    paddingLeft: "3.4375em",
-    paddingRight: "3.4375em",
-    padding: "0em",
-  },
-  img: {
-    width: "15.625em",
-  },
-  text1: {
-    textAlign: "center",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "1.5625em",
-    lineHeight: "1.6875em",
-    alignItems: "center",
-    color: "#081C15",
-  },
-  text2: {
-    textAlign: "center",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontSize: "1em",
-    lineHeight: "1.5625em",
-    alignItems: "center",
-    color: "#081C15",
-  },
-  center2: {
-    paddingLeft: "7.625em",
-    paddingRight: "7.625em",
-    padding: "0em",
-  },
-  img2: {
-    width: "7.28125em",
-  },
-});
+import { Button, Typography } from "@material-ui/core";
+import { getBlackTheme } from "../../css/blackTheme";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const HasScheduledMeet = (props) => {
   const { addmissionForm, dispatch } = props;
 
-  useEffect(() => {
-    console.log("MANDO EL RUT: ", addmissionForm.rut);
-    dispatch(saveRut(addmissionForm.rut));
-  });
-
   const spaceStyle = getSpaceStyle();
-  const useStyles = getUseStyles();
   const comunClass = getComunStyle();
+  const blackStyle = getBlackTheme();
 
   return (
-    <div className={comunClass.root}>
-      <div className={spaceStyle.space5} />
-      <div className={useStyles.center}>
+    <div className={blackStyle.root}>
+      <div className={spaceStyle.space2} />
         <img
           alt="load"
-          src="./static/validandoDatos.png"
-          className={useStyles.img}
+          src="./static/error-siniestro.svg"
+          className={blackStyle.img}
         />
-      </div>
       <div className={spaceStyle.space3} />
       <Typography
         color="textSecondary"
         gutterBottom
-        className={useStyles.text1}
+        className={blackStyle.textWarning}
       >
-        Estamos validando
-        <br />
-        tus datos
+       ¡Atención!
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography
         color="textSecondary"
         gutterBottom
-        className={useStyles.text2}
+        className={blackStyle.textMessage}
       >
-        Un momento por favor
+        Este paciente tiene una cita agendada
       </Typography>
-      <div className={useStyles.center2}>
-        <img
-          alt="load"
-          src="./static/Loader_1.gif"
-          className={useStyles.img2}
-        />
+      <div className={spaceStyle.space2} />
+      <Typography
+        color="textSecondary"
+        gutterBottom
+        className={blackStyle.textFinal}
+      >
+        Atiéndelo usando SAP
+      </Typography>
+      <div className={comunClass.bottomElement}>
+        <Button
+          className={blackStyle.buttonFooter}
+          onClick={() => {
+            dispatch(handleSetStep(5.9));
+          }}
+        >
+          Continuar en SAP
+        </Button>
+        <Button
+          className={blackStyle.buttonFooter2}
+          onClick={() => {
+            if(addmissionForm.siniestros.length > 0) {
+              dispatch(handleSetStep(5.83));
+            }
+            else {              
+              dispatch(handleSetStep(5.1));
+            }
+          }}
+        >
+          Crear nueva admisión
+        </Button>
       </div>
     </div>
   );

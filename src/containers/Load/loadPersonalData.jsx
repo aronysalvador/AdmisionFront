@@ -48,7 +48,7 @@ const LoadPersonalData = (props) => {
   const { addmissionForm, dispatch } = props;
 
   useEffect(() => {
-    console.log("MANDO EL RUT: ", addmissionForm.rut);
+    console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);
     dispatch(saveRut(addmissionForm.rut));
   });
 

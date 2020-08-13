@@ -60,7 +60,7 @@ const CardSiniestro = (props) => {
       className={styles.container}
       onClick={() => {
         dispatch(updateForm("siniestroDetalle", siniestro));
-        dispatch(handleSetStep(5.92));
+        dispatch(handleSetStep(5.832));
       }}
     >
       <div className={styles.cuerpo}>

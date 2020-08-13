@@ -144,6 +144,8 @@ const Main = (props) => {
           </div>
         );
       case 5:
+        
+        console.log("5")
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -208,6 +210,7 @@ const Main = (props) => {
           </div>
         );
       case 5.81:
+        console.log("5.81")
         return (
           <div className={blackLayout}>
             <div className={paperNoColor}>
@@ -216,7 +219,8 @@ const Main = (props) => {
           </div>
         );
       case 5.82:
-        return (
+        console.log("5.82")
+        return (         
           <div className={blackLayout}>
             <div className={paperNoColor}>
               <HasScheduledMeet />
@@ -224,6 +228,7 @@ const Main = (props) => {
           </div>
         );
       case 5.83:
+        console.log("5.83")
         return (
           <div className={blackLayout}>
             <div className={paperNoColor}>
@@ -249,8 +254,8 @@ const Main = (props) => {
         );
       case 5.9:
         return (
-          <div className={blackLayout}>
-            <div className={paperNoColor}>
+          <div className={layout}>
+            <div className={paper}>
               <ContinueSAP />
             </div>
           </div>

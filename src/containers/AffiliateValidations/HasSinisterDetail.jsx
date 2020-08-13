@@ -23,7 +23,7 @@ const HasSinisterDetail = (props) => {
   return (
     <div>
       <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.91))}
+        dispatch={() => dispatch(handleSetStep(5.831))}
         color="#FFFFFF"
       />
       <div className={blackStyle.root}>
