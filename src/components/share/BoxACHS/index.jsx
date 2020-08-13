@@ -57,7 +57,6 @@ const useStyles = makeStyles({
         fontWeight: 'bold',
         fontSize: '1.4em',
         lineHeight: '1.25',
-        paddingBottom: '0.5em'
     },
   });
 
