@@ -111,11 +111,11 @@ const Main = (props) => {
         );
       case 1:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <WelcomeEjecutivo />
-            </Paper>
+        <div className={layout}>
+          <div className={paper}>
+            <SessionAchs />
           </div>
+        </div>
         );
       case 1.1:
         return (
@@ -558,15 +558,7 @@ const Main = (props) => {
             </div>
           </div>
         );
-      case 41:
-        return (
-          <div className={layout}>
-            <div className={paper}>
-              <SessionAchs />
-            </div>
-          </div>
-        );
-
+        
       case 500: {
         sessionStorage.clear();
         return (
