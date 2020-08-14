@@ -4,7 +4,6 @@ import {
   GET_RAZON_ALERTA_FAILURE,
 } from "../types/alertaCalificacionRazonType";
 import Axios from "axios";
-import { getRazonAlerta } from "../../util/fakeApi";
 
 export const getData = async () => {
   return Axios.get(process.env.REACT_APP_ALERTAS);
