@@ -6,23 +6,31 @@ import { getComunStyle } from "../../css/comun";
 
 const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos }) => {
   const [horas, setHoras] = useState(() => {
-    return !horasFromState ? new Date().getHours() - 1 : horasFromState;
+    return !horasFromState ? new Date().getHours() : horasFromState;
   });
   // const [minutos, setMinutos] = useState(() => {
   //   return !minutosFromState ? new Date().getMinutes() : minutosFromState;
   // });
 
+  const getMin = () => {
+    let minutosActuales = new Date().getMinutes();
+    if(minutosActuales >= 0 && minutosActuales < 5) return 0;
+    if(minutosActuales >= 5 && minutosActuales < 15) return 1;
+    if(minutosActuales >= 15 && minutosActuales < 25) return 2;
+    if(minutosActuales >= 25 && minutosActuales < 35) return 3;
+    if(minutosActuales >= 35 && minutosActuales < 45) return 4;
+    if(minutosActuales >= 45 && minutosActuales < 55) return 5;
+    if(minutosActuales >= 55 && minutosActuales < 60) return 0;
+  };
+
   const [indiceMinutos, setIndiceMinutos] = useState(() => {
-    console.log("INDICEMNUTOS FROM STATE:", indiceMinutosFromState)
-    return indiceMinutosFromState == -1 ? 3 : indiceMinutosFromState;
+    return indiceMinutosFromState == -1 ? getMin() : indiceMinutosFromState;
   });
 
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
   useEffect(() => {
-    console.log("indiceMinutios", indiceMinutos);
-    console.log("minutois.lenght", minutos.length);
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
     if (indiceMinutos == minutos.length) setIndiceMinutos(0);

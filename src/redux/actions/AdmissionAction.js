@@ -123,15 +123,13 @@ export const saveRut = (rut) => {
                         )
                     );
 
-
-          if (!result.data.content.response.BpCreado && false) { 
+          if (!result.data.content.response.BpCreado) { 
             dispatch(handleSetStep(5.81));
-          } else if (result.data.content.response.citas.length > 0 && false) {
+          } else if (result.data.content.response.citas.length > 0) {
             dispatch(handleSetStep(5.82));
-          } else if (result.data.content.response.siniestros.length > 0 && false) {
+          } else if (result.data.content.response.siniestros.length > 0) {
             dispatch(handleSetStep(5.83));
           } else {
-            //pasó todas las validaciones
             var STEP = "";
             if (
               !result.data.content.response.NombreEmpresa ||
