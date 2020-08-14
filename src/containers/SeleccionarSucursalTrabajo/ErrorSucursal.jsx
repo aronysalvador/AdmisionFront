@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { saveRut, handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 const getUseStyles = makeStyles({
