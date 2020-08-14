@@ -56,7 +56,7 @@ const EditarTelefono = () => {
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="h2">
-        teléfono
+        Teléfono
       </Typography>
 
       <InputMasked

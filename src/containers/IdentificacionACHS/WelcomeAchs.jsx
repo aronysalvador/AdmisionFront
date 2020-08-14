@@ -34,11 +34,11 @@ const SessionAchs = (props) => {
   return (
     <div className={comunStyle.root}>
       <div className={welcomeStyle.backgroundBoxAchs}>
-        <div className={welcomeStyle.backPosicion}> 
+        {/* <div className={welcomeStyle.backPosicion}> 
           <Cabecera dispatch={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true} /> 
-        </div>
+        </div> */}
 
-        {/* <div className={spaceStyle.space1} /> */}
+        <div className={spaceStyle.space1} />
         <div className={welcomeStyle.avatarContainer}>
           <Avatar className={welcomeStyle.avatar}>
             {microsoftReducer.userMsal.iniciales}
@@ -100,7 +100,7 @@ const SessionAchs = (props) => {
         </div>
         <div className={spaceStyle.space1} />
         <div>
-          <div className={welcomeStyle.boxCentroAchs}>
+          <div className={welcomeStyle.boxCentroAchs} onClick={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true}>
             <img
               alt="Centro ACHS"
               src="./static/hospital.png"
@@ -119,10 +119,10 @@ const SessionAchs = (props) => {
             <div className={welcomeStyle.textBoxAchs}>Admisión promedio</div>
           </div>
         </div>
-        <div className={spaceStyle.space1} />
+        <div className={spaceStyle.space2} />
       </div>
         
-        <div className={spaceStyle.space2} />
+        <div className={spaceStyle.space1} />
         <div className={comunStyle.bottomElement}>
           <div>
             <Button

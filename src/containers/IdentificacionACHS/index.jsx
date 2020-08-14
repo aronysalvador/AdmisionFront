@@ -7,6 +7,8 @@ import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { getWelcomeStyle } from "../../css/welcomeStyle";
+import Cabecera from "../../components/cabecera/index";
 
 const Achs = () => {
   const {
@@ -21,6 +23,7 @@ const Achs = () => {
     tituloTextbox,
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const welcomeStyle = getWelcomeStyle();
 
   const [centros, setCENTROS] = useState(() => {
     return !centrosForm ? "" : centrosForm;
@@ -39,6 +42,9 @@ const Achs = () => {
 
   return (
     <div className={root}>
+      <div className={welcomeStyle.backPosicion}> 
+          <Cabecera dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
+        </div>
       <Typography className={pregunta}>Te encuentras en:</Typography>
       <div className={spaceStyle.space2} />
 
