@@ -8,30 +8,19 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
-import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import CheckIcon from "@material-ui/icons/Check";
-import Fab from "@material-ui/core/Fab";
-import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
+import Indiciaciones from "../../components/Indicaciones";
 
 const AlertaCalificacion = () => {
   const {
-    addmissionForm: { percentage, microsoftReducer },
+    addmissionForm: { microsoftReducer },
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
-
-  const {
-    container,
-    cardTextContainer2,
-    cardText,
-    cardText2,
-    iconVector,
-  } = getTrabajoHabitualCardStyle();
 
   return (
     <div className={comunStyle.rootBegin}>
@@ -50,50 +39,49 @@ const AlertaCalificacion = () => {
         </div>
       </div>
 
-      <Fab size="small" aria-label="edit" className={welcomeStyle.imgCheck}>
-        <CheckIcon />
-      </Fab>
-      <div className={welcomeStyle.bienvenidoContainer}>
+      <div className={welcomeStyle.TextContainer}>
+        <img
+          alt="Excelente"
+          src="static/icon-check.png"
+          className={welcomeStyle.iconCircular}
+        />
         <Typography
-          variant="p"
-          component="p"
-          className={[comunStyle.textAchsContentGreen, welcomeStyle.bienvenido]}
+          variant="h1"
+          component="h1"
+          className={welcomeStyle.txtBegin}
         >
           ¡WOW!
-          <br />
+        </Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          className={welcomeStyle.txtBegin}
+        >
           Eso fué rápido
         </Typography>
       </div>
 
-      <div>
+      <div className={welcomeStyle.beginContainer}>
         <Typography
-          variant="p"
-          component="p"
-          className={[
-            comunStyle.textAchsContent,
-            welcomeStyle.admisionText,
-            cardText2,
-          ]}
+          variant="h5"
+          component="h5"
+          className={welcomeStyle.subTitleBegin}
         >
           Para terminar:
         </Typography>
-      </div>
 
-      <div className={container}>
-        <div className={iconVector}>
-          <img alt="Ejecutivo de admisión" src="static/iconVector.png" />
-        </div>
+        <Indiciaciones
+          indicaciones={[
+            {
+              icono: "sms.svg",
+              textoPrimario: "Pide un e-mail al paciente,",
+              textoSecundario: "los documentos serán enviados ahí",
+              clase: welcomeStyle.divRowBottom,
+            },
+          ]}
+        />
 
-        <div className={cardTextContainer2}>
-          <span className={cardText2}>Pide un e-mail al paciente,</span>
-          <br />
-          <span className={cardText}>los documentos serán enviados ahí</span>
-        </div>
-      </div>
-
-      <div className={spaceStyle.space3} />
-      <div className={comunStyle.bottomElement}>
-        <div>
+        <div className={welcomeStyle.bottomBegin}>
           <Button
             className={comunStyle.buttonAchs2}
             variant="contained"
@@ -101,13 +89,12 @@ const AlertaCalificacion = () => {
           >
             El relato no es coherente
           </Button>
-        </div>
-        <div className={spaceStyle.space1} />
-        <div>
+          <div className={spaceStyle.space1}></div>
+
           <Button
             className={comunStyle.buttonAchs}
             variant="contained"
-            onClick={() => dispatch(logout())}
+            onClick={() => dispatch(handleSetStep(6))}
           >
             Continuar
           </Button>

@@ -516,8 +516,8 @@ const Main = (props) => {
 
       case 90:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
               <AlertaCalificacion />
             </Paper>
           </div>
