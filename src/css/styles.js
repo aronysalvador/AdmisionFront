@@ -18,12 +18,12 @@ import { makeStyles } from '@material-ui/core/styles'
 
     layoutFix: {
       margin:'auto',
-      width: '25.5em',
+      width: "24.5em",
       border:'0',
       backgroundColor:'#F8F9FA',
     },
     paperFix: {
-      marginTop: '0 auto',
+      marginTop: '0.5em',
       backgroundColor: "#F8F9FA"
     },
 

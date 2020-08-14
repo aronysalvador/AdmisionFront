@@ -17,8 +17,8 @@ export const getComunStyle = makeStyles((theme) => ({
   },
   rootContainer: {
     position: "relative",
-    width: "25.5em",
-    height: "40em",
+    width: "23.5em",
+    height: "42em",
     backgroundColor: "#F8F9FA",
   },
   
