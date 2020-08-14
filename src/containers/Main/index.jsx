@@ -566,15 +566,6 @@ const Main = (props) => {
           </div>
         );
 
-      case 100:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <Profesion />
-            </Paper>
-          </div>
-        );
-
       case 500: {
         sessionStorage.clear();
         return (

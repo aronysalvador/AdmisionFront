@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -8,12 +8,6 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
-/*
-REVISARE EL 
-  const {
-    addmissionForm: { percentage, afpForm },
-  } = useSelector((state) => state, shallowEqual);
-*/
 const CausaNoLaboral = () => {
   const {
     addmissionForm: { percentage, razonAlertaForm },
@@ -34,10 +28,12 @@ const CausaNoLaboral = () => {
 
   const dispatch = useDispatch();
 
-  const { tipo: causasList } = useSelector(
+  const { opciones: causasList } = useSelector(
     (state) => state.razonAlertaForm.data[0],
     shallowEqual
   );
+
+  console.log({ causasList });
 
   return (
     <div className={root}>
@@ -60,7 +56,7 @@ const CausaNoLaboral = () => {
         }}
         style={{ width: 300 }}
         options={causasList}
-        getOptionLabel={(option) => option.nombre}
+        getOptionLabel={(option) => option.glosa}
         renderInput={(params) => (
           <TextField
             {...params}
