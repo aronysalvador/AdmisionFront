@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "env-cmd": "^10.1.0",
     "formik": "^2.1.4",
+    "google-maps-react": "^2.0.6",
     "imask": "^6.0.5",
     "material-ui": "^0.18.3",
     "msal": "^1.2.0",

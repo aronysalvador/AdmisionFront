@@ -15,6 +15,13 @@ export const getComunStyle = makeStyles((theme) => ({
         background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
         padding: 0,
     },
+
+  rootContainer: {
+    position: "relative",
+    width: "25.5em",
+    height: "40em",
+    backgroundColor: "#F8F9FA",
+  },
     textAchsContent: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -241,5 +248,37 @@ export const getComunStyle = makeStyles((theme) => ({
   textoResaltado: {
     margin: "0 5px",
     color: "#00b2a9"
-  }
+
+  },
+
+  titleBlack:{
+    fontFamily: 'Catamaran',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: '20px',
+    lineHeight: '28px',
+    color:' #373737'
+  },
+  titleBlue:{
+    fontFamily: 'Catamaran',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: '20px',
+    lineHeight: '28px',
+    color:' #00b2a9'
+  },
+  txtGreen:{
+    fontFamily: 'Helvetica',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '22px',
+    color: '#007A33'
+  },
+  iconLocation: {
+    marginRight: '10px',
+    maxHeight: "15px",
+    verticalAlign: "middle",
+  },
+
 }));
