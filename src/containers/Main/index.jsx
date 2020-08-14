@@ -13,6 +13,7 @@ import LoadPersonalData from "../Load/loadPersonalData";
 import Session from "../Welcome/Session";
 import FechaHoraSiniestro from "../FechaHoraSiniestro/FechaHoraSiniestro";
 import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
+import LugarSiniestroMapaSelection from "../LugarSiniestro/LugarSiniestroMapaSelection";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import Load from "../Load/load";
 import WelcomeEjecutivo from "../Welcome/WelcomeEjecutivo";
@@ -319,6 +320,16 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
+      case 11.1:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <LugarSiniestroMapaSelection />
+            </Paper>
+          </div>
+        );
+
       case 12:
         return (
           <div className={layout}>
