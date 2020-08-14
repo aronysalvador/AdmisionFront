@@ -12,7 +12,7 @@ import { Pipes } from "./phone";
 
 const EditarTelefono = () => {
   const {
-    addmissionForm: { step, percentage, TelefonoEmpleado },
+    addmissionForm: { step, percentage, telefonoParticular: TelefonoEmpleado },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
 
@@ -48,7 +48,7 @@ const EditarTelefono = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--stepx))}
+        dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
       <Typography className={pregunta} variant="h2">
@@ -73,8 +73,8 @@ const EditarTelefono = () => {
           className={buttonAchs}
           disabled={!telefonoIsValid}
           onClick={() => {
-            dispatch(updateForm("TelefonoEmpleado", telefono));
-            dispatch(handleSetStep(++stepx));
+            dispatch(updateForm("telefonoParticular", telefono));
+            dispatch(handleSetStep(5.1));
           }}
         >
           Confirmar

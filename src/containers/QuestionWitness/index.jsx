@@ -13,15 +13,15 @@ const QuestionWitness = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(14))}
+        dispatch={() => dispatch(handleSetStep(12))}
         percentage={addmissionForm.percentage}
       />
       <QuestionTestigoResponsable
-        titulo={"Entendido ¿Alguien fue testigo de lo que sucedió?"}
-        accionButoonA={() => dispatch(handleSetStep(16))}
-        accionButoonB={() => dispatch(handleSetStep(17))}
-        tituloA={"Agregar Testigo"}
-        tituloB={"No hubo Testigos"}
+        titulo={"Entendido, ¿Alguien fue testigo de lo que sucedió?"}
+        accionButoonA={() => dispatch(handleSetStep(14))}
+        accionButoonB={() => dispatch(handleSetStep(15))}
+        tituloA={"Agregar testigo"}
+        tituloB={"No hubo testigos"}
       />
     </div>
   );

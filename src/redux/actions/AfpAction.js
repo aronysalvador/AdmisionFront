@@ -5,15 +5,19 @@ import {
 } from "../types/afpType";
 import Axios from "axios";
 
+export const getData = async () => {
+  return Axios.get(process.env.REACT_APP_AFP);
+};
+
 export const getAFP = () => async (dispatch) => {
   dispatch({
     type: GET_AFP_INIT,
     payload: true,
   });
 
-  Axios.get(`http://fa-desa-tele-admision-datamaster.azurewebsites.net/api/AFP`)
+  getData()
     .then((response) => {
-      dispatch(successCallAFP(response.data.content));
+      dispatch(successCallAFP(response.data.content[0]));
     })
     .catch((error) => {
       dispatch(errorCallAFP());

@@ -8,11 +8,11 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const EditarDireccionSucursal = () => {
-  const [sucursalEmpresa, setSucursalEmpresa] = useState(null);
-
   const {
-    addmissionForm: { step, percentage, sucursales },
+    addmissionForm: { step, percentage, sucursales, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
+  const [sucursalEmpresa, setSucursalEmpresa] = useState(SucursalEmpresaObjeto);
+
   let stepx = step;
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ const EditarDireccionSucursal = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--stepx))}
+        dispatch={() => dispatch(handleSetStep(5.5))}
         percentage={percentage}
       />
       <Typography className={pregunta} variant="h2">
@@ -45,7 +45,7 @@ const EditarDireccionSucursal = () => {
         size="small"
         fullWidth
         options={sucursales}
-        getOptionLabel={(option) => option?.nombreSucursal}
+        getOptionLabel={(option) => option?.direccion}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={bottomElement}>
@@ -53,9 +53,13 @@ const EditarDireccionSucursal = () => {
           variant="contained"
           disabled={!sucursalEmpresa}
           className={buttonAchs}
-          onClick={() =>
-            dispatch(updateForm("SucursalEmpresa", sucursalEmpresa))
-          }
+          onClick={() => {
+            dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
+            dispatch(updateForm("SucursalEmpresaObjeto", sucursalEmpresa));
+            dispatch(updateForm("DireccionEmpresa", sucursalEmpresa.direccion));
+
+            dispatch(handleSetStep(5.1));
+          }}
         >
           Confirmar
         </Button>

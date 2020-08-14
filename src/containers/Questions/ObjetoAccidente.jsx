@@ -12,7 +12,7 @@ const AccidentObjectForm = (props) => {
 
   const saveAnswer = (value) => {
     dispatch(updateForm("objetoAccidente", value));
-    dispatch(handleSetStep(15));
+    dispatch(handleSetStep(++addmissionForm.step));
   };
 
   return (
@@ -23,8 +23,8 @@ const AccidentObjectForm = (props) => {
       />
       <div>
         <QuestionForm
-          titulo={"Completa las siguientes frases"}
-          pregunta={"Se accidentó con ..."}
+          titulo={"El accidente ocurrió con..." }
+          pregunta={<br/>}
           placeholder={
             "Ejemplo: Con la escalera - con el suelo - al caer tineta en el pie"
           }

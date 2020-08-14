@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
@@ -9,24 +9,24 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
-  const [sucursalesEmpresaData, setSucursalesEmpresaData] = useState(() =>
-    sucursalesEmpresa.map((y) => {
-      return { ...y, isSelected: false };
-    })
-  );
   const dispatch = useDispatch();
   const { root, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, SucursalEmpresa } = useSelector(
+  const { percentage, SucursalEmpresa: SucursalEmpresaObjeto } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
-
+  const handlerGuradarSucursalTexto = (itemForm, data, step) => {
+    const { nombre, direccion } = data;
+    const sucursalTexto = nombre;
+    dispatch(updateForm(itemForm, sucursalTexto));
+    dispatch(updateForm("DireccionEmpresa", direccion));
+  };
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(100))}
+        dispatch={() => dispatch(handleSetStep(5.5))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -42,12 +42,14 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
           flexWrap: "wrap",
         }}
       >
-        {sucursalesEmpresaData.map((sucursal) => (
+        {sucursalesEmpresa.map((sucursal) => (
           <BotonSeleccionarCustom
             key={sucursal.id}
             data={sucursal}
             itemForm={"SucursalEmpresa"}
-            selected={sucursal.id == SucursalEmpresa.id}
+            selected={sucursal.codigo == SucursalEmpresaObjeto.codigo}
+            step={5.1}
+            handlerGuardarData={handlerGuradarSucursalTexto}
           >
             <BotonSeleccionarCustomSucursalItem {...sucursal} />
           </BotonSeleccionarCustom>

@@ -9,11 +9,11 @@ import DireccionGeo from '../../components/share/DireccionGeo'
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { step, percentage, direccionParticular,urlMapaDireccionParticular },
+    addmissionForm: { step, percentage, direccionParticular,urlMapaDireccionParticular,direccionParticularObj },
   } = useSelector((state) => state, shallowEqual)
 
   const [direccion, setDireccion] = useState(() => {
-    return !direccionParticular ? "" : direccionParticular
+    return !direccionParticularObj ? "" : direccionParticularObj
   })
 
   const setUrl = (urlMapa) =>{
@@ -31,14 +31,14 @@ const DireccionParticular = () => {
   } = getComunStyle()
   const spaceStyle = getSpaceStyle()
 
-
+  const { googleMap } = getComunStyle()
 
   const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true)
 
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(step - 1))}
+        dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -50,7 +50,7 @@ const DireccionParticular = () => {
       </Typography>
 
       <DireccionGeo direccion={direccion} setUrl={setUrl} setDireccion={setDireccion} />
-      {(direccion !== null)?<img src={urlMapaDireccionParticular} />:<div />}
+      {(direccion !== null)?<img className={googleMap} src={urlMapaDireccionParticular} />:<div />}
 
       <div className={bottomElement}>
         <Button
@@ -58,8 +58,9 @@ const DireccionParticular = () => {
           variant="contained"
           disabled={!direccion || !isLugarExactoAccidenteValid}
           onClick={() => {
-            dispatch(updateForm("direccionParticular", direccion))
-            dispatch(handleSetStep(step + 1))
+            dispatch(updateForm("direccionParticular", direccion.description))
+            dispatch(updateForm("direccionParticularObj", direccion))
+            dispatch(handleSetStep(5.1))
           }}
         >
           Confirmar

@@ -10,12 +10,12 @@ import JornadaLaboral from "../../components/JornadaLaboral/JornadaLaboral";
 const JornadaLaboralContainer = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage } = useSelector(
+  const { step, percentage, inicioJornadaLaboral, finJornadaLaboral } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
-  const [inicioJornadaLaboral, setInicioJornada] = useState({});
-  const [finJornadaLaboral, setFinJornada] = useState({});
+  const [inicioJornadaLaboralValue, setInicioJornada] = useState(inicioJornadaLaboral);
+  const [finJornadaLaboralValue, setFinJornada] = useState(finJornadaLaboral);
   const [horarios, setHorarios] = useState(() => {
     let horarios = [];
     let i = 0;
@@ -31,14 +31,18 @@ const JornadaLaboralContainer = () => {
   const dispatch = useDispatch();
 
   function setJornadaLaboral(value) {
-    console.log("setjornadalaboral", value);
     setInicioJornada(value.horaInicio);
     setFinJornada(value.horaFin);
   }
+
+  console.log("INICIO VALUE", inicioJornadaLaboralValue);
+  console.log("FIN VALUE", finJornadaLaboralValue);
+  
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(19))}
+        dispatch={() => dispatch(handleSetStep(20))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -48,18 +52,18 @@ const JornadaLaboralContainer = () => {
       <JornadaLaboral
         onChange={setJornadaLaboral}
         horarios={horarios}
-        indiceInicioFromState={17}
-        indiceFinFromState={35}
+        indiceInicioFromState={horarios.indexOf(inicioJornadaLaboralValue)}
+        indiceFinFromState={horarios.indexOf(finJornadaLaboralValue)}
       />
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
           onClick={() => {
             dispatch(
-              updateForm("inicioJornadaLaboral", inicioJornadaLaboral)
+              updateForm("inicioJornadaLaboral", inicioJornadaLaboralValue)
             );
             dispatch(
-              updateForm("finJornadaLaboral", finJornadaLaboral)
+              updateForm("finJornadaLaboral", finJornadaLaboralValue)
             );
             dispatch(handleSetStep(step + 1));
           }}

@@ -30,7 +30,7 @@ const DireccionGeo = (props) => {
     return (<div>
                 <Autocomplete
                 value={direccion}
-                style={{ width: 300 }}
+                style={{ width: '100%' }}
                 open={open}
                 onOpen={() => {
                     setOpen(true)

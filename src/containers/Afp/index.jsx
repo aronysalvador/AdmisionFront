@@ -9,9 +9,15 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
+/*
+REVISARE EL 
+  const {
+    addmissionForm: { percentage, afpForm },
+  } = useSelector((state) => state, shallowEqual);
+*/
 const Afp = () => {
   const {
-    addmissionForm: { step, percentage, afpForm },
+    addmissionForm: { percentage, afpForm },
   } = useSelector((state) => state, shallowEqual);
 
   const {
@@ -38,7 +44,7 @@ const Afp = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.1))}
+        dispatch={() => dispatch(handleSetStep(17.1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -56,17 +62,32 @@ const Afp = () => {
         }}
         style={{ width: 300 }}
         options={afpList}
-        getOptionLabel={(option) => option.value}
-        renderInput={(params) => <TextField {...params} variant="outlined" />}
+        getOptionLabel={(option) => option.nombre}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            InputProps={{
+              ...params.InputProps,
+              style: {
+                paddingTop: "3px",
+                paddingBottom: "3px",
+                paddingLeft: "5xp",
+                marginTop: "7px",
+              },
+            }}
+          />
+        )}
       />
 
       <div className={bottomElement}>
         <Button
+          variant="contained"
           className={buttonAchs}
-          isabled={!afp}
+          disabled={!afp}
           onClick={() => {
             dispatch(updateForm("afpForm", afp));
-            //dispatch(handleSetStep(step + 1));
+            dispatch(handleSetStep(19));
           }}
         >
           Siguiente

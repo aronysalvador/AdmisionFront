@@ -9,7 +9,6 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
 
 //Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
@@ -22,7 +21,6 @@ const HealthForecastIsapre = (props) => {
   );
   const { dispatch, addmissionForm } = props;
 
-  const welcomeStyle = getWelcomeStyle();
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -49,13 +47,13 @@ const HealthForecastIsapre = (props) => {
       return;
     }
     dispatch1(sendIsapres(isapres));
-    dispatch(handleSetStep(8));
+    dispatch(handleSetStep(19.2));
   };
 
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(6))}
+        dispatch={() => dispatch(handleSetStep(19))}
         percentage={addmissionForm.percentage}
       />
       <form>
@@ -67,7 +65,7 @@ const HealthForecastIsapre = (props) => {
           >
             Escribe tu ISAPRE
           </Typography>
-        </div> 
+        </div>
         <div className={spaceStyle.space2} />
         <div>
           <Typography
@@ -81,7 +79,6 @@ const HealthForecastIsapre = (props) => {
         <div>
           <Autocomplete
             id="asynchronous-demo"
-            style={{ width: 300 }}
             open={open}
             onOpen={() => {
               setOpen(true);
@@ -104,7 +101,7 @@ const HealthForecastIsapre = (props) => {
                 {...params}
                 error={!isIsapresValid}
                 helperText={
-                  !isIsapresValid && "Escriba o Seleccione al menos una Isapres"
+                  !isIsapresValid && "Escribe o Selecciona al menos una Isapre"
                 }
                 variant="outlined"
                 InputProps={{
@@ -117,6 +114,12 @@ const HealthForecastIsapre = (props) => {
                       {params.InputProps.endAdornment}
                     </React.Fragment>
                   ),
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
                 }}
               />
             )}
@@ -125,7 +128,7 @@ const HealthForecastIsapre = (props) => {
         </div>
         <div className={classesComun.bottomElement}>
           <Button
-           disabled={!isapres}
+            disabled={!isapres}
             className={classesComun.buttonAchs}
             variant="contained"
             onClick={() => clickSendIsapres()}

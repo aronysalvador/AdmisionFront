@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -6,7 +6,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { getTiposRemuneracion } from "../../util/fakeApi";
+import { getRemuneracion } from "../../redux/actions/TipoRemuneracionAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 
 const Remuneracion = () => {
@@ -18,6 +18,16 @@ const Remuneracion = () => {
     (state) => state.addmissionForm,
     shallowEqual
   );
+
+  useEffect(() => {
+    dispatch(getRemuneracion(""));
+  }, []);
+
+  const { data: tipoRemuneracionList } = useSelector(
+    (state) => state.tipoRemuneracionForm,
+    shallowEqual
+  );
+
   return (
     <div className={root}>
       <Cabecera
@@ -25,9 +35,9 @@ const Remuneracion = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        ¿Que tipo de remuneración tienes?
+        ¿Qué tipo de remuneración tienes?
       </Typography>
-
+      <div className={spaceStyle.space2} />
       <div
         style={{
           display: "flex",
@@ -37,13 +47,14 @@ const Remuneracion = () => {
           flexWrap: "wrap",
         }}
       >
-        {getTiposRemuneracion().map((remuneracion) => (
+        {tipoRemuneracionList.map((remuneracion) => (
           <BotonSeleccionarCustom
             key={remuneracion.id}
             data={remuneracion}
             selected={remuneracion.selected}
             itemForm={"tipoRemuneracion"}
             selected={remuneracion.id === tipoRemuneracion.id}
+            step={26}
           >
             <BotonSeleccionarCustomItem {...remuneracion} />
           </BotonSeleccionarCustom>

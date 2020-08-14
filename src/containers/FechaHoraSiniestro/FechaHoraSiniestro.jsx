@@ -20,6 +20,11 @@ const FechaHoraSiniestro = () => {
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+
+  const [minutosArray, setMinutos] = useState(() => {
+    return [0, 10, 20, 30, 40, 50];
+  })
+
   const dispatch = useDispatch();
 
   function setFechaValueSiniestro(value) {
@@ -27,6 +32,7 @@ const FechaHoraSiniestro = () => {
   }
 
   function setHoraValueSiniestro(value) {
+    value.minutos = minutosArray[value.indiceMinutos];
     setHoraSiniestro({ ...value });
   }
 
@@ -39,7 +45,7 @@ const FechaHoraSiniestro = () => {
       <Typography className={pregunta}>
         Escribe la fecha y hora del accidente
       </Typography>
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space3} />
       <FechaSiniestro
         onChange={setFechaValueSiniestro}
         daysFromState={days}
@@ -50,7 +56,8 @@ const FechaHoraSiniestro = () => {
       <HoraSiniestro
         onChange={setHoraValueSiniestro}
         horasFromState={horas}
-        minutosFromState={minutos}
+        indiceMinutosFromState={minutosArray.indexOf(minutos)}
+        minutos={minutosArray}
       />
       <div className={bottomElement}>
         <Button

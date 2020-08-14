@@ -7,6 +7,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import { getCategoriaOcupacionalPrincipal } from "./../../redux/actions/CategoriaOcupacionalAction";
+import { getSpaceStyle } from "../../css/spaceStyle";
 
 const CategoriaOcupacional = () => {
   const {
@@ -18,6 +19,8 @@ const CategoriaOcupacional = () => {
   });
 
   const dispatch = useDispatch();
+
+  const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
     dispatch(getCategoriaOcupacionalPrincipal(""));
@@ -33,13 +36,13 @@ const CategoriaOcupacional = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(100))}
+        dispatch={() => dispatch(handleSetStep(22))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
         Selecciona tu categoría ocupacional
       </Typography>
-
+      <div className={spaceStyle.space2} />
       <div
         style={{
           display: "flex",
@@ -55,6 +58,7 @@ const CategoriaOcupacional = () => {
             data={categoria}
             itemForm={"categoriaOcupacionalForm"}
             selected={categoria.id === categoriaOcupacional.id}
+            step={24}
           >
             <BotonSeleccionarCustomItem {...categoria} />
           </BotonSeleccionarCustom>

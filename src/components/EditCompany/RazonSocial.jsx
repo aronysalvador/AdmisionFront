@@ -3,18 +3,27 @@ import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getRazonSocialPrincipal } from "./../../redux/actions/RazonSocialAction";
+import { updateForm } from "../../redux/actions/AdmissionAction";
 
 const RazonSocial = () => {
   const {
-    addmissionForm: { razonSocialForm, empresa },
+    addmissionForm: { razonSocialForm,razonSocialobj },
   } = useSelector((state) => state, shallowEqual);
 
   const [razonSocial, setRazonSocial] = useState(() => {
-    return !razonSocialForm ? empresa : razonSocialForm;
+    return razonSocialForm
   });
 
+  const [razonSociaformlobj, setRazonSocialformobj] = useState(() =>{
+    return razonSocialobj
+  })
+
   const [valueError, setValueError] = useState(() => {
-    return !razonSocialForm ? "" : razonSocialForm.nombre;
+    
+    if(razonSociaformlobj == null)
+      return false
+
+    return !razonSocialForm ? "" : razonSociaformlobj?.nombre;
   });
   const [inputValue, setInputValue] = useState("");
 
@@ -31,13 +40,18 @@ const RazonSocial = () => {
 
   return (
     <AutoComplete
-      value={razonSocial}
+      value={razonSociaformlobj}
       onChange={(event, value) => {
-        setRazonSocial(value);
+        setRazonSocialformobj(value);
         {
-          value ? setValueError(value.nombre) : setValueError("");
+          value ? setValueError(value?.nombre) : setValueError("");
+          dispatch(updateForm("razonSocialobj",value))
+          dispatch(updateForm("razonSocialForm",value?.nombre))
         }
       }}
+
+
+      
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
@@ -56,6 +70,15 @@ const RazonSocial = () => {
           }
           error={inputValue !== valueError}
           variant="outlined"
+          InputProps={{
+            ...params.InputProps,
+            style: {
+              paddingTop: "3px",
+              paddingBottom: "3px",
+              paddingLeft: "5xp",
+              marginTop: "7px",
+            },
+          }}
         />
       )}
     />

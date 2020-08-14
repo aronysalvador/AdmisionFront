@@ -53,7 +53,7 @@ const FormQuestion = (props) => {
           margin="dense"
           variant="outlined"
           fullWidth
-          rows={4}
+          rows={5}
           multiline
           inputProps={{ maxLength: 200 }}
           onChange={onChangeHandler}

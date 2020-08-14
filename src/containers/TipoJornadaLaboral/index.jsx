@@ -33,7 +33,7 @@ const TipoJornadaLaboral = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(100))}
+        dispatch={() => dispatch(handleSetStep(19.3))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -55,6 +55,7 @@ const TipoJornadaLaboral = () => {
             data={tipoJornada}
             itemForm={"tipoJornadaForm"}
             selected={tipoJornada.id === tipoJornadaLaboral.id}
+            step={21}
           >
             <BotonSeleccionarCustomItem {...tipoJornada} />
           </BotonSeleccionarCustom>

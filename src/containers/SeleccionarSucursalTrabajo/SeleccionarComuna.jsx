@@ -7,26 +7,30 @@ import { getComunStyle } from "../../css/comun";
 import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
-import { sucursalesOficina } from "../../util/fakeApi";
+import { getComuna } from "../../redux/actions/ComunaAction";
 
-const SeleccionarComuna = () => {
-  const comunas = [
-    { key: 13101, value: "Santiago Centro", parent: 13000 },
-    { key: 13102, value: "Cerrillos", parent: 13000 },
-    { key: 13103, value: "Cerro Navia", parent: 13000 },
-    { key: 13104, value: "Conchalí", parent: 13000 },
-    { key: 13105, value: "El Bosque", parent: 13000 },
-    { key: 13106, value: "Estación Central", parent: 13000 },
-    { key: 13107, value: "Huechuraba", parent: 13000 },
-    { key: 13108, value: "Independencia", parent: 13000 },
-    { key: 13109, value: "La Cisterna", parent: 13000 },
-    { key: 13110, value: "La Florida", parent: 13000 },
-    { key: 13111, value: "La Granja", parent: 13000 },
-    { key: 13112, value: "La Pintana", parent: 13000 },
-  ];
-  const [numeroSucursales, setNumeroSucursales] = useState(0);
-  const [sucursales, setSucursales] = useState([]);
-  const [comuna, setComuna] = useState(null);
+const SeleccionarComuna = ({ sucursalesEmpresa }) => {
+  const {
+    percentage,
+    comunaSucursal,
+    rutEmpresa,
+    cantidadSucursales,
+    sucursales: sucursales2,
+  } = useSelector((state) => state.addmissionForm, shallowEqual);
+
+  useEffect(() => {
+    dispatch(getComuna(""));
+  }, []);
+
+  const { data: comunaList } = useSelector(
+    (state) => state.comunaForm,
+    shallowEqual
+  );
+
+  const [numeroSucursales, setNumeroSucursales] = useState(cantidadSucursales);
+  const [sucursales, setSucursales] = useState(sucursales2);
+  const [comuna, setComuna] = useState(comunaSucursal);
+  const [listaComunas, setListaComunas] = useState([]);
   const dispatch = useDispatch();
   const {
     buttonAchs,
@@ -37,15 +41,33 @@ const SeleccionarComuna = () => {
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
-  let stepx = step;
+  useEffect(() => {
+    /*const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
+      comunaList.find((x) => x.codigo_comuna === sucursal.id_comuna)
+    );*/
+    console.log({ sucursalesEmpresa });
+    const comunasSucursal = [];
+    for (let i = 0; i < sucursalesEmpresa.length; i++) {
+      for (let j = 0; j < comunaList.length; j++) {
+        if (comunaList[j].codigo_comuna === sucursalesEmpresa[i].id_comuna) {
+          comunasSucursal.push(comunaList[j]);
+        }
+      }
+    }
+    const uniqueAddresses = Array.from(
+      new Set(comunasSucursal.map((a) => a.id))
+    ).map((id) => {
+      return comunasSucursal.find((a) => a.id === id);
+    });
+
+    console.log({ uniqueAddresses });
+    setListaComunas(uniqueAddresses);
+  }, [sucursalesEmpresa, comunaList]);
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(8))}
+        dispatch={() => dispatch(handleSetStep(5.4))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -56,23 +78,30 @@ const SeleccionarComuna = () => {
         Comuna
       </Typography>
       <AutoComplete
+        value={comuna}
         onChange={(event, value) => {
-          const sucursalesComuna = sucursalesOficina.filter(
-            (x) => x.key == value?.key
+          console.log({ value });
+          const sucursalesComuna = sucursalesEmpresa.filter(
+            (x) =>
+              x.id_comuna == value?.codigo_comuna &&
+              value?.codigo_region == x.codigo_region
           );
+
+          console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
           setNumeroSucursales(sucursalesComuna.length);
           setSucursales(sucursalesComuna);
           setComuna(value);
-          console.log({ value, sucursalesComuna });
         }}
         size="small"
         fullWidth
-        options={comunas}
-        getOptionLabel={(option) => option.value}
+        options={listaComunas}
+        getOptionLabel={(option) => option.nombre}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
       <div className={spaceStyle.space2}></div>
-      {numeroSucursales === 1 ? <CardSucursal /> : null}
+      {numeroSucursales === 1 ? (
+        <CardSucursal sucursales={sucursales[0]} />
+      ) : null}
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
@@ -83,10 +112,14 @@ const SeleccionarComuna = () => {
             dispatch(updateForm("comunaSucursal", comuna));
             if (numeroSucursales > 1) {
               dispatch(updateForm("sucursales", sucursales));
-              dispatch(handleSetStep(++stepx));
+              dispatch(handleSetStep(5.6));
             }
             if (numeroSucursales === 1) {
-              dispatch(updateForm("SucursalEmpresa", sucursales[0]));
+              dispatch(updateForm("sucursales", sucursales));
+              dispatch(updateForm("SucursalEmpresaObjeto", sucursales[0]));
+              dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
+              dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
+              dispatch(handleSetStep(5.1));
             }
           }}
         >

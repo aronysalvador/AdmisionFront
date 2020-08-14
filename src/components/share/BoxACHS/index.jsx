@@ -50,30 +50,33 @@ const useStyles = makeStyles({
         fontSize: '1em',
         lineHeight: '1.25',
         color: '#373737',
-    }
+    },
+    textDireccion: {
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '1.4em',
+        lineHeight: '1.25',
+    },
   });
 
 const BoxACHS = (props) => {
-    const { titulo, contenido } = props
+    const { titulo, contenido,step } = props
     const classes = useStyles()
-
     const dispatch = useDispatch();
     return (<div>
                 <div>
                     <div className={classes.tituloConteiner}>
                         <Typography color="textSecondary" gutterBottom className={classes.tituloText}>
                             {titulo}
-                            <EditIcon 
-                            onClick={() => dispatch(handleSetStep(30))} />
+                            <EditIcon style={{cursor : "pointer"}} onClick={() => dispatch(handleSetStep(step))} />
                         </Typography>
                       
                     </div>
                     <div className={classes.contentConteiner}>
-                        <Typography color="textSecondary" gutterBottom className={classes.contentText}>
-                            {contenido.map((value) => {
-                            return <div>{value}</div>
-                            })}
-                        </Typography>
+                        {contenido.map((item,index) => {
+                            return <div id={index} className={classes.textDireccion}>{item}</div>
+                        })}
                     </div>
                 </div>
             </div>

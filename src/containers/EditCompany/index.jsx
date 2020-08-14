@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TabCompany from "../../components/EditCompany/TabCompany";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -18,6 +18,8 @@ const EditCompany = () => {
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const dispatch = useDispatch();
 
+  const [rutEmpresaForm, setRutEmpresaForm] = useState("");
+
   return (
     <div className={root}>
       <Cabecera
@@ -35,7 +37,8 @@ const EditCompany = () => {
         <Button
           className={buttonAchs}
           onClick={() => {
-            dispatch(handleSetStep(step + 1));
+            dispatch(handleSetStep(5.5));
+            //dispatch(updateForm("rutEmpresa",rutEmpresaForm))
           }}
         >
           Siguiente

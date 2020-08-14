@@ -1,55 +1,46 @@
-import React from "react";
-import { withFormik } from "formik";
-import { connect } from "react-redux";
-import { updateForm } from "../../redux/actions/AdmissionAction";
-import TextField from "@material-ui/core/TextField";
+import React, { useState } from "react";
+import { TextField } from "@material-ui/core";
 import { Rut, formateaRut } from "../../helpers/rut";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { updateForm } from "../../redux/actions/AdmissionAction";
 
-const form = (props) => {
-  const { values, touched, errors, handleChange, handleBlur } = props;
+const IdentificationCompany = () => {
+  const dispatch = useDispatch();
+  const {
+    addmissionForm: { rutEmpresa },
+  } = useSelector((state) => state, shallowEqual);
+
+  const [rut, setRut] = useState(() => {
+    return !rutEmpresa ? "" : rutEmpresa;
+  });
+
+  const [isValid, setIsValid] = useState(true);
+
+  const validar = (id) => {
+    if (isValid) {
+      dispatch(updateForm("rutEmpresa", rut));
+    }
+  };
 
   return (
-    <TextField
-      id="rut"
-      value={formateaRut(values.rut)}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      helperText={touched.rut ? errors.rut : "Ingresa el RUT de la empresa"}
-      error={touched.rut && Boolean(errors.rut)}
-      margin="dense"
-      variant="outlined"
-      fullWidth
-    />
+    <div>
+      <TextField
+        value={rut}
+        variant="outlined"
+        size="small"
+        margin="dense"
+        fullWidth
+        helperText={!isValid && "RUT no válido"}
+        error={!isValid}
+        onChange={(e) => {
+          //let rutFormateado = e.target.value
+          //formateaRut(e.target.value)
+          setIsValid(Rut.validaRut(formateaRut(e.target.value)));
+          setRut(formateaRut(e.target.value));
+        }}
+        onBlur={() => validar(rut)}
+      />{" "}
+    </div>
   );
 };
-
-const IdentificationCompany = withFormik({
-  enableReinitialize: true,
-  mapPropsToValues: (props) => {
-    return {
-      rut: props.addmissionForm.rutEmpresa || "",
-    };
-  },
-  validate: (values) => {
-    const errors = {};
-    if (typeof values.rut !== "undefined" && values.rut.length < 1) {
-      errors.rut = "Debe ingresar su RUT";
-    } else if (!Rut.validaRut(formateaRut(values.rut))) {
-      errors.rut = "El RUT ingresado no es valido";
-    }
-    return errors;
-  },
-  handleBlur: (values, { props, setSubmitting }) => {
-    setSubmitting = false;
-    values.rut = formateaRut(values.rut);
-    props.dispatch(updateForm("rutEmpresa", Rut.clean(values.rut)));
-    //props.dispatch(handleSetStep(3))
-  },
-})(form);
-
-function mapStateToProps({ addmissionForm }) {
-  return {
-    addmissionForm: addmissionForm,
-  };
-}
-export default connect(mapStateToProps)(IdentificationCompany);
+export default IdentificationCompany;

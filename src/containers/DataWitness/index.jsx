@@ -1,65 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 //Action de Redux
 import { sendCargo } from "../../redux/actions/AdmissionAction";
-import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
+import { InputAdornment } from "@material-ui/core";
+import { IconButton } from "material-ui";
+import ClearIcon from "@material-ui/icons/Clear";
 
-const DataWitness = (props) => {
-  const { dispatch, addmissionForm } = props;
-  const { testigos } = addmissionForm;
+const DataWitness = () => {
+  const {
+    addmissionForm: { testigos, percentage },
+  } = useSelector((state) => state, shallowEqual);
 
-  const welcomeStyle = getWelcomeStyle();
+  const dispatch = useDispatch();
+
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   //State
+
   const [nombre, saveNombre] = useState(() => {
     return !testigos ? "" : testigos.nombre;
   });
+
   const [cargos, saveCargos] = useState(() => {
     return !testigos ? "" : testigos.cargo;
   });
-  const [open, setOpen] = useState(false);
 
-  const dispatch1 = useDispatch();
-
-  useEffect(() => {
-    //Call Action
-    const consultaCargos = () => dispatch1(searchCargos());
-    consultaCargos();
-  }, []); // eslint-disable-line no-use-before-define
-
-  const getCargos = useSelector((state) => state.cargosForm.cargos);
-
-  const loading = useSelector((state) => state.cargosForm.loading);
-
-  const clickSendCargo = () => {
-    //Validar Formulario
-    if (nombre.trim() === "" || cargos === null) {
-      console.log("Necesita llenar los campos");
-      return;
-    }
-
-    dispatch1(sendCargo(nombre, cargos));
-    dispatch(handleSetStep(15.1));
+  const clickSendTestigo = () => {
+    dispatch(sendCargo(nombre, cargos));
+    dispatch(updateForm("testigoForm", nombre + "-" + cargos));
+    dispatch(handleSetStep(14.1));
   };
 
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
-        percentage={addmissionForm.percentage}
+        dispatch={() => dispatch(handleSetStep(13))}
+        percentage={percentage}
       />
       <div>
         <Typography variant="p" component="p" className={classesComun.pregunta}>
@@ -72,10 +57,9 @@ const DataWitness = (props) => {
         <Typography
           variant="p"
           component="p"
-          variant="subtitle2"
           className={[classesComun.tituloTextbox]}
         >
-          NOMBRE
+          Nombre
         </Typography>
       </div>
 
@@ -88,6 +72,19 @@ const DataWitness = (props) => {
           margin="dense"
           variant="outlined"
           fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => {
+                    saveNombre("");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </div>
 
@@ -97,51 +94,34 @@ const DataWitness = (props) => {
         <Typography
           variant="p"
           component="p"
-          variant="subtitle2"
           className={[classesComun.tituloTextbox]}
         >
-          CARGO
+          Cargo - Relación
         </Typography>
       </div>
 
       <div>
-        <Autocomplete
-          id="asynchronous-demo"
-          style={{ width: 310, height: 50 }}
-          open={open}
-          onOpen={() => {
-            setOpen(true);
-          }}
-          onClose={() => {
-            setOpen(false);
-          }}
-          getOptionSelected={(option, value) => option.cargo === value.cargo}
-          getOptionLabel={(option) => option.cargo}
-          options={!getCargos ? [] : getCargos}
-          loading={loading}
+        <TextField
+          id="cargos"
           value={cargos}
-          onChange={(event, newValue) => {
-            saveCargos(newValue);
-          }}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              helperText="Ejemplo: Vigilante,Jefe,Agente"
-              variant="outlined"
-              InputProps={{
-                ...params.InputProps,
-                endAdornment: (
-                  <React.Fragment>
-                    {loading ? (
-                      <CircularProgress color="inherit" size={20} />
-                    ) : null}
-                    {params.InputProps.endAdornment}
-                  </React.Fragment>
-                ),
-              }}
-            />
-          )}
+          onChange={(e) => saveCargos(e.target.value)}
+          helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
+          margin="dense"
+          variant="outlined"
           fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => {
+                    saveCargos("");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </div>
 
@@ -150,7 +130,8 @@ const DataWitness = (props) => {
           className={classesComun.buttonAchs}
           variant="contained"
           type="submit"
-          onClick={() => clickSendCargo()}
+          disabled={!nombre}
+          onClick={() => clickSendTestigo()}
         >
           Agregar Testigo
         </Button>
@@ -159,10 +140,4 @@ const DataWitness = (props) => {
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
-  return {
-    addmissionForm: addmissionForm,
-  };
-}
-
-export default connect(mapStateToProps)(DataWitness);
+export default DataWitness;
