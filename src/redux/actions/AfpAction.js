@@ -5,9 +5,9 @@ import {
 } from "../types/afpType";
 import Axios from "axios";
 
-export const getData = async()=>{
-  return Axios.get(process.env.REACT_APP_AFP)
-}
+export const getData = async () => {
+  return Axios.get(process.env.REACT_APP_AFP);
+};
 
 export const getAFP = () => async (dispatch) => {
   dispatch({

@@ -52,6 +52,12 @@ import PersonalSuccess from "../FeedBack/PersonalSuccess";
 import RelatoSuccess from "../FeedBack/RelatoSuccess";
 
 import DireccionParticular from "../DireccionParticular/index";
+import HasBP from "../AffiliateValidations/HasBP";
+import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
+import HasSinister from "../AffiliateValidations/HasSinister";
+import HasSinisterDetail from "../AffiliateValidations/HasSinisterDetail";
+import HasSinisterList from "../AffiliateValidations/HasSinisterList";
+import ContinueSAP from "../AffiliateValidations/ContinueSAP";
 import PantallaFinal from "../PantallaFinal/PantallaFinal";
 import CreandoCaso from "../PantallaFinal/CreandoCaso";
 
@@ -59,6 +65,13 @@ import AlertaCalificacion from "../AlertaCalificacion/index";
 import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
 import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
+import ErrorCaso from "../PantallaFinal/ErrorCaso";
+import SameDateSinister from "../AffiliateValidations/SameDateSinister";
+
+import Achs from "../IdentificacionACHS/index";
+import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
+
+import Profesion from "../Profesion/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -70,7 +83,14 @@ const Main = (props) => {
     localGetAccount();
   }, []);
 
-  const { layout, paper, layoutFix, paperFix } = classes;
+  const {
+    layout,
+    paper,
+    layoutFix,
+    paperFix,
+    blackLayout,
+    paperNoColor,
+  } = classes;
 
   const renderForm = (step) => {
     switch (step) {
@@ -92,11 +112,11 @@ const Main = (props) => {
         );
       case 1:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <WelcomeEjecutivo />
-            </Paper>
-          </div>
+        <div className={layoutFix}>
+          <Paper className={paperFix}>
+            <SessionAchs />
+          </Paper>
+        </div>
         );
       case 1.1:
         return (
@@ -191,6 +211,62 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <PersonalSuccess />
+            </Paper>
+          </div>
+        );
+      case 5.81:
+        return (
+          <div className={blackLayout}>
+           <Paper className={paperNoColor}>
+              <HasBP />
+           </Paper>
+          </div>
+        );
+      case 5.82:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <HasScheduledMeet />
+            </Paper>
+          </div>
+        );
+      case 5.83:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <HasSinister />
+            </Paper>
+          </div>
+        );
+      case 5.831:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <HasSinisterList />
+            </Paper>
+          </div>
+        );
+      case 5.832:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <HasSinisterDetail />
+            </Paper>
+          </div>
+        );
+      case 5.833:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <SameDateSinister />
+            </Paper>
+          </div>
+        );
+      case 5.9:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <ContinueSAP />
             </Paper>
           </div>
         );
@@ -350,6 +426,15 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
+      case 19.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <Profesion />
+            </Paper>
+          </div>
+        );
       case 20:
         return (
           <div className={layout}>
@@ -406,6 +491,42 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
+      case 26.1:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <AlertaCalificacion />
+            </Paper>
+          </div>
+        );
+      case 26.2:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AlertaCalificacionRazon />
+            </Paper>
+          </div>
+        );
+
+      case 26.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CausaNolaboral />
+            </Paper>
+          </div>
+        );
+
+      case 26.4:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LoadRazonAlerta />
+            </Paper>
+          </div>
+        );
+
       case 27:
         return (
           <div className={layout}>
@@ -431,42 +552,24 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
-      case 90:
+      case 1002:
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <AlertaCalificacion />
-            </Paper>
-          </div>
-        );
-      case 90.1:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <AlertaCalificacionRazon />
+              <ErrorCaso />
             </Paper>
           </div>
         );
 
-      case 90.2:
+      case 40:
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <CausaNolaboral />
+              <Achs />
             </Paper>
           </div>
         );
-
-      case 90.3:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <LoadRazonAlerta />
-            </Paper>
-          </div>
-        );
-
+        
       case 500: {
         sessionStorage.clear();
         return (

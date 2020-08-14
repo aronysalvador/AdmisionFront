@@ -35,7 +35,8 @@ export const login = (scopes) => async (dispatch) => {
       iniciales: iniciales,
     };
     dispatch({ type: MSAL_SUCCESS, payload: userMsal });
-    dispatch(handleSetStep(1));
+    //PARCHE
+    dispatch(handleSetStep(isNuevaAdmisionista()));
   } catch (err) {
     let error = {};
     if (typeof err === "string") {
@@ -66,4 +67,10 @@ export const getAccount = () => async (dispatch) => {
   const step = usermsal === null ? 0 : 1;
   dispatch(handleSetStep(step))
   return usermsal;
+};
+
+const isNuevaAdmisionista = (email) => {
+    //PARCHE
+    const isNew = true
+    return (isNew) ? 40 : 1 
 };

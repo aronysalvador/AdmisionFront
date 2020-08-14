@@ -48,8 +48,9 @@ const LoadPersonalData = (props) => {
   const { addmissionForm, dispatch } = props;
 
   useEffect(() => {
+    console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);
     dispatch(saveRut(addmissionForm.rut));
-  });
+  },[]);
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();

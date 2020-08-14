@@ -34,7 +34,7 @@ const ValidarCorreoElectronico = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(--stepx))}
+        dispatch={() => dispatch(handleSetStep(26.1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

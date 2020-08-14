@@ -4,11 +4,10 @@ import {
   GET_CATEGORIAOCUPACIONAL_FAILURE,
 } from "../types/categoriaOcupacionalType";
 import Axios from "axios";
-import { getCategoriaOcupacional } from "../../util/fakeApi";
 
-export const getData = async() =>{
-  return  Axios.get(process.env.REACT_APP_CATEGORIA_OCUPACIONAL)
-}
+export const getData = async () => {
+  return Axios.get(process.env.REACT_APP_CATEGORIA_OCUPACIONAL);
+};
 
 export const getCategoriaOcupacionalPrincipal = () => async (dispatch) => {
   dispatch({

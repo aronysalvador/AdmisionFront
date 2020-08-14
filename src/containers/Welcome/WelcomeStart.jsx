@@ -30,7 +30,7 @@ const Start = (props) =>{
                 </div>
             </div>            
 
-            <div className={welcomeStyle.TextContainer}>
+            <div className={welcomeStyle.TextContainer1}>
                 <Typography
                 variant="h1"
                 component="h1"
