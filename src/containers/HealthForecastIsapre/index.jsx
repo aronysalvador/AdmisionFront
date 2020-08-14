@@ -9,7 +9,6 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
 
 //Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
@@ -22,7 +21,6 @@ const HealthForecastIsapre = (props) => {
   );
   const { dispatch, addmissionForm } = props;
 
-  const welcomeStyle = getWelcomeStyle();
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -67,7 +65,7 @@ const HealthForecastIsapre = (props) => {
           >
             Escribe tu ISAPRE
           </Typography>
-        </div> 
+        </div>
         <div className={spaceStyle.space2} />
         <div>
           <Typography
@@ -130,7 +128,7 @@ const HealthForecastIsapre = (props) => {
         </div>
         <div className={classesComun.bottomElement}>
           <Button
-           disabled={!isapres}
+            disabled={!isapres}
             className={classesComun.buttonAchs}
             variant="contained"
             onClick={() => clickSendIsapres()}

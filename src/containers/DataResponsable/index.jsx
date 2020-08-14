@@ -32,7 +32,6 @@ const DataResponsable = () => {
   const [cargos, saveCargos] = useState(() => {
     return !responsable ? "" : responsable.cargo;
   });
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     //Call Action
