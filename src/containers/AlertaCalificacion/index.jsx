@@ -1,4 +1,5 @@
 import React from "react";
+import Cabecera from "../../components/cabecera/index";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
@@ -9,14 +10,17 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import CheckIcon from "@material-ui/icons/Check";
 import Fab from "@material-ui/core/Fab";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
 
-const AlertaCalificacion = (props) => {
+const AlertaCalificacion = () => {
+  const {
+    addmissionForm: { percentage, microsoftReducer },
+  } = useSelector((state) => state, shallowEqual);
+
   const dispatch = useDispatch();
-  // const custom = siniestroStyle();
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -30,11 +34,22 @@ const AlertaCalificacion = (props) => {
   } = getTrabajoHabitualCardStyle();
 
   return (
-    <div className={comunStyle.root}>
-      <div className={welcomeStyle.avatarContainer2}>
-        <Avatar className={welcomeStyle.avatar}>AS</Avatar>
+    <div className={comunStyle.rootBegin}>
+      <div className={welcomeStyle.beginContainer}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(5.1))}
+          percentage={-1}
+          noSpace={true}
+        />
+        <div className={spaceStyle.space4}>
+          <div className={welcomeStyle.avatarContainerRight}>
+            <Avatar className={welcomeStyle.avatarBegin}>
+              {/* {microsoftReducer.userMsal.iniciales} */}
+            </Avatar>
+          </div>
+        </div>
       </div>
-      <div className={spaceStyle.space1} />
+
       <Fab size="small" aria-label="edit" className={welcomeStyle.imgCheck}>
         <CheckIcon />
       </Fab>
@@ -49,12 +64,16 @@ const AlertaCalificacion = (props) => {
           Eso fué rápido
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
+
       <div>
         <Typography
           variant="p"
           component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
+          className={[
+            comunStyle.textAchsContent,
+            welcomeStyle.admisionText,
+            cardText2,
+          ]}
         >
           Para terminar:
         </Typography>
