@@ -480,6 +480,42 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
+      case 26.1:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <AlertaCalificacion />
+            </Paper>
+          </div>
+        );
+      case 26.2:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AlertaCalificacionRazon />
+            </Paper>
+          </div>
+        );
+
+      case 26.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CausaNolaboral />
+            </Paper>
+          </div>
+        );
+
+      case 26.4:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LoadRazonAlerta />
+            </Paper>
+          </div>
+        );
+
       case 27:
         return (
           <div className={layout}>
@@ -514,41 +550,6 @@ const Main = (props) => {
           </div>
         );
 
-      case 90:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <AlertaCalificacion />
-            </Paper>
-          </div>
-        );
-      case 90.1:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <AlertaCalificacionRazon />
-            </Paper>
-          </div>
-        );
-
-      case 90.2:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <CausaNolaboral />
-            </Paper>
-          </div>
-        );
-
-      case 90.3:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <LoadRazonAlerta />
-            </Paper>
-          </div>
-        );
-
       case 40:
         return (
           <div className={layout}>
@@ -563,15 +564,6 @@ const Main = (props) => {
             <div className={paper}>
               <SessionAchs />
             </div>
-          </div>
-        );
-
-      case 100:
-        return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <Profesion />
-            </Paper>
           </div>
         );
 
