@@ -9,17 +9,23 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     rootBegin: {
         position: "relative",
-        width: "25.5em",
-        height: "40em",
+        width: "24.5em",
+        height: "42em",
         // background:  "linear-gradient(110deg, #F8F9FA, 50%, #E5F5F4, 50%);" ,
         background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
+        padding: 0,
+    },
+    rootWhite: {
+        position: "relative",
+        width: "24.5em",
+        height: "42em",
         padding: 0,
     },
 
   rootContainer: {
     position: "relative",
-    width: "25.5em",
-    height: "40em",
+    width: "24.5em",
+    height: "42em",
     backgroundColor: "#F8F9FA",
   },
     textAchsContent: {

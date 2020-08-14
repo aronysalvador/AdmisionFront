@@ -112,10 +112,10 @@ const Main = (props) => {
         );
       case 1:
         return (
-        <div className={layout}>
-          <div className={paper}>
+        <div className={layoutFix}>
+          <Paper className={paperFix}>
             <SessionAchs />
-          </div>
+          </Paper>
         </div>
         );
       case 1.1:
@@ -217,57 +217,57 @@ const Main = (props) => {
       case 5.81:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+           <Paper className={paperNoColor}>
               <HasBP />
-            </div>
+           </Paper>
           </div>
         );
       case 5.82:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasScheduledMeet />
-            </div>
+            </Paper>
           </div>
         );
       case 5.83:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasSinister />
-            </div>
+            </Paper>
           </div>
         );
       case 5.831:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <HasSinisterList />
-            </div>
+            </Paper>
           </div>
         );
       case 5.832:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasSinisterDetail />
-            </div>
+            </Paper>
           </div>
         );
       case 5.833:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <SameDateSinister />
-            </div>
+            </Paper>
           </div>
         );
       case 5.9:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <ContinueSAP />
-            </div>
+            </Paper>
           </div>
         );
       case 6:
@@ -564,9 +564,9 @@ const Main = (props) => {
       case 40:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <Achs />
-            </div>
+            </Paper>
           </div>
         );
         

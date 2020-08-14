@@ -32,7 +32,7 @@ const SessionAchs = (props) => {
   ];
 
   return (
-    <div className={comunStyle.root}>
+    <div className={comunStyle.rootWhite}>
       <div className={welcomeStyle.backgroundBoxAchs}>
         <div className={welcomeStyle.backPosicion}> 
           <Cabecera dispatch={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true} /> 
@@ -123,7 +123,7 @@ const SessionAchs = (props) => {
       </div>
         
         <div className={spaceStyle.space2} />
-        <div className={comunStyle.bottomElement}>
+        <div className={comunStyle.bottomElement} style={{padding:'1.5em'}}>
           <div>
             <Button
               className={comunStyle.buttonAchs}
