@@ -59,7 +59,7 @@ const LoadRazonAlerta = (props) => {
 
   useEffect(() => {
     setTimeout(function () {
-      dispatch(handleSetStep(90));
+      dispatch(handleSetStep(26.1));
     }, 2000);
   });
 

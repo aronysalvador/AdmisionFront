@@ -33,7 +33,7 @@ const AlertaCalificacionRazon = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(90))}
+        dispatch={() => dispatch(handleSetStep(26.1))}
         percentage={percentage}
       />
       <Typography className={pregunta}>

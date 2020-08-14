@@ -13,9 +13,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Indiciaciones from "../../components/Indicaciones";
 
 const AlertaCalificacion = () => {
-  const {
-    addmissionForm: { microsoftReducer },
-  } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
   const welcomeStyle = getWelcomeStyle();
@@ -26,14 +24,14 @@ const AlertaCalificacion = () => {
     <div className={comunStyle.rootBegin}>
       <div className={welcomeStyle.beginContainer}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.1))}
+          dispatch={() => dispatch(handleSetStep(26))}
           percentage={-1}
           noSpace={true}
         />
         <div className={spaceStyle.space4}>
           <div className={welcomeStyle.avatarContainerRight}>
             <Avatar className={welcomeStyle.avatarBegin}>
-              {/* {microsoftReducer.userMsal.iniciales} */}
+              {microsoftReducer.userMsal.iniciales}
             </Avatar>
           </div>
         </div>
@@ -85,7 +83,7 @@ const AlertaCalificacion = () => {
           <Button
             className={comunStyle.buttonAchs2}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(90.1))}
+            onClick={() => dispatch(handleSetStep(26.2))}
           >
             El relato no es coherente
           </Button>
@@ -94,7 +92,7 @@ const AlertaCalificacion = () => {
           <Button
             className={comunStyle.buttonAchs}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(6))}
+            onClick={() => dispatch(handleSetStep(27))}
           >
             Continuar
           </Button>

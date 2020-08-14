@@ -38,7 +38,7 @@ const CausaNoLaboral = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(90.1))}
+        dispatch={() => dispatch(handleSetStep(26.2))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
@@ -81,7 +81,7 @@ const CausaNoLaboral = () => {
           disabled={!causas}
           onClick={() => {
             dispatch(updateForm("razonAlertaForm", causas));
-            dispatch(handleSetStep(90.3));
+            dispatch(handleSetStep(26.4));
           }}
         >
           Confirmar Alerta
