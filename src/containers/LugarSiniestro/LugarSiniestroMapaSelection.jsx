@@ -92,11 +92,14 @@ const LugarSiniestroMapaSelection = () => {
 
   return (
     <div className={comun.rootContainer}> 
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(11))}
-        percentage={percentage}
-        noSpace={true}
-      />
+
+      <div style={{padding: '0.5em'}}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(11))}
+          percentage={percentage}
+          noSpace={true}
+        />
+      </div>
 
         {coords ? (
                <Mapa 

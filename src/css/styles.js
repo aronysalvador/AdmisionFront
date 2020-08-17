@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
     },
 
     layoutFix: {
-        margin: 'auto',
-        width: '25.5em',
-        border: '0',
-        backgroundColor: '#F8F9FA',
+      margin:'auto',
+      width: "24.5em",
+      border:'0',
+      backgroundColor:'#F8F9FA',
     },
     paperFix: {
-        marginTop: '0 auto',
-        backgroundColor: "#F8F9FA"
+      marginTop: '0.5em',
+      backgroundColor: "#F8F9FA"
     },
 
 }));

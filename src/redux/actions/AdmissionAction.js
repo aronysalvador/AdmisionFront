@@ -75,72 +75,54 @@ export const saveRut = (rut) => {
                     dispatch(updateForm("razonSocialForm", result.data.content.response.NombreEmpresa));
                     dispatch(updateForm("rutEmpresa", result.data.content.response.RutPagador));
                     dispatch(updateForm("isAfiliado", "Si"));
-<<<<<<< HEAD
-                    dispatch(updateForm("SucursalEmpresa", result.data.content.response.SucursalEmpresa));
-                    dispatch(updateForm("DireccionEmpresa", result.data.content.response.DireccionEmpresa));
-                    dispatch(updateForm("comunaEmpresa", result.data.content.response.comunaEmpresa));
-                    dispatch(updateForm("direccionParticular", result.data.content.response.direccionParticular));
-                    dispatch(updateForm("telefonoParticular", result.data.content.response.telefonoParticular === "0" ?
-                        "" : result.data.content.response.telefonoParticular));
+                    dispatch(
+                        updateForm(
+                            "SucursalEmpresa",
 
-                    // let arraySiniestros = [ {
-                    //     id: 17454785,
-                    //     descripcion: 'Trayecto',
-                    //     fecha: '13 Jun 2020',
-                    //     CUN: 'CUN',
-                    //     codigoUnicoNacionalExterno: 'CUNE',
-                    //     cesa: 'CeSa',
-                    //     interLComercial: 'InterLComercial',
-                    //     tipoLey: 'Tipo Ley',
-                    //     reposoActivo: true,
-                    //     hora: '13:24'
-                    //   },
-                    //   {
-                    //     id: 24457874,
-                    //     descripcion: 'Trabajo',
-                    //     fecha: '13 Jun 2020',
-                    //     CUN: 'CUN',
-                    //     codigoUnicoNacionalExterno: 'CUNE',
-                    //     cesa: 'CeSa',
-                    //     interLComercial: 'InterLComercial',
-                    //     tipoLey: 'Tipo Ley',
-                    //     reposoActivo: true,
-                    //     hora: '18:23'
-                    //   },
-                    //   {
-                    //     id: 17454785,
-                    //     descripcion: 'Trayecto',
-                    //     fecha: '13 Jun 2020',
-                    //     CUN: 'CUN',
-                    //     codigoUnicoNacionalExterno: 'CUNE',
-                    //     cesa: 'CeSa',
-                    //     interLComercial: 'InterLComercial',
-                    //     tipoLey: 'Tipo Ley',
-                    //     reposoActivo: true,
-                    //     hora: '13:24'
-                    //   },
-                    //   {
-                    //     id: 17454785,
-                    //     descripcion: 'Trayecto',
-                    //     fecha: '13 Jun 2020',
-                    //     CUN: 'CUN',
-                    //     codigoUnicoNacionalExterno: 'CUNE',
-                    //     cesa: 'CeSa',
-                    //     interLComercial: 'InterLComercial',
-                    //     tipoLey: 'Tipo Ley',
-                    //     reposoActivo: true,
-                    //     hora: '13:24'
-                    //   },];
-                    //     dispatch(updateForm("siniestros", arraySiniestros));
-                    //     dispatch(handleSetStep(5.83));
-                    if (!result.data.content.response.BpCreado && false) {
+                            result.data.content.response.SucursalEmpresa
+
+                        )
+                    );
+                    dispatch(
+                        updateForm(
+                            "DireccionEmpresa",
+
+                            result.data.content.response.DireccionEmpresa
+
+                        )
+                    );
+                    dispatch(
+
+                        updateForm("comunaEmpresa", result.data.content.response.comunaEmpresa)
+
+                    );
+                    dispatch(
+                        updateForm(
+                            "direccionParticular",
+
+                            result.data.content.response.direccionParticular
+
+                        )
+                    );
+
+                    dispatch(
+                        updateForm(
+                            "telefonoParticular",
+
+                            result.data.content.response.telefonoParticular === "0" ?
+                            "" :
+                            result.data.content.response.telefonoParticular
+
+                        )
+                    );
+
+                    if (!result.data.content.response.BpCreado) {
                         dispatch(handleSetStep(5.81));
-                    } else if (result.data.content.response.citas.length > 0 && false) {
+                    } else if (result.data.content.response.citas.length > 0) {
                         dispatch(handleSetStep(5.82));
-                    } else if (result.data.content.response.siniestros.length > 0 && false) {
+                    } else if (result.data.content.response.siniestros.length > 0) {
                         dispatch(handleSetStep(5.83));
                     } else {
-                        //pasó todas las validaciones
                         var STEP = "";
                         if (!result.data.content.response.NombreEmpresa ||
                             !result.data.content.response.SucursalEmpresa ||
@@ -164,81 +146,6 @@ export const saveRut = (rut) => {
                         dispatch(handleSetStep(STEP));
                     }
                 } else {
-=======
-                    dispatch(
-                        updateForm(
-                            "SucursalEmpresa",
-
-              result.data.content.response.SucursalEmpresa
-
-                        )
-                    );
-                    dispatch(
-                        updateForm(
-                            "DireccionEmpresa",
-
-              result.data.content.response.DireccionEmpresa
-
-                        )
-                    );
-                    dispatch(
-
-            updateForm("comunaEmpresa", result.data.content.response.comunaEmpresa)
-
-                    );
-                    dispatch(
-                        updateForm(
-                            "direccionParticular",
-
-              result.data.content.response.direccionParticular
-
-                        )
-                    );
-
-                    dispatch(
-                        updateForm(
-                            "telefonoParticular",
-
-              result.data.content.response.telefonoParticular === "0"
-                ? ""
-                : result.data.content.response.telefonoParticular
-
-                        )
-                    );
-
-          if (!result.data.content.response.BpCreado) { 
-            dispatch(handleSetStep(5.81));
-          } else if (result.data.content.response.citas.length > 0) {
-            dispatch(handleSetStep(5.82));
-          } else if (result.data.content.response.siniestros.length > 0) {
-            dispatch(handleSetStep(5.83));
-          } else {
-            var STEP = "";
-            if (
-              !result.data.content.response.NombreEmpresa ||
-              !result.data.content.response.SucursalEmpresa ||
-              !result.data.content.response.DireccionEmpresa ||
-              !result.data.content.response.RutPagador
-            ) {
-              // si falta info de la empresa
-              STEP = 5.4; //form empresa
-            } else if (!result.data.content.response.direccionParticular) {
-              // si no tiene direccion
-              STEP = 5.2; //form direccion
-            } else if (
-              !result.data.content.response.telefonoParticular ||
-              result.data.content.response.telefonoParticular === "0"
-            ) {
-              // si no tiene telefono
-              STEP = 5.3; //form telefono
-            } else {
-              // si todos los datos relevantes están llenos
-              STEP = 5.1; // resumen data
-            }
-            dispatch(handleSetStep(STEP));
-          }
-        } else {
->>>>>>> a19379cc37dc2f38c6c855599319bd8dce60c6a7
 
                     dispatch(setStep(500, 0));
                     dispatch(updateForm("rut", ""));

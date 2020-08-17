@@ -102,6 +102,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     beginContainerCard: {
         padding: "0.5em 1em 0 1em",
     },
+    TextContainer1: {
+        padding: "1.5em 1.5em 0 1.5em",
+        // marginTop: "2px",
+    },
     TextContainer: {
         padding: "0em 1.5em 0 1.5em",
         // marginTop: "2px",
