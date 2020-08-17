@@ -122,7 +122,7 @@ const SessionAchs = (props) => {
         <div className={spaceStyle.space2} />
       </div>
         
-        <div className={spaceStyle.space1} />
+        {/* <div className={spaceStyle.space1} /> */}
         <div className={comunStyle.bottomElement} style={{padding:'1.5em'}}>
           <div>
             <Button
