@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     paperNoColor: {
       marginTop: '0 auto',
       padding: '0em 1em',
+      backgroundColor: "#373737"
     },
 
     layoutFix: {
