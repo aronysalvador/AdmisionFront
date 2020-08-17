@@ -8,13 +8,15 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
 
+import { FixedSizeList } from 'react-window';
+import { List, ListItem } from "material-ui";
+
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const contenidoSiniestros = addmissionForm.siniestros;
-
   
   const handleNext = () => {
     let fechaActual = new Date();
@@ -55,6 +57,9 @@ const PersonalData = (props) => {
   //     }
   //     dispatch(handleSetStep(STEP));
   //   }
+  const listaSiniestros = contenidoSiniestros.map((siniestro) => (
+    <CardSiniestro siniestro={siniestro}></CardSiniestro>
+  ))
 
   return (
     <div className={comunClass.root}>
@@ -74,9 +79,11 @@ const PersonalData = (props) => {
       </div>
       <div className={spaceStyle.space1} />
 
-      {contenidoSiniestros.map((siniestro) => (
+      {/* {contenidoSiniestros.map((siniestro) => (
         <CardSiniestro siniestro={siniestro}></CardSiniestro>
-      ))}
+      ))} */}
+      {console.log(contenidoSiniestros.id)}
+      <div overflow>{listaSiniestros}</div>
 
       <div className={comunClass.bottomElement}>
         <Button
