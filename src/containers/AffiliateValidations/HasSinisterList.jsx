@@ -63,6 +63,7 @@ const PersonalData = (props) => {
 
   return (
     <div className={comunClass.root}>
+      <div>
       <CabeceraSinBarra
         dispatch={() => dispatch(handleSetStep(5.83))}
         color="#373737"
@@ -83,8 +84,10 @@ const PersonalData = (props) => {
         <CardSiniestro siniestro={siniestro}></CardSiniestro>
       ))} */}
       {console.log(contenidoSiniestros.id)}
-      <div overflow>{listaSiniestros}</div>
+      <div>{listaSiniestros}</div>
+      </div>
 
+      <div>
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}
@@ -100,6 +103,7 @@ const PersonalData = (props) => {
         >
           Crear nueva admisión
         </Button>
+      </div>
       </div>
     </div>
   );
