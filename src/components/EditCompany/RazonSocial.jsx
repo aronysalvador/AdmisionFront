@@ -4,6 +4,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getRazonSocialPrincipal } from "./../../redux/actions/RazonSocialAction";
 import { updateForm } from "../../redux/actions/AdmissionAction";
+import RazonSocialAutoComplete from '../../components/share/RazonSocial'
 
 const RazonSocial = () => {
   const {
@@ -18,20 +19,9 @@ const RazonSocial = () => {
     return razonSocialobj
   })
 
-  const [valueError, setValueError] = useState(() => {
-    
-    if(razonSociaformlobj == null)
-      return false
-
-    return !razonSocialForm ? "" : razonSociaformlobj?.nombre;
-  });
   const [inputValue, setInputValue] = useState("");
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getRazonSocialPrincipal(""));
-  }, []);
 
   const { data: razonSocialList } = useSelector(
     (state) => state.razonSocialForm,
@@ -39,49 +29,7 @@ const RazonSocial = () => {
   );
 
   return (
-    <AutoComplete
-      value={razonSociaformlobj}
-      onChange={(event, value) => {
-        setRazonSocialformobj(value);
-        {
-          value ? setValueError(value?.nombre) : setValueError("");
-          dispatch(updateForm("razonSocialobj",value))
-          dispatch(updateForm("razonSocialForm",value?.nombre))
-        }
-      }}
-
-
-      
-      inputValue={inputValue}
-      onInputChange={(event, newInputValue) => {
-        setInputValue(newInputValue);
-      }}
-      freeSolo
-      style={{ width: 300 }}
-      options={razonSocialList}
-      getOptionLabel={(option) => option.nombre}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          helperText={
-            inputValue !== valueError
-              ? "Razón Social no afiliada, ingresa un RUT"
-              : null
-          }
-          error={inputValue !== valueError}
-          variant="outlined"
-          InputProps={{
-            ...params.InputProps,
-            style: {
-              paddingTop: "3px",
-              paddingBottom: "3px",
-              paddingLeft: "5xp",
-              marginTop: "7px",
-            },
-          }}
-        />
-      )}
-    />
+    <RazonSocialAutoComplete company={razonSocial}/>
   );
 };
 
