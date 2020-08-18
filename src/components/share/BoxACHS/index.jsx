@@ -50,7 +50,14 @@ const useStyles = makeStyles({
         fontSize: '1em',
         lineHeight: '1.25',
         color: '#373737',
-    }
+    },
+    textDireccion: {
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '1.4em',
+        lineHeight: '1.25',
+    },
   });
 
 const BoxACHS = (props) => {
@@ -68,7 +75,7 @@ const BoxACHS = (props) => {
                     </div>
                     <div className={classes.contentConteiner}>
                         {contenido.map((item,index) => {
-                            return <div id={index}>{item}</div>
+                            return <div id={index} className={classes.textDireccion}>{item}</div>
                         })}
                     </div>
                 </div>

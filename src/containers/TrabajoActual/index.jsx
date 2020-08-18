@@ -14,9 +14,24 @@ const TrabajoActualContainer = () => {
     (state) => state.addmissionForm,
     shallowEqual
   );
-  const [ingresoTrabajoActualValue, setIngresoTrabajo] = useState(ingresoTrabajoActual);
+  const [ingresoTrabajoActualValue, setIngresoTrabajo] = useState(
+    ingresoTrabajoActual
+  );
   const [meses, setMes] = useState(() => {
-    return ['Ene', 'Feb', 'Mar','Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];    
+    return [
+      "Ene",
+      "Feb",
+      "Mar",
+      "Abr",
+      "May",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dic",
+    ];
   });
   const [anios, setAnio] = useState(() => {
     let anios = [];
@@ -26,7 +41,7 @@ const TrabajoActualContainer = () => {
     }
     return anios;
   });
-  
+
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const dispatch = useDispatch();
 
@@ -35,10 +50,9 @@ const TrabajoActualContainer = () => {
     setIngresoTrabajo(formattedDate);
   }
 
-  function getAnioIndex(){
+  function getAnioIndex() {
     return anios.indexOf(new Date(ingresoTrabajoActualValue).getFullYear());
   }
-
 
   return (
     <div className={root}>
@@ -55,8 +69,10 @@ const TrabajoActualContainer = () => {
         meses={meses}
         anios={anios}
         indiceMesFromState={new Date(ingresoTrabajoActualValue).getMonth()}
-        indiceAnioFromState={getAnioIndex() == -1 ? anios.length - 1 : getAnioIndex()}  
-      />  
+        indiceAnioFromState={
+          getAnioIndex() == -1 ? anios.length - 1 : getAnioIndex()
+        }
+      />
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
@@ -64,7 +80,7 @@ const TrabajoActualContainer = () => {
             dispatch(
               updateForm("ingresoTrabajoActual", ingresoTrabajoActualValue)
             );
-            dispatch(handleSetStep(step + 1));
+            dispatch(handleSetStep(26.1));
           }}
         >
           Confirmar

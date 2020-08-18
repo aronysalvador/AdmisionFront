@@ -3,6 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import SeleccionarSucursalTrabajo from "./SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./SeleccionarComuna";
 import { getSucursales } from "../../redux/actions/SucursalesAction";
+import ErrorSucursal from "./ErrorSucursal";
 
 const EditarSucursal = () => {
   const { rutEmpresa } = useSelector(
@@ -25,7 +26,7 @@ const EditarSucursal = () => {
     return <SeleccionarSucursalTrabajo sucursalesEmpresa={sucursalesList} />;
   if (sucursalesList?.length >= 6)
     return <SeleccionarComuna sucursalesEmpresa={sucursalesList} />;
-  return <div>No tiene sucursales</div>;
+  return <ErrorSucursal />;
 };
 
 export default EditarSucursal;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -54,12 +54,12 @@ const getUseStyles = makeStyles({
   },
 });
 
-const LoadRazonAlerta = (props) => {
-  const { addmissionForm, dispatch } = props;
+const LoadRazonAlerta = () => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(function () {
-      dispatch(handleSetStep(90));
+      dispatch(handleSetStep(26.1));
     }, 2000);
   });
 
@@ -106,9 +106,5 @@ const LoadRazonAlerta = (props) => {
     </div>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
-  return {
-    addmissionForm: addmissionForm,
-  };
-};
-export default connect(mapStateToProps)(LoadRazonAlerta);
+
+export default LoadRazonAlerta;

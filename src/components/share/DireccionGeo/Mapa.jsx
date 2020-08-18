@@ -1,0 +1,90 @@
+import React, {useState, useEffect} from "react";
+import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
+import { Typography } from "@material-ui/core"
+
+const mapStyles = {
+  width: '100%',
+  height: '350px',
+};
+
+const Mapa = (props) => {
+
+    const lat = props.lat !== 'notset' ? props.lat : -33.436868834634076;
+    const lng = props.lng !== 'notset' ? props.lng : -70.63447665106504;
+    const { direccion, setDireccion, setPlaceId } = props
+
+
+    useEffect(()=>{
+        lookForDirection(lat,lng)
+    },[])
+
+    const onMarkerDragEnd = (coord) => {        
+        const { latLng } = coord;
+        const lat = latLng.lat();
+        const lng = latLng.lng();
+        console.log(lat)
+        console.log(lng)
+        if(lat && lng){
+            lookForDirection(lat,lng)  
+        }
+    };
+
+    const lookForDirection = async(lat,lng) => {
+        if(lat && lng){
+            // const test = await fetch(`http://localhost:8080/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
+            const test = await fetch(`https://wa-desa-geolocalizacion.azurewebsites.net/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
+            const json = await test.json()      
+            if(json){
+                console.log(json.content[0].results[0].formatted_address)
+                setDireccion(json.content[0].results[0].formatted_address)
+                setPlaceId(json.content[0].results[0].place_id)
+            }
+        }
+    }
+     
+
+    return(
+        <div>     
+            <Map
+                google={props.google}
+                zoom={16}
+                style={mapStyles}
+                initialCenter={{
+                    lat,
+                    lng
+                }}
+            >
+                <Marker
+                    name={'Marker'}
+                    draggable={true}
+                    onDragend={(t, map, coord) => onMarkerDragEnd(coord)}
+                />
+            </Map>
+
+            <div style={{
+                    position: "absolute",
+                    right: "0",
+                    left: "0",
+                    bottom: "6.5em",
+            }}>
+                <Typography style={{
+                    fontFamily: 'Catamaran',
+                    fontStyle: 'normal',
+                    fontWeight: 'normal',
+                    fontSize: '20px',
+                    textAlign: 'center'}}>{direccion ? direccion.split(',')[0] : null}</Typography>
+                <Typography style={{
+                       fontFamily: 'Catamaran',
+                       fontStyle: 'normal',
+                       fontWeight: '600',
+                       fontSize: '14px',
+                    textAlign: 'center'}}>{direccion ? direccion.split(',')[1]+', '+direccion.split(',')[2] : null}</Typography>
+            </div>
+
+        </div> 
+    )
+}
+
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyB7A81JqF6R2b0lZ2SAAlR1jYRfNZNm-wM'
+})(Mapa);

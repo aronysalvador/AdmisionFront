@@ -1,4 +1,5 @@
 import React from "react";
+import Cabecera from "../../components/cabecera/index";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
@@ -7,88 +8,91 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
-import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { useDispatch } from "react-redux";
-import CheckIcon from "@material-ui/icons/Check";
-import Fab from "@material-ui/core/Fab";
-import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import Indiciaciones from "../../components/Indicaciones";
 
-const AlertaCalificacion = (props) => {
+const AlertaCalificacion = () => {
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+
   const dispatch = useDispatch();
-  // const custom = siniestroStyle();
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const {
-    container,
-    cardTextContainer2,
-    cardText,
-    cardText2,
-    iconVector,
-  } = getTrabajoHabitualCardStyle();
-
   return (
-    <div className={comunStyle.root}>
-      <div className={welcomeStyle.avatarContainer2}>
-        <Avatar className={welcomeStyle.avatar}>AS</Avatar>
+    <div className={comunStyle.rootBegin}>
+      <div className={welcomeStyle.beginContainer}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(26))}
+          percentage={-1}
+          noSpace={true}
+        />
+        <div className={spaceStyle.space4}>
+          <div className={welcomeStyle.avatarContainerRight}>
+            <Avatar className={welcomeStyle.avatarBegin}>
+              {microsoftReducer.userMsal.iniciales}
+            </Avatar>
+          </div>
+        </div>
       </div>
-      <div className={spaceStyle.space1} />
-      <Fab size="small" aria-label="edit" className={welcomeStyle.imgCheck}>
-        <CheckIcon />
-      </Fab>
-      <div className={welcomeStyle.bienvenidoContainer}>
+
+      <div className={welcomeStyle.TextContainer}>
+        <img
+          alt="Excelente"
+          src="static/icon-check.png"
+          className={welcomeStyle.iconCircular}
+        />
         <Typography
-          variant="p"
-          component="p"
-          className={[comunStyle.textAchsContentGreen, welcomeStyle.bienvenido]}
+          variant="h1"
+          component="h1"
+          className={welcomeStyle.txtBegin}
         >
           ¡WOW!
-          <br />
+        </Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          className={welcomeStyle.txtBegin}
+        >
           Eso fué rápido
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
-      <div>
+
+      <div className={welcomeStyle.beginContainer}>
         <Typography
-          variant="p"
-          component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
+          variant="h5"
+          component="h5"
+          className={welcomeStyle.subTitleBegin}
         >
           Para terminar:
         </Typography>
-      </div>
 
-      <div className={container}>
-        <div className={iconVector}>
-          <img alt="Ejecutivo de admisión" src="static/iconVector.png" />
-        </div>
+        <Indiciaciones
+          indicaciones={[
+            {
+              icono: "sms.svg",
+              textoPrimario: "Pide un e-mail al paciente,",
+              textoSecundario: "los documentos serán enviados ahí",
+              clase: welcomeStyle.divRowBottom,
+            },
+          ]}
+        />
 
-        <div className={cardTextContainer2}>
-          <span className={cardText2}>Pide un e-mail al paciente,</span>
-          <br />
-          <span className={cardText}>los documentos serán enviados ahí</span>
-        </div>
-      </div>
-
-      <div className={spaceStyle.space3} />
-      <div className={comunStyle.bottomElement}>
-        <div>
+        <div className={welcomeStyle.bottomBegin}>
           <Button
             className={comunStyle.buttonAchs2}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(90.1))}
+            onClick={() => dispatch(handleSetStep(26.2))}
           >
             El relato no es coherente
           </Button>
-        </div>
-        <div className={spaceStyle.space1} />
-        <div>
+          <div className={spaceStyle.space1}></div>
+
           <Button
             className={comunStyle.buttonAchs}
             variant="contained"
-            onClick={() => dispatch(logout())}
+            onClick={() => dispatch(handleSetStep(27))}
           >
             Continuar
           </Button>

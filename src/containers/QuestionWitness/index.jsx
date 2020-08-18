@@ -6,7 +6,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import QuestionTestigoResponsable from "../../components/Questions/QuestionTestigoResponsable";
 
 const QuestionWitness = (props) => {
-  const { dispatch, addmissionForm, step } = props;
+  const { dispatch, addmissionForm } = props;
 
   const classesComun = getComunStyle();
 

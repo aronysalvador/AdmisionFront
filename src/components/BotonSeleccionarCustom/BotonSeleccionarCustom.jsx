@@ -31,8 +31,8 @@ const BotonSeleccionarCustom = (props) => {
             );
             dispatch(handleSetStep(step));
           } else if (itemForm === "razonAlertaForm") {
-            if (data.key === 1) {
-              dispatch(handleSetStep(90.2));
+            if (data.glosa === "Posible causa no laboral") {
+              dispatch(handleSetStep(26.3));
             } else {
               dispatch(
                 updateForm(
@@ -40,7 +40,7 @@ const BotonSeleccionarCustom = (props) => {
                   !isSelected ? { ...data, selected: !isSelected } : {}
                 )
               );
-              dispatch(handleSetStep(90.3));
+              dispatch(handleSetStep(26.4));
             }
           } else {
             dispatch(

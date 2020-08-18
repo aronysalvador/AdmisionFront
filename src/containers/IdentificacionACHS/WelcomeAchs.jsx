@@ -12,8 +12,6 @@ import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import { makeStyles } from '@material-ui/core/styles';
-import Fab from "@material-ui/core/Fab";
-import EditIcon from "@material-ui/icons/Edit";
 import StarIcon from '@material-ui/icons/Star';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +32,7 @@ const SessionAchs = (props) => {
   ];
 
   return (
-    <div className={comunStyle.root}>
+    <div className={comunStyle.rootWhite}>
       <div className={welcomeStyle.backgroundBoxAchs}>
         <div className={welcomeStyle.backPosicion}> 
           <Cabecera dispatch={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true} /> 
@@ -46,7 +44,7 @@ const SessionAchs = (props) => {
             {microsoftReducer.userMsal.iniciales}
           </Avatar>
         </div>
-        <Fab size="small" aria-label="edit" className={welcomeStyle.imgEdit}><EditIcon /></Fab>
+        
         <div className={spaceStyle.space1} />
         <div className={welcomeStyle.bienvenidoContainer}>
           <Typography
@@ -125,12 +123,12 @@ const SessionAchs = (props) => {
       </div>
         
         <div className={spaceStyle.space2} />
-        <div className={comunStyle.bottomElement}>
+        <div className={comunStyle.bottomElement} style={{padding:'1.5em'}}>
           <div>
             <Button
               className={comunStyle.buttonAchs}
               variant="contained"
-              onClick={() => dispatch(handleSetStep(2))}
+              onClick={() => dispatch(handleSetStep(1.1))}
             >
               Nueva admisión
             </Button>

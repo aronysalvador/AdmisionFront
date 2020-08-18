@@ -57,7 +57,6 @@ const DataWitness = () => {
         <Typography
           variant="p"
           component="p"
-          variant="subtitle2"
           className={[classesComun.tituloTextbox]}
         >
           Nombre
@@ -95,7 +94,6 @@ const DataWitness = () => {
         <Typography
           variant="p"
           component="p"
-          variant="subtitle2"
           className={[classesComun.tituloTextbox]}
         >
           Cargo - Relación

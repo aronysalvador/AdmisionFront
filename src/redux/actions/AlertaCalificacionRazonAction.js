@@ -4,11 +4,10 @@ import {
   GET_RAZON_ALERTA_FAILURE,
 } from "../types/alertaCalificacionRazonType";
 import Axios from "axios";
-import { getRazonAlerta } from "../../util/fakeApi";
 
-//   export const getData = async() => {
-//     return   Axios.get(process.env.REACT_APP_JORNADA_TRABAJO)
-//   }
+export const getData = async () => {
+  return Axios.get(process.env.REACT_APP_ALERTAS);
+};
 
 export const getRazonAlertaPrincipal = () => async (dispatch) => {
   dispatch({
@@ -18,9 +17,9 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
 
   //getData()
 
-  getRazonAlerta()
+  getData()
     .then((response) => {
-      dispatch(successCallRazonAlerta(response));
+      dispatch(successCallRazonAlerta(response.data.opciones));
     })
     .catch((error) => {
       dispatch(errorCallRazonAlerta());
