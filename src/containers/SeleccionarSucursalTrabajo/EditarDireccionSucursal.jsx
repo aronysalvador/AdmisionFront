@@ -9,11 +9,10 @@ import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const EditarDireccionSucursal = () => {
   const {
-    addmissionForm: { step, percentage, sucursales, SucursalEmpresaObjeto },
+    addmissionForm: { percentage, sucursales, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
   const [sucursalEmpresa, setSucursalEmpresa] = useState(SucursalEmpresaObjeto);
-
-  let stepx = step;
+  
   const dispatch = useDispatch();
 
   const {

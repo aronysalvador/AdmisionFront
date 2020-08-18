@@ -13,7 +13,6 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
     percentage,
     comunaSucursal,
-    rutEmpresa,
     cantidadSucursales,
     sucursales: sucursales2,
   } = useSelector((state) => state.addmissionForm, shallowEqual);
@@ -83,8 +82,8 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
           console.log({ value });
           const sucursalesComuna = sucursalesEmpresa.filter(
             (x) =>
-              x.id_comuna == value?.codigo_comuna &&
-              value?.codigo_region == x.codigo_region
+              x.id_comuna === value?.codigo_comuna &&
+              value?.codigo_region === x.codigo_region
           );
 
           console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });

@@ -16,7 +16,8 @@ const JornadaLaboralContainer = () => {
   );
   const [inicioJornadaLaboralValue, setInicioJornada] = useState(inicioJornadaLaboral);
   const [finJornadaLaboralValue, setFinJornada] = useState(finJornadaLaboral);
-  const [horarios, setHorarios] = useState(() => {
+
+  const fnHorarios = () => {
     let horarios = [];
     let i = 0;
     let j = 0;
@@ -26,7 +27,10 @@ const JornadaLaboralContainer = () => {
       }
     }
     return horarios;
-  });
+  }
+
+  const horarios = fnHorarios()
+
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const dispatch = useDispatch();
 

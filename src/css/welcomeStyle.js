@@ -32,13 +32,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         height: "5em",
         verticalAlign: "middle",
     },
-
-    iconCircular: {
-        width: "54px",
-        height: "54px",
-        verticalAlign: "middle",
-    },
-
     avatarBegin: {
         width: "3.5em",
         height: "3.5em",

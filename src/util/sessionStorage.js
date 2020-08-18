@@ -5,9 +5,9 @@ export const getSessionStorageState = (key = "persist:addmissionForm") => {
   return state ? convertStringToObject(state) : AdmissionForm;
 };
 
-const convertStringToObject = (state) => {
+export const convertStringToObject = (state) => {
   let obj = {};
-  Object.keys(state).map((x) => {
+  Object.keys(state).forEach((x) => {
     obj[x] = JSON.parse(state[x]);
   });
   return Object.keys(obj).length === 0 ? AdmissionForm : obj;

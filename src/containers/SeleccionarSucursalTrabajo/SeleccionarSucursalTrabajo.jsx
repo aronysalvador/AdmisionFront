@@ -2,7 +2,6 @@ import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
@@ -10,8 +9,7 @@ import BotonSeleccionarCustomSucursalItem from "../../components/BotonSelecciona
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const dispatch = useDispatch();
-  const { root, pregunta, bottomElement } = getComunStyle();
-  const spaceStyle = getSpaceStyle();
+  const { root, pregunta } = getComunStyle();
 
   const { percentage, SucursalEmpresa: SucursalEmpresaObjeto } = useSelector(
     (state) => state.addmissionForm,
@@ -47,7 +45,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             key={sucursal.id}
             data={sucursal}
             itemForm={"SucursalEmpresa"}
-            selected={sucursal.codigo == SucursalEmpresaObjeto.codigo}
+            selected={sucursal.codigo === SucursalEmpresaObjeto.codigo}
             step={5.1}
             handlerGuardarData={handlerGuradarSucursalTexto}
           >

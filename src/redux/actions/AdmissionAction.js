@@ -9,7 +9,6 @@ import {
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
-import { getAffiliateValidations } from "../../util/fakeApi";
 
 const totalSteps = 27;
 
