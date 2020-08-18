@@ -76,7 +76,7 @@ const LugarReferenciaSiniestro = () => {
         }}
       />
       <Typography className={mobileCaption} variant="subtitle1">
-        Ejemplo: Piso 21, Area 453, Puesto 12A
+        Ejemplo: Piso 21, Área 453, Puesto 12A
       </Typography>
       <div className={bottomElement}>
         <Button
