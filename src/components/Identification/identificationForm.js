@@ -9,36 +9,92 @@ import Typography from "@material-ui/core/Typography";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
-class Campo extends React.Component{
-  simulateClick(e) {
-    e.click()    
-  }
-  render(){
-    // return <div className="UFIInputContainer"
-    // ref={this.simulateClick} onClick={()=> console.log('clicked')}>
-    //   hello
-    //   </div>
+// class Campo extends React.Component{
+//   simulateClick(e) {
+//     e.click()    
+//   }
+//   render(){
+//       return(
+//         <TextField 
+//             inputRef={this.simulateClick} 
+//             onClick={()=>  console.log('clicked..')} 
+//             inputProps={{ inputMode: 'numeric'}}  
+//         />
+//       )
+//   }
+// }
 
-      return(
-        <TextField className="UFIInputContainer"  ref={this.simulateClick} onClick={()=> console.log('clicked 5')} inputProps={{ inputMode: 'numeric', autoFocus: true}}  />
-      )
-  }
-}
+// class Campo extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.textInput = React.createRef();
+//   }
+
+//   componentDidMount(){
+//     this.textInput.current.focus()
+//   }
+
+//   render() {
+//     return (
+//       <input
+//         type="text"
+//         ref={this.textInput}
+//         onClick={()=>console.log("clicked..")}
+//         onFocus={()=>{console.log("focused.."); console.log(this.textInput.current); this.textInput.current.click() }}
+//       />
+//     );
+//   }
+// }
+
+
 
 // const Campo = () => {
-
 //   const searchRef = useRef(null);
-
 //   useEffect(() => {
-//     setTimeout(() => { console.log("focus"); searchRef.current.focus() }, 2000)
-//     }, []);
+//     searchRef.current.focus()
+//   }, []);
 
 //     return(
 //       <TextField  
-//       inputProps={{ inputMode: 'numeric'}}
-//        inputRef={searchRef} />
+//        inputProps={{ inputMode: 'numeric'}}
+//        inputRef={searchRef} 
+//        onFocus={()=>{console.log("focus.."); searchRef.current.click() }} 
+//        onClick={()=>{console.log("click.."); }}
+//       />
 //     )
 // }
+
+
+const Campo = () => {
+  const myInput = useRef(null);
+  const myButton = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      myButton.current.click()
+    }, 1000);    
+  }, []);
+
+  const clickElement = () => {
+    console.log("here")
+    myInput.current.focus();
+  }
+  return (
+      <div>   
+         <button ref={myButton}  type="button"  onClick={clickElement}>
+             Trigger click inside input
+          </button>
+          <br></br>
+          <br></br>
+          <br></br>
+              <input ref={myInput} />     
+          <br></br>
+          <br></br>
+          <br></br>
+      </div>
+  );
+}
+
 
 const form = (props) => {
   const {
@@ -74,7 +130,7 @@ const form = (props) => {
     <Campo />
 
       <Typography className={classesComun.tituloTextbox}>
-        RUT..
+        RUT
       </Typography>
       <div>
         <TextField
