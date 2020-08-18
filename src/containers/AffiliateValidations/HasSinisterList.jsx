@@ -8,13 +8,15 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
 
+import { FixedSizeList } from 'react-window';
+import { List, ListItem } from "material-ui";
+
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const contenidoSiniestros = addmissionForm.siniestros;
-
   
   const handleNext = () => {
     let fechaActual = new Date();
@@ -33,31 +35,13 @@ const PersonalData = (props) => {
     }
   };
 
-  //   const tituloDireccion = "Dirección particular";
-  //   const contenidoDireccion = [addmissionForm.direccionParticular];
-
-  //   const tituloTelefono = "Teléfono personal";
-  //   const contenidoTelefono = [addmissionForm.telefonoParticular];
-
-  //   const handleNext = () =>{
-  //     var STEP = '';
-  //     if(!addmissionForm.razonSocialForm || !addmissionForm.SucursalEmpresa || !addmissionForm.DireccionEmpresa || !addmissionForm.rutEmpresa){ // si falta info de la empresa
-  //       STEP=5.4   //form empresa
-  //     }
-  //     else if(!addmissionForm.direccionParticular){ // si no tiene direccion
-  //       STEP=5.2    //form direccion
-  //     }
-  //     else if(!addmissionForm.telefonoParticular){ // si no tiene telefono
-  //       STEP=5.3    //form telefono
-  //     }
-  //     else{ // si todos los datos relevantes están llenos
-  //       STEP=6  // next
-  //     }
-  //     dispatch(handleSetStep(STEP));
-  //   }
+  const listaSiniestros = contenidoSiniestros.map((siniestro) => (
+    <CardSiniestro siniestro={siniestro}></CardSiniestro>
+  ))
 
   return (
     <div className={comunClass.root}>
+      <div>
       <CabeceraSinBarra
         dispatch={() => dispatch(handleSetStep(5.83))}
         color="#373737"
@@ -74,10 +58,10 @@ const PersonalData = (props) => {
       </div>
       <div className={spaceStyle.space1} />
 
-      {contenidoSiniestros.map((siniestro) => (
-        <CardSiniestro siniestro={siniestro}></CardSiniestro>
-      ))}
+      <div className={comunClass.siniesterList}>{listaSiniestros}</div>
+      </div>
 
+      <div>
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}
@@ -88,11 +72,10 @@ const PersonalData = (props) => {
         <Button
           className={comunClass.buttonAchs2}
           onClick={() => handleNext()}
-          //variant="contained"
-          //onClick={() => handleNext() }
         >
           Crear nueva admisión
         </Button>
+      </div>
       </div>
     </div>
   );
