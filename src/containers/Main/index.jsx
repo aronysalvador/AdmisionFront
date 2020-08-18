@@ -52,6 +52,8 @@ import PersonalSuccess from "../FeedBack/PersonalSuccess";
 import RelatoSuccess from "../FeedBack/RelatoSuccess";
 
 import DireccionParticular from "../DireccionParticular/index";
+import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
+
 import HasBP from "../AffiliateValidations/HasBP";
 import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
 import HasSinister from "../AffiliateValidations/HasSinister";
@@ -171,6 +173,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <DireccionParticular />
+            </Paper>
+          </div>
+        );
+      case 5.21:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <DireccionParticularMapaSelection />
             </Paper>
           </div>
         );

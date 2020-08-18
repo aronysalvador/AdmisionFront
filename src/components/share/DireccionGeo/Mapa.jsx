@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect } from "react";
 import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
 import { Typography } from "@material-ui/core"
 
@@ -9,13 +9,18 @@ const mapStyles = {
 
 const Mapa = (props) => {
 
-    const lat = props.lat !== 'notset' ? props.lat : -33.436868834634076;
-    const lng = props.lng !== 'notset' ? props.lng : -70.63447665106504;
+    const lat = props.LatTemporal ? props.LatTemporal :  (props.lat !== 'notset' ? props.lat : -33.436868834634076) ;
+    const lng = props.LongTemporal ? props.LongTemporal : (props.lng !== 'notset' ? props.lng : -70.63447665106504);
     const { direccion, setDireccion, setPlaceId } = props
 
 
     useEffect(()=>{
-        lookForDirection(lat,lng)
+        if(props.LatTemporal && props.LongTemporal){
+            setDireccion(props.DireccionTemporal.description)
+            setPlaceId(props.DireccionTemporal.place_id)
+        }else{
+            lookForDirection(lat,lng)
+        }       
     },[])
 
     const onMarkerDragEnd = (coord) => {        

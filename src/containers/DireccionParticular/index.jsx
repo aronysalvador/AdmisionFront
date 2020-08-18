@@ -9,15 +9,20 @@ import DireccionGeo from '../../components/share/DireccionGeo'
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { step, percentage, direccionParticular,urlMapaDireccionParticular,direccionParticularObj },
+    addmissionForm: { step, percentage, urlMapaDireccionParticular,direccionParticularObj },
   } = useSelector((state) => state, shallowEqual)
 
   const [direccion, setDireccion] = useState(() => {
     return !direccionParticularObj ? "" : direccionParticularObj
   })
 
-  const setUrl = (urlMapa) =>{
-    dispatch(updateForm("urlMapaDireccionParticular", urlMapa))
+  const [mapaUrl, setMapaUrl] = useState(() => {
+    return urlMapaDireccionParticular ? urlMapaDireccionParticular : ""
+  })
+
+  const clearData = () => {
+    dispatch(updateForm("direccionParticularObj", ""))
+    dispatch(updateForm("urlMapaDireccionParticular", ""))
   }
 
   const dispatch = useDispatch()
@@ -49,8 +54,20 @@ const DireccionParticular = () => {
         Dirección particular
       </Typography>
 
-      <DireccionGeo direccion={direccion} setUrl={setUrl} setDireccion={setDireccion} />
-      {(direccion !== null)?<img className={googleMap} src={urlMapaDireccionParticular} />:<div />}
+      <DireccionGeo       
+        comunStyle={getComunStyle()}
+        direccion={direccion} 
+        setMapa={setMapaUrl} 
+        setDireccion={setDireccion} 
+        clearData={clearData}
+        showDinamicMap={()=> {
+          setDireccion({description: ''}); 
+          dispatch(handleSetStep(5.21))
+        }}
+      />
+      {(mapaUrl !== null)?
+      <img className={googleMap}  src={mapaUrl} />
+      :null}
 
       <div className={bottomElement}>
         <Button
