@@ -35,28 +35,6 @@ const PersonalData = (props) => {
     }
   };
 
-  //   const tituloDireccion = "Dirección particular";
-  //   const contenidoDireccion = [addmissionForm.direccionParticular];
-
-  //   const tituloTelefono = "Teléfono personal";
-  //   const contenidoTelefono = [addmissionForm.telefonoParticular];
-
-  //   const handleNext = () =>{
-  //     var STEP = '';
-  //     if(!addmissionForm.razonSocialForm || !addmissionForm.SucursalEmpresa || !addmissionForm.DireccionEmpresa || !addmissionForm.rutEmpresa){ // si falta info de la empresa
-  //       STEP=5.4   //form empresa
-  //     }
-  //     else if(!addmissionForm.direccionParticular){ // si no tiene direccion
-  //       STEP=5.2    //form direccion
-  //     }
-  //     else if(!addmissionForm.telefonoParticular){ // si no tiene telefono
-  //       STEP=5.3    //form telefono
-  //     }
-  //     else{ // si todos los datos relevantes están llenos
-  //       STEP=6  // next
-  //     }
-  //     dispatch(handleSetStep(STEP));
-  //   }
   const listaSiniestros = contenidoSiniestros.map((siniestro) => (
     <CardSiniestro siniestro={siniestro}></CardSiniestro>
   ))
@@ -80,10 +58,6 @@ const PersonalData = (props) => {
       </div>
       <div className={spaceStyle.space1} />
 
-      {/* {contenidoSiniestros.map((siniestro) => (
-        <CardSiniestro siniestro={siniestro}></CardSiniestro>
-      ))} */}
-      {console.log(contenidoSiniestros.id)}
       <div className={comunClass.siniesterList}>{listaSiniestros}</div>
       </div>
 
@@ -98,8 +72,6 @@ const PersonalData = (props) => {
         <Button
           className={comunClass.buttonAchs2}
           onClick={() => handleNext()}
-          //variant="contained"
-          //onClick={() => handleNext() }
         >
           Crear nueva admisión
         </Button>
