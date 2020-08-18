@@ -288,8 +288,13 @@ export const getComunStyle = makeStyles((theme) => ({
     },
 
     siniesterList: {
-        display: "flow-root",
-        overflow: 'scroll',
-    }
+        display: 'flow-root',
+        overflow: 'auto',
+        height: '340px'
+    },
+    // siniesterList::~webkit - scrollbar {
+    //     width: '7px',
+
+    // }
 
 }));
