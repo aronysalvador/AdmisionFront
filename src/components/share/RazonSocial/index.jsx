@@ -19,7 +19,7 @@ const RazonSocialAutoComplete = (props) => {
 
     const getData = async(newInputValue) =>{ 
       if(newInputValue){
-          const test = await fetch(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/razonSocialByName?companyName=${newInputValue}`)
+          const test = await fetch(process.env.REACT_APP_RAZONSOCIAL+ newInputValue)
           const json = await test.json()
           var predictions = (Array.isArray(json.content?.response)) ? json.content.response : []           
           setOptions(predictions) 
