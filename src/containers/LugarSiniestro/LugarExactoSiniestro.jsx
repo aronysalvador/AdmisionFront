@@ -1,6 +1,6 @@
-import React, { useState} from "react"
+import React, { useState, useEffect } from "react"
 import { getComunStyle } from "../../css/comun"
-import { Button, Typography, TextField } from "@material-ui/core"
+import { Button, Typography } from "@material-ui/core"
 import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
@@ -55,6 +55,7 @@ const LugarExactoSiniestro = () => {
         Dirección accidente
       </Typography>
         <DireccionGeo
+          comunStyle={getComunStyle()}
           direccion={sucursal} 
           setMapa={setMapaUrl} 
           setDireccion={setSucursal} 
@@ -81,7 +82,7 @@ const LugarExactoSiniestro = () => {
             dispatch(handleSetStep(step + 1))
           }}
         >
-          Siguiente
+          Guardar dirección
         </Button>
       </div>
     </div>

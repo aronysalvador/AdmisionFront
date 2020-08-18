@@ -6,7 +6,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import Mapa from '../../components/share/DireccionGeo/Mapa'
 
-const LugarSiniestroMapaSelection = () => {
+const MapaSelection = () => {
 
   const [direccion, setDireccion]=useState(null)
   const [placeId, setPlaceId]=useState(null)
@@ -55,7 +55,8 @@ const LugarSiniestroMapaSelection = () => {
   const handleSelect = async() => {
 
     googleMapsGetMap(placeId)
-    dispatch(updateForm("sucursalEmpresaSiniestro", 
+    dispatch(updateForm("direccionParticular", direccion))
+    dispatch(updateForm("direccionParticularObj", 
     {
       description: direccion,
       place_id: placeId, 
@@ -71,14 +72,14 @@ const LugarSiniestroMapaSelection = () => {
     }
     ))
 
-    dispatch(handleSetStep(11))
+    dispatch(handleSetStep(5.2))
    
   }
 
   const googleMapsGetMap = async(placeId) => {
     if(placeId){
       let urlMapa =  `https://wa-desa-msorquestador.azurewebsites.net/api/geo/getMapaEstatico?id=${placeId}&size=300x280`
-      dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
+      dispatch(updateForm("urlMapaDireccionParticular", urlMapa))
     }else{
       console.log("no place")
     }
@@ -90,7 +91,7 @@ const LugarSiniestroMapaSelection = () => {
 
       <div style={{padding: '0.5em'}}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(11))}
+          dispatch={() => dispatch(handleSetStep(5.2))}
           percentage={percentage}
           noSpace={true}
         />
@@ -127,4 +128,4 @@ const LugarSiniestroMapaSelection = () => {
     </div>
   )
 }
-export default LugarSiniestroMapaSelection
+export default MapaSelection

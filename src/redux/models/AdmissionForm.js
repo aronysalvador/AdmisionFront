@@ -41,4 +41,8 @@ export const AdmissionForm = {
 
   siniestros: [],
   siniestroDetalle: {},
+
+  DireccionTemporal: {},  // direccion temporal que es enviada al mapa dinámico
+  LatTemporal: "",  // latitud temporal que es enviada al mapa dinámico
+  LongTemporal: "",  // longitud temporal que es enviada al mapa dinámico
 };
