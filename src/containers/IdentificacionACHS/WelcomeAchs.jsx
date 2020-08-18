@@ -92,7 +92,7 @@ const SessionAchs = (props) => {
           <Button
             variant="contained"
             size="small"
-            className={classes.button, welcomeStyle.starIcon}
+            className={[classes.button, welcomeStyle.starIcon]}
             startIcon={<StarIcon className={welcomeStyle.star} />}
           >
             4.9

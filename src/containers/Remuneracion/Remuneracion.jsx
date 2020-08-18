@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
@@ -11,7 +11,7 @@ import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/
 
 const Remuneracion = () => {
   const dispatch = useDispatch();
-  const { root, pregunta, bottomElement } = getComunStyle();
+  const { root, pregunta } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const { step, percentage, tipoRemuneracion } = useSelector(
@@ -51,7 +51,7 @@ const Remuneracion = () => {
           <BotonSeleccionarCustom
             key={remuneracion.id}
             data={remuneracion}
-            selected={remuneracion.selected}
+            // selected={remuneracion.selected}
             itemForm={"tipoRemuneracion"}
             selected={remuneracion.id === tipoRemuneracion.id}
             step={26}

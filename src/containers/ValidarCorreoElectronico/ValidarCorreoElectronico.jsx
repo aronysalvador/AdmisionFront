@@ -18,11 +18,10 @@ import ClearIcon from "@material-ui/icons/Clear";
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
   const {
-    addmissionForm: { step, percentage, emailusuario },
+    addmissionForm: { percentage, emailusuario },
   } = useSelector((state) => state, shallowEqual);
   console.log({ emailusuario });
 
-  let stepx = step;
   const [userEmail, setUserEmail] = useState(() => {
     return !emailusuario ? "" : emailusuario;
   });

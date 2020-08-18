@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import TabCompany from "../../components/EditCompany/TabCompany";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
 const EditCompany = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage } = useSelector(
+  const { percentage } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -18,7 +18,6 @@ const EditCompany = () => {
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const dispatch = useDispatch();
 
-  const [rutEmpresaForm, setRutEmpresaForm] = useState("");
 
   return (
     <div className={root}>

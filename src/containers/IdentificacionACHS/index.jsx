@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getCentros,getPercentage } from "./../../redux/actions/CentrosAchsAction";
+import { getCentros } from "./../../redux/actions/CentrosAchsAction";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -10,7 +10,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 
 const Achs = () => {
   const {
-    addmissionForm: { percentage, centrosForm },
+    addmissionForm: { centrosForm },
   } = useSelector((state) => state, shallowEqual);
 
   const {

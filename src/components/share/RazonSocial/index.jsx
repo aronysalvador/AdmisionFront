@@ -2,14 +2,9 @@ import React from 'react'
 import {Typography,TextField} from "@material-ui/core"
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
-function sleep(delay = 0) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, delay)
-    })
-}
 
 const RazonSocialAutoComplete = (props) => {
-    const { company, setDireccion, clearData } = props
+    const { company } = props
     const [open, setOpen] = React.useState(false)
     
     const [options, setOptions] = React.useState([])

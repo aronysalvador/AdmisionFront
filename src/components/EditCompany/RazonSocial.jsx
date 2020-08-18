@@ -1,32 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { TextField } from "@material-ui/core";
-import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getRazonSocialPrincipal } from "./../../redux/actions/RazonSocialAction";
-import { updateForm } from "../../redux/actions/AdmissionAction";
+import React from "react";
+import { useSelector, shallowEqual } from "react-redux";
 import RazonSocialAutoComplete from '../../components/share/RazonSocial'
 
 const RazonSocial = () => {
   const {
-    addmissionForm: { razonSocialForm,razonSocialobj },
+    addmissionForm: { razonSocialForm },
   } = useSelector((state) => state, shallowEqual);
 
-  const [razonSocial, setRazonSocial] = useState(() => {
-    return razonSocialForm
-  });
-
-  const [razonSociaformlobj, setRazonSocialformobj] = useState(() =>{
-    return razonSocialobj
-  })
-
-  const [inputValue, setInputValue] = useState("");
-
-  const dispatch = useDispatch();
-
-  const { data: razonSocialList } = useSelector(
-    (state) => state.razonSocialForm,
-    shallowEqual
-  );
+  const razonSocial = razonSocialForm
 
   return (
     <RazonSocialAutoComplete company={razonSocial}/>

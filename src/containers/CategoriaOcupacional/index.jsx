@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
@@ -11,12 +11,10 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 
 const CategoriaOcupacional = () => {
   const {
-    addmissionForm: { step, percentage, categoriaOcupacionalForm },
+    addmissionForm: { percentage, categoriaOcupacionalForm },
   } = useSelector((state) => state, shallowEqual);
 
-  const [categoriaOcupacional, setcategoriaOcupacional] = useState(() => {
-    return !categoriaOcupacionalForm ? "" : categoriaOcupacionalForm;
-  });
+  const categoriaOcupacional = !categoriaOcupacionalForm ? "" : categoriaOcupacionalForm
 
   const dispatch = useDispatch();
 

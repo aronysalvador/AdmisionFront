@@ -1,6 +1,6 @@
 import React, { useState} from "react"
 import { getComunStyle } from "../../css/comun"
-import { Button, Typography, TextField } from "@material-ui/core"
+import { Button, Typography } from "@material-ui/core"
 import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
@@ -9,7 +9,7 @@ import DireccionGeo from '../../components/share/DireccionGeo'
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { step, percentage, urlMapaDireccionParticular,direccionParticularObj },
+    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj },
   } = useSelector((state) => state, shallowEqual)
 
   const [direccion, setDireccion] = useState(() => {
@@ -38,7 +38,7 @@ const DireccionParticular = () => {
 
   const { googleMap } = getComunStyle()
 
-  const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true)
+  const isLugarExactoAccidenteValid = true
 
   return (
     <div className={root}>
@@ -66,7 +66,7 @@ const DireccionParticular = () => {
         }}
       />
       {(mapaUrl !== null)?
-      <img className={googleMap}  src={mapaUrl} />
+      <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
       :null}
 
       <div className={bottomElement}>
