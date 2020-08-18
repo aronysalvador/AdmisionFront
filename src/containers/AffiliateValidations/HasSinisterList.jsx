@@ -84,7 +84,7 @@ const PersonalData = (props) => {
         <CardSiniestro siniestro={siniestro}></CardSiniestro>
       ))} */}
       {console.log(contenidoSiniestros.id)}
-      <div>{listaSiniestros}</div>
+      <div className={comunClass.siniesterList}>{listaSiniestros}</div>
       </div>
 
       <div>

@@ -22,12 +22,12 @@ export const getComunStyle = makeStyles((theme) => ({
         padding: 0,
     },
 
-  rootContainer: {
-    position: "relative",
-    width: "24.5em",
-    height: "42em",
-    backgroundColor: "#F8F9FA",
-  },
+    rootContainer: {
+        position: "relative",
+        width: "24.5em",
+        height: "42em",
+        backgroundColor: "#F8F9FA",
+    },
     textAchsContent: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -78,7 +78,7 @@ export const getComunStyle = makeStyles((theme) => ({
             background: "#104F28",
         },
         marginTop: "5px",
-  },
+    },
     buttonAchs2: {
         width: "100%",
         background: "#FFFFFF",
@@ -94,8 +94,8 @@ export const getComunStyle = makeStyles((theme) => ({
         textTransform: "inherit",
         height: "3.5em",
 
-    marginTop: "5px",
-  },
+        marginTop: "5px",
+    },
 
     buttonAchsRight: {
         width: "46%",
@@ -251,40 +251,45 @@ export const getComunStyle = makeStyles((theme) => ({
         padding: '1em',
         backgroundColor: "#F8F9FA"
     },
-  textoResaltado: {
-    margin: "0 5px",
-    color: "#00b2a9"
+    textoResaltado: {
+        margin: "0 5px",
+        color: "#00b2a9"
 
-  },
+    },
 
-  titleBlack:{
-    fontFamily: 'Catamaran',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    fontSize: '20px',
-    lineHeight: '28px',
-    color:' #373737'
-  },
-  titleBlue:{
-    fontFamily: 'Catamaran',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    fontSize: '20px',
-    lineHeight: '28px',
-    color:' #00b2a9'
-  },
-  txtGreen:{
-    fontFamily: 'Helvetica',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '16px',
-    lineHeight: '22px',
-    color: '#007A33'
-  },
-  iconLocation: {
-    marginRight: '10px',
-    maxHeight: "15px",
-    verticalAlign: "middle",
-  },
+    titleBlack: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: ' #373737'
+    },
+    titleBlue: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: ' #00b2a9'
+    },
+    txtGreen: {
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '22px',
+        color: '#007A33'
+    },
+    iconLocation: {
+        marginRight: '10px',
+        maxHeight: "15px",
+        verticalAlign: "middle",
+    },
+
+    siniesterList: {
+        display: "flow-root",
+        overflow: 'scroll',
+    }
 
 }));
