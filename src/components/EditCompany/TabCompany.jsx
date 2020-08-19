@@ -112,7 +112,7 @@ const TabCompany = (props) => {
           classes={
             value === 0 ? { root: classes.root2 } : { root: classes.root4 }
           }
-          label="Razon Social"
+          label="Razón Social"
         />
 
         <Tab
