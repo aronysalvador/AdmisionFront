@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getCentros,getPercentage } from "./../../redux/actions/CentrosAchsAction";
+import { getCentros } from "./../../redux/actions/CentrosAchsAction";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -35,7 +35,7 @@ const Achs = () => {
     if(centrosForm == null)
       return false
  
-    return !centrosForm ? "" : centrosForm?.nombre;
+    return !centrosForm ? "" : centrosForm?.NOMBRE;
   });
 
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const Achs = () => {
           setCENTROS(value);
         
         {
-          value ? setValueError(value?.nombre)  : setValueError("");
+          value ? setValueError(value?.NOMBRE)  : setValueError("");
           
         }
         }}
@@ -77,7 +77,7 @@ const Achs = () => {
       }}
         style={{ width: 300 }}
         options={centrosList}
-        getOptionLabel={(option) => option.nombre}
+        getOptionLabel={(option) => option.NOMBRE}
         renderInput={(params) => (
           <TextField
             {...params}

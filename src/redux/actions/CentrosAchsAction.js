@@ -17,7 +17,7 @@ export const getCentros = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallCENTROS(response.data.content[0]));
+      dispatch(successCallCENTROS(response.data.content.response));
     })
     .catch((error) => {
       dispatch(errorCallCENTROS());
