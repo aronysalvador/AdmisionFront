@@ -71,6 +71,7 @@ import Achs from "../IdentificacionACHS/index";
 import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 
 import Profesion from "../Profesion/index";
+import RelatoFinal from "../Questions/RelatoFinal";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -113,11 +114,11 @@ const Main = (props) => {
         );
       case 1:
         return (
-        <div className={layoutFix}>
-          <Paper className={paperFix}>
-            <SessionAchs />
-          </Paper>
-        </div>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <SessionAchs />
+            </Paper>
+          </div>
         );
       case 1.1:
         return (
@@ -226,9 +227,9 @@ const Main = (props) => {
       case 5.81:
         return (
           <div className={blackLayout}>
-           <Paper className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasBP />
-           </Paper>
+            </Paper>
           </div>
         );
       case 5.82:
@@ -303,11 +304,19 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 8.1: //Verificar numeración del case
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <RelatoFinal />
+            </Paper>
+          </div>
+        );
       case 9:
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <FechaHoraSiniestro />
+              <TrabajoHabitual />
             </Paper>
           </div>
         );
@@ -316,10 +325,10 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TrabajoHabitual />
+              <FechaHoraSiniestro />
             </Paper>
           </div>
-        );
+        );        
 
       case 11:
         return (
@@ -578,7 +587,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-        
+
       case 500: {
         sessionStorage.clear();
         return (

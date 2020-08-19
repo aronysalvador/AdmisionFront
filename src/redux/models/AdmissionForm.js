@@ -10,6 +10,8 @@ export const AdmissionForm = {
   lugarAccidente: "",
   objetoAccidente: "",
   descripcionAccidente: "",
+  relatoAccidente: "",
+  volverAConcatenar: false,
 
   testigos: { nombre: "", cargo: "" },
   responsable: [],

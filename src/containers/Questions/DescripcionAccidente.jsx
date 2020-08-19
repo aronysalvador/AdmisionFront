@@ -10,10 +10,22 @@ const AccidentDescriptionForm = (props) => {
   const { descripcionAccidente } = addmissionForm;
   const comunClass = getComunStyle();
 
+  const respuestaOriginal = descripcionAccidente;
+
   const saveAnswer = (value) => {
     dispatch(updateForm("descripcionAccidente", value));
     dispatch(handleSetStep(++addmissionForm.step));
+    if(respuestaOriginal !== value) {
+      dispatch(updateForm("volverAConcatenar", true));
+    }
+
   };
+
+
+  //  useEffect(() => {
+  //   setEditable(false);
+  //   console.log("EDITABLE ES", isEdit);
+  // }, []);
 
   return (
     <div className={comunClass.root}>
@@ -23,7 +35,7 @@ const AccidentDescriptionForm = (props) => {
       />
       <div>
         <QuestionForm
-          titulo={"Lo que ocurrió fue que...   y la lesión que presenta es..."}
+          titulo={"Lo que ocurrió fue ..."}
           pregunta={<br/>}
           placeholder={
             "Sufre caída y la consecuencia fue una contusión - metió la mano en caldera y sufre quemadura - frena bruscamente para evitar chocar y la consecuencia fue una contusión"

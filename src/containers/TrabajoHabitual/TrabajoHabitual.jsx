@@ -32,7 +32,7 @@ const TrabajoHabitual = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(step - 1))}
+        dispatch={() => dispatch(handleSetStep(8.1))}
         percentage={percentage}
       />
       <Typography className={pregunta} variant="subtitle2">

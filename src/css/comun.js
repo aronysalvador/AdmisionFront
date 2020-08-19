@@ -292,7 +292,7 @@ export const getComunStyle = makeStyles((theme) => ({
         overflow: 'auto',
         height: '340px',
         '&::-webkit-scrollbar': {
-             width: 8,
+            width: 8,
         },
         '&::-webkit-scrollbar-track': {
             boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
@@ -304,5 +304,4 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: 4,
         },
     },
-
 }));

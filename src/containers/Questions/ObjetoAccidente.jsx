@@ -10,9 +10,13 @@ const AccidentObjectForm = (props) => {
   const { objetoAccidente } = addmissionForm;
   const comunClass = getComunStyle();
 
+  const respuestaOriginal  = objetoAccidente;
   const saveAnswer = (value) => {
     dispatch(updateForm("objetoAccidente", value));
-    dispatch(handleSetStep(++addmissionForm.step));
+    dispatch(handleSetStep(8.1));
+    if(respuestaOriginal !== value) {
+      dispatch(updateForm("volverAConcatenar", true));
+    }
   };
 
   return (
@@ -23,7 +27,7 @@ const AccidentObjectForm = (props) => {
       />
       <div>
         <QuestionForm
-          titulo={"El accidente ocurrió con..." }
+          titulo={"El accidente ocurrió con ..." }
           pregunta={<br/>}
           placeholder={
             "Ejemplo: Con la escalera - con el suelo - al caer tineta en el pie"
