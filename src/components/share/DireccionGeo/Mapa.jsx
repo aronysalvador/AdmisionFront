@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
 import { Typography } from "@material-ui/core"
 
@@ -12,7 +12,27 @@ const Mapa = (props) => {
     const lat = props.LatTemporal ? props.LatTemporal :  (props.lat !== 'notset' ? props.lat : -33.436868834634076) ;
     const lng = props.LongTemporal ? props.LongTemporal : (props.lng !== 'notset' ? props.lng : -70.63447665106504);
     const { direccion, setDireccion, setPlaceId } = props
-    
+
+
+    useEffect(()=>{
+        if(props.LatTemporal && props.LongTemporal){
+            setDireccion(props.DireccionTemporal.description)
+            setPlaceId(props.DireccionTemporal.place_id)
+        }else{
+            lookForDirection(lat,lng)
+        }       
+    },[])
+
+    const onMarkerDragEnd = (coord) => {        
+        const { latLng } = coord;
+        const lat = latLng.lat();
+        const lng = latLng.lng();
+        console.log(lat)
+        console.log(lng)
+        if(lat && lng){
+            lookForDirection(lat,lng)  
+        }
+    };
 
     const lookForDirection = async(lat,lng) => {
         if(lat && lng){
@@ -26,46 +46,6 @@ const Mapa = (props) => {
             }
         }
     }
-
-    const lookForDirectionCallbk = useCallback(async() => {
-        if(lat && lng){
-            const test = await fetch(`https://wa-desa-geolocalizacion.azurewebsites.net/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
-            const json = await test.json()      
-            if(json){
-                console.log(json.content[0].results[0].formatted_address)
-                setDireccion(json.content[0].results[0].formatted_address)
-                setPlaceId(json.content[0].results[0].place_id)
-            }
-        }
-      }, [lat,lng, setDireccion, setPlaceId]);
-
-
-    const initFn = useCallback(() => {
-        if(props.LatTemporal && props.LongTemporal){
-            setDireccion(props.DireccionTemporal.description)
-            setPlaceId(props.DireccionTemporal.place_id)
-        }else{
-            lookForDirectionCallbk()
-        }  
-    }, [props, setDireccion, setPlaceId, lookForDirectionCallbk]);
-
-    useEffect(() => {
-      initFn();
-    }, [initFn]);
-
-
-    const onMarkerDragEnd = (coord) => {        
-        const { latLng } = coord;
-        const lat = latLng.lat();
-        const lng = latLng.lng();
-        console.log(lat)
-        console.log(lng)
-        if(lat && lng){
-            lookForDirection(lat,lng)  
-        }
-    };
-
-
      
 
     return(

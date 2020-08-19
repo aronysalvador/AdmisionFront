@@ -59,13 +59,9 @@ const TrabajoActual = ({
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
-  const initFn = useCallback(() => {
-    onChange({ mes: indiceMes, anio: anios[indiceAnio] });
-  }, [onChange, anios, indiceMes, indiceAnio]);
-
   useEffect(() => {
-    initFn()
-  }, [indiceMes, indiceAnio, initFn]);
+    onChange({ mes: indiceMes, anio: anios[indiceAnio] });
+  }, [indiceMes, indiceAnio]);
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">

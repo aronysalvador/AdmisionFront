@@ -65,7 +65,7 @@ const LugarExactoSiniestro = () => {
             dispatch(handleSetStep(11.1))
           }}
         />
-      {(mapaUrl !== null)?
+      {(mapaUrl)?
       <img alt="MapaSiniestro" className={googleMap}  src={mapaUrl} />
       :null}
  
