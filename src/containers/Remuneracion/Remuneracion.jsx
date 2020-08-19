@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -19,9 +19,14 @@ const Remuneracion = () => {
     shallowEqual
   );
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getRemuneracion(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
 
   const { data: tipoRemuneracionList } = useSelector(
     (state) => state.tipoRemuneracionForm,

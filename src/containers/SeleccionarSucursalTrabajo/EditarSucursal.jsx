@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback} from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import SeleccionarSucursalTrabajo from "./SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./SeleccionarComuna";
@@ -13,9 +13,14 @@ const EditarSucursal = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getSucursales(rutEmpresa));
-  }, []);
+  }, [dispatch, rutEmpresa]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
 
   const { data: sucursalesList } = useSelector(
     (state) => state.sucursalesForm,

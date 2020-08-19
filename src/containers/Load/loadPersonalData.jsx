@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -47,10 +47,14 @@ const getUseStyles = makeStyles({
 const LoadPersonalData = (props) => {
   const { addmissionForm, dispatch } = props;
 
-  useEffect(() => {
-    console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);
+  const initFn = useCallback(() => {
     dispatch(saveRut(addmissionForm.rut));
-  },[]);
+  }, [dispatch, addmissionForm ]);
+
+  useEffect(() => {
+    // console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);  
+    initFn()
+  },[initFn]);
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();

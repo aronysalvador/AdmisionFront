@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import Identification from "../Identification/index";
 import Sinister from "../Sinister/index";
@@ -76,11 +76,13 @@ const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, dispatch } = props;
 
-  const localGetAccount = () => dispatch(getAccount());
+  const initFn = useCallback(() => {
+    dispatch(getAccount())
+  }, [dispatch]);
 
   useEffect(() => {
-    localGetAccount();
-  }, []);
+    initFn();
+  }, [initFn]);
 
   const {
     layout,

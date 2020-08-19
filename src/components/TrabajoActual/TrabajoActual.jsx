@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -59,9 +59,13 @@ const TrabajoActual = ({
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     onChange({ mes: indiceMes, anio: anios[indiceAnio] });
-  }, [indiceMes, indiceAnio]);
+  }, [onChange, anios, indiceMes, indiceAnio]);
+
+  useEffect(() => {
+    initFn()
+  }, [indiceMes, indiceAnio, initFn]);
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">

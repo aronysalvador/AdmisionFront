@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -18,9 +18,13 @@ const TipoDeContrato = () => {
     shallowEqual
   );
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getContrato(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
 
   const { data: contratoList } = useSelector(
     (state) => state.tipoContratoForm,

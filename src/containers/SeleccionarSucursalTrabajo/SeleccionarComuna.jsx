@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -17,10 +17,6 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     sucursales: sucursales2,
   } = useSelector((state) => state.addmissionForm, shallowEqual);
 
-  useEffect(() => {
-    dispatch(getComuna(""));
-  }, []);
-
   const { data: comunaList } = useSelector(
     (state) => state.comunaForm,
     shallowEqual
@@ -31,6 +27,15 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const [comuna, setComuna] = useState(comunaSucursal);
   const [listaComunas, setListaComunas] = useState([]);
   const dispatch = useDispatch();
+
+  const initFn = useCallback(() => {
+    dispatch(getComuna(""));
+  }, [dispatch]); 
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+  
   const {
     buttonAchs,
     root,

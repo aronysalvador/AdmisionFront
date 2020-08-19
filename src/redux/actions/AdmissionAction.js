@@ -64,10 +64,10 @@ export const saveRut = (rut) => {
         obtenerData(rut)
             .then((result) => {
 
-                console.log("REUSLT", result);
+                // console.log("REUSLT", result);
                 let isAfiliado = result.data.content.response.IsAfiliado;
                 if (isAfiliado) {
-                    console.log("RESULTADO OBTENER DATA", result);
+                    // console.log("RESULTADO OBTENER DATA", result);
 
                     dispatch(updateForm("citas", result.data.content.response.citas));
                     dispatch(updateForm("siniestros", result.data.content.response.siniestros));

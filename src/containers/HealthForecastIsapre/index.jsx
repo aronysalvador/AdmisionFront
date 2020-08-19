@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { connect, useDispatch, useSelector, shallowEqual } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -31,11 +31,14 @@ const HealthForecastIsapre = (props) => {
 
   const dispatch1 = useDispatch();
 
-  useEffect(() => {
-    //Call Action
+  const initFn = useCallback(() => {
     const consultaIsapres = () => dispatch1(searchIsapres());
     consultaIsapres();
-  }, []);
+  }, [dispatch1]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
 
   const getIsapres = useSelector((state) => state.previsionForm.isapres);
 

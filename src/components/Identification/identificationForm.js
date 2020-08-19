@@ -87,7 +87,7 @@ const Campo = () => {
           <br></br>
           <br></br>
           <br></br>
-              <input ref={myInput} />     
+              <input ref={myInput}  onFocus={()=>console.log("focused")} />     
           <br></br>
           <br></br>
           <br></br>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -17,9 +17,14 @@ const AlertaCalificacionRazon = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getRazonAlertaPrincipal(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
 
   const { data: razonAlertaList } = useSelector(
     (state) => state.razonAlertaForm,

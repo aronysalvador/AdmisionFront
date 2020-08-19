@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -40,9 +40,13 @@ const Achs = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getCentros(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn()
+  }, [initFn]);
 
   const { data: centrosList } = useSelector(
     (state) => state.centrosAchsForm,
@@ -65,10 +69,10 @@ const Achs = () => {
         onChange={(event, value) => {
           setCENTROS(value);
         
-        {
+        
           value ? setValueError(value?.nombre)  : setValueError("");
           
-        }
+        
         }}
         freeSolo
         inputValue={inputValue}
