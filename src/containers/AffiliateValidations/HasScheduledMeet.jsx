@@ -45,7 +45,7 @@ const HasScheduledMeet = (props) => {
 
   const styles = getUseStyles();
 
-  const cita = addmissionForm.length >0 ? addmissionForm.citas[0] : [];
+  const cita = addmissionForm.cita ? addmissionForm.cita : {};
 
   return (
     <div className={blackStyle.root}>

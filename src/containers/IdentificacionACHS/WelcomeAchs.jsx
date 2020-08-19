@@ -27,7 +27,7 @@ const SessionAchs = (props) => {
   const classes = useStyles();
 
   const contenidoCentroAchs = [
-    addmissionForm.centrosForm.nombre,
+    addmissionForm.centrosForm.NOMBRE,
   ];
 
   return (

@@ -52,7 +52,7 @@ const AlertaCalificacionRazon = () => {
           flexWrap: "wrap",
         }}
       >
-        {razonAlertaList.map((razonAlerta) => (
+        {razonAlertaList && razonAlertaList.map((razonAlerta) => (
           <BotonSeleccionarCustom
             key={razonAlerta.glosa}
             data={razonAlerta}

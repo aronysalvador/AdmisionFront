@@ -19,7 +19,7 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallRazonAlerta(response.data.opciones));
+      dispatch(successCallRazonAlerta(response.data.content.response[0].opciones));
     })
     .catch((error) => {
       dispatch(errorCallRazonAlerta());

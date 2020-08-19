@@ -100,7 +100,7 @@ const HasSinisterDetail = (props) => {
           gutterBottom
           className={blackStyle.textDetailSimple}
         >
-          -
+           {siniestroDetalle.paciente}
         </Typography>
         <div className={spaceStyle.spaceMin1} />
 

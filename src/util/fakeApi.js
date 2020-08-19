@@ -178,18 +178,14 @@ export const getAffiliateValidations = async (rut) => {
     id: 1, 
     BPValue: '1002615349',
     rutAfiliado: rut,
-    citas: [
+    cita: 
       {
-        fecha: '10-08-2020 17:00',
+        fecha: '14 Mayo',
+        hora: '08:30',
         lugar: 'Puente Alto',
         unidad: 'Cirugía'
-      },
-      {
-        fecha: '08-08-2020 13:00',
-        lugar: 'Providencia',
-        unidad: 'Dermatología'
       }
-    ],
+    ,
     siniestros: [
       {
         id: 17454785,

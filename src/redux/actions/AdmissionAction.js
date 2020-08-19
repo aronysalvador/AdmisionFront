@@ -83,7 +83,7 @@ export const saveRut = (rut) => {
 
           if (!result.data.content.response.BpCreado) {
             dispatch(handleSetStep(5.81));
-          } else if (result.data.content.response.citas.length > 0) {
+          } else if (result.data.content.response.cita !== undefined) {
             dispatch(handleSetStep(5.82));
           } else if (result.data.content.response.siniestros.length > 0) {
             dispatch(handleSetStep(5.83));
@@ -128,7 +128,7 @@ export const saveRut = (rut) => {
           );
           console.log("RESULTADO OBTENER DATA", result);
 
-          dispatch(updateForm("citas", result.data.content.response.citas));
+          dispatch(updateForm("cita", result.data.content.response.cita));
           dispatch(
             updateForm("siniestros", result.data.content.response.siniestros)
           );
@@ -180,7 +180,7 @@ export const saveRut = (rut) => {
             )
           );
 
-      
+
         } else {
           dispatch(setStep(500, 0));
           dispatch(updateForm("rut", ""));

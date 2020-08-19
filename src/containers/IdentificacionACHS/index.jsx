@@ -9,12 +9,19 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
+import {setCenter} from "../../redux/actions/UserCenterAction";
 
 const Achs = () => {
   const {
     addmissionForm: { centrosForm },
   } = useSelector((state) => state, shallowEqual);
 
+  const {
+    microsoftReducer: { userMsal },
+  } = useSelector((state) => state, shallowEqual);
+
+ const { email } = userMsal;
+console.log(email)
   const {
     buttonAchs,
     root,
@@ -25,18 +32,11 @@ const Achs = () => {
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
 
-  const [centros, setCENTROS] = useState(() => {
-    return !centrosForm ? "" : centrosForm;
-  });
+  const [centros, setCENTROS] = useState(centrosForm);
+
   const [inputValue, setInputValue] = useState("");
 
-  const [valueError, setValueError] = useState(() => {
-    
-    if(centrosForm == null)
-      return false
- 
-    return !centrosForm ? "" : centrosForm?.nombre;
-  });
+  const [valueError, setValueError] = useState("");
 
   const dispatch = useDispatch();
 
@@ -68,10 +68,8 @@ const Achs = () => {
         value={centros}
         onChange={(event, value) => {
           setCENTROS(value);
-        
-        
-          value ? setValueError(value?.nombre)  : setValueError("");
-          
+                
+          value ? setValueError(value?.NOMBRE)  : setValueError("");          
         
         }}
         freeSolo
@@ -81,7 +79,7 @@ const Achs = () => {
       }}
         style={{ width: 300 }}
         options={centrosList}
-        getOptionLabel={(option) => option.nombre}
+        getOptionLabel={(option) => option.NOMBRE}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -113,6 +111,7 @@ const Achs = () => {
           disabled={!centros || valueError === ''}
           onClick={() => {
             dispatch(updateForm("centrosForm", centros));
+            dispatch(setCenter(email, centros))
             dispatch(handleSetStep(1));
           }}
         >
