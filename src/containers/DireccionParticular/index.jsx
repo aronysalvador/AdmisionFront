@@ -65,7 +65,7 @@ const DireccionParticular = () => {
           dispatch(handleSetStep(5.21))
         }}
       />
-      {(mapaUrl !== null)?
+      {(mapaUrl)?
       <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
       :null}
 

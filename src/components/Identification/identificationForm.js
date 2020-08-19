@@ -1,5 +1,5 @@
-// import React from "react";
-import React, {useRef,useEffect} from "react";
+import React from "react";
+// import React, {useRef,useEffect} from "react";
 import { withFormik } from "formik";
 import { connect } from "react-redux";
 import { updateForm, handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -66,35 +66,35 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 // }
 
 
-const Campo = () => {
-  const myInput = useRef(null);
-  const myButton = useRef(null);
+// const Campo = () => {
+//   const myInput = useRef(null);
+//   const myButton = useRef(null);
 
-  useEffect(() => {
-    setTimeout(() => {
-      myButton.current.click()
-    }, 1000);    
-  }, []);
+//   useEffect(() => {
+//     setTimeout(() => {
+//       myButton.current.click()
+//     }, 1000);    
+//   }, []);
 
-  const clickElement = () => {
-    console.log("here")
-    myInput.current.focus();
-  }
-  return (
-      <div>   
-         <button ref={myButton}  type="button"  onClick={clickElement}>
-             Trigger click inside input
-          </button>
-          <br></br>
-          <br></br>
-          <br></br>
-              <input ref={myInput}  onFocus={()=>console.log("focused")} />     
-          <br></br>
-          <br></br>
-          <br></br>
-      </div>
-  );
-}
+//   const clickElement = () => {
+//     console.log("here")
+//     myInput.current.focus();
+//   }
+//   return (
+//       <div>   
+//          <button ref={myButton}  type="button"  onClick={clickElement}>
+//              Trigger click inside input
+//           </button>
+//           <br></br>
+//           <br></br>
+//           <br></br>
+//               <input ref={myInput}  onFocus={()=>console.log("focused")} />     
+//           <br></br>
+//           <br></br>
+//           <br></br>
+//       </div>
+//   );
+// }
 
 
 const form = (props) => {
@@ -128,7 +128,7 @@ const form = (props) => {
       <div className={spaceStyle.space2} />{" "}
 
 
-    <Campo />
+    {/* <Campo /> */}
 
       <Typography className={classesComun.tituloTextbox}>
         RUT
