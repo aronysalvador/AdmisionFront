@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
@@ -10,7 +10,7 @@ const AccidentPlaceForm = (props) => {
   const comunClass = getComunStyle();
 
   const { lugarAccidente } = addmissionForm;
-  const [respuestaOriginal, setRespuestaOriginal] = useState(lugarAccidente);
+  const respuestaOriginal = lugarAccidente;
 
   const saveAnswer = (value) => {
     dispatch(updateForm("lugarAccidente", value));    

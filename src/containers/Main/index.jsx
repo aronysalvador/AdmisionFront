@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import Identification from "../Identification/index";
 import Sinister from "../Sinister/index";
@@ -16,7 +16,6 @@ import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
 import LugarSiniestroMapaSelection from "../LugarSiniestro/LugarSiniestroMapaSelection";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import Load from "../Load/load";
-import WelcomeEjecutivo from "../Welcome/WelcomeEjecutivo";
 import Start from "../Welcome/WelcomeStart";
 import { getAccount } from "../../redux/actions/microsoft.action";
 import HealthForecast from "../HealthForecast/index";
@@ -33,8 +32,6 @@ import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
 import TrabajoActualContainer from "../TrabajoActual";
-import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
-import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
 import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
 import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 import EditCompany from "../EditCompany/index";
@@ -80,11 +77,13 @@ const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, dispatch } = props;
 
-  const localGetAccount = () => dispatch(getAccount());
+  const initFn = useCallback(() => {
+    dispatch(getAccount())
+  }, [dispatch]);
 
   useEffect(() => {
-    localGetAccount();
-  }, []);
+    initFn();
+  }, [initFn]);
 
   const {
     layout,

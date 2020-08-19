@@ -8,7 +8,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
 
-
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
   const comunClass = getComunStyle();

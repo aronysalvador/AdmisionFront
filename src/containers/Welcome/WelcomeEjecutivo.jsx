@@ -8,7 +8,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
-import { makeStyles } from "@material-ui/core/styles";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import EditIcon from "@material-ui/icons/Edit";

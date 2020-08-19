@@ -9,7 +9,6 @@ import {
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
-import { getAffiliateValidations } from "../../util/fakeApi";
 
 const totalSteps = 27;
 
@@ -79,7 +78,41 @@ export const saveRut = (rut) => {
             lugarNacimiento,
             estadoCivil,
           } = result.data.content.response;
-          console.log({ apellidoMaterno, apellidoPaterno, nombre });
+          
+          // console.log({ apellidoMaterno, apellidoPaterno, nombre });
+
+          if (!result.data.content.response.BpCreado) {
+            dispatch(handleSetStep(5.81));
+          } else if (result.data.content.response.cita !== undefined) {
+            dispatch(handleSetStep(5.82));
+          } else if (result.data.content.response.siniestros.length > 0) {
+            dispatch(handleSetStep(5.83));
+          } else {
+            var STEP = "";
+            if (
+              !result.data.content.response.NombreEmpresa ||
+              !result.data.content.response.SucursalEmpresa ||
+              !result.data.content.response.DireccionEmpresa ||
+              !result.data.content.response.RutPagador
+            ) {
+              // si falta info de la empresa
+              STEP = 5.4; //form empresa
+            } else if (!result.data.content.response.direccionParticular) {
+              // si no tiene direccion
+              STEP = 5.2; //form direccion
+            } else if (
+              !result.data.content.response.telefonoParticular ||
+              result.data.content.response.telefonoParticular === "0"
+            ) {
+              // si no tiene telefono
+              STEP = 5.3; //form telefono
+            } else {
+              // si todos los datos relevantes están llenos
+              STEP = 5.1; // resumen data
+            }
+            dispatch(handleSetStep(STEP));
+          }
+
           dispatch(
             updateForm("datosAdicionalesSAP", {
               apellidoMaterno,
@@ -147,37 +180,7 @@ export const saveRut = (rut) => {
             )
           );
 
-          if (!result.data.content.response.BpCreado) {
-            dispatch(handleSetStep(5.81));
-          } else if (result.data.content.response.cita != undefined) {
-            dispatch(handleSetStep(5.82));
-          } else if (result.data.content.response.siniestros.length > 0) {
-            dispatch(handleSetStep(5.83));
-          } else {
-            var STEP = "";
-            if (
-              !result.data.content.response.NombreEmpresa ||
-              !result.data.content.response.SucursalEmpresa ||
-              !result.data.content.response.DireccionEmpresa ||
-              !result.data.content.response.RutPagador
-            ) {
-              // si falta info de la empresa
-              STEP = 5.4; //form empresa
-            } else if (!result.data.content.response.direccionParticular) {
-              // si no tiene direccion
-              STEP = 5.2; //form direccion
-            } else if (
-              !result.data.content.response.telefonoParticular ||
-              result.data.content.response.telefonoParticular === "0"
-            ) {
-              // si no tiene telefono
-              STEP = 5.3; //form telefono
-            } else {
-              // si todos los datos relevantes están llenos
-              STEP = 5.1; // resumen data
-            }
-            dispatch(handleSetStep(STEP));
-          }
+
         } else {
           dispatch(setStep(500, 0));
           dispatch(updateForm("rut", ""));

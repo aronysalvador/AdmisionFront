@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { getComunStyle } from "../../css/comun"
 import { Button, Typography } from "@material-ui/core"
 import Cabecera from "../../components/cabecera/index"
@@ -37,7 +37,7 @@ const LugarExactoSiniestro = () => {
     dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
   }
 
-  const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true)
+  const isLugarExactoAccidenteValid = true
 
   return (
     <div className={root}>
@@ -65,8 +65,8 @@ const LugarExactoSiniestro = () => {
             dispatch(handleSetStep(11.1))
           }}
         />
-      {(mapaUrl !== null)?
-      <img className={googleMap}  src={mapaUrl} />
+      {(mapaUrl)?
+      <img alt="MapaSiniestro" className={googleMap}  src={mapaUrl} />
       :null}
  
      

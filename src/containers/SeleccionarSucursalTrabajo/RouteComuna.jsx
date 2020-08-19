@@ -1,10 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 import SeleccionarSucursalTrabajo from "./SeleccionarSucursalTrabajo";
 import EditarDireccionSucursal from "./EditarDireccionSucursal";
 
 const RouteComuna = () => {
-  const { step, percentage, cantidadSucursales, sucursales } = useSelector(
+  const { cantidadSucursales, sucursales } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );

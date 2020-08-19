@@ -138,7 +138,7 @@ const RelatoFinal = (props) => {
                 >
                   <div style={{ fontWeight: "bold" }}>Relato:</div>
                   <div>
-                    <a
+                    <div
                       style={{
                         cursor: "pointer",
                         textDecoration: "underline",
@@ -147,7 +147,7 @@ const RelatoFinal = (props) => {
                       onClick={() => setEditable(true)}
                     >
                       Editar
-                    </a>
+                    </div>
                   </div>
                 </div>
                 <div

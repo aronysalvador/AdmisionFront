@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -13,14 +13,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
     percentage,
     comunaSucursal,
-    rutEmpresa,
     cantidadSucursales,
     sucursales: sucursales2,
   } = useSelector((state) => state.addmissionForm, shallowEqual);
-
-  useEffect(() => {
-    dispatch(getComuna(""));
-  }, []);
 
   const { data: comunaList } = useSelector(
     (state) => state.comunaForm,
@@ -32,6 +27,15 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const [comuna, setComuna] = useState(comunaSucursal);
   const [listaComunas, setListaComunas] = useState([]);
   const dispatch = useDispatch();
+
+  const initFn = useCallback(() => {
+    dispatch(getComuna(""));
+  }, [dispatch]); 
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+  
   const {
     buttonAchs,
     root,
@@ -83,8 +87,8 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
           console.log({ value });
           const sucursalesComuna = sucursalesEmpresa.filter(
             (x) =>
-              x.id_comuna == value?.codigo_comuna &&
-              value?.codigo_region == x.codigo_region
+              x.id_comuna === value?.codigo_comuna &&
+              value?.codigo_region === x.codigo_region
           );
 
           console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });

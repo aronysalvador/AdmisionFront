@@ -10,7 +10,6 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import Cabecera from "../../components/cabecera/index";
 import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/Star';
 
@@ -92,7 +91,7 @@ const SessionAchs = (props) => {
           <Button
             variant="contained"
             size="small"
-            className={classes.button, welcomeStyle.starIcon}
+            className={[classes.button, welcomeStyle.starIcon]}
             startIcon={<StarIcon className={welcomeStyle.star} />}
           >
             4.9

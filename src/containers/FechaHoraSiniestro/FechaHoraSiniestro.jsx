@@ -21,9 +21,7 @@ const FechaHoraSiniestro = () => {
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
 
-  const [minutosArray, setMinutos] = useState(() => {
-    return [0, 10, 20, 30, 40, 50];
-  })
+  const minutosArray = [0, 10, 20, 30, 40, 50]
 
   const dispatch = useDispatch();
 

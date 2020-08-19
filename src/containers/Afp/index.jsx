@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -35,9 +35,13 @@ const Afp = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getAFP(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn()
+  }, [initFn]);
 
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
 

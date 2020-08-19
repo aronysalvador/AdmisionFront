@@ -5,16 +5,14 @@ import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { siniestroStyle } from "../../css/siniestroStyle";
 import InputMasked from "./InputMasked";
 import Mask from "./phone";
 import { Pipes } from "./phone";
 
 const EditarTelefono = () => {
   const {
-    addmissionForm: { step, percentage, telefonoParticular: TelefonoEmpleado },
+    addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado },
   } = useSelector((state) => state, shallowEqual);
-  let stepx = step;
 
   const dispatch = useDispatch();
 
@@ -32,7 +30,7 @@ const EditarTelefono = () => {
     tituloTextbox,
     bottomElement,
   } = getComunStyle();
-  const { mobileCaption } = siniestroStyle;
+  
   const spaceStyle = getSpaceStyle();
 
   const handleOnChange = (e) => {

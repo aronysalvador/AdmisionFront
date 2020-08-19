@@ -10,37 +10,38 @@ import TrabajoActual from "../../components/TrabajoActual/TrabajoActual";
 const TrabajoActualContainer = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, ingresoTrabajoActual } = useSelector(
+  const { percentage, ingresoTrabajoActual } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
   const [ingresoTrabajoActualValue, setIngresoTrabajo] = useState(
     ingresoTrabajoActual
   );
-  const [meses, setMes] = useState(() => {
-    return [
-      "Ene",
-      "Feb",
-      "Mar",
-      "Abr",
-      "May",
-      "Jun",
-      "Jul",
-      "Ago",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dic",
-    ];
-  });
-  const [anios, setAnio] = useState(() => {
+  const meses = [
+    "Ene",
+    "Feb",
+    "Mar",
+    "Abr",
+    "May",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dic",
+  ]
+
+  const fnAnios = () => {
     let anios = [];
     let i = 1975;
     for (i; i <= new Date().getFullYear(); i++) {
       anios.push(i);
     }
     return anios;
-  });
+  }
+
+  const anios = fnAnios()
 
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
   const dispatch = useDispatch();
@@ -70,7 +71,7 @@ const TrabajoActualContainer = () => {
         anios={anios}
         indiceMesFromState={new Date(ingresoTrabajoActualValue).getMonth()}
         indiceAnioFromState={
-          getAnioIndex() == -1 ? anios.length - 1 : getAnioIndex()
+          getAnioIndex() === -1 ? anios.length - 1 : getAnioIndex()
         }
       />
       <div className={bottomElement}>

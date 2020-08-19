@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
@@ -7,11 +7,7 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
 
 const HasSinister = (props) => {
-  const { addmissionForm, dispatch } = props;
-
-  useEffect(() => {
-    //dispatch(saveRut(addmissionForm.rut));
-  });
+  const { dispatch } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();

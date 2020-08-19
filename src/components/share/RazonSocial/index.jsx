@@ -8,7 +8,6 @@ const RazonSocialAutoComplete = () => {
     const [options, setOptions] = React.useState([])
     const [razon, setRazon] = React.useState([])
 
-
     const getData = async(newInputValue) =>{ 
       if(newInputValue){
           const test = await fetch(process.env.REACT_APP_RAZONSOCIAL+ newInputValue)

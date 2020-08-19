@@ -1,4 +1,5 @@
 import React from "react";
+// import React, {useRef,useEffect} from "react";
 import { withFormik } from "formik";
 import { connect } from "react-redux";
 import { updateForm, handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -9,13 +10,100 @@ import Typography from "@material-ui/core/Typography";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
+// class Campo extends React.Component{
+//   simulateClick(e) {
+//     e.click()    
+//   }
+//   render(){
+//       return(
+//         <TextField 
+//             inputRef={this.simulateClick} 
+//             onClick={()=>  console.log('clicked..')} 
+//             inputProps={{ inputMode: 'numeric'}}  
+//         />
+//       )
+//   }
+// }
+
+// class Campo extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.textInput = React.createRef();
+//   }
+
+//   componentDidMount(){
+//     this.textInput.current.focus()
+//   }
+
+//   render() {
+//     return (
+//       <input
+//         type="text"
+//         ref={this.textInput}
+//         onClick={()=>console.log("clicked..")}
+//         onFocus={()=>{console.log("focused.."); console.log(this.textInput.current); this.textInput.current.click() }}
+//       />
+//     );
+//   }
+// }
+
+
+
+// const Campo = () => {
+//   const searchRef = useRef(null);
+//   useEffect(() => {
+//     searchRef.current.focus()
+//   }, []);
+
+//     return(
+//       <TextField  
+//        inputProps={{ inputMode: 'numeric'}}
+//        inputRef={searchRef} 
+//        onFocus={()=>{console.log("focus.."); searchRef.current.click() }} 
+//        onClick={()=>{console.log("click.."); }}
+//       />
+//     )
+// }
+
+
+// const Campo = () => {
+//   const myInput = useRef(null);
+//   const myButton = useRef(null);
+
+//   useEffect(() => {
+//     setTimeout(() => {
+//       myButton.current.click()
+//     }, 1000);    
+//   }, []);
+
+//   const clickElement = () => {
+//     console.log("here")
+//     myInput.current.focus();
+//   }
+//   return (
+//       <div>   
+//          <button ref={myButton}  type="button"  onClick={clickElement}>
+//              Trigger click inside input
+//           </button>
+//           <br></br>
+//           <br></br>
+//           <br></br>
+//               <input ref={myInput}  onFocus={()=>console.log("focused")} />     
+//           <br></br>
+//           <br></br>
+//           <br></br>
+//       </div>
+//   );
+// }
+
+
 const form = (props) => {
   const {
     values,
     touched,
     errors,
-    isSubmitting,
-    handleChange,
+    isSubmitting, 
+    handleChange, 
     handleBlur,
     handleSubmit,
   } = props;
@@ -23,7 +111,10 @@ const form = (props) => {
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
+
+
   return (
+
     <form onSubmit={handleSubmit}>
       <div>
         <Typography
@@ -35,6 +126,10 @@ const form = (props) => {
         </Typography>{" "}
       </div>{" "}
       <div className={spaceStyle.space2} />{" "}
+
+
+    {/* <Campo /> */}
+
       <Typography className={classesComun.tituloTextbox}>
         RUT
       </Typography>
@@ -50,6 +145,7 @@ const form = (props) => {
           margin="dense"
           variant="outlined"
           fullWidth
+          // inputProps={{ inputMode: 'numeric', autoFocus: true}}
         />
       </div>{" "}
       <div className={spaceStyle.space12} />{" "}

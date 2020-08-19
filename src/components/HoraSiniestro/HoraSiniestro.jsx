@@ -24,7 +24,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   };
 
   const [indiceMinutos, setIndiceMinutos] = useState(() => {
-    return indiceMinutosFromState == -1 ? getMin() : indiceMinutosFromState;
+    return indiceMinutosFromState === -1 ? getMin() : indiceMinutosFromState;
   });
 
   const spaceStyle = getSpaceStyle();
@@ -33,10 +33,11 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   useEffect(() => {
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
-    if (indiceMinutos == minutos.length) setIndiceMinutos(0);
+    if (indiceMinutos === minutos.length) setIndiceMinutos(0);
     if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
     onChange({ horas, indiceMinutos });
   }, [horas, minutos[indiceMinutos]]);
+
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
@@ -81,7 +82,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             <div
               style={{ fontSize: "9px", paddingBottom: "5px", opacity: "0.5" }}
             >
-              {horas == 0 ? 23 : horas - 1 < 10 ? "0" + (horas - 1) : horas - 1}
+              {horas === 0 ? 23 : horas - 1 < 10 ? "0" + (horas - 1) : horas - 1}
             </div>
             {horas < 10 ? "0" + horas : horas}
             <div style={{ fontSize: "9px", paddingTop: "5px", opacity: "0.5" }}>
@@ -142,8 +143,8 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             <div
               style={{ fontSize: "9px", paddingBottom: "5px", opacity: "0.5" }}
             >
-              {indiceMinutos == 0 ? minutos[minutos.length - 1] :minutos[indiceMinutos - 1]}
-              {/* {minutos == 0
+              {indiceMinutos === 0 ? minutos[minutos.length - 1] :minutos[indiceMinutos - 1]}
+              {/* {minutos === 0
                 ? 59
                 : minutos - 1 < 10
                 ? "0" + (minutos - 1)
@@ -152,7 +153,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             {/* {minutos < 10 ? "0" + minutos : minutos} */}
             {minutos[indiceMinutos]}
             <div style={{ fontSize: "9px", paddingTop: "5px", opacity: "0.5" }}>
-            {indiceMinutos == minutos.length - 1 ? minutos[0] :minutos[indiceMinutos + 1]}
+            {indiceMinutos === minutos.length - 1 ? minutos[0] :minutos[indiceMinutos + 1]}
             </div>
           </div>
           <div className={spaceStyle.space1} />
