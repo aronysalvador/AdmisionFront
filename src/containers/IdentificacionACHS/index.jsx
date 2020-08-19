@@ -9,12 +9,19 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
+import {setCenter} from "../../redux/actions/UserCenterAction";
 
 const Achs = () => {
   const {
     addmissionForm: { percentage, centrosForm },
   } = useSelector((state) => state, shallowEqual);
 
+  const {
+    microsoftReducer: { userMsal },
+  } = useSelector((state) => state, shallowEqual);
+
+ const { email } = userMsal;
+console.log(email)
   const {
     buttonAchs,
     root,
@@ -102,6 +109,7 @@ const Achs = () => {
           disabled={!centros || valueError === ''}
           onClick={() => {
             dispatch(updateForm("centrosForm", centros));
+            dispatch(setCenter(email, centros))
             dispatch(handleSetStep(1));
           }}
         >
