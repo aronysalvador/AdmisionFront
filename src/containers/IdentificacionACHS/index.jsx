@@ -25,18 +25,11 @@ const Achs = () => {
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
 
-  const [centros, setCENTROS] = useState(() => {
-    return !centrosForm ? "" : centrosForm;
-  });
+  const [centros, setCENTROS] = useState(centrosForm);
+
   const [inputValue, setInputValue] = useState("");
 
-  const [valueError, setValueError] = useState(() => {
-    
-    if(centrosForm == null)
-      return false
- 
-    return !centrosForm ? "" : centrosForm?.NOMBRE;
-  });
+  const [valueError, setValueError] = useState("");
 
   const dispatch = useDispatch();
 
