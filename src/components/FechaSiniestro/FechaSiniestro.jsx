@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
 import { Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
@@ -29,10 +29,6 @@ const FechaSiniestro = ({
 
   const { actualDay, actualMonth } = getActualDate();
 
-  const initFn = useCallback(() => {
-    onChange({ days, month, year });
-  }, [onChange, days, month, year]);
-
   useEffect(() => {
     if (days < 1) {
       if (month === 1 && days < 1) {
@@ -56,9 +52,8 @@ const FechaSiniestro = ({
         setMonthLastDay(new Date(year, month + 1, 0).getDate());
       }
     }
-    
-    initFn()
-  }, [days, month, year, monthLastDay, initFn]);
+    onChange({ days, month, year });
+  }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);
 

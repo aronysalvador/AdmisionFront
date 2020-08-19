@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -30,17 +30,14 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
-  const initFn = useCallback(() => {
+  useEffect(() => {
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
     if (indiceMinutos === minutos.length) setIndiceMinutos(0);
     if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
     onChange({ horas, indiceMinutos });
-  }, [horas, minutos, onChange, indiceMinutos]);
+  }, [horas, minutos[indiceMinutos]]);
 
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">

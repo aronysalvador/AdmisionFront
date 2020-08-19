@@ -45,7 +45,7 @@ const HasScheduledMeet = (props) => {
 
   const styles = getUseStyles();
 
-  const cita = addmissionForm.citas[0];
+  const cita = addmissionForm.length >0 ? addmissionForm.citas[0] : [];
 
   return (
     <div className={blackStyle.root}>
@@ -72,19 +72,23 @@ const HasScheduledMeet = (props) => {
       </Typography>
       <div className={spaceStyle.space1} />
       <div className={styles.container}>
-        <div className={styles.containerRow}>
-          <div className={styles.itemData}>{cita.fecha.substring(0, 10)}</div>
-          <div className={styles.itemLabel}>Fecha</div>
-          <div className={styles.itemData}>{cita.fecha.substring(10, 16)}</div>
-          <div className={styles.itemLabel} style={{marginBottom: "0"}}>Hora</div>
-        </div>
-        <hr style={{color: "#FFFFFF", margin: "0"}} />
-        <div className={styles.containerRow}>
-          <div className={styles.itemData}>{cita.lugar}</div>
-          <div className={styles.itemLabel}>Centro</div>
-          <div className={styles.itemData}>{cita.unidad}</div>
-          <div className={styles.itemLabel} style={{marginBottom: "0"}}>Especialidad</div>
-        </div>
+        {cita && (
+          <>
+            <div className={styles.containerRow}>
+              <div className={styles.itemData}>{cita.fecha && cita.fecha.substring(0, 10)}</div>
+              <div className={styles.itemLabel}>Fecha</div>
+              <div className={styles.itemData}>{cita.fecha && cita.fecha.substring(10, 16)}</div>
+              <div className={styles.itemLabel} style={{marginBottom: "0"}}>Hora</div>
+            </div>
+            <hr style={{color: "#FFFFFF", margin: "0"}} />
+            <div className={styles.containerRow}>
+              <div className={styles.itemData}>{cita.lugar}</div>
+              <div className={styles.itemLabel}>Centro</div>
+              <div className={styles.itemData}>{cita.unidad}</div>
+              <div className={styles.itemLabel} style={{marginBottom: "0"}}>Especialidad</div>
+            </div>
+          </>
+        )}
         
       </div>
 

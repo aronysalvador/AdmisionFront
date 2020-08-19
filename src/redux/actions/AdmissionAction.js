@@ -69,6 +69,36 @@ export const saveRut = (rut) => {
                 if (isAfiliado) {
                     // console.log("RESULTADO OBTENER DATA", result);
 
+                    if (!result.data.content.response.BpCreado) {
+                        dispatch(handleSetStep(5.81));
+                    } else if (result.data.content.response.citas.length > 0) {
+                        dispatch(handleSetStep(5.82));
+                    } else if (result.data.content.response.siniestros.length > 0) {
+                        dispatch(handleSetStep(5.83));
+                    } else {
+                        var STEP = "";
+                        if (!result.data.content.response.NombreEmpresa ||
+                            !result.data.content.response.SucursalEmpresa ||
+                            !result.data.content.response.DireccionEmpresa ||
+                            !result.data.content.response.RutPagador
+                        ) {
+                            // si falta info de la empresa
+                            STEP = 5.4; //form empresa
+                        } else if (!result.data.content.response.direccionParticular) {
+                            // si no tiene direccion
+                            STEP = 5.2; //form direccion
+                        } else if (!result.data.content.response.telefonoParticular ||
+                            result.data.content.response.telefonoParticular === "0"
+                        ) {
+                            // si no tiene telefono
+                            STEP = 5.3; //form telefono
+                        } else {
+                            // si todos los datos relevantes están llenos
+                            STEP = 5.1; // resumen data
+                        }
+                        dispatch(handleSetStep(STEP));
+                    }
+
                     dispatch(updateForm("citas", result.data.content.response.citas));
                     dispatch(updateForm("siniestros", result.data.content.response.siniestros));
                     dispatch(updateForm("razonSocialForm", result.data.content.response.NombreEmpresa));
@@ -114,36 +144,7 @@ export const saveRut = (rut) => {
 
                         )
                     );
-
-                    if (!result.data.content.response.BpCreado) {
-                        dispatch(handleSetStep(5.81));
-                    } else if (result.data.content.response.citas.length > 0) {
-                        dispatch(handleSetStep(5.82));
-                    } else if (result.data.content.response.siniestros.length > 0) {
-                        dispatch(handleSetStep(5.83));
-                    } else {
-                        var STEP = "";
-                        if (!result.data.content.response.NombreEmpresa ||
-                            !result.data.content.response.SucursalEmpresa ||
-                            !result.data.content.response.DireccionEmpresa ||
-                            !result.data.content.response.RutPagador
-                        ) {
-                            // si falta info de la empresa
-                            STEP = 5.4; //form empresa
-                        } else if (!result.data.content.response.direccionParticular) {
-                            // si no tiene direccion
-                            STEP = 5.2; //form direccion
-                        } else if (!result.data.content.response.telefonoParticular ||
-                            result.data.content.response.telefonoParticular === "0"
-                        ) {
-                            // si no tiene telefono
-                            STEP = 5.3; //form telefono
-                        } else {
-                            // si todos los datos relevantes están llenos
-                            STEP = 5.1; // resumen data
-                        }
-                        dispatch(handleSetStep(STEP));
-                    }
+             
                 } else {
 
                     dispatch(setStep(500, 0));
