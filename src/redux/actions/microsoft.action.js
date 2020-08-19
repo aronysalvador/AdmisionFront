@@ -5,7 +5,8 @@ import {
 } from "../types/microsoftType.js";
 import msalservice from "../../services/msalservice";
 import graphservice from "../../services/graphservice";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import Axios from "axios";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
 export async function getUserProfile(scopes) {
   const accessToken = await msalservice.acquireTokenSilent({ scopes });
@@ -36,7 +37,8 @@ export const login = (scopes) => async (dispatch) => {
     };
     dispatch({ type: MSAL_SUCCESS, payload: userMsal });
     //PARCHE
-    dispatch(handleSetStep(isNuevaAdmisionista()));
+    var step =await  isNuevaAdmisionista(dispatch, userMsal.email)
+    dispatch(handleSetStep(step));
   } catch (err) {
     let error = {};
     if (typeof err === "string") {
@@ -69,8 +71,14 @@ export const getAccount = () => async (dispatch) => {
   return usermsal;
 };
 
-const isNuevaAdmisionista = (email) => {
-    //PARCHE
-    const isNew = true
-    return (isNew) ? 40 : 1 
+const isNuevaAdmisionista = async(dispatch, email) => {
+
+    const result = await Axios.get('http://localhost:3001/api/centros/getCenterUser?email='+email);
+ 
+    if(result.data.data.length > 0) {
+      dispatch(updateForm("centrosForm", result.data.data[0].centrosForm));
+      return 1
+    }else {
+      return 40
+    }
 };
