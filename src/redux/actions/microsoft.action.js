@@ -73,7 +73,7 @@ export const getAccount = () => async (dispatch) => {
 
 const isNuevaAdmisionista = async(dispatch, email) => {
 
-    const result = await Axios.get('http://localhost:3001/api/centros/getCenterUser?email='+email);
+    const result = await Axios.get(process.env.REACT_APP_CENTER_USER+'?email='+email);
  
     if(result.data.data.length > 0) {
       dispatch(updateForm("centrosForm", result.data.data[0].centrosForm));
