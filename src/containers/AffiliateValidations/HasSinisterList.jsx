@@ -8,7 +8,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
 
-import { FixedSizeList } from 'react-window';
 import { List, ListItem } from "material-ui";
 
 const PersonalData = (props) => {
