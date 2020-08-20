@@ -214,7 +214,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
     backgroundBoxAchs: {
         backgroundColor: "#DFF3F2 !important",
-        //padding: "0 !importat"
+        width: "24.5em"
     },
     starIcon: {
         display: "flex",
@@ -241,4 +241,5 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         marginLeft: "auto",
         marginRight: "auto",
     },
+
 }));

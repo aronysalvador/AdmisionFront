@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+// import img from './../../public/static/Bienvenido.png'
 
 export const getComunStyle = makeStyles((theme) => ({
     root: {
@@ -48,6 +49,7 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: "1.75em",
         display: "flex",
         alignItems: "flex-end",
+        flexWrap: "wrap"
     },
     pregunta_temp: {
         fontSize: "1.1em !important",
@@ -303,5 +305,13 @@ export const getComunStyle = makeStyles((theme) => ({
             outline: '1px solid slategrey',
             borderRadius: 4,
         },
+    },
+    rootImg: {
+        position: "relative",
+        width: "24.5em",
+        height: "42em",
+        // backgroundImage: "url(" + img + ")",
+        backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
+        padding: 0,
     },
 }));
