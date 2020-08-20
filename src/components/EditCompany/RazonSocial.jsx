@@ -58,7 +58,9 @@ const RazonSocial = () => {
                     
                   }}
                   onChange={(event,value) => {
-                    dispatch(updateForm("razonSocial", value))          
+                    dispatch(updateForm("razonSocial", value)) 
+                    dispatch(updateForm("razonSocialForm", value?.name)) 
+                    dispatch(updateForm("rutEmpresa", value?.rut));        
                   }
                   }
                   loadingText='cargando'
