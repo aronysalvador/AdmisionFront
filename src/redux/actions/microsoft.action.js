@@ -71,10 +71,12 @@ export const getAccount = () => async (dispatch) => {
   return usermsal;
 };
 
-const isNuevaAdmisionista = async(dispatch, email) => {
+export const getCenters = async(email) => {
+  return  await Axios.get(process.env.REACT_APP_CENTER_USER+'?email='+email);
+}
 
-    const result = await Axios.get(process.env.REACT_APP_CENTER_USER+'?email='+email);
- 
+const isNuevaAdmisionista = async(dispatch, email) => {
+    const result = getCenters(email);
     if(result.data.data.length > 0) {
       dispatch(updateForm("centrosForm", result.data.data[0].centrosForm));
       return 1
