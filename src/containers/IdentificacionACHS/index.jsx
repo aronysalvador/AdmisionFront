@@ -21,7 +21,7 @@ const Achs = () => {
   } = useSelector((state) => state, shallowEqual);
 
  const { email } = userMsal;
-console.log(email)
+
   const {
     buttonAchs,
     root,
@@ -84,11 +84,11 @@ console.log(email)
           <TextField
             {...params}
             helperText={
-              inputValue !== valueError
+              inputValue !== valueError  && valueError !== ''
                 ? "Este centro no existe"
                 : null
             }
-            error={inputValue !== valueError}
+            error={inputValue !== valueError && valueError !== ''}
             variant="outlined"
             InputProps={{
               ...params.InputProps,
@@ -108,7 +108,7 @@ console.log(email)
           variant="contained"
           className={buttonAchs}
           type="submit"
-          disabled={!centros || valueError === ''}
+         disabled={inputValue !== valueError || inputValue === ''}
           onClick={() => {
             dispatch(updateForm("centrosForm", centros));
             dispatch(setCenter(email, centros))

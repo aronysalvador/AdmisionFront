@@ -214,7 +214,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
     backgroundBoxAchs: {
         backgroundColor: "#DFF3F2 !important",
-        width: "24.5em"
+        width: "24.5em",
+        height: "410px"
     },
     starIcon: {
         display: "flex",
