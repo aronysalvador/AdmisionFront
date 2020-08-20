@@ -5,6 +5,7 @@ import {
   SEND_TESTIGO,
   SEND_RESPONSABLE,
   LOAD_STATE_SESSIONSTORAGE,
+  CLEAR_STATE,
 } from "../types/addmissionFormType";
 import { AdmissionForm } from "../models/AdmissionForm";
 
@@ -40,6 +41,8 @@ export default function payload(state = AdmissionForm, action) {
         ...state,
         responsable: action.payload,
       };
+    case CLEAR_STATE:
+      return AdmissionForm;
     default:
       return state;
   }
