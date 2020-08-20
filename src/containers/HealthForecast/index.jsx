@@ -73,19 +73,19 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsRight}
           variant="contained"
           type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[1].id : null}
-          onClick={() => clickSendIsapres(getIsapres[1])}
+          value={getIsapres.length !== 0 ? getIsapres[12].id : null}
+          onClick={() => clickSendIsapres(getIsapres[12])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[1].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{getIsapres[12].nombre}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
           variant="contained"
           type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[2].id : null}
-          onClick={() => clickSendIsapres(getIsapres[2])}
+          value={getIsapres.length !== 0 ? getIsapres[25].id : null}
+          onClick={() => clickSendIsapres(getIsapres[25])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[2].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{getIsapres[25].nombre}</p> : null}
         </Button>
       </div>
 
@@ -96,19 +96,19 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsRight}
           variant="contained"
           type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[3].id : null}
-          onClick={() => clickSendIsapres(getIsapres[3])}
+          value={getIsapres.length !== 0 ? getIsapres[9].id : null}
+          onClick={() => clickSendIsapres(getIsapres[9])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[3].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{getIsapres[9].nombre}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
           variant="contained"
           type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[4].id : null}
-          onClick={() => clickSendIsapres(getIsapres[4])}
+          value={getIsapres.length !== 0 ? getIsapres[11].id : null}
+          onClick={() => clickSendIsapres(getIsapres[11])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[4].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{getIsapres[11].nombre}</p> : null}
         </Button>
       </div>
 
@@ -128,10 +128,10 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsLeft}
           variant="contained"
           type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[6].id : null}
-          onClick={() => clickSendIsapres(getIsapres[6])}
+          value={getIsapres.length !== 0 ? getIsapres[24].id : null}
+          onClick={() => clickSendIsapres(getIsapres[24])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[6].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{getIsapres[24].nombre}</p> : null}
         </Button>
       </div>
 
