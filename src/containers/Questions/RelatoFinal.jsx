@@ -156,6 +156,7 @@ const RelatoFinal = (props) => {
                     fontSize: "1em",
                     lineHeight: "1.563em",
                     padding: "10px",
+                    overflowWrap: "break-word"
                   }}
                 >
                   {localValue}
