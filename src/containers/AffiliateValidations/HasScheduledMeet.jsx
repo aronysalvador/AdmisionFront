@@ -75,9 +75,9 @@ const HasScheduledMeet = (props) => {
         {cita && (
           <>
             <div className={styles.containerRow}>
-              <div className={styles.itemData}>{cita.fecha && cita.fecha.substring(0, 10)}</div>
+              <div className={styles.itemData}>{cita.fecha}</div>
               <div className={styles.itemLabel}>Fecha</div>
-              <div className={styles.itemData}>{cita.fecha && cita.fecha.substring(10, 16)}</div>
+              <div className={styles.itemData}>{cita.hora}</div>
               <div className={styles.itemLabel} style={{marginBottom: "0"}}>Hora</div>
             </div>
             <hr style={{color: "#FFFFFF", margin: "0"}} />
