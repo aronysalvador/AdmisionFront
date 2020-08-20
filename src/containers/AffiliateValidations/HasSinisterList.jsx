@@ -14,6 +14,11 @@ const PersonalData = (props) => {
   const spaceStyle = getSpaceStyle();
 
   const contenidoSiniestros = addmissionForm.siniestros;
+
+  const {
+    apellidoPaterno,
+    nombre,
+  } = addmissionForm.datosAdicionalesSAP;
   
   const handleNext = () => {
     let fechaActual = new Date();
@@ -45,8 +50,9 @@ const PersonalData = (props) => {
       />
       <div className={spaceStyle.space2} />
       <div>
+      
         <Typography variant="p" component="p" className={comunClass.pregunta}>
-          Antonio Romero tiene
+        {nombre} {apellidoPaterno} tiene
           <div className={comunClass.textoResaltado}>
             {contenidoSiniestros.length} episodios
           </div>
