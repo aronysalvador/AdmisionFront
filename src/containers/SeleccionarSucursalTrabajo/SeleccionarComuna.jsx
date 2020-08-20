@@ -30,12 +30,12 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
 
   const initFn = useCallback(() => {
     dispatch(getComuna(""));
-  }, [dispatch]); 
+  }, [dispatch]);
 
   useEffect(() => {
     initFn();
   }, [initFn]);
-  
+
   const {
     buttonAchs,
     root,
@@ -46,27 +46,27 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
-    /*const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
+    const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
       comunaList.find((x) => x.codigo_comuna === sucursal.id_comuna)
-    );*/
-    console.log({ sucursalesEmpresa });
-    const comunasSucursal = [];
-    for (let i = 0; i < sucursalesEmpresa.length; i++) {
-      for (let j = 0; j < comunaList.length; j++) {
-        if (comunaList[j].codigo_comuna === sucursalesEmpresa[i].id_comuna) {
-          comunasSucursal.push(comunaList[j]);
-        }
-      }
-    }
-    const uniqueAddresses = Array.from(
-      new Set(comunasSucursal.map((a) => a.id))
-    ).map((id) => {
-      return comunasSucursal.find((a) => a.id === id);
-    });
+    );
+    console.log({ sucursalesEmpresa, comunasSucursal });
+    // const comunasSucursal = [];
+    // for (let i = 0; i < sucursalesEmpresa.length; i++) {
+    //   for (let j = 0; j < comunaList.length; j++) {
+    //     if (comunaList[j].codigo_comuna === sucursalesEmpresa[i].id_comuna) {
+    //       comunasSucursal.push(comunaList[j]);
+    //     }
+    //   }
+    // }
+    // const uniqueAddresses = Array.from(
+    //   new Set(comunasSucursal.map((a) => a.id))
+    // ).map((id) => {
+    //   return comunasSucursal.find((a) => a.id === id);
+    // });
 
-    console.log({ uniqueAddresses });
-    setListaComunas(uniqueAddresses);
-  }, [sucursalesEmpresa, comunaList]);
+    // console.log({ uniqueAddresses });
+    setListaComunas(comunasSucursal);
+  }, [comunaList]);
 
   return (
     <div className={root}>
@@ -86,9 +86,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         onChange={(event, value) => {
           console.log({ value });
           const sucursalesComuna = sucursalesEmpresa.filter(
-            (x) =>
-              x.id_comuna === value?.codigo_comuna &&
-              value?.codigo_region === x.codigo_region
+            (x) => x.id_comuna === value?.codigo_comuna
           );
 
           console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
