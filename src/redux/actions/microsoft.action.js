@@ -76,7 +76,8 @@ export const getCenters = async(email) => {
 }
 
 const isNuevaAdmisionista = async(dispatch, email) => {
-    const result = getCenters(email);
+    const result = await getCenters(email);
+    console.log(result)
     if(result.data.data.length > 0) {
       dispatch(updateForm("centrosForm", result.data.data[0].centrosForm));
       return 1
