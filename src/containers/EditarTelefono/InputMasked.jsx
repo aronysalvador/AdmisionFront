@@ -19,6 +19,7 @@ export default function InputMasked({
       fullWidth
       helperText={"Ingresa tu numero personal"}
       onChange={(e) => handleOnChange(e)}
+      inputProps={{ inputMode: 'numeric'}}
     />
   );
 }

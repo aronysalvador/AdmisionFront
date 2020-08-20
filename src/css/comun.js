@@ -49,6 +49,7 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: "1.75em",
         display: "flex",
         alignItems: "flex-end",
+        flexWrap: "wrap"
     },
     pregunta_temp: {
         fontSize: "1.1em !important",

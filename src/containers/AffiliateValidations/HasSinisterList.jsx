@@ -14,65 +14,89 @@ const PersonalData = (props) => {
   const spaceStyle = getSpaceStyle();
 
   const contenidoSiniestros = addmissionForm.siniestros;
-  
+
+  const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
+
   const handleNext = () => {
     let fechaActual = new Date();
-    fechaActual.setHours(0,0,0,0);
+    fechaActual.setHours(0, 0, 0, 0);
     let busqueda = contenidoSiniestros.find((x) => {
-        // let nuevaFecha = new Date(Date.parse("08-13-2020 17:00"));
-        let nuevaFecha = new Date(Date.parse(x.fecha));
-        nuevaFecha.setHours(0,0,0,0);    
-        
-        return nuevaFecha.getTime() === fechaActual.getTime()});
-    if(busqueda === undefined){
-        dispatch(handleSetStep(5.1));
-    }
-    else {
-        dispatch(handleSetStep(5.833));
+      // let nuevaFecha = new Date(Date.parse("08-13-2020 17:00"));
+      let nuevaFecha = new Date(Date.parse(x.fecha));
+      nuevaFecha.setHours(0, 0, 0, 0);
+
+      return nuevaFecha.getTime() === fechaActual.getTime();
+    });
+    if (busqueda === undefined) {
+      var STEP = "";
+      if (
+        !addmissionForm.razonSocialForm ||
+        !addmissionForm.SucursalEmpresa ||
+        !addmissionForm.DireccionEmpresa ||
+        !addmissionForm.rutEmpresa
+      ) {
+        // si falta info de la empresa
+        STEP = 5.4; //form empresa
+      } else if (!addmissionForm.direccionParticular) {
+        // si no tiene direccion
+        STEP = 5.2; //form direccion
+      } else if (
+        !addmissionForm.telefonoParticular ||
+        addmissionForm.telefonoParticular === "0"
+      ) {
+        // si no tiene telefono
+        STEP = 5.3; //form telefono
+      } else {
+        // si todos los datos relevantes están llenos
+        STEP = 5.7; // pantalla exito
+      }
+      dispatch(handleSetStep(STEP));
+    } else {
+      dispatch(handleSetStep(5.833));
     }
   };
 
   const listaSiniestros = contenidoSiniestros.map((siniestro) => (
     <CardSiniestro siniestro={siniestro}></CardSiniestro>
-  ))
+  ));
 
   return (
     <div className={comunClass.root}>
       <div>
-      <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.83))}
-        color="#373737"
-      />
-      <div className={spaceStyle.space2} />
-      <div>
-        <Typography variant="p" component="p" className={comunClass.pregunta}>
-          Antonio Romero tiene
-          <div className={comunClass.textoResaltado}>
-            {contenidoSiniestros.length} episodios
-          </div>
-          activos
-        </Typography>
-      </div>
-      <div className={spaceStyle.space1} />
+        <CabeceraSinBarra
+          dispatch={() => dispatch(handleSetStep(5.83))}
+          color="#373737"
+        />
+        <div className={spaceStyle.space2} />
+        <div>
+          <Typography variant="p" component="p" className={comunClass.pregunta}>
+            {nombre} {apellidoPaterno} tiene
+            <div className={comunClass.textoResaltado}>
+              {contenidoSiniestros.length} episodios
+            </div>
+            activos
+          </Typography>
+        </div>
+        <div className={spaceStyle.space1} />
 
-      <div className={comunClass.siniesterList}>{listaSiniestros}</div>
+        <div className={comunClass.siniesterList}>{listaSiniestros}</div>
       </div>
 
       <div>
-      <div className={comunClass.bottomElement}>
-        <Button
-          className={comunClass.buttonAchs}
-            onClick={() => dispatch(handleSetStep(5.9)) }
-        >
-          Continuar en SAP
-        </Button>
-        <Button
-          className={comunClass.buttonAchs2}
-          onClick={() => handleNext()}
-        >
-          Crear nueva admisión
-        </Button>
-      </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            onClick={() => dispatch(handleSetStep(5.9))}
+          >
+            Continuar en SAP
+          </Button>
+          <Button
+            className={comunClass.buttonAchs2}
+            onClick={() => handleNext()}
+          >
+            Crear nueva admisión
+          </Button>
+        </div>
       </div>
     </div>
   );

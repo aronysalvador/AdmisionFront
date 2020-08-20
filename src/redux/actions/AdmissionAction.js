@@ -83,7 +83,7 @@ export const saveRut = (rut) => {
 
           if (!result.data.content.response.BpCreado) {
             dispatch(handleSetStep(5.81));
-          } else if (result.data.content.response.cita !== undefined) {
+          } else if (Object.keys(result.data.content.response.cita).length !== 0) {
             dispatch(handleSetStep(5.82));
           } else if (result.data.content.response.siniestros.length > 0) {
             dispatch(handleSetStep(5.83));
