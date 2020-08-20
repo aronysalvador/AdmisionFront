@@ -6,7 +6,7 @@ describe("Sucursales", () => {
 
     const status = resultado ? resultado.status : 0;
     if (status == 200) {
-      console.log("Sucursales: " + resultado.data.content[0].IsAfiliado);
+      console.log("Sucursales: " + resultado.data.length);
     } else {
       console.log("status: " + status);
     }
