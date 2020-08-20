@@ -42,7 +42,7 @@ const CausaNoLaboral = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Selecciona la rázon de posible causa no laboral
+        Selecciona la razón de posible causa no laboral
       </Typography>
       <div className={spaceStyle.space2} />
 

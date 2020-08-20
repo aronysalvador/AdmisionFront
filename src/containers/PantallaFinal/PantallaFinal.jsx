@@ -107,7 +107,7 @@ const PantallaFinal = (props) => {
             ]}
             size="small"
           >
-            Ingresar nueva admision
+            Ingresar nueva admisión
           </Button>
         </div>
       </div>
