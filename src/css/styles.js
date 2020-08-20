@@ -9,33 +9,34 @@ const useStyles = makeStyles((theme) => ({
         border: '0',
         backgroundColor: '#F8F9FA',
     },
-    blackLayout: {
-      padding:'0.5em',
-      margin:'auto',
-      width: '25.5em',
-      border:'0',
-      backgroundColor:'#373737',
-    },
     paper: {
         marginTop: '0 auto',
         padding: '1em',
         backgroundColor: "#F8F9FA"
     },
+
+    blackLayout: {
+        padding: '0.5em',
+        margin: 'auto',
+        width: '24.5em',
+        border: '0',
+        // backgroundColor: '#373737',
+    },
     paperNoColor: {
-      marginTop: '0 auto',
-      padding: '0em 1em',
-      backgroundColor: "#373737"
+        marginTop: '0.5em',
+        padding: '0.5em 0.5em 1em 0.5em',
+        backgroundColor: "#373737"
     },
 
     layoutFix: {
-      margin:'auto',
-      width: "24.5em",
-      border:'0',
-      backgroundColor:'#F8F9FA',
+        margin: 'auto',
+        width: "24.5em",
+        border: '0',
+        backgroundColor: '#F8F9FA',
     },
     paperFix: {
-      marginTop: '0.5em',
-      backgroundColor: "#F8F9FA"
+        marginTop: '0.5em',
+        backgroundColor: "#F8F9FA"
     },
 
 }));
