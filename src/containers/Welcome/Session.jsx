@@ -25,7 +25,8 @@ const Session = (props) => {
   const useStyles = getUseStyles();
 
   return (
-    <div className={comunStyle.root}>
+    <div className={ comunStyle.rootImg }>
+    <div style={ {padding: '1.5em'} }>
        <img
           alt="logo"
           src="./static/logoAchs.png"
@@ -33,7 +34,7 @@ const Session = (props) => {
         />
       <div className={spaceStyle.space12} />
 
-      <div className={welcomeStyle.bienvenidoContainer}>
+      <div >
         <Typography
           variant="p"
           component="p"
@@ -57,7 +58,7 @@ const Session = (props) => {
           <br />
         </Typography>
       </div>
-      <div className={comunStyle.bottomElement}>
+      <div className={comunStyle.bottomElement} style={{padding: '1.5em'}}>
         <Button
           className={comunStyle.buttonAchs}
           variant="contained"
@@ -66,6 +67,7 @@ const Session = (props) => {
           Ingresar
         </Button>
       </div>
+    </div>
     </div>
   );
 };

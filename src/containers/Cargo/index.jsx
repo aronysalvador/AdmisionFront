@@ -65,7 +65,7 @@ const Cargo = () => {
           helperText={
             error
               ? "Debe ingresar al menos 5 caracteres"
-              : "Ejemplo:Analista,Operario,Maestro"
+              : "Ejemplo: Analista, Operario, Maestro"
           }
           error={error}
           margin="dense"
