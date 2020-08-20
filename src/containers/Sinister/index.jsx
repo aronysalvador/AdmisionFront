@@ -17,7 +17,7 @@ const Identification = (props) => {
 
     return (<div className={comunClass.root}>
 
-                <Cabecera dispatch={() => dispatch(handleSetStep(--addmissionForm.step))} percentage={addmissionForm.percentage} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} />
                 <div>
                     <Typography variant="p" component="p" className={comunClass.pregunta}>
                         ¿Qué problema tuvo?

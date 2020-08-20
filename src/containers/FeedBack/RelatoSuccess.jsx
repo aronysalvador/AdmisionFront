@@ -81,7 +81,7 @@ const RelatoSuccess = (props) => {
             {
               icono: "work.svg",
               textoPrimario: "Mantén una actitud positiva",
-              textoSecundario: "y sonrie con amabilidad",
+              textoSecundario: "y sonríe con amabilidad",
               clase: welcomeStyle.divRow,
             },
           ]}
