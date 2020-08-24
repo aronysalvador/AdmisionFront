@@ -67,7 +67,11 @@ const PersonalData = (props) => {
       />
       <div>
         <Typography variant="p" component="p" className={comunClass.pregunta}>
-          Empieza verificando los datos de {nombre} {apellidoPaterno}
+          Empieza
+          <div className={comunClass.textoResaltado}>
+            verificando los datos de 
+          </div>
+          {nombre} {apellidoPaterno}
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
