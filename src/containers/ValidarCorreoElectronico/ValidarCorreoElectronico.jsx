@@ -31,7 +31,6 @@ const ValidarCorreoElectronico = () => {
   });
 
   const [stateCheck, setStateCheck] = useState(false);
-
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -44,7 +43,6 @@ const ValidarCorreoElectronico = () => {
       setUserEmail("");
     }
   };
-
 
   return (
     <div className={root}>
@@ -126,10 +124,8 @@ const ValidarCorreoElectronico = () => {
           variant="contained"
           disabled={
             (!stateCheck && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck)
-          }
-         
+          }         
           onClick={() =>
-           // isEmailValid &&
             dispatch(updateForm("emailusuario", userEmail)) &&
             dispatch(handleSetStep(1000))
           }
