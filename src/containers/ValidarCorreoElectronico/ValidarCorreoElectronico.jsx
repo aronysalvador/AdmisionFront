@@ -24,7 +24,7 @@ const ValidarCorreoElectronico = () => {
   const {
     addmissionForm: { percentage, emailusuario },
   } = useSelector((state) => state, shallowEqual);
-  console.log({ emailusuario });
+
 
   const [userEmail, setUserEmail] = useState(() => {
     return !emailusuario ? "" : emailusuario;
