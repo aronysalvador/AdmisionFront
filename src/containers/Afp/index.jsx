@@ -17,7 +17,7 @@ REVISARE EL
 */
 const Afp = () => {
   const {
-    addmissionForm: { percentage, afpForm },
+    addmissionForm: { percentage, afpForm, responsable },
   } = useSelector((state) => state, shallowEqual);
 
   const {
@@ -45,10 +45,12 @@ const Afp = () => {
 
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
 
+  let back = responsable?.nombre.length > 0 ?  17.1 : 15
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(17.1))}
+        dispatch={() => dispatch(handleSetStep(back))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
