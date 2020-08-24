@@ -14,7 +14,7 @@ export const AdmissionForm = {
     volverAConcatenar: false,
 
     testigos: { nombre: "", cargo: "" },
-    responsable: [],
+    responsable: { nombre: "", cargo: "" },
     fechaHoraResponsable: {},
     fechaHoraSiniestro: {},
 
@@ -47,5 +47,6 @@ export const AdmissionForm = {
     DireccionTemporal: {}, // direccion temporal que es enviada al mapa dinámico
     LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
     LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
+
     AccidenteEnSucursal: "",
 };
