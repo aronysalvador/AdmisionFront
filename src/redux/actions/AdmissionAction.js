@@ -81,6 +81,20 @@ export const saveRut = (rut) => {
           
           // console.log({ apellidoMaterno, apellidoPaterno, nombre });
 
+          dispatch(
+            updateForm("datosAdicionalesSAP", {
+              apellidoMaterno,
+              apellidoPaterno,
+              nombre,
+              fechaNacimiento,
+              masculino,
+              femenino,
+              nacionalidad,
+              lugarNacimiento,
+              estadoCivil,
+            })
+          );
+
           if (!result.data.content.response.BpCreado) {
             dispatch(handleSetStep(5.81));
           } else if (Object.keys(result.data.content.response.cita).length !== 0) {
@@ -113,20 +127,20 @@ export const saveRut = (rut) => {
             dispatch(handleSetStep(STEP));
           }
 
-          dispatch(
-            updateForm("datosAdicionalesSAP", {
-              apellidoMaterno,
-              apellidoPaterno,
-              nombre,
-              fechaNacimiento,
-              masculino,
-              femenino,
-              nacionalidad,
-              lugarNacimiento,
-              estadoCivil,
-            })
-          );
-          console.log("RESULTADO OBTENER DATA", result);
+          // dispatch(
+          //   updateForm("datosAdicionalesSAP", {
+          //     apellidoMaterno,
+          //     apellidoPaterno,
+          //     nombre,
+          //     fechaNacimiento,
+          //     masculino,
+          //     femenino,
+          //     nacionalidad,
+          //     lugarNacimiento,
+          //     estadoCivil,
+          //   })
+          // );
+         
 
           dispatch(updateForm("cita", result.data.content.response.cita));
           dispatch(
