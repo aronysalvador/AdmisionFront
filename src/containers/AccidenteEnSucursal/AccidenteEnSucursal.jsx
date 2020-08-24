@@ -5,7 +5,6 @@ import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import AccidenteEnSucursalCard from "./AccidenteEnSucursalCard";
 
 const AccidenteEnSucursal = () => {
   const {
@@ -21,6 +20,7 @@ const AccidenteEnSucursal = () => {
     pregunta,
     bottomElement,
     buttonAchs2,
+    textoResaltado
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -35,15 +35,22 @@ const AccidenteEnSucursal = () => {
         dispatch={() => dispatch(handleSetStep(12))}
         percentage={percentage}
       />
-      <Typography className={pregunta} variant="subtitle2">
-        Al momento del accidente,
-      </Typography>
-      <Typography className={pregunta} variant="subtitle2">
-        ¿Te encontrabas en la sucursal donde trabajas?
-      </Typography>
+      <div>
+        <Typography
+          variant="h1"
+          component="h1"
+          className={pregunta}
+         >
+          ¿Accidente ocurrió en  
+          <div className={textoResaltado}
+              style={{display: "contents"}}
+          >
+             &nbsp;sucursal a la que pertenece el trabajador?
+          </div>
+        </Typography>
+      </div>
 
       <div className={bottomElement}>
-        <AccidenteEnSucursalCard />
         <div className={spaceStyle.spaceMin1}></div>
         <Button
           variant="contained"
@@ -55,10 +62,9 @@ const AccidenteEnSucursal = () => {
         <div className={spaceStyle.spaceMin1}></div>
         <Button
           className={buttonAchs2}
-          //variant="outlined"
           onClick={() => handleOnClick("No")}
         >
-          No lo estaba
+          No
         </Button>
       </div>
     </div>
