@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import { connect } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import IdentificationForm from "../../components/Identification/identificationForm";
@@ -9,11 +9,16 @@ import { CLEAR_STATE } from "../../redux/types/addmissionFormType";
 
 const Identification = (props) => {
   const { dispatch, addmissionForm } = props;
-  useEffect(() => {
-    dispatch({ type: CLEAR_STATE });
 
+  const initFn = useCallback(() => {
+    dispatch({ type: CLEAR_STATE });
     dispatch(handleSetStep(3));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn()
+  }, [initFn]);
+  
   const comunClass = getComunStyle();
 
   return (

@@ -11,9 +11,11 @@ import { getComunStyle } from "../../css/comun";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { endLog } from "../../redux/actions/Log";
 import { validateEmailFormat } from "../../helpers/email";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import ClearIcon from "@material-ui/icons/Clear";
+import { FechaHora } from './../../helpers/utils'
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -29,6 +31,20 @@ const ValidarCorreoElectronico = () => {
   const { root, buttonAchs, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const { mobileLabel } = siniestroStyle();
+
+
+  const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
+
+  const handleEnd = () => {
+    if(isEmailValid){
+      if(ID>0){
+        dispatch(endLog(ID, FechaHora())) 
+      }
+      dispatch(updateForm("emailusuario", userEmail)) &&
+      dispatch(handleSetStep(1000))
+    }
+   
+  }
 
   return (
     <div className={root}>
@@ -77,11 +93,7 @@ const ValidarCorreoElectronico = () => {
           disabled={
             userEmail === undefined || userEmail.length === 0 || !isEmailValid
           }
-          onClick={() =>
-            isEmailValid &&
-            dispatch(updateForm("emailusuario", userEmail)) &&
-            dispatch(handleSetStep(1000))
-          }
+          onClick={() => handleEnd() }
         >
           Crear Caso
         </Button>
