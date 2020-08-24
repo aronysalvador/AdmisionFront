@@ -78,7 +78,7 @@ const Main = (props) => {
   const { addmissionForm, dispatch } = props;
 
   const initFn = useCallback(() => {
-    dispatch(getAccount());
+    dispatch(getAccount())
   }, [dispatch]);
 
   useEffect(() => {
@@ -120,7 +120,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 1.1:
         return (
           <div className={layoutFix}>
@@ -137,8 +136,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 3: {
-        sessionStorage.clear();
+      case 3:
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -146,7 +144,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      }
       case 4:
         return (
           <div className={layout}>
@@ -331,7 +328,7 @@ const Main = (props) => {
               <FechaHoraSiniestro />
             </Paper>
           </div>
-        );
+        );        
 
       case 11:
         return (

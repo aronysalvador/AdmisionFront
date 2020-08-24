@@ -11,7 +11,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, fechaHoraSiniestro } = useSelector(
+  const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -34,6 +34,39 @@ const FechaHoraSiniestro = () => {
     setHoraSiniestro({ ...value });
   }
 
+  const handleNext = () => {
+
+    let fecha = undefined;
+
+    siniestros.forEach(x => {
+      const fechaCasted = new Date(Date.parse(x.fecha_date));
+      const dias = fechaCasted.getDate() + 1;
+      const mes = fechaCasted.getMonth() + 1;
+      const anio = fechaCasted.getFullYear();
+      console.log(dias, mes, anio);
+      if(dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year) {
+        fecha = fechaCasted;
+      }
+    });
+
+    if(fecha === undefined) {
+      //No hay siniestro para esa fecha
+      dispatch(
+        updateForm("fechaHoraSiniestro", {
+          ...fechaSiniestro,
+          ...horaSiniestro,
+        })
+      );
+      dispatch(handleSetStep(step + 1));
+
+    }
+    else {
+      console.log("HAY UN SINIESTRO PARA ESA FECHA");
+    }
+
+  
+  };
+
   return (
     <div className={root}>
       <Cabecera
@@ -41,7 +74,7 @@ const FechaHoraSiniestro = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Escribe la fecha y hora del accidente
+        ¿Cuándo y qué hora sucedió el accidente?
       </Typography>
       <div className={spaceStyle.space3} />
       <FechaSiniestro
@@ -60,14 +93,9 @@ const FechaHoraSiniestro = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
-          onClick={() => {
-            dispatch(
-              updateForm("fechaHoraSiniestro", {
-                ...fechaSiniestro,
-                ...horaSiniestro,
-              })
-            );
-            dispatch(handleSetStep(step + 1));
+          onClick={() => { 
+            handleNext();
+           
           }}
         >
           Siguiente
