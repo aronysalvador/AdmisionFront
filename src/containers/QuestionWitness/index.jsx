@@ -13,7 +13,7 @@ const QuestionWitness = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(12))}
+        dispatch={() => dispatch(handleSetStep(12.1))}
         percentage={addmissionForm.percentage}
       />
       <QuestionTestigoResponsable

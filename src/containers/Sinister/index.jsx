@@ -40,7 +40,13 @@ const Identification = (props) => {
                     <Button  className={classes.button} variant="contained" disabled={true}>
                         <img alt="Enfermedad Profesional" src="./static/ep.png" className={classes.img} />&nbsp;Enfermedad Profesional
                     </Button>
-                </div>                                
+                </div>  
+                <div  className={spaceStyle.space1} />
+                <div>
+                    <Button  className={classes.button} variant="contained" disabled={true}>
+                        <img alt="Licencia Rechazada" src="./static/licencia.png" className={classes.img} />&nbsp;Licencia Rechazada
+                    </Button>
+                </div>                               
             </div>
         );
     }

@@ -1,50 +1,52 @@
 export const AdmissionForm = {
-  step: 0,
-  percentage: 0,
-  rut: "",
-  isAfiliado: "",
-  empresa: "",
-  rutEmpresa: "",
-  isapreSeleccionado: {},
+    step: 0,
+    percentage: 0,
+    rut: "",
+    isAfiliado: "",
+    empresa: "",
+    rutEmpresa: "",
+    isapreSeleccionado: {},
 
-  lugarAccidente: "",
-  objetoAccidente: "",
-  descripcionAccidente: "",
-  relatoAccidente: "",
-  volverAConcatenar: false,
+    lugarAccidente: "",
+    objetoAccidente: "",
+    descripcionAccidente: "",
+    relatoAccidente: "",
+    volverAConcatenar: false,
 
-  testigos: { nombre: "", cargo: "" },
-  responsable: { nombre: "", cargo: "" },
-  fechaHoraResponsable: {},
-  fechaHoraSiniestro: {},
+    testigos: { nombre: "", cargo: "" },
+    responsable: { nombre: "", cargo: "" },
+    fechaHoraResponsable: {},
+    fechaHoraSiniestro: {},
 
-  SucursalEmpresa: "",
-  DireccionEmpresa: "",
-  comunaEmpresa: "",
-  direccionParticular: "",
-  telefonoParticular: "",
+    SucursalEmpresa: "",
+    DireccionEmpresa: "",
+    comunaEmpresa: "",
+    direccionParticular: "",
+    telefonoParticular: "",
 
-  inicioJornadaLaboral: "",
-  finJornadaLaboral: "",
-  ingresoTrabajoActual: "",
-  desarrollarTrabajoHabitual: "",
-  tipoRemuneracion: {},
+    inicioJornadaLaboral: "",
+    finJornadaLaboral: "",
+    ingresoTrabajoActual: "",
+    desarrollarTrabajoHabitual: "",
+    tipoRemuneracion: {},
 
-  tipoDeContrato: {},
+    tipoDeContrato: {},
 
-  //State de Cargo
-  cargoForm: "",
-  //Lugar Exacto Sinietsro
-  sucursalEmpresaSiniestro: "",
-  urlMapasucursalEmpresaSiniestro: "",
-  SucursalEmpresaObjeto: {},
+    //State de Cargo
+    cargoForm: "",
+    //Lugar Exacto Sinietsro
+    sucursalEmpresaSiniestro: "",
+    urlMapasucursalEmpresaSiniestro: "",
+    SucursalEmpresaObjeto: {},
 
-  centrosForm: {},
+    centrosForm: {},
 
-  siniestros: [],
-  siniestroDetalle: {},
+    siniestros: [],
+    siniestroDetalle: {},
 
-  DireccionTemporal: {},  // direccion temporal que es enviada al mapa dinámico
-  LatTemporal: "",  // latitud temporal que es enviada al mapa dinámico
-  LongTemporal: "",  // longitud temporal que es enviada al mapa dinámico
+    DireccionTemporal: {}, // direccion temporal que es enviada al mapa dinámico
+    LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
+    LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
+
+    AccidenteEnSucursal: "",
 };
