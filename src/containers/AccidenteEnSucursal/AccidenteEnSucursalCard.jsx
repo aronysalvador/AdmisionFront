@@ -2,7 +2,7 @@ import React from "react";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
 import { ErrorOutline } from "@material-ui/icons";
 
-const TrabajoHabitualCard = () => {
+const AccidenteEnSucursalCard = () => {
   const {
     container,
     cardIconContainer,
@@ -16,7 +16,7 @@ const TrabajoHabitualCard = () => {
       </div>
       <div className={cardTextContainer}>
         <span className={cardText}>
-          Estabas dentro del horario habitual, en las instalaciones de tu
+          Estabas dentro del horario habitual, en las instalaciones de tu sucursal de
           trabajo y desarrollando tus labores habituales
         </span>
       </div>
@@ -24,4 +24,4 @@ const TrabajoHabitualCard = () => {
   );
 };
 
-export default TrabajoHabitualCard;
+export default AccidenteEnSucursalCard;
