@@ -96,7 +96,7 @@ const ValidarCorreoElectronico = () => {
               component="p"
               className={welcomeStyle.itemText2}
             >
-              Agregar paciente sin e-mail
+              Agregar paciente&nbsp;<span style={{ color: "#03bb85" }}>sin e-mail</span>
             </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>
