@@ -7,7 +7,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
-const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
+const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => { 
   const dispatch = useDispatch();
   const { root, pregunta } = getComunStyle();
 
@@ -24,7 +24,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.5))}
+        dispatch={() => dispatch(handleSetStep(5.4))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
