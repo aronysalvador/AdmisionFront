@@ -9,15 +9,13 @@ const QuestionResponsable = (props) => {
   const { dispatch, addmissionForm } = props;
 
   const classesComun = getComunStyle();
-  /*
-  completar
-  console.log("*****************" , addmissionForm)
-  let back = (addmissionForm?.testigos === undefined && addmissionForm.testigos.cargo === "") ? 13 : 14.1*/
+
+  let back = addmissionForm?.testigos?.nombre.length > 0 ?  14.1 : 13
 
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(14.1))}
+        dispatch={() => dispatch(handleSetStep(back))}
         percentage={addmissionForm.percentage}
       />
       <QuestionTestigoResponsable
