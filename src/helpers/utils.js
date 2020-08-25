@@ -13,3 +13,10 @@ export function FechaHora(){
     var newFecha = `${y[2]}-${('0'+y[0]).slice(-2)}-${('0'+y[1]).slice(-2)} ${x[1]}`
     return newFecha
 }
+
+export function Hora(){
+    var fecha =  (new Date().toLocaleString("en-US", {timeZone:'America/Santiago',hour12: false})).replace(/[,]/g, "");
+    var x = fecha.split(" ");
+    var newFecha = `${x[1]}`
+    return newFecha
+}

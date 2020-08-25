@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Link from '@material-ui/core/Link'
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { createLog } from "../../redux/actions/Log";
+import { handleLog } from "../../redux/actions/Log";
 import Cabecera from "../../components/cabecera/index";
 import Indiciaciones from "../../components/Indicaciones";
 
@@ -26,11 +26,7 @@ const Start = (props) =>{
     const { email } = userMsal;
 
     const { LogForm: {ID, loading, error} } = useSelector((state) => state, shallowEqual);
-
-    // React.useEffect(()=>{
-    //     console.log(email)
-    //     console.log(ID)
-    // },[])
+    const { addmissionForm: {centrosForm} } = useSelector((state) => state, shallowEqual);
    
     const handleBegin = () => {
 
@@ -40,7 +36,7 @@ const Start = (props) =>{
         }else{
             console.log("log NO creado")
             //crea log
-            dispatch(createLog(email, FechaHora())) 
+            dispatch(handleLog(email, FechaHora(), centrosForm)) 
             if(!loading){
                 if(!error){
                     dispatch(handleSetStep(2)) 

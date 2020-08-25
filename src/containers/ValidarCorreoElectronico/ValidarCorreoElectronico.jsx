@@ -11,7 +11,7 @@ import { getComunStyle } from "../../css/comun";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { endLog } from "../../redux/actions/Log";
+import { handlEndLog } from "../../redux/actions/Log";
 import { validateEmailFormat } from "../../helpers/email";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -38,7 +38,7 @@ const ValidarCorreoElectronico = () => {
   const handleEnd = () => {
     if(isEmailValid){
       if(ID>0){
-        dispatch(endLog(ID, FechaHora())) 
+        dispatch(handlEndLog({Id: ID, fecha: FechaHora()})) 
       }
       dispatch(updateForm("emailusuario", userEmail)) &&
       dispatch(handleSetStep(1000))

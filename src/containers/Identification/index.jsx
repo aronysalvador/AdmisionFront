@@ -1,5 +1,5 @@
 import React, {useCallback} from "react";
-import { connect } from "react-redux";
+import { connect, shallowEqual, useSelector } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import IdentificationForm from "../../components/Identification/identificationForm";
 import { getComunStyle } from "../../css/comun";
@@ -21,6 +21,8 @@ const Identification = (props) => {
   
   const comunClass = getComunStyle();
 
+  const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
+
   return (
     <div className={comunClass.root}>
       <Cabecera
@@ -28,7 +30,7 @@ const Identification = (props) => {
         percentage={addmissionForm.percentage}
       />
       <div>
-        <IdentificationForm />
+        <IdentificationForm Id={ID} />
       </div>
     </div>
   );
