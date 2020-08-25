@@ -73,13 +73,17 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
+import { setStep, handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const Main = (props) => {
   const classes = useStyles();
-  const { addmissionForm, dispatch } = props;
+  const { addmissionForm, microsoftReducer, dispatch } = props;
 
   const initFn = useCallback(() => {
-    dispatch(getAccount());
+    if(!microsoftReducer.authenticatedMsal) {
+      //Para no tener que estar autenticando siempre se puede comentar esta línea
+      addmissionForm.step = 0;
+    }
   }, [dispatch]);
 
   useEffect(() => {
@@ -92,7 +96,7 @@ const Main = (props) => {
     layoutFix,
     paperFix,
     blackLayout,
-    paperNoColor,
+    paperNoColor,  
   } = classes;
 
   const renderForm = (step) => {
@@ -632,10 +636,10 @@ const Main = (props) => {
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
-  };
+    microsoftReducer: microsoftReducer };
 }
 
 export default connect(mapStateToProps)(Main);
