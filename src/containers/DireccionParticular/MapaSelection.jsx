@@ -87,9 +87,10 @@ const MapaSelection = () => {
 
 
   return (
-    <div className={comun.rootContainer}> 
+    <div className={comun.rootContainer}
+      style={{width: '23em'}}> 
 
-      <div style={{padding: '0.5em'}}>
+      <div> {/* style={{padding: '0.5em'}} */}
         <Cabecera
           dispatch={() => dispatch(handleSetStep(5.2))}
           percentage={percentage}

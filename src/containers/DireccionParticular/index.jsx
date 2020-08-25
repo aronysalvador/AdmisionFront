@@ -30,9 +30,10 @@ const DireccionParticular = () => {
   const {
     root,
     buttonAchs,
-    pregunta,
     tituloTextbox,
     bottomElement,
+    titleBlue,
+    titleBlack
   } = getComunStyle()
   const spaceStyle = getSpaceStyle()
 
@@ -46,8 +47,11 @@ const DireccionParticular = () => {
         dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Ingresa tu dirección particular
+      <Typography className={titleBlack}>
+        Ingresa 
+        <div className={titleBlue}>
+          &nbsp;la dirección en donde vive el paciente
+        </div>
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="subtitle2">
@@ -80,7 +84,7 @@ const DireccionParticular = () => {
             dispatch(handleSetStep(5.1))
           }}
         >
-          Confirmar
+          Guardar dirección
         </Button>
       </div>
     </div>

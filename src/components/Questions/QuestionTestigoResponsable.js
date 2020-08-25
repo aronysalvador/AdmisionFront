@@ -13,7 +13,7 @@ const QuestionButton = (props) => {
   return (
     <div>
       <div>
-        <Typography variant="p" component="p" className={classesComun.pregunta}>
+        <Typography variant="p" component="p" className={classesComun.titleBlack}>
           {titulo}
         </Typography>
       </div>

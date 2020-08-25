@@ -23,7 +23,7 @@ const QuestionWitness = (props) => {
         percentage={addmissionForm.percentage}
       />
       <BoxTestigosResponsable
-        titulo={"Entendido ¿Alguien fue testigo de lo que sucedió?"}
+        titulo={"¿Alguien fue testigo de lo que sucedió?"}
         tituloTestigo={tituloTestigo}
         contenidoTestigo={contenidoTestigo}
         irA={() => dispatch(handleSetStep(15))}

@@ -67,7 +67,7 @@ const FormQuestion = (props) => {
           type="submit"
           disabled={isDisabled()}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </form>

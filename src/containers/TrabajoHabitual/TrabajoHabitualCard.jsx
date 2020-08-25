@@ -16,8 +16,7 @@ const TrabajoHabitualCard = () => {
       </div>
       <div className={cardTextContainer}>
         <span className={cardText}>
-          Estabas dentro del horario habitual, en las instalaciones de tu
-          trabajo y desarrollando tus labores habituales
+          Estaba dentro del horario habitual, en las instalaciones de su trabajo y desarrollando sus labores habituales.
         </span>
       </div>
     </div>

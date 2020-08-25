@@ -20,7 +20,7 @@ const RelatoFinal = (props) => {
     return (
       "Al momento del accidente estaba " +
       addmissionForm.lugarAccidente +
-      ". Lo que ocurrió fue " +
+      ". Lo que ocurrió fue que " +
       addmissionForm.descripcionAccidente +
       ". El accidente ocurrió con " +
       addmissionForm.objetoAccidente
@@ -63,11 +63,11 @@ const RelatoFinal = (props) => {
             <Typography
               variant="h1"
               component="h1"
-              className={classesComun.pregunta}
+              className={classesComun.titleBlack}
             >
               Por favor,
-              <div className={classesComun.textoResaltado}>
-                confirma el relato
+              <div className={classesComun.titleBlue}>
+              &nbsp;confirma el relato
               </div>
             </Typography>
           </div>

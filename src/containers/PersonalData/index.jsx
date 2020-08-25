@@ -66,10 +66,10 @@ const PersonalData = (props) => {
         percentage={addmissionForm.percentage}
       />
       <div>
-        <Typography variant="p" component="p" className={comunClass.pregunta}>
+        <Typography variant="p" component="p" className={comunClass.titleBlack}>
           Empieza
-          <div className={comunClass.textoResaltado}>
-            verificando los datos de 
+          <div className={comunClass.titleBlue}>
+          &nbsp;verificando los datos de <br/>
           </div>
           {nombre} {apellidoPaterno}
         </Typography>
@@ -83,17 +83,17 @@ const PersonalData = (props) => {
         step={5.4} />
       <div className={spaceStyle.spaceMin1} />
       <BoxACHS
+        titulo={tituloTelefono}
+        contenido={contenidoTelefono}
+        step={5.3}
+      />
+      <BoxACHS
         titulo={tituloDireccion}
         contenido={contenidoDireccion}
         step={5.2}
       />
       <div className={spaceStyle.spaceMin1} />
-      <BoxACHS
-        titulo={tituloTelefono}
-        contenido={contenidoTelefono}
-        step={5.3}
-      />
-
+      
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}

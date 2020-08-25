@@ -65,7 +65,7 @@ const AlertaCalificacion = () => {
           component="h5"
           className={welcomeStyle.subTitleBegin}
         >
-          Para terminar:
+          Para la creación del caso
         </Typography>
 
         <Indiciaciones
@@ -73,7 +73,7 @@ const AlertaCalificacion = () => {
             {
               icono: "sms.svg",
               textoPrimario: "Pide un e-mail al paciente,",
-              textoSecundario: "los documentos serán enviados ahí",
+              textoSecundario: "Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Sí el paciente no tiene e-mail puede agregar el de un familiar.",
               clase: welcomeStyle.divRowBottom,
             },
           ]}
@@ -81,21 +81,21 @@ const AlertaCalificacion = () => {
 
         <div className={welcomeStyle.bottomBegin}>
           <Button
-            className={comunStyle.buttonAchs2}
-            variant="contained"
-            onClick={() => dispatch(handleSetStep(26.2))}
-          >
-            El relato no es coherente
-          </Button>
-          <div className={spaceStyle.space1}></div>
-
-          <Button
             className={comunStyle.buttonAchs}
             variant="contained"
             onClick={() => dispatch(handleSetStep(27))}
           >
             Continuar
           </Button>
+          <div className={spaceStyle.space1}></div>
+          <Button
+            className={comunStyle.buttonAchs2}
+            variant="contained"
+            onClick={() => dispatch(handleSetStep(26.2))}
+          >
+            Levantar alerta de calificación
+          </Button>
+  
         </div>
       </div>
     </div>

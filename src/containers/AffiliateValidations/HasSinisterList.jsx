@@ -69,15 +69,14 @@ const PersonalData = (props) => {
         />
         <div className={spaceStyle.space2} />
         <div>
-          <Typography variant="p" component="p" className={comunClass.pregunta}>
-            {nombre} {apellidoPaterno} tiene
-            <div className={comunClass.textoResaltado}>
-              {contenidoSiniestros.length} episodios
+          <Typography variant="p" component="p" className={comunClass.titleBlack}>
+            {nombre} {apellidoPaterno} <br/> tiene&nbsp;
+            <div className={comunClass.titleBlue}>
+              {contenidoSiniestros.length} siniestros
             </div>
-            activos
+            &nbsp;creados
           </Typography>
         </div>
-        <div className={spaceStyle.space1} />
 
         <div className={comunClass.siniesterList}>{listaSiniestros}</div>
       </div>
@@ -94,7 +93,7 @@ const PersonalData = (props) => {
             className={comunClass.buttonAchs2}
             onClick={() => handleNext()}
           >
-            Crear nueva admisión
+            Entiendo, crear nueva admisión
           </Button>
         </div>
       </div>

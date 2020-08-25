@@ -53,7 +53,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             className={comunStyle.tituloSelectorFecha}
             style={{ textAlign: "center" }}
           >
-            hora
+            Hora
           </div>
         </Grid>
 
@@ -115,7 +115,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             className={comunStyle.tituloSelectorFecha}
             style={{ textAlign: "center" }}
           >
-            minutos
+            Minutos
           </div>
         </Grid>
         <Grid

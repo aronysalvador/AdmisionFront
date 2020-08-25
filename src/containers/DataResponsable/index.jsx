@@ -56,8 +56,11 @@ const DataResponsable = () => {
         percentage={percentage}
       />
       <div>
-        <Typography variant="p" component="p" className={classesComun.pregunta}>
-          Ingresa los datos del Responsable
+        <Typography variant="p" component="p" className={classesComun.titleBlack}>
+        Solicita una 
+        <div className={classesComun.titleBlue}>
+          &nbsp;referencia del responsable
+        </div>
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
@@ -105,7 +108,7 @@ const DataResponsable = () => {
           component="p"
           className={[classesComun.tituloTextbox]}
         >
-          Cargo - Relación
+          Cargo o Relación
         </Typography>
       </div>
 
@@ -142,7 +145,7 @@ const DataResponsable = () => {
           disabled={!nombre}
           onClick={() => clickSendResponsable()}
         >
-          Siguiente
+          Agregar
         </Button>
       </div>
     </div>
