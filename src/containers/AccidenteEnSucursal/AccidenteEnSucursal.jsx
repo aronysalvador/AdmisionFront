@@ -8,7 +8,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 
 const AccidenteEnSucursal = () => {
   const {
-    addmissionForm: { step, percentage },
+    addmissionForm: { percentage },
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
