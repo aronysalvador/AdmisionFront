@@ -115,6 +115,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
         borderRadius: "10px",
     },
+    titleContainerCards2: {
+        padding: "1.5em 1.5em 0.5em 1.5em",
+        background: "#FFFFFF",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        borderRadius: "10px",
+    },
     divRow: {
         display: "flex",
         // justifyContent: 'center',
@@ -125,6 +131,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         // justifyContent: 'center',
         alignItems: "center",
         marginBottom: "20px",
+    },
+    divRowBottom2: {
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "5px",
     },
 
     txtBegin: {
@@ -164,6 +175,15 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "16px",
         lineHeight: "20px",
         color: "#000000",
+    },
+    itemText2: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "16px",
+        lineHeight: "20px",
+        color: "#000000",
+        marginLeft: "10px"
     },
     pBegin: {
         fontFamily: "Catamaran",
