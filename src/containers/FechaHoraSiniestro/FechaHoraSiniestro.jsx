@@ -35,8 +35,7 @@ const FechaHoraSiniestro = () => {
   }
 
   const handleNext = () => {
-
-    let fecha = undefined;
+    let siniestroTemp = undefined;
 
     siniestros.forEach(x => {
       const fechaCasted = new Date(Date.parse(x.fecha_date));
@@ -45,11 +44,11 @@ const FechaHoraSiniestro = () => {
       const anio = fechaCasted.getFullYear();
       console.log(dias, mes, anio);
       if(dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year) {
-        fecha = fechaCasted;
+        siniestroTemp = x;
       }
     });
 
-    if(fecha === undefined) {
+    if(siniestroTemp === undefined) {
       //No hay siniestro para esa fecha
       dispatch(
         updateForm("fechaHoraSiniestro", {
@@ -61,7 +60,19 @@ const FechaHoraSiniestro = () => {
 
     }
     else {
-      console.log("HAY UN SINIESTRO PARA ESA FECHA");
+      const mensajeAlerta = "Este paciente tiene un siniestro activo en la misma fecha";
+      const mensajeBoton = "Entendido";
+      const origen = "sameDate";
+      dispatch(
+        updateForm("fechaHoraSiniestro", {
+          ...fechaSiniestro,
+          ...horaSiniestro,
+        })
+      );
+      dispatch(
+        updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen, siniestroTemp})
+      );
+      dispatch(handleSetStep(5.83));
     }
 
   
