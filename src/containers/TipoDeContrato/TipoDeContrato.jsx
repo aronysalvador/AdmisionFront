@@ -38,7 +38,7 @@ const TipoDeContrato = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        ¿Que tipo de contrato tienes?
+        ¿Qué tipo de contrato tienes?
       </Typography>
       <div className={spaceStyle.space2} />
       <div

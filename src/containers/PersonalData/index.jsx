@@ -31,6 +31,8 @@ const PersonalData = (props) => {
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
 
+  const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
+
   const handleNext = () => {
     var STEP = "";
     if (
@@ -65,7 +67,11 @@ const PersonalData = (props) => {
       />
       <div>
         <Typography variant="p" component="p" className={comunClass.pregunta}>
-          Pide al paciente que verifique sus datos:
+          Empieza
+          <div className={comunClass.textoResaltado}>
+            verificando los datos de 
+          </div>
+          {nombre} {apellidoPaterno}
         </Typography>
       </div>
       <div className={spaceStyle.space1} />

@@ -72,6 +72,7 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
+import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -359,6 +360,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+        case 12.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AccidenteEnSucursal />
+            </Paper>
+          </div>
+        );  
       case 13:
         return (
           <div className={layout}>

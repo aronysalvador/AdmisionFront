@@ -85,7 +85,7 @@ const LugarReferenciaSiniestro = () => {
           variant="contained"
           onClick={() => {
             dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-            dispatch(handleSetStep(++stepx));
+            dispatch(handleSetStep(12.1)); //++stepx
           }}
         >
           Siguiente

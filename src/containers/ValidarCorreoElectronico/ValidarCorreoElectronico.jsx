@@ -16,22 +16,28 @@ import { validateEmailFormat } from "../../helpers/email";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import ClearIcon from "@material-ui/icons/Clear";
 import { FechaHora } from './../../helpers/utils'
+import { getWelcomeStyle } from "../../css/welcomeStyle";
+import { ErrorOutline } from "@material-ui/icons";
+import Switch from '@material-ui/core/Switch';
+
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
   const {
     addmissionForm: { percentage, emailusuario },
   } = useSelector((state) => state, shallowEqual);
-  console.log({ emailusuario });
+
 
   const [userEmail, setUserEmail] = useState(() => {
     return !emailusuario ? "" : emailusuario;
   });
+
+  const [stateCheck,setStateCheck] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, pregunta, bottomElement } = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const welcomeStyle = getWelcomeStyle();
   const { mobileLabel } = siniestroStyle();
-
 
   const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
@@ -45,6 +51,14 @@ const ValidarCorreoElectronico = () => {
     }
    
   }
+
+  const handleChange = (event) => {
+    setStateCheck( event.target.checked );
+    if(event.target.checked){
+      setUserEmail("");
+    }
+  };
+
 
   return (
     <div className={root}>
@@ -66,16 +80,18 @@ const ValidarCorreoElectronico = () => {
         size="small"
         margin="dense"
         fullWidth
-        helperText={!isEmailValid && "Escriba un email válido"}
+        helperText={ stateCheck ? null : !isEmailValid && "Escriba un email válido"}
         error={!isEmailValid}
         onChange={(e) => {
           setIsEmailValid(validateEmailFormat(e.target.value));
           setUserEmail(e.target.value);
         }}
+        disabled={stateCheck}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
+                disabled={stateCheck}
                 onClick={() => {
                   setUserEmail("");
                 }}
@@ -86,14 +102,48 @@ const ValidarCorreoElectronico = () => {
           ),
         }}
       />
+      <div className={spaceStyle.space1} />
+
+      <div className={welcomeStyle.titleContainerCards2}>
+        <div  className={welcomeStyle.divRowBottom2}>
+            <ErrorOutline />
+            <Typography
+              variant="p"
+              component="p"
+              className={welcomeStyle.itemText2}
+            >
+              Agregar paciente&nbsp;<span style={{ color: "#03bb85" }}>sin e-mail</span>
+            </Typography>
+        </div>
+        <div  className={welcomeStyle.divRowBottom2}>
+          <Typography
+                variant="p"
+                component="p"
+                className={welcomeStyle.pBegin}
+              >
+                ¿Está seguro de continuar sin e-mail? 
+          </Typography>
+        </div>
+        <div  className={welcomeStyle.divRowBottom2}>
+          <Switch
+            checked={stateCheck}
+            onChange={handleChange}
+            color="primary"
+          />
+        </div>
+        
+      </div>
+
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
           variant="contained"
           disabled={
-            userEmail === undefined || userEmail.length === 0 || !isEmailValid
+            (!stateCheck && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck)
+          }         
+          onClick={() =>
+            handleEnd()
           }
-          onClick={() => handleEnd() }
         >
           Crear Caso
         </Button>
