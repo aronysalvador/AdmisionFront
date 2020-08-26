@@ -96,7 +96,7 @@ const Cargo = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
-          disabled={!cargo}
+          isabled={!cargo}
           onClick={() => clickSendCargo()}
         >
           Continuar
