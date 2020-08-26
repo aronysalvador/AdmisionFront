@@ -13,81 +13,88 @@ import {
     };
   };
 
-  export const postData = async (email, inicio) => {
-    let params = {
-        email,
-        inicio
-    }
 
-    return Axios.post(process.env.REACT_APP_LOG_BEGIN, params);
-  };
+   // PRIMERA VERSION //   
+  // // VARIABLES ENTORNO
+  // // REACT_APP_LOG_BEGIN=http://localhost/api/logs/beginLog
+  // // REACT_APP_LOG_END=http://localhost/api/logs/endLog
+
+  // export const postData = async (email, inicio) => {
+  //   let params = {
+  //       email,
+  //       inicio
+  //   }
+
+  //   return Axios.post(process.env.REACT_APP_LOG_BEGIN, params);
+  // };
   
-  export const createLog = (email, inicio) => async (dispatch) => {
-    dispatch({
-      type: POST_LOG_INIT,
-      payload: true,
-    });
+  // export const createLog = (email, inicio) => async (dispatch) => {
+  //   dispatch({
+  //     type: POST_LOG_INIT,
+  //     payload: true,
+  //   });
   
-    postData(email, inicio)
-      .then((response) => {
-          if(response.status === 200){            
-            var ID = response.data.content[0][0].ID ? response.data.content[0][0].ID : 0
-            dispatch(successCallLog(ID));
-          }else{
-            dispatch(errorCallLog("error"));
-          }
-      })
-      .catch((error) => {
-        dispatch(errorCallLog(error));
-      });
+  //   postData(email, inicio)
+  //     .then((response) => {
+  //         if(response.status === 200){            
+  //           var ID = response.data.content[0][0].ID ? response.data.content[0][0].ID : 0
+  //           dispatch(successCallLog(ID));
+  //         }else{
+  //           dispatch(errorCallLog("error"));
+  //         }
+  //     })
+  //     .catch((error) => {
+  //       dispatch(errorCallLog(error));
+  //     });
   
-    const successCallLog = ID => ({
-      type: POST_LOG_SUCCESS,
-      payload: ID
-    });
+  //   const successCallLog = ID => ({
+  //     type: POST_LOG_SUCCESS,
+  //     payload: ID
+  //   });
   
-    const errorCallLog = (error) => ({
-      type: POST_LOG_FAILURE,
-      payload: error
-    });
-  };
+  //   const errorCallLog = (error) => ({
+  //     type: POST_LOG_FAILURE,
+  //     payload: error
+  //   });
+  // };
   
-  export const postEndData = async (ID, fin) => {
-    let params = {
-        ID,
-        fin
-    }
-    return Axios.post(process.env.REACT_APP_LOG_END, params);
-  };
+  // export const postEndData = async (ID, fin) => {
+  //   let params = {
+  //       ID,
+  //       fin
+  //   }
+  //   return Axios.post(process.env.REACT_APP_LOG_END, params);
+  // };
   
-  export const endLog = (ID, fin) => async (dispatch) => {
-    dispatch({
-      type: POST_LOG_INIT,
-      payload: true,
-    });
+  // export const endLog = (ID, fin) => async (dispatch) => {
+  //   dispatch({
+  //     type: POST_LOG_INIT,
+  //     payload: true,
+  //   });
   
-    postEndData(ID, fin)
-      .then((response) => {
-          if(response.status === 200){            
-            dispatch(successCallLog(0));
-          }else{
-            dispatch(errorCallLog("error"));
-          }
-      })
-      .catch((error) => {
-        dispatch(errorCallLog(error));
-      });
+  //   postEndData(ID, fin)
+  //     .then((response) => {
+  //         if(response.status === 200){            
+  //           dispatch(successCallLog(0));
+  //         }else{
+  //           dispatch(errorCallLog("error"));
+  //         }
+  //     })
+  //     .catch((error) => {
+  //       dispatch(errorCallLog(error));
+  //     });
   
-    const successCallLog = ID => ({
-      type: POST_LOG_SUCCESS,
-      payload: ID
-    });
+  //   const successCallLog = ID => ({
+  //     type: POST_LOG_SUCCESS,
+  //     payload: ID
+  //   });
   
-    const errorCallLog = (error) => ({
-      type: POST_LOG_FAILURE,
-      payload: error
-    });
-  };
+  //   const errorCallLog = (error) => ({
+  //     type: POST_LOG_FAILURE,
+  //     payload: error
+  //   });
+  // };
+  // PRIMERA VERSION //
   
 
   export const handleData = async (email, fechaHora, centro) => {
