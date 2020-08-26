@@ -14,6 +14,7 @@ const PersonalData = (props) => {
   const spaceStyle = getSpaceStyle();
 
   const contenidoSiniestros = addmissionForm.siniestros;
+  const { origen, siniestroTemp } = addmissionForm.siniestroOpciones;
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
@@ -24,7 +25,6 @@ const PersonalData = (props) => {
       // let nuevaFecha = new Date(Date.parse("08-13-2020 17:00"));
       let nuevaFecha = new Date(Date.parse(x.fecha));
       nuevaFecha.setHours(0, 0, 0, 0);
-
       return nuevaFecha.getTime() === fechaActual.getTime();
     });
     if (busqueda === undefined) {
@@ -46,7 +46,11 @@ const PersonalData = (props) => {
       ) {
         // si no tiene telefono
         STEP = 5.3; //form telefono
-      } else {
+      } 
+      else if(origen === "sameDate"){ //Si ya estaba creando la admisión
+        STEP = 11; //Lugar exacto de siniestro
+      }
+      else {
         // si todos los datos relevantes están llenos
         STEP = 5.7; // pantalla exito
       }
@@ -69,17 +73,37 @@ const PersonalData = (props) => {
         />
         <div className={spaceStyle.space2} />
         <div>
-          <Typography variant="p" component="p" className={comunClass.pregunta}>
-            {nombre} {apellidoPaterno} tiene
-            <div className={comunClass.textoResaltado}>
-              {contenidoSiniestros.length} episodios
-            </div>
-            activos
-          </Typography>
+          {origen === "getRut" ? (
+            <Typography
+              variant="p"
+              component="p"
+              className={comunClass.pregunta}
+            >
+              {nombre} {apellidoPaterno} tiene
+              <div className={comunClass.textoResaltado}>
+                {contenidoSiniestros.length} siniestros
+              </div>
+              creados
+            </Typography>
+          ) : (
+            <Typography
+              variant="p"
+              component="p"
+              className={comunClass.pregunta}
+            >
+              {nombre} {apellidoPaterno} tiene
+              <div className={comunClass.textoResaltado}>
+                este siniestro
+              </div>
+              creado
+            </Typography>
+          )}
         </div>
-        <div className={spaceStyle.space1} />
-
-        <div className={comunClass.siniesterList}>{listaSiniestros}</div>
+        <div>
+        {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros}</div>) 
+        : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
+        </div>
+        
       </div>
 
       <div>
@@ -94,7 +118,7 @@ const PersonalData = (props) => {
             className={comunClass.buttonAchs2}
             onClick={() => handleNext()}
           >
-            Crear nueva admisión
+            Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
           </Button>
         </div>
       </div>

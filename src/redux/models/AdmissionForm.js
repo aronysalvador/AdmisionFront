@@ -42,7 +42,8 @@ export const AdmissionForm = {
   centrosForm: {},
 
   siniestros: [],
-  siniestroDetalle: {},
+  siniestroDetalle: {}, //no va a SAP
+  siniestroOpciones: {}, //no va a SAP
 
   tipoSiniestro: {},
 

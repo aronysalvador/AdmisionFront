@@ -17,7 +17,6 @@ import LugarSiniestroMapaSelection from "../LugarSiniestro/LugarSiniestroMapaSel
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import Load from "../Load/load";
 import Start from "../Welcome/WelcomeStart";
-import { getAccount } from "../../redux/actions/microsoft.action";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
@@ -76,11 +75,14 @@ import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
 
 const Main = (props) => {
   const classes = useStyles();
-  const { addmissionForm, dispatch } = props;
+  const { addmissionForm, microsoftReducer } = props;
 
   const initFn = useCallback(() => {
-    dispatch(getAccount());
-  }, [dispatch]);
+    if(!microsoftReducer.authenticatedMsal) {
+      //Para no tener que estar autenticando siempre se puede comentar esta línea
+      addmissionForm.step = 0;
+    }
+  }, [addmissionForm, microsoftReducer]);
 
   useEffect(() => {
     initFn();
@@ -92,7 +94,7 @@ const Main = (props) => {
     layoutFix,
     paperFix,
     blackLayout,
-    paperNoColor,
+    paperNoColor,  
   } = classes;
 
   const renderForm = (step) => {
@@ -121,7 +123,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 1.1:
         return (
           <div className={layoutFix}>
@@ -138,8 +139,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 3: {
-        sessionStorage.clear();
+      case 3:
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -147,7 +147,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      }
       case 4:
         return (
           <div className={layout}>
@@ -332,7 +331,7 @@ const Main = (props) => {
               <FechaHoraSiniestro />
             </Paper>
           </div>
-        );
+        );        
 
       case 11:
         return (
@@ -632,10 +631,10 @@ const Main = (props) => {
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
-  };
+    microsoftReducer: microsoftReducer };
 }
 
 export default connect(mapStateToProps)(Main);
