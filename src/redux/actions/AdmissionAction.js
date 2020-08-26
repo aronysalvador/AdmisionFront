@@ -137,6 +137,8 @@ export const saveRut = (rut) => {
             dispatch(handleSetStep(STEP));
           }
 
+          dispatch(saveRazonSocial(result.data.content.response.RutPagador))
+
           dispatch(updateForm("cita", result.data.content.response.cita));
           dispatch(
             updateForm("siniestros", result.data.content.response.siniestros)
@@ -188,8 +190,6 @@ export const saveRut = (rut) => {
                 : result.data.content.response.telefonoParticular
             )
           );
-
-          dispatch(saveRazonSocial(result.data.content.response.RutPagador))
 
         } else {
           dispatch(setStep(500, 0));
