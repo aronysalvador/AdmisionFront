@@ -16,6 +16,7 @@ import razonAlertaForm from "../reducers/AlertaCalificacionRazonReducer";
 import centrosAchsForm from "../reducers/CentrosAchsReducer";
 import profesionForm from "../reducers/ProfesionReducer";
 import userCenterForm from "../reducers/UserCenterReducer";
+import LogForm from "../reducers/LogReducer";
 
 export default combineReducers({
   addmissionForm,
@@ -34,5 +35,6 @@ export default combineReducers({
   razonAlertaForm,
   centrosAchsForm,
   profesionForm,
-  userCenterForm
+  userCenterForm,
+  LogForm
 });

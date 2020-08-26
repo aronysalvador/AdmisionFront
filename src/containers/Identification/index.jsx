@@ -1,5 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, {useCallback} from "react";
+import { connect, shallowEqual, useSelector } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import IdentificationForm from "../../components/Identification/identificationForm";
 import { getComunStyle } from "../../css/comun";
@@ -9,12 +9,19 @@ import { CLEAR_STATE } from "../../redux/types/addmissionFormType";
 
 const Identification = (props) => {
   const { dispatch, addmissionForm } = props;
-  useEffect(() => {
-    dispatch({ type: CLEAR_STATE });
 
+  const initFn = useCallback(() => {
+    dispatch({ type: CLEAR_STATE });
     dispatch(handleSetStep(3));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn()
+  }, [initFn]);
+  
   const comunClass = getComunStyle();
+
+  const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={comunClass.root}>
@@ -23,7 +30,7 @@ const Identification = (props) => {
         percentage={addmissionForm.percentage}
       />
       <div>
-        <IdentificationForm />
+        <IdentificationForm Id={ID} />
       </div>
     </div>
   );

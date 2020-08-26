@@ -42,7 +42,11 @@ export default function payload(state = AdmissionForm, action) {
         responsable: action.payload,
       };
     case CLEAR_STATE:
-      return AdmissionForm;
+      var response = AdmissionForm
+      response.centrosForm = state.centrosForm
+      response.tipoSiniestro = state.tipoSiniestro
+      console.log(state.centrosForm)
+      return response;
     default:
       return state;
   }

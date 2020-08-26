@@ -17,7 +17,6 @@ import LugarSiniestroMapaSelection from "../LugarSiniestro/LugarSiniestroMapaSel
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import Load from "../Load/load";
 import Start from "../Welcome/WelcomeStart";
-import { getAccount } from "../../redux/actions/microsoft.action";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
@@ -73,18 +72,17 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
-import { setStep, handleSetStep } from "../../redux/actions/AdmissionAction";
 
 const Main = (props) => {
   const classes = useStyles();
-  const { addmissionForm, microsoftReducer, dispatch } = props;
+  const { addmissionForm, microsoftReducer } = props;
 
   const initFn = useCallback(() => {
     if(!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
       addmissionForm.step = 0;
     }
-  }, [dispatch]);
+  }, [addmissionForm, microsoftReducer]);
 
   useEffect(() => {
     initFn();
