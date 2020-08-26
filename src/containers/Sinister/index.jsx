@@ -1,6 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { handleSetStep } from '../../redux/actions/AdmissionAction'
+import { connect, useSelector, shallowEqual } from 'react-redux'
+import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
+import { handleLogUpdate } from "../../redux/actions/Log";
 import Typography from '@material-ui/core/Typography'
 import {siniestroStyle} from '../../css/siniestroStyle'
 import Button from "@material-ui/core/Button"
@@ -14,6 +15,8 @@ const Identification = (props) => {
     const classes = siniestroStyle()
     const comunClass = getComunStyle()
     const spaceStyle = getSpaceStyle()
+
+    const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
     return (<div className={comunClass.root}>
 
@@ -30,7 +33,13 @@ const Identification = (props) => {
                 </div>
                 <div className={spaceStyle.space2} />
                 <div>
-                    <Button className={classes.button} variant="contained" onClick={()=> dispatch(handleSetStep(3))}>
+                    <Button className={classes.button} variant="contained" onClick={()=>{ 
+                        var tipo = { Id:1, Descripcion: "Accidente Trabajo" }
+                        dispatch(updateForm("tipoSiniestro", tipo));
+                        dispatch(handleLogUpdate({opcion:4, Id: ID, tipoSiniestro: tipo}));
+                        dispatch(handleSetStep(3));   
+                 
+                    }}>
                         <img alt="Accidente de Trabajo" src="./static/trabajo.png" className={classes.img} />&nbsp;Accidente Trabajo
                     </Button>
                 </div>

@@ -73,7 +73,7 @@ const PersonalData = (props) => {
         />
         <div className={spaceStyle.space2} />
         <div>
-          {origen == "getRut" ? (
+          {origen === "getRut" ? (
             <Typography
               variant="p"
               component="p"
@@ -99,7 +99,7 @@ const PersonalData = (props) => {
           )}
         </div>
         <div>
-        {origen == "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros}</div>) 
+        {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros}</div>) 
         : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
         </div>
         
@@ -117,7 +117,7 @@ const PersonalData = (props) => {
             className={comunClass.buttonAchs2}
             onClick={() => handleNext()}
           >
-            Entiendo, {origen == "getRut" ? "crear nueva": "continuar con"} admisión
+            Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
           </Button>
         </div>
       </div>
