@@ -47,14 +47,16 @@ const getUseStyles = makeStyles({
 const LoadPersonalData = (props) => {
   const { addmissionForm, dispatch } = props;
 
-  const initFn = useCallback(() => {
-    dispatch(saveRut(addmissionForm.rut));
+  const initFn = useCallback(async () => {
+    await dispatch(saveRut(addmissionForm.rut));
+
   }, [dispatch, addmissionForm ]);
 
-  useEffect(() => {
+  useEffect( () => {
     // console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);  
     initFn()
-  },[initFn]);
+  
+  },[]);
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();

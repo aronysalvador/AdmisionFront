@@ -13,7 +13,7 @@ const RazonSocial = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  const [options, setOptions] = useState([])
+  const [options, setOptions] = useState([]);
 
     const loading = open && options.length === 0;
 
@@ -27,6 +27,8 @@ const RazonSocial = () => {
       }
     }
 
+   
+
     useEffect(() => {
       if (!loading) {
         return undefined;
@@ -36,7 +38,7 @@ const RazonSocial = () => {
   return (
     <div>
                 <Autocomplete
-                  value={razonSocial ? razonSocial : ""}
+                  value={razonSocial}
                   style={{ width: '100%' }}
                   size="small"
                   fullWidth
@@ -63,6 +65,7 @@ const RazonSocial = () => {
                     dispatch(updateForm("rutEmpresa", value?.rut));        
                   }
                   }
+                  
                   loadingText='cargando'
                   renderInput={(params) => {
                     return(

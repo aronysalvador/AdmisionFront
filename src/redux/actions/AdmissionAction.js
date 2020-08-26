@@ -59,6 +59,10 @@ export const obtenerData = async (rut) => {
   return Axios.get(process.env.REACT_APP_AFILIADO + `?rut=${rut}`);
 };
 
+export const obtenerDataRazon = async (rutEmpresa) => {
+  return Axios.get(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/razonSocialByRut?rut=${rutEmpresa}`);
+};
+
 export const saveRut = (rut) => {
   return (dispatch) => {
     obtenerData(rut)
@@ -133,20 +137,7 @@ export const saveRut = (rut) => {
             dispatch(handleSetStep(STEP));
           }
 
-          // dispatch(
-          //   updateForm("datosAdicionalesSAP", {
-          //     apellidoMaterno,
-          //     apellidoPaterno,
-          //     nombre,
-          //     fechaNacimiento,
-          //     masculino,
-          //     femenino,
-          //     nacionalidad,
-          //     lugarNacimiento,
-          //     estadoCivil,
-          //   })
-          // );
-         
+          dispatch(saveRazonSocial(result.data.content.response.RutPagador))
 
           dispatch(updateForm("cita", result.data.content.response.cita));
           dispatch(
@@ -160,6 +151,7 @@ export const saveRut = (rut) => {
           );
           dispatch(
             updateForm("rutEmpresa", result.data.content.response.RutPagador)
+            
           );
           dispatch(updateForm("isAfiliado", "Si"));
           dispatch(
@@ -188,8 +180,7 @@ export const saveRut = (rut) => {
 
               result.data.content.response.direccionParticular
             )
-          );
-
+          );        
           dispatch(
             updateForm(
               "telefonoParticular",
@@ -199,7 +190,6 @@ export const saveRut = (rut) => {
                 : result.data.content.response.telefonoParticular
             )
           );
-
 
         } else {
           dispatch(setStep(500, 0));
@@ -213,10 +203,33 @@ export const saveRut = (rut) => {
           dispatch(updateForm("direccionParticular", ""));
           dispatch(updateForm("telefonoParticular", ""));
         }
-      })
+      }
+      
+      
+      )
       .catch((error) => {
         console.log("error: " + String(error));
       });
+  };
+};
+
+ const saveRazonSocial = (rut) => {
+  return (dispatch) => {
+    if(rut){
+      obtenerDataRazon(rut)
+      .then((result) => {     
+      dispatch(
+        updateForm(
+          "razonSocial",
+          result.data.content.response[0]
+        )
+      );
+      })
+      .catch((error) => {       
+        console.log("error: " + String(error));
+      });
+    }
+    
   };
 };
 

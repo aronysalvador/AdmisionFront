@@ -16,9 +16,22 @@ const IdentificationCompany = () => {
 
   const [isValid, setIsValid] = useState(true);
 
-  const validar = (id) => {
+  const validar = async(rut) => {
     if (isValid) {
-      dispatch(updateForm("rutEmpresa", rut));
+      
+      const test = await fetch(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/razonSocialByRut?rut=${rut}`)
+      const json = await test.json()
+
+      console.log(rut)
+      
+      if(json.content.response[0] !== undefined){
+
+        dispatch(updateForm("razonSocial", json.content.response[0])) 
+        dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
+        
+         dispatch(updateForm("rutEmpresa", rut));
+      }
+      
     }
   };
 
