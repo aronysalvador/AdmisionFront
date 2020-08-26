@@ -20,7 +20,7 @@ const RelatoFinal = (props) => {
     return (
       "Al momento del accidente estaba " +
       addmissionForm.lugarAccidente +
-      ". Lo que ocurrió fue " +
+      ". Lo que ocurrió fue que " +
       addmissionForm.descripcionAccidente +
       ". El accidente ocurrió con " +
       addmissionForm.objetoAccidente
