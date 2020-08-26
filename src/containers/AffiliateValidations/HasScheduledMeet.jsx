@@ -4,7 +4,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { makeStyles } from "@material-ui/core/styles";
 
 const getUseStyles = makeStyles({
@@ -105,6 +105,12 @@ const HasScheduledMeet = (props) => {
           className={blackStyle.buttonFooter2}
           onClick={() => {
             if (addmissionForm.siniestros.length > 0) {
+              const mensajeAlerta = "Este paciente ya tiene un siniestro";
+              const mensajeBoton = "Ver su(s) siniestro(s)";
+              const origen = "getRut";
+              dispatch(
+                updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen})
+              );
               dispatch(handleSetStep(5.83));
             } else {
               dispatch(handleSetStep(5.1));

@@ -11,7 +11,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, fechaHoraSiniestro } = useSelector(
+  const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -33,6 +33,50 @@ const FechaHoraSiniestro = () => {
     value.minutos = minutosArray[value.indiceMinutos];
     setHoraSiniestro({ ...value });
   }
+
+  const handleNext = () => {
+    let siniestroTemp = undefined;
+
+    siniestros.forEach(x => {
+      const fechaCasted = new Date(Date.parse(x.fecha_date));
+      const dias = fechaCasted.getDate() + 1;
+      const mes = fechaCasted.getMonth() + 1;
+      const anio = fechaCasted.getFullYear();
+      console.log(dias, mes, anio);
+      if(dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year) {
+        siniestroTemp = x;
+      }
+    });
+
+    if(siniestroTemp === undefined) {
+      //No hay siniestro para esa fecha
+      dispatch(
+        updateForm("fechaHoraSiniestro", {
+          ...fechaSiniestro,
+          ...horaSiniestro,
+        })
+      );
+      dispatch(handleSetStep(step + 1));
+
+    }
+    else {
+      const mensajeAlerta = "Este paciente tiene un siniestro activo en la misma fecha";
+      const mensajeBoton = "Entendido";
+      const origen = "sameDate";
+      dispatch(
+        updateForm("fechaHoraSiniestro", {
+          ...fechaSiniestro,
+          ...horaSiniestro,
+        })
+      );
+      dispatch(
+        updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen, siniestroTemp})
+      );
+      dispatch(handleSetStep(5.83));
+    }
+
+  
+  };
 
   return (
     <div className={root}>
@@ -67,14 +111,9 @@ const FechaHoraSiniestro = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
-          onClick={() => {
-            dispatch(
-              updateForm("fechaHoraSiniestro", {
-                ...fechaSiniestro,
-                ...horaSiniestro,
-              })
-            );
-            dispatch(handleSetStep(step + 1));
+          onClick={() => { 
+            handleNext();
+           
           }}
         >
           Continuar
