@@ -10,10 +10,14 @@ const AccidentPlaceForm = (props) => {
   const comunClass = getComunStyle();
 
   const { lugarAccidente } = addmissionForm;
+  const respuestaOriginal = lugarAccidente;
 
   const saveAnswer = (value) => {
-    dispatch(updateForm("lugarAccidente", value));
+    dispatch(updateForm("lugarAccidente", value));    
     dispatch(handleSetStep(++addmissionForm.step));
+    if(respuestaOriginal !== value) {
+      dispatch(updateForm("volverAConcatenar", true));
+    }
   };
 
   return (

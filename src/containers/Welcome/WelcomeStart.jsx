@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect, shallowEqual, useSelector } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Link from '@material-ui/core/Link'
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleLog } from "../../redux/actions/Log";
 import Cabecera from "../../components/cabecera/index";
 import Indiciaciones from "../../components/Indicaciones";
 
@@ -13,11 +14,43 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
+import { FechaHora } from './../../helpers/utils'
+
 const Start = (props) =>{
-    const { dispatch,microsoftReducer } = props;
+    const { dispatch, microsoftReducer } = props;
     const welcomeStyle = getWelcomeStyle();
     const comunStyle = getComunStyle();
     const spaceStyle = getSpaceStyle();
+
+    const { microsoftReducer: { userMsal } } = useSelector((state) => state, shallowEqual);
+    const { email } = userMsal;
+
+    const { LogForm: {ID, loading, error} } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: {centrosForm} } = useSelector((state) => state, shallowEqual);
+   
+    const handleBegin = () => {
+
+        if(ID>0){
+            console.log("log creado")
+            dispatch(handleSetStep(2))
+        }else{
+            console.log("log NO creado")
+            //crea log
+            dispatch(handleLog(email, FechaHora(), centrosForm)) 
+            if(!loading){
+                if(!error){
+                    dispatch(handleSetStep(2)) 
+                }else{
+                    console.log(error)
+                    setTimeout(() => {
+                        dispatch(handleSetStep(2))
+                    }, 1000);
+                }
+            }
+        }
+      
+    }
+
     return(
         <div className={comunStyle.rootBegin}>
 
@@ -30,7 +63,7 @@ const Start = (props) =>{
                 </div>
             </div>            
 
-            <div className={welcomeStyle.TextContainer}>
+            <div className={welcomeStyle.TextContainer1}>
                 <Typography
                 variant="h1"
                 component="h1"
@@ -91,7 +124,7 @@ const Start = (props) =>{
                     <Button
                         className={comunStyle.buttonAchs}
                         variant="contained"
-                        onClick={() => dispatch(handleSetStep(2))}
+                        onClick={() => handleBegin()}
                     >
                     Entendido
                     </Button>

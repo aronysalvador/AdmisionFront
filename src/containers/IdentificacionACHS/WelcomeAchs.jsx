@@ -10,7 +10,6 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import Cabecera from "../../components/cabecera/index";
 import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/Star';
 
@@ -28,17 +27,17 @@ const SessionAchs = (props) => {
   const classes = useStyles();
 
   const contenidoCentroAchs = [
-    addmissionForm.centrosForm.nombre,
+    addmissionForm.centrosForm.NOMBRE,
   ];
 
   return (
-    <div className={comunStyle.root}>
+    <div className={comunStyle.rootWhite}>
       <div className={welcomeStyle.backgroundBoxAchs}>
-        <div className={welcomeStyle.backPosicion}> 
+        {/* <div className={welcomeStyle.backPosicion}> 
           <Cabecera dispatch={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true} /> 
-        </div>
+        </div> */}
 
-        {/* <div className={spaceStyle.space1} /> */}
+        <div className={spaceStyle.space1} />
         <div className={welcomeStyle.avatarContainer}>
           <Avatar className={welcomeStyle.avatar}>
             {microsoftReducer.userMsal.iniciales}
@@ -92,7 +91,7 @@ const SessionAchs = (props) => {
           <Button
             variant="contained"
             size="small"
-            className={classes.button, welcomeStyle.starIcon}
+            className={[classes.button, welcomeStyle.starIcon]}
             startIcon={<StarIcon className={welcomeStyle.star} />}
           >
             4.9
@@ -100,7 +99,9 @@ const SessionAchs = (props) => {
         </div>
         <div className={spaceStyle.space1} />
         <div>
-          <div className={welcomeStyle.boxCentroAchs}>
+          <div className={welcomeStyle.boxCentroAchs} 
+          style={{ cursor: 'pointer'}}
+          onClick={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true}>
             <img
               alt="Centro ACHS"
               src="./static/hospital.png"
@@ -119,11 +120,11 @@ const SessionAchs = (props) => {
             <div className={welcomeStyle.textBoxAchs}>Admisión promedio</div>
           </div>
         </div>
-        <div className={spaceStyle.space1} />
+        <div className={spaceStyle.space2} />
       </div>
         
-        <div className={spaceStyle.space2} />
-        <div className={comunStyle.bottomElement}>
+        {/* <div className={spaceStyle.space1} /> */}
+        <div className={comunStyle.bottomElement} style={{padding:'1.5em'}}>
           <div>
             <Button
               className={comunStyle.buttonAchs}

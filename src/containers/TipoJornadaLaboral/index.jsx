@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
@@ -10,18 +10,21 @@ import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLab
 
 const TipoJornadaLaboral = () => {
   const {
-    addmissionForm: { step, percentage, tipoJornadaForm },
+    addmissionForm: { percentage, tipoJornadaForm },
   } = useSelector((state) => state, shallowEqual);
 
-  const [tipoJornadaLaboral, setTipoJornadaLaboral] = useState(() => {
-    return !tipoJornadaForm ? "" : tipoJornadaForm;
-  });
+  const tipoJornadaLaboral = !tipoJornadaForm ? "" : tipoJornadaForm;
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getJornadaLaboralPrincipal(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
 
   const { data: tipoJornadaList } = useSelector(
     (state) => state.tipoJornadaLaboralForm,

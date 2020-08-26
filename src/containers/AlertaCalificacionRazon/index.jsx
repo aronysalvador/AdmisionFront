@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -13,15 +13,18 @@ const AlertaCalificacionRazon = () => {
     addmissionForm: { percentage, razonAlertaForm },
   } = useSelector((state) => state, shallowEqual);
 
-  const [razon, setRazon] = useState(() => {
-    return !razonAlertaForm ? "" : razonAlertaForm;
-  });
+  const razon =  !razonAlertaForm ? "" : razonAlertaForm 
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getRazonAlertaPrincipal(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
 
   const { data: razonAlertaList } = useSelector(
     (state) => state.razonAlertaForm,
@@ -49,7 +52,7 @@ const AlertaCalificacionRazon = () => {
           flexWrap: "wrap",
         }}
       >
-        {razonAlertaList.map((razonAlerta) => (
+        {razonAlertaList && razonAlertaList.map((razonAlerta) => (
           <BotonSeleccionarCustom
             key={razonAlerta.glosa}
             data={razonAlerta}

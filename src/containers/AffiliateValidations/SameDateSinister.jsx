@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { saveRut, handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 
 const getUseStyles = makeStyles({
@@ -50,7 +50,7 @@ const getUseStyles = makeStyles({
 });
 
 const SameDateSinister = (props) => {
-  const { addmissionForm, dispatch } = props;
+  const { dispatch } = props;
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();

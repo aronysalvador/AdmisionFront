@@ -53,7 +53,7 @@ const CardSiniestro = (props) => {
   const dispatch = useDispatch();
 
   const { siniestro } = props;
-  const { id, fecha, descripcion, hora } = siniestro;
+  const { id, fecha, hora, descripcion } = siniestro;
   const styles = getUseStyles();
   return (
     <div
@@ -66,7 +66,7 @@ const CardSiniestro = (props) => {
       <div className={styles.cuerpo}>
         <div className={styles.itemId}>ID: {id}</div>
         <div className={styles.itemFecha}>
-          {fecha} {hora}
+          {fecha} - {hora}
         </div>
         <div className={styles.itemTipo}>{descripcion}</div>
       </div>

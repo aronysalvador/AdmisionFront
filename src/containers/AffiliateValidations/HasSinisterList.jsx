@@ -14,85 +14,113 @@ const PersonalData = (props) => {
   const spaceStyle = getSpaceStyle();
 
   const contenidoSiniestros = addmissionForm.siniestros;
+  const { origen, siniestroTemp } = addmissionForm.siniestroOpciones;
 
-  
+  const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
+
   const handleNext = () => {
     let fechaActual = new Date();
-    fechaActual.setHours(0,0,0,0);
+    fechaActual.setHours(0, 0, 0, 0);
     let busqueda = contenidoSiniestros.find((x) => {
-        // let nuevaFecha = new Date(Date.parse("08-13-2020 17:00"));
-        let nuevaFecha = new Date(Date.parse(x.fecha));
-        nuevaFecha.setHours(0,0,0,0);    
-        
-        return nuevaFecha.getTime() === fechaActual.getTime()});
-    if(busqueda === undefined){
-        dispatch(handleSetStep(5.1));
-    }
-    else {
-        dispatch(handleSetStep(5.833));
+      // let nuevaFecha = new Date(Date.parse("08-13-2020 17:00"));
+      let nuevaFecha = new Date(Date.parse(x.fecha));
+      nuevaFecha.setHours(0, 0, 0, 0);
+      return nuevaFecha.getTime() === fechaActual.getTime();
+    });
+    if (busqueda === undefined) {
+      var STEP = "";
+      if (
+        !addmissionForm.razonSocialForm ||
+        !addmissionForm.SucursalEmpresa ||
+        !addmissionForm.DireccionEmpresa ||
+        !addmissionForm.rutEmpresa
+      ) {
+        // si falta info de la empresa
+        STEP = 5.4; //form empresa
+      } else if (!addmissionForm.direccionParticular) {
+        // si no tiene direccion
+        STEP = 5.2; //form direccion
+      } else if (
+        !addmissionForm.telefonoParticular ||
+        addmissionForm.telefonoParticular === "0"
+      ) {
+        // si no tiene telefono
+        STEP = 5.3; //form telefono
+      } 
+      else if(origen === "sameDate"){ //Si ya estaba creando la admisión
+        STEP = 11; //Lugar exacto de siniestro
+      }
+      else {
+        // si todos los datos relevantes están llenos
+        STEP = 5.7; // pantalla exito
+      }
+      dispatch(handleSetStep(STEP));
+    } else {
+      dispatch(handleSetStep(5.833));
     }
   };
 
-  //   const tituloDireccion = "Dirección particular";
-  //   const contenidoDireccion = [addmissionForm.direccionParticular];
-
-  //   const tituloTelefono = "Teléfono personal";
-  //   const contenidoTelefono = [addmissionForm.telefonoParticular];
-
-  //   const handleNext = () =>{
-  //     var STEP = '';
-  //     if(!addmissionForm.razonSocialForm || !addmissionForm.SucursalEmpresa || !addmissionForm.DireccionEmpresa || !addmissionForm.rutEmpresa){ // si falta info de la empresa
-  //       STEP=5.4   //form empresa
-  //     }
-  //     else if(!addmissionForm.direccionParticular){ // si no tiene direccion
-  //       STEP=5.2    //form direccion
-  //     }
-  //     else if(!addmissionForm.telefonoParticular){ // si no tiene telefono
-  //       STEP=5.3    //form telefono
-  //     }
-  //     else{ // si todos los datos relevantes están llenos
-  //       STEP=6  // next
-  //     }
-  //     dispatch(handleSetStep(STEP));
-  //   }
+  const listaSiniestros = contenidoSiniestros.map((siniestro) => (
+    <CardSiniestro siniestro={siniestro}></CardSiniestro>
+  ));
 
   return (
     <div className={comunClass.root}>
-      <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.83))}
-        color="#373737"
-      />
-      <div className={spaceStyle.space2} />
       <div>
-        <Typography variant="p" component="p" className={comunClass.pregunta}>
-          Antonio Romero tiene
-          <div className={comunClass.textoResaltado}>
-            {contenidoSiniestros.length} episodios
-          </div>
-          activos
-        </Typography>
+        <CabeceraSinBarra
+          dispatch={() => dispatch(handleSetStep(5.83))}
+          color="#373737"
+        />
+        <div className={spaceStyle.space2} />
+        <div>
+          {origen === "getRut" ? (
+            <Typography
+              variant="p"
+              component="p"
+              className={comunClass.pregunta}
+            >
+              {nombre} {apellidoPaterno} tiene
+              <div className={comunClass.textoResaltado}>
+                {contenidoSiniestros.length} siniestros
+              </div>
+              creados
+            </Typography>
+          ) : (
+            <Typography
+              variant="p"
+              component="p"
+              className={comunClass.pregunta}
+            >
+              {nombre} {apellidoPaterno} tiene
+              <div className={comunClass.textoResaltado}>
+                este siniestro
+              </div>
+              creado
+            </Typography>
+          )}
+        </div>
+        <div>
+        {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros}</div>) 
+        : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
+        </div>
+        
       </div>
-      <div className={spaceStyle.space1} />
 
-      {contenidoSiniestros.map((siniestro) => (
-        <CardSiniestro siniestro={siniestro}></CardSiniestro>
-      ))}
-
-      <div className={comunClass.bottomElement}>
-        <Button
-          className={comunClass.buttonAchs}
-            onClick={() => dispatch(handleSetStep(5.9)) }
-        >
-          Continuar en SAP
-        </Button>
-        <Button
-          className={comunClass.buttonAchs2}
-          onClick={() => handleNext()}
-          //variant="contained"
-          //onClick={() => handleNext() }
-        >
-          Crear nueva admisión
-        </Button>
+      <div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            onClick={() => dispatch(handleSetStep(5.9))}
+          >
+            Continuar en SAP
+          </Button>
+          <Button
+            className={comunClass.buttonAchs2}
+            onClick={() => handleNext()}
+          >
+            Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
+          </Button>
+        </div>
       </div>
     </div>
   );

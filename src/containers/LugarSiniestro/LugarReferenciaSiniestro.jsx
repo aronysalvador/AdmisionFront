@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -76,7 +76,7 @@ const LugarReferenciaSiniestro = () => {
         }}
       />
       <Typography className={mobileCaption} variant="subtitle1">
-        Ejemplo: Piso 21, Area 453, Puesto 12A
+        Ejemplo: Piso 21, Área 453, Puesto 12A
       </Typography>
       <div className={bottomElement}>
         <Button
@@ -85,7 +85,7 @@ const LugarReferenciaSiniestro = () => {
           variant="contained"
           onClick={() => {
             dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-            dispatch(handleSetStep(++stepx));
+            dispatch(handleSetStep(12.1)); //++stepx
           }}
         >
           Siguiente

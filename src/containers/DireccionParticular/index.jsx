@@ -1,6 +1,6 @@
 import React, { useState} from "react"
 import { getComunStyle } from "../../css/comun"
-import { Button, Typography, TextField } from "@material-ui/core"
+import { Button, Typography } from "@material-ui/core"
 import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
@@ -9,15 +9,20 @@ import DireccionGeo from '../../components/share/DireccionGeo'
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { step, percentage, direccionParticular,urlMapaDireccionParticular,direccionParticularObj },
+    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj },
   } = useSelector((state) => state, shallowEqual)
 
   const [direccion, setDireccion] = useState(() => {
     return !direccionParticularObj ? "" : direccionParticularObj
   })
 
-  const setUrl = (urlMapa) =>{
-    dispatch(updateForm("urlMapaDireccionParticular", urlMapa))
+  const [mapaUrl, setMapaUrl] = useState(() => {
+    return urlMapaDireccionParticular ? urlMapaDireccionParticular : ""
+  })
+
+  const clearData = () => {
+    dispatch(updateForm("direccionParticularObj", ""))
+    dispatch(updateForm("urlMapaDireccionParticular", ""))
   }
 
   const dispatch = useDispatch()
@@ -33,7 +38,7 @@ const DireccionParticular = () => {
 
   const { googleMap } = getComunStyle()
 
-  const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true)
+  const isLugarExactoAccidenteValid = true
 
   return (
     <div className={root}>
@@ -49,8 +54,20 @@ const DireccionParticular = () => {
         Dirección particular
       </Typography>
 
-      <DireccionGeo direccion={direccion} setUrl={setUrl} setDireccion={setDireccion} />
-      {(direccion !== null)?<img className={googleMap} src={urlMapaDireccionParticular} />:<div />}
+      <DireccionGeo       
+        comunStyle={getComunStyle()}
+        direccion={direccion} 
+        setMapa={setMapaUrl} 
+        setDireccion={setDireccion} 
+        clearData={clearData}
+        showDinamicMap={()=> {
+          setDireccion({description: ''}); 
+          dispatch(handleSetStep(5.21))
+        }}
+      />
+      {(mapaUrl)?
+      <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
+      :null}
 
       <div className={bottomElement}>
         <Button

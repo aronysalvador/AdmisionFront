@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
@@ -18,9 +18,13 @@ const TipoDeContrato = () => {
     shallowEqual
   );
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getContrato(""));
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
 
   const { data: contratoList } = useSelector(
     (state) => state.tipoContratoForm,
@@ -34,7 +38,7 @@ const TipoDeContrato = () => {
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        ¿Que tipo de contrato tienes?
+        ¿Qué tipo de contrato tienes?
       </Typography>
       <div className={spaceStyle.space2} />
       <div

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useCallback} from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import SeleccionarSucursalTrabajo from "./SeleccionarSucursalTrabajo";
 import SeleccionarComuna from "./SeleccionarComuna";
 import { getSucursales } from "../../redux/actions/SucursalesAction";
+import ErrorSucursal from "./ErrorSucursal";
 
 const EditarSucursal = () => {
   const { rutEmpresa } = useSelector(
@@ -12,9 +13,14 @@ const EditarSucursal = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initFn = useCallback(() => {
     dispatch(getSucursales(rutEmpresa));
-  }, []);
+  }, [dispatch, rutEmpresa]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
 
   const { data: sucursalesList } = useSelector(
     (state) => state.sucursalesForm,
@@ -25,7 +31,7 @@ const EditarSucursal = () => {
     return <SeleccionarSucursalTrabajo sucursalesEmpresa={sucursalesList} />;
   if (sucursalesList?.length >= 6)
     return <SeleccionarComuna sucursalesEmpresa={sucursalesList} />;
-  return <div>No tiene sucursales</div>;
+  return <ErrorSucursal />;
 };
 
 export default EditarSucursal;

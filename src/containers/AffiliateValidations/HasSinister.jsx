@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
@@ -7,15 +7,13 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
 
 const HasSinister = (props) => {
-  const { addmissionForm, dispatch } = props;
-
-  useEffect(() => {
-    //dispatch(saveRut(addmissionForm.rut));
-  });
+  const { dispatch, addmissionForm } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
   const blackStyle = getBlackTheme();
+
+  const siniestroOpciones = addmissionForm.siniestroOpciones;
 
   return (
     <div className={blackStyle.root}>
@@ -38,16 +36,7 @@ const HasSinister = (props) => {
         color="textSecondary"
         gutterBottom
         className={blackStyle.textMessage}
-      >
-        Este paciente ya tiene un siniestro
-      </Typography>
-      <div className={spaceStyle.space3} />
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        className={blackStyle.textFinal}
-      >
-        Puedes:
+      >{siniestroOpciones.mensajeAlerta}
       </Typography>
       <div className={comunClass.bottomElement}>
         <Button
@@ -55,8 +44,8 @@ const HasSinister = (props) => {
           onClick={() => {
             dispatch(handleSetStep(5.831));
           }}
-        >
-          Ver sus(s) siniestro(s)
+        >{siniestroOpciones.mensajeBoton}
+          {/* Ver sus(s) siniestro(s) */}
         </Button>
       </div>
     </div>

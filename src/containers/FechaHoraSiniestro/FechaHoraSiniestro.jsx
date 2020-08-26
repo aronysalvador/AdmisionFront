@@ -11,7 +11,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, fechaHoraSiniestro } = useSelector(
+  const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -21,9 +21,7 @@ const FechaHoraSiniestro = () => {
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
 
-  const [minutosArray, setMinutos] = useState(() => {
-    return [0, 10, 20, 30, 40, 50];
-  })
+  const minutosArray = [0, 10, 20, 30, 40, 50]
 
   const dispatch = useDispatch();
 
@@ -36,14 +34,58 @@ const FechaHoraSiniestro = () => {
     setHoraSiniestro({ ...value });
   }
 
+  const handleNext = () => {
+    let siniestroTemp = undefined;
+
+    siniestros.forEach(x => {
+      const fechaCasted = new Date(Date.parse(x.fecha_date));
+      const dias = fechaCasted.getDate() + 1;
+      const mes = fechaCasted.getMonth() + 1;
+      const anio = fechaCasted.getFullYear();
+      console.log(dias, mes, anio);
+      if(dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year) {
+        siniestroTemp = x;
+      }
+    });
+
+    if(siniestroTemp === undefined) {
+      //No hay siniestro para esa fecha
+      dispatch(
+        updateForm("fechaHoraSiniestro", {
+          ...fechaSiniestro,
+          ...horaSiniestro,
+        })
+      );
+      dispatch(handleSetStep(step + 1));
+
+    }
+    else {
+      const mensajeAlerta = "Este paciente tiene un siniestro activo en la misma fecha";
+      const mensajeBoton = "Entendido";
+      const origen = "sameDate";
+      dispatch(
+        updateForm("fechaHoraSiniestro", {
+          ...fechaSiniestro,
+          ...horaSiniestro,
+        })
+      );
+      dispatch(
+        updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen, siniestroTemp})
+      );
+      dispatch(handleSetStep(5.83));
+    }
+
+  
+  };
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(8))}
+        dispatch={() => dispatch(handleSetStep(9))}
         percentage={percentage}
       />
       <Typography className={pregunta}>
-        Escribe la fecha y hora del accidente
+        ¿Cuándo y qué hora sucedió el accidente?
       </Typography>
       <div className={spaceStyle.space3} />
       <FechaSiniestro
@@ -62,14 +104,9 @@ const FechaHoraSiniestro = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
-          onClick={() => {
-            dispatch(
-              updateForm("fechaHoraSiniestro", {
-                ...fechaSiniestro,
-                ...horaSiniestro,
-              })
-            );
-            dispatch(handleSetStep(step + 1));
+          onClick={() => { 
+            handleNext();
+           
           }}
         >
           Siguiente

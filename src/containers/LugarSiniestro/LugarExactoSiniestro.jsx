@@ -1,10 +1,9 @@
-import React, { useState} from "react"
+import React, { useState } from "react"
 import { getComunStyle } from "../../css/comun"
-import { Button, Typography, TextField } from "@material-ui/core"
+import { Button, Typography } from "@material-ui/core"
 import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
-import { getSpaceStyle } from "../../css/spaceStyle"
 import DireccionGeo from '../../components/share/DireccionGeo'
 
 const LugarExactoSiniestro = () => {
@@ -13,26 +12,32 @@ const LugarExactoSiniestro = () => {
   } = useSelector((state) => state, shallowEqual)
 
   const [sucursal, setSucursal] = useState(() => {
-    return !sucursalEmpresaSiniestro ? "" : sucursalEmpresaSiniestro
+    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : ""
   })
+  const [mapaUrl, setMapaUrl] = useState(() => {
+    return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : ""
+  })
+
+
   const dispatch = useDispatch()
 
   const {
     root,
-    buttonAchs,
-    pregunta,
-    tituloTextbox,
+    buttonAchs,   
     bottomElement,
+    googleMap,
+    titleBlack,
+    titleBlue,
+    tituloTextbox,
   } = getComunStyle()
-  const spaceStyle = getSpaceStyle()
 
-  const { googleMap } = getComunStyle()
 
-  const setUrl = (urlMapa) =>{
-    dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
+  const clearData = () => {
+    dispatch(updateForm("sucursalEmpresaSiniestro", ""))
+    dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
   }
 
-  const [isLugarExactoAccidenteValid, setLugarExactoAccidente] = useState(true)
+  const isLugarExactoAccidenteValid = true
 
   return (
     <div className={root}>
@@ -40,16 +45,31 @@ const LugarExactoSiniestro = () => {
         dispatch={() => dispatch(handleSetStep(step - 1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Señala el lugar exacto del accidente
+
+      <Typography className={titleBlack} style={{paddingBottom:'20px'}}>
+        Indica la dirección <span className={titleBlue}> en donde ocurrió el accidente </span>
       </Typography>
-      <div className={spaceStyle.space2} />
+
+
       <Typography className={tituloTextbox} variant="subtitle2">
         Dirección accidente
       </Typography>
-
-      <DireccionGeo direccion={sucursal} setUrl={setUrl} setDireccion={setSucursal} />
-      {(sucursal !== null)?<img className={googleMap}  src={urlMapasucursalEmpresaSiniestro} />:<div />}
+        <DireccionGeo
+          comunStyle={getComunStyle()}
+          direccion={sucursal} 
+          setMapa={setMapaUrl} 
+          setDireccion={setSucursal} 
+          clearData={clearData}
+          showDinamicMap={()=> {
+            setSucursal({description: ''}); 
+            dispatch(handleSetStep(11.1))
+          }}
+        />
+      {(mapaUrl)?
+      <img alt="MapaSiniestro" className={googleMap}  src={mapaUrl} />
+      :null}
+ 
+     
 
       <div className={bottomElement}>
         <Button
@@ -58,10 +78,11 @@ const LugarExactoSiniestro = () => {
           disabled={!sucursal || !isLugarExactoAccidenteValid}
           onClick={() => {
             dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
+            dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
             dispatch(handleSetStep(step + 1))
           }}
         >
-          Siguiente
+          Guardar dirección
         </Button>
       </div>
     </div>

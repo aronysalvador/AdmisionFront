@@ -5,6 +5,7 @@ import {
   SEND_TESTIGO,
   SEND_RESPONSABLE,
   LOAD_STATE_SESSIONSTORAGE,
+  CLEAR_STATE,
 } from "../types/addmissionFormType";
 import { AdmissionForm } from "../models/AdmissionForm";
 
@@ -40,6 +41,12 @@ export default function payload(state = AdmissionForm, action) {
         ...state,
         responsable: action.payload,
       };
+    case CLEAR_STATE:
+      var response = AdmissionForm
+      response.centrosForm = state.centrosForm
+      response.tipoSiniestro = state.tipoSiniestro
+      console.log(state.centrosForm)
+      return response;
     default:
       return state;
   }

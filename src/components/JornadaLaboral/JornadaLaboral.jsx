@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -7,22 +7,23 @@ import { getComunStyle } from "../../css/comun";
 const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, horarios }) => {
   const [indiceInicio, setIndiceInicio] = useState(() => {
     console.log("indiceInicioFromState", indiceInicioFromState);
-    return indiceInicioFromState == -1 ? 17 : indiceInicioFromState;
+    return indiceInicioFromState === -1 ? 17 : indiceInicioFromState;
   });
 
   const [indiceFin, setIndiceFin] = useState(() => {
-    return indiceFinFromState == -1 ? 35 : indiceFinFromState;
+    return indiceFinFromState === -1 ? 35 : indiceFinFromState;
   });
 
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
-  
+  const initFn = useCallback(() => {
+    onChange({  horaInicio: horarios[indiceInicio], horaFin: horarios[indiceFin] }); 
+  }, [onChange, horarios, indiceInicio, indiceFin]);
 
   useEffect(() => {    
-    onChange({  horaInicio: horarios[indiceInicio], horaFin: horarios[indiceFin] });
-  }, [indiceInicio, indiceFin]);
-
+    initFn()
+  }, [initFn]);
   
 
   return (

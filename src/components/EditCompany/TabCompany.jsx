@@ -75,7 +75,6 @@ const useStyles = makeStyles({
 });
 
 const TabCompany = (props) => {
-  const { setRutEmpresaForm, rutEmpresaForm } = props;
 
   const [value, setValue] = useState(0);
 
@@ -84,7 +83,7 @@ const TabCompany = (props) => {
   };
 
   function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+    const { children, value, index } = props;
 
     return (
       <div
@@ -112,7 +111,7 @@ const TabCompany = (props) => {
           classes={
             value === 0 ? { root: classes.root2 } : { root: classes.root4 }
           }
-          label="Razon Social"
+          label="Razón Social"
         />
 
         <Tab

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import Identification from "../Identification/index";
 import Sinister from "../Sinister/index";
@@ -13,11 +13,10 @@ import LoadPersonalData from "../Load/loadPersonalData";
 import Session from "../Welcome/Session";
 import FechaHoraSiniestro from "../FechaHoraSiniestro/FechaHoraSiniestro";
 import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
+import LugarSiniestroMapaSelection from "../LugarSiniestro/LugarSiniestroMapaSelection";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import Load from "../Load/load";
-import WelcomeEjecutivo from "../Welcome/WelcomeEjecutivo";
 import Start from "../Welcome/WelcomeStart";
-import { getAccount } from "../../redux/actions/microsoft.action";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
@@ -32,8 +31,6 @@ import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
 import TrabajoActualContainer from "../TrabajoActual";
-import SeleccionarSucursalTrabajo from "../SeleccionarSucursalTrabajo/SeleccionarSucursalTrabajo";
-import SeleccionarComuna from "./../SeleccionarSucursalTrabajo/SeleccionarComuna";
 import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
 import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 import EditCompany from "../EditCompany/index";
@@ -51,6 +48,8 @@ import PersonalSuccess from "../FeedBack/PersonalSuccess";
 import RelatoSuccess from "../FeedBack/RelatoSuccess";
 
 import DireccionParticular from "../DireccionParticular/index";
+import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
+
 import HasBP from "../AffiliateValidations/HasBP";
 import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
 import HasSinister from "../AffiliateValidations/HasSinister";
@@ -71,16 +70,23 @@ import Achs from "../IdentificacionACHS/index";
 import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 
 import Profesion from "../Profesion/index";
+import RelatoFinal from "../Questions/RelatoFinal";
+import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
 
 const Main = (props) => {
   const classes = useStyles();
-  const { addmissionForm, dispatch } = props;
+  const { addmissionForm, microsoftReducer } = props;
 
-  const localGetAccount = () => dispatch(getAccount());
+  const initFn = useCallback(() => {
+    if(!microsoftReducer.authenticatedMsal) {
+      //Para no tener que estar autenticando siempre se puede comentar esta línea
+      addmissionForm.step = 0;
+    }
+  }, [addmissionForm, microsoftReducer]);
 
   useEffect(() => {
-    localGetAccount();
-  }, []);
+    initFn();
+  }, [initFn]);
 
   const {
     layout,
@@ -88,7 +94,7 @@ const Main = (props) => {
     layoutFix,
     paperFix,
     blackLayout,
-    paperNoColor,
+    paperNoColor,  
   } = classes;
 
   const renderForm = (step) => {
@@ -103,17 +109,17 @@ const Main = (props) => {
         );
       case 0:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
               <Session />
             </Paper>
           </div>
         );
       case 1:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
-              <WelcomeEjecutivo />
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <SessionAchs />
             </Paper>
           </div>
         );
@@ -173,6 +179,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 5.21:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <DireccionParticularMapaSelection />
+            </Paper>
+          </div>
+        );
       case 5.3:
         return (
           <div className={layout}>
@@ -216,57 +230,57 @@ const Main = (props) => {
       case 5.81:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasBP />
-            </div>
+            </Paper>
           </div>
         );
       case 5.82:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasScheduledMeet />
-            </div>
+            </Paper>
           </div>
         );
       case 5.83:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasSinister />
-            </div>
+            </Paper>
           </div>
         );
       case 5.831:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <HasSinisterList />
-            </div>
+            </Paper>
           </div>
         );
       case 5.832:
         return (
           <div className={blackLayout}>
-            <div className={paperNoColor}>
+            <Paper className={paperNoColor}>
               <HasSinisterDetail />
-            </div>
+            </Paper>
           </div>
         );
       case 5.833:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <SameDateSinister />
-            </div>
+            </Paper>
           </div>
         );
       case 5.9:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <ContinueSAP />
-            </div>
+            </Paper>
           </div>
         );
       case 6:
@@ -293,11 +307,19 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 8.1: //Verificar numeración del case
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <RelatoFinal />
+            </Paper>
+          </div>
+        );
       case 9:
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <FechaHoraSiniestro />
+              <TrabajoHabitual />
             </Paper>
           </div>
         );
@@ -306,10 +328,10 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TrabajoHabitual />
+              <FechaHoraSiniestro />
             </Paper>
           </div>
-        );
+        );        
 
       case 11:
         return (
@@ -319,6 +341,16 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+
+      case 11.1:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <LugarSiniestroMapaSelection />
+            </Paper>
+          </div>
+        );
+
       case 12:
         return (
           <div className={layout}>
@@ -327,6 +359,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+        case 12.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AccidenteEnSucursal />
+            </Paper>
+          </div>
+        );  
       case 13:
         return (
           <div className={layout}>
@@ -553,17 +593,9 @@ const Main = (props) => {
       case 40:
         return (
           <div className={layout}>
-            <div className={paper}>
+            <Paper className={paper}>
               <Achs />
-            </div>
-          </div>
-        );
-      case 41:
-        return (
-          <div className={layout}>
-            <div className={paper}>
-              <SessionAchs />
-            </div>
+            </Paper>
           </div>
         );
 
@@ -599,10 +631,10 @@ const Main = (props) => {
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
-  };
+    microsoftReducer: microsoftReducer };
 }
 
 export default connect(mapStateToProps)(Main);

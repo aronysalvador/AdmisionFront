@@ -55,7 +55,7 @@ const AlertaCalificacion = () => {
           component="h1"
           className={welcomeStyle.txtBegin}
         >
-          Eso fué rápido
+          Eso fue rápido
         </Typography>
       </div>
 

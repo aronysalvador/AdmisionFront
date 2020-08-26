@@ -32,13 +32,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         height: "5em",
         verticalAlign: "middle",
     },
-
-    iconCircular: {
-        width: "54px",
-        height: "54px",
-        verticalAlign: "middle",
-    },
-
     avatarBegin: {
         width: "3.5em",
         height: "3.5em",
@@ -102,6 +95,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     beginContainerCard: {
         padding: "0.5em 1em 0 1em",
     },
+    TextContainer1: {
+        padding: "1.5em 1.5em 0 1.5em",
+        // marginTop: "2px",
+    },
     TextContainer: {
         padding: "0em 1.5em 0 1.5em",
         // marginTop: "2px",
@@ -118,6 +115,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
         borderRadius: "10px",
     },
+    titleContainerCards2: {
+        padding: "1.5em 1.5em 0.5em 1.5em",
+        background: "#FFFFFF",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        borderRadius: "10px",
+    },
     divRow: {
         display: "flex",
         // justifyContent: 'center',
@@ -128,6 +131,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         // justifyContent: 'center',
         alignItems: "center",
         marginBottom: "20px",
+    },
+    divRowBottom2: {
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "5px",
     },
 
     txtBegin: {
@@ -167,6 +175,15 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "16px",
         lineHeight: "20px",
         color: "#000000",
+    },
+    itemText2: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "16px",
+        lineHeight: "20px",
+        color: "#000000",
+        marginLeft: "10px"
     },
     pBegin: {
         fontFamily: "Catamaran",
@@ -217,7 +234,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
     backgroundBoxAchs: {
         backgroundColor: "#DFF3F2 !important",
-        //padding: "0 !importat"
+        width: "24.5em",
+        height: "30em"
     },
     starIcon: {
         display: "flex",
@@ -244,4 +262,5 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         marginLeft: "auto",
         marginRight: "auto",
     },
+
 }));

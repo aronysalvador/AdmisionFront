@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { getComunStyle } from "../../css/comun";
 import {  Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -101,7 +100,7 @@ const HasSinisterDetail = (props) => {
           gutterBottom
           className={blackStyle.textDetailSimple}
         >
-          -
+           {siniestroDetalle.paciente}
         </Typography>
         <div className={spaceStyle.spaceMin1} />
 

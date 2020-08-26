@@ -4,7 +4,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { makeStyles } from "@material-ui/core/styles";
 
 const getUseStyles = makeStyles({
@@ -45,7 +45,7 @@ const HasScheduledMeet = (props) => {
 
   const styles = getUseStyles();
 
-  const cita = addmissionForm.citas[0];
+  const cita = addmissionForm.cita ? addmissionForm.cita : {};
 
   return (
     <div className={blackStyle.root}>
@@ -72,19 +72,23 @@ const HasScheduledMeet = (props) => {
       </Typography>
       <div className={spaceStyle.space1} />
       <div className={styles.container}>
-        <div className={styles.containerRow}>
-          <div className={styles.itemData}>{cita.fecha.substring(0, 10)}</div>
-          <div className={styles.itemLabel}>Fecha</div>
-          <div className={styles.itemData}>{cita.fecha.substring(10, 16)}</div>
-          <div className={styles.itemLabel} style={{marginBottom: "0"}}>Hora</div>
-        </div>
-        <hr style={{color: "#FFFFFF", margin: "0"}} />
-        <div className={styles.containerRow}>
-          <div className={styles.itemData}>{cita.lugar}</div>
-          <div className={styles.itemLabel}>Centro</div>
-          <div className={styles.itemData}>{cita.unidad}</div>
-          <div className={styles.itemLabel} style={{marginBottom: "0"}}>Especialidad</div>
-        </div>
+        {cita && (
+          <>
+            <div className={styles.containerRow}>
+              <div className={styles.itemData}>{cita.fecha}</div>
+              <div className={styles.itemLabel}>Fecha</div>
+              <div className={styles.itemData}>{cita.hora}</div>
+              <div className={styles.itemLabel} style={{marginBottom: "0"}}>Hora</div>
+            </div>
+            <hr style={{color: "#FFFFFF", margin: "0"}} />
+            <div className={styles.containerRow}>
+              <div className={styles.itemData}>{cita.lugar}</div>
+              <div className={styles.itemLabel}>Centro</div>
+              <div className={styles.itemData}>{cita.unidad}</div>
+              <div className={styles.itemLabel} style={{marginBottom: "0"}}>Especialidad</div>
+            </div>
+          </>
+        )}
         
       </div>
 
@@ -101,6 +105,12 @@ const HasScheduledMeet = (props) => {
           className={blackStyle.buttonFooter2}
           onClick={() => {
             if (addmissionForm.siniestros.length > 0) {
+              const mensajeAlerta = "Este paciente ya tiene un siniestro";
+              const mensajeBoton = "Ver su(s) siniestro(s)";
+              const origen = "getRut";
+              dispatch(
+                updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen})
+              );
               dispatch(handleSetStep(5.83));
             } else {
               dispatch(handleSetStep(5.1));

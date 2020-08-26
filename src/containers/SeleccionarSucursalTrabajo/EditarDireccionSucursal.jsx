@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -9,11 +9,10 @@ import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const EditarDireccionSucursal = () => {
   const {
-    addmissionForm: { step, percentage, sucursales, SucursalEmpresaObjeto },
+    addmissionForm: { percentage, sucursales, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
   const [sucursalEmpresa, setSucursalEmpresa] = useState(SucursalEmpresaObjeto);
-
-  let stepx = step;
+  
   const dispatch = useDispatch();
 
   const {

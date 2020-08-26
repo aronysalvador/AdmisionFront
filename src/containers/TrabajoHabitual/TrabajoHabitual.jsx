@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -9,12 +9,10 @@ import TrabajoHabitualCard from "./TrabajoHabitualCard";
 
 const TrabajoHabitual = () => {
   const {
-    addmissionForm: { step, percentage, desarrollarTrabajoHabitual },
+    addmissionForm: { step, percentage },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
-  const [trabajoHabitual, setTrabajoHabitual] = useState(() => {
-    return !desarrollarTrabajoHabitual ? "" : desarrollarTrabajoHabitual;
-  });
+
   const dispatch = useDispatch();
 
   const {
@@ -34,7 +32,7 @@ const TrabajoHabitual = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(step - 1))}
+        dispatch={() => dispatch(handleSetStep(8.1))}
         percentage={percentage}
       />
       <Typography className={pregunta} variant="subtitle2">
