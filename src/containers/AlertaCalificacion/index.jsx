@@ -71,8 +71,8 @@ const AlertaCalificacion = () => {
         <Indiciaciones
           indicaciones={[
             {
-              icono: "sms.svg",
-              textoPrimario: "Pide un e-mail al paciente,",
+              icono: "info.png",
+              textoPrimario: "Pide un e-mail al paciente",
               textoSecundario: "Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Sí el paciente no tiene e-mail puede agregar el de un familiar.",
               clase: welcomeStyle.divRowBottom,
             },

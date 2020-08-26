@@ -32,7 +32,7 @@ const ValidarCorreoElectronico = () => {
 
   const [stateCheck, setStateCheck] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const { root, buttonAchs, pregunta, bottomElement } = getComunStyle();
+  const { root, buttonAchs, bottomElement, titleBlue, titleBlack } = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
   const { mobileLabel } = siniestroStyle();
@@ -50,11 +50,9 @@ const ValidarCorreoElectronico = () => {
         dispatch={() => dispatch(handleSetStep(26.1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Enviaremos los documentos al <br />
-      </Typography>
-      <Typography className={pregunta}>
-        siguiente&nbsp;<span style={{ color: "#03bb85" }}>e-mail</span>{" "}
+      <Typography className={titleBlack}>
+        Enviaremos los documentos al siguiente&nbsp;
+        <span className={titleBlue}>e-mail</span>{" "}
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>
@@ -96,7 +94,7 @@ const ValidarCorreoElectronico = () => {
               component="p"
               className={welcomeStyle.itemText2}
             >
-              Agregar paciente&nbsp;<span style={{ color: "#03bb85" }}>sin e-mail</span>
+              Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin e-mail</span>
             </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>

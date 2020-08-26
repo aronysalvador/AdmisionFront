@@ -262,5 +262,9 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         marginLeft: "auto",
         marginRight: "auto",
     },
+    iconAlignIndicaciones: {
+        alignSelf: "flex-start",
+        display: "flex",
+    },
 
 }));

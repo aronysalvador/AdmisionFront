@@ -74,7 +74,7 @@ const PersonalData = (props) => {
           {nombre} {apellidoPaterno}
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
+      {/* <div className={spaceStyle.space1} /> */}
       <BoxEmpresa 
         contenidoDireccionEmpresa={contenidoDireccionEmpresa} 
         contenidoRazonSocialForm={contenidoRazonSocialForm} 
@@ -87,6 +87,7 @@ const PersonalData = (props) => {
         contenido={contenidoTelefono}
         step={5.3}
       />
+      <div className={spaceStyle.spaceMin1} />
       <BoxACHS
         titulo={tituloDireccion}
         contenido={contenidoDireccion}

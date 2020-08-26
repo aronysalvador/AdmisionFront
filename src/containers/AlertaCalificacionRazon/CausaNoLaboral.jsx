@@ -16,9 +16,10 @@ const CausaNoLaboral = () => {
   const {
     buttonAchs,
     root,
-    pregunta,
     bottomElement,
     tituloTextbox,
+    titleBlue,
+    titleBlack
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -41,8 +42,11 @@ const CausaNoLaboral = () => {
         dispatch={() => dispatch(handleSetStep(26.2))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona la razón de posible causa no laboral
+      <Typography className={titleBlack}>
+        Selecciona la razón de 
+        <div className={titleBlue}>
+          &nbsp;posible causa no laboral
+        </div>
       </Typography>
       <div className={spaceStyle.space2} />
 

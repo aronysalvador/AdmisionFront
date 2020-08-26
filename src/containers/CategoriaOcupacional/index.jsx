@@ -33,16 +33,20 @@ const CategoriaOcupacional = () => {
     shallowEqual
   );
 
-  const { root, pregunta } = getComunStyle();
+  const { root, titleBlack, titleBlue } = getComunStyle();
 
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(22))}
+        dispatch={() => dispatch(handleSetStep(24))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona tu categoría ocupacional
+      <Typography className={titleBlack}>
+        Selecciona la  
+        <div className={titleBlue}>
+          &nbsp;categoría ocupacional
+        </div>
+        &nbsp;más adecuada
       </Typography>
       <div className={spaceStyle.space2} />
       <div
@@ -60,7 +64,7 @@ const CategoriaOcupacional = () => {
             data={categoria}
             itemForm={"categoriaOcupacionalForm"}
             selected={categoria.id === categoriaOcupacional.id}
-            step={24}
+            step={26}
           >
             <BotonSeleccionarCustomItem {...categoria} />
           </BotonSeleccionarCustom>
