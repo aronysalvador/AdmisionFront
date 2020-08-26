@@ -26,9 +26,10 @@ const LugarReferenciaSiniestro = () => {
   const {
     root,
     buttonAchs,
-    pregunta,
     tituloTextbox,
     bottomElement,
+    titleBlue,
+    titleBlack
   } = getComunStyle();
   const { mobileCaption } = siniestroStyle();
   const spaceStyle = getSpaceStyle();
@@ -38,8 +39,11 @@ const LugarReferenciaSiniestro = () => {
         dispatch={() => dispatch(handleSetStep(--stepx))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        ...y especifica una referencia del lugar
+      <Typography className={titleBlack}>
+        Pide al paciente que te dé una 
+        <div className={titleBlue}>
+          &nbsp;referencia del lugar
+        </div>
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox}>
@@ -88,7 +92,7 @@ const LugarReferenciaSiniestro = () => {
             dispatch(handleSetStep(12.1)); //++stepx
           }}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </div>

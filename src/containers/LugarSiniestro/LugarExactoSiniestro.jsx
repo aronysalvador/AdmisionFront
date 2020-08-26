@@ -82,7 +82,7 @@ const LugarExactoSiniestro = () => {
             dispatch(handleSetStep(step + 1))
           }}
         >
-          Guardar dirección
+          Confirmar
         </Button>
       </div>
     </div>

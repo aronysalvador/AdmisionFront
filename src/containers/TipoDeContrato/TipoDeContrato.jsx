@@ -11,7 +11,7 @@ import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/
 
 const TipoDeContrato = () => {
   const dispatch = useDispatch();
-  const { root, pregunta } = getComunStyle();
+  const { root, titleBlue, titleBlack } = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const { step, percentage, tipoDeContrato } = useSelector(
     (state) => state.addmissionForm,
@@ -37,8 +37,12 @@ const TipoDeContrato = () => {
         dispatch={() => dispatch(handleSetStep(step - 1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        ¿Qué tipo de contrato tienes?
+      <Typography className={titleBlack}>
+        ¿Qué  
+        <div className={titleBlue}>
+          &nbsp;tipo de contrato
+        </div>
+        &nbsp;tiene el paciente?
       </Typography>
       <div className={spaceStyle.space2} />
       <div
@@ -56,7 +60,7 @@ const TipoDeContrato = () => {
             data={contrato}
             itemForm={"tipoDeContrato"}
             selected={tipoDeContrato.id === contrato.id}
-            step={25}
+            step={24}
           >
             <BotonSeleccionarCustomItem {...contrato} />
           </BotonSeleccionarCustom>

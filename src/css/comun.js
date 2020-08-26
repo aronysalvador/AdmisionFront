@@ -253,12 +253,6 @@ export const getComunStyle = makeStyles((theme) => ({
         padding: '1em',
         backgroundColor: "#F8F9FA"
     },
-    textoResaltado: {
-        margin: "0 5px",
-        color: "#00b2a9"
-
-    },
-
     titleBlack: {
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
@@ -273,7 +267,8 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '20px',
         lineHeight: '28px',
-        color: ' #00b2a9'
+        color: ' #00b2a9',
+        display: "contents",
     },
     txtGreen: {
         fontFamily: 'Helvetica',
@@ -292,7 +287,7 @@ export const getComunStyle = makeStyles((theme) => ({
     siniesterList: {
         display: 'flow-root',
         overflow: 'auto',
-        height: '315px',
+        height: '23.5em',
         '&::-webkit-scrollbar': {
             width: 8,
         },

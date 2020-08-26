@@ -80,7 +80,7 @@ const Main = (props) => {
   const initFn = useCallback(() => {
     if(!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
-      addmissionForm.step = 0;
+      // addmissionForm.step = 0;
     }
   }, [addmissionForm, microsoftReducer]);
 
@@ -181,8 +181,8 @@ const Main = (props) => {
         );
       case 5.21:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
               <DireccionParticularMapaSelection />
             </Paper>
           </div>
@@ -468,7 +468,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoJornadaLaboral />
+              <Cargo /> {/* <TipoJornadaLaboral /> */}
             </Paper>
           </div>
         );
@@ -476,7 +476,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <JornadaLaboralContainer />
+              <TipoJornadaLaboral />  {/* <JornadaLaboralContainer /> */}
             </Paper>
           </div>
         );
@@ -484,7 +484,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Cargo />
+              <JornadaLaboralContainer />  {/* <Cargo /> */}
             </Paper>
           </div>
         );
@@ -492,7 +492,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <CategoriaOcupacional />
+              <TipoDeContrato /> {/* <CategoriaOcupacional /> */}
             </Paper>
           </div>
         );
@@ -500,7 +500,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoDeContrato />
+              <Remuneracion /> {/* <TipoDeContrato /> */}
             </Paper>
           </div>
         );
@@ -508,7 +508,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Remuneracion />
+              <CategoriaOcupacional />  {/* <Remuneracion /> */}
             </Paper>
           </div>
         );

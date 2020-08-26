@@ -51,7 +51,7 @@ const PantallaFinal = (props) => {
           />
           <CajaRutSiniestro
             textoPrincipal="25.951.215-8"
-            textoSecundario="Rut paciente"
+            textoSecundario="Rut Paciente"
           />
         </div>
       </div>
@@ -62,7 +62,7 @@ const PantallaFinal = (props) => {
           component="h5"
           className={welcomeStyle.subTitleBegin}
         >
-          Pide al paciente:
+          Luego de la firma pide al paciente:
         </Typography>
 
         <IndiciacionesPacientes

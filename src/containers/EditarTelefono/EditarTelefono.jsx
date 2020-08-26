@@ -26,9 +26,10 @@ const EditarTelefono = () => {
   const {
     root,
     buttonAchs,
-    pregunta,
     tituloTextbox,
     bottomElement,
+    titleBlack,
+    titleBlue
   } = getComunStyle();
   
   const spaceStyle = getSpaceStyle();
@@ -49,8 +50,11 @@ const EditarTelefono = () => {
         dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
-      <Typography className={pregunta} variant="h2">
-        Ingresa tu teléfono personal
+      <Typography className={titleBlack} variant="h2">
+        Ingresa el 
+        <div className={titleBlue}>
+          &nbsp;teléfono personal
+        </div>
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="h2">
@@ -75,7 +79,7 @@ const EditarTelefono = () => {
             dispatch(handleSetStep(5.1));
           }}
         >
-          Confirmar
+          Actualizar
         </Button>
       </div>
     </div>

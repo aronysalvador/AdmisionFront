@@ -16,11 +16,11 @@ const AccidenteEnSucursal = () => {
   const {
     root,
     buttonAchs,
-    pregunta,
     bottomElement,
     buttonAchs2,
-    textoResaltado
-  } = getComunStyle();
+    titleBlack, 
+    titleBlue } = getComunStyle();
+
   const spaceStyle = getSpaceStyle();
 
   const handleOnClick = (respuesta) => {
@@ -38,13 +38,11 @@ const AccidenteEnSucursal = () => {
         <Typography
           variant="h1"
           component="h1"
-          className={pregunta}
+          className={titleBlack}
          >
           ¿Accidente ocurrió en  
-          <div className={textoResaltado}
-              style={{display: "contents"}}
-          >
-             &nbsp;sucursal a la que pertenece el trabajador?
+          <div className={titleBlue}>
+            &nbsp;sucursal a la que pertenece el trabajador?
           </div>
         </Typography>
       </div>

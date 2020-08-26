@@ -47,8 +47,11 @@ const DataWitness = () => {
         percentage={percentage}
       />
       <div>
-        <Typography variant="p" component="p" className={classesComun.pregunta}>
-          Ingresa los datos del testigo
+        <Typography variant="p" component="p" className={classesComun.titleBlack}>
+          Solicita una 
+          <div className={classesComun.titleBlue}>
+            &nbsp;referencia del testigo
+          </div>
         </Typography>
       </div>
       <div className={spaceStyle.space2} />
@@ -96,7 +99,7 @@ const DataWitness = () => {
           component="p"
           className={[classesComun.tituloTextbox]}
         >
-          Cargo - Relación
+          Cargo o Relación
         </Typography>
       </div>
 
@@ -133,7 +136,7 @@ const DataWitness = () => {
           disabled={!nombre}
           onClick={() => clickSendTestigo()}
         >
-          Agregar Testigo
+          Agregar
         </Button>
       </div>
     </div>

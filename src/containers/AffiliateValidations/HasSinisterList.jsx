@@ -77,23 +77,22 @@ const PersonalData = (props) => {
             <Typography
               variant="p"
               component="p"
-              className={comunClass.pregunta}
-            >
-              {nombre} {apellidoPaterno} tiene
-              <div className={comunClass.textoResaltado}>
+              className={comunClass.titleBlack}>
+              {nombre} {apellidoPaterno} <br/> tiene&nbsp;
+              <div className={comunClass.titleBlue}>
                 {contenidoSiniestros.length} siniestros
               </div>
-              creados
+              &nbsp;creados
             </Typography>
           ) : (
             <Typography
               variant="p"
               component="p"
-              className={comunClass.pregunta}
+              className={comunClass.titleBlack}
             >
               {nombre} {apellidoPaterno} tiene
-              <div className={comunClass.textoResaltado}>
-                este siniestro
+              <div className={comunClass.titleBlue}>
+                &nbsp;este siniestro
               </div>
               creado
             </Typography>

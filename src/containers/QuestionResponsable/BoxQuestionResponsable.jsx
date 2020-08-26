@@ -31,7 +31,7 @@ const BoxQuestionResponsable = (props) => {
         percentage={addmissionForm.percentage}
       />
       <BoxTestigosResponsable
-        titulo={"¿Le contaste lo sucedido al responsable en tu empresa?"}
+        titulo={"¿Se le reportó el accidente a un responsable en la empresa?"}
         tituloTestigo={tituloTestigo}
         contenidoTestigo={contenidoResponsable}
         irA={() => dispatch(handleSetStep(18))}

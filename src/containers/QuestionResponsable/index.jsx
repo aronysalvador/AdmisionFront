@@ -19,7 +19,7 @@ const QuestionResponsable = (props) => {
         percentage={addmissionForm.percentage}
       />
       <QuestionTestigoResponsable
-        titulo={"Ya ¿Le contaste lo sucedido al responsable en tu empresa?"}
+        titulo={"¿Se le reportó el accidente a un responsable en la empresa?"}
         accionButoonA={() => dispatch(handleSetStep(16))}
         accionButoonB={() => {
           dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
@@ -27,7 +27,7 @@ const QuestionResponsable = (props) => {
           dispatch(handleSetStep(18))     
         }}
         tituloA={"Agregar responsable"}
-        tituloB={"No avise a nadie"}
+        tituloB={"No avisé a nadie"}
       />
     </div>
   );

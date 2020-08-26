@@ -39,9 +39,10 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
     buttonAchs,
     root,
-    pregunta,
     bottomElement,
     tituloTextbox,
+    titleBlue,
+    titleBlack
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -64,8 +65,11 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         dispatch={() => dispatch(handleSetStep(5.4))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona la comuna en donde trabajas
+      <Typography className={titleBlack}>
+        Identifica 
+        <div className={titleBlue}>
+          &nbsp;la comuna de la sucursal </div> 
+          &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2}></div>
       <Typography className={tituloTextbox} variant="subtitle2">

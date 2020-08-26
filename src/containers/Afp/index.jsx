@@ -23,9 +23,10 @@ const Afp = () => {
   const {
     buttonAchs,
     root,
-    pregunta,
     bottomElement,
     tituloTextbox,
+    titleBlack,
+    titleBlue
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -53,8 +54,11 @@ const Afp = () => {
         dispatch={() => dispatch(handleSetStep(back))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        ¿A qué AFP o Previsión Social perteneces?
+      <Typography className={titleBlack}>
+        Escribe la 
+        <div className={titleBlue}>
+          &nbsp;AFP o Previsión Social
+        </div>
       </Typography>
       <div className={spaceStyle.space2} />
 
@@ -96,7 +100,7 @@ const Afp = () => {
             dispatch(handleSetStep(19));
           }}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </div>

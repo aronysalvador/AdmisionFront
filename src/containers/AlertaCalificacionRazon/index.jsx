@@ -31,7 +31,7 @@ const AlertaCalificacionRazon = () => {
     shallowEqual
   );
 
-  const { root, pregunta } = getComunStyle();
+  const { root, titleBlue, titleBlack } = getComunStyle();
 
   return (
     <div className={root}>
@@ -39,8 +39,11 @@ const AlertaCalificacionRazon = () => {
         dispatch={() => dispatch(handleSetStep(26.1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona la razón de la alerta
+      <Typography className={titleBlack}>
+        Selecciona
+        <div className={titleBlue}>
+          &nbsp;la razón de la alerta
+        </div>
       </Typography>
 
       <div

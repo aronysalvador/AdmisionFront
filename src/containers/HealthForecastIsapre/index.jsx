@@ -64,9 +64,12 @@ const HealthForecastIsapre = (props) => {
           <Typography
             variant="p"
             component="p"
-            className={classesComun.pregunta}
+            className={classesComun.titleBlack}
           >
-            Escribe tu ISAPRE
+            Escribe la 
+            <div className={classesComun.titleBlue}>
+            &nbsp;Isapre
+          </div>
           </Typography>
         </div>
         <div className={spaceStyle.space2} />
@@ -76,7 +79,7 @@ const HealthForecastIsapre = (props) => {
             component="p"
             className={[classesComun.tituloTextbox]}
           >
-            ISAPRE
+            Isapre
           </Typography>
         </div>
         <div>
@@ -136,7 +139,7 @@ const HealthForecastIsapre = (props) => {
             variant="contained"
             onClick={() => clickSendIsapres()}
           >
-            Siguiente
+            Continuar
           </Button>
         </div>
       </form>

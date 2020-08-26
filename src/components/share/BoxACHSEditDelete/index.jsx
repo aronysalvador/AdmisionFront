@@ -65,11 +65,10 @@ const BoxACHSEditDelete = (props) => {
                     <div className={classes.tituloConteiner}>
                         <Typography color="textSecondary" gutterBottom className={classes.tituloText}>
                             {titulo}
-                            <div className={classes.divEditDelete}>
+                            {/* <div className={classes.divEditDelete}>
                             <DeleteIcon className={classes.marginDelete}></DeleteIcon>   
                             <EditIcon></EditIcon>
-                            
-                            </div>
+                            </div> */}
                         </Typography>
                     </div>
                     <div className={classes.contentConteiner}>

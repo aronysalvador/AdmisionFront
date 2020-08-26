@@ -11,7 +11,7 @@ import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/
 
 const Remuneracion = () => {
   const dispatch = useDispatch();
-  const { root, pregunta } = getComunStyle();
+  const { root, titleBlue, titleBlack } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const { step, percentage, tipoRemuneracion } = useSelector(
@@ -39,8 +39,12 @@ const Remuneracion = () => {
         dispatch={() => dispatch(handleSetStep(step - 1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        ¿Qué tipo de remuneración tienes?
+      <Typography className={titleBlack}>
+        ¿Qué tipo de  
+        <div className={titleBlue}>
+          &nbsp;remuneración
+        </div>
+        &nbsp;tiene el paciente?
       </Typography>
       <div className={spaceStyle.space2} />
       <div
@@ -59,7 +63,7 @@ const Remuneracion = () => {
             // selected={remuneracion.selected}
             itemForm={"tipoRemuneracion"}
             selected={remuneracion.id === tipoRemuneracion.id}
-            step={26}
+            step={25}
           >
             <BotonSeleccionarCustomItem {...remuneracion} />
           </BotonSeleccionarCustom>

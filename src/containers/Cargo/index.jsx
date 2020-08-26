@@ -24,9 +24,10 @@ const Cargo = () => {
   const {
     buttonAchs,
     root,
-    pregunta,
     bottomElement,
     tituloTextbox,
+    titleBlack,
+    titleBlue
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -46,11 +47,15 @@ const Cargo = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(21))}
+        dispatch={() => dispatch(handleSetStep(19.3))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        ¿Qué cargo tienes actualmente?
+      <Typography className={titleBlack}>
+        ¿Cuál es el  
+        <div className={titleBlue}>
+          &nbsp;cargo
+        </div>
+        &nbsp;del paciente en la empresa?
       </Typography>
       <div className={spaceStyle.space2} />
 
@@ -94,7 +99,7 @@ const Cargo = () => {
           isabled={!cargo}
           onClick={() => clickSendCargo()}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </div>

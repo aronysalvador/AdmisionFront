@@ -31,16 +31,19 @@ const TipoJornadaLaboral = () => {
     shallowEqual
   );
 
-  const { root, pregunta } = getComunStyle();
+  const { root, titleBlack, titleBlue } = getComunStyle();
 
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(19.3))}
+        dispatch={() => dispatch(handleSetStep(20))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona la opción que mejor defina la jornada laboral del paciente
+      <Typography className={titleBlack}>
+        Selecciona la opción que mejor defina el 
+        <div className={titleBlue}>
+          &nbsp;tipo de jornada
+        </div>
       </Typography>
 
       <div
@@ -58,7 +61,7 @@ const TipoJornadaLaboral = () => {
             data={tipoJornada}
             itemForm={"tipoJornadaForm"}
             selected={tipoJornada.id === tipoJornadaLaboral.id}
-            step={21}
+            step={22}
           >
             <BotonSeleccionarCustomItem {...tipoJornada} />
           </BotonSeleccionarCustom>

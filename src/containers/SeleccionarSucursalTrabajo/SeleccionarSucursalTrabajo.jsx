@@ -9,7 +9,7 @@ import BotonSeleccionarCustomSucursalItem from "../../components/BotonSelecciona
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => { 
   const dispatch = useDispatch();
-  const { root, pregunta } = getComunStyle();
+  const { root, titleBlack, titleBlue } = getComunStyle();
 
   const { percentage, SucursalEmpresa: SucursalEmpresaObjeto } = useSelector(
     (state) => state.addmissionForm,
@@ -27,8 +27,11 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
         dispatch={() => dispatch(handleSetStep(5.4))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona la sucursal en donde trabajas
+      <Typography className={titleBlack}>
+        Identifica 
+        <div className={titleBlue}>
+          &nbsp;la sucursal </div> 
+          &nbsp;en donde trabaja
       </Typography>
 
       <div

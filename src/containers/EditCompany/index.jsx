@@ -15,7 +15,7 @@ const EditCompany = () => {
     shallowEqual
   );
 
-  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+  const { buttonAchs, root, bottomElement, titleBlack, titleBlue } = getComunStyle();
   const dispatch = useDispatch();
 
 
@@ -25,8 +25,11 @@ const EditCompany = () => {
         dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Ingresa la Razón Social o RUT de la empresa en donde trabajas
+      <Typography className={titleBlack}>
+      Identifica la empresa en la que trabaja con su 
+      <div className={titleBlue}>
+        &nbsp;razón social o RUT
+      </div>
       </Typography>
       <div className={spaceStyle.space2} />
 
@@ -40,7 +43,7 @@ const EditCompany = () => {
             //dispatch(updateForm("rutEmpresa",rutEmpresaForm))
           }}
         >
-          Siguiente
+          Confirmar Empresa
         </Button>
       </div>
     </div>

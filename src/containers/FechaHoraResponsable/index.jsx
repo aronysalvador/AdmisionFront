@@ -17,7 +17,7 @@ const FechaHoraResponsable = () => {
 
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
-  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+  const { buttonAchs, root, bottomElement, titleBlack, titleBlue } = getComunStyle();
 
   const spaceStyle = getSpaceStyle();
   const dispatch = useDispatch();
@@ -43,8 +43,11 @@ const FechaHoraResponsable = () => {
         dispatch={() => dispatch(handleSetStep(16))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Escribe la fecha y hora en que avisaste al responsable
+      <Typography className={titleBlack}>
+        <div className={titleBlue}>
+          Cuando y a qué hora se le avisó 
+        </div>
+        &nbsp;al responsable
       </Typography>
       <div className={spaceStyle.space2} />
       <FechaSiniestro
@@ -73,7 +76,7 @@ const FechaHoraResponsable = () => {
             dispatch(handleSetStep(17.1));
           }}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </div>
