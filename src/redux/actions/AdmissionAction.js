@@ -59,6 +59,10 @@ export const obtenerData = async (rut) => {
   return Axios.get(process.env.REACT_APP_AFILIADO + `?rut=${rut}`);
 };
 
+export const obtenerDataRazon = async (rutEmpresa) => {
+  return Axios.get(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/razonSocialByRut?rut=${rutEmpresa}`);
+};
+
 export const saveRut = (rut) => {
   return (dispatch) => {
     obtenerData(rut)
@@ -95,6 +99,75 @@ export const saveRut = (rut) => {
             })
           );
 
+          // dispatch(
+          //   updateForm("datosAdicionalesSAP", {
+          //     apellidoMaterno,
+          //     apellidoPaterno,
+          //     nombre,
+          //     fechaNacimiento,
+          //     masculino,
+          //     femenino,
+          //     nacionalidad,
+          //     lugarNacimiento,
+          //     estadoCivil,
+          //   })
+          // );
+         
+
+          dispatch(updateForm("cita", result.data.content.response.cita));
+          dispatch(
+            updateForm("siniestros", result.data.content.response.siniestros)
+          );
+          dispatch(
+            updateForm(
+              "razonSocialForm",
+              result.data.content.response.NombreEmpresa
+            )
+          );
+          dispatch(
+            updateForm("rutEmpresa", result.data.content.response.RutPagador)
+            
+          );
+          dispatch(updateForm("isAfiliado", "Si"));
+          dispatch(
+            updateForm(
+              "SucursalEmpresa",
+
+              result.data.content.response.SucursalEmpresa
+            )
+          );
+          dispatch(
+            updateForm(
+              "DireccionEmpresa",
+
+              result.data.content.response.DireccionEmpresa
+            )
+          );
+          dispatch(
+            updateForm(
+              "comunaEmpresa",
+              result.data.content.response.comunaEmpresa
+            )
+          );
+          dispatch(
+            updateForm(
+              "direccionParticular",
+
+              result.data.content.response.direccionParticular
+            )
+          );        
+          dispatch(
+            updateForm(
+              "telefonoParticular",
+
+              result.data.content.response.telefonoParticular === "0"
+                ? ""
+                : result.data.content.response.telefonoParticular
+            )
+          );
+
+          dispatch(saveRazonSocial(result.data.content.response.RutPagador))
+           
           if (!result.data.content.response.BpCreado) {
             dispatch(handleSetStep(5.81));
           } else if (Object.keys(result.data.content.response.cita).length !== 0) {
@@ -127,73 +200,6 @@ export const saveRut = (rut) => {
             dispatch(handleSetStep(STEP));
           }
 
-          // dispatch(
-          //   updateForm("datosAdicionalesSAP", {
-          //     apellidoMaterno,
-          //     apellidoPaterno,
-          //     nombre,
-          //     fechaNacimiento,
-          //     masculino,
-          //     femenino,
-          //     nacionalidad,
-          //     lugarNacimiento,
-          //     estadoCivil,
-          //   })
-          // );
-         
-
-          dispatch(updateForm("cita", result.data.content.response.cita));
-          dispatch(
-            updateForm("siniestros", result.data.content.response.siniestros)
-          );
-          dispatch(
-            updateForm(
-              "razonSocialForm",
-              result.data.content.response.NombreEmpresa
-            )
-          );
-          dispatch(
-            updateForm("rutEmpresa", result.data.content.response.RutPagador)
-          );
-          dispatch(updateForm("isAfiliado", "Si"));
-          dispatch(
-            updateForm(
-              "SucursalEmpresa",
-
-              result.data.content.response.SucursalEmpresa
-            )
-          );
-          dispatch(
-            updateForm(
-              "DireccionEmpresa",
-
-              result.data.content.response.DireccionEmpresa
-            )
-          );
-          dispatch(
-            updateForm(
-              "comunaEmpresa",
-              result.data.content.response.comunaEmpresa
-            )
-          );
-          dispatch(
-            updateForm(
-              "direccionParticular",
-
-              result.data.content.response.direccionParticular
-            )
-          );
-
-          dispatch(
-            updateForm(
-              "telefonoParticular",
-
-              result.data.content.response.telefonoParticular === "0"
-                ? ""
-                : result.data.content.response.telefonoParticular
-            )
-          );
-
 
         } else {
           dispatch(setStep(500, 0));
@@ -207,10 +213,33 @@ export const saveRut = (rut) => {
           dispatch(updateForm("direccionParticular", ""));
           dispatch(updateForm("telefonoParticular", ""));
         }
-      })
+      }
+      
+      
+      )
       .catch((error) => {
         console.log("error: " + String(error));
       });
+  };
+};
+
+ const saveRazonSocial = (rut) => {
+  return (dispatch) => {
+    if(rut){
+      obtenerDataRazon(rut)
+      .then((result) => {     
+      dispatch(
+        updateForm(
+          "razonSocial",
+          result.data.content.response[0]
+        )
+      );
+      })
+      .catch((error) => {       
+        console.log("error: " + String(error));
+      });
+    }
+    
   };
 };
 

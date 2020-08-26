@@ -10,7 +10,7 @@ const AccidenteEnSucursal = () => {
   const {
     addmissionForm: { step, percentage },
   } = useSelector((state) => state, shallowEqual);
-  let stepx = step;
+  
 
   const dispatch = useDispatch();
 
