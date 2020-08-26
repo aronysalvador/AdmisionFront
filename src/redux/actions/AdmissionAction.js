@@ -100,7 +100,13 @@ export const saveRut = (rut) => {
           } else if (Object.keys(result.data.content.response.cita).length !== 0) {
             dispatch(handleSetStep(5.82));
           } else if (result.data.content.response.siniestros.length > 0) {
-            dispatch(handleSetStep(5.83));
+            const mensajeAlerta = "Este paciente ya tiene un siniestro";
+            const mensajeBoton = "Ver su(s) siniestro(s)";
+            const origen = "getRut";
+            dispatch(
+              updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen})
+            );
+            dispatch(handleSetStep(5.83));            
           } else {
             var STEP = "";
             if (

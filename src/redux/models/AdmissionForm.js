@@ -1,5 +1,7 @@
 export const AdmissionForm = {
+
     step: 0,
+
     percentage: 0,
     rut: "",
     isAfiliado: "",
@@ -42,11 +44,15 @@ export const AdmissionForm = {
     centrosForm: {},
 
     siniestros: [],
-    siniestroDetalle: {},
+
+  siniestroDetalle: {}, //no va a SAP
+  siniestroOpciones: {}, //no va a SAP
 
     DireccionTemporal: {}, // direccion temporal que es enviada al mapa dinámico
     LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
     LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
 
     AccidenteEnSucursal: "",
+
+
 };
