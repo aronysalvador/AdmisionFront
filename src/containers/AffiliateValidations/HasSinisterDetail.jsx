@@ -23,7 +23,7 @@ const HasSinisterDetail = (props) => {
         dispatch={() => dispatch(handleSetStep(5.831))}
         color="#FFFFFF"
       />
-      <div className={blackStyle.root}>
+      <div className={blackStyle.root} style={{height:"37.2em"}}>
         <Typography
           color="textSecondary"
           gutterBottom

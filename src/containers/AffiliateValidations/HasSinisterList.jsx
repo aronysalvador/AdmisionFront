@@ -52,7 +52,7 @@ const PersonalData = (props) => {
       }
       else {
         // si todos los datos relevantes están llenos
-        STEP = 5.7; // pantalla exito
+        STEP = 5.1; // primero debe mostrar todos los datos y luego (5.7) pantalla exito
       }
       dispatch(handleSetStep(STEP));
     } else {

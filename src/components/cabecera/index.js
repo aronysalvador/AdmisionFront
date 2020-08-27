@@ -28,7 +28,7 @@ const Cabecera = (props) => {
                 <div className={comunClass.cleanFloat} />
 
                     {props.noSpace ? null : (
-                    <div  className={spaceStyle.space2} />
+                    <div  className={spaceStyle.space1} />
                     )}
                 
                 </div>

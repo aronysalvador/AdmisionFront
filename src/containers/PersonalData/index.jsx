@@ -50,7 +50,7 @@ const PersonalData = (props) => {
       dispatch(handleSetStep(5.3)); //form telefono
     } else {
       // si todos los datos relevantes están llenos
-      if(rut && rutEmpresa, SucursalEmpresaObjeto){
+      if(rut && rutEmpresa && SucursalEmpresaObjeto){
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo})); 
       }else{
          dispatch(handleSetStep(500));
