@@ -74,6 +74,7 @@ import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
 import NoAfiliate from "../AffiliateValidations/NoAfiliate";
 import NoQuotes from "../AffiliateValidations/NoQuotes";
+import NoVigente from "../AffiliateValidations/NoVigente";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -186,6 +187,14 @@ const Main = (props) => {
           <div className={blackLayout}>
             <Paper className={paperNoColor}>
               <NoQuotes />
+            </Paper>
+          </div>
+        );
+      case 5.13:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoVigente />
             </Paper>
           </div>
         );

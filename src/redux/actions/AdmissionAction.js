@@ -318,13 +318,13 @@ export const validarAfiliacion = (data) => (dispatch) => {
      const {Empresa, Sucursal, CotizacionesPaciente} = response.data.content.response;
 
      if(Empresa!=="Afiliada"){
-      console.log("noafiliado")
+      dispatch(handleSetStep(5.11));
      }
      else if(Sucursal!=="Vigente"){
-      console.log("novigente")
+      dispatch(handleSetStep(5.13));
      }
      else if(!CotizacionesPaciente){
-      console.log("nocotis")
+      dispatch(handleSetStep(5.12));
      }else{
       dispatch(handleSetStep(5.7));
      }

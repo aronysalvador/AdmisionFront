@@ -23,7 +23,7 @@ const NoQuotes = (props) => {
   return (
     <div>
       <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(3))} // 5.1
+        dispatch={() => dispatch(handleSetStep(5.1))} // 5.1
         color="#FFFFFF"
       />
       <div className={blackStyle.root} style={{height: "37.2em"}}>

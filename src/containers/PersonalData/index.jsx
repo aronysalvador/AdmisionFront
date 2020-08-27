@@ -22,7 +22,7 @@ const PersonalData = (props) => {
   //   addmissionForm.rutEmpresa,
   // ];
   const contenidoDireccionEmpresa = [addmissionForm.DireccionEmpresa];
-  const contenidoRazonSocialForm = [addmissionForm.razonSocialForm];
+  const contenidoRazonSocialForm = [addmissionForm.razonSocial];
   const contenidoRutEmpresa = [addmissionForm.rutEmpresa];
 
   const tituloDireccion = "Dirección particular";
@@ -34,7 +34,6 @@ const PersonalData = (props) => {
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
   const handleNext = () => {
-
     const { 
       razonSocial, SucursalEmpresa, DireccionEmpresa, direccionParticular, telefonoParticular,      
       rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm

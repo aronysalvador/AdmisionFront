@@ -8,7 +8,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoAfiliateCard from './NoAfiliateCard';
 
-const NoAfiliate = (props) => {
+const NoVigente = (props) => {
 
   useEffect(() => {
     //dispatch(saveRut(addmissionForm.rut));
@@ -45,7 +45,7 @@ const NoAfiliate = (props) => {
           gutterBottom
           className={blackStyle.textNoAfiliate}
         >
-          Empresa de este paciente no presenta afiliación en ACHS
+          Sucursal de este paciente no está vigente en ACHS
         </Typography>
         <div className={spaceStyle.space1} />
   
@@ -70,4 +70,4 @@ const mapStateToProps = ({ addmissionForm }) => {
     addmissionForm: addmissionForm,
   };
 };
-export default connect(mapStateToProps)(NoAfiliate);
+export default connect(mapStateToProps)(NoVigente);
