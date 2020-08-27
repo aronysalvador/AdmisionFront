@@ -32,6 +32,18 @@ export const getBlackTheme = makeStyles((theme) => ({
         padding: "0em 4em",
     },
 
+    textNoAfiliate: {
+        textAlign: "center",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontSize: "1.250em",
+        fontWeight: "bold",
+        lineHeight: "1.250em",
+        alignItems: "center",
+        color: "#06D6A0",
+        padding: "0em 1em",
+    },
+
     textDetailSimple: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -62,6 +74,10 @@ export const getBlackTheme = makeStyles((theme) => ({
     },
     img: {
         width: "11em",
+    },
+
+    imgNoAfiliate: {
+        width: "7em",
     },
 
     buttonFooter: {

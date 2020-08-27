@@ -72,7 +72,7 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
-import NotAfiliate from "../AffiliateValidations/NotAfiliate";
+import NoAfiliate from "../AffiliateValidations/NoAfiliate";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -176,7 +176,7 @@ const Main = (props) => {
         return (
           <div className={blackLayout}>
             <Paper className={paperNoColor}>
-              <NotAfiliate />
+              <NoAfiliate />
             </Paper>
           </div>
         );
