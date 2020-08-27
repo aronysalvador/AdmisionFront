@@ -3,7 +3,6 @@ import { TextField } from "@material-ui/core";
 import { Rut, formateaRut } from "../../helpers/rut";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
-import { replace } from "formik";
 
 const IdentificationCompany = () => {
   const dispatch = useDispatch();

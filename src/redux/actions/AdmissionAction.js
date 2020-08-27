@@ -56,20 +56,20 @@ export const formatRut = (rut) => {
 };
 
 export const obtenerData = async (rut) => {
-  return Axios.get(process.env.REACT_APP_AFILIADO + `?rut=${rut}`);
+  return Axios.get(process.env.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`);
 };
 
 export const obtenerDataRazon = async (rutEmpresa) => {
-  return Axios.get(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/razonSocialByRut?rut=${rutEmpresa}`);
+  return Axios.get(process.env.REACT_APP_RAZON_SOCIAL_RUT+rutEmpresa);
 };
 
 export const saveRut = (rut) => {
   return (dispatch) => {
     obtenerData(rut)
       .then((result) => {
-        console.log("REUSLT", result);
-        let isAfiliado = result.data.content.response.IsAfiliado;
-        if (isAfiliado) {
+        // console.log("REUSLT", result);
+        let BpCreado = result.data.content.response.BpCreado;
+        if (BpCreado) {
           //Guardar datos adicionales paciente requeridos por SAP
           const {
             apellidoMaterno,
@@ -82,8 +82,6 @@ export const saveRut = (rut) => {
             lugarNacimiento,
             estadoCivil,
           } = result.data.content.response;
-          
-          // console.log({ apellidoMaterno, apellidoPaterno, nombre });
 
           dispatch(
             updateForm("datosAdicionalesSAP", {
@@ -99,10 +97,10 @@ export const saveRut = (rut) => {
             })
           );
 
-          if (!result.data.content.response.BpCreado) {
-            dispatch(handleSetStep(5.81));
-          } else if (Object.keys(result.data.content.response.cita).length !== 0) {
-            dispatch(handleSetStep(5.82));
+          // determinar siguiente paso
+          var STEP = "";
+          if (Object.keys(result.data.content.response.cita).length !== 0) {
+            STEP=5.82
           } else if (result.data.content.response.siniestros.length > 0) {
             const mensajeAlerta = "Este paciente ya tiene un siniestro";
             const mensajeBoton = "Ver su(s) siniestro(s)";
@@ -110,9 +108,8 @@ export const saveRut = (rut) => {
             dispatch(
               updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen})
             );
-            dispatch(handleSetStep(5.83));            
+            STEP=5.83
           } else {
-            var STEP = "";
             if (
               !result.data.content.response.NombreEmpresa ||
               !result.data.content.response.SucursalEmpresa ||
@@ -134,8 +131,9 @@ export const saveRut = (rut) => {
               // si todos los datos relevantes están llenos
               STEP = 5.1; // resumen data
             }
-            dispatch(handleSetStep(STEP));
           }
+          
+          dispatch(handleSetStep(STEP));
 
           dispatch(saveRazonSocial(result.data.content.response.RutPagador))
 
@@ -191,17 +189,18 @@ export const saveRut = (rut) => {
             )
           );
 
-        } else {
-          dispatch(setStep(500, 0));
-          dispatch(updateForm("rut", ""));
-          dispatch(updateForm("razonSocialForm", ""));
-          dispatch(updateForm("rutEmpresa", ""));
-          dispatch(updateForm("isAfiliado", "No"));
-          dispatch(updateForm("SucursalEmpresa", ""));
-          dispatch(updateForm("DireccionEmpresa", ""));
-          dispatch(updateForm("comunaEmpresa", ""));
-          dispatch(updateForm("direccionParticular", ""));
-          dispatch(updateForm("telefonoParticular", ""));
+        } else { // NO TIENE BP
+          //dispatch(setStep(500, 0));
+            dispatch(setStep(5.81, 0));
+            dispatch(updateForm("rut", ""));
+            dispatch(updateForm("razonSocialForm", ""));
+            dispatch(updateForm("rutEmpresa", ""));
+            dispatch(updateForm("isAfiliado", "No"));
+            dispatch(updateForm("SucursalEmpresa", ""));
+            dispatch(updateForm("DireccionEmpresa", ""));
+            dispatch(updateForm("comunaEmpresa", ""));
+            dispatch(updateForm("direccionParticular", ""));
+            dispatch(updateForm("telefonoParticular", ""));
         }
       }
       
@@ -299,3 +298,17 @@ const sendCallCentroAchs = (nombre, codigo, uoMedica, uoTratamiento) => ({
     uoTratamiento: uoTratamiento,
   },
 });
+
+export const validarData= async (data) => {
+  return Axios.get(process.env.REACT_APP_VALIDAR_DATA_EMPRESA+"/validate?rutPaciente="+data.rutPaciente+"/&rutEmpresa="+data.rutEmpresa+"/&BpSucursal="+data.BpSucursal);
+};
+
+export const validarAfiliacion = (data) => {
+  validarData(data)
+  .then((response) => {
+     console.log(response)
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+};

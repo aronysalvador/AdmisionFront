@@ -49,13 +49,11 @@ const LoadPersonalData = (props) => {
 
   const initFn = useCallback(async () => {
     await dispatch(saveRut(addmissionForm.rut));
-
   }, [dispatch, addmissionForm ]);
 
   useEffect( () => {
-    // console.log("LOAD PERSONAL DATA. MANDO EL RUT: ", addmissionForm.rut);  
-    initFn()
-  
+     console.log("LOAD PERSONAL DATA...");  
+     initFn()
   },[]);
 
   const spaceStyle = getSpaceStyle();

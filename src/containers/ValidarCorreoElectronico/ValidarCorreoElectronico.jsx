@@ -48,8 +48,7 @@ const ValidarCorreoElectronico = () => {
       }
       dispatch(updateForm("emailusuario", userEmail)) &&
       dispatch(handleSetStep(1000))
-    }
-   
+    }   
   }
 
   const handleChange = (event) => {
