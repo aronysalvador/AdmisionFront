@@ -34,7 +34,30 @@ const PersonalData = (props) => {
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
   const handleNext = async() => {
-    await dispatch(validarAfiliacion( {rutPaciente: addmissionForm.rut, rutEmpresa: addmissionForm.rutEmpresa, BpSucursal: "123456"} ));  
+   // await dispatch(validarAfiliacion( {rutPaciente: addmissionForm.rut, rutEmpresa: addmissionForm.rutEmpresa, BpSucursal: "123456"} ));  
+    var STEP = "";
+    if (
+      !addmissionForm.razonSocialForm ||
+      !addmissionForm.SucursalEmpresa ||
+      !addmissionForm.DireccionEmpresa ||
+      !addmissionForm.rutEmpresa
+    ) {
+      // si falta info de la empresa
+      STEP = 5.4; //form empresa
+    } else if (!addmissionForm.direccionParticular) {
+      // si no tiene direccion
+      STEP = 5.2; //form direccion
+    } else if (
+      !addmissionForm.telefonoParticular ||
+      addmissionForm.telefonoParticular === "0"
+    ) {
+      // si no tiene telefono
+      STEP = 5.3; //form telefono
+    } else {
+      // si todos los datos relevantes están llenos
+      STEP = 5.7; // pantalla exito
+    }
+    dispatch(handleSetStep(STEP));
   };
 
   return (
