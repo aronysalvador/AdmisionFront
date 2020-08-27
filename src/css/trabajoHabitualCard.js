@@ -6,6 +6,11 @@ export const getTrabajoHabitualCardStyle = makeStyles((theme) => ({
         borderRadius: "10px",
         padding: "15px;",
     },
+    containerNoQuote: {
+        backgroundColor: "#FFF",
+        borderRadius: "10px",
+        padding: "10px;",
+    },
     cardIconContainer: {
         paddingLeft: "15px",
     },
@@ -22,6 +27,8 @@ export const getTrabajoHabitualCardStyle = makeStyles((theme) => ({
     cardText: {
         fontFamily: "Catamaran",
         fontSize: "16px",
+        fontWeight: "normal",
+        fontStyle: "normal",
     },
     cardText2: {
         fontFamily: "Catamaran",
