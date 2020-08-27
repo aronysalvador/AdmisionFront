@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, validarAfiliacion } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -33,7 +33,8 @@ const PersonalData = (props) => {
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
-  const handleNext = () => {
+  const handleNext = async() => {
+   // await dispatch(validarAfiliacion( {rutPaciente: addmissionForm.rut, rutEmpresa: addmissionForm.rutEmpresa, BpSucursal: "123456"} ));  
     var STEP = "";
     if (
       !addmissionForm.razonSocialForm ||
