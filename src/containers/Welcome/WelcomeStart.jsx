@@ -87,6 +87,7 @@ const Start = (props) =>{
                     </div>
                 </div>
             </div>
+            <div className={spaceStyle.space2} />
 
             <div className={welcomeStyle.beginContainer}>
                 <Typography
@@ -101,20 +102,20 @@ const Start = (props) =>{
                     indicaciones={[
                         {
                             icono: "espera.svg",
-                            textoPrimario: "Identificar al paciente",
-                            textoSecundario: "recibirás todo para ser atendido",
+                            textoPrimario: "Identifica al paciente",
+                            textoSecundario: "",
                             clase: welcomeStyle.divRowBottom,
                         },
                         {
                             icono: "sms.svg",
-                            textoPrimario: "Tomar el relato",
-                            textoSecundario: "incluso al llegar al centro ACHS",
+                            textoPrimario: "Toma el relato",
+                            textoSecundario: "",
                             clase: welcomeStyle.divRowBottom,
                         },
                         {
                             icono: "work.svg",
-                            textoPrimario: "Solicitud de datos",
-                            textoSecundario: "pero no tendrás que esperar en sala",
+                            textoPrimario: "Solicita los datos",
+                            textoSecundario: "",
                             clase: welcomeStyle.divRow,
                         },
                     ]}
