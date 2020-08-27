@@ -82,7 +82,7 @@ const Main = (props) => {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
       // addmissionForm.step = 0;
     }
-  }, [addmissionForm, microsoftReducer]);
+  }, [microsoftReducer]);
 
   useEffect(() => {
     initFn();
