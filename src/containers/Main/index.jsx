@@ -80,7 +80,7 @@ const Main = (props) => {
   const initFn = useCallback(() => {
     if(!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
-      // addmissionForm.step = 0;
+      addmissionForm.step = 0;
     }
   }, [microsoftReducer]);
 
@@ -468,7 +468,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Cargo /> {/* <TipoJornadaLaboral /> */}
+              <Cargo /> 
             </Paper>
           </div>
         );
@@ -476,7 +476,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoJornadaLaboral />  {/* <JornadaLaboralContainer /> */}
+              <TipoJornadaLaboral /> 
             </Paper>
           </div>
         );
@@ -484,7 +484,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <JornadaLaboralContainer />  {/* <Cargo /> */}
+              <JornadaLaboralContainer />
             </Paper>
           </div>
         );
@@ -492,7 +492,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoDeContrato /> {/* <CategoriaOcupacional /> */}
+              <TipoDeContrato />
             </Paper>
           </div>
         );
@@ -500,7 +500,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Remuneracion /> {/* <TipoDeContrato /> */}
+              <Remuneracion />
             </Paper>
           </div>
         );
@@ -508,7 +508,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <CategoriaOcupacional />  {/* <Remuneracion /> */}
+              <CategoriaOcupacional />
             </Paper>
           </div>
         );

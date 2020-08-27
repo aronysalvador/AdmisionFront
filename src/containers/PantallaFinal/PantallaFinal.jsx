@@ -56,6 +56,8 @@ const PantallaFinal = (props) => {
         </div>
       </div>
 
+      <div className={spaceStyle.space2} />
+
       <div className={welcomeStyle.beginContainer}>
         <Typography
           variant="h5"
@@ -73,16 +75,16 @@ const PantallaFinal = (props) => {
               textoSecundario: "al llamado del doctor",
               clase: welcomeStyle.divRowBottom,
             },
-            {
-              icono: "sms.svg",
-              textoPrimario: "Recordarle su número SGP",
-              textoSecundario: " y el modo de conectarse al WI-FI",
-              clase: welcomeStyle.divRowBottom,
-            },
+            // {
+            //   icono: "sms.svg",
+            //   textoPrimario: "Recordarle su número SGP",
+            //   textoSecundario: " y el modo de conectarse al WI-FI",
+            //   clase: welcomeStyle.divRowBottom,
+            // },
             {
               icono: "work.svg",
-              textoPrimario: "Si presenta dolor",
-              textoSecundario: " avisa a los TENS",
+              textoPrimario: "Si el paciente presenta dolor",
+              textoSecundario: "avisa a la ECS",
               clase: welcomeStyle.divRow,
             },
           ]}
