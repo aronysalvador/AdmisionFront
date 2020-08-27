@@ -6,6 +6,8 @@ import {
   SEND_RESPONSABLE,
   LOAD_STATE_SESSIONSTORAGE,
   CLEAR_STATE,
+  DATE_EMPRESA_SUCCESS,
+  DATE_EMPRESA_FAILURE
 } from "../types/addmissionFormType";
 import { AdmissionForm } from "../models/AdmissionForm";
 
@@ -47,6 +49,16 @@ export default function payload(state = AdmissionForm, action) {
       response.tipoSiniestro = state.tipoSiniestro
       console.log(state.centrosForm)
       return response;
+
+    case DATE_EMPRESA_SUCCESS:
+      return {
+        ...state,
+      };      
+    case DATE_EMPRESA_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };      
     default:
       return state;
   }
