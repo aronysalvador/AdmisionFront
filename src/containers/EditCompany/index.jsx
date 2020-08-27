@@ -38,6 +38,8 @@ const EditCompany = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
+          variant="contained"
+          type="submit"
           disabled={!razonSocial || !rutEmpresa}
           onClick={() => {
             dispatch(handleSetStep(5.5));
