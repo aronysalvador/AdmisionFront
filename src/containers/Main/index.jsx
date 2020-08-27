@@ -72,6 +72,7 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
+import NotAfiliate from "../AffiliateValidations/NotAfiliate";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -80,7 +81,7 @@ const Main = (props) => {
   const initFn = useCallback(() => {
     if(!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
-      addmissionForm.step = 0;
+      // addmissionForm.step = 0;
     }
   }, [addmissionForm, microsoftReducer]);
 
@@ -168,6 +169,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <PersonalData />
+            </Paper>
+          </div>
+        );
+      case 5.11:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NotAfiliate />
             </Paper>
           </div>
         );
