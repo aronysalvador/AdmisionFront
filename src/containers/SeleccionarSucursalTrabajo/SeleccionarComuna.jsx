@@ -50,15 +50,20 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
       comunaList.find((x) => x?.codigo_comuna === sucursal?.id_comuna)
     );
+    
     const uniqueAddresses = Array.from(
       new Set(comunasSucursal.map((a) => a?.codigo_comuna))
     ).map((id) => {
       return comunasSucursal.find((a) => a?.codigo_comuna === id);
     });
 
-    setListaComunas(uniqueAddresses);
+    const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function(id) { return id; });
+
+    setListaComunas(uniqueAddressesWithOutUndefined);
+    
   }, [comunaList]);
 
+  console.log(listaComunas)
   return (
     <div className={root}>
       <Cabecera
