@@ -10,7 +10,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 const EditCompany = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { percentage } = useSelector(
+  const { percentage, razonSocial, rutEmpresa } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -38,6 +38,9 @@ const EditCompany = () => {
       <div className={bottomElement}>
         <Button
           className={buttonAchs}
+          variant="contained"
+          type="submit"
+          disabled={!razonSocial || !rutEmpresa}
           onClick={() => {
             dispatch(handleSetStep(5.5));
             //dispatch(updateForm("rutEmpresa",rutEmpresaForm))

@@ -142,7 +142,7 @@ const DataResponsable = () => {
           className={classesComun.buttonAchs}
           variant="contained"
           type="submit"
-          disabled={!nombre}
+          disabled={!nombre || !cargos}
           onClick={() => clickSendResponsable()}
         >
           Agregar
