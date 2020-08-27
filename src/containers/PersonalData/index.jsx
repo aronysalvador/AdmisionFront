@@ -22,8 +22,8 @@ const PersonalData = (props) => {
   //   addmissionForm.rutEmpresa,
   // ];
   const contenidoDireccionEmpresa = [addmissionForm.DireccionEmpresa];
-  const contenidoRazonSocialForm = [addmissionForm.razonSocial.name];
-  
+  const contenidoRazonSocialForm = [addmissionForm.razonSocial ? addmissionForm.razonSocial.name : null];
+
   const contenidoRutEmpresa = [addmissionForm.rutEmpresa];
 
   const tituloDireccion = "Dirección particular";
