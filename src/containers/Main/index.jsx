@@ -80,7 +80,7 @@ const Main = (props) => {
   const initFn = useCallback(() => {
     if(!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
-      // addmissionForm.step = 0;
+      addmissionForm.step = 0;
     }
   }, [addmissionForm, microsoftReducer]);
 
