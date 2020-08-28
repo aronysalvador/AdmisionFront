@@ -321,7 +321,7 @@ export const validarAfiliacion = (data) => (dispatch) => {
      else if(Sucursal!=="Vigente"){
       dispatch(handleSetStep(5.13));
      }
-     else if(CotizacionesPaciente!=="true"){
+     else if(!CotizacionesPaciente){
       dispatch(handleSetStep(5.12));
      }else{
       dispatch(handleSetStep(5.7));
