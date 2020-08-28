@@ -84,7 +84,7 @@ const CausaNoLaboral = () => {
           className={buttonAchs}
           disabled={!causas}
           onClick={() => {
-            dispatch(updateForm("razonAlertaForm", causas));
+            dispatch(updateForm("razonAlertaForm", {...razonAlertaForm, causasID:causas.id,causasGlosa:causas.glosa}));
             dispatch(handleSetStep(26.4));
           }}
         >
