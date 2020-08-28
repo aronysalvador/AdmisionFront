@@ -53,6 +53,17 @@ export const getBlackTheme = makeStyles((theme) => ({
         color: "#FFFFFF",
     },
 
+    textDetailSimpleNoSAP: {
+        textAlign: "center",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontSize: "1.2em",
+        lineHeight: "1.6875em",
+        alignItems: "center",
+        color: "#FFFFFF",
+        padding: "0em 3em",
+    },
+
     textDetailStrong: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
