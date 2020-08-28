@@ -102,7 +102,7 @@ const homologacionSap = async(dispatch, email) => {
   const result = await obtenerUsuarioSap(email);
 
   if(result.data.content[0].length > 0) { 
-    dispatch(updateForm("codigoSAP", result.data.content[0]));
+    dispatch(updateForm("usuarioSAP", result.data.content[0]));
     return true
   }else {   
     return false
