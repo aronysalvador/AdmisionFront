@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useEffect, useCallback } from "react";
+import { connect, useSelector, shallowEqual } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
@@ -7,14 +7,23 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoAfiliateCard from './NoAfiliateCard';
+import { ExitLog } from "../../redux/actions/Log";
 
 const NoVigente = (props) => {
 
-  useEffect(() => {
-    //dispatch(saveRut(addmissionForm.rut));
-  });
-
   const { dispatch } = props;
+
+  const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
+  const initFn = useCallback(() => {
+    if(ID>0){
+      console.log("exit")
+      dispatch(ExitLog());
+    }
+  }, [dispatch,ID]);
+
+  useEffect(() => {
+    initFn()
+  }, [initFn]);
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();

@@ -5,8 +5,7 @@ import {
   SEND_TESTIGO,
   SEND_RESPONSABLE,
   LOAD_STATE_SESSIONSTORAGE,
-  SEND_CENTROACHS,
-  DATE_EMPRESA_SUCCESS,
+  SEND_CENTROACHS,  
   DATE_EMPRESA_FAILURE
 } from "../types/addmissionFormType";
 import Axios from "axios";
@@ -309,21 +308,20 @@ export const validarAfiliacion = (data) => (dispatch) => {
   validarData(data)
   .then((response) => {
 
-    dispatch({
-      type: DATE_EMPRESA_SUCCESS,
-      payload: response
-    });
+    // dispatch({
+    //   type: DATE_EMPRESA_SUCCESS,
+    //   payload: response
+    // });
     // console.log( response.data.content.response )
 
      const {Empresa, Sucursal, CotizacionesPaciente} = response.data.content.response;
-
      if(Empresa!=="Afiliada"){
       dispatch(handleSetStep(5.11));
      }
      else if(Sucursal!=="Vigente"){
       dispatch(handleSetStep(5.13));
      }
-     else if(!CotizacionesPaciente){
+     else if(CotizacionesPaciente!=="true"){
       dispatch(handleSetStep(5.12));
      }else{
       dispatch(handleSetStep(5.7));
