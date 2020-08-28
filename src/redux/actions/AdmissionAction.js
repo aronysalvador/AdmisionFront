@@ -346,7 +346,7 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     const objeto = {
       id_tipo: 1,
       id_estado: 2,
-      rut_paciente: "8960683-7",
+      rut_paciente: addmissionForm.rut, //"8960683-7",
       mail_admisionista: addmissionForm.emailusuario,
       admision_json: addmissionForm,
     };
