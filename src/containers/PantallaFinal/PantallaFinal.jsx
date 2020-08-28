@@ -94,7 +94,7 @@ const PantallaFinal = (props) => {
           <Button
             className={[comunStyle.buttonAchs, comunStyle.pantallaFinalBotones]}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(1))}
+            onClick={() => dispatch(handleSetStep(1.1))}
           >
             Firma de documentos en SAP
           </Button>
