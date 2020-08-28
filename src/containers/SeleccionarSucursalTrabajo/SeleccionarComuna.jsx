@@ -120,6 +120,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               dispatch(updateForm("SucursalEmpresaObjeto", sucursales[0]));
               dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
               dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
+              dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
               dispatch(handleSetStep(5.1));
             }
           }}

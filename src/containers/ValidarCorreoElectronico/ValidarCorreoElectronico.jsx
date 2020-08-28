@@ -42,11 +42,15 @@ const ValidarCorreoElectronico = () => {
   const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
   const handleEnd = () => {
+    
     if(isEmailValid){
       if(ID>0){
         dispatch(handlEndLog({Id: ID, fecha: FechaHora()})) 
       }
-      dispatch(updateForm("emailusuario", userEmail)) &&
+
+        dispatch(updateForm("emailusuario", userEmail));
+      
+      
       dispatch(handleSetStep(1000))
     }   
   }
@@ -54,7 +58,9 @@ const ValidarCorreoElectronico = () => {
   const handleChange = (event) => {
     setStateCheck( event.target.checked );
     if(event.target.checked){
-      setUserEmail("");
+      setIsEmailValid(validateEmailFormat("notienecorreo@achs.cl"));
+      setUserEmail("notienecorreo@achs.cl");
+
     }
   };
 

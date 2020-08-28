@@ -16,10 +16,11 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
     shallowEqual
   );
   const handlerGuradarSucursalTexto = (itemForm, data, step) => {
-    const { nombre, direccion } = data;
+    const { nombre, direccion, codigo } = data;
     const sucursalTexto = nombre;
     dispatch(updateForm(itemForm, sucursalTexto));
     dispatch(updateForm("DireccionEmpresa", direccion));
+    dispatch(updateForm("codigoSucursal", codigo));
   };
   return (
     <div className={root}>

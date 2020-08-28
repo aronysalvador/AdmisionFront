@@ -28,10 +28,12 @@ const IdentificationCompany = () => {
 
         dispatch(updateForm("razonSocial", json.content.response[0])) 
         dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
-        dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
+        //dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
+        dispatch(updateForm("rutEmpresa", rut));
       }else{
 
-        dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
+       // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
+       dispatch(updateForm("rutEmpresa", rut));
         dispatch(updateForm("razonSocial", "")) 
         dispatch(updateForm("razonSocialForm", "")) 
         
