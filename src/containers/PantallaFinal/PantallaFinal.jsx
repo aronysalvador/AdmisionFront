@@ -94,13 +94,13 @@ const PantallaFinal = (props) => {
           <Button
             className={[comunStyle.buttonAchs, comunStyle.pantallaFinalBotones]}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(2))}
+            onClick={() => dispatch(handleSetStep(1))}
           >
             Firma de documentos en SAP
           </Button>
           <div className={spaceStyle.spaceMin1}></div>
 
-          <Button
+          {/* <Button
             onClick={() => dispatch(handleSetStep(1))}
             variant="contained"
             className={[
@@ -110,7 +110,7 @@ const PantallaFinal = (props) => {
             size="small"
           >
             Ingresar nueva admisión
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
