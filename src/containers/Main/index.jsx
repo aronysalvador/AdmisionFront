@@ -75,6 +75,7 @@ import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
 import NoAfiliate from "../AffiliateValidations/NoAfiliate";
 import NoQuotes from "../AffiliateValidations/NoQuotes";
 import NoVigente from "../AffiliateValidations/NoVigente";
+import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -195,6 +196,14 @@ const Main = (props) => {
           <div className={blackLayout}>
             <Paper className={paperNoColor}>
               <NoVigente />
+            </Paper>
+          </div>
+        );
+      case 5.14:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <SucursalesNoVigentes />
             </Paper>
           </div>
         );
