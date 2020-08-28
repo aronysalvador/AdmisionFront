@@ -6,6 +6,7 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { getSucursales } from "../../redux/actions/SucursalesAction";
 
 const EditCompany = () => {
   const spaceStyle = getSpaceStyle();
@@ -17,6 +18,28 @@ const EditCompany = () => {
 
   const { buttonAchs, root, bottomElement, titleBlack, titleBlue } = getComunStyle();
   const dispatch = useDispatch();
+
+  const { sucursalesForm: {loading, data: sucursalesList} } = useSelector((state) => state, shallowEqual);
+
+    const [cargando, setCargando]= React.useState(false)
+
+  const handleNext= async() => {
+    setCargando(true)
+    await dispatch(getSucursales(rutEmpresa)); 
+
+  }
+
+  React.useEffect(()=>{
+    if(cargando){
+      if(!loading){
+        if(sucursalesList.length>0){
+          dispatch(handleSetStep(5.5))
+        }else{
+          dispatch(handleSetStep(5.14))
+        }
+      }
+    }
+  },[loading])
 
 
   return (
@@ -40,10 +63,9 @@ const EditCompany = () => {
           className={buttonAchs}
           variant="contained"
           type="submit"
-          disabled={!razonSocial || !rutEmpresa}
+          disabled={!razonSocial || !rutEmpresa || cargando}
           onClick={() => {
-            dispatch(handleSetStep(5.5));
-            //dispatch(updateForm("rutEmpresa",rutEmpresaForm))
+            handleNext()
           }}
         >
           Confirmar Empresa

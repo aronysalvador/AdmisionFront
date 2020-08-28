@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import {
-  handleSetStep,
   crearAdmisionSiniestroSAP,
 } from "../../redux/actions/AdmissionAction";
 

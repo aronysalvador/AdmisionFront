@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 export default function sucursalesForm(state = INITIAL_STATE, action) {
   switch (action.type) {
     case GET_SUCURSALES_INIT:
-      return { ...state, loading: true };
+      return { ...state, loading: true, data: [] };
 
     case GET_SUCURSALES_SUCCESS:
       return {

@@ -75,7 +75,7 @@ const LugarExactoSiniestro = () => {
         <Button
           className={buttonAchs}
           variant="contained"
-          disabled={!sucursal || !isLugarExactoAccidenteValid}
+          disabled={!sucursal || !isLugarExactoAccidenteValid || !sucursal.description.match(/\d+/g)}
           onClick={() => {
             dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
             dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
