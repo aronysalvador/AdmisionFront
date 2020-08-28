@@ -37,8 +37,15 @@ export const login = (scopes) => async (dispatch) => {
     };
     dispatch({ type: MSAL_SUCCESS, payload: userMsal });
     //PARCHE
-    var step =await  isNuevaAdmisionista(dispatch, userMsal.email)
-    dispatch(handleSetStep(step));
+    var userSAP =await  homologacionSap(dispatch, userMsal.email)
+    if(userSAP){
+      var step =await  isNuevaAdmisionista(dispatch, userMsal.email)
+      dispatch(handleSetStep(step));
+    }else{
+      dispatch(handleSetStep(1002));
+    }
+
+    
   } catch (err) {
     let error = {};
     if (typeof err === "string") {
@@ -77,11 +84,29 @@ export const getCenters = async(email) => {
 
 const isNuevaAdmisionista = async(dispatch, email) => {
     const result = await getCenters(email);
-    console.log(result)
+      
     if(result.data.data.length > 0) {
       dispatch(updateForm("centrosForm", result.data.data[0].centrosForm));
       return 1
     }else {
       return 40
     }
+};
+
+export const obtenerUsuarioSap = async (email) => {
+  return Axios.get(process.env.REACT_APP_HOMOLOGACION+'?email='+email);
+};
+
+
+const homologacionSap = async(dispatch, email) => {
+  const result = await obtenerUsuarioSap(email);
+debugger
+  if(result.data.content.length > 0) {  
+    debugger  
+    dispatch(updateForm("codigoSAP", result.data.content[0]));
+    return true
+  }else {
+    debugger
+    return false
+  }
 };
