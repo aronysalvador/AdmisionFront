@@ -72,6 +72,9 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
+import NoAfiliate from "../AffiliateValidations/NoAfiliate";
+import NoQuotes from "../AffiliateValidations/NoQuotes";
+import NoVigente from "../AffiliateValidations/NoVigente";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -80,7 +83,7 @@ const Main = (props) => {
   const initFn = useCallback(() => {
     if(!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
-      addmissionForm.step = 0;
+      // addmissionForm.step = 0;
     }
   }, [microsoftReducer]);
 
@@ -168,6 +171,30 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <PersonalData />
+            </Paper>
+          </div>
+        );
+      case 5.11:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoAfiliate />
+            </Paper>
+          </div>
+        );
+      case 5.12:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoQuotes />
+            </Paper>
+          </div>
+        );
+      case 5.13:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoVigente />
             </Paper>
           </div>
         );
