@@ -40,6 +40,14 @@ const DireccionParticular = () => {
   const { googleMap } = getComunStyle()
 
   const isLugarExactoAccidenteValid = true
+  
+
+  // React.useEffect(()=>{
+  //   if(direccion){
+  //     console.log(direccion.description.match(/\d+/g))
+  //   }
+
+  // },[direccion])
 
   return (
     <div className={root}>
@@ -77,7 +85,7 @@ const DireccionParticular = () => {
         <Button
           className={buttonAchs}
           variant="contained"
-          disabled={!direccion || !isLugarExactoAccidenteValid}
+          disabled={!direccion || !isLugarExactoAccidenteValid || !direccion.description.match(/\d+/g)}
           onClick={() => {
             dispatch(updateForm("direccionParticular", direccion.description))
             dispatch(updateForm("direccionParticularObj", direccion))
