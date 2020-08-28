@@ -95,8 +95,9 @@ const Cargo = () => {
 
       <div className={bottomElement}>
         <Button
+          variant="contained"
           className={buttonAchs}
-          isabled={!cargo}
+          disabled={!cargo}
           onClick={() => clickSendCargo()}
         >
           Continuar

@@ -5,7 +5,8 @@ import {
   SEND_TESTIGO,
   SEND_RESPONSABLE,
   LOAD_STATE_SESSIONSTORAGE,
-  SEND_CENTROACHS,
+  SEND_CENTROACHS,  
+  DATE_EMPRESA_FAILURE
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
@@ -143,7 +144,7 @@ export const saveRut = (rut) => {
           );
           dispatch(
             updateForm(
-              "razonSocialForm",
+              "razonSocial",
               result.data.content.response.NombreEmpresa
             )
           );
@@ -193,7 +194,7 @@ export const saveRut = (rut) => {
           //dispatch(setStep(500, 0));
             dispatch(setStep(5.81, 0));
             dispatch(updateForm("rut", ""));
-            dispatch(updateForm("razonSocialForm", ""));
+            dispatch(updateForm("razonSocial", ""));
             dispatch(updateForm("rutEmpresa", ""));
             dispatch(updateForm("isAfiliado", "No"));
             dispatch(updateForm("SucursalEmpresa", ""));
@@ -300,15 +301,37 @@ const sendCallCentroAchs = (nombre, codigo, uoMedica, uoTratamiento) => ({
 });
 
 export const validarData= async (data) => {
-  return Axios.get(process.env.REACT_APP_VALIDAR_DATA_EMPRESA+"/validate?rutPaciente="+data.rutPaciente+"/&rutEmpresa="+data.rutEmpresa+"/&BpSucursal="+data.BpSucursal);
+  return Axios.get(process.env.REACT_APP_VALIDAR_DATA_EMPRESA+"validate?rutPaciente="+data.rutPaciente+"&rutEmpresa="+data.rutEmpresa+"&BpSucursal="+data.BpSucursal);
 };
 
-export const validarAfiliacion = (data) => {
+export const validarAfiliacion = (data) => (dispatch) => {
   validarData(data)
   .then((response) => {
-     console.log(response)
+
+    // dispatch({
+    //   type: DATE_EMPRESA_SUCCESS,
+    //   payload: response
+    // });
+    // console.log( response.data.content.response )
+
+     const {Empresa, Sucursal, CotizacionesPaciente} = response.data.content.response;
+     if(Empresa!=="Afiliada"){
+      dispatch(handleSetStep(5.11));
+     }
+     else if(Sucursal!=="Vigente"){
+      dispatch(handleSetStep(5.13));
+     }
+     else if(!CotizacionesPaciente){
+      dispatch(handleSetStep(5.12));
+     }else{
+      dispatch(handleSetStep(5.7));
+     }
+
   })
   .catch((error) => {
-    console.log(error)
+    dispatch({
+      type: DATE_EMPRESA_FAILURE,
+      payload: error
+    });
   });
 };

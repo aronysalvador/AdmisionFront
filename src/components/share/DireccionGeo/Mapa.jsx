@@ -12,12 +12,27 @@ const Mapa = (props) => {
     const lat = props.LatTemporal ? props.LatTemporal :  (props.lat !== 'notset' ? props.lat : -33.436868834634076) ;
     const lng = props.LongTemporal ? props.LongTemporal : (props.lng !== 'notset' ? props.lng : -70.63447665106504);
     const { direccion, setDireccion, setPlaceId } = props
+    const { LatTemporal, LongTemporal, DireccionTemporal } = props
 
+    const lookForDirection = async(lat,lng) => {
+        if(lat && lng){
+            // const test = await fetch(`http://localhost:8080/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
+            const test = await fetch(`https://wa-desa-geolocalizacion.azurewebsites.net/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
+            const json = await test.json()      
+            if(json){
+                console.log(json.content[0].results[0].formatted_address)
+                setDireccion(json.content[0].results[0].formatted_address)
+                setPlaceId(json.content[0].results[0].place_id)
+            }
+        }
+    }
+     
 
+    // useEffect((lat,lng, lookForDirection, LatTemporal, LongTemporal, DireccionTemporal, setDireccion, setPlaceId)=>{
     useEffect(()=>{
-        if(props.LatTemporal && props.LongTemporal){
-            setDireccion(props.DireccionTemporal.description)
-            setPlaceId(props.DireccionTemporal.place_id)
+        if(LatTemporal && LongTemporal){
+            setDireccion(DireccionTemporal.description)
+            setPlaceId(DireccionTemporal.place_id)
         }else{
             lookForDirection(lat,lng)
         }       
@@ -34,19 +49,7 @@ const Mapa = (props) => {
         }
     };
 
-    const lookForDirection = async(lat,lng) => {
-        if(lat && lng){
-            // const test = await fetch(`http://localhost:8080/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
-            const test = await fetch(`https://wa-desa-geolocalizacion.azurewebsites.net/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
-            const json = await test.json()      
-            if(json){
-                console.log(json.content[0].results[0].formatted_address)
-                setDireccion(json.content[0].results[0].formatted_address)
-                setPlaceId(json.content[0].results[0].place_id)
-            }
-        }
-    }
-     
+
 
     return(
         <div>     

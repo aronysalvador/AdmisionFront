@@ -1,54 +1,55 @@
 export const AdmissionForm = {
-  step: 0,
-  percentage: 0,
-  rut: "",
-  isAfiliado: "",
-  empresa: "",
-  rutEmpresa: "",
-  isapreSeleccionado: {},
 
-  lugarAccidente: "",
-  objetoAccidente: "",
-  descripcionAccidente: "",
-  relatoAccidente: "",
-  volverAConcatenar: false,
+    step: 0,
+    percentage: 0,
+    rut: "",
+    isAfiliado: "",
+    empresa: "",
+    rutEmpresa: "",
+    isapreSeleccionado: {},
 
-  testigos: { nombre: "", cargo: "" },
-  responsable: [],
-  fechaHoraResponsable: {},
-  fechaHoraSiniestro: {},
+    lugarAccidente: "",
+    objetoAccidente: "",
+    descripcionAccidente: "",
+    relatoAccidente: "",
+    volverAConcatenar: false,
 
-  SucursalEmpresa: "",
-  DireccionEmpresa: "",
-  comunaEmpresa: "",
-  direccionParticular: "",
-  telefonoParticular: "",
+    testigos: { nombre: "", cargo: "" },
+    responsable: [],
+    fechaHoraResponsable: {},
+    fechaHoraSiniestro: {},
 
-  inicioJornadaLaboral: "",
-  finJornadaLaboral: "",
-  ingresoTrabajoActual: "",
-  desarrollarTrabajoHabitual: "",
-  tipoRemuneracion: {},
+    SucursalEmpresa: "",
+    DireccionEmpresa: "",
+    comunaEmpresa: "",
+    direccionParticular: "",
+    telefonoParticular: "",
 
-  tipoDeContrato: {},
+    inicioJornadaLaboral: "",
+    finJornadaLaboral: "",
+    ingresoTrabajoActual: "",
+    desarrollarTrabajoHabitual: "",
+    tipoRemuneracion: {},
 
-  //State de Cargo
-  cargoForm: "",
-  //Lugar Exacto Sinietsro
-  sucursalEmpresaSiniestro: "",
-  urlMapasucursalEmpresaSiniestro: "",
-  SucursalEmpresaObjeto: {},
+    tipoDeContrato: {},
 
-  centrosForm: {},
+    //State de Cargo
+    cargoForm: "",
+    //Lugar Exacto Sinietsro
+    sucursalEmpresaSiniestro: "",
+    urlMapasucursalEmpresaSiniestro: "",
+    SucursalEmpresaObjeto: {},
 
-  siniestros: [],
-  siniestroDetalle: {}, //no va a SAP
-  siniestroOpciones: {}, //no va a SAP
+    centrosForm: {},
 
-  tipoSiniestro: {},
+    siniestros: [],
+    siniestroDetalle: {}, //no va a SAP
+    siniestroOpciones: {}, //no va a SAP
 
-  DireccionTemporal: {},  // direccion temporal que es enviada al mapa dinámico
-  LatTemporal: "",  // latitud temporal que es enviada al mapa dinámico
-  LongTemporal: "",  // longitud temporal que es enviada al mapa dinámico
-  AccidenteEnSucursal: "",
+    tipoSiniestro: {},
+
+    DireccionTemporal: {}, // direccion temporal que es enviada al mapa dinámico
+    LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
+    LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
+    AccidenteEnSucursal: "",
 };

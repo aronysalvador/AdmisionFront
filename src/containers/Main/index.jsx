@@ -72,6 +72,9 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
+import NoAfiliate from "../AffiliateValidations/NoAfiliate";
+import NoQuotes from "../AffiliateValidations/NoQuotes";
+import NoVigente from "../AffiliateValidations/NoVigente";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -168,6 +171,30 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <PersonalData />
+            </Paper>
+          </div>
+        );
+      case 5.11:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoAfiliate />
+            </Paper>
+          </div>
+        );
+      case 5.12:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoQuotes />
+            </Paper>
+          </div>
+        );
+      case 5.13:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoVigente />
             </Paper>
           </div>
         );
@@ -468,7 +495,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Cargo /> {/* <TipoJornadaLaboral /> */}
+              <Cargo /> 
             </Paper>
           </div>
         );
@@ -476,7 +503,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoJornadaLaboral />  {/* <JornadaLaboralContainer /> */}
+              <TipoJornadaLaboral /> 
             </Paper>
           </div>
         );
@@ -484,7 +511,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <JornadaLaboralContainer />  {/* <Cargo /> */}
+              <JornadaLaboralContainer />
             </Paper>
           </div>
         );
@@ -492,7 +519,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoDeContrato /> {/* <CategoriaOcupacional /> */}
+              <TipoDeContrato />
             </Paper>
           </div>
         );
@@ -500,7 +527,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Remuneracion /> {/* <TipoDeContrato /> */}
+              <Remuneracion />
             </Paper>
           </div>
         );
@@ -508,7 +535,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <CategoriaOcupacional />  {/* <Remuneracion /> */}
+              <CategoriaOcupacional />
             </Paper>
           </div>
         );
