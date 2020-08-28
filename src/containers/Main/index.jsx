@@ -65,6 +65,7 @@ import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
 import SameDateSinister from "../AffiliateValidations/SameDateSinister";
+import NoCuentaSap from "../AffiliateValidations/NoCuentaSap";
 
 import Achs from "../IdentificacionACHS/index";
 import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
@@ -622,6 +623,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <ErrorCaso />
+            </Paper>
+          </div>
+        );
+      case 1003:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoCuentaSap />
             </Paper>
           </div>
         );
