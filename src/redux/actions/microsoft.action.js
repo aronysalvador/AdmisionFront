@@ -42,7 +42,7 @@ export const login = (scopes) => async (dispatch) => {
       var step =await  isNuevaAdmisionista(dispatch, userMsal.email)
       dispatch(handleSetStep(step));
     }else{
-      dispatch(handleSetStep(1002));
+      dispatch(handleSetStep(1003));
     }
 
     
@@ -100,12 +100,12 @@ export const obtenerUsuarioSap = async (email) => {
 
 const homologacionSap = async(dispatch, email) => {
   const result = await obtenerUsuarioSap(email);
-  if(result.data.content.length > 0) {  
-     
+  //const result = await obtenerUsuarioSap("asalvador@gmail.com")
+
+  if(result.data.content[0].length > 0) { 
     dispatch(updateForm("codigoSAP", result.data.content[0]));
     return true
-  }else {
-    
+  }else {   
     return false
   }
 };
