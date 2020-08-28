@@ -100,13 +100,12 @@ export const obtenerUsuarioSap = async (email) => {
 
 const homologacionSap = async(dispatch, email) => {
   const result = await obtenerUsuarioSap(email);
-debugger
   if(result.data.content.length > 0) {  
-    debugger  
+     
     dispatch(updateForm("codigoSAP", result.data.content[0]));
     return true
   }else {
-    debugger
+    
     return false
   }
 };
