@@ -25,7 +25,7 @@ const EditCompany = () => {
 
   const handleNext= async() => {
     setCargando(true)
-   await dispatch(getSucursales(rutEmpresa)); 
+    await dispatch(getSucursales(rutEmpresa)); 
 
   }
 
