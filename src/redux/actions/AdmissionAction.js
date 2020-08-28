@@ -5,8 +5,8 @@ import {
   SEND_TESTIGO,
   SEND_RESPONSABLE,
   LOAD_STATE_SESSIONSTORAGE,
-  SEND_CENTROACHS,  
-  DATE_EMPRESA_FAILURE
+  SEND_CENTROACHS,
+  DATE_EMPRESA_FAILURE,
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
@@ -61,7 +61,7 @@ export const obtenerData = async (rut) => {
 };
 
 export const obtenerDataRazon = async (rutEmpresa) => {
-  return Axios.get(process.env.REACT_APP_RAZON_SOCIAL_RUT+rutEmpresa);
+  return Axios.get(process.env.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa);
 };
 
 export const saveRut = (rut) => {
@@ -101,15 +101,19 @@ export const saveRut = (rut) => {
           // determinar siguiente paso
           var STEP = "";
           if (Object.keys(result.data.content.response.cita).length !== 0) {
-            STEP=5.82
+            STEP = 5.82;
           } else if (result.data.content.response.siniestros.length > 0) {
             const mensajeAlerta = "Este paciente ya tiene un siniestro";
             const mensajeBoton = "Ver su(s) siniestro(s)";
             const origen = "getRut";
             dispatch(
-              updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen})
+              updateForm("siniestroOpciones", {
+                mensajeAlerta,
+                mensajeBoton,
+                origen,
+              })
             );
-            STEP=5.83
+            STEP = 5.83;
           } else {
             if (
               !result.data.content.response.NombreEmpresa ||
@@ -133,10 +137,10 @@ export const saveRut = (rut) => {
               STEP = 5.1; // resumen data
             }
           }
-          
+
           dispatch(handleSetStep(STEP));
 
-          dispatch(saveRazonSocial(result.data.content.response.RutPagador))
+          dispatch(saveRazonSocial(result.data.content.response.RutPagador));
 
           dispatch(updateForm("cita", result.data.content.response.cita));
           dispatch(
@@ -150,7 +154,6 @@ export const saveRut = (rut) => {
           );
           dispatch(
             updateForm("rutEmpresa", result.data.content.response.RutPagador)
-            
           );
           dispatch(updateForm("isAfiliado", "Si"));
           dispatch(
@@ -179,7 +182,7 @@ export const saveRut = (rut) => {
 
               result.data.content.response.direccionParticular
             )
-          );        
+          );
           dispatch(
             updateForm(
               "telefonoParticular",
@@ -189,47 +192,38 @@ export const saveRut = (rut) => {
                 : result.data.content.response.telefonoParticular
             )
           );
-
-        } else { // NO TIENE BP
+        } else {
+          // NO TIENE BP
           //dispatch(setStep(500, 0));
-            dispatch(setStep(5.81, 0));
-            dispatch(updateForm("rut", ""));
-            dispatch(updateForm("razonSocial", ""));
-            dispatch(updateForm("rutEmpresa", ""));
-            dispatch(updateForm("isAfiliado", "No"));
-            dispatch(updateForm("SucursalEmpresa", ""));
-            dispatch(updateForm("DireccionEmpresa", ""));
-            dispatch(updateForm("comunaEmpresa", ""));
-            dispatch(updateForm("direccionParticular", ""));
-            dispatch(updateForm("telefonoParticular", ""));
+          dispatch(setStep(5.81, 0));
+          dispatch(updateForm("rut", ""));
+          dispatch(updateForm("razonSocial", ""));
+          dispatch(updateForm("rutEmpresa", ""));
+          dispatch(updateForm("isAfiliado", "No"));
+          dispatch(updateForm("SucursalEmpresa", ""));
+          dispatch(updateForm("DireccionEmpresa", ""));
+          dispatch(updateForm("comunaEmpresa", ""));
+          dispatch(updateForm("direccionParticular", ""));
+          dispatch(updateForm("telefonoParticular", ""));
         }
-      }
-      
-      
-      )
+      })
       .catch((error) => {
         console.log("error: " + String(error));
       });
   };
 };
 
- const saveRazonSocial = (rut) => {
+const saveRazonSocial = (rut) => {
   return (dispatch) => {
-    if(rut){
+    if (rut) {
       obtenerDataRazon(rut)
-      .then((result) => {     
-      dispatch(
-        updateForm(
-          "razonSocial",
-          result.data.content.response[0]
-        )
-      );
-      })
-      .catch((error) => {       
-        console.log("error: " + String(error));
-      });
+        .then((result) => {
+          dispatch(updateForm("razonSocial", result.data.content.response[0]));
+        })
+        .catch((error) => {
+          console.log("error: " + String(error));
+        });
     }
-    
   };
 };
 
@@ -300,38 +294,74 @@ const sendCallCentroAchs = (nombre, codigo, uoMedica, uoTratamiento) => ({
   },
 });
 
-export const validarData= async (data) => {
-  return Axios.get(process.env.REACT_APP_VALIDAR_DATA_EMPRESA+"validate?rutPaciente="+data.rutPaciente+"&rutEmpresa="+data.rutEmpresa+"&BpSucursal="+data.BpSucursal);
+export const validarData = async (data) => {
+  return Axios.get(
+    process.env.REACT_APP_VALIDAR_DATA_EMPRESA +
+      "validate?rutPaciente=" +
+      data.rutPaciente +
+      "&rutEmpresa=" +
+      data.rutEmpresa +
+      "&BpSucursal=" +
+      data.BpSucursal
+  );
 };
 
 export const validarAfiliacion = (data) => (dispatch) => {
   validarData(data)
-  .then((response) => {
+    .then((response) => {
+      // dispatch({
+      //   type: DATE_EMPRESA_SUCCESS,
+      //   payload: response
+      // });
+      // console.log( response.data.content.response )
 
-    // dispatch({
-    //   type: DATE_EMPRESA_SUCCESS,
-    //   payload: response
-    // });
-    // console.log( response.data.content.response )
-
-     const {Empresa, Sucursal, CotizacionesPaciente} = response.data.content.response;
-     if(Empresa!=="Afiliada"){
-      dispatch(handleSetStep(5.11));
-     }
-     else if(Sucursal!=="Vigente"){
-      dispatch(handleSetStep(5.13));
-     }
-     else if(!CotizacionesPaciente){
-      dispatch(handleSetStep(5.12));
-     }else{
-      dispatch(handleSetStep(5.7));
-     }
-
-  })
-  .catch((error) => {
-    dispatch({
-      type: DATE_EMPRESA_FAILURE,
-      payload: error
+      const {
+        Empresa,
+        Sucursal,
+        CotizacionesPaciente,
+      } = response.data.content.response;
+      if (Empresa !== "Afiliada") {
+        dispatch(handleSetStep(5.11));
+      } else if (Sucursal !== "Vigente") {
+        dispatch(handleSetStep(5.13));
+      } else if (!CotizacionesPaciente) {
+        dispatch(handleSetStep(5.12));
+      } else {
+        dispatch(handleSetStep(5.7));
+      }
+    })
+    .catch((error) => {
+      dispatch({
+        type: DATE_EMPRESA_FAILURE,
+        payload: error,
+      });
     });
-  });
+};
+
+export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
+  try {
+    debugger;
+    const { addmissionForm } = getState();
+
+    const objeto = {
+      id_tipo: 1,
+      id_estado: 2,
+      rut_paciente: addmissionForm.rut, //"8960683-7",
+      mail_admisionista: addmissionForm.emailusuario,
+      admision_json: addmissionForm,
+    };
+    debugger;
+    Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
+      .then(({ data }) => {
+        debugger;
+        const siniestroID = data.content[0].siniestroID;
+        debugger;
+        dispatch(updateForm("siniestroID", siniestroID));
+        debugger;
+        dispatch(handleSetStep(1001));
+      })
+      .catch((err) => dispatch(handleSetStep(1002)));
+  } catch (error) {
+    dispatch(handleSetStep(1002));
+  }
 };

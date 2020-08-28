@@ -4,7 +4,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -12,7 +11,8 @@ import IndiciacionesPacientes from "../../components/Indicaciones";
 import CajaRutSiniestro from "./CajaRutSiniestro";
 
 const PantallaFinal = (props) => {
-  const { dispatch, microsoftReducer } = props;
+  const { dispatch, microsoftReducer, addmissionForm } = props;
+  const { siniestroID, rut } = addmissionForm;
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -46,11 +46,11 @@ const PantallaFinal = (props) => {
       <div className={welcomeStyle.beginContainerCard}>
         <div className={welcomeStyle.rutSiniestroContainer}>
           <CajaRutSiniestro
-            textoPrincipal="1234567"
+            textoPrincipal={siniestroID}
             textoSecundario="ID Siniestro"
           />
           <CajaRutSiniestro
-            textoPrincipal="25.951.215-8"
+            textoPrincipal={rut}
             textoSecundario="Rut Paciente"
           />
         </div>
@@ -94,23 +94,11 @@ const PantallaFinal = (props) => {
           <Button
             className={[comunStyle.buttonAchs, comunStyle.pantallaFinalBotones]}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(2))}
+            onClick={() => dispatch(handleSetStep(1.1))}
           >
             Firma de documentos en SAP
           </Button>
           <div className={spaceStyle.spaceMin1}></div>
-
-          <Button
-            onClick={() => dispatch(handleSetStep(1))}
-            variant="contained"
-            className={[
-              comunStyle.buttonAchs2,
-              comunStyle.pantallaFinalBotones,
-            ]}
-            size="small"
-          >
-            Ingresar nueva admisión
-          </Button>
         </div>
       </div>
     </div>

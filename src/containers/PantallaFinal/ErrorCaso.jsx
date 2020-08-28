@@ -79,7 +79,7 @@ const ErrorCaso = (props) => {
       </Typography>
       <div className={comunClass.bottomElement}>
         <Button
-          onClick={() => dispatch(handleSetStep(1))}
+          onClick={() => dispatch(handleSetStep(1000))}
           className={comunClass.buttonAchs2}
           style={{ borderRadius: "10px" }}
         >
