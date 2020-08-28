@@ -8,6 +8,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHS from "../../components/share/BoxACHS/index";
 import BoxEmpresa from "../../components/share/BoxEmpresa/index";
 import Button from "@material-ui/core/Button";
+import { useState } from "react";
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -34,12 +35,17 @@ const PersonalData = (props) => {
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
+  const [loading, setLoading] = useState(false)
+
   const handleNext = () => {
+
+    setLoading(true)
+
     const { 
-      razonSocial, SucursalEmpresa, DireccionEmpresa, direccionParticular, telefonoParticular,      
+      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,      
       rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
 
-    if ( !razonSocial || !SucursalEmpresa || !DireccionEmpresa || !rutEmpresa ) {
+    if ( !razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa ) {
       // si falta info de la empresa
       dispatch(handleSetStep(5.4)); //form empresa
     } else if (!direccionParticular) {
@@ -98,6 +104,7 @@ const PersonalData = (props) => {
         <Button
           className={comunClass.buttonAchs}
           //variant="contained"
+          disabled={loading}
           onClick={() => handleNext()}
         >
           Sí, es correcta
