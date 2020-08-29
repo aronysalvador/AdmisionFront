@@ -340,7 +340,7 @@ export const validarAfiliacion = (data) => (dispatch) => {
 
 export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
   try {
-    debugger;
+    //debugger;
     const { addmissionForm } = getState();
 
     const objeto = {
@@ -350,14 +350,21 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
       mail_admisionista: addmissionForm.emailusuario,
       admision_json: addmissionForm,
     };
-    debugger;
+    //debugger;
+
+    //console.log("*********************************************")
+    //console.log(JSON.stringify(objeto))
+    //console.log("*********************************************")
+    //console.log(process.env.REACT_APP_INTEGRACION_SAP)
+
+    //Axios.post('http://localhost/api/integracionsap', objeto)
     Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
       .then(({ data }) => {
-        debugger;
+        //debugger;
         const siniestroID = data.content[0].siniestroID;
-        debugger;
+       //debugger;
         dispatch(updateForm("siniestroID", siniestroID));
-        debugger;
+        //debugger;
         dispatch(handleSetStep(1001));
       })
       .catch((err) => dispatch(handleSetStep(1002)));
