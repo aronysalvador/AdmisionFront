@@ -39,6 +39,24 @@ const LugarExactoSiniestro = () => {
 
   const isLugarExactoAccidenteValid = true
 
+  const isSucursalValida = ()=>{
+
+    console.log("**********sucursal***********")
+    console.log(typeof sucursal.description)
+    console.log("*********************")
+
+    if(typeof sucursal.description == 'string'){
+      const fragmentos  = sucursal.description.split(",")
+      console.log("fragmentos",fragmentos)
+      if(Array.isArray(fragmentos) && fragmentos.length === 3 && fragmentos[0].match(/\d+/g) ){
+        console.log("validando =)")
+        return true
+      }
+    }
+    return false
+    //return !sucursal || !isLugarExactoAccidenteValid || !sucursal.description.match(/\d+/g) 
+  }
+
   return (
     <div className={root}>
       <Cabecera
@@ -72,10 +90,11 @@ const LugarExactoSiniestro = () => {
      
 
       <div className={bottomElement}>
+        
         <Button
           className={buttonAchs}
           variant="contained"
-          disabled={!sucursal || !isLugarExactoAccidenteValid || !sucursal.description.match(/\d+/g)}
+          disabled={!isSucursalValida()}
           onClick={() => {
             dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
             dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
