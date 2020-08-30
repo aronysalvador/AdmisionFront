@@ -362,11 +362,8 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     //Axios.post('http://localhost/api/integracionsap', objeto)
     Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
       .then(({ data }) => {
-        //debugger;
         const siniestroID = data.content[0].siniestroID;
-       //debugger;
         dispatch(updateForm("siniestroID", siniestroID));
-        //debugger;
         dispatch(handleSetStep(1001));
       })
       .catch((err) => dispatch(handleSetStep(1002)));
