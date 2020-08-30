@@ -357,6 +357,8 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     //console.log("*********************************************")
     //console.log(process.env.REACT_APP_INTEGRACION_SAP)
 
+
+
     //Axios.post('http://localhost/api/integracionsap', objeto)
     Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
       .then(({ data }) => {
