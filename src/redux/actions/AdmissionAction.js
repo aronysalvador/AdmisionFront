@@ -350,12 +350,12 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
       admision_json: addmissionForm,
     };
 
-    console.log("*********************************************")
-    console.log(JSON.stringify(objeto))
-    console.log("*********************************************")
+    //console.log("*********************************************")
+    //console.log(JSON.stringify(objeto))
+    //console.log("*********************************************")
     
 
-    Axios.post('http://localhost/api/integracionsap', objeto)
+    Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
       .then(({ data }) => {
         const siniestroID = data.content[0].siniestroID;
         dispatch(updateForm("siniestroID", siniestroID));
