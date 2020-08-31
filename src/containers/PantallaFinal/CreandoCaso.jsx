@@ -49,10 +49,14 @@ const CreandoCaso = (props) => {
 
   useEffect(() => {
     dispatch(crearAdmisionSiniestroSAP());
+<<<<<<< HEAD
     // setTimeout(() => {
     //   dispatch(handleSetStep(1001));
     // }, 6000);
   }, [crearAdmisionSiniestroSAP]);
+=======
+  },[]);
+>>>>>>> d8e7301e92137754792510a0081814d07e937d4d
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();

@@ -48,7 +48,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
 
   useEffect(() => {
     const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
-      comunaList.find((x) => x?.codigo_comuna === sucursal?.id_comuna)
+      comunaList.find((x) => x?.codigo_comuna === sucursal?.id_comuna && parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region))
     );
     
     const uniqueAddresses = Array.from(
@@ -85,7 +85,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         onChange={(event, value) => {
           console.log({ value });
           const sucursalesComuna = sucursalesEmpresa.filter(
-            (x) => x.id_comuna === value?.codigo_comuna
+            (x) => x.id_comuna === value?.codigo_comuna && parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
           );
 
           console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
