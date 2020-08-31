@@ -47,7 +47,7 @@ export default function payload(state = AdmissionForm, action) {
       var response = AdmissionForm
       response.centrosForm = state.centrosForm
       response.tipoSiniestro = state.tipoSiniestro
-      console.log(state.centrosForm)
+      response.usuarioSAP = state.usuarioSAP
       return response;
 
     case DATE_EMPRESA_SUCCESS:
