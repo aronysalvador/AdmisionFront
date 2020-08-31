@@ -51,10 +51,7 @@ const CreandoCaso = (props) => {
 
   useEffect(() => {
     dispatch(crearAdmisionSiniestroSAP());
-    // setTimeout(() => {
-    //   dispatch(handleSetStep(1001));
-    // }, 6000);
-  });
+  },[]);
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
