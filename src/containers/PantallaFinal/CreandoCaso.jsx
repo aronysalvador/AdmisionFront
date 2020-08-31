@@ -4,9 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import {
-  crearAdmisionSiniestroSAP,
-} from "../../redux/actions/AdmissionAction";
+import { crearAdmisionSiniestroSAP } from "../../redux/actions/AdmissionAction";
 
 const getUseStyles = makeStyles({
   center: {
@@ -54,7 +52,7 @@ const CreandoCaso = (props) => {
     // setTimeout(() => {
     //   dispatch(handleSetStep(1001));
     // }, 6000);
-  });
+  }, [crearAdmisionSiniestroSAP]);
 
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
