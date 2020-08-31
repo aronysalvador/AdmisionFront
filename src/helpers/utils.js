@@ -20,3 +20,7 @@ export function Hora(){
     var newFecha = `${x[1]}`
     return newFecha
 }
+
+export const eliminarDiacriticos=(texto)=> {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+}
