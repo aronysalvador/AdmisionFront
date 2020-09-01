@@ -353,13 +353,18 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     //console.log("*********************************************")
     //console.log(JSON.stringify(objeto))
     //console.log("*********************************************")
-    
 
     Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
       .then(({ data }) => {
-        const siniestroID = data.content[0].siniestroID;
-        dispatch(updateForm("siniestroID", siniestroID));
-        dispatch(handleSetStep(1001));
+        debugger;
+        if (data.status == "200") {
+          const siniestroID = data.content[0].siniestroID;
+          dispatch(updateForm("siniestroID", siniestroID));
+          dispatch(handleSetStep(1001));
+        }
+        if (data.status == "500") {
+          dispatch(handleSetStep(1002));
+        }
       })
       .catch((err) => dispatch(handleSetStep(1002)));
   } catch (error) {
