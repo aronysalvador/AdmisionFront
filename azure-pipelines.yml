@@ -8,7 +8,7 @@ trigger:
   
 variables:
   - group: Variables-CICD_IaC
-
+#
 stages:
   - stage: Deploy_DESA
     displayName: Deploy DESA
