@@ -12,7 +12,14 @@ variables:
 stages:
   - stage: Deploy_DESA
     displayName: Deploy DESA
-
+    - script: | 
+      echo "variables['sourceBranchDeployToDESA']"  
+    condition: |
+      and(
+        startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToDESA']),
+        eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToDESA']),
+        eq(variables['Build.Reason'], 'PullRequest')
+      ) 
     jobs: 
       - job: buildJob
         displayName: Build and Publish
