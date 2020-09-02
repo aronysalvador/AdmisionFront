@@ -1,5 +1,5 @@
 trigger:
-  - none
+  - Pull Request
   
 variables:
   - group: 'Variables-CICD_IaC'
