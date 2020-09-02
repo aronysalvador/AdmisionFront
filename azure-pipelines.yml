@@ -23,7 +23,7 @@ stages:
         steps:
         - script: |
             echo "hola" 
-            echo $(variables['sourceBranchDeployToDESA'])
+            echo "Variable: " $(sourceBranchDeployToDESA)
             pwd
             ls -lha
         - task: Docker@2
