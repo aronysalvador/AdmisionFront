@@ -3,8 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 export const getWelcomeStyle = makeStyles((theme) => ({
     avatarContainer: {
         borderColor: "#FF00FF",
-        paddingLeft: "8em",
-        display: "inline-flex",
+        // paddingLeft: "8em",
+        display: "flex",
+        justifyContent: "center",
     },
     avatarContainerRight: {
         borderColor: "#FF00FF",
@@ -116,7 +117,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         borderRadius: "10px",
     },
     titleContainerCards2: {
-        padding: "1.5em 1.5em 0.5em 1.5em",
+        padding: "1.5em 1.5em 0.5em 3em",
         background: "#FFFFFF",
         boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
         borderRadius: "10px",

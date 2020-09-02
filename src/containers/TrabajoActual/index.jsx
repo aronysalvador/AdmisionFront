@@ -64,7 +64,7 @@ const TrabajoActualContainer = () => {
       <Typography className={titleBlack}>
         Indica la
         <div className={titleBlue}>
-          &nbsp;fecha aproximada de ingreso
+          &nbsp;fecha aproximada en que ingresó
         </div>
         &nbsp;a su trabajo actual
       </Typography>

@@ -5,7 +5,7 @@ import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
 const QuestionButton = (props) => {
-  const { titulo, accionButoonA, accionButoonB, tituloA, tituloB } = props;
+  const { titulo, titulo2, titulo3, accionButoonA, accionButoonB, tituloA, tituloB } = props;
 
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -15,6 +15,7 @@ const QuestionButton = (props) => {
       <div>
         <Typography variant="p" component="p" className={classesComun.titleBlack}>
           {titulo}
+          <span className={classesComun.titleBlue}> {titulo2} </span>{titulo3}
         </Typography>
       </div>
 

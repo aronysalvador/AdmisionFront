@@ -23,7 +23,7 @@ const RelatoFinal = (props) => {
       ". Lo que ocurrió fue que " +
       addmissionForm.descripcionAccidente +
       ". El accidente ocurrió con " +
-      addmissionForm.objetoAccidente
+      addmissionForm.objetoAccidente + "."
     );
   };
 
