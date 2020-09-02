@@ -45,9 +45,9 @@ const FechaHoraResponsable = () => {
       />
       <Typography className={titleBlack}>
         <div className={titleBlue}>
-          Cuando y a qué hora se le avisó 
+          ¿Cuándo y a que hora se le avisó 
         </div>
-        &nbsp;al responsable
+        &nbsp;al responsable?
       </Typography>
       <div className={spaceStyle.space2} />
       <FechaSiniestro
