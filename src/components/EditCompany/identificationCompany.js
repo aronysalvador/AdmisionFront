@@ -20,7 +20,7 @@ const IdentificationCompany = () => {
     
     if (isValid) {
       
-      const test = await fetch(`https://wa-desa-msorquestador.azurewebsites.net/api/sap/razonSocialByRut?rut=${rut}`)
+      const test = await fetch( process.env.REACT_APP_RAZON_SOCIAL_RUT+rut)
       const json = await test.json()
 
 

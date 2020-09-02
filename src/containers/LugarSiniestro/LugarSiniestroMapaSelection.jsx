@@ -77,7 +77,7 @@ const LugarSiniestroMapaSelection = () => {
 
   const googleMapsGetMap = async(placeId) => {
     if(placeId){
-      let urlMapa =  `https://wa-desa-msorquestador.azurewebsites.net/api/geo/getMapaEstatico?id=${placeId}&size=300x280`
+      let urlMapa =  `${process.env.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
       dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
     }else{
       console.log("no place")

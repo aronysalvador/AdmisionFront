@@ -314,21 +314,32 @@ export const validarAfiliacion = (data) => (dispatch) => {
       //   payload: response
       // });
       // console.log( response.data.content.response )
-
-      const {
-        Empresa,
-        Sucursal,
-        CotizacionesPaciente,
-      } = response.data.content.response;
-      if (Empresa !== "Afiliada") {
-        dispatch(handleSetStep(5.11));
-      } else if (Sucursal !== "Vigente") {
-        dispatch(handleSetStep(5.13));
-      } else if (!CotizacionesPaciente) {
-        dispatch(handleSetStep(5.12));
-      } else {
-        dispatch(handleSetStep(5.7));
+      
+      console.log(response.data.content)
+      if(Object.entries(response.data.content).length === 0){  //respuesta vacia
+        dispatch(handleSetStep(500));       
+      }else{
+        console.log(response.data.content.response.length)
+        if(response.data.content.response.length === 0){
+          dispatch(handleSetStep(500));  
+        }else{
+          const {
+            Empresa,
+            Sucursal,
+            CotizacionesPaciente,
+          } = response.data.content.response;
+          if (Empresa !== "Afiliada") {
+            dispatch(handleSetStep(5.11));
+          } else if (Sucursal !== "Vigente") {
+            dispatch(handleSetStep(5.13));
+          } else if (!CotizacionesPaciente) {
+            dispatch(handleSetStep(5.12));
+          } else {
+            dispatch(handleSetStep(5.7));
+          }
+        }
       }
+
     })
     .catch((error) => {
       dispatch({
@@ -357,12 +368,12 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
       .then(({ data }) => {
         debugger;
-        if (data.status == "200") {
+        if (data.status === "200") {
           const siniestroID = data.content[0].siniestroID;
           dispatch(updateForm("siniestroID", siniestroID));
           dispatch(handleSetStep(1001));
         }
-        if (data.status == "500") {
+        if (data.status === "500") {
           dispatch(handleSetStep(1002));
         }
       })
