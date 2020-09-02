@@ -29,7 +29,7 @@ stages:
         steps:
         - script: |
             echo "hola" 
-            env | grep -i system
+            env | grep -i feature
             echo "Variable: " $SYSTEM_PULLREQUEST_SOURCEBRANCH
             echo "Variable: " $(sourceBranchDeployToDESA)
             echo "Variable: " $SYSTEM_PULLREQUEST_TARGETBRANCH
