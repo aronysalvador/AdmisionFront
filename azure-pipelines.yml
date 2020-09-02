@@ -29,9 +29,9 @@ stages:
         steps:
         - script: |
             echo "hola" 
-            echo "Variable: " $(SYSTEM_PULLREQUEST_SOURCEBRANCH)
+            echo "Variable: " $SYSTEM_PULLREQUEST_SOURCEBRANCH
             echo "Variable: " $(sourceBranchDeployToDESA)
-            echo "Variable: " $(SYSTEM_PULLREQUEST_TARGETBRANCH)
+            echo "Variable: " $SYSTEM_PULLREQUEST_TARGETBRANCH
             echo "Variable: " $(targetBranchDeployToDESA)
             echo "Variable: " $(Build.Reason)
             pwd
