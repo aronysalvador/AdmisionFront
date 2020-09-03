@@ -32,6 +32,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         width: "5em",
         height: "5em",
         verticalAlign: "middle",
+        padding: "2em",
     },
     avatarBegin: {
         width: "3.5em",

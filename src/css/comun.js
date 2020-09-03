@@ -309,4 +309,65 @@ export const getComunStyle = makeStyles((theme) => ({
         backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
         padding: 0,
     },
+
+    boxRootRelato: {
+        padding: "5px",
+        backgroundColor: "#FFFFFF",
+        border: "1px solid #FAFAFA",
+        borderRadius: "10px",
+        minHeight: "350px",
+        overFlowY: "auto",
+    },
+
+    boxRelato: {
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "10px",
+    },
+
+    boxRelatoText: {
+        fontFamily: "Catamaran",
+        fontSize: "1em",
+        lineHeight: "1.563em",
+        padding: "10px",
+        overflowWrap: "break-word",
+        overflow: "auto",
+        height: "24em",
+        '&::-webkit-scrollbar': {
+            width: 8,
+        },
+        '&::-webkit-scrollbar-track': {
+            boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+            webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(0,0,0,.2)',
+            outline: '1px solid slategrey',
+            borderRadius: 4,
+        },
+    },
+
+    buttonEditRelato: {
+        cursor: "pointer",
+        textDecoration: "underline",
+        color: "#DEDEDE",
+    },
+    scrollText: {
+        fontFamily: "Catamaran",
+        fontSize: "1em",
+        overflow: 'auto',
+        '&::-webkit-scrollbar': {
+            width: 8,
+        },
+        '&::-webkit-scrollbar-track': {
+            boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+            webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(0,0,0,.2)',
+            outline: '1px solid slategrey',
+            borderRadius: 4,
+        },
+    }
+
 }));
