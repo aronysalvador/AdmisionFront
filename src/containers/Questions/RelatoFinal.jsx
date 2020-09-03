@@ -130,20 +130,12 @@ const RelatoFinal = (props) => {
             ) : (
               <div>
                 <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "10px",
-                  }}
+                  className={classesComun.boxRelato}
                 >
                   <div style={{ fontWeight: "bold" }}>Relato:</div>
                   <div>
                     <div
-                      style={{
-                        cursor: "pointer",
-                        textDecoration: "underline",
-                        color: "#DEDEDE",
-                      }}
+                      className={classesComun.buttonEditRelato}
                       onClick={() => setEditable(true)}
                     >
                       Editar
@@ -151,13 +143,7 @@ const RelatoFinal = (props) => {
                   </div>
                 </div>
                 <div
-                  style={{
-                    fontFamily: "Catamaran",
-                    fontSize: "1em",
-                    lineHeight: "1.563em",
-                    padding: "10px",
-                    overflowWrap: "break-word"
-                  }}
+                  className={classesComun.boxRelatoText}
                 >
                   {localValue}
                 </div>

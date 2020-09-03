@@ -309,4 +309,26 @@ export const getComunStyle = makeStyles((theme) => ({
         backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
         padding: 0,
     },
+
+    boxRelato: {
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "10px",
+    },
+
+    boxRelatoText: {
+        fontFamily: "Catamaran",
+        fontSize: "1em",
+        lineHeight: "1.563em",
+        padding: "10px",
+        overflowWrap: "break-word",
+        overflow: "auto",
+        height: "24em",
+    },
+
+    buttonEditRelato: {
+        cursor: "pointer",
+        textDecoration: "underline",
+        color: "#DEDEDE",
+    },
 }));
