@@ -36,8 +36,8 @@ stages:
             value: envs
         steps:
         - script: |
-            echo "hola" 
-            env | grep -i feature
+            echo "hola TAG" 
+            env | grep -i tag
             echo "Variable: " $SYSTEM_PULLREQUEST_SOURCEBRANCH
             echo "Variable: " $(sourceBranchDeployToDESA)
             echo "Variable: " $SYSTEM_PULLREQUEST_TARGETBRANCH
