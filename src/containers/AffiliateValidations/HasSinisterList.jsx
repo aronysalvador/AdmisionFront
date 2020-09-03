@@ -30,8 +30,8 @@ const PersonalData = (props) => {
     if (busqueda === undefined) {
       var STEP = "";
       if (
-        !addmissionForm.razonSocialForm ||
-        !addmissionForm.SucursalEmpresa ||
+        !addmissionForm.razonSocial ||
+        !addmissionForm.codigoSucursal ||
         !addmissionForm.DireccionEmpresa ||
         !addmissionForm.rutEmpresa
       ) {
