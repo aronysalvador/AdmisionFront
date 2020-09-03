@@ -310,6 +310,15 @@ export const getComunStyle = makeStyles((theme) => ({
         padding: 0,
     },
 
+    boxRootRelato: {
+        padding: "5px",
+        backgroundColor: "#FFFFFF",
+        border: "1px solid #FAFAFA",
+        borderRadius: "10px",
+        minHeight: "350px",
+        overFlowY: "auto",
+    },
+
     boxRelato: {
         display: "flex",
         justifyContent: "space-between",
@@ -324,6 +333,18 @@ export const getComunStyle = makeStyles((theme) => ({
         overflowWrap: "break-word",
         overflow: "auto",
         height: "24em",
+        '&::-webkit-scrollbar': {
+            width: 8,
+        },
+        '&::-webkit-scrollbar-track': {
+            boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+            webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(0,0,0,.2)',
+            outline: '1px solid slategrey',
+            borderRadius: 4,
+        },
     },
 
     buttonEditRelato: {
@@ -331,4 +352,22 @@ export const getComunStyle = makeStyles((theme) => ({
         textDecoration: "underline",
         color: "#DEDEDE",
     },
+    scrollText: {
+        fontFamily: "Catamaran",
+        fontSize: "1em",
+        overflow: 'auto',
+        '&::-webkit-scrollbar': {
+            width: 8,
+        },
+        '&::-webkit-scrollbar-track': {
+            boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+            webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(0,0,0,.2)',
+            outline: '1px solid slategrey',
+            borderRadius: 4,
+        },
+    }
+
 }));

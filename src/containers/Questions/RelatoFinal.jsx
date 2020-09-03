@@ -73,23 +73,12 @@ const RelatoFinal = (props) => {
           </div>
           <div className={spaceStyle.space1}></div>
           <div
-            style={{
-              padding: "5px",
-              backgroundColor: "#FFFFFF",
-              border: "1px solid #FAFAFA",
-              borderRadius: "10px",
-              minHeight: "350px",
-              overFlowY: "auto",
-            }}
+            className={classesComun.boxRootRelato}
           >
             {isEdit ? (
               <div>
                 <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "10px",
-                  }}
+                  className={classesComun.boxRelato}
                 >
                   <div style={{ fontWeight: "bold" }}>Relato:</div>
                   {/* <div>
@@ -115,9 +104,14 @@ const RelatoFinal = (props) => {
                   fullWidth
                   rows={13}
                   multiline
+                  scroll={
+                    {width: 8}}
                   inputProps={{
                     maxLength: 700,
-                    style: { fontFamily: "Catamaran", fontSize: "1em" },
+                    style: { 
+                      fontFamily: "Catamaran", 
+                      fontSize: "1em",
+                    },
                   }}
                   onChange={onChangeHandler}
                 />
