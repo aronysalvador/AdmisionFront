@@ -7,7 +7,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 
-const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => { 
+const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const dispatch = useDispatch();
   const { root, titleBlack, titleBlue } = getComunStyle();
 
@@ -16,11 +16,12 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
     shallowEqual
   );
   const handlerGuradarSucursalTexto = (itemForm, data, step) => {
-    const { nombre, direccion, codigo } = data;
+    const { nombre, direccion, codigo, sucursalCargo } = data;
     const sucursalTexto = nombre;
     dispatch(updateForm(itemForm, sucursalTexto));
     dispatch(updateForm("DireccionEmpresa", direccion));
     dispatch(updateForm("codigoSucursal", codigo));
+    dispatch(updateForm("sucursalCargo", sucursalCargo));
   };
   return (
     <div className={root}>
@@ -29,10 +30,9 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        Identifica 
-        <div className={titleBlue}>
-          &nbsp;la sucursal </div> 
-          &nbsp;en donde trabaja
+        Identifica
+        <div className={titleBlue}>&nbsp;la sucursal </div>
+        &nbsp;en donde trabaja
       </Typography>
 
       <div
