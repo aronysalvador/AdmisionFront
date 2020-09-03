@@ -50,7 +50,7 @@ const JornadaLaboralContainer = () => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        ¿A que hora afirma que 
+        ¿A qué hora 
         <div className={titleBlue}>
           &nbsp;inicia y termina su jornada laboral?
         </div>

@@ -40,10 +40,11 @@ const LugarReferenciaSiniestro = () => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        Pide al paciente que te dé una 
+        Pide al paciente el
         <div className={titleBlue}>
-          &nbsp;referencia del lugar
+          &nbsp;sitio específico 
         </div>
+        &nbsp;de donde ocurrió el accidente
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox}>
