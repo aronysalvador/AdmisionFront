@@ -8,6 +8,8 @@ trigger:
   
 variables:
   - group: Variables-CICD_IaC
+  - name: VmImageName
+    value: 'ubuntu-latest'
   - name: ContainerRegistryName
     value: 'crdesacontainer'
   - name: DockerRepository
