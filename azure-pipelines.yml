@@ -8,9 +8,12 @@ trigger:
   
 variables:
   - group: Variables-CICD_IaC
-  ContainerRegistryName: 'crdesacontainer'
-  DockerRepository: 'desa/Admision_Digital/ACHS-FR-Admision'
-  ImageTag: '_$(Build.BuildId)'
+  - name: ContainerRegistryName
+    value: 'crdesacontainer'
+  - name: DockerRepository
+    value: 'desa/Admision_Digital/ACHS-FR-Admision'
+  - name: ImageTag
+    value: '_$(Build.BuildId)'
 
 stages:
   - stage: Deploy_DESA
