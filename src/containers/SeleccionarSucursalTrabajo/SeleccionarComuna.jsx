@@ -42,28 +42,35 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     bottomElement,
     tituloTextbox,
     titleBlue,
-    titleBlack
+    titleBlack,
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
     const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
-      comunaList.find((x) => x?.codigo_comuna === sucursal?.id_comuna && parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region))
+      comunaList.find(
+        (x) =>
+          x?.codigo_comuna === sucursal?.id_comuna &&
+          parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region)
+      )
     );
-    
+
     const uniqueAddresses = Array.from(
       new Set(comunasSucursal.map((a) => a?.codigo_comuna))
     ).map((id) => {
       return comunasSucursal.find((a) => a?.codigo_comuna === id);
     });
 
-    const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function(id) { return id; });
+    const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function (
+      id
+    ) {
+      return id;
+    });
 
     setListaComunas(uniqueAddressesWithOutUndefined);
-    
   }, [comunaList]);
 
-  console.log(listaComunas)
+  console.log(listaComunas);
   return (
     <div className={root}>
       <Cabecera
@@ -71,10 +78,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        Identifica 
-        <div className={titleBlue}>
-          &nbsp;la comuna de la sucursal </div> 
-          &nbsp;en donde trabaja
+        Identifica
+        <div className={titleBlue}>&nbsp;la comuna de la sucursal </div>
+        &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2}></div>
       <Typography className={tituloTextbox} variant="subtitle2">
@@ -85,7 +91,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         onChange={(event, value) => {
           console.log({ value });
           const sucursalesComuna = sucursalesEmpresa.filter(
-            (x) => x.id_comuna === value?.codigo_comuna && parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
+            (x) =>
+              x.id_comuna === value?.codigo_comuna &&
+              parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
           );
 
           console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
@@ -121,6 +129,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
               dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
               dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
+              dispatch(
+                updateForm("sucursalCargo", sucursales[0].sucursalCargo)
+              );
               dispatch(handleSetStep(5.1));
             }
           }}
