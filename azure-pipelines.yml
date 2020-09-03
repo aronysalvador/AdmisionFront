@@ -1,24 +1,32 @@
 trigger:
   branches:
     include:
-    - master
-    - develop
+      - master
+      - develop
     exclude:
-    - features/*
-  
+      - features/*
+
 variables:
   - group: Variables-CICD_IaC
+  - name: VmImageName
+    value: "ubuntu-latest"
+  - name: ContainerRegistryName
+    value: "crdesacontainer"
+  - name: DockerRepository
+    value: "desa/Admision_Digital/ACHS-FR-Admision"
+  - name: ImageTag
+    value: "_$(Build.BuildId)"
 
 stages:
   - stage: Deploy_DESA
     displayName: Deploy DESA
-    #condition: |
-    #  and(
-    #    startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToDESA']),
-    #    eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToDESA']),
-    #    eq(variables['Build.Reason'], 'PullRequest')
-    #  ) 
-    jobs: 
+    condition: |
+      and(
+        startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToDESA']),
+        eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToDESA']),
+        eq(variables['Build.Reason'], 'PullRequest')
+      )
+    jobs:
       - job: buildJob
         displayName: Build and Publish
         pool:
@@ -27,109 +35,109 @@ stages:
           - name: RUTADIRECTORIOENVS
             value: envs
         steps:
-        - script: |
-            echo "hola" 
-            env | grep -i feature
-            echo "Variable: " $SYSTEM_PULLREQUEST_SOURCEBRANCH
-            echo "Variable: " $(sourceBranchDeployToDESA)
-            echo "Variable: " $SYSTEM_PULLREQUEST_TARGETBRANCH
-            echo "Variable: " $(targetBranchDeployToDESA)
-            echo "Variable: " $(Build.Reason)
-            pwd
-            ls -lha
-  #       - task: Docker@2
-  #         displayName: Build and Push Docker Image
-  #         inputs:
-  #           repository: $(DockerRepository)
-  #           command: buildAndPush
-  #           Dockerfile: ./Dockerfile
-  #           containerRegistry: $(ContainerRegistryName)
-  #           tags: $(ImageTag)
-  #         env:
-  #           ARM_SKIP_PROVIDER_REGISTRATION: true
-  #           ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
-  #           ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
-  #           ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
-  #           ARM_TENANT_ID: $(ARM_TENANT_ID)
-  #           ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
-  #           TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
-  #           TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
-  #           TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)
-  # - stage: Deploy_QA
-  #   dependsOn: Deploy_DESA
-  #   displayName: Deploy QA
-  #   condition: |
-  #     and(
-  #       startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToQA']),
-  #       eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToQA']),
-  #       eq(variables['Build.Reason'], 'PullRequest')
-  #     ) 
-  #   jobs: 
-  #     - job: buildJob
-  #       displayName: Build and Publish
-  #       pool:
-  #         vmImage: $(VmImageName)
-  #       variables:
-  #         - name: RUTADIRECTORIOENVS
-  #           value: envs
-  #       steps:
-  #       - script: |
-  #           pwd
-  #           ls -lha
-  #       - task: Docker@2
-  #         displayName: Build and Push Docker Image
-  #         inputs:
-  #           repository: $(DockerRepository)
-  #           command: buildAndPush
-  #           Dockerfile: ./Dockerfile
-  #           containerRegistry: $(ContainerRegistryName)
-  #           tags: $(ImageTag)
-  #         env:
-  #           ARM_SKIP_PROVIDER_REGISTRATION: true
-  #           ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
-  #           ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
-  #           ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
-  #           ARM_TENANT_ID: $(ARM_TENANT_ID)
-  #           ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
-  #           TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
-  #           TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
-  #           TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)     
-  # - stage: Deploy_STG
-  #   dependsOn: Deploy_QA
-  #   displayName: Deploy STG
-  #   condition: |
-  #     and(
-  #       startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToSTG']),
-  #       eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToSTG']),
-  #       eq(variables['Build.Reason'], 'PullRequest')
-  #     ) 
-  #   jobs: 
-  #     - job: buildJob
-  #       displayName: Build and Publish
-  #       pool:
-  #         vmImage: $(VmImageName)
-  #       variables:
-  #         - name: RUTADIRECTORIOENVS
-  #           value: envs
-  #       steps:
-  #       - script: |
-  #           pwd
-  #           ls -lha
-  #       - task: Docker@2
-  #         displayName: Build and Push Docker Image
-  #         inputs:
-  #           repository: $(DockerRepository)
-  #           command: buildAndPush
-  #           Dockerfile: ./Dockerfile
-  #           containerRegistry: $(ContainerRegistryName)
-  #           tags: $(ImageTag)
-  #         env:
-  #           ARM_SKIP_PROVIDER_REGISTRATION: true
-  #           ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
-  #           ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
-  #           ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
-  #           ARM_TENANT_ID: $(ARM_TENANT_ID)
-  #           ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
-  #           TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
-  #           TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
-  #           TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)                        
+          - script: |
+              echo "hola TAG" 
+              env | grep -i tag
+              echo "Variable: " $SYSTEM_PULLREQUEST_SOURCEBRANCH
+              echo "Variable: " $(sourceBranchDeployToDESA)
+              echo "Variable: " $SYSTEM_PULLREQUEST_TARGETBRANCH
+              echo "Variable: " $(targetBranchDeployToDESA)
+              echo "Variable: " $(Build.Reason)
+              pwd
+              ls -lha
+          - task: Docker@2
+            displayName: Build and Push Docker Image
+            inputs:
+              repository: $(DockerRepository)
+              command: buildAndPush
+              Dockerfile: ./Dockerfile
+              containerRegistry: $(ContainerRegistryName)
+              tags: $(ImageTag)
+            env:
+              ARM_SKIP_PROVIDER_REGISTRATION: true
+              ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
+              ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
+              ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
+              ARM_TENANT_ID: $(ARM_TENANT_ID)
+              ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
+              TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
+              TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
+              TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)
+  - stage: Deploy_QA
+    dependsOn: Deploy_DESA
+    displayName: Deploy QA
+    condition: |
+      and(
+        startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToQA']),
+        eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToQA']),
+        eq(variables['Build.Reason'], 'PullRequest')
+      )
+    jobs:
+      - job: buildJob
+        displayName: Build and Publish
+        pool:
+          vmImage: $(VmImageName)
+        variables:
+          - name: RUTADIRECTORIOENVS
+            value: envs
+        steps:
+          - script: |
+              pwd
+              ls -lha
+          - task: Docker@2
+            displayName: Build and Push Docker Image
+            inputs:
+              repository: $(DockerRepository)
+              command: buildAndPush
+              Dockerfile: ./Dockerfile
+              containerRegistry: $(ContainerRegistryName)
+              tags: $(ImageTag)
+            env:
+              ARM_SKIP_PROVIDER_REGISTRATION: true
+              ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
+              ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
+              ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
+              ARM_TENANT_ID: $(ARM_TENANT_ID)
+              ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
+              TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
+              TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
+              TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)
+  - stage: Deploy_STG
+    dependsOn: Deploy_QA
+    displayName: Deploy STG
+    condition: |
+      and(
+        startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToSTG']),
+        eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToSTG']),
+        eq(variables['Build.Reason'], 'PullRequest')
+      )
+    jobs:
+      - job: buildJob
+        displayName: Build and Publish
+        pool:
+          vmImage: $(VmImageName)
+        variables:
+          - name: RUTADIRECTORIOENVS
+            value: envs
+        steps:
+          - script: |
+              pwd
+              ls -lha
+          - task: Docker@2
+            displayName: Build and Push Docker Image
+            inputs:
+              repository: $(DockerRepository)
+              command: buildAndPush
+              Dockerfile: ./Dockerfile
+              containerRegistry: $(ContainerRegistryName)
+              tags: $(ImageTag)
+            env:
+              ARM_SKIP_PROVIDER_REGISTRATION: true
+              ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
+              ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
+              ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
+              ARM_TENANT_ID: $(ARM_TENANT_ID)
+              ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
+              TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
+              TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
+              TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)
