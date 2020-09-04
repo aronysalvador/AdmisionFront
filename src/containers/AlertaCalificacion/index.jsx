@@ -73,7 +73,7 @@ const AlertaCalificacion = () => {
             {
               icono: "info.png",
               textoPrimario: "Pide un e-mail al paciente",
-              textoSecundario: "Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Sí el paciente no tiene e-mail puede agregar el de un familiar.",
+              textoSecundario: "Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar.",
               clase: welcomeStyle.divRowBottom,
             },
           ]}

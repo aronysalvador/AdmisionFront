@@ -51,7 +51,7 @@ const TrabajoHabitual = () => {
           className={buttonAchs}
           onClick={() => handleOnClick("Si")}
         >
-          Si
+          Sí
         </Button>
         <div className={spaceStyle.spaceMin1}></div>
         <Button

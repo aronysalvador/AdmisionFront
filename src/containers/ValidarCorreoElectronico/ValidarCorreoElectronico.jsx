@@ -128,6 +128,15 @@ const ValidarCorreoElectronico = () => {
           </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>
+          <Typography
+                variant="p"
+                component="p"
+                className={welcomeStyle.pBegin}
+              >
+                No podremos enviar una copia de los documentos al paciente.
+          </Typography>
+        </div>
+        <div  className={welcomeStyle.divRowBottom2}>
           <Switch
             checked={stateCheck}
             onChange={handleChange}
