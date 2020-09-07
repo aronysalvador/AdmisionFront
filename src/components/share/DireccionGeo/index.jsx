@@ -23,7 +23,7 @@ const DireccionGeo = (props) => {
     const googleMapsAutoComplete = async(newInputValue) =>{
       sleep(5)  
       if(newInputValue){
-          const test = await fetch(`https://wa-desa-msorquestador.azurewebsites.net/api/geo/autocompletarDirecciones?direccion=${newInputValue}`)
+          const test = await fetch(`${process.env.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${newInputValue}`)
           const json = await test.json()      
           var predictions = (Array.isArray(json.content[0].predictions)) ? json.content[0].predictions : []  
           predictions[predictions.length]=DinamycOption        
@@ -34,7 +34,7 @@ const DireccionGeo = (props) => {
     }
     const googleMapsGetMap = async(newValue) => {
       if(newValue){
-        let urlMapa = `https://wa-desa-msorquestador.azurewebsites.net/api/geo/getMapaEstatico?id=${newValue?.place_id}&size=300x280`
+        let urlMapa = `${process.env.REACT_APP_GEO_STATICMAP}?id=${newValue?.place_id}&size=300x280`
         setMapa(urlMapa)
       }
     }
@@ -45,7 +45,7 @@ const DireccionGeo = (props) => {
         dispatch(updateForm("DireccionTemporal", direccion))
 
         // const test = await fetch(`http://localhost:8080/api/googleMaps/getLatLng?id=${direccion.place_id}`)
-        const test = await fetch(`https://wa-desa-geolocalizacion.azurewebsites.net/api/googleMaps/getLatLng?id=${direccion.place_id}`)
+        const test = await fetch(`${process.env.CREACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
         const json = await test.json()      
         if(Array.isArray(json.content)){
             console.log(json.content[0].result.geometry.location)
