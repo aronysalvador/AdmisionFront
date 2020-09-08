@@ -5,7 +5,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 const getUseStyles = makeStyles({
   center: {
     paddingLeft: "3.4375em",
@@ -42,6 +42,16 @@ const getUseStyles = makeStyles({
   img2: {
     width: "7.28125em",
   },
+  textError: {
+    textAlign: "center",
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "1.5625em",
+    lineHeight: "1.6875em",
+    alignItems: "center",
+    color: "red",
+  },
 });
 
 const ErrorCaso = (props) => {
@@ -49,6 +59,11 @@ const ErrorCaso = (props) => {
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();
   const dispatch = useDispatch();
+
+  const {
+    addmissionForm: { mensajeErrorSAP },
+  } = useSelector((state) => state, shallowEqual);
+
   return (
     <div className={comunClass.root}>
       <div className={spaceStyle.space5} />
@@ -70,6 +85,15 @@ const ErrorCaso = (props) => {
         creando tu caso
       </Typography>
       <div className={spaceStyle.space1} />
+
+      <Typography
+        color="textSecondary"
+        gutterBottom
+        className={useStyles.textError}
+      >
+        Error: "{String(mensajeErrorSAP).trim()}"
+      </Typography>
+
       <Typography
         color="textSecondary"
         gutterBottom
