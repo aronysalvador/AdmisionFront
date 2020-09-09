@@ -20,7 +20,7 @@ variables:
   - name: ImageTag
     value: '_$(Build.BuildId)'
   - name: urlOrquestadorDesa 
-    value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
+    value: 'wa-desa-msorquestador'
   - name: urlOrquestadorQA 
     value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
   - name: urlOrquestadorSTG 
@@ -34,7 +34,7 @@ variables:
   - name: azureSubcritionQA 
     value: 'ASC-QA-ADMISIONDIGITAL'
   - name: appNameDESA 
-    value: 'wa-desa-admdig-front-admision'
+    value: 'wa-desa-front-admision'
   - name: azureSubcritionDESA 
     value: 'ASC-DESA-ADMISIONDIGITAL'
 
