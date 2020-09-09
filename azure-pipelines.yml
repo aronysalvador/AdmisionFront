@@ -1,142 +1,162 @@
 trigger:
+  batch: true
   branches:
     include:
       - master
+      - stage
+      - release/*
       - develop
-    exclude:
-      - features/*
+      - hotfix/*
+      #- feature/*   
  
 variables:
   - group: Variables-CICD_IaC
-  - name: VmImageName
+  - name: vmImageName
     value: 'ubuntu-latest'
   - name: ContainerRegistryName
     value: 'crdesacontainer'
   - name: DockerRepository
-    value: 'desa/Admision_Digital/ACHS-FR-Admision'
+    value: 'desa/admision_digital/achs-fr-admision'
   - name: ImageTag
     value: '_$(Build.BuildId)'
- 
-stages:
+  - name: urlOrquestadorDesa 
+    value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
+  - name: urlOrquestadorQA 
+    value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
+  - name: urlOrquestadorSTG 
+    value: 'https://wa-stg-admdig-msorquestador.azurewebsites.net'
+  - name: appNameSTG 
+    value: 'wa-stg-admdig-front-admision'
+  - name: azureSubcritionSTG 
+    value: 'ASC-STG-ADMISIONDIGITAL'
+  - name: appNameQA 
+    value: 'wa-qa-admisiondigital-front-admision'
+  - name: azureSubcritionQA 
+    value: 'ASC-QA-ADMISIONDIGITAL'
+  - name: appNameDESA 
+    value: 'wa-desa-admdig-front-admision'
+  - name: azureSubcritionDESA 
+    value: 'ASC-DESA-ADMISIONDIGITAL'
+
+pool:
+    vmImage: $(vmImageName)
+
+stages: 
+  - stage: INFO
+    displayName: 'Building'
+    jobs:
+    - deployment: Info
+      displayName: 'Info'
+      environment: 'Info' 
+    - job: Build
+      displayName: 'Info' 
+      steps:
+        - script: |
+            echo "TargetBranch" $(System.PullRequest.TargetBranch)
+            echo "sourceBranch " $(System.pullRequest.sourceBranch)
+  # STAGE
   - stage: Deploy_DESA
-    displayName: Deploy DESA
+    displayName: 'Building Desploy DESA'
     condition: |
      and(
-       startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToDESA']),
-       eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToDESA']),
+       startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/feature'),
        eq(variables['Build.Reason'], 'PullRequest')
-     ) 
-    jobs: 
-      - job: buildJob
-        displayName: Build and Publish
-        pool:
-          vmImage: $(VmImageName)
-        variables:
-          - name: RUTADIRECTORIOENVS
-            value: envs
-        steps:
-        - script: |
-            echo "hola TAG" 
-            env | grep -i tag
-            echo "Variable: " $SYSTEM_PULLREQUEST_SOURCEBRANCH
-            echo "Variable: " $(sourceBranchDeployToDESA)
-            echo "Variable: " $SYSTEM_PULLREQUEST_TARGETBRANCH
-            echo "Variable: " $(targetBranchDeployToDESA)
-            echo "Variable: " $(Build.Reason)
-            pwd
-            ls -lha
-        - task: Docker@2
-          displayName: Build and Push Docker Image
-          inputs:
-            repository: $(DockerRepository)
-            command: buildAndPush
-            Dockerfile: ./Dockerfile
-            containerRegistry: $(ContainerRegistryName)
-            tags: $(ImageTag)
-          env:
-            ARM_SKIP_PROVIDER_REGISTRATION: true
-            ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
-            ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
-            ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
-            ARM_TENANT_ID: $(ARM_TENANT_ID)
-            ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
-            TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
-            TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
-            TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)  # - stage: Deploy_QA
-  #   dependsOn: Deploy_DESA
-  #   displayName: Deploy QA
-  #   condition: |
-  #     and(
-  #       startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToQA']),
-  #       eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToQA']),
-  #       eq(variables['Build.Reason'], 'PullRequest')
-  #     ) 
-  #   jobs: 
-  #     - job: buildJob
-  #       displayName: Build and Publish
-  #       pool:
-  #         vmImage: $(VmImageName)
-  #       variables:
-  #         - name: RUTADIRECTORIOENVS
-  #           value: envs
-  #       steps:
-  #       - script: |
-  #           pwd
-  #           ls -lha
-  #       - task: Docker@2
-  #         displayName: Build and Push Docker Image
-  #         inputs:
-  #           repository: $(DockerRepository)
-  #           command: buildAndPush
-  #           Dockerfile: ./Dockerfile
-  #           containerRegistry: $(ContainerRegistryName)
-  #           tags: $(ImageTag)
-  #         env:
-  #           ARM_SKIP_PROVIDER_REGISTRATION: true
-  #           ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
-  #           ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
-  #           ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
-  #           ARM_TENANT_ID: $(ARM_TENANT_ID)
-  #           ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
-  #           TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
-  #           TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
-  #           TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)     
-  # - stage: Deploy_STG
-  #   dependsOn: Deploy_QA
-  #   displayName: Deploy STG
-  #   condition: |
-  #     and(
-  #       startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployToSTG']),
-  #       eq(variables['system.pullRequest.targetBranch'], variables['targetBranchDeployToSTG']),
-  #       eq(variables['Build.Reason'], 'PullRequest')
-  #     ) 
-  #   jobs: 
-  #     - job: buildJob
-  #       displayName: Build and Publish
-  #       pool:
-  #         vmImage: $(VmImageName)
-  #       variables:
-  #         - name: RUTADIRECTORIOENVS
-  #           value: envs
-  #       steps:
-  #       - script: |
-  #           pwd
-  #           ls -lha
-  #       - task: Docker@2
-  #         displayName: Build and Push Docker Image
-  #         inputs:
-  #           repository: $(DockerRepository)
-  #           command: buildAndPush
-  #           Dockerfile: ./Dockerfile
-  #           containerRegistry: $(ContainerRegistryName)
-  #           tags: $(ImageTag)
-  #         env:
-  #           ARM_SKIP_PROVIDER_REGISTRATION: true
-  #           ARM_CLIENT_ID: $(ARM_CLIENT_ID_DESA)
-  #           ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET_DESA)
-  #           ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID_DESA)
-  #           ARM_TENANT_ID: $(ARM_TENANT_ID)
-  #           ARM_ACCESS_KEY: $(ARM_ACCESS_KEY_DESA)
-  #           TF_VAR_arm_client_id: $(ARM_CLIENT_ID_DESA)
-  #           TF_VAR_arm_client_secret: $(ARM_CLIENT_SECRET_DESA)
-  #           TF_VAR_arm_tenant_id: $(ARM_TENANT_ID)                        
+     )  
+    jobs:
+    - deployment: Deploy
+      displayName: 'Deploy DESA'
+      environment: 'Deploy_DESA' 
+    - job: Build
+      displayName: 'Deploy_DESA' 
+      steps:
+         - task: Docker@2
+           displayName: Build Docker Image
+           inputs:
+             containerRegistry: $(ContainerRegistryName)
+             repository: $(DockerRepository)
+             command: build
+             Dockerfile: ./Dockerfile 
+             tags: $(ImageTag)   
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa)
+         - task: Docker@2
+           displayName: Push Docker Image
+           inputs:
+             containerRegistry: $(ContainerRegistryName)
+             repository: $(DockerRepository)
+             command: push
+             tags: $(ImageTag)                    
+         - task: AzureWebAppContainer@1
+           inputs:
+             azureSubscription: $(azureSubcritionDESA)
+             appName: $(appNameDESA)
+             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepository):$(ImageTag)
+  - stage: Deploy_QA
+    displayName: 'Building Deploy QA'
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/develop'),
+         eq(variables['Build.Reason'], 'PullRequest')
+        ) 
+    jobs:
+    - deployment: Deploy
+      displayName: 'Deploy QA'
+      environment: 'Deploy_QA'
+    - job: Build
+      displayName: 'Deploy QA'
+      steps:
+         - task: Docker@2
+           displayName: Build Docker Image
+           inputs:
+             containerRegistry: $(ContainerRegistryName)
+             repository: $(DockerRepository)
+             command: build
+             Dockerfile: ./Dockerfile 
+             tags: $(ImageTag)   
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorQA)
+         - task: Docker@2
+           displayName: Push Docker Image
+           inputs:
+             containerRegistry: $(ContainerRegistryName)
+             repository: $(DockerRepository)
+             command: push
+             tags: $(ImageTag)                    
+         - task: AzureWebAppContainer@1
+           inputs:
+             azureSubscription: $(azureSubcritionQA) 
+             appName: $(appNameQA) 
+             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepository):$(ImageTag) 
+  - stage: Deploy_STG
+    displayName: 'Building Deploy STG'
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/release'),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )    
+    jobs:
+    - deployment: Deploy
+      displayName: 'Deploy STG'
+      environment: 'Deploy_STG'
+    - job: Build
+      displayName: 'Deploy STG'
+      steps:
+         - task: Docker@2
+           displayName: Build Docker Image
+           inputs:
+             containerRegistry: $(ContainerRegistryName)
+             repository: $(DockerRepository)
+             command: build
+             Dockerfile: ./Dockerfile 
+             tags: $(ImageTag)   
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorSTG)
+         - task: Docker@2
+           displayName: Push Docker Image
+           inputs:
+             containerRegistry: $(ContainerRegistryName)
+             repository: $(DockerRepository)
+             command: push
+             tags: $(ImageTag)                    
+         - task: AzureWebAppContainer@1
+           inputs:
+             azureSubscription: $(azureSubcritionSTG)
+             appName: $(appNameSTG)
+             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepository):$(ImageTag)            
