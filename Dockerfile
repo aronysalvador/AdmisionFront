@@ -6,8 +6,10 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 ARG urlOrquestador=default
 ARG idAzure=default
+ARG app=default
 RUN echo "VAIABLE ARG: $urlOrquestador"
 RUN echo "VAIABLE REACT_APP_MICROSOFT_AUTH_CLIENTID: $idAzure"
+RUN echo "VAIABLE APP: $app"
 
 ENV REACT_APP_ISAPRES=$urlOrquestador/api/sap/isapres/
 ADD . $REACT_APP_ISAPRES
@@ -36,7 +38,7 @@ ENV REACT_APP_GEO_STATICMAP=$urlOrquestador/api/geo/getMapaEstatico
 ENV REACT_APP_GEO_LATLNG=$urlOrquestador/api/geo/getLatLng
 ENV REACT_APP_GEO_DIRECTION=$urlOrquestador/api/geo/getDireccion
 ENV REACT_APP_MICROSOFT_AUTH_CLIENTID=$idAzure
-
+ENV REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL=https://$app.azurewebsites.net
 
 COPY package.json /usr/src/app/package.json
 RUN npm install --silent
