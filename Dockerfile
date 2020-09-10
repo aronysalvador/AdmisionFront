@@ -33,6 +33,8 @@ ENV REACT_APP_GEO_AUTOCOMPLETE=$urlOrquestador/api/geo/autocompletarDirecciones
 ENV REACT_APP_GEO_STATICMAP=$urlOrquestador/api/geo/getMapaEstatico
 ENV REACT_APP_GEO_LATLNG=$urlOrquestador/api/geo/getLatLng
 ENV REACT_APP_GEO_DIRECTION=$urlOrquestador/api/geo/getDireccion
+ENV REACT_APP_MICROSOFT_AUTH_CLIENTID=$idAzure
+
 
 COPY package.json /usr/src/app/package.json
 RUN npm install --silent
