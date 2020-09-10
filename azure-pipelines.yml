@@ -80,7 +80,7 @@ stages:
              command: build
              Dockerfile: ./Dockerfile 
              tags: $(ImageTag)   
-             arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg azureAdDesarrollo=$(azureAdDesarrollo) 
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) 
          - task: Docker@2
            displayName: Push Docker Image
            inputs:
@@ -115,7 +115,7 @@ stages:
              command: build
              Dockerfile: ./Dockerfile 
              tags: $(ImageTag)   
-             arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg azureAdDesarrollo=$(azureAdQa) 
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) 
          - task: Docker@2
            displayName: Push Docker Image
            inputs:
@@ -150,7 +150,7 @@ stages:
              command: build
              Dockerfile: ./Dockerfile 
              tags: $(ImageTag)   
-             arguments: --build-arg urlOrquestador=$(urlOrquestadorSTG) --build-arg azureAdDesarrollo=$(azureAdQa) 
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorSTG) --build-arg idAzure=$(azureAdQa) 
          - task: Docker@2
            displayName: Push Docker Image
            inputs:
