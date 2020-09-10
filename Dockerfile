@@ -9,6 +9,7 @@ ARG idAzure=default
 ARG app=default
 RUN echo "VAIABLE ARG: $urlOrquestador"
 RUN echo "VAIABLE REACT_APP_MICROSOFT_AUTH_CLIENTID: $idAzure"
+RUN echo "VAIABLE APP: $app"
 
 ENV REACT_APP_ISAPRES=$urlOrquestador/api/sap/isapres/
 ADD . $REACT_APP_ISAPRES
