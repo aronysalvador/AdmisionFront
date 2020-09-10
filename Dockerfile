@@ -5,7 +5,9 @@ WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 ARG urlOrquestador=default
+ARG idAzure=default
 RUN echo "VAIABLE ARG: $urlOrquestador"
+RUN echo "VAIABLE REACT_APP_MICROSOFT_AUTH_CLIENTID: $idAzure"
 
 ENV REACT_APP_ISAPRES=$urlOrquestador/api/sap/isapres/
 ADD . $REACT_APP_ISAPRES
