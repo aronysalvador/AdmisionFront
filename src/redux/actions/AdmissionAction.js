@@ -185,6 +185,12 @@ export const saveRut = (rut) => {
           );
           dispatch(
             updateForm(
+              "comunaDireccionParticular",
+              result.data.content.response.direccionParticular.split(",")[1]
+            )
+          );
+          dispatch(
+            updateForm(
               "telefonoParticular",
 
               result.data.content.response.telefonoParticular === "0"
