@@ -20,6 +20,8 @@ const LugarExactoSiniestro = () => {
     return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : ""
   })
 
+  const [nombreComuna,setNombreComuna]=useState("")
+
 
   const dispatch = useDispatch()
 
@@ -45,10 +47,12 @@ const LugarExactoSiniestro = () => {
       validaDireccion(sucursal)      
     }else{
       setValido( false )
+      setNombreComuna("")
     }
   },[sucursal])
 
   const validaDireccion = async()=>{
+    setNombreComuna("")
       console.log(sucursal)
       if(typeof sucursal.description === 'string'){
         const fragmentos  = sucursal.description.split(",")
@@ -69,6 +73,7 @@ const LugarExactoSiniestro = () => {
                         console.log(resultValid) 
                         if( resultValid !== undefined  ){
                           console.log("comuna: "+comuna+" valida")
+                          setNombreComuna(comuna)
                           setValido( true )
                         }else{
                           setValido( false )
@@ -129,6 +134,7 @@ const LugarExactoSiniestro = () => {
           onClick={() => {
             dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
             dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
+            dispatch(updateForm("comunaSiniestro", nombreComuna))
             dispatch(handleSetStep(step + 1))
           }}
         >

@@ -52,4 +52,7 @@ export const AdmissionForm = {
   LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
   AccidenteEnSucursal: "",
   sucursalCargo: "", //Codigo de la sucursal
+
+  comunaSiniestro: "",
+  comunaDireccionParticular: ""
 };

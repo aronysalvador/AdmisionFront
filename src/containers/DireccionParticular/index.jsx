@@ -22,6 +22,8 @@ const DireccionParticular = () => {
     return urlMapaDireccionParticular ? urlMapaDireccionParticular : ""
   })
 
+  const [nombreComuna,setNombreComuna]=useState("")
+
   const clearData = () => {
     dispatch(updateForm("direccionParticularObj", ""))
     dispatch(updateForm("urlMapaDireccionParticular", ""))
@@ -47,10 +49,12 @@ const DireccionParticular = () => {
       validaDireccion(direccion)      
     }else{
       setValido( false )
+      setNombreComuna("")
     }
   },[direccion])
 
   const validaDireccion = async()=>{
+    setNombreComuna("")
       console.log(direccion)
       if(typeof direccion.description === 'string'){
         const fragmentos  = direccion.description.split(",")
@@ -71,6 +75,7 @@ const DireccionParticular = () => {
                         console.log(resultValid) 
                         if( resultValid !== undefined  ){
                           console.log("comuna: "+comuna+" valida")
+                          setNombreComuna(comuna)
                           setValido( true )
                         }else{
                           setValido( false )
@@ -130,6 +135,7 @@ const DireccionParticular = () => {
           onClick={() => {
             dispatch(updateForm("direccionParticular", direccion.description))
             dispatch(updateForm("direccionParticularObj", direccion))
+            dispatch(updateForm("comunaDireccionParticular", nombreComuna))
             dispatch(handleSetStep(5.1))
           }}
         >
