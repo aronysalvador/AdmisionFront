@@ -34,7 +34,7 @@ variables:
   - name: azureSubcritionQA 
     value: 'ASC-QA-ADMISIONDIGITAL'
   - name: appNameDESA 
-    value: 'wa-desa-front-admision'
+    value: 'wa-desa-admdig-front-admision'
   - name: azureSubcritionDESA 
     value: 'ASC-DESA-ADMISIONDIGITAL'
 
