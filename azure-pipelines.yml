@@ -20,7 +20,7 @@ variables:
   - name: ImageTag
     value: '_$(Build.BuildId)'
   - name: urlOrquestadorDesa 
-    value: 'wa-desa-msorquestador'
+    value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
   - name: urlOrquestadorQA 
     value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
   - name: urlOrquestadorSTG 
