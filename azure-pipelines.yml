@@ -20,7 +20,7 @@ variables:
   - name: ImageTag
     value: '_$(Build.BuildId)'
   - name: urlOrquestadorDesa 
-    value: 'wa-desa-msorquestador'
+    value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
   - name: urlOrquestadorQA 
     value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
   - name: urlOrquestadorSTG 
@@ -34,10 +34,13 @@ variables:
   - name: azureSubcritionQA 
     value: 'ASC-QA-ADMISIONDIGITAL'
   - name: appNameDESA 
-    value: 'wa-desa-front-admision'
+    value: 'wa-desa-admdig-front-admision'
   - name: azureSubcritionDESA 
     value: 'ASC-DESA-ADMISIONDIGITAL'
-
+  - name: azureAdQa 
+    value: 'd6728f17-33d3-44b4-ae7e-040abb48e1ae'   
+  - name: azureAdDesarrollo 
+    value: '2cc60262-0026-48a5-ac2a-a088e9704f30'
 pool:
     vmImage: $(vmImageName)
 
@@ -77,7 +80,7 @@ stages:
              command: build
              Dockerfile: ./Dockerfile 
              tags: $(ImageTag)   
-             arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa)
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) 
          - task: Docker@2
            displayName: Push Docker Image
            inputs:
@@ -112,7 +115,7 @@ stages:
              command: build
              Dockerfile: ./Dockerfile 
              tags: $(ImageTag)   
-             arguments: --build-arg urlOrquestador=$(urlOrquestadorQA)
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) 
          - task: Docker@2
            displayName: Push Docker Image
            inputs:
@@ -147,7 +150,7 @@ stages:
              command: build
              Dockerfile: ./Dockerfile 
              tags: $(ImageTag)   
-             arguments: --build-arg urlOrquestador=$(urlOrquestadorSTG)
+             arguments: --build-arg urlOrquestador=$(urlOrquestadorSTG) --build-arg idAzure=$(azureAdQa) 
          - task: Docker@2
            displayName: Push Docker Image
            inputs:
