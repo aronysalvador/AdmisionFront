@@ -40,10 +40,10 @@ stages:
             echo "TargetBranch" $(System.PullRequest.TargetBranch)
             echo "sourceBranch " $(System.pullRequest.sourceBranch)
 
-            echo "appNameDESA: " $(appNameDESA)
-            echo "appNameQA: " $(appNameQA)
-            echo "appNameSTG: " $(appNameSTG)
-            echo "appNameProd: " $(appNameProd)
+            echo "appNameDESA: " $(appNameDESAFront)
+            echo "appNameQA: " $(appNameQAFront)
+            echo "appNameSTG: " $(appNameSTGFront)
+            echo "appNameProd: " $(appNameProdFront)
             echo "azureAdDesarrollo: " $(azureAdDesarrollo)
             echo "azureAdQa: " $(azureAdQa)
             echo "azureAdStg: " $(azureAdStg)
@@ -90,7 +90,7 @@ stages:
             command: build
             Dockerfile: ./Dockerfile 
             tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESA) 
+            arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESAFront) 
         - task: Docker@2
           displayName: Push Docker Image
           inputs:
@@ -101,7 +101,7 @@ stages:
         - task: AzureWebAppContainer@1
           inputs:
             azureSubscription: $(azureSubcritionDESA)
-            appName: $(appNameDESA)
+            appName: $(appNameDESAFront)
             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepository):$(ImageTag)      
 # DESA #
 
@@ -134,7 +134,7 @@ stages:
             command: build
             Dockerfile: ./Dockerfile 
             tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQA) 
+            arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQAFront) 
         - task: Docker@2
           displayName: Push Docker Image
           inputs:
@@ -145,7 +145,7 @@ stages:
         - task: AzureWebAppContainer@1
           inputs:
             azureSubscription: $(azureSubcritionQA) 
-            appName: $(appNameQA) 
+            appName: $(appNameQAFront) 
             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepository):$(ImageTag) 
 # QA #
 
@@ -178,7 +178,7 @@ stages:
             command: build
             Dockerfile: ./Dockerfile 
             tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorSTG) --build-arg idAzure=$(azureAdStg) --build-arg app=$(appNameSTG) 
+            arguments: --build-arg urlOrquestador=$(urlOrquestadorSTG) --build-arg idAzure=$(azureAdStg) --build-arg app=$(appNameSTGFront) 
         - task: Docker@2
           displayName: Push Docker Image
           inputs:
@@ -189,7 +189,7 @@ stages:
         - task: AzureWebAppContainer@1
           inputs:
             azureSubscription: $(azureSubcritionSTG)
-            appName: $(appNameSTG)
+            appName: $(appNameSTGFront)
             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepository):$(ImageTag)   
 # STG #      
 
