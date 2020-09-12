@@ -44,21 +44,6 @@ stages:
             echo "appNameQA: " $(appNameQAFront)
             echo "appNameSTG: " $(appNameSTGFront)
             echo "appNameProd: " $(appNameProdFront)
-            echo "azureAdDesarrollo: " $(azureAdDesarrollo)
-            echo "azureAdQa: " $(azureAdQa)
-            echo "azureAdStg: " $(azureAdStg)
-            echo "azureAdProd: " $(azureAdProd)
-            echo "azureSubcritionDESA: " $(azureSubcritionDESA)
-            echo "azureSubcritionQA: " $(azureSubcritionQA)
-            echo "azureSubcritionSTG: " $(azureSubcritionSTG)
-            echo "azureSubcritionProd: " $(azureSubcritionProd)
-            echo "ContainerRegistryName: " $(ContainerRegistryName)
-            echo "vmImageName: " $(vmImageName)
-            echo "sourceBranchDesa: " $(sourceBranchDesa)
-            echo "sourceBranchQa: " $(sourceBranchQa)
-            echo "sourceBranchStg: " $(sourceBranchStg)
-            echo "sourceBranchProd: " $(sourceBranchProd)
-
   # STAGES
 
   # DESA #
