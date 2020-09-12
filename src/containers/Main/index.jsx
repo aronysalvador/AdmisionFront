@@ -65,6 +65,7 @@ import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
 import SameDateSinister from "../AffiliateValidations/SameDateSinister";
+import NoCuentaSap from "../AffiliateValidations/NoCuentaSap";
 
 import Achs from "../IdentificacionACHS/index";
 import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
@@ -72,6 +73,10 @@ import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 import Profesion from "../Profesion/index";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
+import NoAfiliate from "../AffiliateValidations/NoAfiliate";
+import NoQuotes from "../AffiliateValidations/NoQuotes";
+import NoVigente from "../AffiliateValidations/NoVigente";
+import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -80,9 +85,9 @@ const Main = (props) => {
   const initFn = useCallback(() => {
     if(!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
-      addmissionForm.step = 0;
+      // addmissionForm.step = 0;
     }
-  }, [addmissionForm, microsoftReducer]);
+  }, [microsoftReducer]);
 
   useEffect(() => {
     initFn();
@@ -171,6 +176,38 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 5.11:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoAfiliate />
+            </Paper>
+          </div>
+        );
+      case 5.12:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoQuotes />
+            </Paper>
+          </div>
+        );
+      case 5.13:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoVigente />
+            </Paper>
+          </div>
+        );
+      case 5.14:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <SucursalesNoVigentes />
+            </Paper>
+          </div>
+        );
       case 5.2:
         return (
           <div className={layout}>
@@ -181,8 +218,8 @@ const Main = (props) => {
         );
       case 5.21:
         return (
-          <div className={layout}>
-            <Paper className={paper}>
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
               <DireccionParticularMapaSelection />
             </Paper>
           </div>
@@ -468,7 +505,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoJornadaLaboral />
+              <Cargo /> 
             </Paper>
           </div>
         );
@@ -476,7 +513,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <JornadaLaboralContainer />
+              <TipoJornadaLaboral /> 
             </Paper>
           </div>
         );
@@ -484,7 +521,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Cargo />
+              <JornadaLaboralContainer />
             </Paper>
           </div>
         );
@@ -492,7 +529,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <CategoriaOcupacional />
+              <TipoDeContrato />
             </Paper>
           </div>
         );
@@ -500,7 +537,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoDeContrato />
+              <Remuneracion />
             </Paper>
           </div>
         );
@@ -508,7 +545,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Remuneracion />
+              <CategoriaOcupacional />
             </Paper>
           </div>
         );
@@ -586,6 +623,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <ErrorCaso />
+            </Paper>
+          </div>
+        );
+      case 1003:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <NoCuentaSap />
             </Paper>
           </div>
         );

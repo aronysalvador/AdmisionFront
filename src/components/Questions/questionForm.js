@@ -44,7 +44,7 @@ const FormQuestion = (props) => {
           {pregunta}
         </Typography>
       </div>
-      <div>
+      <div className={classesComun.scrollText}>
         <TextField
           id="txtRespuesta"
           placeholder={placeholder}
@@ -67,7 +67,7 @@ const FormQuestion = (props) => {
           type="submit"
           disabled={isDisabled()}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </form>

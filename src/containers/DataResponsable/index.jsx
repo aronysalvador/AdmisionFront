@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
+// import React, { useState, useEffect, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -10,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 
 //Action de Redux
 import { sendResponsable } from "../../redux/actions/AdmissionAction";
-import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
+// import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -33,15 +34,15 @@ const DataResponsable = () => {
     return !responsable ? "" : responsable.cargo;
   });
 
-  const initFn = useCallback(() => {
-    const consultaCargos = () => dispatch(searchCargos()); // eslint-disable-line no-use-before-define
-    consultaCargos();
-  }, [dispatch]);
+  // const initFn = useCallback(() => {
+  //   const consultaCargos = () => dispatch(searchCargos()); // eslint-disable-line no-use-before-define
+  //   consultaCargos();
+  // }, [dispatch]);
 
-  useEffect(() => {
-    //Call Action
-    initFn()
-  }, [initFn]);
+  // useEffect(() => {
+  //   //Call Action
+  //   initFn()
+  // }, [initFn]);
 
   const clickSendResponsable = () => {
     dispatch(sendResponsable(nombre, cargos));
@@ -56,8 +57,11 @@ const DataResponsable = () => {
         percentage={percentage}
       />
       <div>
-        <Typography variant="p" component="p" className={classesComun.pregunta}>
-          Ingresa los datos del Responsable
+        <Typography variant="p" component="p" className={classesComun.titleBlack}>
+        Solicita una 
+        <div className={classesComun.titleBlue}>
+          &nbsp;referencia del responsable
+        </div>
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
@@ -105,7 +109,7 @@ const DataResponsable = () => {
           component="p"
           className={[classesComun.tituloTextbox]}
         >
-          Cargo - Relación
+          Cargo o Relación
         </Typography>
       </div>
 
@@ -139,10 +143,10 @@ const DataResponsable = () => {
           className={classesComun.buttonAchs}
           variant="contained"
           type="submit"
-          disabled={!nombre}
+          disabled={!nombre || !cargos}
           onClick={() => clickSendResponsable()}
         >
-          Siguiente
+          Agregar
         </Button>
       </div>
     </div>

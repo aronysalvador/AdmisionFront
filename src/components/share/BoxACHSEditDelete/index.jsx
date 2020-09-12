@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
     tituloConteiner: {
@@ -65,11 +63,10 @@ const BoxACHSEditDelete = (props) => {
                     <div className={classes.tituloConteiner}>
                         <Typography color="textSecondary" gutterBottom className={classes.tituloText}>
                             {titulo}
-                            <div className={classes.divEditDelete}>
+                            {/* <div className={classes.divEditDelete}>
                             <DeleteIcon className={classes.marginDelete}></DeleteIcon>   
                             <EditIcon></EditIcon>
-                            
-                            </div>
+                            </div> */}
                         </Typography>
                     </div>
                     <div className={classes.contentConteiner}>

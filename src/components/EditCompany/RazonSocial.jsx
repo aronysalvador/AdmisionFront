@@ -12,20 +12,25 @@ const RazonSocial = () => {
 
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
-  const [options, setOptions] = useState([])
+  const [options, setOptions] = useState([]);
 
     const loading = open && options.length === 0;
 
     const getData = async(newInputValue) =>{ 
+      setSearch(newInputValue)
       if(newInputValue){
-        
+        if(newInputValue.length % 4 === 0 && newInputValue !== search)  {
           const test = await fetch(process.env.REACT_APP_RAZONSOCIAL+ newInputValue)
           const json = await test.json()
           var predictions = (Array.isArray(json.content?.response)) ? json.content.response : []           
           setOptions(predictions)
+        }
       }
     }
+
+   
 
     useEffect(() => {
       if (!loading) {
@@ -36,7 +41,7 @@ const RazonSocial = () => {
   return (
     <div>
                 <Autocomplete
-                  value={razonSocial ? razonSocial : ""}
+                  value={razonSocial}
                   style={{ width: '100%' }}
                   size="small"
                   fullWidth
@@ -63,6 +68,7 @@ const RazonSocial = () => {
                     dispatch(updateForm("rutEmpresa", value?.rut));        
                   }
                   }
+                  
                   loadingText='cargando'
                   renderInput={(params) => {
                     return(

@@ -43,7 +43,7 @@ const TrabajoActualContainer = () => {
 
   const anios = fnAnios()
 
-  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+  const { buttonAchs, root, bottomElement, titleBlue, titleBlack } = getComunStyle();
   const dispatch = useDispatch();
 
   function setTrabajoActual(value) {
@@ -61,8 +61,12 @@ const TrabajoActualContainer = () => {
         dispatch={() => dispatch(handleSetStep(25))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Indica la fecha aproximada de ingreso a tu trabajo actual
+      <Typography className={titleBlack}>
+        Indica la
+        <div className={titleBlue}>
+          &nbsp;fecha aproximada en que ingresó
+        </div>
+        &nbsp;a su trabajo actual
       </Typography>
       <div className={spaceStyle.space2} />
       <TrabajoActual

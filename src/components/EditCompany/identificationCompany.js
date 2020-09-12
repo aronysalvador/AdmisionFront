@@ -16,9 +16,34 @@ const IdentificationCompany = () => {
 
   const [isValid, setIsValid] = useState(true);
 
-  const validar = (id) => {
+  const validar = async(rut) => {
+    
     if (isValid) {
-      dispatch(updateForm("rutEmpresa", rut));
+      
+      const test = await fetch( process.env.REACT_APP_RAZON_SOCIAL_RUT+rut)
+      const json = await test.json()
+
+
+      if(json.content.response[0] !== undefined){
+
+        dispatch(updateForm("razonSocial", json.content.response[0])) 
+        dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
+        //dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
+        dispatch(updateForm("rutEmpresa", rut));
+      }else{
+
+       // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
+       dispatch(updateForm("rutEmpresa", rut));
+        dispatch(updateForm("razonSocial", "")) 
+        dispatch(updateForm("razonSocialForm", "")) 
+        
+      }
+      
+    }else{
+      
+      dispatch(updateForm("rutEmpresa", "")) 
+      dispatch(updateForm("razonSocial", "")) 
+      dispatch(updateForm("razonSocialForm", "")) 
     }
   };
 
@@ -31,12 +56,15 @@ const IdentificationCompany = () => {
         margin="dense"
         fullWidth
         helperText={!isValid && "RUT no válido"}
-        error={!isValid}
+        
+      
+        error={!isValid }
         onChange={(e) => {
           //let rutFormateado = e.target.value
           //formateaRut(e.target.value)
           setIsValid(Rut.validaRut(formateaRut(e.target.value)));
           setRut(formateaRut(e.target.value));
+          
         }}
         onBlur={() => validar(rut)}
       />{" "}

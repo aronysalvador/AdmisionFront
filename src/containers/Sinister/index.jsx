@@ -22,8 +22,13 @@ const Identification = (props) => {
 
                 <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} />
                 <div>
-                    <Typography variant="p" component="p" className={comunClass.pregunta}>
-                        ¿Qué problema tuvo?
+                    <Typography variant="p" component="p" className={comunClass.titleBlack}>
+                    Selecciona la opción que 
+                    <div className={comunClass.titleBlue}
+                    style={{display: "contents"}}
+                    >
+                    &nbsp;mejor describa lo que le sucedió
+                    </div>
                     </Typography>
                 </div>
                 <div className={spaceStyle.space2} />

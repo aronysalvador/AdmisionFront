@@ -17,9 +17,10 @@ const Profesion = () => {
   const {
     buttonAchs,
     root,
-    pregunta,
     bottomElement,
     tituloTextbox,
+    titleBlue,
+    titleBlack
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -49,13 +50,17 @@ const Profesion = () => {
         dispatch={() => dispatch(handleSetStep(19.2))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona la profesión que mejor se ajusta
+      <Typography className={titleBlack}>
+        Selecciona la 
+        <div className={titleBlue}>
+          &nbsp;profesión u oficio
+        </div> 
+        &nbsp;que mejor se ajusta al paciente
       </Typography>
       <div className={spaceStyle.space2} />
 
       <Typography className={tituloTextbox} variant="subtitle2">
-        Profesión
+        Profesión u oficio
       </Typography>
       <AutoComplete
         value={profesion}
@@ -92,7 +97,7 @@ const Profesion = () => {
             dispatch(handleSetStep(20));
           }}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </div>

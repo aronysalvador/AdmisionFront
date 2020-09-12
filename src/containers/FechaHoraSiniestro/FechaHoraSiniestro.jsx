@@ -19,7 +19,7 @@ const FechaHoraSiniestro = () => {
 
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
-  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+  const { buttonAchs, root, bottomElement, titleBlack, titleBlue } = getComunStyle();
 
   const minutosArray = [0, 10, 20, 30, 40, 50]
 
@@ -84,8 +84,15 @@ const FechaHoraSiniestro = () => {
         dispatch={() => dispatch(handleSetStep(9))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        ¿Cuándo y qué hora sucedió el accidente?
+      <Typography
+        variant="h1"
+        component="h1"
+        className={titleBlack}
+        >
+        ¿
+        <div className={titleBlue}>
+        Cuándo y a qué hora&nbsp;
+        </div>sucedió el accidente?
       </Typography>
       <div className={spaceStyle.space3} />
       <FechaSiniestro
@@ -109,7 +116,7 @@ const FechaHoraSiniestro = () => {
            
           }}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </div>

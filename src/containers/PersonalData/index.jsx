@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, validarAfiliacion } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHS from "../../components/share/BoxACHS/index";
 import BoxEmpresa from "../../components/share/BoxEmpresa/index";
 import Button from "@material-ui/core/Button";
+import { useState } from "react";
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -22,7 +23,8 @@ const PersonalData = (props) => {
   //   addmissionForm.rutEmpresa,
   // ];
   const contenidoDireccionEmpresa = [addmissionForm.DireccionEmpresa];
-  const contenidoRazonSocialForm = [addmissionForm.razonSocialForm];
+  const contenidoRazonSocialForm = [addmissionForm.razonSocial ? addmissionForm.razonSocial.name : null];
+
   const contenidoRutEmpresa = [addmissionForm.rutEmpresa];
 
   const tituloDireccion = "Dirección particular";
@@ -33,30 +35,33 @@ const PersonalData = (props) => {
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
+  const [loading, setLoading] = useState(false)
+
   const handleNext = () => {
-    var STEP = "";
-    if (
-      !addmissionForm.razonSocialForm ||
-      !addmissionForm.SucursalEmpresa ||
-      !addmissionForm.DireccionEmpresa ||
-      !addmissionForm.rutEmpresa
-    ) {
+
+    setLoading(true)
+
+    const { 
+      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,      
+      rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
+
+    if ( !razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa ) {
       // si falta info de la empresa
-      STEP = 5.4; //form empresa
-    } else if (!addmissionForm.direccionParticular) {
+      dispatch(handleSetStep(5.4)); //form empresa
+    } else if (!direccionParticular) {
       // si no tiene direccion
-      STEP = 5.2; //form direccion
-    } else if (
-      !addmissionForm.telefonoParticular ||
-      addmissionForm.telefonoParticular === "0"
-    ) {
+      dispatch(handleSetStep(5.2));//form direccion
+    } else if ( !telefonoParticular || telefonoParticular === "0") {
       // si no tiene telefono
-      STEP = 5.3; //form telefono
+      dispatch(handleSetStep(5.3)); //form telefono
     } else {
       // si todos los datos relevantes están llenos
-      STEP = 5.7; // pantalla exito
-    }
-    dispatch(handleSetStep(STEP));
+      if(rut && rutEmpresa && SucursalEmpresaObjeto){
+        dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo})); 
+      }else{
+         dispatch(handleSetStep(500));
+      }
+    }    
   };
 
   return (
@@ -66,15 +71,15 @@ const PersonalData = (props) => {
         percentage={addmissionForm.percentage}
       />
       <div>
-        <Typography variant="p" component="p" className={comunClass.pregunta}>
+        <Typography variant="p" component="p" className={comunClass.titleBlack}>
           Empieza
-          <div className={comunClass.textoResaltado}>
-            verificando los datos de 
+          <div className={comunClass.titleBlue}>
+          &nbsp;verificando los datos de <br/>
           </div>
           {nombre} {apellidoPaterno}
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
+      {/* <div className={spaceStyle.space1} /> */}
       <BoxEmpresa 
         contenidoDireccionEmpresa={contenidoDireccionEmpresa} 
         contenidoRazonSocialForm={contenidoRazonSocialForm} 
@@ -83,21 +88,23 @@ const PersonalData = (props) => {
         step={5.4} />
       <div className={spaceStyle.spaceMin1} />
       <BoxACHS
+        titulo={tituloTelefono}
+        contenido={contenidoTelefono}
+        step={5.3}
+      />
+      <div className={spaceStyle.spaceMin1} />
+      <BoxACHS
         titulo={tituloDireccion}
         contenido={contenidoDireccion}
         step={5.2}
       />
       <div className={spaceStyle.spaceMin1} />
-      <BoxACHS
-        titulo={tituloTelefono}
-        contenido={contenidoTelefono}
-        step={5.3}
-      />
-
+      
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}
           //variant="contained"
+          disabled={loading}
           onClick={() => handleNext()}
         >
           Sí, es correcta

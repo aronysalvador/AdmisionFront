@@ -72,7 +72,7 @@ const Achs = () => {
         onChange={(event, value) => {
           setCENTROS(value);
                 
-          value ? setValueError(value?.NOMBRE)  : setValueError("");          
+          value ? setValueError(value?.Centro_m)  : setValueError("");          
         
         }}
         freeSolo
@@ -82,7 +82,7 @@ const Achs = () => {
       }}
         style={{ width: 300 }}
         options={centrosList}
-        getOptionLabel={(option) => option.NOMBRE}
+        getOptionLabel={(option) => option.Centro_m}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -115,7 +115,7 @@ const Achs = () => {
           onClick={() => {
             dispatch(updateForm("centrosForm", centros));
             dispatch(setCenter(email, centros))
-            if(ID>0){
+           if(ID>0){
               console.log("actualizar centro")
              dispatch(handleLogUpdate({opcion:3, Id: ID, centro: centros}));
             }else{

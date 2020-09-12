@@ -18,9 +18,10 @@ const TrabajoHabitual = () => {
   const {
     root,
     buttonAchs,
-    pregunta,
     bottomElement,
     buttonAchs2,
+    titleBlack,
+    titleBlue,
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -35,11 +36,11 @@ const TrabajoHabitual = () => {
         dispatch={() => dispatch(handleSetStep(8.1))}
         percentage={percentage}
       />
-      <Typography className={pregunta} variant="subtitle2">
-        Al momento del accidente,
-      </Typography>
-      <Typography className={pregunta} variant="subtitle2">
-        ¿Desarrollabas tu trabajo habitual?
+      <Typography className={titleBlack} variant="subtitle2">
+        ¿Al momento del accidente, desarrollaba su
+        <div className={titleBlue}>
+          &nbsp;trabajo habitual
+        </div>?
       </Typography>
 
       <div className={bottomElement}>
@@ -50,15 +51,14 @@ const TrabajoHabitual = () => {
           className={buttonAchs}
           onClick={() => handleOnClick("Si")}
         >
-          Si
+          Sí
         </Button>
         <div className={spaceStyle.spaceMin1}></div>
         <Button
           className={buttonAchs2}
-          //variant="outlined"
           onClick={() => handleOnClick("No")}
         >
-          No lo estaba
+          No
         </Button>
       </div>
     </div>

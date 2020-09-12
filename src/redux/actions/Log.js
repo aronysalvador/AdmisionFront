@@ -207,3 +207,11 @@ import {
       payload: error
     });
   };
+
+
+  export const ExitLog = () => (dispatch) => {
+      dispatch({
+        type: POST_LOG_SUCCESS,
+        payload: 0
+      });
+  };

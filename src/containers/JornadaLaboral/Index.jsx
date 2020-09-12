@@ -31,7 +31,7 @@ const JornadaLaboralContainer = () => {
 
   const horarios = fnHorarios()
 
-  const { buttonAchs, root, pregunta, bottomElement } = getComunStyle();
+  const { buttonAchs, root, bottomElement, titleBlue, titleBlack } = getComunStyle();
   const dispatch = useDispatch();
 
   function setJornadaLaboral(value) {
@@ -46,11 +46,14 @@ const JornadaLaboralContainer = () => {
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(20))}
+        dispatch={() => dispatch(handleSetStep(21))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        ¿Cual es tu hora de inicio y de fin de tu jornada laboral?
+      <Typography className={titleBlack}>
+        ¿A qué hora 
+        <div className={titleBlue}>
+          &nbsp;inicia y termina su jornada laboral?
+        </div>
       </Typography>
       <div className={spaceStyle.space2} />
       <JornadaLaboral
@@ -72,7 +75,7 @@ const JornadaLaboralContainer = () => {
             dispatch(handleSetStep(step + 1));
           }}
         >
-          Siguiente
+          Confirmar
         </Button>
       </div>
     </div>

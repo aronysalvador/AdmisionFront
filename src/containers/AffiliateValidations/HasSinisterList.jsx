@@ -30,8 +30,8 @@ const PersonalData = (props) => {
     if (busqueda === undefined) {
       var STEP = "";
       if (
-        !addmissionForm.razonSocialForm ||
-        !addmissionForm.SucursalEmpresa ||
+        !addmissionForm.razonSocial ||
+        !addmissionForm.codigoSucursal ||
         !addmissionForm.DireccionEmpresa ||
         !addmissionForm.rutEmpresa
       ) {
@@ -52,7 +52,7 @@ const PersonalData = (props) => {
       }
       else {
         // si todos los datos relevantes están llenos
-        STEP = 5.7; // pantalla exito
+        STEP = 5.1; // primero debe mostrar todos los datos y luego (5.7) pantalla exito
       }
       dispatch(handleSetStep(STEP));
     } else {
@@ -77,23 +77,22 @@ const PersonalData = (props) => {
             <Typography
               variant="p"
               component="p"
-              className={comunClass.pregunta}
-            >
-              {nombre} {apellidoPaterno} tiene
-              <div className={comunClass.textoResaltado}>
+              className={comunClass.titleBlack}>
+              {nombre} {apellidoPaterno} <br/> tiene&nbsp;
+              <div className={comunClass.titleBlue}>
                 {contenidoSiniestros.length} siniestros
               </div>
-              creados
+              &nbsp;creados
             </Typography>
           ) : (
             <Typography
               variant="p"
               component="p"
-              className={comunClass.pregunta}
+              className={comunClass.titleBlack}
             >
               {nombre} {apellidoPaterno} tiene
-              <div className={comunClass.textoResaltado}>
-                este siniestro
+              <div className={comunClass.titleBlue}>
+                &nbsp;este siniestro
               </div>
               creado
             </Typography>

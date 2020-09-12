@@ -29,10 +29,13 @@ const BotonSeleccionarCustom = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
-            dispatch(handleSetStep(step));
+            setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
+            //dispatch(handleSetStep(step));
           } else if (itemForm === "razonAlertaForm") {
             if (data.glosa === "Posible causa no laboral") {
-              dispatch(handleSetStep(26.3));
+              dispatch(updateForm("razonAlertaForm", { id: 1 , glosa: data.glosa}));
+              setTimeout(function(){ dispatch(handleSetStep(26.3)); }, 1000);
+              //dispatch(handleSetStep(26.3));
             } else {
               dispatch(
                 updateForm(
@@ -40,7 +43,8 @@ const BotonSeleccionarCustom = (props) => {
                   !isSelected ? { ...data, selected: !isSelected } : {}
                 )
               );
-              dispatch(handleSetStep(26.4));
+              setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 1000);
+              //dispatch(handleSetStep(26.4));
             }
           } else {
             dispatch(
@@ -49,7 +53,8 @@ const BotonSeleccionarCustom = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
-            dispatch(handleSetStep(step));
+            setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
+            //dispatch(handleSetStep(step));
           }
           //dispatch(handleSetStep(step));
         }

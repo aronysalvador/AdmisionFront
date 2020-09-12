@@ -34,9 +34,13 @@ const form = (props) => {
         <Typography
           variant="h1"
           component="h1"
-          className={classesComun.pregunta}
+          className={classesComun.titleBlack}
         >
-          Ingresa el RUT del paciente{" "}
+          Ingresa el 
+          <div className={classesComun.titleBlue}
+              style={{display: "contents"}}>
+              &nbsp;RUT</div> 
+              &nbsp;del paciente{" "}
         </Typography>{" "}
       </div>{" "}
       <div className={spaceStyle.space2} />{" "}

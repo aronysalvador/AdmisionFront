@@ -18,9 +18,10 @@ const EditarDireccionSucursal = () => {
   const {
     root,
     buttonAchs,
-    pregunta,
     tituloTextbox,
     bottomElement,
+    titleBlue,
+    titleBlack
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
   return (
@@ -29,8 +30,12 @@ const EditarDireccionSucursal = () => {
         dispatch={() => dispatch(handleSetStep(5.5))}
         percentage={percentage}
       />
-      <Typography className={pregunta} variant="h2">
-        Ingresa dirección de la sucursal
+      <Typography className={titleBlack} variant="h2">
+        Identifica 
+        <div className={titleBlue}>
+          &nbsp;la dirección de la sucursal 
+        </div>
+        &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="h2">
@@ -56,6 +61,7 @@ const EditarDireccionSucursal = () => {
             dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
             dispatch(updateForm("SucursalEmpresaObjeto", sucursalEmpresa));
             dispatch(updateForm("DireccionEmpresa", sucursalEmpresa.direccion));
+            dispatch(updateForm("codigoSucursal", sucursalEmpresa.codigo));
 
             dispatch(handleSetStep(5.1));
           }}

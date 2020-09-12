@@ -6,7 +6,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHSEditDelete from "../share/BoxACHSEditDelete/index";
 
 const QuestionTestigoResponsable = (props) => {
-  const { titulo, tituloTestigo, contenidoTestigo, irA } = props;
+  const { titulo, titulo2, titulo3, tituloTestigo, contenidoTestigo, irA } = props;
 
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -14,8 +14,9 @@ const QuestionTestigoResponsable = (props) => {
   return (
     <div>
       <div>
-        <Typography variant="p" component="p" className={classesComun.pregunta}>
+      <Typography variant="p" component="p" className={classesComun.titleBlack}>
           {titulo}
+          <span className={classesComun.titleBlue}> {titulo2} </span>{titulo3}
         </Typography>
       </div>
       <div>
@@ -33,7 +34,7 @@ const QuestionTestigoResponsable = (props) => {
           type="submit"
           onClick={() => irA()}
         >
-          Siguiente
+          Continuar
         </Button>
       </div>
     </div>

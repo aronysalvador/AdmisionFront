@@ -4,8 +4,10 @@ import { Button, Typography } from "@material-ui/core"
 import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
+import { getData } from "../../redux/actions/ComunaAction"
 import { getSpaceStyle } from "../../css/spaceStyle"
 import DireccionGeo from '../../components/share/DireccionGeo'
+import { eliminarDiacriticos } from './../../helpers/utils'
 
 const DireccionParticular = () => {
   const {
@@ -20,6 +22,8 @@ const DireccionParticular = () => {
     return urlMapaDireccionParticular ? urlMapaDireccionParticular : ""
   })
 
+  const [nombreComuna,setNombreComuna]=useState("")
+
   const clearData = () => {
     dispatch(updateForm("direccionParticularObj", ""))
     dispatch(updateForm("urlMapaDireccionParticular", ""))
@@ -30,15 +34,66 @@ const DireccionParticular = () => {
   const {
     root,
     buttonAchs,
-    pregunta,
     tituloTextbox,
     bottomElement,
+    titleBlue,
+    titleBlack
   } = getComunStyle()
   const spaceStyle = getSpaceStyle()
-
   const { googleMap } = getComunStyle()
+  
 
-  const isLugarExactoAccidenteValid = true
+  const [valido, setValido] = useState(false)
+  React.useEffect(()=>{
+    if(direccion){
+      validaDireccion(direccion)      
+    }else{
+      setValido( false )
+      setNombreComuna("")
+    }
+  },[direccion])
+
+  const validaDireccion = async()=>{
+    setNombreComuna("")
+      console.log(direccion)
+      if(typeof direccion.description === 'string'){
+        const fragmentos  = direccion.description.split(",")
+        console.log(fragmentos)
+          if(Array.isArray(fragmentos) && fragmentos.length >= 3 && fragmentos[0].match(/\d+/g) ){
+            console.log("direccion contiene numero ....")
+            const result = await getData()
+              if(result.status === 200){
+                var COMUNAS = result.data.content[0]
+                  if(Array.isArray(COMUNAS)){           
+                        var comuna = fragmentos[fragmentos.length-2].toUpperCase().trim()                                             
+                        if(comuna.includes("REGIÓN")){
+                          comuna = fragmentos[1].toUpperCase().trim()
+                        }
+                        console.log("validando comuna: "+comuna) 
+
+                        var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
+                        console.log(resultValid) 
+                        if( resultValid !== undefined  ){
+                          console.log("comuna: "+comuna+" valida")
+                          setNombreComuna(comuna)
+                          setValido( true )
+                        }else{
+                          setValido( false )
+                        }
+                  }else{
+                    setValido( false )
+                  }
+              }else{
+                setValido( false )
+              }
+          }else{
+            setValido( false )
+          }
+      }else{
+        setValido( false )
+      }    
+  }
+
 
   return (
     <div className={root}>
@@ -46,8 +101,11 @@ const DireccionParticular = () => {
         dispatch={() => dispatch(handleSetStep(5.1))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Ingresa tu dirección particular
+      <Typography className={titleBlack}>
+        Ingresa 
+        <div className={titleBlue}>
+          &nbsp;la dirección en donde vive el paciente
+        </div>
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="subtitle2">
@@ -73,14 +131,15 @@ const DireccionParticular = () => {
         <Button
           className={buttonAchs}
           variant="contained"
-          disabled={!direccion || !isLugarExactoAccidenteValid}
+          disabled={!valido}
           onClick={() => {
             dispatch(updateForm("direccionParticular", direccion.description))
             dispatch(updateForm("direccionParticularObj", direccion))
+            dispatch(updateForm("comunaDireccionParticular", nombreComuna))
             dispatch(handleSetStep(5.1))
           }}
         >
-          Confirmar
+          Guardar dirección
         </Button>
       </div>
     </div>

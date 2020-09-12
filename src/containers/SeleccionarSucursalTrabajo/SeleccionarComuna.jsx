@@ -39,33 +39,48 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
     buttonAchs,
     root,
-    pregunta,
     bottomElement,
     tituloTextbox,
+    titleBlue,
+    titleBlack,
   } = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
     const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
-      comunaList.find((x) => x?.codigo_comuna === sucursal?.id_comuna)
+      comunaList.find(
+        (x) =>
+          x?.codigo_comuna === sucursal?.id_comuna &&
+          parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region)
+      )
     );
+
     const uniqueAddresses = Array.from(
       new Set(comunasSucursal.map((a) => a?.codigo_comuna))
     ).map((id) => {
       return comunasSucursal.find((a) => a?.codigo_comuna === id);
     });
 
-    setListaComunas(uniqueAddresses);
+    const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function (
+      id
+    ) {
+      return id;
+    });
+
+    setListaComunas(uniqueAddressesWithOutUndefined);
   }, [comunaList]);
 
+  console.log(listaComunas);
   return (
     <div className={root}>
       <Cabecera
         dispatch={() => dispatch(handleSetStep(5.4))}
         percentage={percentage}
       />
-      <Typography className={pregunta}>
-        Selecciona la comuna en donde trabajas
+      <Typography className={titleBlack}>
+        Identifica
+        <div className={titleBlue}>&nbsp;la comuna de la sucursal </div>
+        &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2}></div>
       <Typography className={tituloTextbox} variant="subtitle2">
@@ -76,7 +91,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         onChange={(event, value) => {
           console.log({ value });
           const sucursalesComuna = sucursalesEmpresa.filter(
-            (x) => x.id_comuna === value?.codigo_comuna
+            (x) =>
+              x.id_comuna === value?.codigo_comuna &&
+              parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
           );
 
           console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
@@ -111,6 +128,10 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               dispatch(updateForm("SucursalEmpresaObjeto", sucursales[0]));
               dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
               dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
+              dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
+              dispatch(
+                updateForm("sucursalCargo", sucursales[0].sucursalCargo)
+              );
               dispatch(handleSetStep(5.1));
             }
           }}

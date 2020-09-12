@@ -43,8 +43,11 @@ const HealthForecast = (props) => {
         percentage={addmissionForm.percentage}
       />
       <div>
-        <Typography variant="p" component="p" className={classesComun.pregunta}>
-          Selecciona tu Previsión de salud
+        <Typography variant="p" component="p" className={classesComun.titleBlack}>
+          Selecciona la 
+          <div className={classesComun.titleBlue}>
+            &nbsp;Previsión de salud
+          </div>
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
