@@ -16,6 +16,9 @@ const PersonalData = (props) => {
   const contenidoSiniestros = addmissionForm.siniestros;
   const { origen, siniestroTemp } = addmissionForm.siniestroOpciones;
 
+  const { lugarAccidente } = addmissionForm;
+
+
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
   const handleNext = () => {
@@ -56,7 +59,11 @@ const PersonalData = (props) => {
       }
       dispatch(handleSetStep(STEP));
     } else {
-      dispatch(handleSetStep(5.833));
+      if(origen === "sameDate"){ //Si ya estaba creando la admisión
+       dispatch(handleSetStep(11));
+      }else{
+        dispatch(handleSetStep(5.833));
+      }
     }
   };
 
