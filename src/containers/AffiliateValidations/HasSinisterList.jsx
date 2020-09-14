@@ -30,7 +30,6 @@ const PersonalData = (props) => {
       nuevaFecha.setHours(0, 0, 0, 0);
       return nuevaFecha.getTime() === fechaActual.getTime();
     });
-    debugger
     if (busqueda === undefined) {
       var STEP = "";
       if (
