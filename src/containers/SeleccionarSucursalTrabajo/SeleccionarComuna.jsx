@@ -47,28 +47,50 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
-    const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
-      comunaList.find(
-        (x) =>
-          x?.codigo_comuna === sucursal?.id_comuna &&
-          parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region)
-      )
-    );
+    // const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
+    //   comunaList.find(
+    //     (x) =>
+    //       x?.codigo_comuna === sucursal?.id_comuna &&
+    //       parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region)
+    //   )
+    // );
 
-    const uniqueAddresses = Array.from(
-      new Set(comunasSucursal.map((a) => a?.codigo_comuna))
-    ).map((id) => {
-      return comunasSucursal.find((a) => a?.codigo_comuna === id);
-    });
+    // const uniqueAddresses = Array.from(
+    //   new Set(comunasSucursal.map((a) => a?.codigo_comuna))
+    // ).map((id) => {
+    //   return comunasSucursal.find((a) => a?.codigo_comuna === id);
+    // });
 
-    const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function (
-      id
-    ) {
-      return id;
-    });
+    // const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function (
+    //   id
+    // ) {
+    //   return id;
+    // });
 
-    setListaComunas(uniqueAddressesWithOutUndefined);
+    var variables = []
+    sucursalesEmpresa.map((sucursal,i) =>{
+      variables.push({id: i,codigo_region: sucursal.codigo_region,codigo_comuna:sucursal.id_comuna, nombre: sucursal.comuna})
+    })
+
+    var uniqueArray = removeDuplicates(variables, "nombre");
+    console.log("uniqueArray is: " + JSON.stringify(uniqueArray));    
+
+    setListaComunas(uniqueArray);
   }, [comunaList]);
+
+  const removeDuplicates = (originalArray, prop) =>{
+    var newArray = [];
+    var lookupObject  = {};
+
+    for(var i in originalArray) {
+       lookupObject[originalArray[i][prop]] = originalArray[i];
+    }
+
+    for(i in lookupObject) {
+        newArray.push(lookupObject[i]);
+    }
+     return newArray;
+  }
 
   console.log(listaComunas);
   return (
