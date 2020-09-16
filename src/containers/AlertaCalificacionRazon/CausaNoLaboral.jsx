@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -34,7 +34,17 @@ const CausaNoLaboral = () => {
     shallowEqual
   );
 
-  console.log({ causasList });
+  const [fixedCausasList, setFixedCausasList] = useState(causasList);
+
+  useEffect(() => {
+    setFixedCausasList(
+      causasList.map(causa => {
+        causa.glosa = causa.glosa.replace("prestación", "presentación");
+        return causa
+      })
+    )
+  }, [causasList])
+
 
   return (
     <div className={root}>
@@ -43,7 +53,7 @@ const CausaNoLaboral = () => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        Selecciona la razón de 
+        Selecciona la razón de
         <div className={titleBlue}>
           &nbsp;posible causa no laboral
         </div>
@@ -59,7 +69,7 @@ const CausaNoLaboral = () => {
           setCausas(value);
         }}
         style={{ width: 300 }}
-        options={causasList}
+        options={fixedCausasList}
         getOptionLabel={(option) => option.glosa}
         renderInput={(params) => (
           <TextField
