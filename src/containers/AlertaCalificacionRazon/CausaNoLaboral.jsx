@@ -45,7 +45,6 @@ const CausaNoLaboral = () => {
     )
   }, [causasList])
 
-  console.log({ causasList });
 
   return (
     <div className={root}>
