@@ -85,6 +85,8 @@ const DataResponsable = () => {
           margin="dense"
           variant="outlined"
           fullWidth
+          autoComplete="off"
+          type="text"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -121,6 +123,8 @@ const DataResponsable = () => {
           helperText="Ejemplo: Jefe de área, Prevencionista"
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           fullWidth
           InputProps={{
             endAdornment: (

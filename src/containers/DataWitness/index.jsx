@@ -74,6 +74,8 @@ const DataWitness = () => {
           helperText="Ejemplo: Luis Morales"
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           fullWidth
           InputProps={{
             endAdornment: (
@@ -111,6 +113,8 @@ const DataWitness = () => {
           helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           fullWidth
           InputProps={{
             endAdornment: (

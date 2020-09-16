@@ -75,6 +75,8 @@ const Cargo = () => {
           error={error}
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           inputProps={{ maxLength: 25 }}
           fullWidth
           InputProps={{
