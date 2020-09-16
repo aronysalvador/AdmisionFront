@@ -61,6 +61,8 @@ const form = (props) => {
           margin="dense"
           variant="outlined"
           fullWidth
+          autoComplete="off"
+          type="text"
         />
       </div>{" "}
       <div className={spaceStyle.space12} />{" "}
