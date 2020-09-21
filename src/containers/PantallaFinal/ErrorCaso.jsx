@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
+import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -58,6 +59,7 @@ const ErrorCaso = (props) => {
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();
+  const welcomeStyle = getWelcomeStyle();
   const dispatch = useDispatch();
 
   const {
@@ -74,7 +76,7 @@ const ErrorCaso = (props) => {
           className={useStyles.img}
         />
       </div>
-      <div className={spaceStyle.space3} />
+      <div className={spaceStyle.space1} />
       <Typography
         color="textSecondary"
         gutterBottom
@@ -101,7 +103,7 @@ const ErrorCaso = (props) => {
       >
         Por favor, vuelve a intentarlo
       </Typography>
-      <div className={comunClass.bottomElement}>
+      {/* <div className={comunClass.bottomElement}>
         <Button
           onClick={() => dispatch(handleSetStep(27))}
           className={comunClass.buttonAchs2}
@@ -109,7 +111,26 @@ const ErrorCaso = (props) => {
         >
           Volver al inicio
         </Button>
-      </div>
+      </div> */}
+
+        <div className={welcomeStyle.bottomBegin}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            onClick={() => dispatch(handleSetStep(27))}
+          >
+            Volver a intentarlo
+          </Button>
+          <div className={spaceStyle.space1}></div>
+          <Button
+            className={comunClass.buttonAchs2}
+            variant="contained"
+            onClick={() => dispatch(handleSetStep(1.1))}
+          >
+            Volver al inicio
+          </Button>
+  
+        </div>
     </div>
   );
 };
