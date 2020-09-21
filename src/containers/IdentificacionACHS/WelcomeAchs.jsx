@@ -33,11 +33,7 @@ const SessionAchs = (props) => {
   return (
     <div className={comunStyle.rootWhite}>
       <div className={welcomeStyle.backgroundBoxAchs}>
-        {/* <div className={welcomeStyle.backPosicion}> 
-          <Cabecera dispatch={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true} /> 
-        </div> */}
 
-        <div className={spaceStyle.space1} />
         <div className={welcomeStyle.avatarContainer}>
           <Avatar className={welcomeStyle.avatar}>
             {microsoftReducer.userMsal.iniciales}
@@ -52,7 +48,6 @@ const SessionAchs = (props) => {
             className={[
               comunStyle.textAchsContent,
               comunStyle.textCenter,
-              welcomeStyle.admisionText,
             ]}
           >
             Hola,
@@ -80,7 +75,6 @@ const SessionAchs = (props) => {
             className={[
               comunStyle.textAchsContent,
               comunStyle.textCenter,
-              welcomeStyle.admisionText,
             ]}
           >
             Admisionista
@@ -98,7 +92,7 @@ const SessionAchs = (props) => {
           </Button>
         </div>
         <div className={spaceStyle.space1} />
-        <div>
+        <div className={welcomeStyle.boxCentroAlign} >
           <div className={welcomeStyle.boxCentroAchs} 
           style={{ cursor: 'pointer'}}
           onClick={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true}>
@@ -122,29 +116,28 @@ const SessionAchs = (props) => {
         </div>
         <div className={spaceStyle.space2} />
       </div>
-        
-        {/* <div className={spaceStyle.space1} /> */}
-        <div className={comunStyle.bottomElement} style={{padding:'1.5em'}}>
-          <div>
-            <Button
-              className={comunStyle.buttonAchs}
-              variant="contained"
-              onClick={() => dispatch(handleSetStep(1.1))}
-            >
-              Nueva admisión
-            </Button>
-          </div>
-          <div className={spaceStyle.space1} />
-          <div>
-            <Button
-              className={comunStyle.buttonAchs2}
-              variant="contained"
-              onClick={() => dispatch(logout())}
-            >
-              Cerrar sesión
-            </Button>
-          </div>
-        </div> 
+      <div className={comunStyle.bottomElement}  
+      style={{padding:'16px 16px 33px 16px'}} >
+        <div>
+          <Button
+            className={comunStyle.buttonAchs}
+            variant="contained"
+            onClick={() => dispatch(handleSetStep(1.1))}
+          >
+            Nueva admisión
+          </Button>
+        </div>
+        <div className={spaceStyle.space1} />
+        <div>
+          <Button
+            className={comunStyle.buttonAchs2}
+            variant="contained"
+            onClick={() => dispatch(logout())}
+          >
+            Cerrar sesión
+          </Button>
+        </div>
+      </div> 
     </div>
   );
 };

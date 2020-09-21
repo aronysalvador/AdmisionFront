@@ -1,28 +1,28 @@
 import React from "react";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const CabeceraSinBarra = (props) => {
-  const { dispatch, color } = props;
+  const { dispatch } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   return (
     <div>
-      <div className={comunClass.logoAchsContainer}>
+      {/* <div className={comunClass.logoAchsContainer}>
         <Typography
           variant="p"
           component="p"
           className={comunClass.tituloACHS}
         ></Typography>
-      </div>
+      </div> */}
       <div className={spaceStyle.space1} />
       <div className={comunClass.buttonVolverContainerBarra}>
         <Link href="#" onClick={() => dispatch()}>
-          <ArrowBackIosIcon style={{ color: color }} />
+          <ArrowBackIosIcon style={{ color: "#373737" }} />
         </Link>
       </div>
     </div>

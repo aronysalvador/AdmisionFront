@@ -1,36 +1,42 @@
 import { makeStyles } from "@material-ui/core/styles";
-// import img from './../../public/static/Bienvenido.png'
 
 export const getComunStyle = makeStyles((theme) => ({
+    rootContainer: {
+        position: "relative",
+        width: "25.715em",
+        height: "45.715em",
+        backgroundColor: "#F8F9FA",
+    },
+    //era igual a rootContainer
     root: {
         position: "relative",
-        width: "22.5em",
-        height: "40em",
+        // width: "25.715em",
+        height: "44em",
         backgroundColor: "#F8F9FA",
     },
     rootBegin: {
         position: "relative",
-        width: "24.5em",
-        height: "42em",
-        // background:  "linear-gradient(110deg, #F8F9FA, 50%, #E5F5F4, 50%);" ,
+        width: "25.715em",
+        height: "45.715em",
         background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
         padding: 0,
     },
     rootWhite: {
         position: "relative",
-        width: "24.5em",
-        height: "42em",
+        width: "25.715em",
+        height: "45.715em",
         padding: 0,
     },
-
-    rootContainer: {
+    rootImg: {
         position: "relative",
-        width: "24.5em",
-        height: "42em",
-        backgroundColor: "#F8F9FA",
+        width: "25.715em",
+        height: "45.715em",
+        backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
+        padding: 0,
     },
     textAchsContent: {
         fontFamily: "Catamaran",
+        fontSize: "16px",
         fontStyle: "normal",
         color: "#373737",
     },
@@ -41,33 +47,17 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: "0.75em",
         lineHeight: "0.875em",
     },
-    pregunta: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "1.25em",
-        lineHeight: "1.75em",
-        display: "flex",
-        alignItems: "flex-end",
-        flexWrap: "wrap"
-    },
-    pregunta_temp: {
-        fontSize: "1.1em !important",
-    },
-    googleMap: {
-        width: "100%",
-        borderRadius: "20px",
-        padding: "10px",
-    },
-    textAchsContentGreen: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        color: "#007A33",
+    bottomElement: {
+        padding: "2.4em 0", //"1.145em 1.145em 2.4em 1.145em",
+        position: "absolute",
+        right: "0",
+        left: "0",
+        bottom: "0",
     },
     buttonAchs: {
         width: "100%",
         background: "#007A33",
-        borderRadius: "0.25",
+        borderRadius: "0.71em",
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "bold",
@@ -86,7 +76,7 @@ export const getComunStyle = makeStyles((theme) => ({
         background: "#FFFFFF",
         border: "2px solid #007A33",
         boxSizing: "border-box",
-        borderRadius: "4px",
+        borderRadius: "0.71em",
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "bold",
@@ -95,8 +85,32 @@ export const getComunStyle = makeStyles((theme) => ({
         color: "#007A33",
         textTransform: "inherit",
         height: "3.5em",
-
         marginTop: "5px",
+    },
+    tituloTextbox: {
+        letterSpacing: ".03em",
+        fontSize: "1em",
+        fontWeight: "normal",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        color: "#787878",
+    },
+    titleBlack: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: ' #373737'
+    },
+    titleBlue: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: ' #00b2a9',
+        display: "contents",
     },
 
     buttonAchsRight: {
@@ -107,7 +121,6 @@ export const getComunStyle = makeStyles((theme) => ({
         fontStyle: "normal",
         fontWeight: "bold",
         fontSize: "0.75em",
-        // fontSize: '1.125em',
         lineHeight: "1.125em",
         color: "#FFFFFF",
         textTransform: "capitalize",
@@ -143,6 +156,30 @@ export const getComunStyle = makeStyles((theme) => ({
         width: "20%",
         float: "left",
     },
+    pregunta: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "1.25em",
+        lineHeight: "1.75em",
+        display: "flex",
+        alignItems: "flex-end",
+        flexWrap: "wrap"
+    },
+    pregunta_temp: {
+        fontSize: "1.1em !important",
+    },
+    googleMap: {
+        width: "100%",
+        borderRadius: "20px",
+        padding: "10px",
+    },
+    textAchsContentGreen: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        color: "#007A33",
+    },
+    
     barraContainer: {
         paddingTop: "0.5em",
         width: "17.75em",
@@ -158,20 +195,8 @@ export const getComunStyle = makeStyles((theme) => ({
     pullRight: {
         float: "right",
     },
-    bottomElement: {
-        position: "absolute",
-        right: "0",
-        left: "0",
-        bottom: "0",
-    },
-    tituloTextbox: {
-        letterSpacing: "2px",
-        fontSize: "0.75em",
-        fontWeight: "normal",
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        color: "#373737",
-    },
+    
+    
     tituloSelectorFecha: {
         letterSpacing: "2px",
         fontSize: "0.750em",
@@ -248,28 +273,13 @@ export const getComunStyle = makeStyles((theme) => ({
     textCenter: {
         textAlign: "center",
     },
+    //repetida en styles.js
     paper: {
         marginTop: '0 auto',
         padding: '1em',
         backgroundColor: "#F8F9FA"
     },
-    titleBlack: {
-        fontFamily: 'Catamaran',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '20px',
-        lineHeight: '28px',
-        color: ' #373737'
-    },
-    titleBlue: {
-        fontFamily: 'Catamaran',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '20px',
-        lineHeight: '28px',
-        color: ' #00b2a9',
-        display: "contents",
-    },
+    
     txtGreen: {
         fontFamily: 'Helvetica',
         fontStyle: 'normal',
@@ -301,14 +311,7 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: 4,
         },
     },
-    rootImg: {
-        position: "relative",
-        width: "24.5em",
-        height: "42em",
-        // backgroundImage: "url(" + img + ")",
-        backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
-        padding: 0,
-    },
+    
 
     boxRootRelato: {
         padding: "5px",
