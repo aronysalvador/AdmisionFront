@@ -11,15 +11,15 @@ import { getComunStyle } from "../../css/comun";
 import { siniestroStyle } from "../../css/siniestroStyle";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { handlEndLog } from "../../redux/actions/Log";
 import { validateEmailFormat } from "../../helpers/email";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import ClearIcon from "@material-ui/icons/Clear";
-import { FechaHora } from './../../helpers/utils'
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { ErrorOutline } from "@material-ui/icons";
 import Switch from '@material-ui/core/Switch';
 
+// import { handlEndLog } from "../../redux/actions/Log";
+// import { FechaHora } from './../../helpers/utils'
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -39,19 +39,15 @@ const ValidarCorreoElectronico = () => {
   const welcomeStyle = getWelcomeStyle();
   const { mobileLabel } = siniestroStyle();
 
-  const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
+  // const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
-  const handleEnd = () => {
-    
+  const handleEnd = () => {    
     if(isEmailValid){
-      if(ID>0){
-        dispatch(handlEndLog({Id: ID, fecha: FechaHora()})) 
-      }
-
-        dispatch(updateForm("emailusuario", userEmail));
-      
-      
-      dispatch(handleSetStep(1000))
+      // if(ID>0){
+      //   dispatch(handlEndLog({Id: ID, fecha: FechaHora()})) 
+      // }
+        dispatch(updateForm("emailusuario", userEmail));            
+        dispatch(handleSetStep(1000))
     }   
   }
 

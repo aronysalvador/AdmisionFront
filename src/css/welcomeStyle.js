@@ -102,7 +102,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         // marginTop: "2px",
     },
     TextContainer: {
-        padding: "0em 1.5em 0 1.5em",
+        padding: "0em 1em 0 1em",
         // marginTop: "2px",
     },
     titleContainer: {

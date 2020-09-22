@@ -1,7 +1,6 @@
 import React from 'react'
-import { connect, useSelector, shallowEqual } from 'react-redux'
+import { connect } from 'react-redux'
 import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
-import { handleLogUpdate } from "../../redux/actions/Log";
 import Typography from '@material-ui/core/Typography'
 import {siniestroStyle} from '../../css/siniestroStyle'
 import Button from "@material-ui/core/Button"
@@ -9,14 +8,13 @@ import {getComunStyle} from '../../css/comun'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import Cabecera from '../../components/cabecera/index'
 
+
 const Identification = (props) => {
 
     const { dispatch, addmissionForm } = props
     const classes = siniestroStyle()
     const comunClass = getComunStyle()
     const spaceStyle = getSpaceStyle()
-
-    const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
     return (<div className={comunClass.root}>
 
@@ -36,7 +34,6 @@ const Identification = (props) => {
                     <Button className={classes.button} variant="contained" onClick={()=>{ 
                         var tipo = { Id:1, Descripcion: "Accidente Trabajo" }
                         dispatch(updateForm("tipoSiniestro", tipo));
-                        dispatch(handleLogUpdate({opcion:4, Id: ID, tipoSiniestro: tipo}));
                         dispatch(handleSetStep(3));   
                  
                     }}>
