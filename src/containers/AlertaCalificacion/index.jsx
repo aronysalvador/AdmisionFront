@@ -22,82 +22,87 @@ const AlertaCalificacion = () => {
 
   return (
     <div className={comunStyle.rootBegin}>
-      <div className={welcomeStyle.beginContainer}>
-        <Cabecera
-          dispatch={() => dispatch(handleSetStep(26))}
-          percentage={-1}
-          noSpace={true}
-        />
-        <div className={spaceStyle.space4}>
-          <div className={welcomeStyle.avatarContainerRight}>
-            <Avatar className={welcomeStyle.avatarBegin}>
-              {microsoftReducer.userMsal.iniciales}
-            </Avatar>
+
+        <div className={welcomeStyle.beginContainer}>
+          <Cabecera
+            dispatch={() => dispatch(handleSetStep(26))}
+            percentage={-1}
+            noSpace={true}
+          />
+          <div className={spaceStyle.space4}>
+            <div className={welcomeStyle.avatarContainerRight}>
+              <Avatar className={welcomeStyle.avatarBegin}>
+                {microsoftReducer.userMsal.iniciales}
+              </Avatar>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className={welcomeStyle.TextContainer}>
-        <img
-          alt="Excelente"
-          src="static/icon-check.png"
-          className={welcomeStyle.iconCircular}
-        />
-        <Typography
-          variant="h1"
-          component="h1"
-          className={welcomeStyle.txtBegin}
-        >
-          ¡WOW!
-        </Typography>
-        <Typography
-          variant="h1"
-          component="h1"
-          className={welcomeStyle.txtBegin}
-        >
-          Eso fue rápido
-        </Typography>
-      </div>
-
-      <div className={welcomeStyle.beginContainer}>
-        <Typography
-          variant="h5"
-          component="h5"
-          className={welcomeStyle.subTitleBegin}
-        >
-          Para la creación del caso
-        </Typography>
-
-        <Indiciaciones
-          indicaciones={[
-            {
-              icono: "info.png",
-              textoPrimario: "Pide un e-mail al paciente",
-              textoSecundario: "Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar.",
-              clase: welcomeStyle.divRowBottom,
-            },
-          ]}
-        />
-
-        <div className={welcomeStyle.bottomBegin}>
-          <Button
-            className={comunStyle.buttonAchs}
-            variant="contained"
-            onClick={() => dispatch(handleSetStep(27))}
+        <div className={welcomeStyle.TextContainer}>
+          <img
+            alt="Excelente"
+            src="static/icon-check.png"
+            className={welcomeStyle.iconCircular}
+          />
+          <Typography
+            variant="h1"
+            component="h1"
+            className={welcomeStyle.txtBegin}
           >
-            Continuar
-          </Button>
-          <div className={spaceStyle.space1}></div>
-          <Button
-            className={comunStyle.buttonAchs2}
-            variant="contained"
-            onClick={() => dispatch(handleSetStep(26.2))}
+            ¡WOW!
+          </Typography>
+          <Typography
+            variant="h1"
+            component="h1"
+            className={welcomeStyle.txtBegin}
           >
-            Levantar alerta de calificación
-          </Button>
-  
+            Eso fue rápido
+          </Typography>
         </div>
-      </div>
+
+          <div className={welcomeStyle.beginContainer}>
+            <Typography
+              variant="h5"
+              component="h5"
+              className={welcomeStyle.subTitleBegin}
+            >
+              Para la creación del caso
+            </Typography>
+
+            <Indiciaciones
+              indicaciones={[
+                {
+                  icono: "info.png",
+                  textoPrimario: "Pide un e-mail al paciente",
+                  textoSecundario: "Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar.",
+                  clase: welcomeStyle.divRowBottom,
+                },
+              ]}
+            />
+
+            <div className={welcomeStyle.bottomBegin} >
+              <Button
+                className={comunStyle.buttonAchs}
+                style={{marginTop: '0'}}
+                variant="contained"
+                onClick={() => dispatch(handleSetStep(27))}
+              >
+                Continuar
+              </Button>
+              <div style={{ height: '0.5em'}}></div>
+              <Button
+                className={comunStyle.buttonAchs2}
+                style={{marginTop: '0'}}
+                variant="contained"
+                onClick={() => dispatch(handleSetStep(26.2))}
+              >
+                Levantar alerta de calificación
+              </Button>
+      
+            </div>
+
+          </div>
+
     </div>
   );
 };

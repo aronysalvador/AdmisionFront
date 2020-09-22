@@ -50,93 +50,101 @@ const HealthForecast = (props) => {
           </div>
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
-      <div>
-        <Button
-          className={[classesComun.buttonAchs, classesComun.pregunta_temp]}
-          variant="contained"
-          type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[0].id : null}
-          onClick={() => clickSendIsapres(getIsapres[0])}
-        >
-          {getIsapres.length !== 0 ? <p>{getIsapres[0].nombre}</p> : null}
-        </Button>
-      </div>
 
-      <div className={spaceStyle.space2} />
-      <div className={classesComun.flexDivider}>
-      <Divider className={classesComun.mediumDivider} />  
-      <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
-     
-      <Divider className={classesComun.mediumDivider} /> </div>
-      <div className={spaceStyle.space2} />
 
-      <div>
-        <Button
-          className={classesComun.buttonAchsRight}
-          variant="contained"
-          type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[12].id : null}
-          onClick={() => clickSendIsapres(getIsapres[12])}
-        >
-          {getIsapres.length !== 0 ? <p>{getIsapres[12].nombre}</p> : null}
-        </Button>
-        <Button
-          className={classesComun.buttonAchsLeft}
-          variant="contained"
-          type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[25].id : null}
-          onClick={() => clickSendIsapres(getIsapres[25])}
-        >
-          {getIsapres.length !== 0 ? <p>{getIsapres[25].nombre}</p> : null}
-        </Button>
-      </div>
+      {getIsapres.length > 0 && ( 
+      <>
+          <div className={spaceStyle.space1} />
+          <div>
+            <Button
+              className={[classesComun.buttonAchs, classesComun.pregunta_temp]}
+              variant="contained"
+              type="submit"
+              value={getIsapres.length !== 0 ? getIsapres[0].id : null}
+              onClick={() => clickSendIsapres(getIsapres[0])}
+            >
+              {getIsapres.length !== 0 ? <p>{getIsapres[0].nombre}</p> : null}
+            </Button>
+          </div>
 
-      <div className={spaceStyle.space4} />
+          <div className={spaceStyle.space2} />
+          <div className={classesComun.flexDivider}>
+          <Divider className={classesComun.mediumDivider} />  
+          <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
+        
+          <Divider className={classesComun.mediumDivider} /> </div>
+          <div className={spaceStyle.space2} />
 
-      <div>
-        <Button
-          className={classesComun.buttonAchsRight}
-          variant="contained"
-          type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[9].id : null}
-          onClick={() => clickSendIsapres(getIsapres[9])}
-        >
-          {getIsapres.length !== 0 ? <p>{getIsapres[9].nombre}</p> : null}
-        </Button>
-        <Button
-          className={classesComun.buttonAchsLeft}
-          variant="contained"
-          type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[11].id : null}
-          onClick={() => clickSendIsapres(getIsapres[11])}
-        >
-          {getIsapres.length !== 0 ? <p>{getIsapres[11].nombre}</p> : null}
-        </Button>
-      </div>
+          <div>
+            <Button
+              className={classesComun.buttonAchsRight}
+              variant="contained"
+              type="submit"
+              value={getIsapres.length !== 0 ? getIsapres[12].id : null}
+              onClick={() => clickSendIsapres(getIsapres[12])}
+            >
+              {getIsapres.length !== 0 ? <p>{getIsapres[12].nombre}</p> : null}
+            </Button>
+            <Button
+              className={classesComun.buttonAchsLeft}
+              variant="contained"
+              type="submit"
+              value={getIsapres.length !== 0 ? getIsapres[25].id : null}
+              onClick={() => clickSendIsapres(getIsapres[25])}
+            >
+              {getIsapres.length !== 0 ? <p>{getIsapres[25].nombre}</p> : null}
+            </Button>
+          </div>
 
-      <div className={spaceStyle.space4} />
+          <div className={spaceStyle.space4} />
 
-      <div>
-        <Button
-          className={classesComun.buttonAchsRight}
-          variant="contained"
-          type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[5].id : null}
-          onClick={() => clickSendIsapres(getIsapres[5])}
-        >
-          {getIsapres.length !== 0 ? <p>{getIsapres[5].nombre}</p> : null}
-        </Button>
-        <Button
-          className={classesComun.buttonAchsLeft}
-          variant="contained"
-          type="submit"
-          value={getIsapres.length !== 0 ? getIsapres[24].id : null}
-          onClick={() => clickSendIsapres(getIsapres[24])}
-        >
-          {getIsapres.length !== 0 ? <p>{getIsapres[24].nombre}</p> : null}
-        </Button>
-      </div>
+          <div>
+            <Button
+              className={classesComun.buttonAchsRight}
+              variant="contained"
+              type="submit"
+              value={getIsapres.length !== 0 ? getIsapres[9].id : null}
+              onClick={() => clickSendIsapres(getIsapres[9])}
+            >
+              {getIsapres.length !== 0 ? <p>{getIsapres[9].nombre}</p> : null}
+            </Button>
+            <Button
+              className={classesComun.buttonAchsLeft}
+              variant="contained"
+              type="submit"
+              value={getIsapres.length !== 0 ? getIsapres[11].id : null}
+              onClick={() => clickSendIsapres(getIsapres[11])}
+            >
+              {getIsapres.length !== 0 ? <p>{getIsapres[11].nombre}</p> : null}
+            </Button>
+          </div>
+
+          <div className={spaceStyle.space4} />
+
+          <div>
+            <Button
+              className={classesComun.buttonAchsRight}
+              variant="contained"
+              type="submit"
+              value={getIsapres.length !== 0 ? getIsapres[5].id : null}
+              onClick={() => clickSendIsapres(getIsapres[5])}
+            >
+              {getIsapres.length !== 0 ? <p>{getIsapres[5].nombre}</p> : null}
+            </Button>
+            <Button
+              className={classesComun.buttonAchsLeft}
+              variant="contained"
+              type="submit"
+              value={getIsapres.length !== 0 ? getIsapres[24].id : null}
+              onClick={() => clickSendIsapres(getIsapres[24])}
+            >
+              {getIsapres.length !== 0 ? <p>{getIsapres[24].nombre}</p> : null}
+            </Button>
+          </div>
+
+      </>
+      )}
+
 
       <div className={classesComun.bottomElement}>
         <Button
