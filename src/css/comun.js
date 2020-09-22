@@ -48,7 +48,7 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: "0.875em",
     },
     bottomElement: {
-        padding: "2.4em 0", //"1.145em 1.145em 2.4em 1.145em",
+        padding: "1.145em 0", //"1.145em 1.145em 2.4em 1.145em",
         position: "absolute",
         right: "0",
         left: "0",
@@ -297,7 +297,7 @@ export const getComunStyle = makeStyles((theme) => ({
     siniesterList: {
         display: 'flow-root',
         overflow: 'auto',
-        height: '23.5em',
+        height: '24.5em',
         '&::-webkit-scrollbar': {
             width: 8,
         },

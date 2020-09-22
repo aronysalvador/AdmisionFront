@@ -54,7 +54,7 @@ const Start = (props) =>{
     return(
         <div className={comunStyle.rootBegin}>
             <div className={welcomeStyle.beginContainer}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} noSpace={true} />
+                <Cabecera dispatch={() => dispatch(handleSetStep(1))} color="#373737" percentage={-1} noSpace={true} />
                 
                 <div className={welcomeStyle.avatarContainerRight}>
                     <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>

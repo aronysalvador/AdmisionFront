@@ -6,7 +6,7 @@ import Link from "@material-ui/core/Link";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const CabeceraSinBarra = (props) => {
-  const { dispatch } = props;
+  const { dispatch, color } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -22,7 +22,7 @@ const CabeceraSinBarra = (props) => {
       <div className={spaceStyle.space1} />
       <div className={comunClass.buttonVolverContainerBarra}>
         <Link href="#" onClick={() => dispatch()}>
-          <ArrowBackIosIcon style={{ color: "#373737" }} />
+          <ArrowBackIosIcon style={{ color: color }} /> 
         </Link>
       </div>
     </div>

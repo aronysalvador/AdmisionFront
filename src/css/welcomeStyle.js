@@ -26,10 +26,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         paddingLeft: "14em",
         display: "inline-flex",
     },
-    // bienvenido: {
-    //     fontSize: "2em",
-    //     fontWeight: "bold",
-    // },
+    bienvenido: {
+        fontSize: "2em",
+        fontWeight: "bold",
+    },
     bienvenidoAchs: {
         fontSize: "25px",
         fontWeight: "bold",

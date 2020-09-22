@@ -33,10 +33,10 @@ const NoQuotes = (props) => {
   return (
     <div>
       <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.1))} // 5.1
+        dispatch={() => dispatch(handleSetStep(5.1))} 
         color="#FFFFFF"
       />
-      <div className={blackStyle.root} style={{height: "37.2em"}}>
+      <div className={blackStyle.root} style={{height: "40em"}}>
         <img
           alt="load"
           src="./static/error-siniestro.svg"
@@ -58,10 +58,11 @@ const NoQuotes = (props) => {
           No tenemos cotizaciones por este paciente
         </Typography>
         <div className={spaceStyle.space1} />
+        
+        <NoQuotesCard />
+        {/* <div className={spaceStyle.space2} /> */}
   
         <div className={comunClass.bottomElement}>
-          <NoQuotesCard />
-          <div className={spaceStyle.space2} />
           <Button
             className={blackStyle.buttonFooter}
             onClick={() => {
@@ -70,7 +71,7 @@ const NoQuotes = (props) => {
           >
             Continuar admisión
           </Button>
-          <div className={spaceStyle.spaceMin1} />
+          {/* <div className={spaceStyle.spaceMin1} /> */}
           <Button
             className={blackStyle.buttonFooter2}
             onClick={() => {
