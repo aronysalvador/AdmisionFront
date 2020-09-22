@@ -39,7 +39,7 @@ const HealthForecast = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(18))}
+        dispatch={() => dispatch(handleSetStep(18.1))}
         percentage={addmissionForm.percentage}
       />
       <div>
@@ -56,6 +56,7 @@ const HealthForecast = (props) => {
           className={[classesComun.buttonAchs, classesComun.pregunta_temp]}
           variant="contained"
           type="submit"
+          disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[0].id : null}
           onClick={() => clickSendIsapres(getIsapres[0])}
         >
@@ -76,6 +77,7 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsRight}
           variant="contained"
           type="submit"
+          disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[12].id : null}
           onClick={() => clickSendIsapres(getIsapres[12])}
         >
@@ -85,6 +87,7 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsLeft}
           variant="contained"
           type="submit"
+          disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[25].id : null}
           onClick={() => clickSendIsapres(getIsapres[25])}
         >
@@ -99,6 +102,7 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsRight}
           variant="contained"
           type="submit"
+          disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[9].id : null}
           onClick={() => clickSendIsapres(getIsapres[9])}
         >
@@ -108,6 +112,7 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsLeft}
           variant="contained"
           type="submit"
+          disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[11].id : null}
           onClick={() => clickSendIsapres(getIsapres[11])}
         >
@@ -122,6 +127,7 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsRight}
           variant="contained"
           type="submit"
+          disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[5].id : null}
           onClick={() => clickSendIsapres(getIsapres[5])}
         >
@@ -131,6 +137,7 @@ const HealthForecast = (props) => {
           className={classesComun.buttonAchsLeft}
           variant="contained"
           type="submit"
+          disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[24].id : null}
           onClick={() => clickSendIsapres(getIsapres[24])}
         >
