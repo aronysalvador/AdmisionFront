@@ -12,6 +12,8 @@ import Divider from "@material-ui/core/Divider";
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import { searchIsapres } from "../../redux/actions/PrevisionAction";
 
+import {siniestroStyle} from '../../css/siniestroStyle';
+
 const HealthForecast = (props) => {
   const { dispatch, addmissionForm } = props;
 
@@ -35,6 +37,7 @@ const HealthForecast = (props) => {
 
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const classes = siniestroStyle()
 
   return (
     <div className={classesComun.root}>
@@ -51,9 +54,9 @@ const HealthForecast = (props) => {
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
-      <div>
+      <div className={classesComun.textCenter}>
         <Button
-          className={[classesComun.buttonAchs, classesComun.pregunta_temp]}
+          className={[classes.button]}//classesComun.buttonAchs, classesComun.pregunta_temp
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}

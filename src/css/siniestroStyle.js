@@ -1,12 +1,45 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export const siniestroStyle = makeStyles((theme) => ({
-  root: {
-    width: "22.5em",
-    height: "40em",
-    margin: "0px",
-    border: "0px",
-    padding: "0px",
+  // root: {
+  //   width: "22.5em",
+  //   height: "40em",
+  //   margin: "0px",
+  //   border: "0px",
+  //   padding: "0px",
+  // },
+  button: {
+    width: "100%",
+    height: "100%",
+    background: "#FFFFFF", //#007A33
+    border: "2px solid #787878",
+    boxSizing: "border-box",
+    boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+    borderRadius: "10px",
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "1.145em",
+    lineHeight: "1.285em",
+    color: "#787878",
+    textTransform: "inherit",
+    textAlign: "left",
+    justifyContent: "flex-start",
+    padding: "10px",
+    "&:hover": {
+      background: "#DFF3F2",
+      border: "2px solid #00B2A9",
+    }
+  },
+  imgButton: {
+    width: "3em",
+    height: "3em",
+    marginRight: "16px",
+  },
+  textButton: {
+    display: "contents",
+    fontWeight: "normal",
+    lineHeight: "1.785em",
   },
   item1: {
     height: "0.9375em",
@@ -70,36 +103,11 @@ export const siniestroStyle = makeStyles((theme) => ({
     textAlign: "left",
     justifyContent: "flex-start",
   },
-  button: {
-    width: "100%",
-    height: "100%",
-    background: "#007A33",
-    boxShadow: "0.125em 0.125em 0.375em rgba(203, 203, 203, 0.4)",
-    borderRadius: "0.25em",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "1em",
-    lineHeight: "1.125em",
-    color: "#FFFFFF",
-    textTransform: "capitalize",
-    textAlign: "left",
-    justifyContent: "flex-start",
-    paddingBottom: '15px',
-    paddingTop: '15px',
-    "&:hover": {
-      background: "#104F28"
-    }
-  },
   item9: {
     height: "2.5625em",
     margin: "0px",
     border: "0px",
     padding: "0px",
-  },
-  img: {
-    width: "3em",
-    height: "3em",
   },
   mobileLabel: {
     fontFamily: "Catamaran",

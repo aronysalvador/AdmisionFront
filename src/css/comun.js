@@ -112,7 +112,80 @@ export const getComunStyle = makeStyles((theme) => ({
         color: ' #00b2a9',
         display: "contents",
     },
-
+    cardsButtonAlign: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
+    cardsButton: {
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "45%",
+        height: "90px",
+        background: "#FFF",
+        border: "2px solid #787878",
+        borderSpacing: "2px",
+        borderRadius: "10px",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+    },
+    botonSeleccionado: {
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "45%",
+        height: "90px",
+        background: "#DFF3F2 !important",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+        color: "#373737",
+    },
+    cardsButtonOther: {
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "100%",
+        height: "90px",
+        background: "#FFF",
+        border: "2px solid #787878",
+        borderSpacing: "2px",
+        borderRadius: "10px",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+        fontWeight: "bold",
+        "&:hover": {
+            background: "#DFF3F2",
+            border: "2px solid #00B2A9",
+        }
+    },
+    textCenter: {
+        textAlign: "center !important",
+    },
+    mediumDivider: {
+        width: "47%",
+    },
+    flexDivider: {
+        display: "flex",
+        alignItems: "center",
+    },
+    emMargin: {
+        margin: "0.5em",
+    },
+    
     buttonAchsRight: {
         width: "46%",
         background: "#007A33",
@@ -166,9 +239,9 @@ export const getComunStyle = makeStyles((theme) => ({
         alignItems: "flex-end",
         flexWrap: "wrap"
     },
-    pregunta_temp: {
-        fontSize: "1.1em !important",
-    },
+    // pregunta_temp: {
+    //     fontSize: "1.1em !important",
+    // },
     googleMap: {
         width: "100%",
         borderRadius: "20px",
@@ -205,13 +278,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontStyle: "normal",
         color: "#373737",
     },
-    botonSeleccionado: {
-        background: "#DFF3F2 !important",
-        border: "2px solid #007A33 !important",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
-        color: "#007A33",
-    },
+    
     selectorRuedaItemPrincipal: {
         color: "#007A33",
         fontSize: "1.250em",
@@ -231,16 +298,7 @@ export const getComunStyle = makeStyles((theme) => ({
             border: "#007A33",
         },
     },
-    mediumDivider: {
-        width: "47%",
-    },
-    flexDivider: {
-        display: "flex",
-        alignItems: "center",
-    },
-    emMargin: {
-        margin: "0.5em",
-    },
+    
     pantallaFinalBotones: {
         borderRadius: "10px",
         height: "3em",
@@ -270,15 +328,13 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: "bold",
         fontSize: "15px",
     },
-    textCenter: {
-        textAlign: "center",
-    },
+    
     //repetida en styles.js
-    paper: {
-        marginTop: '0 auto',
-        padding: '1em',
-        backgroundColor: "#F8F9FA"
-    },
+    // paper: {
+    //     marginTop: '0 auto',
+    //     padding: '1em',
+    //     backgroundColor: "#F8F9FA"
+    // },
     
     txtGreen: {
         fontFamily: 'Helvetica',

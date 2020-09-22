@@ -16,7 +16,9 @@ const BotonesAFP = () => {
   const {
     root,
     titleBlack,
-    titleBlue
+    titleBlue,
+    cardsButtonOther,
+    cardsButtonAlign
   } = getComunStyle();
 
   const tipoAFP = !afpForm ? "" : afpForm;
@@ -50,15 +52,7 @@ const BotonesAFP = () => {
         &nbsp;a la que pertenece
       </Typography>
 
-        <div
-            style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            }}
-        >
+        <div className={cardsButtonAlign}>
             {afpList.slice(0,6).map((afp) => (
             <BotonSeleccionarCustom
                 key={afp.codigo}
@@ -75,22 +69,8 @@ const BotonesAFP = () => {
         { afpList.length !== 0 ? 
         
         <div
-        onClick={() => {dispatch(handleSetStep(18))}}
-        style={{
-            marginTop: "10px",
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            flexDirection: "column",
-            width: "100%",
-            height: "90px",
-            borderStyle: "solid",
-            borderColor: "#787878",
-            borderSpacing: "2px",
-            borderRadius: "10px",
-            paddingTop: "15px",
-            paddingBottom: "10px",
-        }}
+          onClick={() => {dispatch(handleSetStep(18))}}
+          className={cardsButtonOther}
         >
          Otra AFP
         </div> : null }
