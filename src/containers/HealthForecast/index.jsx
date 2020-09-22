@@ -39,7 +39,7 @@ const HealthForecast = (props) => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(18))}
+        dispatch={() => dispatch(handleSetStep(18.1))}
         percentage={addmissionForm.percentage}
       />
       <div>

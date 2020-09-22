@@ -36,7 +36,7 @@ const BoxQuestionResponsable = (props) => {
         titulo3={"  en la empresa?"}
         tituloTestigo={tituloTestigo}
         contenidoTestigo={contenidoResponsable}
-        irA={() => dispatch(handleSetStep(18))}
+        irA={() => dispatch(handleSetStep(18.1))}
       />
     </div>
   );
