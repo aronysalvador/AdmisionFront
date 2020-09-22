@@ -36,6 +36,7 @@ import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 import EditCompany from "../EditCompany/index";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
+import BotonesAFP from "../Afp/BotonesAFP";
 import EditarTelefono from "../EditarTelefono/EditarTelefono";
 import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
 import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
@@ -465,6 +466,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <Afp />
+            </Paper>
+          </div>
+        );
+      case 18.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <BotonesAFP />
             </Paper>
           </div>
         );

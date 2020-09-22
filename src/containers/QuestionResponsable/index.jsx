@@ -26,7 +26,7 @@ const QuestionResponsable = (props) => {
         accionButoonB={() => {
           dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
           dispatch(updateForm("fechaHoraResponsable",  {}));
-          dispatch(handleSetStep(18))     
+          dispatch(handleSetStep(18.1))     
         }}
         tituloA={"Agregar responsable"}
         tituloB={"No avisé a nadie"}
