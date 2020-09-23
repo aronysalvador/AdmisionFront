@@ -197,7 +197,7 @@ const HasSinisterDetail = (props) => {
           gutterBottom
           className={blackStyle.textDetailStrong}
         >
-          {siniestroDetalle.reposoActivo ? "Sí" : "No"}
+          {siniestroDetalle.reposoActivo === "NO" ? "No" : "Sí"}
         </Typography>
         <div className={spaceStyle.spaceMin1} />
       </div>

@@ -71,6 +71,8 @@ const PersonalData = (props) => {
     <CardSiniestro siniestro={siniestro}></CardSiniestro>
   ));
 
+  const listaSiniestros2 = listaSiniestros.reverse();
+
   return (
     <div className={comunClass.root}>
       <div>
@@ -106,7 +108,8 @@ const PersonalData = (props) => {
           )}
         </div>
         <div>
-        {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros}</div>) 
+        {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2}
+        </div>) 
         : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
         </div>
         

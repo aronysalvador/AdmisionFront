@@ -1,60 +1,17 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
-const getUseStyles = makeStyles({
-  container: {
-    marginTop: "20px",
-    display: "flex",
-    flexFlow: "row wrap",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "stretch",
-    backgroundColor: "#FFFFFF",
-    padding: "15px",
-    borderRadius: "10px",
-    cursor: "pointer",
-  },
-
-  itemId: {
-    margin: "0 auto",
-    fontSize: "16px",
-    lineHeight: "16px",
-    color: "#787878",
-    fontFamily: "Catamaran",
-  },
-  itemFecha: {
-    margin: "5px auto",
-    fontSize: "22px",
-    lineHeight: "27px",
-    fontWeight: "bold",
-    color: "#373737",
-  },
-  itemTipo: {
-    margin: "0 auto",
-    fontSize: "16px",
-    lineHeight: "18px",
-    fontWeight: "bold",
-    color: "#373737",
-    fontFamily: "Catamaran",
-  },
-  cuerpo: {
-    flex: "4 auto",
-  },
-
-  aside: {
-    flex: "1 auto",
-  },
-});
+import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined';
 
 const CardSiniestro = (props) => {
   const dispatch = useDispatch();
 
   const { siniestro } = props;
-  const { id, fecha, hora, descripcion } = siniestro;
-  const styles = getUseStyles();
+  const { id, fecha, hora, descripcion, reposoActivo } = siniestro;
+  const styles = cardSiniestroStyles();
   return (
     <div
       className={styles.container}
@@ -64,7 +21,14 @@ const CardSiniestro = (props) => {
       }}
     >
       <div className={styles.cuerpo}>
-        <div className={styles.itemId}>ID: {id}</div>
+        <div className={styles.itemId}>ID: {id}
+          <div 
+            className={styles.itemReposo}
+            style={reposoActivo === "NO" ? {display: "none"} : {display: "flex"}}
+          > 
+            <ReportProblemOutlinedIcon style={{ fontSize: 14 }} />  Reposo activo
+          </div>
+        </div>
         <div className={styles.itemFecha}>
           {fecha} - {hora}
         </div>
