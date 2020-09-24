@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
+import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 
@@ -55,6 +56,7 @@ const SameDateSinister = (props) => {
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();
+  const blackStyle = getBlackTheme();
 
   return (
     <div className={comunClass.root}>
@@ -72,9 +74,11 @@ const SameDateSinister = (props) => {
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography
-        color="textSecondary"
+        // color="textSecondary"
         gutterBottom
-        className={[useStyles.text3, useStyles.text2]}
+        className={[blackStyle.textMessage]}
+        style={ {color: "#007A33", fontWeight: "bold"} }
+        //useStyles.text3, useStyles.text2
       >
         Este paciente tiene un siniestro activo en la misma fecha
       </Typography>

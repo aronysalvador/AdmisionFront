@@ -123,6 +123,7 @@ const PersonalData = (props) => {
           >
             Continuar en SAP
           </Button>
+          <div className={spaceStyle.space1} />
           <Button
             className={comunClass.buttonAchs2}
             onClick={() => handleNext()}

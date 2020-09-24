@@ -86,19 +86,19 @@ const PersonalData = (props) => {
         contenidoRutEmpresa={contenidoRutEmpresa} 
         titulo={tituloEmpresa} 
         step={5.4} />
-      <div className={spaceStyle.spaceMin1} />
+      {/* <div className={spaceStyle.spaceMin1} /> */}
       <BoxACHS
         titulo={tituloTelefono}
         contenido={contenidoTelefono}
         step={5.3}
       />
-      <div className={spaceStyle.spaceMin1} />
+      {/* <div className={spaceStyle.spaceMin1} /> */}
       <BoxACHS
         titulo={tituloDireccion}
         contenido={contenidoDireccion}
         step={5.2}
       />
-      <div className={spaceStyle.spaceMin1} />
+      {/* <div className={spaceStyle.spaceMin1} /> */}
       
       <div className={comunClass.bottomElement}>
         <Button

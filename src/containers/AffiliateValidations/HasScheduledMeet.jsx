@@ -1,40 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Button, Typography } from "@material-ui/core";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { makeStyles } from "@material-ui/core/styles";
-
-const getUseStyles = makeStyles({
-  container: {
-    display: "flex",
-    borderRadius: "10px",
-    border: "1px solid #FFFFFF",
-    width: "100%",
-    padding: "10px",
-    justifyContent: "space-evenly",
-  },
-
-  containerRow: {
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column"
-  },
-
-  itemData: {
-    color: "#FFFFFF",
-    fontSize: "1.125em",
-    fontWeight: "bold"
-  },
-
-  itemLabel: {
-    color: "#FFFFFF",
-    fontSize: "1em",
-    marginBottom: "15px"
-  }
-});
 
 const HasScheduledMeet = (props) => {
   const { addmissionForm, dispatch } = props;
@@ -42,8 +12,6 @@ const HasScheduledMeet = (props) => {
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
   const blackStyle = getBlackTheme();
-
-  const styles = getUseStyles();
 
   const cita = addmissionForm.cita ? addmissionForm.cita : {};
 
@@ -71,21 +39,21 @@ const HasScheduledMeet = (props) => {
         Este paciente tiene una cita agendada
       </Typography>
       <div className={spaceStyle.space1} />
-      <div className={styles.container}>
+      <div className={blackStyle.containerQuote}>
         {cita && (
           <>
-            <div className={styles.containerRow}>
-              <div className={styles.itemData}>{cita.fecha}</div>
-              <div className={styles.itemLabel}>Fecha</div>
-              <div className={styles.itemData}>{cita.hora}</div>
-              <div className={styles.itemLabel} style={{marginBottom: "0"}}>Hora</div>
+            <div className={blackStyle.containerRowQuote}>
+              <div className={blackStyle.itemDataQuote}>{cita.fecha}</div>
+              <div className={blackStyle.itemLabelQuote}>Fecha</div>
+              <div className={blackStyle.itemDataQuote}>{cita.hora}</div>
+              <div className={blackStyle.itemLabelQuote} style={{marginBottom: "0"}}>Hora</div>
             </div>
             <hr style={{color: "#FFFFFF", margin: "0"}} />
-            <div className={styles.containerRow}>
-              <div className={styles.itemData}>{cita.lugar}</div>
-              <div className={styles.itemLabel}>Centro</div>
-              <div className={styles.itemData}>{cita.unidad}</div>
-              <div className={styles.itemLabel} style={{marginBottom: "0"}}>Especialidad</div>
+            <div className={blackStyle.containerRowQuote}>
+              <div className={blackStyle.itemDataQuote}>{cita.lugar}</div>
+              <div className={blackStyle.itemLabelQuote}>Centro</div>
+              <div className={blackStyle.itemDataQuote}>{cita.unidad}</div>
+              <div className={blackStyle.itemLabelQuote} style={{marginBottom: "0"}}>Especialidad</div>
             </div>
           </>
         )}

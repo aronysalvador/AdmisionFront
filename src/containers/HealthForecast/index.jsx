@@ -12,6 +12,8 @@ import Divider from "@material-ui/core/Divider";
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import { searchIsapres } from "../../redux/actions/PrevisionAction";
 
+import {siniestroStyle} from '../../css/siniestroStyle';
+
 const HealthForecast = (props) => {
   const { dispatch, addmissionForm } = props;
 
@@ -35,6 +37,7 @@ const HealthForecast = (props) => {
 
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const classes = siniestroStyle()
 
   return (
     <div className={classesComun.root}>
@@ -50,10 +53,11 @@ const HealthForecast = (props) => {
           </div>
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
-      <div>
+      <div className={spaceStyle.space2} />
+      <div className={classesComun.textCenter}>
         <Button
-          className={[classesComun.buttonAchs, classesComun.pregunta_temp]}
+          className={[classes.button]}//classesComun.buttonAchs, classesComun.pregunta_temp
+          style={{justifyContent: "center", height: "90px", color: "#373737"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
@@ -64,17 +68,18 @@ const HealthForecast = (props) => {
         </Button>
       </div>
 
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
       <div className={classesComun.flexDivider}>
       <Divider className={classesComun.mediumDivider} />  
       <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
      
       <Divider className={classesComun.mediumDivider} /> </div>
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
 
       <div>
         <Button
-          className={classesComun.buttonAchsRight}
+        className={classesComun.buttonAchsRight}
+          // style={{justifyContent: "center"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
@@ -85,6 +90,7 @@ const HealthForecast = (props) => {
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
+          // style={{justifyContent: "center"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
@@ -95,7 +101,7 @@ const HealthForecast = (props) => {
         </Button>
       </div>
 
-      <div className={spaceStyle.space4} />
+      <div className={spaceStyle.space1} />
 
       <div>
         <Button
@@ -120,9 +126,9 @@ const HealthForecast = (props) => {
         </Button>
       </div>
 
-      <div className={spaceStyle.space4} />
+      {/* <div className={spaceStyle.space4} /> */}
 
-      <div>
+      {/* <div>
         <Button
           className={classesComun.buttonAchsRight}
           variant="contained"
@@ -143,11 +149,12 @@ const HealthForecast = (props) => {
         >
           {getIsapres.length !== 0 ? <p>{getIsapres[24].nombre}</p> : null}
         </Button>
-      </div>
+      </div> */}
 
       <div className={classesComun.bottomElement}>
         <Button
-          className={classesComun.buttonAchs2}
+          className={classes.button}
+          style={{justifyContent: "center", height: "90px", color: "#373737"}}
           variant="contained"
           type="submit"
           onClick={() => dispatch(handleSetStep(19.1))}

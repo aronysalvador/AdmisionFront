@@ -122,7 +122,7 @@ const TabCompany = (props) => {
         />
       </Tabs>
 
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} style={{padding:"0"}}>
         <Typography
           variant="p"
           component="p"
@@ -130,7 +130,6 @@ const TabCompany = (props) => {
         >
           Razón Social
         </Typography>
-
         <div>
           <RazonSocial />
         </div>
@@ -143,7 +142,6 @@ const TabCompany = (props) => {
         >
           RUT
         </Typography>
-
         <div>
           <IdentificationCompany />
         </div>

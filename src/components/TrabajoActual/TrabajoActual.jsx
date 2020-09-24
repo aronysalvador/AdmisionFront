@@ -68,25 +68,17 @@ const TrabajoActual = ({
       <Grid item direction="column">
         <Grid
           item
-          style={{
-            borderRadius: "10px",
-            padding: "8px 25px",
-          }}
+          className={comunStyle.boxTitleHoras}
         >
           <div
             className={comunStyle.tituloSelectorFecha}
-            style={{ textAlign: "center" }}
           >
             Mes
           </div>
         </Grid>
         <Grid
           item
-          style={{
-            background: "white",
-            borderRadius: "10px",
-            padding: "8px 25px",
-          }}
+          className={comunStyle.boxHoras}
         >
           <div>
             <Button
@@ -101,7 +93,7 @@ const TrabajoActual = ({
           </div>
           <div className={spaceStyle.space1} />
           <div style={{ textAlign: "center" }}>
-            <div className={comunStyle.selectorRuedaItemsCostados}>
+            <div className={comunStyle.selectorRuedaItemsCostados2}>
               {" "}
               {indiceMes > 1 ? meses[indiceMes - 2] : "-"}{" "}
             </div>
@@ -120,7 +112,7 @@ const TrabajoActual = ({
               {" "}
               {indiceMes < 11 ? meses[indiceMes + 1] : "-"}{" "}
             </div>
-            <div className={comunStyle.selectorRuedaItemsCostados}>
+            <div className={comunStyle.selectorRuedaItemsCostados2}>
               {" "}
               {indiceMes < 10 ? meses[indiceMes + 2] : "-"}{" "}
             </div>
@@ -146,27 +138,19 @@ const TrabajoActual = ({
       <Grid item direction="column">
         <Grid
           item
-          style={{
-            borderRadius: "10px",
-            padding: "8px 25px",
-            marginLeft: "20px",
-          }}
+          className={comunStyle.boxTitleHoras}
+          style={{marginLeft: "20px"}}
         >
           <div
             className={comunStyle.tituloSelectorFecha}
-            style={{ textAlign: "center" }}
           >
             Año
           </div>
         </Grid>
         <Grid
           item
-          style={{
-            background: "white",
-            borderRadius: "10px",
-            padding: "8px 25px",
-            marginLeft: "20px",
-          }}
+          className={comunStyle.boxHoras}
+          style={{marginLeft: "20px"}}
         >
           <div>
             <Button
@@ -184,7 +168,7 @@ const TrabajoActual = ({
           </div>
           <div className={spaceStyle.space1} />
           <div style={{ textAlign: "center" }}>
-            <div className={comunStyle.selectorRuedaItemsCostados}>
+            <div className={comunStyle.selectorRuedaItemsCostados2}>
               {" "}
               {indiceAnio > 1 ? anios[indiceAnio - 2] : "-"}{" "}
             </div>
@@ -204,7 +188,7 @@ const TrabajoActual = ({
                 ? anios[indiceAnio + 1]
                 : "-"}{" "}
             </div>
-            <div className={comunStyle.selectorRuedaItemsCostados}>
+            <div className={comunStyle.selectorRuedaItemsCostados2}>
               {anios[indiceAnio] < fechaActual.getFullYear() - 1
                 ? anios[indiceAnio + 2]
                 : "-"}{" "}
@@ -218,7 +202,6 @@ const TrabajoActual = ({
               onClick={() => {
                 console.log("CLICK DOWN");
                 //Si la fecha seleccionada es mayor a la fecha actual, se vuelve a establecer la fecha con el mes actual
-               
                 if (
                   indiceMes > fechaActual.getMonth() - 1 &&
                   anios[indiceAnio] + 1 === fechaActual.getFullYear()

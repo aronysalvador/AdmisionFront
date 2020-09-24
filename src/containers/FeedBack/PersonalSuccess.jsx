@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Indiciaciones from "../../components/Indicaciones";
-import Cabecera from "../../components/cabecera/index";
+import Cabecera from "../../components/cabecera/cabeceraSinBarra";
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
@@ -20,40 +20,39 @@ const PersonalSuccess = (props) =>{
         <div className={comunStyle.rootBegin}>
 
             <div className={welcomeStyle.beginContainer}>
-              <Cabecera dispatch={() => dispatch(handleSetStep(5.1))} percentage={-1} noSpace={true} />
-               <div className={spaceStyle.space2} >
-                    <div className={welcomeStyle.avatarContainerRight}>
-                        <Avatar className={welcomeStyle.avatarBegin}>{microsoftReducer.userMsal.iniciales}</Avatar>
-                    </div>
+                <Cabecera 
+                    dispatch={() => dispatch(handleSetStep(5.1))} 
+                    color="#373737" 
+                    percentage={-1} 
+                    noSpace={true} />
+                <div className={welcomeStyle.avatarContainerRight}>
+                    <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
                 </div>
-            </div>            
-
-            <div className={welcomeStyle.TextContainer}>
-                <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
-                <Typography
-                variant="h1"
-                component="h1"
-                className={welcomeStyle.txtBegin}
-                >
-                    ¡Excelente!
-                </Typography>
-                <Typography
-                variant="h1"
-                component="h1"
-                className={welcomeStyle.txtBegin}
-                >
-                    Usuario Identificado
-                </Typography>
-            </div>
-
-
-            <div className={welcomeStyle.beginContainer}>
+                <div className={spaceStyle.space6} />
+                <div className={welcomeStyle.TextContainer}>
+                    <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                    <Typography
+                    variant="h1"
+                    component="h1"
+                    className={welcomeStyle.titleBegin}
+                    >
+                        ¡Excelente!
+                    </Typography>
+                    <Typography
+                    variant="h1"
+                    component="h1"
+                    className={welcomeStyle.titleBegin}
+                    >
+                        Usuario Identificado
+                    </Typography>
+                </div>
+                <div className={spaceStyle.space2} />
                 <Typography
                     variant="h5"
                     component="h5"
                     className={welcomeStyle.subTitleBegin}
                     >
-                 Ahora capturarás el relato:
+                    Ahora capturarás el relato:
                 </Typography>
         
                 <Indiciaciones
@@ -78,19 +77,16 @@ const PersonalSuccess = (props) =>{
                         },
                     ]}
                 />
-
                 <div className={welcomeStyle.bottomBegin}>
                     <Button
                         className={comunStyle.buttonAchs}
                         variant="contained"
                         onClick={() => dispatch(handleSetStep(6))}
                     >
-                    Capturar el relato
+                        Capturar el relato
                     </Button>
                 </div>
-
-
-            </div> 
+            </div>            
         </div>
     )
 }

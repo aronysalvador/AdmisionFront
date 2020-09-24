@@ -4,15 +4,17 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import BoxTestigosResponsable from "../../components/Questions/BoxTestigosResponsable";
+import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
 
 const BoxQuestionResponsable = (props) => {
   const { dispatch, addmissionForm } = props;
 
   const classesComun = getComunStyle();
+  const classes = cardSiniestroStyles();
 
   const tituloTestigo = "Responsable";
   const contenidoResponsable = [
-    addmissionForm.responsable.nombre,
+    <div className={classes.itemFecha} >{addmissionForm.responsable.nombre}</div>,
     <br />,
     addmissionForm?.responsable?.cargo,
     <br />,

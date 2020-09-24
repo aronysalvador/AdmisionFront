@@ -361,7 +361,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 10:
         return (
           <div className={layout}>
@@ -370,7 +369,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );        
-
       case 11:
         return (
           <div className={layout}>
@@ -379,7 +377,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 11.1:
         return (
           <div className={layoutFix}>
@@ -388,7 +385,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 12:
         return (
           <div className={layout}>
@@ -501,7 +497,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 19.3:
         return (
           <div className={layout}>
@@ -566,7 +561,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 26.1:
         return (
           <div className={layoutFix}>
@@ -583,7 +577,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 26.3:
         return (
           <div className={layout}>
@@ -592,7 +585,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 26.4:
         return (
           <div className={layout}>
@@ -601,7 +593,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 27:
         return (
           <div className={layout}>
@@ -610,7 +601,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 1000:
         return (
           <div className={layout}>
@@ -643,7 +633,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 40:
         return (
           <div className={layout}>
@@ -652,7 +641,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 500: {
         sessionStorage.clear();
         return (
