@@ -53,6 +53,9 @@ const Identification = (props) => {
                         <div>Accidente de trabajo <br/>
                         <span className={classes.textButton}>En su lugar de trabajo</span>
                         </div>
+
+                        {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                        
                     </Button>
                 </div>
                 <div  className={spaceStyle.space1} />
