@@ -29,7 +29,15 @@ export const siniestroStyle = makeStyles((theme) => ({
     "&:hover": {
       background: "#DFF3F2",
       border: "2px solid #00B2A9",
+     "& img" : {
+      // backgroundImage: `url(${require("./../img/trabajoActive.svg")})`,
+      // backgroundRepeat: "no-repeat",
+      // zIndex: "",
+     },
+     '&:hover $child': {
+      color: "#00B2A9 !important"
     }
+    },
   },
   imgButton: {
     // width: "3em",
@@ -37,12 +45,12 @@ export const siniestroStyle = makeStyles((theme) => ({
     margin: "16px",
   },
   imgButtonTrabajo: {
-    backgroundImage: `url(${require("./../img/trabajoCard.png")})`,
+    backgroundImage: `url(${require("./../img/trabajo.svg")})`,
     backgroundRepeat: "no-repeat",
     margin: "16px",
     "&:hover": {
-      backgroundImage: `url(${require("./../img/trabajoCardActive.png")})`
-      // url("./static/trabajoCardActive.png")
+      backgroundImage: `url(${require("./../img/trabajoActive.svg")})`,
+      backgroundRepeat: "no-repeat",
     }
   },
   textButton: {

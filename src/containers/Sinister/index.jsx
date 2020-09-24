@@ -40,7 +40,7 @@ const Identification = (props) => {
                         dispatch(handleSetStep(3));   
                     }}>
                         {/* <div id="imgButtonTrabajo" title="Accidente de trabajo"/> */}
-                        <div><img alt="Accidente de Trabajo" src="./static/trabajoCard.png" className={classes.imgButtonTrabajo} /></div>
+                        <img alt="Accidente de Trabajo" src="./static/trabajo.svg" className={classes.imgButton} />
                         <div>Accidente de trabajo <br/>
                         <span className={classes.textButton}>En su lugar de trabajo</span>
                         </div>

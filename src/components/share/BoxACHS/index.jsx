@@ -4,13 +4,16 @@ import { useDispatch } from "react-redux";
 import { handleSetStep } from "../../../redux/actions/AdmissionAction";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { cardSiniestroStyles } from "../../../css/cardSiniestroStyle";
+import { Grid } from '@material-ui/core';
 
 const BoxACHS = (props) => {
     const { titulo, contenido, step } = props
     const classes = cardSiniestroStyles();
     const dispatch = useDispatch();
     return (<div className={classes.container}>
-                <div className={classes.cuerpo}>
+                <Grid container>
+                    <Grid item xs={11} >
+                    <div className={classes.cuerpo}>
                     <div>
                         <Typography color="textSecondary" gutterBottom className={classes.itemId}>
                             {titulo}
@@ -22,10 +25,16 @@ const BoxACHS = (props) => {
                         })}
                     </div>
                 </div>
-                <div className={classes.asidePersonalData}>
+                
+                    </Grid>
+                    <Grid item xs={1} className={classes.asidePersonalData}>
+                    <div>
                     {" "}
                     <ChevronRightIcon style={{cursor : "pointer"}} onClick={() => dispatch(handleSetStep(step))} />
                 </div>
+                    </Grid>
+                    </Grid>
+                
             </div>
     );
 }
