@@ -39,7 +39,7 @@ const Identification = (props) => {
                         dispatch(handleLogUpdate({opcion:4, Id: ID, tipoSiniestro: tipo}));
                         dispatch(handleSetStep(3));   
                     }}>
-                        <div><img alt="Accidente de Trabajo" src="./static/trabajo.png" className={classes.imgButton} /></div>
+                        <div><img alt="Accidente de Trabajo" src="./static/trabajoCard.png" className={classes.imgButton} /></div>
                         <div>Accidente de trabajo <br/>
                         <span className={classes.textButton}>En su lugar de trabajo</span>
                         </div>
@@ -48,7 +48,7 @@ const Identification = (props) => {
                 <div  className={spaceStyle.space1} />
                 <div>
                     <Button className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
-                        <div><img alt="Accidente de Trayecto" src="./static/trayecto.png" className={classes.imgButton}/></div>
+                        <div><img alt="Accidente de Trayecto" src="./static/trayectoCard.png" className={classes.imgButton}/></div>
                         <div>Accidente de trayecto <br/>
                         <span className={classes.textButton}>Entre el trabajo y su hogar</span>
                         </div>
@@ -57,16 +57,19 @@ const Identification = (props) => {
                 <div  className={spaceStyle.space1} />
                 <div>
                     <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
-                        <div><img alt="Enfermedad Profesional" src="./static/ep.png" className={classes.imgButton} /></div>
+                        <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
                         <div>Enfermedad Profesional <br/>
-                        <span className={classes.textButton}>A causa del ejercicio profesional</span>
+                            <span className={classes.textButton}>A causa del ejercicio profesional</span>
                         </div>
                     </Button>
                 </div>  
                 <div  className={spaceStyle.space1} />
                 <div>
                     <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
-                        <img alt="Licencia Rechazada" src="./static/licencia.png" className={classes.imgButton} />Licencia Rechazada 
+                    <div><img alt="Licencia Rechazada" src="./static/licenciaCard.png" className={classes.imgButton} /></div>
+                    <div>Licencia Rechazada <br/>
+                        <span className={classes.textButton}>Por Isapre o Fonasa</span>
+                    </div>
                     </Button>
                 </div>                               
             </div>

@@ -32,9 +32,9 @@ export const siniestroStyle = makeStyles((theme) => ({
     }
   },
   imgButton: {
-    width: "3em",
-    height: "3em",
-    marginRight: "16px",
+    // width: "3em",
+    // height: "3em",
+    margin: "16px",
   },
   textButton: {
     display: "contents",

@@ -28,10 +28,7 @@ const AccidentPlaceForm = (props) => {
       />
       <div>
         <QuestionForm
-          titulo={
-          // <div className={comunClass.titleBlue}>
-              ' "Al momento del accidente estaba..." '
-             }
+          titulo={' "Al momento del accidente estaba..." '}
           // pregunta={' estaba..." '}
           placeholder={
             "Ejemplo: Caminando por el patio del colegio, corriendo para alcanzar la micro, sentado en mi escritorio"

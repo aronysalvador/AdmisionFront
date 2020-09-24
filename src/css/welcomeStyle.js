@@ -21,11 +21,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         justifyContent: "center",
         float: "right",
     },
-    avatarContainer2: {
-        borderColor: "#FF00FF",
-        paddingLeft: "14em",
-        display: "inline-flex",
-    },
     bienvenido: {
         fontSize: "2em",
         fontWeight: "bold",
@@ -34,10 +29,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "25px",
         fontWeight: "bold",
     },
-    // admisionText: {
-    //     fontSize: "1em",
-    //     fontWeight: "normal",
-    // },
     boxCentroAlign: {
         display: "flex",
         justifyContent: "space-between",
@@ -149,6 +140,28 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         color: "#373737",
         marginBottom: "10px",
     },
+    pBegin: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "13px",
+        lineHeight: "16px",
+        color: "#000000",
+        maxWidth: "210px",
+    },
+    itemText2: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "16px",
+        lineHeight: "20px",
+        color: "#000000",
+        marginLeft: "10px"
+    },
+    terminos: {
+        fontSize: "0.87em",
+        textAlign: "center",
+    },
     divRow: {
         display: "flex",
         alignItems: "center",
@@ -158,14 +171,46 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         alignItems: "center",
         marginBottom: "20px",
     },
+    divRowBottom2: {
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "5px",
+    },
     bottomBegin: {
         marginTop: "10px",
     },
-    terminos: {
-        fontSize: "0.87em",
-        textAlign: "center",
+    iconCircular: {
+        width: "54px",
+        height: "54px",
+        verticalAlign: "middle",
     },
-
+    iconAlignIndicaciones: {
+        alignSelf: "flex-start",
+        display: "flex",
+    },
+    titleContainerCards: {
+        padding: "1.5em",
+        background: "#FFFFFF",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        borderRadius: "10px",
+    },
+    itemBegin: {
+        marginLeft: "20px",
+    },
+    itemText: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "16px",
+        lineHeight: "20px",
+        color: "#000000",
+    },
+    rutSiniestroContainer: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        alignItems: "center",
+    },
 
     img: {
         height: "1.5em",
@@ -199,68 +244,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             background: "#104F28",
         },
     },
-
-    itemBegin: {
-        marginLeft: "20px",
-    },
-    itemText: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "16px",
-        lineHeight: "20px",
-        color: "#000000",
-    },
-    itemText2: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "16px",
-        lineHeight: "20px",
-        color: "#000000",
-        marginLeft: "10px"
-    },
-    pBegin: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: "13px",
-        lineHeight: "16px",
-        color: "#000000",
-        maxWidth: "210px",
-    },
-    titleContainerCards: {
-        padding: "1.5em",
-        background: "#FFFFFF",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
-    },
+        
     titleContainerCards2: {
         padding: "1.5em 1.5em 0.5em 3em",
         background: "#FFFFFF",
         boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
         borderRadius: "10px",
-    },
-    divRowBottom2: {
-        display: "flex",
-        alignItems: "center",
-        marginBottom: "5px",
-    },
-
-    rutSiniestroContainer: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-    },
-    iconCircular: {
-        width: "54px",
-        height: "54px",
-        verticalAlign: "middle",
-    },
-    iconAlignIndicaciones: {
-        alignSelf: "flex-start",
-        display: "flex",
     },
 
 }));

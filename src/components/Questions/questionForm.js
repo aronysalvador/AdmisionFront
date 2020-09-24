@@ -28,7 +28,7 @@ const FormQuestion = (props) => {
         <Typography
           variant="h1"
           component="h1"
-          className={classesComun.pregunta}
+          className={classesComun.titleBlack}
         >
           {titulo}
         </Typography>
@@ -39,7 +39,7 @@ const FormQuestion = (props) => {
         <Typography
           variant="h2"
           component="h2"
-          className={classesComun.pregunta}
+          className={classesComun.titleBlack}
         >
           {pregunta}
         </Typography>

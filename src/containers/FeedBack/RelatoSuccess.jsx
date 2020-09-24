@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Indiciaciones from "../../components/Indicaciones";
-import Cabecera from "../../components/cabecera/index";
+import Cabecera from "../../components/cabecera/cabeceraSinBarra";
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
@@ -21,41 +21,38 @@ const RelatoSuccess = (props) => {
       <div className={welcomeStyle.beginContainer}>
         <Cabecera
           dispatch={() => dispatch(handleSetStep(19))}
+          color="#373737"
           percentage={-1}
           noSpace={true}
         />
-        <div className={spaceStyle.space2}>
-          <div className={welcomeStyle.avatarContainerRight}>
-            <Avatar className={welcomeStyle.avatarBegin}>
-              {microsoftReducer.userMsal.iniciales}
-            </Avatar>
-          </div>
+        <div className={welcomeStyle.avatarContainerRight}>
+          <Avatar className={welcomeStyle.avatar}>
+            {microsoftReducer.userMsal.iniciales}
+          </Avatar>
         </div>
-      </div>
-
-      <div className={welcomeStyle.TextContainer}>
-        <img
-          alt="Excelente"
-          src="static/icon-check.png"
-          className={welcomeStyle.iconCircular}
-        />
-        <Typography
-          variant="h1"
-          component="h1"
-          className={welcomeStyle.txtBegin}
-        >
-          ¡Excelente!
-        </Typography>
-        <Typography
-          variant="h1"
-          component="h1"
-          className={welcomeStyle.txtBegin}
-        >
-          Relato capturado
-        </Typography>
-      </div>
-
-      <div className={welcomeStyle.beginContainer}>
+        <div className={spaceStyle.space6} />
+        <div className={welcomeStyle.TextContainer}>
+          <img
+            alt="Excelente"
+            src="static/icon-check.png"
+            className={welcomeStyle.iconCircular}
+          />
+          <Typography
+            variant="h1"
+            component="h1"
+            className={welcomeStyle.titleBegin}
+          >
+            ¡Excelente!
+          </Typography>
+          <Typography
+            variant="h1"
+            component="h1"
+            className={welcomeStyle.titleBegin}
+          >
+            Relato capturado
+          </Typography>
+        </div>
+        <div className={spaceStyle.space2} />
         <Typography
           variant="h5"
           component="h5"
@@ -96,6 +93,7 @@ const RelatoSuccess = (props) => {
             Revisar información laboral
           </Button>
         </div>
+        
       </div>
     </div>
   );

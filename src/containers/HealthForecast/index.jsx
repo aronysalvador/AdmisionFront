@@ -57,6 +57,7 @@ const HealthForecast = (props) => {
       <div className={classesComun.textCenter}>
         <Button
           className={[classes.button]}//classesComun.buttonAchs, classesComun.pregunta_temp
+          style={{justifyContent: "center", height: "90px"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
@@ -67,17 +68,18 @@ const HealthForecast = (props) => {
         </Button>
       </div>
 
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
       <div className={classesComun.flexDivider}>
       <Divider className={classesComun.mediumDivider} />  
       <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
      
       <Divider className={classesComun.mediumDivider} /> </div>
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
 
       <div>
         <Button
-          className={classesComun.buttonAchsRight}
+        className={classesComun.buttonAchsRight}
+          // style={{justifyContent: "center"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
@@ -88,6 +90,7 @@ const HealthForecast = (props) => {
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
+          // style={{justifyContent: "center"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
@@ -150,7 +153,8 @@ const HealthForecast = (props) => {
 
       <div className={classesComun.bottomElement}>
         <Button
-          className={classesComun.buttonAchs2}
+          className={classes.button}
+          style={{justifyContent: "center", height: "90px"}}
           variant="contained"
           type="submit"
           onClick={() => dispatch(handleSetStep(19.1))}

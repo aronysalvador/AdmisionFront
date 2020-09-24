@@ -39,7 +39,7 @@ const RazonSocial = () => {
     }, [loading]);
 
   return (
-    <div>
+    <div style={{padding:"0"}}>
                 <Autocomplete
                   value={razonSocial}
                   style={{ width: '100%' }}

@@ -60,10 +60,14 @@ const FechaSiniestro = ({
   const getUseStyles = makeStyles({
     flechas: {
       color: "white",
-      background: "#00B2A9",
+      background: "#007A33",
       "&:hover": {
-        background: "#00B2A9",
+        background: "#007A33",
       },
+    },
+    flechasAct: {
+      color: "white !important",
+      background: "#F4F4F4 !important",
     },
   });
 
@@ -92,7 +96,7 @@ const FechaSiniestro = ({
           }}
           style={{
             color: "white",
-            background: "#00B2A9",
+            background: "#007A33",
           }}
         >
           <KeyboardArrowLeft />
@@ -126,7 +130,7 @@ const FechaSiniestro = ({
           onClick={() => {
             setDays((d) => ++d);
           }}
-          className={useStyles.flechas}
+          className={days === actualDay && month === actualMonth ? useStyles.flechasAct : useStyles.flechas}
         >
           <KeyboardArrowRight />
         </IconButton>

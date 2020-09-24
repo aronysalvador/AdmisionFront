@@ -56,5 +56,16 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
     aside: {
         flex: "1 auto",
     },
-    
+    asidePersonalData: {
+        flex: "0 auto",
+    },
+    itemRazonSocial: {
+        margin: "0 auto",
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '1em',
+        lineHeight: '1.25em',
+        color: '#00B2A9',
+    },
 }));
