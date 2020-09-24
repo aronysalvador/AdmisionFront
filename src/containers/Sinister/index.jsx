@@ -39,7 +39,8 @@ const Identification = (props) => {
                         dispatch(handleLogUpdate({opcion:4, Id: ID, tipoSiniestro: tipo}));
                         dispatch(handleSetStep(3));   
                     }}>
-                        <div><img alt="Accidente de Trabajo" src="./static/trabajoCard.png" className={classes.imgButton} /></div>
+                        {/* <div id="imgButtonTrabajo" title="Accidente de trabajo"/> */}
+                        <div><img alt="Accidente de Trabajo" src="./static/trabajoCard.png" className={classes.imgButtonTrabajo} /></div>
                         <div>Accidente de trabajo <br/>
                         <span className={classes.textButton}>En su lugar de trabajo</span>
                         </div>

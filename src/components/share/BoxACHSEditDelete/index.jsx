@@ -13,7 +13,7 @@ const BoxACHSEditDelete = (props) => {
                         </Typography>
                     </div>
                     <div>
-                        <Typography color="textSecondary" gutterBottom className={classes.itemFecha}>
+                        <Typography color="textSecondary" gutterBottom>
                             {contenido.map((value) => {
                             return <div className={classes.itemTipo}>{value}</div>
                             })}

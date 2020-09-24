@@ -36,6 +36,15 @@ export const siniestroStyle = makeStyles((theme) => ({
     // height: "3em",
     margin: "16px",
   },
+  imgButtonTrabajo: {
+    backgroundImage: `url(${require("./../img/trabajoCard.png")})`,
+    backgroundRepeat: "no-repeat",
+    margin: "16px",
+    "&:hover": {
+      backgroundImage: `url(${require("./../img/trabajoCardActive.png")})`
+      // url("./static/trabajoCardActive.png")
+    }
+  },
   textButton: {
     display: "contents",
     fontWeight: "normal",
