@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import EditIcon from '@material-ui/icons/Edit';
 import { useDispatch } from "react-redux";
 import { handleSetStep } from "../../../redux/actions/AdmissionAction";
+import { Format } from '../../../helpers/strings';
 
 const useStyles = makeStyles({
     tituloConteiner: {
@@ -83,20 +84,20 @@ const BoxEmpresa = (props) => {
                             {titulo}
                             <EditIcon style={{cursor : "pointer"}} onClick={() => dispatch(handleSetStep(step))} />
                         </Typography>
-                      
+
                     </div>
                     <div className={classes.contentConteiner}>
                         {contenidoDireccionEmpresa.map((item,index) => {
-                            return <div id={index} className={classes.textDireccion}>{item}</div>
+                            return <div id={index} className={Format.formatizar(classes.textDireccion)}>{item}</div>
                         })}
                         {contenidoRazonSocialForm.map((item,index) => {
-                            return <div id={index} className={classes.textRazonSocial}>{item}</div>
+                            return <div id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
                         })}
                         {contenidoRutEmpresa.map((item,index) => {
-                            return <div id={index} className={classes.textRazonSocial}>{item}</div>
+                            return <div id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
                         })}
                     </div>
-                    
+
                 </div>
             </div>
     );

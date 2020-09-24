@@ -11,6 +11,7 @@ import Divider from "@material-ui/core/Divider";
 //Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import { searchIsapres } from "../../redux/actions/PrevisionAction";
+import { Format } from "../../helpers/strings";
 
 const HealthForecast = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -44,7 +45,7 @@ const HealthForecast = (props) => {
       />
       <div>
         <Typography variant="p" component="p" className={classesComun.titleBlack}>
-          Selecciona la 
+          Selecciona la
           <div className={classesComun.titleBlue}>
             &nbsp;Previsión de salud
           </div>
@@ -60,15 +61,15 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[0].id : null}
           onClick={() => clickSendIsapres(getIsapres[0])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[0].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[0].nombre)}</p> : null}
         </Button>
       </div>
 
       <div className={spaceStyle.space2} />
       <div className={classesComun.flexDivider}>
-      <Divider className={classesComun.mediumDivider} />  
+      <Divider className={classesComun.mediumDivider} />
       <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
-     
+
       <Divider className={classesComun.mediumDivider} /> </div>
       <div className={spaceStyle.space2} />
 
@@ -81,7 +82,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[12].id : null}
           onClick={() => clickSendIsapres(getIsapres[12])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[12].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[12].nombre)}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
@@ -91,7 +92,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[25].id : null}
           onClick={() => clickSendIsapres(getIsapres[25])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[25].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[25].nombre)}</p> : null}
         </Button>
       </div>
 
@@ -106,7 +107,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[9].id : null}
           onClick={() => clickSendIsapres(getIsapres[9])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[9].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[9].nombre)}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
@@ -116,7 +117,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[11].id : null}
           onClick={() => clickSendIsapres(getIsapres[11])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[11].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[11].nombre)}</p> : null}
         </Button>
       </div>
 
@@ -131,7 +132,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[5].id : null}
           onClick={() => clickSendIsapres(getIsapres[5])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[5].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[5].nombre)}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
@@ -141,7 +142,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[24].id : null}
           onClick={() => clickSendIsapres(getIsapres[24])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[24].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[24].nombre)}</p> : null}
         </Button>
       </div>
 

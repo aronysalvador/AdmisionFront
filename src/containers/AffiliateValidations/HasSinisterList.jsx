@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
+import { Format } from "../../helpers/strings";
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -49,7 +50,7 @@ const PersonalData = (props) => {
       ) {
         // si no tiene telefono
         STEP = 5.3; //form telefono
-      } 
+      }
       else if(origen === "sameDate"){ //Si ya estaba creando la admisión
         STEP = 11; //Lugar exacto de siniestro
       }
@@ -87,7 +88,7 @@ const PersonalData = (props) => {
               variant="p"
               component="p"
               className={comunClass.titleBlack}>
-              {nombre} {apellidoPaterno} <br/> tiene&nbsp;
+              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} <br/> tiene&nbsp;
               <div className={comunClass.titleBlue}>
                 {contenidoSiniestros.length} siniestros
               </div>
@@ -99,7 +100,7 @@ const PersonalData = (props) => {
               component="p"
               className={comunClass.titleBlack}
             >
-              {nombre} {apellidoPaterno} tiene
+              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} tiene
               <div className={comunClass.titleBlue}>
                 &nbsp;este siniestro
               </div>
@@ -109,10 +110,10 @@ const PersonalData = (props) => {
         </div>
         <div>
         {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2}
-        </div>) 
+        </div>)
         : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
         </div>
-        
+
       </div>
 
       <div>
