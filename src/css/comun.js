@@ -63,11 +63,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '20px',
         lineHeight: '28px',
-        color: ' #373737',
-        // textTransform: "lowercase",
-        // "&:first-letter": {
-        //     textTransform: "uppercase"
-        // },
+        color: '#373737',
     },
     titleBlue: {
         fontFamily: 'Catamaran',
@@ -337,7 +333,6 @@ export const getComunStyle = makeStyles((theme) => ({
     pullRight: {
         float: "right",
     },
-    
     selectorRuedaItemPrincipal: {
         fontFamily: 'Helvetica',
         fontStyle: 'normal',

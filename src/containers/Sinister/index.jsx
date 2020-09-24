@@ -43,15 +43,11 @@ const Identification = (props) => {
                     }}
                     onMouseOver={() =>{
                         setButtonOver(true)
-
                     }}
                     onMouseOut={() =>{
                         setButtonOver(false)
-
                     }}
                     >
-
-                        {/* <div id="imgButtonTrabajo" title="Accidente de trabajo"/> */}
                         <img alt="Accidente de Trabajo" src={!buttonOver ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
                         
                         <div>Accidente de trabajo <br/>
