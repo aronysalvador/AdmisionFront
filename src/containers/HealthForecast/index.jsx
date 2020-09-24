@@ -53,11 +53,11 @@ const HealthForecast = (props) => {
           </div>
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
+      <div className={spaceStyle.space2} />
       <div className={classesComun.textCenter}>
         <Button
           className={[classes.button]}//classesComun.buttonAchs, classesComun.pregunta_temp
-          style={{justifyContent: "center", height: "90px"}}
+          style={{justifyContent: "center", height: "90px", color: "#373737"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
@@ -101,7 +101,7 @@ const HealthForecast = (props) => {
         </Button>
       </div>
 
-      <div className={spaceStyle.space4} />
+      <div className={spaceStyle.space1} />
 
       <div>
         <Button
@@ -126,9 +126,9 @@ const HealthForecast = (props) => {
         </Button>
       </div>
 
-      <div className={spaceStyle.space4} />
+      {/* <div className={spaceStyle.space4} /> */}
 
-      <div>
+      {/* <div>
         <Button
           className={classesComun.buttonAchsRight}
           variant="contained"
@@ -149,12 +149,12 @@ const HealthForecast = (props) => {
         >
           {getIsapres.length !== 0 ? <p>{getIsapres[24].nombre}</p> : null}
         </Button>
-      </div>
+      </div> */}
 
       <div className={classesComun.bottomElement}>
         <Button
           className={classes.button}
-          style={{justifyContent: "center", height: "90px"}}
+          style={{justifyContent: "center", height: "90px", color: "#373737"}}
           variant="contained"
           type="submit"
           onClick={() => dispatch(handleSetStep(19.1))}

@@ -230,6 +230,7 @@ export const getComunStyle = makeStyles((theme) => ({
     },  
     buttonAchsRight: {
         width: "46%",
+        height: "90px",
         background: "#FFFFFF", //#007A33
         border: "2px solid #787878",
         boxSizing: "border-box",
@@ -252,6 +253,7 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     buttonAchsLeft: {
         width: "46%",
+        height: "90px",
         background: "#FFFFFF", //#007A33
         border: "2px solid #787878",
         boxSizing: "border-box",
