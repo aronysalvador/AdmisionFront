@@ -30,15 +30,20 @@ export const siniestroStyle = makeStyles((theme) => ({
       background: "#DFF3F2",
       border: "2px solid #00B2A9",
      "& img" : {
+       "@global": {
+         ".ejer":{
+          display: "none"
+         }
+         
+       }
       // backgroundImage: `url(${require("./../img/trabajoActive.svg")})`,
       // backgroundRepeat: "no-repeat",
-      // zIndex: "",
+      // zIndex: "300",
+
      },
-     '&:hover $child': {
-      color: "#00B2A9 !important"
-    }
     },
   },
+  
   imgButton: {
     // width: "3em",
     // height: "3em",
