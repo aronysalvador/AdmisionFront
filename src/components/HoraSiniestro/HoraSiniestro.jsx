@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -6,7 +6,7 @@ import { getComunStyle } from "../../css/comun";
 
 const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos }) => {
   const [horas, setHoras] = useState(() => {
-    return !horasFromState ? new Date().getHours() : horasFromState;
+    return !horasFromState ? new Date().getHours() - 1 : horasFromState;
   });
   // const [minutos, setMinutos] = useState(() => {
   //   return !minutosFromState ? new Date().getMinutes() : minutosFromState;
@@ -27,6 +27,8 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
     return indiceMinutosFromState === -1 ? getMin() : indiceMinutosFromState;
   });
 
+  const [t, setT] = useState(0);
+
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
@@ -38,6 +40,28 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
     onChange({ horas, indiceMinutos });
   }, [horas, minutos[indiceMinutos]]);
 
+  const TRef = useRef(t);
+  TRef.current = t;
+
+  let start = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+
+  const longPressDownHora = () => {
+      setHoras((h) => --h);
+      setT(setTimeout(longPressDownHora, start));
+      start = start / 2; //Para que cada vez vaya más rápido
+  };
+
+  const longPressDownMinutos = () => {
+    setIndiceMinutos((m) => --m);
+    setT(setTimeout(longPressDownMinutos, start));
+    start = start / 2; //Para que cada vez vaya más rápido
+};
+
+  //con MouseUp detengo la selección
+  const onMouseUp = () => {
+    clearTimeout(TRef.current);
+    start = 600;
+  };
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
@@ -70,8 +94,14 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
-              onClick={() => {
-                setHoras((h) => ++h);
+              // onClick={() => {
+              //   setHoras((h) => --h);
+              // }}
+              onMouseDown={() => {
+                longPressDownHora();
+              }}
+              onMouseUp={() => {
+                onMouseUp();
               }}
             >
               <KeyboardArrowUp />
@@ -93,11 +123,13 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
+              disabled={ horas == new Date().getHours()}
               onClick={() => {
-                setHoras((h) => --h);
+                setHoras((h) => ++h);
               }}
+              
             >
-              <KeyboardArrowDown />
+              <KeyboardArrowDown/>
             </Button>
           </div>
         </Grid>
@@ -131,9 +163,16 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
-              onClick={() => {
-                setIndiceMinutos((m) => --m);
+              // onClick={() => {
+              //   setIndiceMinutos((m) => --m);
+              // }}
+              onMouseDown={() => {
+                longPressDownMinutos();
               }}
+              onMouseUp={() => {
+                onMouseUp();
+              }}
+              
             >
               <KeyboardArrowUp />
             </Button>
@@ -160,11 +199,14 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
+              disabled={ indiceMinutos == getMin() && horas == new Date().getHours()}
               onClick={() => {
                 setIndiceMinutos((m) => ++m);
               }}
             >
-              <KeyboardArrowDown />
+              <KeyboardArrowDown
+                
+              />
             </Button>
           </div>
         </Grid>
