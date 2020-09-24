@@ -49,6 +49,7 @@ const CreandoCaso = (props) => {
 
   useEffect(() => {
     dispatch(crearAdmisionSiniestroSAP());
+     // eslint-disable-next-line
   }, [crearAdmisionSiniestroSAP]);
 
   const spaceStyle = getSpaceStyle();

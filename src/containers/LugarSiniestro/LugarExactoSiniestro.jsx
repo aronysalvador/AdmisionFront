@@ -49,6 +49,7 @@ const LugarExactoSiniestro = () => {
       setValido( false )
       setNombreComuna("")
     }
+    // eslint-disable-next-line
   },[sucursal])
 
   const validaDireccion = async()=>{

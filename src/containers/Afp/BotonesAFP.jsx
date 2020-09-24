@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getAFP } from "../../redux/actions/AfpAction";
 import {  Typography } from "@material-ui/core";
@@ -7,6 +7,7 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
+import Grid from '@material-ui/core/Grid';
 
 const BotonesAFP = () => {
   const {
@@ -29,7 +30,7 @@ const BotonesAFP = () => {
 
   useEffect(() => {
     initFn()
-  }, []);
+  }, [initFn]);
   
 
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
@@ -44,9 +45,9 @@ const BotonesAFP = () => {
       />
       <Typography className={titleBlack}>
         Ingresa la 
-        <div className={titleBlue}>
-          &nbsp;AFP o Previsión Social
-        </div>
+        <Grid component="span"  className={titleBlue}>
+              &nbsp;o Previsión Social
+        </Grid>            
         &nbsp;a la que pertenece
       </Typography>
 

@@ -68,7 +68,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     // });
 
     var variables = []
-    sucursalesEmpresa.map((sucursal,i) =>{
+    sucursalesEmpresa.forEach((sucursal,i) =>{
       variables.push({id: i,codigo_region: sucursal.codigo_region,codigo_comuna:sucursal.id_comuna, nombre: sucursal.comuna})
     })
 
@@ -76,6 +76,8 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     console.log("uniqueArray is: " + JSON.stringify(uniqueArray));    
 
     setListaComunas(uniqueArray);
+
+    // eslint-disable-next-line
   }, [comunaList]);
 
   const removeDuplicates = (originalArray, prop) =>{

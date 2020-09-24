@@ -8,6 +8,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import InputMasked from "./InputMasked";
 import Mask from "./phone";
 import { Pipes } from "./phone";
+import Grid from '@material-ui/core/Grid';
 
 const EditarTelefono = () => {
   const {
@@ -52,9 +53,9 @@ const EditarTelefono = () => {
       />
       <Typography className={titleBlack} variant="h2">
         Ingresa el 
-        <div className={titleBlue}>
-          &nbsp;teléfono personal
-        </div>
+        <Grid component="span"  className={comunClass.titleBlue}>
+        &nbsp;teléfono personal
+        </Grid>          
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="h2">

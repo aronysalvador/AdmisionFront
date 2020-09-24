@@ -61,6 +61,7 @@ const TrabajoActual = ({
 
   useEffect(() => {
     onChange({ mes: indiceMes, anio: anios[indiceAnio] });
+    // eslint-disable-next-line
   }, [indiceMes, indiceAnio]);
 
   return (

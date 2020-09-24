@@ -53,6 +53,7 @@ const FechaSiniestro = ({
       }
     }
     onChange({ days, month, year });
+    // eslint-disable-next-line
   }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);

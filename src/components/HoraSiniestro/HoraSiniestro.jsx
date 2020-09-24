@@ -30,12 +30,14 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
+  
   useEffect(() => {
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
     if (indiceMinutos === minutos.length) setIndiceMinutos(0);
     if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
     onChange({ horas, indiceMinutos });
+    // eslint-disable-next-line
   }, [horas, minutos[indiceMinutos]]);
 
 
