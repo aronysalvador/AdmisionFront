@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect, useSelector, shallowEqual } from 'react-redux';
 import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction';
 import { handleLogUpdate } from '../../redux/actions/Log';
@@ -15,6 +15,8 @@ const Identification = (props) => {
     const classes = siniestroStyle()
     const comunClass = getComunStyle()
     const spaceStyle = getSpaceStyle()
+
+    const [buttonOver, setButtonOver] = useState(false)
 
     const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
@@ -38,12 +40,22 @@ const Identification = (props) => {
                         dispatch(updateForm("tipoSiniestro", tipo));
                         dispatch(handleLogUpdate({opcion:4, Id: ID, tipoSiniestro: tipo}));
                         dispatch(handleSetStep(3));   
-                    }}>
-                        {/* <div id="imgButtonTrabajo" title="Accidente de trabajo"/> */}
-                        <img alt="Accidente de Trabajo" src="./static/trabajo.svg" className={classes.imgButton} />
+                    }}
+                    onMouseOver={() =>{
+                        setButtonOver(true)
+                    }}
+                    onMouseOut={() =>{
+                        setButtonOver(false)
+                    }}
+                    >
+                        <img alt="Accidente de Trabajo" src={!buttonOver ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
+                        
                         <div>Accidente de trabajo <br/>
                         <span className={classes.textButton}>En su lugar de trabajo</span>
                         </div>
+
+                        {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                        
                     </Button>
                 </div>
                 <div  className={spaceStyle.space1} />
