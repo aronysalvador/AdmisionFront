@@ -49,15 +49,7 @@ stages:
         - script: |
             echo "TargetBranch" $(System.PullRequest.TargetBranch)
             echo "sourceBranch " $(System.pullRequest.sourceBranch)
-
-            echo "appNameDESA: " $(appNameDESAFront)
-            echo "appNameQA: " $(appNameQAFront)
-            echo "appNameSTG: " $(appNameSTGFront)
-            echo "appNameProd: " $(appNameProdFront)
-
-            echo "DockerRepositoryDesa: " $(DockerRepositoryDesa)
-            echo "DockerRepositoryQA: " $(DockerRepositoryQA)
-            echo "DockerRepositoryProd: " $(DockerRepositoryProd)                 
+                        
   # STAGES
 
   # DESA #
