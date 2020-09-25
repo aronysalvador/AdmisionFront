@@ -62,6 +62,7 @@ const BotonesAFP = () => {
                 step={19}
             >
                 <BotonSeleccionarCustomItem {...afp} />
+                {/* <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} />  */}
             </BotonSeleccionarCustom>
             ))}
         </div>
@@ -72,7 +73,7 @@ const BotonesAFP = () => {
           onClick={() => {dispatch(handleSetStep(18))}}
           className={cardsButtonOther}
         >
-         Otra AFP
+          Otra AFP
         </div> : null }
         
     </div>

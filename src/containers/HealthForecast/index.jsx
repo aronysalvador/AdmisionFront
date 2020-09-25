@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -19,6 +19,12 @@ const HealthForecast = (props) => {
   const { dispatch, addmissionForm } = props;
 
   const dispatch1 = useDispatch();
+  const [buttonOver1, setButtonOver1] = useState(false);
+  const [buttonOver2, setButtonOver2] = useState(false);
+  const [buttonOver3, setButtonOver3] = useState(false);
+  const [buttonOver4, setButtonOver4] = useState(false);
+  const [buttonOver5, setButtonOver5] = useState(false);
+  const [buttonOver6, setButtonOver6] = useState(false);
 
   const initFn = useCallback(() => {
     const consultaIsapres = () => dispatch1(searchIsapres());
@@ -64,8 +70,15 @@ const HealthForecast = (props) => {
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[0].id : null}
           onClick={() => clickSendIsapres(getIsapres[0])}
+          onMouseOver={() =>{
+            setButtonOver1(true)
+          }}
+          onMouseOut={() =>{
+              setButtonOver1(false)
+          }}
         >
           {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[0].nombre)}</p> : null}
+          {buttonOver1 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
         </Button>
       </div>
 
@@ -86,8 +99,15 @@ const HealthForecast = (props) => {
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[12].id : null}
           onClick={() => clickSendIsapres(getIsapres[12])}
+          onMouseOver={() =>{
+            setButtonOver2(true)
+          }}
+          onMouseOut={() =>{
+              setButtonOver2(false)
+          }}
         >
           {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[12].nombre)}</p> : null}
+          {buttonOver2 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
@@ -97,8 +117,15 @@ const HealthForecast = (props) => {
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[25].id : null}
           onClick={() => clickSendIsapres(getIsapres[25])}
+          onMouseOver={() =>{
+            setButtonOver3(true)
+          }}
+          onMouseOut={() =>{
+              setButtonOver3(false)
+          }}
         >
           {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[25].nombre)}</p> : null}
+          {buttonOver3 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
         </Button>
       </div>
 
@@ -112,8 +139,15 @@ const HealthForecast = (props) => {
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[9].id : null}
           onClick={() => clickSendIsapres(getIsapres[9])}
+          onMouseOver={() =>{
+            setButtonOver4(true)
+          }}
+          onMouseOut={() =>{
+              setButtonOver4(false)
+          }}
         >
           {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[9].nombre)}</p> : null}
+          {buttonOver4 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
@@ -122,8 +156,15 @@ const HealthForecast = (props) => {
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[11].id : null}
           onClick={() => clickSendIsapres(getIsapres[11])}
+          onMouseOver={() =>{
+            setButtonOver5(true)
+          }}
+          onMouseOut={() =>{
+              setButtonOver5(false)
+          }}
         >
           {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[11].nombre)}</p> : null}
+          {buttonOver5 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
         </Button>
       </div>
 
@@ -159,8 +200,15 @@ const HealthForecast = (props) => {
           variant="contained"
           type="submit"
           onClick={() => dispatch(handleSetStep(19.1))}
-        >
+          onMouseOver={() =>{
+            setButtonOver6(true)
+          }}
+          onMouseOut={() =>{
+              setButtonOver6(false)
+          }}
+          >
           Otra Isapre
+          {buttonOver6 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
         </Button>
       </div>
     </div>
