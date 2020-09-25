@@ -21,7 +21,7 @@ const BoxACHS = (props) => {
                     </div>
                     <div>
                         {contenido.map((item,index) => {
-                            return <div id={index} className={classes.itemFecha}>{item}</div>
+                            return <div key={index}  id={index} className={classes.itemFecha}>{item}</div>
                         })}
                     </div>
                 </div>

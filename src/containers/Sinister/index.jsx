@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
-import { connect, useSelector, shallowEqual } from 'react-redux';
-import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction';
-import { handleLogUpdate } from '../../redux/actions/Log';
-import Typography from '@material-ui/core/Typography';
-import Cabecera from '../../components/cabecera/index';
-import Button from '@material-ui/core/Button';
-import {getComunStyle} from '../../css/comun';
-import {getSpaceStyle} from '../../css/spaceStyle';
-import {siniestroStyle} from '../../css/siniestroStyle';
+import React, { useState } from 'react'
+import { connect, useSelector, shallowEqual } from 'react-redux'
+import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
+import { handleLogUpdate } from "../../redux/actions/Log";
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid';
+import {siniestroStyle} from '../../css/siniestroStyle'
+import Button from "@material-ui/core/Button"
+import {getComunStyle} from '../../css/comun'
+import {getSpaceStyle} from '../../css/spaceStyle'
+import Cabecera from '../../components/cabecera/index'
 
 const Identification = (props) => {
 
@@ -26,11 +27,9 @@ const Identification = (props) => {
                 <div>
                     <Typography variant="p" component="p" className={comunClass.titleBlack}>
                     Selecciona la opción que 
-                    <div className={comunClass.titleBlue}
-                    style={{display: "contents"}}
-                    >
-                    &nbsp;mejor describa lo que le sucedió
-                    </div>
+                        <Grid component="span"  className={comunClass.titleBlue}>
+                            &nbsp;mejor describa lo que le sucedió
+                        </Grid>
                     </Typography>
                 </div>
                 <div className={spaceStyle.space2} />

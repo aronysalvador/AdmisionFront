@@ -35,7 +35,8 @@ const Mapa = (props) => {
             setPlaceId(DireccionTemporal.place_id)
         }else{
             lookForDirection(lat,lng)
-        }       
+        }      
+        // eslint-disable-next-line 
     },[])
 
     const onMarkerDragEnd = (coord) => {        

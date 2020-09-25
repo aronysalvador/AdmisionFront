@@ -118,7 +118,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "600", //"bold",
-        fontSize: "0.750em",
+        //fontSize: "0.750em",
         fontSize: "14px",
         lineHeight: "14px",
         textAlign: "center",
@@ -230,7 +230,7 @@ export const getComunStyle = makeStyles((theme) => ({
     },  
     buttonAchsRight: {
         width: "46%",
-        height: "90px",
+      //  height: "90px",
         background: "#FFFFFF", //#007A33
         border: "2px solid #787878",
         boxSizing: "border-box",
@@ -253,7 +253,7 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     buttonAchsLeft: {
         width: "46%",
-        height: "90px",
+        //height: "90px",
         background: "#FFFFFF", //#007A33
         border: "2px solid #787878",
         boxSizing: "border-box",

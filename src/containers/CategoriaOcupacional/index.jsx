@@ -8,6 +8,7 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import { getCategoriaOcupacionalPrincipal } from "./../../redux/actions/CategoriaOcupacionalAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import Grid from '@material-ui/core/Grid';
 
 const CategoriaOcupacional = () => {
   const {
@@ -43,9 +44,9 @@ const CategoriaOcupacional = () => {
       />
       <Typography className={titleBlack}>
         Selecciona la  
-        <div className={titleBlue}>
+        <Grid component="span"  className={titleBlue}>
           &nbsp;categoría ocupacional
-        </div>
+        </Grid>         
         &nbsp;más adecuada
       </Typography>
       <div className={spaceStyle.space2} />

@@ -11,8 +11,8 @@ import Divider from "@material-ui/core/Divider";
 //Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import { searchIsapres } from "../../redux/actions/PrevisionAction";
+import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
-
 import {siniestroStyle} from '../../css/siniestroStyle';
 
 const HealthForecast = (props) => {
@@ -54,10 +54,10 @@ const HealthForecast = (props) => {
       />
       <div>
         <Typography variant="p" component="p" className={classesComun.titleBlack}>
-          Selecciona la
-          <div className={classesComun.titleBlue}>
-            &nbsp;Previsión de salud
-          </div>
+          Selecciona la 
+          <Grid component="span"  className={classesComun.titleBlue}>
+          &nbsp;Previsión de salud
+          </Grid>     
         </Typography>
       </div>
       <div className={spaceStyle.space2} />

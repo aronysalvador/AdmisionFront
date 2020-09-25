@@ -7,6 +7,7 @@ import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -66,9 +67,9 @@ const RelatoFinal = (props) => {
               className={classesComun.titleBlack}
             >
               Por favor,
-              <div className={classesComun.titleBlue}>
+            <Grid component="span"  className={classesComun.titleBlue}>
               &nbsp;confirma el relato
-              </div>
+            </Grid>   
             </Typography>
           </div>
           <div className={spaceStyle.space1}></div>

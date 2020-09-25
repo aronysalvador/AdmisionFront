@@ -6,6 +6,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import AutoComplete from "@material-ui/lab/Autocomplete";
+import Grid from '@material-ui/core/Grid';
 
 const EditarDireccionSucursal = () => {
   const {
@@ -32,9 +33,9 @@ const EditarDireccionSucursal = () => {
       />
       <Typography className={titleBlack} variant="h2">
         Identifica 
-        <div className={titleBlue}>
+        <Grid component="span"  className={titleBlue}>
           &nbsp;la dirección de la sucursal 
-        </div>
+        </Grid>         
         &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2} />

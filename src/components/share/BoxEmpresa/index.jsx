@@ -29,17 +29,17 @@ const BoxEmpresa = (props) => {
                         <div>
                             {contenidoDireccionEmpresa.map((item,index) => {
 
-                                return <div id={index} className={Format.formatizar(classes.textDireccion)}>{item}</div>
+                                return <div  key={index}  id={index} className={Format.formatizar(classes.textDireccion)}>{item}</div>
 
                             })}
                             {contenidoRazonSocialForm.map((item,index) => {
 
-                                return <div id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
+                                return <div  key={index}  id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
 
                             })}
                             {contenidoRutEmpresa.map((item,index) => {
 
-                                return <div id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
+                                return <div  key={index}  id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
 
                             })}
                         </div>
