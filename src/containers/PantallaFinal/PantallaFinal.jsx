@@ -19,31 +19,30 @@ const PantallaFinal = (props) => {
   return (
     <div className={comunStyle.rootBegin}>
       <div className={welcomeStyle.beginContainer}>
-        <div className={spaceStyle.space2}>
+        
           <div className={welcomeStyle.avatarContainerRight}>
-            <Avatar className={welcomeStyle.avatarBegin}>
+            <Avatar className={welcomeStyle.avatar}>
               {microsoftReducer.userMsal.iniciales}
             </Avatar>
           </div>
+
+        <div className={spaceStyle.space6} />
+        <div className={welcomeStyle.TextContainer}>
+          <img
+            alt="Excelente"
+            src="static/icon-check.png"
+            className={welcomeStyle.iconCircular}
+          />
+          <div className={spaceStyle.spaceMin1} />
+          <Typography
+            variant="h1"
+            component="h1"
+            className={welcomeStyle.titleBegin}
+          >
+            Accidente ingresado
+          </Typography>
         </div>
-      </div>
-
-      <div className={welcomeStyle.TextContainer}>
-        <img
-          alt="Excelente"
-          src="static/icon-check.png"
-          className={welcomeStyle.iconCircular}
-        />
-        <Typography
-          variant="h1"
-          component="h1"
-          className={welcomeStyle.txtBegin}
-        >
-          Accidente ingresado
-        </Typography>
-      </div>
-
-      <div className={welcomeStyle.beginContainerCard}>
+        <div className={spaceStyle.space2} />
         <div className={welcomeStyle.rutSiniestroContainer}>
           <CajaRutSiniestro
             textoPrincipal={siniestroID}
@@ -54,11 +53,7 @@ const PantallaFinal = (props) => {
             textoSecundario="Rut Paciente"
           />
         </div>
-      </div>
-
-      <div className={spaceStyle.space2} />
-
-      <div className={welcomeStyle.beginContainer}>
+        <div className={spaceStyle.space2} />
         <Typography
           variant="h5"
           component="h5"
@@ -91,6 +86,7 @@ const PantallaFinal = (props) => {
         />
 
         <div className={welcomeStyle.bottomBegin}>
+          <div className={spaceStyle.spaceMin1} />
           <Button
             className={[comunStyle.buttonAchs, comunStyle.pantallaFinalBotones]}
             variant="contained"
@@ -98,7 +94,7 @@ const PantallaFinal = (props) => {
           >
             Firma de documentos en SAP
           </Button>
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={spaceStyle.spaceMin1} />
         </div>
       </div>
     </div>

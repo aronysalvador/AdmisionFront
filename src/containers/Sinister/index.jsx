@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect, useSelector, shallowEqual } from 'react-redux'
 import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
 import { handleLogUpdate } from "../../redux/actions/Log";
@@ -16,6 +16,8 @@ const Identification = (props) => {
     const classes = siniestroStyle()
     const comunClass = getComunStyle()
     const spaceStyle = getSpaceStyle()
+
+    const [buttonOver, setButtonOver] = useState(false)
 
     const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
@@ -37,27 +39,49 @@ const Identification = (props) => {
                         dispatch(updateForm("tipoSiniestro", tipo));
                         dispatch(handleLogUpdate({opcion:4, Id: ID, tipoSiniestro: tipo}));
                         dispatch(handleSetStep(3));   
-                 
-                    }}>
-                        <img alt="Accidente de Trabajo" src="./static/trabajo.png" className={classes.img} />&nbsp;Accidente Trabajo
+                    }}
+                    onMouseOver={() =>{
+                        setButtonOver(true)
+                    }}
+                    onMouseOut={() =>{
+                        setButtonOver(false)
+                    }}
+                    >
+                        <img alt="Accidente de Trabajo" src={!buttonOver ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
+                        
+                        <div>Accidente de trabajo <br/>
+                        <span className={classes.textButton}>En su lugar de trabajo</span>
+                        </div>
+
+                        {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                        
                     </Button>
                 </div>
                 <div  className={spaceStyle.space1} />
                 <div>
-                    <Button className={classes.button} variant="contained" disabled={true} >
-                        <img alt="Accidente de Trayecto" src="./static/trayecto.png" className={classes.img}/>&nbsp;Accidente Trayecto 
+                    <Button className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
+                        <div><img alt="Accidente de Trayecto" src="./static/trayectoCard.png" className={classes.imgButton}/></div>
+                        <div>Accidente de trayecto <br/>
+                        <span className={classes.textButton}>Entre el trabajo y su hogar</span>
+                        </div>
                     </Button>
                 </div>
                 <div  className={spaceStyle.space1} />
                 <div>
-                    <Button  className={classes.button} variant="contained" disabled={true}>
-                        <img alt="Enfermedad Profesional" src="./static/ep.png" className={classes.img} />&nbsp;Enfermedad Profesional
+                    <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
+                        <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
+                        <div>Enfermedad Profesional <br/>
+                            <span className={classes.textButton}>A causa del ejercicio profesional</span>
+                        </div>
                     </Button>
                 </div>  
                 <div  className={spaceStyle.space1} />
                 <div>
-                    <Button  className={classes.button} variant="contained" disabled={true}>
-                        <img alt="Licencia Rechazada" src="./static/licencia.png" className={classes.img} />&nbsp;Licencia Rechazada
+                    <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
+                    <div><img alt="Licencia Rechazada" src="./static/licenciaCard.png" className={classes.imgButton} /></div>
+                    <div>Licencia Rechazada <br/>
+                        <span className={classes.textButton}>Por Isapre o Fonasa</span>
+                    </div>
                     </Button>
                 </div>                               
             </div>

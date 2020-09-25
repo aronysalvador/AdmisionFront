@@ -26,7 +26,7 @@ const Achs = () => {
   const {
     buttonAchs,
     root,
-    pregunta,
+    titleBlack,
     bottomElement,
     tituloTextbox,
   } = getComunStyle();
@@ -61,7 +61,7 @@ const Achs = () => {
       <div className={welcomeStyle.backPosicion}> 
           <Cabecera dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
         </div>
-      <Typography className={pregunta}>Te encuentras en:</Typography>
+      <Typography className={titleBlack}>Te encuentras en:</Typography>
       <div className={spaceStyle.space2} />
 
       <Typography className={tituloTextbox} variant="subtitle2">
@@ -80,7 +80,7 @@ const Achs = () => {
         onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-        style={{ width: 300 }}
+        // style={{ width: 300 }}
         options={centrosList}
         getOptionLabel={(option) => option.Centro_m}
         renderInput={(params) => (
@@ -111,13 +111,13 @@ const Achs = () => {
           variant="contained"
           className={buttonAchs}
           type="submit"
-         disabled={inputValue !== valueError || inputValue === ''}
+          disabled={inputValue !== valueError || inputValue === ''}
           onClick={() => {
             dispatch(updateForm("centrosForm", centros));
             dispatch(setCenter(email, centros))
-           if(ID>0){
+          if(ID>0){
               console.log("actualizar centro")
-             dispatch(handleLogUpdate({opcion:3, Id: ID, centro: centros}));
+              dispatch(handleLogUpdate({opcion:3, Id: ID, centro: centros}));
             }else{
               console.log("not yet")
             }

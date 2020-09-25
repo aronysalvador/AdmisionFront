@@ -12,6 +12,8 @@ import Divider from "@material-ui/core/Divider";
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import { searchIsapres } from "../../redux/actions/PrevisionAction";
 import Grid from '@material-ui/core/Grid';
+import { Format } from "../../helpers/strings";
+import {siniestroStyle} from '../../css/siniestroStyle';
 
 const HealthForecast = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -36,6 +38,7 @@ const HealthForecast = (props) => {
 
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const classes = siniestroStyle()
 
   return (
     <div className={classesComun.root}>
@@ -51,52 +54,55 @@ const HealthForecast = (props) => {
           </Grid>     
         </Typography>
       </div>
-      <div className={spaceStyle.space1} />
-      <div>
+      <div className={spaceStyle.space2} />
+      <div className={classesComun.textCenter}>
         <Button
-          className={[classesComun.buttonAchs, classesComun.pregunta_temp]}
+          className={[classes.button]}//classesComun.buttonAchs, classesComun.pregunta_temp
+          style={{justifyContent: "center", height: "90px", color: "#373737"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[0].id : null}
           onClick={() => clickSendIsapres(getIsapres[0])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[0].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[0].nombre)}</p> : null}
         </Button>
       </div>
 
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
       <div className={classesComun.flexDivider}>
-      <Divider className={classesComun.mediumDivider} />  
+      <Divider className={classesComun.mediumDivider} />
       <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
-     
+
       <Divider className={classesComun.mediumDivider} /> </div>
-      <div className={spaceStyle.space2} />
+      <div className={spaceStyle.space1} />
 
       <div>
         <Button
-          className={classesComun.buttonAchsRight}
+        className={classesComun.buttonAchsRight}
+          // style={{justifyContent: "center"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[12].id : null}
           onClick={() => clickSendIsapres(getIsapres[12])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[12].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[12].nombre)}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
+          // style={{justifyContent: "center"}}
           variant="contained"
           type="submit"
           disabled={getIsapres.length === 0}
           value={getIsapres.length !== 0 ? getIsapres[25].id : null}
           onClick={() => clickSendIsapres(getIsapres[25])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[25].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[25].nombre)}</p> : null}
         </Button>
       </div>
 
-      <div className={spaceStyle.space4} />
+      <div className={spaceStyle.space1} />
 
       <div>
         <Button
@@ -107,7 +113,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[9].id : null}
           onClick={() => clickSendIsapres(getIsapres[9])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[9].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[9].nombre)}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
@@ -117,13 +123,13 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[11].id : null}
           onClick={() => clickSendIsapres(getIsapres[11])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[11].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[11].nombre)}</p> : null}
         </Button>
       </div>
 
-      <div className={spaceStyle.space4} />
+      {/* <div className={spaceStyle.space4} /> */}
 
-      <div>
+      {/* <div>
         <Button
           className={classesComun.buttonAchsRight}
           variant="contained"
@@ -132,7 +138,7 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[5].id : null}
           onClick={() => clickSendIsapres(getIsapres[5])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[5].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[5].nombre)}</p> : null}
         </Button>
         <Button
           className={classesComun.buttonAchsLeft}
@@ -142,13 +148,14 @@ const HealthForecast = (props) => {
           value={getIsapres.length !== 0 ? getIsapres[24].id : null}
           onClick={() => clickSendIsapres(getIsapres[24])}
         >
-          {getIsapres.length !== 0 ? <p>{getIsapres[24].nombre}</p> : null}
+          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[24].nombre)}</p> : null}
         </Button>
-      </div>
+      </div> */}
 
       <div className={classesComun.bottomElement}>
         <Button
-          className={classesComun.buttonAchs2}
+          className={classes.button}
+          style={{justifyContent: "center", height: "90px", color: "#373737"}}
           variant="contained"
           type="submit"
           onClick={() => dispatch(handleSetStep(19.1))}

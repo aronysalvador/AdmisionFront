@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 export const cardSiniestroStyles = makeStyles((theme) => ({
 
     container: {
-        marginTop: "20px",
+        marginTop: "15px",
         display: "flex",
         flexFlow: "row wrap",
         justifyContent: "center",
@@ -56,5 +56,16 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
     aside: {
         flex: "1 auto",
     },
-    
+    asidePersonalData: {
+        margin: "auto",
+    },
+    itemRazonSocial: {
+        margin: "0 auto",
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '1em',
+        lineHeight: '1.25em',
+        color: '#00B2A9',
+    },
 }));
