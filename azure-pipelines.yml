@@ -48,7 +48,7 @@ stages:
       steps:
         - script: |
             echo "TargetBranch" $(System.PullRequest.TargetBranch)
-            echo "sourceBranch " $(System.pullRequest.sourceBranch)
+            echo "sourceBranch " $(System.pullRequest.sourceBranch) 
              
   # STAGES
 
