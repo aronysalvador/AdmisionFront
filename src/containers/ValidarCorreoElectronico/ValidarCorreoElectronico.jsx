@@ -19,7 +19,7 @@ import { FechaHora } from './../../helpers/utils'
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { ErrorOutline } from "@material-ui/icons";
 import Switch from '@material-ui/core/Switch';
-
+import Grid from '@material-ui/core/Grid';
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -73,7 +73,9 @@ const ValidarCorreoElectronico = () => {
       />
       <Typography className={titleBlack}>
         Enviaremos los documentos al siguiente&nbsp;
-        <span className={titleBlue}>e-mail</span>{" "}
+          <Grid component="span"  className={titleBlue}>
+          e-mail
+          </Grid>     {" "}
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>

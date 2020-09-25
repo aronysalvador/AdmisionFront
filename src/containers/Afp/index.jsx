@@ -8,7 +8,7 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-
+import Grid from '@material-ui/core/Grid';
 /*
 REVISARE EL 
   const {
@@ -55,9 +55,9 @@ const Afp = () => {
       />
       <Typography className={titleBlack}>
         Escribe la 
-        <div className={titleBlue}>
-          &nbsp;AFP o Previsión Social
-        </div>
+        <Grid component="span"  className={titleBlue}>
+            &nbsp;AFP o Previsión Social
+        </Grid>          
       </Typography>
       <div className={spaceStyle.space2} />
 

@@ -6,6 +6,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import JornadaLaboral from "../../components/JornadaLaboral/JornadaLaboral";
+import Grid from '@material-ui/core/Grid';
 
 const JornadaLaboralContainer = () => {
   const spaceStyle = getSpaceStyle();
@@ -51,9 +52,9 @@ const JornadaLaboralContainer = () => {
       />
       <Typography className={titleBlack}>
         ¿A qué hora 
-        <div className={titleBlue}>
+        <Grid component="span"  className={titleBlue}>
           &nbsp;inicia y termina su jornada laboral?
-        </div>
+        </Grid>           
       </Typography>
       <div className={spaceStyle.space2} />
       <JornadaLaboral

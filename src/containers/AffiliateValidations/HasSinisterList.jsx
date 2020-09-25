@@ -4,6 +4,7 @@ import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
@@ -17,7 +18,6 @@ const PersonalData = (props) => {
   const contenidoSiniestros = addmissionForm.siniestros;
   const { origen, siniestroTemp } = addmissionForm.siniestroOpciones;
 
-  const { lugarAccidente } = addmissionForm;
 
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
@@ -68,8 +68,8 @@ const PersonalData = (props) => {
     }
   };
 
-  const listaSiniestros = contenidoSiniestros.map((siniestro) => (
-    <CardSiniestro siniestro={siniestro}></CardSiniestro>
+  const listaSiniestros = contenidoSiniestros.map((siniestro, index) => (
+    <CardSiniestro key={index} siniestro={siniestro}></CardSiniestro>
   ));
 
   const listaSiniestros2 = listaSiniestros.reverse();
@@ -88,10 +88,10 @@ const PersonalData = (props) => {
               variant="p"
               component="p"
               className={comunClass.titleBlack}>
-              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} <br/> tiene&nbsp;
-              <div className={comunClass.titleBlue}>
-                {contenidoSiniestros.length} siniestros
-              </div>
+             {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} <br/> tiene&nbsp;
+              <Grid component="span"  className={comunClass.titleBlue}>
+                &nbsp;{contenidoSiniestros.length} siniestros
+              </Grid>                   
               &nbsp;creados
             </Typography>
           ) : (
@@ -101,9 +101,9 @@ const PersonalData = (props) => {
               className={comunClass.titleBlack}
             >
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} tiene
-              <div className={comunClass.titleBlue}>
+              <Grid component="span"  className={comunClass.titleBlue}>
                 &nbsp;este siniestro
-              </div>
+              </Grid>                 
               creado
             </Typography>
           )}

@@ -8,6 +8,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { getContrato } from "../../redux/actions/TipoContratoAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
+import Grid from '@material-ui/core/Grid';
 
 const TipoDeContrato = () => {
   const dispatch = useDispatch();
@@ -39,9 +40,9 @@ const TipoDeContrato = () => {
       />
       <Typography className={titleBlack}>
         ¿Qué  
-        <div className={titleBlue}>
-          &nbsp;tipo de contrato
-        </div>
+        <Grid component="span"  className={titleBlue}>
+         &nbsp;tipo de contrato
+        </Grid>      
         &nbsp;tiene el paciente?
       </Typography>
       <div className={spaceStyle.space2} />

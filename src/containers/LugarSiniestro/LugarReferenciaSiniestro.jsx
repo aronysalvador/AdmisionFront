@@ -9,6 +9,7 @@ import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { IconButton } from "material-ui";
 import ClearIcon from '@material-ui/icons/Clear';
+import Grid from '@material-ui/core/Grid';
 
 const LugarReferenciaSiniestro = () => {
   let {
@@ -41,9 +42,9 @@ const LugarReferenciaSiniestro = () => {
       />
       <Typography className={titleBlack}>
         Pide al paciente el
-        <div className={titleBlue}>
-          &nbsp;sitio específico 
-        </div>
+        <Grid component="span"  className={titleBlue}>
+         &nbsp;sitio específico 
+        </Grid>        
         &nbsp;de donde ocurrió el accidente
       </Typography>
       <div className={spaceStyle.space2} />

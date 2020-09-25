@@ -7,6 +7,7 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import Grid from '@material-ui/core/Grid';
 
 const CausaNoLaboral = () => {
   const {
@@ -54,9 +55,9 @@ const CausaNoLaboral = () => {
       />
       <Typography className={titleBlack}>
         Selecciona la razón de
-        <div className={titleBlue}>
-          &nbsp;posible causa no laboral
-        </div>
+        <Grid component="span"  className={titleBlue}>
+            &nbsp;posible causa no laboral
+        </Grid>                  
       </Typography>
       <div className={spaceStyle.space2} />
 

@@ -95,7 +95,7 @@ const SessionAchs = (props) => {
         <div className={welcomeStyle.boxCentroAlign} >
           <div className={welcomeStyle.boxCentroAchs} 
           style={{ cursor: 'pointer'}}
-          onClick={() => dispatch(handleSetStep(40))} percentage={-1} noSpace={true}>
+          onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
             <img
               alt="Centro ACHS"
               src="./static/hospital.png"

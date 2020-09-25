@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
-import { getSpaceStyle } from "../../css/spaceStyle";
+//import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
 const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos }) => {
@@ -29,15 +29,17 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
 
   const [t, setT] = useState(0);
 
-  const spaceStyle = getSpaceStyle();
+ // const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
 
+  
   useEffect(() => {
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
     if (indiceMinutos === minutos.length) setIndiceMinutos(0);
     if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
     onChange({ horas, indiceMinutos });
+    // eslint-disable-next-line
   }, [horas, minutos[indiceMinutos]]);
 
   const TRef = useRef(t);
@@ -117,7 +119,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
-              disabled={ horas == new Date().getHours()}
+              disabled={ horas === new Date().getHours()}
               onClick={() => {
                 setHoras((h) => ++h);
               }}
@@ -188,7 +190,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
-              disabled={ indiceMinutos == getMin() && horas == new Date().getHours()}
+              disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
               onClick={() => {
                 setIndiceMinutos((m) => ++m);
               }}
