@@ -9,6 +9,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from '@material-ui/core/Grid';
 
 //Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
@@ -67,9 +68,9 @@ const HealthForecastIsapre = (props) => {
             className={classesComun.titleBlack}
           >
             Escribe la 
-            <div className={classesComun.titleBlue}>
-            &nbsp;Isapre
-          </div>
+            <Grid component="span"  className={classesComun.titleBlue}>
+              &nbsp;Isapre
+            </Grid>                    
           </Typography>
         </div>
         <div className={spaceStyle.space2} />

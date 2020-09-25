@@ -67,8 +67,8 @@ const PersonalData = (props) => {
     }
   };
 
-  const listaSiniestros = contenidoSiniestros.map((siniestro) => (
-    <CardSiniestro siniestro={siniestro}></CardSiniestro>
+  const listaSiniestros = contenidoSiniestros.map((siniestro, index) => (
+    <CardSiniestro key={index} siniestro={siniestro}></CardSiniestro>
   ));
 
   const listaSiniestros2 = listaSiniestros.reverse();

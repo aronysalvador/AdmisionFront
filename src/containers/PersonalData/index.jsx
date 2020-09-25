@@ -9,6 +9,7 @@ import BoxACHS from "../../components/share/BoxACHS/index";
 import BoxEmpresa from "../../components/share/BoxEmpresa/index";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
+import Grid from '@material-ui/core/Grid';
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
@@ -73,9 +74,9 @@ const PersonalData = (props) => {
       <div>
         <Typography variant="p" component="p" className={comunClass.titleBlack}>
           Empieza
-          <div className={comunClass.titleBlue}>
-          &nbsp;verificando los datos de <br/>
-          </div>
+          <Grid component="span"  className={comunClass.titleBlue}>
+            &nbsp;verificando los datos de <br/>
+          </Grid>           
           {nombre} {apellidoPaterno}
         </Typography>
       </div>

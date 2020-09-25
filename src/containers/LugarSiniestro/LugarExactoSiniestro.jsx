@@ -7,6 +7,7 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import { getData } from "../../redux/actions/ComunaAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
 import { eliminarDiacriticos } from './../../helpers/utils'
+import Grid from '@material-ui/core/Grid';
 
 const LugarExactoSiniestro = () => {
   const {
@@ -101,7 +102,10 @@ const LugarExactoSiniestro = () => {
       />
 
       <Typography className={titleBlack} style={{paddingBottom:'20px'}}>
-        Indica la dirección <span className={titleBlue}> en donde ocurrió el accidente </span>
+        Indica la dirección 
+        <Grid component="span"  className={titleBlue}>
+              &nbsp;en donde ocurrió el accidente
+        </Grid>          
       </Typography>
 
 

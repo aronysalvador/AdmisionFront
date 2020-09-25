@@ -7,6 +7,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import Grid from '@material-ui/core/Grid';
+
 
 const FechaHoraResponsable = () => {
   const { percentage, fechaHoraResponsable } = useSelector(
@@ -44,9 +46,9 @@ const FechaHoraResponsable = () => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        <div className={titleBlue}>
-          ¿Cuándo y a que hora se le avisó 
-        </div>
+        <Grid component="span"  className={titleBlue}>
+            ¿Cuándo y a que hora se le avisó 
+        </Grid>          
         &nbsp;al responsable?
       </Typography>
       <div className={spaceStyle.space2} />

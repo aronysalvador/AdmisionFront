@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 import { getComunStyle } from "../../css/comun";
 import { makeStyles } from "@material-ui/core/styles";
 import IdentificationCompany from "./identificationCompany";
@@ -93,9 +92,9 @@ const TabCompany = (props) => {
         aria-labelledby={`simple-tab-${index}`}
       >
         {value === index && (
-          <Box p={1}>
-            <Typography>{children}</Typography>
-          </Box>
+         
+            <div>{children} </div>
+         
         )}
       </div>
     );
@@ -135,6 +134,7 @@ const TabCompany = (props) => {
           <RazonSocial />
         </div>
       </TabPanel>
+      
       <TabPanel value={value} index={1}>
         <Typography
           variant="p"
@@ -147,7 +147,8 @@ const TabCompany = (props) => {
         <div>
           <IdentificationCompany />
         </div>
-      </TabPanel>
+      </TabPanel> 
+
     </div>
   );
 };

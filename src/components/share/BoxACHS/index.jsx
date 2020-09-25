@@ -75,7 +75,7 @@ const BoxACHS = (props) => {
                     </div>
                     <div className={classes.contentConteiner}>
                         {contenido.map((item,index) => {
-                            return <div id={index} className={classes.textDireccion}>{item}</div>
+                            return <div key={index}  id={index} className={classes.textDireccion}>{item}</div>
                         })}
                     </div>
                 </div>

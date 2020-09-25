@@ -6,6 +6,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import TrabajoHabitualCard from "./TrabajoHabitualCard";
+import Grid from '@material-ui/core/Grid';
 
 const TrabajoHabitual = () => {
   const {
@@ -38,9 +39,10 @@ const TrabajoHabitual = () => {
       />
       <Typography className={titleBlack} variant="subtitle2">
         ¿Al momento del accidente, desarrollaba su
-        <div className={titleBlue}>
-          &nbsp;trabajo habitual
-        </div>?
+          <Grid component="span"  className={titleBlue}>
+            &nbsp;trabajo habitual
+          </Grid>  
+        ?
       </Typography>
 
       <div className={bottomElement}>

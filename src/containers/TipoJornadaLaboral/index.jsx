@@ -7,6 +7,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
+import Grid from '@material-ui/core/Grid';
 
 const TipoJornadaLaboral = () => {
   const {
@@ -41,9 +42,9 @@ const TipoJornadaLaboral = () => {
       />
       <Typography className={titleBlack}>
         Selecciona la opción que mejor defina el 
-        <div className={titleBlue}>
+        <Grid component="span"  className={titleBlue}>
           &nbsp;tipo de jornada
-        </div>
+        </Grid>          
       </Typography>
 
       <div

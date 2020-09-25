@@ -87,13 +87,13 @@ const BoxEmpresa = (props) => {
                     </div>
                     <div className={classes.contentConteiner}>
                         {contenidoDireccionEmpresa.map((item,index) => {
-                            return <div id={index} className={classes.textDireccion}>{item}</div>
+                            return <div key={index}  id={index} className={classes.textDireccion}>{item}</div>
                         })}
                         {contenidoRazonSocialForm.map((item,index) => {
-                            return <div id={index} className={classes.textRazonSocial}>{item}</div>
+                            return <div  key={index} id={index} className={classes.textRazonSocial}>{item}</div>
                         })}
                         {contenidoRutEmpresa.map((item,index) => {
-                            return <div id={index} className={classes.textRazonSocial}>{item}</div>
+                            return <div  key={index}  id={index} className={classes.textRazonSocial}>{item}</div>
                         })}
                     </div>
                     

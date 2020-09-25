@@ -53,7 +53,7 @@ const EditarTelefono = () => {
       />
       <Typography className={titleBlack} variant="h2">
         Ingresa el 
-        <Grid component="span"  className={comunClass.titleBlue}>
+        <Grid component="span"  className={titleBlue}>
         &nbsp;teléfono personal
         </Grid>          
       </Typography>
