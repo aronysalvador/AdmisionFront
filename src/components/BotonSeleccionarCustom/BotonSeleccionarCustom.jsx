@@ -61,6 +61,7 @@ const BotonSeleccionarCustom = (props) => {
       }}
       className={isSelected ? botonSeleccionado : cardsButton} >
       {props.children}
+      
     </div>
   );
 };

@@ -60,9 +60,6 @@ const DataResponsable = () => {
       <div>
         <Typography variant="p" component="p" className={classesComun.titleBlack}>
         Solicita una 
-        <div className={classesComun.titleBlue}>
-          &nbsp;referencia del responsable
-        </div>
           <Grid component="span"  className={classesComun.titleBlue}>
             &nbsp;referencia del responsable
           </Grid>          

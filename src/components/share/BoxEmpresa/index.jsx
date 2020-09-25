@@ -7,7 +7,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { cardSiniestroStyles } from '../../../css/cardSiniestroStyle';
 import { Grid } from '@material-ui/core';
 
-import { Format } from '../../../helpers/strings';
+//import { Format } from '../../../helpers/strings';
 
 
 
@@ -29,22 +29,21 @@ const BoxEmpresa = (props) => {
                         <div>
                             {contenidoDireccionEmpresa.map((item,index) => {
 
-                                return <div  key={index}  id={index} className={Format.formatizar(classes.textDireccion)}>{item}</div>
+                                return <div  key={index}  id={index} className={classes.itemFecha}>{item}</div>
 
                             })}
                             {contenidoRazonSocialForm.map((item,index) => {
 
-                                return <div  key={index}  id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
+                                return <div  key={index}  id={index} className={classes.itemRazonSocial}>{item}</div>
 
                             })}
                             {contenidoRutEmpresa.map((item,index) => {
 
-                                return <div  key={index}  id={index} className={Format.formatizar(classes.textRazonSocial)}>{item}</div>
+                                return <div  key={index}  id={index} className={classes.itemRazonSocial}>{item}</div>
 
                             })}
+                        </div>                        
                         </div>
-                        
-                    </div>
                 
 
                     </Grid>
