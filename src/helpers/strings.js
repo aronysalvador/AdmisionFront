@@ -5,7 +5,7 @@ export const Format = {
 
     },
     descapitalizar: function(frase){
-        return frase.toLowerCase();
+        return frase ? frase.toLowerCase() : '';
     },
     capitalizar: function(palabra){
         return palabra.charAt(0).toUpperCase() + palabra.slice(1);
