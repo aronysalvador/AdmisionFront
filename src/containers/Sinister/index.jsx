@@ -78,10 +78,10 @@ const Identification = (props) => {
                 <div  className={spaceStyle.space1} />
                 <div>
                     <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
-                    <div><img alt="Licencia Rechazada" src="./static/licenciaCard.png" className={classes.imgButton} /></div>
-                    <div>Licencia Rechazada <br/>
-                        <span className={classes.textButton}>Por Isapre o Fonasa</span>
-                    </div>
+                        <div><img alt="Licencia Rechazada" src="./static/licenciaCard.png" className={classes.imgButton} /></div>
+                        <div>Licencia Rechazada <br/>
+                            <span className={classes.textButton}>Por Isapre o Fonasa</span>
+                        </div>
                     </Button>
                 </div>                               
             </div>

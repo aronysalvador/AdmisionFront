@@ -51,7 +51,7 @@ const ValidarCorreoElectronico = () => {
 
   const [stateCheck,setStateCheck] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const { root, buttonAchs, bottomElement, titleBlue, titleBlack, switchColor } = getComunStyle();
+  const { root, buttonAchs, bottomElement, titleBlue, titleBlack } = getComunStyle(); //switchColor
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
   const { mobileLabel } = siniestroStyle();
