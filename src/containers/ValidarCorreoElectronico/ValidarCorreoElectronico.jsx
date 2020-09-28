@@ -69,7 +69,9 @@ const ValidarCorreoElectronico = () => {
       />
       <Typography className={titleBlack}>
         Enviaremos los documentos al siguiente&nbsp;
-        <span className={titleBlue}>e-mail</span>{" "}
+          <Grid component="span"  className={titleBlue}>
+          e-mail
+          </Grid>     {" "}
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>

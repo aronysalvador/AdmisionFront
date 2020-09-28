@@ -7,6 +7,7 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import Grid from '@material-ui/core/Grid';
 
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
@@ -90,9 +91,12 @@ const FechaHoraSiniestro = () => {
         className={titleBlack}
         >
         ¿
-        <div className={titleBlue}>
-        Cuándo y a qué hora&nbsp;
-        </div>sucedió el accidente?
+        
+        <Grid component="span"  className={titleBlue}>
+         Cuándo y a qué hora&nbsp;
+        </Grid> 
+
+        sucedió el accidente?
       </Typography>
       <div className={spaceStyle.space3} />
       <FechaSiniestro

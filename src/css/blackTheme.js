@@ -4,7 +4,7 @@ export const getBlackTheme = makeStyles((theme) => ({
     root: {
         position: "relative",
         width: "22.5em",
-        height: "40em",
+        height: "43em",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
@@ -42,6 +42,7 @@ export const getBlackTheme = makeStyles((theme) => ({
         alignItems: "center",
         color: "#06D6A0",
         padding: "0em 1em",
+        marginBottom: "1.145em"
     },
 
     textDetailSimple: {
@@ -109,7 +110,7 @@ export const getBlackTheme = makeStyles((theme) => ({
     },
 
     buttonFooter2: {
-        marginTop: "5px",
+        marginTop: "1.145em",
         width: "100%",
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -125,4 +126,30 @@ export const getBlackTheme = makeStyles((theme) => ({
             background: "transparent",
         },
     },
+    containerQuote: {
+        display: "flex",
+        borderRadius: "10px",
+        border: "1px solid #FFFFFF",
+        width: "100%",
+        padding: "10px",
+        justifyContent: "space-evenly",
+      },
+    
+      containerRowQuote: {
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column"
+      },
+    
+      itemDataQuote: {
+        color: "#FFFFFF",
+        fontSize: "1.125em",
+        fontWeight: "bold"
+      },
+    
+      itemLabelQuote: {
+        color: "#FFFFFF",
+        fontSize: "1em",
+        marginBottom: "15px"
+      }
 }));

@@ -7,6 +7,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
+import Grid from '@material-ui/core/Grid';
 
 //Action de Redux
 import { sendCargo } from "../../redux/actions/AdmissionAction";
@@ -49,9 +50,9 @@ const DataWitness = () => {
       <div>
         <Typography variant="p" component="p" className={classesComun.titleBlack}>
           Solicita una 
-          <div className={classesComun.titleBlue}>
-            &nbsp;referencia del testigo
-          </div>
+          <Grid component="span"  className={classesComun.titleBlue}>
+          &nbsp;referencia del testigo
+          </Grid>                    
         </Typography>
       </div>
       <div className={spaceStyle.space2} />
@@ -74,6 +75,8 @@ const DataWitness = () => {
           helperText="Ejemplo: Luis Morales"
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           fullWidth
           InputProps={{
             endAdornment: (
@@ -111,6 +114,8 @@ const DataWitness = () => {
           helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           fullWidth
           InputProps={{
             endAdornment: (

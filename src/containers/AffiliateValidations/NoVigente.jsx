@@ -19,10 +19,10 @@ const NoVigente = (props) => {
   return (
     <div>
       <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.1))} // 5.1
+        dispatch={() => dispatch(handleSetStep(5.1))} 
         color="#FFFFFF"
       />
-      <div className={blackStyle.root} style={{height: "37.2em"}}>
+      <div className={blackStyle.root} style={{height: "40em"}}>
         <img
           alt="load"
           src="./static/error-siniestro.svg"
@@ -44,9 +44,11 @@ const NoVigente = (props) => {
           Sucursal de este paciente no está vigente en ACHS
         </Typography>
         <div className={spaceStyle.space1} />
-  
+        
+        <NoAfiliateCard />
+
         <div className={comunClass.bottomElement}>
-          <NoAfiliateCard />
+          
           <div className={spaceStyle.space2} />
           <Button
             className={blackStyle.buttonFooter}

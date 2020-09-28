@@ -47,24 +47,22 @@ const IdentificationCompany = () => {
     }
   };
 
+
   return (
     <div>
       <TextField
+        type="text"
         value={rut}
         variant="outlined"
         size="small"
         margin="dense"
         fullWidth
-        helperText={!isValid && "RUT no válido"}
-        
-      
+        helperText={!isValid && "RUT no válido"}              
         error={!isValid }
         onChange={(e) => {
-          //let rutFormateado = e.target.value
-          //formateaRut(e.target.value)
-          setIsValid(Rut.validaRut(formateaRut(e.target.value)));
-          setRut(formateaRut(e.target.value));
-          
+          var format = formateaRut(e.target.value);
+          setRut(format!==undefined ? format : e.target.value);       
+          setIsValid(Rut.validaRut(format));   
         }}
         onBlur={() => validar(rut)}
       />{" "}

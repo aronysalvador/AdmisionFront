@@ -8,6 +8,7 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import ClearIcon from '@material-ui/icons/Clear';
 import { IconButton } from "material-ui";
+import Grid from '@material-ui/core/Grid';
 
 const Cargo = () => {
   const {
@@ -52,9 +53,9 @@ const Cargo = () => {
       />
       <Typography className={titleBlack}>
         ¿Cuál es el  
-        <div className={titleBlue}>
+        <Grid component="span"  className={titleBlue}>
           &nbsp;cargo
-        </div>
+        </Grid>                 
         &nbsp;del paciente en la empresa?
       </Typography>
       <div className={spaceStyle.space2} />
@@ -75,6 +76,8 @@ const Cargo = () => {
           error={error}
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           inputProps={{ maxLength: 25 }}
           fullWidth
           InputProps={{

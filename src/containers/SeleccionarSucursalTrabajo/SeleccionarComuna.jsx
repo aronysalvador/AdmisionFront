@@ -8,6 +8,7 @@ import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
 import { getComuna } from "../../redux/actions/ComunaAction";
+import Grid from '@material-ui/core/Grid';
 
 const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
@@ -68,7 +69,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     // });
 
     var variables = []
-    sucursalesEmpresa.map((sucursal,i) =>{
+    sucursalesEmpresa.forEach((sucursal,i) =>{
       variables.push({id: i,codigo_region: sucursal.codigo_region,codigo_comuna:sucursal.id_comuna, nombre: sucursal.comuna})
     })
 
@@ -76,6 +77,8 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     console.log("uniqueArray is: " + JSON.stringify(uniqueArray));    
 
     setListaComunas(uniqueArray);
+
+    // eslint-disable-next-line
   }, [comunaList]);
 
   const removeDuplicates = (originalArray, prop) =>{
@@ -101,7 +104,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       />
       <Typography className={titleBlack}>
         Identifica
-        <div className={titleBlue}>&nbsp;la comuna de la sucursal </div>
+        <Grid component="span"  className={titleBlue}>
+              &nbsp;la comuna de la sucursal
+        </Grid>                  
         &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2}></div>

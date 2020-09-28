@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -7,6 +7,7 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import Grid from '@material-ui/core/Grid';
 
 const CausaNoLaboral = () => {
   const {
@@ -34,7 +35,17 @@ const CausaNoLaboral = () => {
     shallowEqual
   );
 
-  console.log({ causasList });
+  const [fixedCausasList, setFixedCausasList] = useState(causasList);
+
+  useEffect(() => {
+    setFixedCausasList(
+      causasList.map(causa => {
+        causa.glosa = causa.glosa.replace("prestación", "presentación");
+        return causa
+      })
+    )
+  }, [causasList])
+
 
   return (
     <div className={root}>
@@ -43,10 +54,10 @@ const CausaNoLaboral = () => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        Selecciona la razón de 
-        <div className={titleBlue}>
-          &nbsp;posible causa no laboral
-        </div>
+        Selecciona la razón de
+        <Grid component="span"  className={titleBlue}>
+            &nbsp;posible causa no laboral
+        </Grid>                  
       </Typography>
       <div className={spaceStyle.space2} />
 
@@ -59,7 +70,7 @@ const CausaNoLaboral = () => {
           setCausas(value);
         }}
         style={{ width: 300 }}
-        options={causasList}
+        options={fixedCausasList}
         getOptionLabel={(option) => option.glosa}
         renderInput={(params) => (
           <TextField

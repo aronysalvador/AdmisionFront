@@ -50,6 +50,7 @@ const DireccionParticular = () => {
       setValido( false )
       setNombreComuna("")
     }
+    // eslint-disable-next-line
   },[direccion])
 
   const validaDireccion = async()=>{
@@ -65,10 +66,10 @@ const DireccionParticular = () => {
         percentage={percentage}
       />
       <Typography className={titleBlack}>
-        Ingresa 
-        <div className={titleBlue}>
+        Ingresa
+        <Grid component="span"  className={titleBlue}>
           &nbsp;la dirección en donde vive el paciente
-        </div>
+        </Grid>                  
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={tituloTextbox} variant="subtitle2">

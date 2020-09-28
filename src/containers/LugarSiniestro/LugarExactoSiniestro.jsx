@@ -48,6 +48,7 @@ const LugarExactoSiniestro = () => {
       setValido( false )
       setNombreComuna("")
     }
+    // eslint-disable-next-line
   },[sucursal])
 
   
@@ -66,7 +67,10 @@ const LugarExactoSiniestro = () => {
       />
 
       <Typography className={titleBlack} style={{paddingBottom:'20px'}}>
-        Indica la dirección <span className={titleBlue}> en donde ocurrió el accidente </span>
+        Indica la dirección 
+        <Grid component="span"  className={titleBlue}>
+              &nbsp;en donde ocurrió el accidente
+        </Grid>          
       </Typography>
 
 

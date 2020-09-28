@@ -54,6 +54,7 @@ const LoadPersonalData = (props) => {
   useEffect( () => {
      console.log("LOAD PERSONAL DATA...");  
      initFn()
+     // eslint-disable-next-line
   },[]);
 
   const spaceStyle = getSpaceStyle();
