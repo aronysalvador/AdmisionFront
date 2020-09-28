@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
 import Typography from '@material-ui/core/Typography'
@@ -16,6 +16,7 @@ const Identification = (props) => {
     const classes = siniestroStyle()
     const comunClass = getComunStyle()
     const spaceStyle = getSpaceStyle()
+    const [buttonOver, setButtonOver] = useState(false)
 
     return (<div className={comunClass.root}>
 

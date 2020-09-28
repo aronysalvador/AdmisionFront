@@ -17,6 +17,7 @@ import ClearIcon from "@material-ui/icons/Clear";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { ErrorOutline } from "@material-ui/icons";
 import Switch from '@material-ui/core/Switch';
+import Grid from '@material-ui/core/Grid';
 
 // import { handlEndLog } from "../../redux/actions/Log";
 // import { FechaHora } from './../../helpers/utils'

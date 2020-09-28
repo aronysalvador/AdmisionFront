@@ -6,12 +6,7 @@ import Button from "@material-ui/core/Button";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Link from '@material-ui/core/Link'
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-<<<<<<< HEAD
 import Cabecera from "../../components/cabecera/index";
-=======
-import { handleLog } from "../../redux/actions/Log";
-import Cabecera from "../../components/cabecera/cabeceraSinBarra";
->>>>>>> 4cff9394069d97dead8bc2a722b27fbc66315263
 import Indiciaciones from "../../components/Indicaciones";
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";

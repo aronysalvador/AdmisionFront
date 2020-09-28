@@ -6,6 +6,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
 import { validarDireccion } from './../../helpers/utils'
+import Grid from '@material-ui/core/Grid';
 
 const LugarExactoSiniestro = () => {
   const {
