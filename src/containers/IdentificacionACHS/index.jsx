@@ -3,7 +3,6 @@ import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getCentros } from "./../../redux/actions/CentrosAchsAction";
-import { handleLogUpdate } from "../../redux/actions/Log";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -54,7 +53,6 @@ const Achs = () => {
     shallowEqual
   );
 
-  const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={root}>
@@ -115,12 +113,6 @@ const Achs = () => {
           onClick={() => {
             dispatch(updateForm("centrosForm", centros));
             dispatch(setCenter(email, centros))
-          if(ID>0){
-              console.log("actualizar centro")
-              dispatch(handleLogUpdate({opcion:3, Id: ID, centro: centros}));
-            }else{
-              console.log("not yet")
-            }
             dispatch(handleSetStep(1));
           }}
         >

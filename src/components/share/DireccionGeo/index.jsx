@@ -40,12 +40,9 @@ const DireccionGeo = (props) => {
     }
 
     const handleDinamic = async() => {
-      
       if(direccion){
         dispatch(updateForm("DireccionTemporal", direccion))
-
-        // const test = await fetch(`http://localhost:8080/api/googleMaps/getLatLng?id=${direccion.place_id}`)
-        const test = await fetch(`${process.env.CREACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
+        const test = await fetch(`${process.env.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
         const json = await test.json()      
         if(Array.isArray(json.content)){
             console.log(json.content[0].result.geometry.location)
@@ -60,7 +57,6 @@ const DireccionGeo = (props) => {
       }
 
       showDinamicMap()
-
     }
    
 

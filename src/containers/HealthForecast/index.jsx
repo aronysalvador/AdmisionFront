@@ -60,39 +60,44 @@ const HealthForecast = (props) => {
           </Grid>     
         </Typography>
       </div>
+
       <div className={spaceStyle.space2} />
-      <div className={classesComun.textCenter}>
-        <Button
-          className={[classes.button]}//classesComun.buttonAchs, classesComun.pregunta_temp
-          style={{justifyContent: "center", height: "90px", color: "#373737"}}
-          variant="contained"
-          type="submit"
-          disabled={getIsapres.length === 0}
-          value={getIsapres.length !== 0 ? getIsapres[0].id : null}
-          onClick={() => clickSendIsapres(getIsapres[0])}
-          onMouseOver={() =>{
-            setButtonOver1(true)
-          }}
-          onMouseOut={() =>{
-              setButtonOver1(false)
-          }}
-        >
-          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[0].nombre)}</p> : null}
-          {buttonOver1 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
-        </Button>
-      </div>
 
-      <div className={spaceStyle.space1} />
-      <div className={classesComun.flexDivider}>
-      <Divider className={classesComun.mediumDivider} />
-      <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
+      {getIsapres.length > 0 && ( 
+        <>
 
-      <Divider className={classesComun.mediumDivider} /> </div>
-      <div className={spaceStyle.space1} />
+          <div className={classesComun.textCenter}>
+          <Button
+            className={[classes.button]}//classesComun.buttonAchs, classesComun.pregunta_temp
+            style={{justifyContent: "center", height: "90px", color: "#373737"}}
+            variant="contained"
+            type="submit"
+            disabled={getIsapres.length === 0}
+            value={getIsapres.length !== 0 ? getIsapres[0].id : null}
+            onClick={() => clickSendIsapres(getIsapres[0])}
+            onMouseOver={() =>{
+              setButtonOver1(true)
+            }}
+            onMouseOut={() =>{
+                setButtonOver1(false)
+            }}
+          >
+            {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[0].nombre)}</p> : null}
+            {buttonOver1 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+          </Button>
+          </div>
 
-      <div>
-        <Button
-        className={classesComun.buttonAchsRight}
+          <div className={spaceStyle.space1} />
+          <div className={classesComun.flexDivider}>
+          <Divider className={classesComun.mediumDivider} />
+          <em className={classesComun.emMargin} style={{ fontStyle: "inherit"}}> o </em>
+
+          <Divider className={classesComun.mediumDivider} /> </div>
+          <div className={spaceStyle.space1} />
+
+          <div>
+          <Button
+          className={classesComun.buttonAchsRight}
           // style={{justifyContent: "center"}}
           variant="contained"
           type="submit"
@@ -105,11 +110,11 @@ const HealthForecast = (props) => {
           onMouseOut={() =>{
               setButtonOver2(false)
           }}
-        >
+          >
           {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[12].nombre)}</p> : null}
           {buttonOver2 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
-        </Button>
-        <Button
+          </Button>
+          <Button
           className={classesComun.buttonAchsLeft}
           // style={{justifyContent: "center"}}
           variant="contained"
@@ -123,75 +128,53 @@ const HealthForecast = (props) => {
           onMouseOut={() =>{
               setButtonOver3(false)
           }}
-        >
+          >
           {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[25].nombre)}</p> : null}
           {buttonOver3 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
-        </Button>
-      </div>
+          </Button>
+          </div>
 
-      <div className={spaceStyle.space1} />
+          <div className={spaceStyle.space1} />
 
-      <div>
-        <Button
-          className={classesComun.buttonAchsRight}
-          variant="contained"
-          type="submit"
-          disabled={getIsapres.length === 0}
-          value={getIsapres.length !== 0 ? getIsapres[9].id : null}
-          onClick={() => clickSendIsapres(getIsapres[9])}
-          onMouseOver={() =>{
-            setButtonOver4(true)
-          }}
-          onMouseOut={() =>{
-              setButtonOver4(false)
-          }}
-        >
-          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[9].nombre)}</p> : null}
-          {buttonOver4 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
-        </Button>
-        <Button
-          className={classesComun.buttonAchsLeft}
-          variant="contained"
-          type="submit"
-          disabled={getIsapres.length === 0}
-          value={getIsapres.length !== 0 ? getIsapres[11].id : null}
-          onClick={() => clickSendIsapres(getIsapres[11])}
-          onMouseOver={() =>{
-            setButtonOver5(true)
-          }}
-          onMouseOut={() =>{
-              setButtonOver5(false)
-          }}
-        >
-          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[11].nombre)}</p> : null}
-          {buttonOver5 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
-        </Button>
-      </div>
+          <div>
+          <Button
+            className={classesComun.buttonAchsRight}
+            variant="contained"
+            type="submit"
+            disabled={getIsapres.length === 0}
+            value={getIsapres.length !== 0 ? getIsapres[9].id : null}
+            onClick={() => clickSendIsapres(getIsapres[9])}
+            onMouseOver={() =>{
+              setButtonOver4(true)
+            }}
+            onMouseOut={() =>{
+                setButtonOver4(false)
+            }}
+          >
+            {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[9].nombre)}</p> : null}
+            {buttonOver4 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+          </Button>
+          <Button
+            className={classesComun.buttonAchsLeft}
+            variant="contained"
+            type="submit"
+            disabled={getIsapres.length === 0}
+            value={getIsapres.length !== 0 ? getIsapres[11].id : null}
+            onClick={() => clickSendIsapres(getIsapres[11])}
+            onMouseOver={() =>{
+              setButtonOver5(true)
+            }}
+            onMouseOut={() =>{
+                setButtonOver5(false)
+            }}
+          >
+            {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[11].nombre)}</p> : null}
+            {buttonOver5 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+          </Button>
+          </div>
 
-      {/* <div className={spaceStyle.space4} /> */}
-
-      {/* <div>
-        <Button
-          className={classesComun.buttonAchsRight}
-          variant="contained"
-          type="submit"
-          disabled={getIsapres.length === 0}
-          value={getIsapres.length !== 0 ? getIsapres[5].id : null}
-          onClick={() => clickSendIsapres(getIsapres[5])}
-        >
-          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[5].nombre)}</p> : null}
-        </Button>
-        <Button
-          className={classesComun.buttonAchsLeft}
-          variant="contained"
-          type="submit"
-          disabled={getIsapres.length === 0}
-          value={getIsapres.length !== 0 ? getIsapres[24].id : null}
-          onClick={() => clickSendIsapres(getIsapres[24])}
-        >
-          {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[24].nombre)}</p> : null}
-        </Button>
-      </div> */}
+        </>
+        )}
 
       <div className={classesComun.bottomElement}>
         <Button
