@@ -54,5 +54,7 @@ export const AdmissionForm = {
   sucursalCargo: "", //Codigo de la sucursal
 
   comunaSiniestro: "",
-  comunaDireccionParticular: ""
+  comunaDireccionParticular: "",
+
+  BP: ""
 };
