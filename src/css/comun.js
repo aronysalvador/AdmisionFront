@@ -206,7 +206,7 @@ export const getComunStyle = makeStyles((theme) => ({
         paddingTop: "15px",//"35px",
         paddingBottom: "10px",
         color: "#373737",
-        backgroundImage: `url(${require("./../img/check.svg")})`,
+        backgroundImage: `url(${require("./../img/check2.svg")})`,
         backgroundRepeat: "no-repeat",
     },
     cardsButtonOther: {
