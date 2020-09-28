@@ -83,7 +83,7 @@ const Start = (props) =>{
                     ]}
                 />
                 <div className={spaceStyle.space2} />
-                <div className={welcomeStyle.bottomBegin}>
+                <div style={{marginTop: "3px"}}>
                     <Button
                         className={comunStyle.buttonAchs}
                         variant="contained"
@@ -93,7 +93,7 @@ const Start = (props) =>{
                     </Button>
                 </div>
 
-                <div className={welcomeStyle.beginContainer}>
+                <div style={{padding: "10px 16px 0 16px"}}>
                     <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent, welcomeStyle.terminos]} >
                         Al hacer click en empezar,  
                         <Link className={[comunStyle.textAchsContent, welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>

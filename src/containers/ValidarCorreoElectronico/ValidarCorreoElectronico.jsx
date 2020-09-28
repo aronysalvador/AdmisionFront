@@ -5,6 +5,7 @@ import {
   TextField,
   InputAdornment,
   IconButton,
+  withStyles
 } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
@@ -28,6 +29,20 @@ const ValidarCorreoElectronico = () => {
     addmissionForm: { percentage, emailusuario },
   } = useSelector((state) => state, shallowEqual);
 
+  
+  const CustomSwitch = withStyles({
+    switchBase: {
+      color: "#FAFAFA",
+      '&$checked': {
+        color: "#00B2A9",
+      },
+      '&$checked + $track': {
+        backgroundColor: "#00B2A9",
+      },
+    },
+    checked: {},
+    track: {},
+  })(Switch);
 
   const [userEmail, setUserEmail] = useState(() => {
     return !emailusuario ? "" : emailusuario;
@@ -35,7 +50,7 @@ const ValidarCorreoElectronico = () => {
 
   const [stateCheck,setStateCheck] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const { root, buttonAchs, bottomElement, titleBlue, titleBlack } = getComunStyle();
+  const { root, buttonAchs, bottomElement, titleBlue, titleBlack  } = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
   const { mobileLabel } = siniestroStyle();
@@ -136,10 +151,15 @@ const ValidarCorreoElectronico = () => {
           </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>
-          <Switch
+          {/* <Switch
             checked={stateCheck}
             onChange={handleChange}
             color="primary"
+          /> */}
+          <CustomSwitch
+            checked={stateCheck}
+            onChange={handleChange}
+            color="default"
           />
         </div>
         
