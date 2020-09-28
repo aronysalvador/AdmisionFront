@@ -385,13 +385,20 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
   try {
     const { addmissionForm } = getState();
     const { LogForm: {ID} } = getState();
+    const { microsoftReducer: { userMsal } } = getState();
+
+    var JsonSap = addmissionForm
+    delete JsonSap["siniestros"];
+    delete JsonSap["cita"];
+    delete JsonSap["step"];
+    delete JsonSap["percentaje"];
 
     const objeto = {
       id_tipo: 1,
       id_estado: 2,
       rut_paciente: addmissionForm.rut, //"8960683-7",
-      mail_admisionista: addmissionForm.emailusuario,
-      admision_json: addmissionForm,
+      mail_admisionista: userMsal.email,
+      admision_json: JsonSap,
     };
 
     //console.log("*********************************************")
