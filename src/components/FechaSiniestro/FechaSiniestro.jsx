@@ -87,7 +87,6 @@ const FechaSiniestro = ({
     start = start / 2; //Para que cada vez vaya más rápido
   };
 
-
   //con MouseUp detengo la selección
   const onMouseUp = () => {
     clearTimeout(TRef.current);
@@ -121,10 +120,7 @@ const FechaSiniestro = ({
           onMouseUp={() => {
             onMouseUp();
           }}
-          style={{
-            color: "white",
-            background: "#007A33",
-          }}
+          className={useStyles.flechas}
         >
           <KeyboardArrowLeft />
         </IconButton>
@@ -157,8 +153,6 @@ const FechaSiniestro = ({
           onClick={() => {
             setDays((d) => ++d);
           }}
-        
-          
           className={days === actualDay && month === actualMonth ? useStyles.flechasAct : useStyles.flechas}
         >
           <KeyboardArrowRight />

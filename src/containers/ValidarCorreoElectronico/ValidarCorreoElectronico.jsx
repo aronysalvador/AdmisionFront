@@ -5,6 +5,7 @@ import {
   TextField,
   InputAdornment,
   IconButton,
+  withStyles,
 } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
@@ -28,13 +29,29 @@ const ValidarCorreoElectronico = () => {
   } = useSelector((state) => state, shallowEqual);
 
 
+  const CustomSwitch = withStyles({
+
+    switchBase: {
+      color: "#FAFAFA",
+      '&$checked': {
+        color: "#00B2A9",
+      },
+      '&$checked + $track': {
+        backgroundColor: "#00B2A9",
+      },
+    },
+    checked: {},
+    track: {},
+  })(Switch);
+
+
   const [userEmail, setUserEmail] = useState(() => {
     return !emailusuario ? "" : emailusuario;
   });
 
   const [stateCheck,setStateCheck] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const { root, buttonAchs, bottomElement, titleBlue, titleBlack } = getComunStyle();
+  const { root, buttonAchs, bottomElement, titleBlue, titleBlack, switchColor } = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
   const { mobileLabel } = siniestroStyle();
@@ -42,17 +59,17 @@ const ValidarCorreoElectronico = () => {
   const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
   const handleEnd = () => {
-    
+
     if(isEmailValid){
       if(ID>0){
-        dispatch(handlEndLog({Id: ID, fecha: FechaHora()})) 
+        dispatch(handlEndLog({Id: ID, fecha: FechaHora()}))
       }
 
         dispatch(updateForm("emailusuario", userEmail));
-      
-      
+
+
       dispatch(handleSetStep(1000))
-    }   
+    }
   }
 
   const handleChange = (event) => {
@@ -126,7 +143,7 @@ const ValidarCorreoElectronico = () => {
                 component="p"
                 className={welcomeStyle.pBegin}
               >
-                ¿Está seguro de continuar sin e-mail? 
+                ¿Está seguro de continuar sin e-mail?
           </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>
@@ -139,13 +156,13 @@ const ValidarCorreoElectronico = () => {
           </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>
-          <Switch
+          <CustomSwitch
             checked={stateCheck}
             onChange={handleChange}
-            color="primary"
+            color="default"
           />
         </div>
-        
+
       </div>
 
       <div className={bottomElement}>
@@ -154,7 +171,7 @@ const ValidarCorreoElectronico = () => {
           variant="contained"
           disabled={
             (!stateCheck && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck)
-          }         
+          }
           onClick={() =>
             handleEnd()
           }
