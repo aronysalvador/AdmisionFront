@@ -118,7 +118,6 @@ export const getComunStyle = makeStyles((theme) => ({
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "600", //"bold",
-        //fontSize: "0.750em",
         fontSize: "14px",
         lineHeight: "14px",
         textAlign: "center",
@@ -193,19 +192,22 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     botonSeleccionado: {
         marginTop: "10px",
+        marginBottom: "10px",
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "center", //"space-around",
         alignItems: "center",
         flexDirection: "column",
         width: "45%",
         height: "90px",
-        background: "#DFF3F2 !important",
+        backgroundColor: "#DFF3F2 !important",
         border: "2px solid #00B2A9 !important",
         borderRadius: "10px",
         boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        paddingTop: "15px",
+        paddingTop: "15px",//"35px",
         paddingBottom: "10px",
         color: "#373737",
+        backgroundImage: `url(${require("./../img/check2.svg")})`,
+        backgroundRepeat: "no-repeat",
     },
     cardsButtonOther: {
         marginTop: "10px",
@@ -226,6 +228,8 @@ export const getComunStyle = makeStyles((theme) => ({
         "&:hover": {
             background: "#DFF3F2",
             border: "2px solid #00B2A9",
+            justifyContent: "center",
+            flexDirection: "row",
         }
     },  
     buttonAchsRight: {
@@ -294,19 +298,7 @@ export const getComunStyle = makeStyles((theme) => ({
         width: "20%",
         float: "left",
     },
-    // pregunta: {
-    //     fontFamily: "Catamaran",
-    //     fontStyle: "normal",
-    //     fontWeight: "bold",
-    //     fontSize: "1.25em",
-    //     lineHeight: "1.75em",
-    //     display: "flex",
-    //     alignItems: "flex-end",
-    //     flexWrap: "wrap"
-    // },
-    // pregunta_temp: {
-    //     fontSize: "1.1em !important",
-    // },
+
     googleMap: {
         width: "100%",
         borderRadius: "20px",
@@ -382,10 +374,6 @@ export const getComunStyle = makeStyles((theme) => ({
             border: "#007A33",
         },
     },
-    // pantallaFinalBotones: {
-    //     borderRadius: "10px",
-    //     height: "3em",
-    // },
     cajaRutSiniestroContainer: {
         width: "48%",
         border: "1px solid #787878",

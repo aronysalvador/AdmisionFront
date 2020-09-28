@@ -104,7 +104,7 @@ const PersonalData = (props) => {
               <Grid component="span"  className={comunClass.titleBlue}>
                 &nbsp;este siniestro
               </Grid>                 
-              creado
+              &nbsp;creado
             </Typography>
           )}
         </div>
