@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getAFP } from "../../redux/actions/AfpAction";
 import {  Typography } from "@material-ui/core";
@@ -36,6 +36,7 @@ const BotonesAFP = () => {
   
 
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
+  const [buttonOver, setButtonOver] = useState(false);
 
   let back = responsable?.nombre.length > 0 ?  17.1 : 15
 
@@ -63,7 +64,6 @@ const BotonesAFP = () => {
                 step={19}
             >
                 <BotonSeleccionarCustomItem {...afp} />
-                {/* <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} />  */}
             </BotonSeleccionarCustom>
             ))}
         </div>
@@ -73,8 +73,16 @@ const BotonesAFP = () => {
         <div
           onClick={() => {dispatch(handleSetStep(18))}}
           className={cardsButtonOther}
+          onMouseOver={() =>{
+            setButtonOver(true)
+          }}
+          onMouseOut={() =>{
+              setButtonOver(false)
+          }}
         >
+          
           Otra AFP
+          {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "relative", bottom: "25px", left: "105px"}} /> }
         </div> : null }
         
     </div>
