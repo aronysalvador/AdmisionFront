@@ -8,7 +8,7 @@ import { DatePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core";
-import specialBlue from "@material-ui/core/colors/specialBlue";
+import specialBlue from "./../../util/color/specialBlue";
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
 import "moment/locale/es";
