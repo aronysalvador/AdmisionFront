@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestro";
+import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -99,7 +99,7 @@ const FechaHoraSiniestro = () => {
         sucedió el accidente?
       </Typography>
       <div className={spaceStyle.space3} />
-      <FechaSiniestro
+      <FechaSiniestroCalendar
         onChange={setFechaValueSiniestro}
         daysFromState={days}
         monthFromState={month}
