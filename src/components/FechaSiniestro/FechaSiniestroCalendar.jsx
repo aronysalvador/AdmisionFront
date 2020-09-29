@@ -22,7 +22,7 @@ const FechaSiniestro = ({
   yearFromState,
 }) => {
 
-    const [date, changeDate] = useState(new Date());
+    const date = new Date();
 
     useEffect(()=>{
         console.log("date")
@@ -132,7 +132,9 @@ const FechaSiniestro = ({
         padding: "10px",
       }}
     >
-      <Grid item>
+      <Grid item
+      onClick={()=>setCalendar(false)}
+      >
         <IconButton
           aria-label="Ir atrás"
           variant="contained"
@@ -189,7 +191,9 @@ const FechaSiniestro = ({
           {days === actualDay && month === actualMonth ? "Hoy" : ""}
         </span>
       </Grid>
-      <Grid item>
+      <Grid item      
+      onClick={()=>setCalendar(false)}
+      >
         <IconButton
           aria-label="Ir adelante"
           component="span"
