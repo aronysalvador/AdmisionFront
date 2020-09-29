@@ -13,6 +13,7 @@ import { formateaRut } from "../../helpers/rut";
 
 import { handleLog, handlEndLog } from "./Log";
 import { FechaHora } from './../../helpers/utils'
+import { Pipes } from "./../../containers/EditarTelefono/phone";
 
 const totalSteps = 27;
 
@@ -198,7 +199,7 @@ export const saveRut = (rut) => {
 
               result.data.content.response.telefonoParticular === "0"
                 ? ""
-                : result.data.content.response.telefonoParticular
+                : Pipes.advanced(result.data.content.response.telefonoParticular)
             )
           );
           dispatch(

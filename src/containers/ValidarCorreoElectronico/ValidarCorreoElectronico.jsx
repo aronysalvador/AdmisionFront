@@ -30,7 +30,6 @@ const ValidarCorreoElectronico = () => {
 
 
   const CustomSwitch = withStyles({
-
     switchBase: {
       color: "#FAFAFA",
       '&$checked': {
@@ -49,7 +48,7 @@ const ValidarCorreoElectronico = () => {
     return !emailusuario ? "" : emailusuario;
   });
 
-  const [stateCheck,setStateCheck] = useState(false);
+  const [stateCheck,setStateCheck] = useState(emailusuario === "notienecorreo@achs.cl" ? true : false);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, bottomElement, titleBlue, titleBlack } = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -77,7 +76,9 @@ const ValidarCorreoElectronico = () => {
     if(event.target.checked){
       setIsEmailValid(validateEmailFormat("notienecorreo@achs.cl"));
       setUserEmail("notienecorreo@achs.cl");
-
+    }else{
+      setIsEmailValid(false);
+      setUserEmail("");
     }
   };
 
@@ -93,11 +94,13 @@ const ValidarCorreoElectronico = () => {
           <Grid component="span"  className={titleBlue}>
           e-mail
           </Grid>     {" "}
+
+          {stateCheck ? "hola":"chao"}
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>
       <TextField
-        value={userEmail}
+        value={!stateCheck ? userEmail : ""}
         variant="outlined"
         size="small"
         margin="dense"
