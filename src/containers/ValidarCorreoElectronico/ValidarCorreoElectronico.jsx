@@ -94,8 +94,6 @@ const ValidarCorreoElectronico = () => {
           <Grid component="span"  className={titleBlue}>
           e-mail
           </Grid>     {" "}
-
-          {stateCheck ? "hola":"chao"}
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>
