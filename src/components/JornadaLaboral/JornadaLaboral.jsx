@@ -31,25 +31,17 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
       <Grid item direction="column">
         <Grid
           item
-          style={{
-            borderRadius: "10px",
-            padding: "8px 25px",
-          }}
+          className={comunStyle.boxTitleHoras}
         >
           <div
             className={comunStyle.tituloSelectorFecha}
-            style={{ textAlign: "center" }}
           >
             Inicio
           </div>
         </Grid>
         <Grid
           item
-          style={{
-            background: "white",
-            borderRadius: "10px",
-            padding: "8px 25px",
-          }}
+          className={comunStyle.boxHoras}
         >
           <div>
             <Button
@@ -64,7 +56,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           </div>
           <div className={spaceStyle.space1} />
           <div style={{ textAlign: "center" }}>
-          <div className={comunStyle.selectorRuedaItemsCostados}>{indiceInicio > 1 ? horarios[indiceInicio - 2] : "-"}</div>
+          <div className={comunStyle.selectorRuedaItemsCostados2}>{indiceInicio > 1 ? horarios[indiceInicio - 2] : "-"}</div>
           <div className={comunStyle.selectorRuedaItemsCostados}>{indiceInicio > 0 ? horarios[indiceInicio - 1] : "-"}</div>
           
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
@@ -72,7 +64,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
             <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
 
             <div className={comunStyle.selectorRuedaItemsCostados}> {indiceInicio < 44 ? horarios[indiceInicio +1] : "-"}</div>
-            <div className={comunStyle.selectorRuedaItemsCostados}> {indiceInicio < 43 ? horarios[indiceInicio +2] : "-"}</div>
+            <div className={comunStyle.selectorRuedaItemsCostados2}> {indiceInicio < 43 ? horarios[indiceInicio +2] : "-"}</div>
           </div>
           <div className={spaceStyle.space1} />
           <div>
@@ -91,27 +83,19 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
       <Grid item direction="column">
         <Grid
           item
-          style={{
-            borderRadius: "10px",
-            padding: "8px 25px",
-            marginLeft: "20px",
-          }}
+          className={comunStyle.boxTitleHoras}
+          style={{marginLeft: "20px"}}
         >
           <div
             className={comunStyle.tituloSelectorFecha}
-            style={{ textAlign: "center" }}
           >
             Fin
           </div>
         </Grid>
         <Grid
           item
-          style={{
-            background: "white",
-            borderRadius: "10px",
-            padding: "8px 25px",
-            marginLeft: "20px",
-          }}
+          className={comunStyle.boxHoras}
+          style={{marginLeft: "20px"}}
         >
           <div>
             <Button
@@ -126,7 +110,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           </div>
           <div className={spaceStyle.space1} />
           <div style={{ textAlign: "center" }}>
-            <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin > 1 ? horarios[indiceFin - 2] : "-"}</div>
+            <div className={comunStyle.selectorRuedaItemsCostados2}>{indiceFin > 1 ? horarios[indiceFin - 2] : "-"}</div>
             <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin > 0 ? horarios[indiceFin - 1] : "-"}</div>
 
             <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
@@ -134,7 +118,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
             <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
 
             <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin < 44 ? horarios[indiceFin +1] : "-"}</div>
-            <div className={comunStyle.selectorRuedaItemsCostados}>{indiceFin < 43 ? horarios[indiceFin +2] : "-"}</div>
+            <div className={comunStyle.selectorRuedaItemsCostados2}>{indiceFin < 43 ? horarios[indiceFin +2] : "-"}</div>
           </div>
           <div className={spaceStyle.space1} />
           <div>

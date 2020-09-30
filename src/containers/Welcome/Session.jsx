@@ -26,48 +26,50 @@ const Session = (props) => {
 
   return (
     <div className={ comunStyle.rootImg }>
-    <div style={ {padding: '1.5em'} }>
-       <img
-          alt="logo"
-          src="./static/logoAchs.png"
-          className={useStyles.img2}
-        />
-      <div className={spaceStyle.space12} />
+      <div style={ {padding: '1.5em'} }>
+        <img
+            alt="logo"
+            src="./static/logoAchs.png"
+            className={useStyles.img2}
+          />
+        <div className={spaceStyle.space12} />
 
-      <div >
-        <Typography
-          variant="p"
-          component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
+        <div >
+          <Typography
+            variant="p"
+            component="p"
+            className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
+          >
+            Bienvenido/a
+          </Typography>
+        </div>
+        <div>
+          <Typography
+            variant="p"
+            component="p"
+            className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
+          >
+            Ingresa a tu cuenta para:
+            <br />
+            <br />
+            - Crear admisiones
+            <br />
+            - Modificar tu perfil
+            <br />
+          </Typography>
+        </div>
+        <div className={comunStyle.bottomElement}
+        style={{padding: '1.5em'}}
         >
-          Bienvenido/a
-        </Typography>
+          <Button
+            className={comunStyle.buttonAchs}
+            variant="contained"
+            onClick={() => dispatch(login(["user.read"]))}
+          >
+            Ingresar
+          </Button>
+        </div>
       </div>
-      <div>
-        <Typography
-          variant="p"
-          component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
-        >
-          Ingresa a tu cuenta para:
-          <br />
-          <br />
-          - Crear admisiones
-          <br />
-          - Modificar tu perfil
-          <br />
-        </Typography>
-      </div>
-      <div className={comunStyle.bottomElement} style={{padding: '1.5em'}}>
-        <Button
-          className={comunStyle.buttonAchs}
-          variant="contained"
-          onClick={() => dispatch(login(["user.read"]))}
-        >
-          Ingresar
-        </Button>
-      </div>
-    </div>
     </div>
   );
 };

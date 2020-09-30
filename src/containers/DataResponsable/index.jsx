@@ -15,6 +15,7 @@ import { sendResponsable } from "../../redux/actions/AdmissionAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
+import Grid from '@material-ui/core/Grid';
 
 const DataResponsable = () => {
   const {
@@ -59,9 +60,9 @@ const DataResponsable = () => {
       <div>
         <Typography variant="p" component="p" className={classesComun.titleBlack}>
         Solicita una 
-        <div className={classesComun.titleBlue}>
-          &nbsp;referencia del responsable
-        </div>
+          <Grid component="span"  className={classesComun.titleBlue}>
+            &nbsp;referencia del responsable
+          </Grid>          
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
@@ -85,6 +86,8 @@ const DataResponsable = () => {
           margin="dense"
           variant="outlined"
           fullWidth
+          autoComplete="off"
+          type="text"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -121,6 +124,8 @@ const DataResponsable = () => {
           helperText="Ejemplo: Jefe de área, Prevencionista"
           margin="dense"
           variant="outlined"
+          autoComplete="off"
+          type="text"
           fullWidth
           InputProps={{
             endAdornment: (

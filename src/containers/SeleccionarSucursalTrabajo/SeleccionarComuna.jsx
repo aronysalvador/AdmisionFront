@@ -8,6 +8,7 @@ import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
 import { getComuna } from "../../redux/actions/ComunaAction";
+import Grid from '@material-ui/core/Grid';
 
 const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
@@ -47,28 +48,33 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
-    const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
-      comunaList.find(
-        (x) =>
-          x?.codigo_comuna === sucursal?.id_comuna &&
-          parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region)
-      )
-    );
+    var variables = []
+    sucursalesEmpresa.forEach((sucursal,i) =>{
+      variables.push({id: i,codigo_region: sucursal.codigo_region,codigo_comuna:sucursal.id_comuna, nombre: sucursal.comuna})
+    })
 
-    const uniqueAddresses = Array.from(
-      new Set(comunasSucursal.map((a) => a?.codigo_comuna))
-    ).map((id) => {
-      return comunasSucursal.find((a) => a?.codigo_comuna === id);
-    });
+    var uniqueArray = removeDuplicates(variables, "nombre");
+    uniqueArray.sort((a,b) => a.nombre < b.nombre ? -1 : +(a.nombre > b.nombre));
+    console.log("uniqueArray is: " + JSON.stringify(uniqueArray));    
 
-    const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function (
-      id
-    ) {
-      return id;
-    });
+    setListaComunas(uniqueArray);
 
-    setListaComunas(uniqueAddressesWithOutUndefined);
+    // eslint-disable-next-line
   }, [comunaList]);
+
+  const removeDuplicates = (originalArray, prop) =>{
+    var newArray = [];
+    var lookupObject  = {};
+
+    for(var i in originalArray) {
+       lookupObject[originalArray[i][prop]] = originalArray[i];
+    }
+
+    for(i in lookupObject) {
+        newArray.push(lookupObject[i]);
+    }
+     return newArray;
+  }
 
   console.log(listaComunas);
   return (
@@ -79,7 +85,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       />
       <Typography className={titleBlack}>
         Identifica
-        <div className={titleBlue}>&nbsp;la comuna de la sucursal </div>
+        <Grid component="span"  className={titleBlue}>
+              &nbsp;la comuna de la sucursal
+        </Grid>                  
         &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2}></div>

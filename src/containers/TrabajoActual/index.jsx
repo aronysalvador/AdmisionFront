@@ -6,6 +6,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import TrabajoActual from "../../components/TrabajoActual/TrabajoActual";
+import Grid from '@material-ui/core/Grid';
 
 const TrabajoActualContainer = () => {
   const spaceStyle = getSpaceStyle();
@@ -63,9 +64,9 @@ const TrabajoActualContainer = () => {
       />
       <Typography className={titleBlack}>
         Indica la
-        <div className={titleBlue}>
-          &nbsp;fecha aproximada en que ingresó
-        </div>
+        <Grid component="span"  className={titleBlue}>
+            &nbsp;fecha aproximada en que ingresó
+        </Grid>  
         &nbsp;a su trabajo actual
       </Typography>
       <div className={spaceStyle.space2} />

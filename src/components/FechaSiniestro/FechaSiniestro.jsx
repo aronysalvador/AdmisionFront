@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
 import { Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
@@ -53,6 +53,7 @@ const FechaSiniestro = ({
       }
     }
     onChange({ days, month, year });
+    // eslint-disable-next-line
   }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);
@@ -60,14 +61,37 @@ const FechaSiniestro = ({
   const getUseStyles = makeStyles({
     flechas: {
       color: "white",
-      background: "#00B2A9",
+      background: "#007A33",
       "&:hover": {
-        background: "#00B2A9",
+        background: "#007A33",
       },
+    },
+    flechasAct: {
+      color: "white !important",
+      background: "#F4F4F4 !important",
     },
   });
 
   const useStyles = getUseStyles();
+
+  const [t, setT] = useState(0);
+
+  const TRef = useRef(t);
+  TRef.current = t;
+
+  let start = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+
+  const longPressDownFecha = () => {
+    setDays((d) => --d);
+    setT(setTimeout(longPressDownFecha, start));
+    start = start / 2; //Para que cada vez vaya más rápido
+  };
+
+  //con MouseUp detengo la selección
+  const onMouseUp = () => {
+    clearTimeout(TRef.current);
+    start = 600;
+  };
 
   return (
     <Grid
@@ -87,13 +111,16 @@ const FechaSiniestro = ({
           variant="contained"
           component="span"
           color="primary"
-          onClick={() => {
-            setDays((d) => --d);
+          // onClick={() => {
+          //   setDays((d) => --d);
+          // }}
+          onMouseDown={() => {
+            longPressDownFecha();
           }}
-          style={{
-            color: "white",
-            background: "#00B2A9",
+          onMouseUp={() => {
+            onMouseUp();
           }}
+          className={useStyles.flechas}
         >
           <KeyboardArrowLeft />
         </IconButton>
@@ -126,7 +153,7 @@ const FechaSiniestro = ({
           onClick={() => {
             setDays((d) => ++d);
           }}
-          className={useStyles.flechas}
+          className={days === actualDay && month === actualMonth ? useStyles.flechasAct : useStyles.flechas}
         >
           <KeyboardArrowRight />
         </IconButton>

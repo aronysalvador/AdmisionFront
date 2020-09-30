@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestro";
+import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -7,6 +7,7 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import Grid from '@material-ui/core/Grid';
 
 const FechaHoraSiniestro = () => {
   const spaceStyle = getSpaceStyle();
@@ -90,12 +91,15 @@ const FechaHoraSiniestro = () => {
         className={titleBlack}
         >
         ¿
-        <div className={titleBlue}>
-        Cuándo y a qué hora&nbsp;
-        </div>sucedió el accidente?
+        
+        <Grid component="span"  className={titleBlue}>
+         Cuándo y a qué hora&nbsp;
+        </Grid> 
+
+        sucedió el accidente?
       </Typography>
       <div className={spaceStyle.space3} />
-      <FechaSiniestro
+      <FechaSiniestroCalendar
         onChange={setFechaValueSiniestro}
         daysFromState={days}
         monthFromState={month}

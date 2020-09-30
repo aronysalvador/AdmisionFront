@@ -11,6 +11,10 @@ import {
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
 
+import { handleLog, handlEndLog } from "./Log";
+import { FechaHora } from './../../helpers/utils'
+import { Pipes } from "./../../containers/EditarTelefono/phone";
+
 const totalSteps = 27;
 
 export const loadStateFromSessionStorage = (state) => {
@@ -65,7 +69,7 @@ export const obtenerDataRazon = async (rutEmpresa) => {
 };
 
 export const saveRut = (rut) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     obtenerData(rut)
       .then((result) => {
         // console.log("REUSLT", result);
@@ -81,7 +85,7 @@ export const saveRut = (rut) => {
             femenino,
             nacionalidad,
             lugarNacimiento,
-            estadoCivil,
+            estadoCivil
           } = result.data.content.response;
 
           dispatch(
@@ -195,12 +199,33 @@ export const saveRut = (rut) => {
 
               result.data.content.response.telefonoParticular === "0"
                 ? ""
-                : result.data.content.response.telefonoParticular
+                : Pipes.advanced(result.data.content.response.telefonoParticular)
             )
           );
+          dispatch(
+            updateForm(
+              "BP",
+
+              result.data.content.response.BP 
+                ? result.data.content.response.BP
+                : ""
+            )
+          );
+          const { microsoftReducer: { userMsal } } = getState();
+          const { email } = userMsal;
+          const { addmissionForm: {centrosForm, tipoSiniestro, BP} } = getState();
+
+           dispatch(handleLog({email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: BP })) 
+
         } else {
           // NO TIENE BP
           //dispatch(setStep(500, 0));
+          
+          const { microsoftReducer: { userMsal } } = getState();
+          const { email } = userMsal;
+          const { addmissionForm: {centrosForm, tipoSiniestro } } = getState();
+          dispatch(handleLog({email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: "" })) 
+
           dispatch(setStep(5.81, 0));
           dispatch(updateForm("rut", ""));
           dispatch(updateForm("razonSocial", ""));
@@ -211,6 +236,8 @@ export const saveRut = (rut) => {
           dispatch(updateForm("comunaEmpresa", ""));
           dispatch(updateForm("direccionParticular", ""));
           dispatch(updateForm("telefonoParticular", ""));
+          dispatch(updateForm("BP", ""));
+
         }
       })
       .catch((error) => {
@@ -358,13 +385,21 @@ export const validarAfiliacion = (data) => (dispatch) => {
 export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
   try {
     const { addmissionForm } = getState();
+    const { LogForm: {ID} } = getState();
+    const { microsoftReducer: { userMsal } } = getState();
+
+    var JsonSap = addmissionForm
+    delete JsonSap["siniestros"];
+    delete JsonSap["cita"];
+    delete JsonSap["step"];
+    delete JsonSap["percentaje"];
 
     const objeto = {
       id_tipo: 1,
       id_estado: 2,
       rut_paciente: addmissionForm.rut, //"8960683-7",
-      mail_admisionista: addmissionForm.emailusuario,
-      admision_json: addmissionForm,
+      mail_admisionista: userMsal.email,
+      admision_json: JsonSap,
     };
 
     //console.log("*********************************************")
@@ -383,9 +418,15 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
           dispatch(updateForm("mensajeErrorSAP", mensajeErrorSAP));
           dispatch(handleSetStep(1002));
         }
+
+        const {siniestroID,EpisodioID} = data.content[0]        
+        dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0})) 
+
       })
-      .catch((err) => dispatch(handleSetStep(1002)));
+      .catch((err) =>{ dispatch(handleSetStep(1002)); dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0}));  } );
   } catch (error) {
+    const { LogForm: {ID} } = getState();
+    dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0})); 
     dispatch(handleSetStep(1002));
   }
 };

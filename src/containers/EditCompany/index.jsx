@@ -1,6 +1,7 @@
 import React from "react";
 import TabCompany from "../../components/EditCompany/TabCompany";
 import { Button, Typography } from "@material-ui/core";
+import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -39,6 +40,7 @@ const EditCompany = () => {
         }
       }
     }
+    // eslint-disable-next-line
   },[loading])
 
 
@@ -50,9 +52,9 @@ const EditCompany = () => {
       />
       <Typography className={titleBlack}>
       Identifica la empresa en la que trabaja con su 
-      <div className={titleBlue}>
-        &nbsp;razón social o RUT
-      </div>
+          <Grid component="span"  className={titleBlue}>
+            &nbsp;razón social o RUT
+          </Grid>      
       </Typography>
       <div className={spaceStyle.space2} />
 

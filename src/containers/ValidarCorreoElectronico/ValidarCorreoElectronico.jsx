@@ -5,6 +5,7 @@ import {
   TextField,
   InputAdornment,
   IconButton,
+  withStyles,
 } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
@@ -19,7 +20,7 @@ import { FechaHora } from './../../helpers/utils'
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { ErrorOutline } from "@material-ui/icons";
 import Switch from '@material-ui/core/Switch';
-
+import Grid from '@material-ui/core/Grid';
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -28,11 +29,26 @@ const ValidarCorreoElectronico = () => {
   } = useSelector((state) => state, shallowEqual);
 
 
+  const CustomSwitch = withStyles({
+    switchBase: {
+      color: "#FAFAFA",
+      '&$checked': {
+        color: "#00B2A9",
+      },
+      '&$checked + $track': {
+        backgroundColor: "#00B2A9",
+      },
+    },
+    checked: {},
+    track: {},
+  })(Switch);
+
+
   const [userEmail, setUserEmail] = useState(() => {
     return !emailusuario ? "" : emailusuario;
   });
 
-  const [stateCheck,setStateCheck] = useState(false);
+  const [stateCheck,setStateCheck] = useState(emailusuario === "notienecorreo@achs.cl" ? true : false);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const { root, buttonAchs, bottomElement, titleBlue, titleBlack } = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -42,17 +58,17 @@ const ValidarCorreoElectronico = () => {
   const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
   const handleEnd = () => {
-    
+
     if(isEmailValid){
       if(ID>0){
-        dispatch(handlEndLog({Id: ID, fecha: FechaHora()})) 
+        dispatch(handlEndLog({Id: ID, fecha: FechaHora()}))
       }
 
         dispatch(updateForm("emailusuario", userEmail));
-      
-      
+
+
       dispatch(handleSetStep(1000))
-    }   
+    }
   }
 
   const handleChange = (event) => {
@@ -60,7 +76,9 @@ const ValidarCorreoElectronico = () => {
     if(event.target.checked){
       setIsEmailValid(validateEmailFormat("notienecorreo@achs.cl"));
       setUserEmail("notienecorreo@achs.cl");
-
+    }else{
+      setIsEmailValid(false);
+      setUserEmail("");
     }
   };
 
@@ -73,12 +91,16 @@ const ValidarCorreoElectronico = () => {
       />
       <Typography className={titleBlack}>
         Enviaremos los documentos al siguiente&nbsp;
-        <span className={titleBlue}>e-mail</span>{" "}
+          <Grid component="span"  className={titleBlue}>
+          e-mail
+          </Grid>     {" "}
+
+          {stateCheck ? "hola":"chao"}
       </Typography>
       <div className={spaceStyle.space2} />
       <Typography className={mobileLabel}>Email</Typography>
       <TextField
-        value={userEmail}
+        value={!stateCheck ? userEmail : ""}
         variant="outlined"
         size="small"
         margin="dense"
@@ -124,7 +146,7 @@ const ValidarCorreoElectronico = () => {
                 component="p"
                 className={welcomeStyle.pBegin}
               >
-                ¿Está seguro de continuar sin e-mail? 
+                ¿Está seguro de continuar sin e-mail?
           </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>
@@ -137,13 +159,13 @@ const ValidarCorreoElectronico = () => {
           </Typography>
         </div>
         <div  className={welcomeStyle.divRowBottom2}>
-          <Switch
+          <CustomSwitch
             checked={stateCheck}
             onChange={handleChange}
-            color="primary"
+            color="default"
           />
         </div>
-        
+
       </div>
 
       <div className={bottomElement}>
@@ -152,7 +174,7 @@ const ValidarCorreoElectronico = () => {
           variant="contained"
           disabled={
             (!stateCheck && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck)
-          }         
+          }
           onClick={() =>
             handleEnd()
           }

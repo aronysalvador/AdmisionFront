@@ -4,16 +4,19 @@ import { getComunStyle } from "../../css/comun";
 import { handleSetStep, validarAfiliacion } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Typography from "@material-ui/core/Typography";
-import { getSpaceStyle } from "../../css/spaceStyle";
+//import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHS from "../../components/share/BoxACHS/index";
 import BoxEmpresa from "../../components/share/BoxEmpresa/index";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
+import Grid from '@material-ui/core/Grid';
+import { Format } from "../../helpers/strings";
+
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm } = props;
   const comunClass = getComunStyle();
-  const spaceStyle = getSpaceStyle();
+  //const spaceStyle = getSpaceStyle();
 
   const tituloEmpresa = "Dirección de la Sucursal";
   // const contenidoEmpresa = [
@@ -22,13 +25,13 @@ const PersonalData = (props) => {
   //   addmissionForm.razonSocialForm,
   //   addmissionForm.rutEmpresa,
   // ];
-  const contenidoDireccionEmpresa = [addmissionForm.DireccionEmpresa];
-  const contenidoRazonSocialForm = [addmissionForm.razonSocial ? addmissionForm.razonSocial.name : null];
+  const contenidoDireccionEmpresa = [Format.formatizar(addmissionForm.DireccionEmpresa)];
+  const contenidoRazonSocialForm = [addmissionForm.razonSocial ? Format.formatizar(addmissionForm.razonSocial.name) : null];
 
   const contenidoRutEmpresa = [addmissionForm.rutEmpresa];
 
   const tituloDireccion = "Dirección particular";
-  const contenidoDireccion = [addmissionForm.direccionParticular];
+  const contenidoDireccion = [Format.formatizar(addmissionForm.direccionParticular)];
 
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
@@ -41,8 +44,8 @@ const PersonalData = (props) => {
 
     setLoading(true)
 
-    const { 
-      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,      
+    const {
+      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,
       rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
 
     if ( !razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa ) {
@@ -57,11 +60,11 @@ const PersonalData = (props) => {
     } else {
       // si todos los datos relevantes están llenos
       if(rut && rutEmpresa && SucursalEmpresaObjeto){
-        dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo})); 
+        dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
       }else{
          dispatch(handleSetStep(500));
       }
-    }    
+    }
   };
 
   return (
@@ -73,33 +76,33 @@ const PersonalData = (props) => {
       <div>
         <Typography variant="p" component="p" className={comunClass.titleBlack}>
           Empieza
-          <div className={comunClass.titleBlue}>
-          &nbsp;verificando los datos de <br/>
-          </div>
-          {nombre} {apellidoPaterno}
+          <Grid component="span"  className={comunClass.titleBlue}>
+            &nbsp;verificando los datos de <br/>
+          </Grid>           
+          {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
         </Typography>
       </div>
       {/* <div className={spaceStyle.space1} /> */}
-      <BoxEmpresa 
-        contenidoDireccionEmpresa={contenidoDireccionEmpresa} 
-        contenidoRazonSocialForm={contenidoRazonSocialForm} 
-        contenidoRutEmpresa={contenidoRutEmpresa} 
-        titulo={tituloEmpresa} 
+      <BoxEmpresa
+        contenidoDireccionEmpresa={contenidoDireccionEmpresa}
+        contenidoRazonSocialForm={contenidoRazonSocialForm}
+        contenidoRutEmpresa={contenidoRutEmpresa}
+        titulo={tituloEmpresa}
         step={5.4} />
-      <div className={spaceStyle.spaceMin1} />
+      {/* <div className={spaceStyle.spaceMin1} /> */}
       <BoxACHS
         titulo={tituloTelefono}
         contenido={contenidoTelefono}
         step={5.3}
       />
-      <div className={spaceStyle.spaceMin1} />
+      {/* <div className={spaceStyle.spaceMin1} /> */}
       <BoxACHS
         titulo={tituloDireccion}
         contenido={contenidoDireccion}
         step={5.2}
       />
-      <div className={spaceStyle.spaceMin1} />
-      
+      {/* <div className={spaceStyle.spaceMin1} /> */}
+
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}

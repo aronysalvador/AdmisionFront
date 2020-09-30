@@ -36,6 +36,7 @@ import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 import EditCompany from "../EditCompany/index";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
+import BotonesAFP from "../Afp/BotonesAFP";
 import EditarTelefono from "../EditarTelefono/EditarTelefono";
 import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
 import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
@@ -360,7 +361,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 10:
         return (
           <div className={layout}>
@@ -369,7 +369,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );        
-
       case 11:
         return (
           <div className={layout}>
@@ -378,7 +377,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 11.1:
         return (
           <div className={layoutFix}>
@@ -387,7 +385,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 12:
         return (
           <div className={layout}>
@@ -468,6 +465,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 18.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <BotonesAFP />
+            </Paper>
+          </div>
+        );
       case 19:
         return (
           <div className={layout}>
@@ -492,7 +497,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 19.3:
         return (
           <div className={layout}>
@@ -557,7 +561,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 26.1:
         return (
           <div className={layoutFix}>
@@ -574,7 +577,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 26.3:
         return (
           <div className={layout}>
@@ -583,7 +585,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 26.4:
         return (
           <div className={layout}>
@@ -592,7 +593,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 27:
         return (
           <div className={layout}>
@@ -601,7 +601,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 1000:
         return (
           <div className={layout}>
@@ -634,7 +633,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 40:
         return (
           <div className={layout}>
@@ -643,7 +641,6 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-
       case 500: {
         sessionStorage.clear();
         return (
