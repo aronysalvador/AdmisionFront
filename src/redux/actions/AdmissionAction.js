@@ -400,6 +400,8 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
       rut_paciente: addmissionForm.rut, //"8960683-7",
       mail_admisionista: userMsal.email,
       admision_json: JsonSap,
+      telefono_paciente: addmissionForm.telefonoParticular,
+      email_paciente: addmissionForm.emailusuario
     };
 
     //console.log("*********************************************")
