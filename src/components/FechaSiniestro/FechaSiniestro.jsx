@@ -79,7 +79,21 @@ const FechaSiniestro = ({
   const TRef = useRef(t);
   TRef.current = t;
 
+  const [t2, setT2] = useState(0);
+
+  const TRef2 = useRef(t2);
+  TRef2.current = t2;
+
   let start = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+
+  let start2 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+
+  //Hooks para acceder al estado desde setTimeout
+  const countRef = useRef(days);
+  countRef.current = days;
+
+  const countRef2 = useRef(month);
+  countRef2.current = month;
 
   const longPressDownFecha = () => {
     setDays((d) => --d);
@@ -87,10 +101,24 @@ const FechaSiniestro = ({
     start = start / 2; //Para que cada vez vaya más rápido
   };
 
+  const longPressUPFecha = () => {
+    if((countRef.current !== actualDay) || (countRef2.current !== actualMonth)){
+      setDays((d) => ++d);
+      setT2(setTimeout(longPressUPFecha, start2));
+      start2 = start2 / 2; //Para que cada vez vaya más rápido
+    }
+      
+  };
+
   //con MouseUp detengo la selección
   const onMouseUp = () => {
     clearTimeout(TRef.current);
     start = 600;
+  };
+
+  const onMouseUp2 = () => {
+    clearTimeout(TRef2.current);
+    start2 = 600;
   };
 
   return (
@@ -150,8 +178,19 @@ const FechaSiniestro = ({
           component="span"
           variant="contained"
           disabled={days === actualDay && month === actualMonth}
-          onClick={() => {
-            setDays((d) => ++d);
+          // onClick={() => {
+          //   setDays((d) => ++d);
+          // }}
+          onMouseDown={() => {
+
+              longPressUPFecha();
+                                  
+          }}
+          onMouseUp={() => {
+
+              onMouseUp2();
+               
+            
           }}
           className={days === actualDay && month === actualMonth ? useStyles.flechasAct : useStyles.flechas}
         >
