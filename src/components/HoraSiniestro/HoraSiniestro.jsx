@@ -71,11 +71,11 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   };
 
   const longPressUPHora = () => {
-    if(countRef.current !== new Date().getHours()){
-    setHoras((h) => ++h);
-    setT2(setTimeout(longPressUPHora, start2));
-    start2 = start2 / 2; //Para que cada vez vaya más rápido
-    }
+   // if(countRef.current !== new Date().getHours()){
+      setHoras((h) => ++h);
+      setT2(setTimeout(longPressUPHora, start2));
+      start2 = start2 / 2; //Para que cada vez vaya más rápido
+    //}
   };
 
   const longPressDownMinutos = () => {
@@ -85,11 +85,11 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   };
 
   const longPressUPMinutos = () => {
-    if(countRef2.current !== getMin() ){
-    setIndiceMinutos((m) => ++m);
-    setT3(setTimeout(longPressUPMinutos, start3));
-    start3 = start3 / 2; //Para que cada vez vaya más rápido
-    }
+   // if(countRef2.current !== getMin() ){
+      setIndiceMinutos((m) => ++m);
+      setT3(setTimeout(longPressUPMinutos, start3));
+      start3 = start3 / 2; //Para que cada vez vaya más rápido
+   // }
   };
 
   //con MouseUp detengo la selección
@@ -183,7 +183,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
-              disabled={ horas === new Date().getHours()}
+             // disabled={ horas === new Date().getHours()}
               // onClick={() => {
               //   setHoras((h) => ++h);
               // }}
@@ -260,7 +260,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <div>
             <Button
               variant="text"
-              disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
+             // disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
               // onClick={() => {
               //   setIndiceMinutos((m) => ++m);
               // }}
