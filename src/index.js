@@ -11,6 +11,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import storageSession from "redux-persist/lib/storage/session";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
+console.log("ENTORNO")
+console.log(process.env)
+console.log("ENTORNO")
+
 const persistConfig = {
   key: "addmissionForm",
   storage: storageSession,
