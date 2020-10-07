@@ -6,6 +6,7 @@ import { getComunStyle } from "../../css/comun";
 import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
+import Grid from '@material-ui/core/Grid';
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const dispatch = useDispatch();
@@ -31,7 +32,9 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
       />
       <Typography className={titleBlack}>
         Identifica
-        <div className={titleBlue}>&nbsp;la sucursal </div>
+        <Grid component="span"  className={titleBlue}>
+            &nbsp;la sucursal 
+        </Grid>         
         &nbsp;en donde trabaja
       </Typography>
 
@@ -44,9 +47,9 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
           flexWrap: "wrap",
         }}
       >
-        {sucursalesEmpresa.map((sucursal) => (
+        {sucursalesEmpresa.map((sucursal, index) => (
           <BotonSeleccionarCustom
-            key={sucursal.id}
+            key={index}
             data={sucursal}
             itemForm={"SucursalEmpresa"}
             selected={sucursal.codigo === SucursalEmpresaObjeto.codigo}

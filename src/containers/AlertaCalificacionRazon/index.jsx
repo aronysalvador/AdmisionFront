@@ -7,6 +7,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { getRazonAlertaPrincipal } from "./../../redux/actions/AlertaCalificacionRazonAction";
 import BotonSeleccionarCustomItemAlerta from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemAlerta";
+import Grid from '@material-ui/core/Grid';
 
 const AlertaCalificacionRazon = () => {
   const {
@@ -41,9 +42,9 @@ const AlertaCalificacionRazon = () => {
       />
       <Typography className={titleBlack}>
         Selecciona
-        <div className={titleBlue}>
-          &nbsp;la razón de la alerta
-        </div>
+        <Grid component="span"  className={titleBlue}>
+            &nbsp;la razón de la alerta
+        </Grid>          
       </Typography>
 
       <div

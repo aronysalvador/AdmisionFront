@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
 import { Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
@@ -53,6 +53,7 @@ const FechaSiniestro = ({
       }
     }
     onChange({ days, month, year });
+    // eslint-disable-next-line
   }, [days, month, year, monthLastDay]);
 
   const { name: monthName } = meses.find((x) => x.id === month);
@@ -60,14 +61,65 @@ const FechaSiniestro = ({
   const getUseStyles = makeStyles({
     flechas: {
       color: "white",
-      background: "#00B2A9",
+      background: "#007A33",
       "&:hover": {
-        background: "#00B2A9",
+        background: "#007A33",
       },
+    },
+    flechasAct: {
+      color: "white !important",
+      background: "#F4F4F4 !important",
     },
   });
 
   const useStyles = getUseStyles();
+
+  const [t, setT] = useState(0);
+
+  const TRef = useRef(t);
+  TRef.current = t;
+
+  const [t2, setT2] = useState(0);
+
+  const TRef2 = useRef(t2);
+  TRef2.current = t2;
+
+  let start = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+
+  let start2 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+
+  //Hooks para acceder al estado desde setTimeout
+  const countRef = useRef(days);
+  countRef.current = days;
+
+  const countRef2 = useRef(month);
+  countRef2.current = month;
+
+  const longPressDownFecha = () => {
+    setDays((d) => --d);
+    setT(setTimeout(longPressDownFecha, start));
+    start = start / 2; //Para que cada vez vaya más rápido
+  };
+
+  const longPressUPFecha = () => {
+    if((countRef.current !== actualDay) || (countRef2.current !== actualMonth)){
+      setDays((d) => ++d);
+      setT2(setTimeout(longPressUPFecha, start2));
+      start2 = start2 / 2; //Para que cada vez vaya más rápido
+    }
+      
+  };
+
+  //con MouseUp detengo la selección
+  const onMouseUp = () => {
+    clearTimeout(TRef.current);
+    start = 600;
+  };
+
+  const onMouseUp2 = () => {
+    clearTimeout(TRef2.current);
+    start2 = 600;
+  };
 
   return (
     <Grid
@@ -87,13 +139,16 @@ const FechaSiniestro = ({
           variant="contained"
           component="span"
           color="primary"
-          onClick={() => {
-            setDays((d) => --d);
+          // onClick={() => {
+          //   setDays((d) => --d);
+          // }}
+          onMouseDown={() => {
+            longPressDownFecha();
           }}
-          style={{
-            color: "white",
-            background: "#00B2A9",
+          onMouseUp={() => {
+            onMouseUp();
           }}
+          className={useStyles.flechas}
         >
           <KeyboardArrowLeft />
         </IconButton>
@@ -123,10 +178,21 @@ const FechaSiniestro = ({
           component="span"
           variant="contained"
           disabled={days === actualDay && month === actualMonth}
-          onClick={() => {
-            setDays((d) => ++d);
+          // onClick={() => {
+          //   setDays((d) => ++d);
+          // }}
+          onMouseDown={() => {
+
+              longPressUPFecha();
+                                  
           }}
-          className={useStyles.flechas}
+          onMouseUp={() => {
+
+              onMouseUp2();
+               
+            
+          }}
+          className={days === actualDay && month === actualMonth ? useStyles.flechasAct : useStyles.flechas}
         >
           <KeyboardArrowRight />
         </IconButton>

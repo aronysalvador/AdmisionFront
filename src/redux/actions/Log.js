@@ -97,26 +97,31 @@ import {
   // PRIMERA VERSION //
   
 
-  export const handleData = async (email, fechaHora, centro) => {
-    var x = fechaHora.split(" ");
+  export const handleData = async (datos) => {
+    var x = datos.fecha.split(" ");
     let params = {
         opcion:1,
-        centro,
-        email,
+        centro: datos.centro,
+        email: datos.email,
         fecha: x[0],
         hora: x[1],
+        rut: datos.Rut,
+        tipoSiniestro: datos.tipoSiniestro,
+        BP: datos.BP
     }
+
+    console.log(params)
 
     return await Axios.post(process.env.REACT_APP_LOG, params);
   };
   
-  export const handleLog = (email, fechaHora, centro) => (dispatch) => {
+  export const handleLog = (datos) => (dispatch) => {
       dispatch({
         type: POST_LOG_INIT,
         payload: true,
       });
   
-     handleData(email, fechaHora, centro)
+     handleData(datos)
       .then((response) => {
           if(response.status === 200){            
             var ID =  response.data.data.length>0 ? response.data.data[0].IdRegister : 0
@@ -140,38 +145,38 @@ import {
     });
   };
 
-  export const handleUpdate = async (params) => {
-    return await Axios.post(process.env.REACT_APP_LOG, params);
-  };
+  // export const handleUpdate = async (params) => {
+  //   return await Axios.post(process.env.REACT_APP_LOG, params);
+  // };
     
-  export const handleLogUpdate = (datos) => (dispatch) => {
-      dispatch({
-        type: POST_LOG_INIT,
-        payload: true,
-      });
+  // export const handleLogUpdate = (datos) => (dispatch) => {
+  //     dispatch({
+  //       type: POST_LOG_INIT,
+  //       payload: true,
+  //     });
   
-      handleUpdate(datos)
-      .then((response) => {
-          if(response.status === 200){            
-            dispatch(successCallLog(datos.Id));
-          }else{
-            dispatch(errorCallLog(response.data.error));
-          }
-      })
-      .catch((error) => {
-        dispatch(errorCallLog(error));
-      });
+  //     handleUpdate(datos)
+  //     .then((response) => {
+  //         if(response.status === 200){            
+  //           dispatch(successCallLog(datos.Id));
+  //         }else{
+  //           dispatch(errorCallLog(response.data.error));
+  //         }
+  //     })
+  //     .catch((error) => {
+  //       dispatch(errorCallLog(error));
+  //     });
   
-    const successCallLog = ID => ({
-      type: POST_LOG_SUCCESS,
-      payload: ID
-    });
+  //   const successCallLog = ID => ({
+  //     type: POST_LOG_SUCCESS,
+  //     payload: ID
+  //   });
 
-    const errorCallLog = (error) => ({
-      type: POST_LOG_FAILURE,
-      payload: error
-    });
-  };
+  //   const errorCallLog = (error) => ({
+  //     type: POST_LOG_FAILURE,
+  //     payload: error
+  //   });
+  // };
 
 
   export const handleEnd = async (params) => {
@@ -209,9 +214,9 @@ import {
   };
 
 
-  export const ExitLog = () => (dispatch) => {
-      dispatch({
-        type: POST_LOG_SUCCESS,
-        payload: 0
-      });
-  };
+  // export const ExitLog = () => (dispatch) => {
+  //     dispatch({
+  //       type: POST_LOG_SUCCESS,
+  //       payload: 0
+  //     });
+  // };

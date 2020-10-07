@@ -8,7 +8,7 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-
+import Grid from '@material-ui/core/Grid';
 /*
 REVISARE EL 
   const {
@@ -17,7 +17,7 @@ REVISARE EL
 */
 const Afp = () => {
   const {
-    addmissionForm: { percentage, afpForm, responsable },
+    addmissionForm: { percentage, afpForm },
   } = useSelector((state) => state, shallowEqual);
 
   const {
@@ -46,19 +46,18 @@ const Afp = () => {
 
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
 
-  let back = responsable?.nombre.length > 0 ?  17.1 : 15
 
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(back))}
+        dispatch={() => dispatch(handleSetStep(18.1))}
         percentage={percentage}
       />
       <Typography className={titleBlack}>
         Escribe la 
-        <div className={titleBlue}>
-          &nbsp;AFP o Previsión Social
-        </div>
+        <Grid component="span"  className={titleBlue}>
+            &nbsp;AFP o Previsión Social
+        </Grid>          
       </Typography>
       <div className={spaceStyle.space2} />
 

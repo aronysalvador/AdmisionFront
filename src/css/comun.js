@@ -1,36 +1,44 @@
 import { makeStyles } from "@material-ui/core/styles";
-// import img from './../../public/static/Bienvenido.png'
 
 export const getComunStyle = makeStyles((theme) => ({
+    // CONTAINERS
+    rootContainer: {
+        position: "relative",
+        width: "25.715em",
+        height:"45.715em",
+        backgroundColor: "#F8F9FA",
+    },
     root: {
         position: "relative",
-        width: "22.5em",
-        height: "40em",
+        // width: "25.715em",
+        height: "44em", //"45.715em",
         backgroundColor: "#F8F9FA",
     },
     rootBegin: {
         position: "relative",
-        width: "24.5em",
-        height: "42em",
-        // background:  "linear-gradient(110deg, #F8F9FA, 50%, #E5F5F4, 50%);" ,
+        width: "25.715em",
+        height: "45.715em",
         background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
         padding: 0,
     },
     rootWhite: {
         position: "relative",
-        width: "24.5em",
-        height: "42em",
+        width: "25.715em",
+        height: "45.715em",
+        padding: 0,
+    },
+    rootImg: {
+        position: "relative",
+        width: "25.715em",
+        height: "45.715em",
+        backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
         padding: 0,
     },
 
-    rootContainer: {
-        position: "relative",
-        width: "24.5em",
-        height: "42em",
-        backgroundColor: "#F8F9FA",
-    },
+    // TEXTOS
     textAchsContent: {
         fontFamily: "Catamaran",
+        fontSize: "16px",
         fontStyle: "normal",
         color: "#373737",
     },
@@ -41,33 +49,94 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: "0.75em",
         lineHeight: "0.875em",
     },
-    pregunta: {
+    tituloTextbox: {
+        letterSpacing: ".03em",
+        fontSize: "1em",
+        fontWeight: "normal",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        color: "#787878",
+    },
+    titleBlack: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: '#373737',
+    },
+    titleBlue: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: ' #00b2a9',
+        display: "contents",
+    },
+    textCenter: {
+        textAlign: "center !important",
+    },
+    textErrorRed: {
+        textAlign: "center",
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "bold",
-        fontSize: "1.25em",
-        lineHeight: "1.75em",
-        display: "flex",
-        alignItems: "flex-end",
-        flexWrap: "wrap"
+        fontSize: "1.5625em",
+        lineHeight: "1.6875em",
+        alignItems: "center",
+        color: "red",
     },
-    pregunta_temp: {
-        fontSize: "1.1em !important",
-    },
-    googleMap: {
-        width: "100%",
-        borderRadius: "20px",
-        padding: "10px",
-    },
-    textAchsContentGreen: {
+    textErrorP: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
-        color: "#007A33",
+        fontWeight: "bold",
+        fontSize: "1.785em",
+        lineHeight: "1.929em",
+        alignItems: "center",
+        textAlign: "center",
+        color: "#081C15",
+    },
+    textErrorS: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontSize: "1.145em",
+        lineHeight: "1.785em",
+        alignItems: "center",
+        textAlign: "center",
+        color: "#081C15",
+    },
+    txtGreen: {
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '22px',
+        color: '#007A33',
+    },
+    tituloSelectorFecha: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "600", //"bold",
+        fontSize: "14px",
+        lineHeight: "14px",
+        textAlign: "center",
+        letterSpacing: "0.03em", //"2px",
+        color: "#787878", //"#373737",
+    },
+
+    //BOTONES
+    bottomElement: {
+        padding: "1.145em 0", //"1.145em 1.145em 2.4em 1.145em",
+        position: "absolute",
+        right: "0",
+        left: "0",
+        bottom: "0",
     },
     buttonAchs: {
         width: "100%",
         background: "#007A33",
-        borderRadius: "0.25",
+        borderRadius: "0.71em",
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "bold",
@@ -86,7 +155,7 @@ export const getComunStyle = makeStyles((theme) => ({
         background: "#FFFFFF",
         border: "2px solid #007A33",
         boxSizing: "border-box",
-        borderRadius: "4px",
+        borderRadius: "0.71em",
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "bold",
@@ -95,46 +164,132 @@ export const getComunStyle = makeStyles((theme) => ({
         color: "#007A33",
         textTransform: "inherit",
         height: "3.5em",
-
         marginTop: "5px",
     },
-
+    cardsButtonAlign: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
+    cardsButton: {
+        marginTop: "10px",
+        marginBottom: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "45%",
+        height: "90px",
+        background: "#FFF",
+        border: "2px solid #787878",
+        borderSpacing: "2px",
+        borderRadius: "10px",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+    },
+    botonSeleccionado: {
+        marginTop: "10px",
+        marginBottom: "10px",
+        display: "flex",
+        justifyContent: "center", //"space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "45%",
+        height: "90px",
+        backgroundColor: "#DFF3F2 !important",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        paddingTop: "15px",//"35px",
+        paddingBottom: "10px",
+        color: "#373737",
+        backgroundImage: `url(${require("./../img/check2.svg")})`,
+        backgroundRepeat: "no-repeat",
+    },
+    cardsButtonOther: {
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "100%",
+        height: "90px",
+        background: "#FFF",
+        border: "2px solid #787878",
+        borderSpacing: "2px",
+        borderRadius: "10px",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        paddingTop: "15px",
+        paddingBottom: "10px",
+        fontWeight: "bold",
+        "&:hover": {
+            background: "#DFF3F2",
+            border: "2px solid #00B2A9",
+            justifyContent: "center",
+            flexDirection: "row",
+        }
+    },  
     buttonAchsRight: {
         width: "46%",
-        background: "#007A33",
-        borderRadius: "0.25",
+      //  height: "90px",
+        background: "#FFFFFF", //#007A33
+        border: "2px solid #787878",
+        boxSizing: "border-box",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+        borderRadius: "10px",
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "bold",
-        fontSize: "0.75em",
-        // fontSize: '1.125em',
-        lineHeight: "1.125em",
-        color: "#FFFFFF",
-        textTransform: "capitalize",
+        fontSize: "1.145em",
+        lineHeight: "1.285em",
+        color: "#373737",
+        textTransform: "inherit", //"capitalize",
         height: "4.8em",
         float: "right",
+        marginBottom: "16px",
         "&:hover": {
-            background: "#104F28",
+            background: "#DFF3F2",
+            border: "2px solid #00B2A9",
         },
     },
     buttonAchsLeft: {
         width: "46%",
-        background: "#007A33",
-        borderRadius: "0.25",
+        //height: "90px",
+        background: "#FFFFFF", //#007A33
+        border: "2px solid #787878",
+        boxSizing: "border-box",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+        borderRadius: "10px",
         fontFamily: "Catamaran",
         fontStyle: "normal",
         fontWeight: "bold",
-        fontSize: "0.75em",
-        // fontSize: '1.125em',
-        lineHeight: "1.125em",
-        color: "#FFFFFF",
-        textTransform: "capitalize",
+        fontSize: "1.145em",
+        lineHeight: "1.285em",
+        color: "#373737",
+        textTransform: "inherit", //"capitalize",
         height: "4.8em",
         float: "left",
+        marginBottom: "16px",
         "&:hover": {
-            background: "#104F28",
+            background: "#DFF3F2",
+            border: "2px solid #00B2A9",
         },
     },
+
+    mediumDivider: {
+        width: "47%",
+    },
+    flexDivider: {
+        display: "flex",
+        alignItems: "center",
+    },
+    emMargin: {
+        margin: "0.5em",
+    },
+    
     buttonVolverContainer: {
         width: "20%",
         float: "left",
@@ -143,6 +298,18 @@ export const getComunStyle = makeStyles((theme) => ({
         width: "20%",
         float: "left",
     },
+
+    googleMap: {
+        width: "100%",
+        borderRadius: "20px",
+        padding: "10px",
+    },
+    textAchsContentGreen: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        color: "#007A33",
+    },
+    
     barraContainer: {
         paddingTop: "0.5em",
         width: "17.75em",
@@ -158,67 +325,54 @@ export const getComunStyle = makeStyles((theme) => ({
     pullRight: {
         float: "right",
     },
-    bottomElement: {
-        position: "absolute",
-        right: "0",
-        left: "0",
-        bottom: "0",
-    },
-    tituloTextbox: {
-        letterSpacing: "2px",
-        fontSize: "0.75em",
-        fontWeight: "normal",
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        color: "#373737",
-    },
-    tituloSelectorFecha: {
-        letterSpacing: "2px",
-        fontSize: "0.750em",
-        fontWeight: "bold",
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        color: "#373737",
-    },
-    botonSeleccionado: {
-        background: "#DFF3F2 !important",
-        border: "2px solid #007A33 !important",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
-        color: "#007A33",
-    },
     selectorRuedaItemPrincipal: {
-        color: "#007A33",
-        fontSize: "1.250em",
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '20px',
+        lineHeight: '22px',
+        textAlign: "center",
+        color: '#007A33',
     },
+    selectorRuedaItemsCostados: {
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '22px',
+        textAlign: "center",
+        color: '#787878',
+        padding: "5px 0",
+    },
+    selectorRuedaItemsCostados2: {
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '22px',
+        textAlign: "center",
+        color: '#DEDEDE !important',
+        // padding: "5px 0",
+    },    
     selectorRuedaBordesItemPrincipal: {
         margin: "0",
         opacity: "0.2",
     },
-    selectorRuedaItemsCostados: {
-        fontSize: "1em",
-        paddingBottom: "5px",
-        opacity: "0.5",
+    boxHoras: {
+        background: "white",
+        borderRadius: "10px",
+        padding: "8px 25px",
     },
+    boxTitleHoras: {
+        borderRadius: "10px",
+        padding: "8px 25px",
+    },
+    
     borderBox: {
         border: "yellow",
         "&:hover": {
             border: "#007A33",
         },
-    },
-    mediumDivider: {
-        width: "47%",
-    },
-    flexDivider: {
-        display: "flex",
-        alignItems: "center",
-    },
-    emMargin: {
-        margin: "0.5em",
-    },
-    pantallaFinalBotones: {
-        borderRadius: "10px",
-        height: "3em",
     },
     cajaRutSiniestroContainer: {
         width: "48%",
@@ -245,49 +399,15 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: "bold",
         fontSize: "15px",
     },
-    textCenter: {
-        textAlign: "center",
-    },
-    paper: {
-        marginTop: '0 auto',
-        padding: '1em',
-        backgroundColor: "#F8F9FA"
-    },
-    titleBlack: {
-        fontFamily: 'Catamaran',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '20px',
-        lineHeight: '28px',
-        color: ' #373737'
-    },
-    titleBlue: {
-        fontFamily: 'Catamaran',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '20px',
-        lineHeight: '28px',
-        color: ' #00b2a9',
-        display: "contents",
-    },
-    txtGreen: {
-        fontFamily: 'Helvetica',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        fontSize: '16px',
-        lineHeight: '22px',
-        color: '#007A33'
-    },
     iconLocation: {
         marginRight: '10px',
         maxHeight: "15px",
         verticalAlign: "middle",
     },
-
     siniesterList: {
         display: 'flow-root',
         overflow: 'auto',
-        height: '23.5em',
+        height: '24.5em',
         '&::-webkit-scrollbar': {
             width: 8,
         },
@@ -297,19 +417,10 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgba(0,0,0,.2)',
-            outline: '1px solid slategrey',
+            outline: '0px solid slategrey',
             borderRadius: 4,
         },
     },
-    rootImg: {
-        position: "relative",
-        width: "24.5em",
-        height: "42em",
-        // backgroundImage: "url(" + img + ")",
-        backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
-        padding: 0,
-    },
-
     boxRootRelato: {
         padding: "5px",
         backgroundColor: "#FFFFFF",
@@ -318,13 +429,11 @@ export const getComunStyle = makeStyles((theme) => ({
         minHeight: "350px",
         overFlowY: "auto",
     },
-
     boxRelato: {
         display: "flex",
         justifyContent: "space-between",
         padding: "10px",
     },
-
     boxRelatoText: {
         fontFamily: "Catamaran",
         fontSize: "1em",
@@ -342,32 +451,14 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgba(0,0,0,.2)',
-            outline: '1px solid slategrey',
+            outline: '0px solid slategrey',
             borderRadius: 4,
         },
     },
-
     buttonEditRelato: {
         cursor: "pointer",
         textDecoration: "underline",
         color: "#DEDEDE",
     },
-    scrollText: {
-        fontFamily: "Catamaran",
-        fontSize: "1em",
-        overflow: 'auto',
-        '&::-webkit-scrollbar': {
-            width: 8,
-        },
-        '&::-webkit-scrollbar-track': {
-            boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-            webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-        },
-        '&::-webkit-scrollbar-thumb': {
-            backgroundColor: 'rgba(0,0,0,.2)',
-            outline: '1px solid slategrey',
-            borderRadius: 4,
-        },
-    }
 
 }));

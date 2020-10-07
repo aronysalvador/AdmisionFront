@@ -3,7 +3,6 @@ import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getCentros } from "./../../redux/actions/CentrosAchsAction";
-import { handleLogUpdate } from "../../redux/actions/Log";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -26,7 +25,7 @@ const Achs = () => {
   const {
     buttonAchs,
     root,
-    pregunta,
+    titleBlack,
     bottomElement,
     tituloTextbox,
   } = getComunStyle();
@@ -54,14 +53,13 @@ const Achs = () => {
     shallowEqual
   );
 
-  const { LogForm: {ID} } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={root}>
       <div className={welcomeStyle.backPosicion}> 
           <Cabecera dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
         </div>
-      <Typography className={pregunta}>Te encuentras en:</Typography>
+      <Typography className={titleBlack}>Te encuentras en:</Typography>
       <div className={spaceStyle.space2} />
 
       <Typography className={tituloTextbox} variant="subtitle2">
@@ -80,7 +78,7 @@ const Achs = () => {
         onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-        style={{ width: 300 }}
+        // style={{ width: 300 }}
         options={centrosList}
         getOptionLabel={(option) => option.Centro_m}
         renderInput={(params) => (
@@ -111,16 +109,10 @@ const Achs = () => {
           variant="contained"
           className={buttonAchs}
           type="submit"
-         disabled={inputValue !== valueError || inputValue === ''}
+          disabled={inputValue !== valueError || inputValue === ''}
           onClick={() => {
             dispatch(updateForm("centrosForm", centros));
             dispatch(setCenter(email, centros))
-           if(ID>0){
-              console.log("actualizar centro")
-             dispatch(handleLogUpdate({opcion:3, Id: ID, centro: centros}));
-            }else{
-              console.log("not yet")
-            }
             dispatch(handleSetStep(1));
           }}
         >

@@ -8,6 +8,7 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { getRemuneracion } from "../../redux/actions/TipoRemuneracionAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
+import Grid from '@material-ui/core/Grid';
 
 const Remuneracion = () => {
   const dispatch = useDispatch();
@@ -41,9 +42,9 @@ const Remuneracion = () => {
       />
       <Typography className={titleBlack}>
         ¿Qué tipo de  
-        <div className={titleBlue}>
+        <Grid component="span"  className={titleBlue}>
           &nbsp;remuneración
-        </div>
+        </Grid>         
         &nbsp;tiene el paciente?
       </Typography>
       <div className={spaceStyle.space2} />
