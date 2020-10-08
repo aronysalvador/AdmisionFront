@@ -15,52 +15,8 @@ spec:
       - name: web-front-admision
         image: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_18287 
         env:
-        - name: REACT_APP_ISAPRES
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/isapres        
-        - name: REACT_APP_AFP
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/afp/      
-        - name: REACT_APP_CATEGORIA_OCUPACIONAL
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/categoriaOcupacional/      
-        - name: REACT_APP_TIPO_CONTRATO
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/tipoContrato/     
-        - name: REACT_APP_JORNADA_TRABAJO
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/jornadaTrabajo/      
-        - name: REACT_APP_TIPO_REMUNERACIONES
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/tipoRemuneracion/      
-        - name: REACT_APP_COMUNA
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/comunas      
-        - name: REACT_APP_SUCURSALES
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/sucursales     
-        - name: REACT_APP_CENTROSACHS
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/centros  
-        - name: REACT_APP_PROFESION
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/alertas    
-        - name: REACT_APP_ALERTAS
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/alertas   
-        - name: REACT_APP_RAZONSOCIAL
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/razonSocialByName?companyName=   
-        - name: REACT_APP_CENTER_USER
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/centrosUser  
-        - name: REACT_APP_LOG
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/logs/
-        - name: REACT_APP_RAZON_SOCIAL_RUT
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/razonSocialByRut?rut=
-        - name: REACT_APP_VALIDAR_DATA_EMPRESA
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/paciente/  
-        - name: REACT_APP_VALIDAR_DATA_PACIENTE
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/paciente/getPaciente
-        - name: REACT_APP_INTEGRACION_SAP
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/integracionsap 
-        - name: REACT_APP_HOMOLOGACION
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/admisionista/getAliasSapByEmail
-        - name: REACT_APP_GEO_AUTOCOMPLETE
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/geo/autocompletarDirecciones
-        - name: REACT_APP_GEO_STATICMAP
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/geo/getMapaEstatico 
-        - name: REACT_APP_GEO_LATLNG
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/geo/getLatLng
-        - name: REACT_APP_GEO_DIRECTION
-          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/geo/getDireccion
+        - name: NODE_ENV
+          value: QA     
         imagePullPolicy: Always
         ports:
         - containerPort: 80
