@@ -16,7 +16,7 @@ spec:
         image: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_18287 
         env:
         - name: NODE_ENV
-          value: QA     
+          value: aks     
         imagePullPolicy: Always
         ports:
         - containerPort: 80
