@@ -28,6 +28,8 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   });
 
   const [t, setT] = useState(0);
+  const [t2, setT2] = useState(0);
+  const [t3, setT3] = useState(0);
 
  // const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
@@ -45,25 +47,85 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   const TRef = useRef(t);
   TRef.current = t;
 
-  let start = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+  const TRef2 = useRef(t2);
+  TRef2.current = t2;
 
+  const TRef3 = useRef(t3);
+  TRef3.current = t3;
+
+  const countRef = useRef(horas);
+  countRef.current = horas;
+
+  const countRef2 = useRef(indiceMinutos);
+  countRef2.current = indiceMinutos;
+
+  let start = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+  let start2 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+  let start3 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+
+  
   const longPressDownHora = () => {
       setHoras((h) => --h);
       setT(setTimeout(longPressDownHora, start));
       start = start / 2; //Para que cada vez vaya más rápido
   };
 
+  const longPressUPHora = () => {
+   // if(countRef.current !== new Date().getHours()){
+      setHoras((h) => ++h);
+      setT2(setTimeout(longPressUPHora, start2));
+      start2 = start2 / 2; //Para que cada vez vaya más rápido
+    //}
+  };
+
   const longPressDownMinutos = () => {
     setIndiceMinutos((m) => --m);
     setT(setTimeout(longPressDownMinutos, start));
     start = start / 2; //Para que cada vez vaya más rápido
-};
+  };
+
+  const longPressUPMinutos = () => {
+   // if(countRef2.current !== getMin() ){
+      setIndiceMinutos((m) => ++m);
+      setT3(setTimeout(longPressUPMinutos, start3));
+      start3 = start3 / 2; //Para que cada vez vaya más rápido
+   // }
+  };
 
   //con MouseUp detengo la selección
   const onMouseUp = () => {
     clearTimeout(TRef.current);
     start = 600;
   };
+
+  const onMouseUp2 = () => {
+    clearTimeout(TRef2.current);
+    start2 = 600;
+  };
+  
+  const onMouseUp3 = () => {
+    clearTimeout(TRef3.current);
+    start3 = 600;
+  };
+
+  const obtenPosicion = (intended) => {
+      if(intended < 0)
+          return 6 - Math.abs(intended)
+      if(intended > 5)
+          return (intended-6)
+      return intended
+  }
+
+  const obtenHora= (intended) => {
+    if(intended < 0)
+        return "2"+(4+intended)
+    if(intended < 10)
+      return "0"+intended
+    if(intended > 23)
+      return "0"+Math.abs((24-intended))
+
+    return intended
+}
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
@@ -99,10 +161,10 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           </div>
           {/* <div className={spaceStyle.spaceMin1} /> */}
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {horas === 0 ? 23 : horas - 2 < 10 ? "0" + (horas - 2) : horas - 2}
+            {obtenHora(horas-2)}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {horas === 0 ? 23 : horas - 1 < 10 ? "0" + (horas - 1) : horas - 1}
+          {obtenHora(horas-1)}
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemPrincipal}>
@@ -110,18 +172,26 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {horas + 1 < 10 ? "0" + (horas + 1) : horas + 1}
+            {obtenHora(horas+1)}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {horas + 2 < 10 ? "0" + (horas + 2) : horas + 2}
+          {obtenHora(horas+2)}
           </div>
+          
+          
           {/* <div className={spaceStyle.spaceMin1} /> */}
           <div>
             <Button
               variant="text"
-              disabled={ horas === new Date().getHours()}
-              onClick={() => {
-                setHoras((h) => ++h);
+             // disabled={ horas === new Date().getHours()}
+              // onClick={() => {
+              //   setHoras((h) => ++h);
+              // }}
+              onMouseDown={() => {
+                longPressUPHora();
+              }}
+              onMouseUp={() => {
+                onMouseUp2();
               }}
               
             >
@@ -164,10 +234,10 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {indiceMinutos === 0 ? minutos[minutos.length - 2] :minutos[indiceMinutos - 2]}
+            {minutos[obtenPosicion(indiceMinutos-2)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {indiceMinutos === 0 ? minutos[minutos.length - 1] :minutos[indiceMinutos - 1]}
+          {minutos[obtenPosicion(indiceMinutos-1)]}
             {/* {minutos === 0
               ? 59
               : minutos - 1 < 10
@@ -181,18 +251,24 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {indiceMinutos === minutos.length - 1 ? minutos[0] :minutos[indiceMinutos + 1]}
+          {minutos[obtenPosicion(indiceMinutos+1)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {indiceMinutos === minutos.length - 2 ? minutos[0] :minutos[indiceMinutos + 2]}
+          {minutos[obtenPosicion(indiceMinutos+2)]}
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div>
             <Button
               variant="text"
-              disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
-              onClick={() => {
-                setIndiceMinutos((m) => ++m);
+             // disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
+              // onClick={() => {
+              //   setIndiceMinutos((m) => ++m);
+              // }}
+              onMouseDown={() => {
+                longPressUPMinutos();
+              }}
+              onMouseUp={() => {
+                onMouseUp3();
               }}
             >
               <KeyboardArrowDown
