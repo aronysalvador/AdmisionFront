@@ -7,19 +7,21 @@ export default function InputMasked({
   setTelefono,
   handleOnChange,
   telefono,
+  disabled,
   ...props
 }) {
   return (
     <TextField
-      value={telefono}
+      value={disabled ? "" : telefono}
       variant="outlined"
       size="small"
       margin="dense"
       required
       fullWidth
-      helperText={"Ingresa tu numero personal"}
+      helperText={disabled ? "" : "Ingresa 9 dígitos"}
       onChange={(e) => handleOnChange(e)}
       inputProps={{ inputMode: 'numeric'}}
+      disabled={disabled}
     />
   );
 }

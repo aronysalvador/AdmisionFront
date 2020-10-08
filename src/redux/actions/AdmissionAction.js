@@ -13,6 +13,7 @@ import { formateaRut } from "../../helpers/rut";
 
 import { handleLog, handlEndLog } from "./Log";
 import { FechaHora } from './../../helpers/utils'
+import { Pipes } from "./../../containers/EditarTelefono/phone";
 
 const totalSteps = 27;
 
@@ -198,7 +199,7 @@ export const saveRut = (rut) => {
 
               result.data.content.response.telefonoParticular === "0"
                 ? ""
-                : result.data.content.response.telefonoParticular
+                : Pipes.advanced(result.data.content.response.telefonoParticular)
             )
           );
           dispatch(
@@ -399,6 +400,8 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
       rut_paciente: addmissionForm.rut, //"8960683-7",
       mail_admisionista: userMsal.email,
       admision_json: JsonSap,
+      telefono_paciente: addmissionForm.telefonoParticular,
+      email_paciente: addmissionForm.emailusuario
     };
 
     //console.log("*********************************************")

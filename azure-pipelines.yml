@@ -97,7 +97,19 @@ stages:
           inputs:
             azureSubscription: $(azureSubcritionDESA)
             appName: $(appNameDESAFront)
-            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)      
+            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)   
+
+        - task: KubernetesManifest@0
+          inputs:
+            action: 'deploy'
+            kubernetesServiceConnection: 'AKS-DESA-SALUD-NS-ADMISIONDIGITAL'
+            namespace: 'admisiondigital'
+            manifests: |
+                      /home/vsts/work/1/s/manifests/web-front-admision-deployment.yaml
+                      /home/vsts/work/1/s/manifests/web-front-admision-service.yaml
+                      /home/vsts/work/1/s/manifests/web-front-admision-ingress.yaml
+            containers: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:$(ImageTag)
+
 # DESA #
 
 # QA #
