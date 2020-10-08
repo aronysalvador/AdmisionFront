@@ -17,6 +17,11 @@ spec:
         env:
         - name: NODE_ENV
           value: aks     
+        - name: REACT_APP_ISAPRES
+          value: https://desa.orquestador.admision.40.121.134.234.nip.io/api/sap/isapres             
+          value: aks     
+        - name: REACT_APP_TEST
+          value: oriverhu            
         imagePullPolicy: Always
         ports:
         - containerPort: 80
