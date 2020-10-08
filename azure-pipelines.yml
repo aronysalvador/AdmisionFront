@@ -10,7 +10,7 @@ trigger:
       #- feature/*   
  
 variables:
-  - group: VARIABLE-ENTORNO-ADMISIONDIGITAL
+  - group: VARIABLE-ENTORNO-ADMISIONDIGITAL 
 
   - name: Repository
     value: 'admision_digital/achs-fr-admision'
