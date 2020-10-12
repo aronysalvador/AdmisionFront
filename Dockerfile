@@ -2,19 +2,14 @@
 FROM node:9.11.1 as build
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
+
+### VARIABLES DE ENTORNO ###
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 ARG urlOrquestador=default
 ARG idAzure=default
 ARG app=default
-RUN echo "VAIABLE ARG: $urlOrquestador"
-RUN echo "VAIABLE REACT_APP_MICROSOFT_AUTH_CLIENTID: $idAzure"
-RUN echo "VAIABLE APP: $app"
-
 ENV REACT_APP_ISAPRES=$urlOrquestador/api/sap/isapres/
-ADD . $REACT_APP_ISAPRES
-RUN echo "VAIABLE ENV: $REACT_APP_ISAPRES"
-
 ENV REACT_APP_AFP=$urlOrquestador/api/sap/afp/
 ENV REACT_APP_CATEGORIA_OCUPACIONAL=$urlOrquestador/api/sap/categoriaOcupacional/
 ENV REACT_APP_TIPO_CONTRATO=$urlOrquestador/api/sap/tipoContrato/
@@ -39,12 +34,15 @@ ENV REACT_APP_GEO_LATLNG=$urlOrquestador/api/geo/getLatLng
 ENV REACT_APP_GEO_DIRECTION=$urlOrquestador/api/geo/getDireccion
 ENV REACT_APP_MICROSOFT_AUTH_CLIENTID=$idAzure
 ENV REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL=https://$app.azurewebsites.net
+### VARIABLES DE ENTORNO ###
 
 COPY package.json /usr/src/app/package.json
 RUN npm install --silent
-# RUN npm test
 RUN npm install react-scripts -g --silent
 COPY . /usr/src/app
+
+RUN npm test || exit 1
+
 RUN npm run build
 
 ### STAGE 2: Production Environment ###

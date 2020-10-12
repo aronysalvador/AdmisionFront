@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-front-admision
+spec:
+  selector:
+    matchLabels:
+      app: web-front-admision
+  template:
+    metadata:
+      labels:
+        app: web-front-admision
+    spec:
+      containers:
+      - name: web-front-admision
+        image: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_18287           
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          requests: 
+            cpu: 250m
+            memory: 64Mi
+          limits: 
+            cpu: 500m
+            memory: 512Mi
+      imagePullSecrets:
+      - name: regcred-crdesacontainer 
