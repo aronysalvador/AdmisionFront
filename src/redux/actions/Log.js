@@ -192,10 +192,16 @@ import {
   
       handleEnd(datos)
       .then((response) => {
-          if(response.status === 200){            
+          if(response.status === 200 && datos.responseSap === 200){            
             dispatch(successCallLog(0));
           }else{
-            dispatch(errorCallLog(response.data.error));
+
+              if(datos.responseSap === 200){
+                dispatch(errorCallLog(response.data.error));
+              }else{
+                dispatch(errorCallLog("SAP ERROR"));
+              }
+          
           }
       })
       .catch((error) => {
