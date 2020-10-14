@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - qa.frontadmision.admision.40.121.134.234.nip.io 
+      - qa.front.admision.52.149.214.89.nip.io 
       secretName: admision-web-cert
   rules:
-  - host: qa.frontadmision.admision.40.121.134.234.nip.io 
+  - host: qa.front.admision.52.149.214.89.nip.io 
     http:
       paths:
       - backend:
