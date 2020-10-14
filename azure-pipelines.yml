@@ -25,7 +25,8 @@ variables:
     value: '_$(Build.BuildId)'
 
   - name: urlOrquestadorDesa 
-    value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
+    # value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
+    value: 'https://desa.orquestador.admision.40.121.134.234.nip.io'
   - name: urlOrquestadorQA 
     value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
   - name: urlOrquestadorSTG 
