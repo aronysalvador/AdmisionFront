@@ -1,26 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export const getWelcomeStyle = makeStyles((theme) => ({
-    avatarContainer: {
-        display: "flex",
-        justifyContent: "center",
-    },
-    avatar: {
-        border: "1px solid #DEDEDE !important",
-        backgroundColor: "#FFFFFF !important",
-        color: "#DEDEDE !important",
-        verticalAlign: "middle",
-        padding: "1.92em",
-        fontSize: "32px !important",
-        boxSizing: "border-box",
-        // width: "5em",
-        // height: "5em",
-    },
-    avatarContainerRight: {
-        display: "flex",
-        justifyContent: "center",
-        float: "right",
-    },
+
     bienvenido: {
         fontSize: "2em",
         fontWeight: "bold",
@@ -74,9 +55,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     star: {
         color: "#00B2A9 !important",
     },
-    backPosicion: {
-        marginLeft: "0.5em",
-    },
+
     marginStar: {
         display: "table",
         marginLeft: "auto",
@@ -244,12 +223,59 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             background: "#104F28",
         },
     },
-        
     titleContainerCards2: {
         padding: "1.5em 1.5em 0.5em 1.5em",
         background: "#FFFFFF",
         boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
         borderRadius: "10px",
     },
-
+    '@media (max-width: 767px)': {
+        backPosicion: {
+            marginLeft: "0.5em",
+        },
+        avatarContainer: {
+            display: "flex",
+            justifyContent: "center",
+        },
+        avatar: {
+            border: "1px solid #DEDEDE !important",
+            backgroundColor: "#FFFFFF !important",
+            color: "#DEDEDE !important",
+            verticalAlign: "middle",
+            padding: "1.92em",
+            fontSize: "32px !important",
+            boxSizing: "border-box",
+            // width: "5em",
+            // height: "5em",
+        },
+        avatarContainerRight: {
+            display: "flex",
+            justifyContent: "center",
+            float: "right",
+        },
+    },
+    '@media (min-width: 768px)': {
+        backPosicion: {
+            display: 'none',
+        },
+        avatar: {
+            border: "1px solid #DEDEDE !important",
+            backgroundColor: "#FFFFFF !important",
+            color: "#DEDEDE !important",
+            verticalAlign: "middle",
+            padding: "1em",
+            fontSize: "14px !important",
+            boxSizing: "border-box",
+            // width: "5em",
+            // height: "5em",
+            display: 'flex'
+        },
+        avatarContainer: {
+            display: "flex",
+            justifyContent: "end",
+            margin: 'auto',
+            alignItems: 'center',
+            color: '#FFFFFF'
+        },
+    }
 }));

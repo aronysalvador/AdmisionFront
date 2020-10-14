@@ -1,12 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const getSpaceStyle = makeStyles((theme) => ({
-        space1: {
-            height: '1.25em',
-        },
-        space2: {
-            height: '2.5em',
-        },
+
+    space1: {
+        height: '1.25em',
+    },
+    space2: {
+        height: '2.5em',
+    },
+    '@media (max-width: 767px)': {
         space3: {
             height: '3.75em',
         },
@@ -72,6 +74,6 @@ export const getSpaceStyle = makeStyles((theme) => ({
         },
         spaceMin12: {
             height: '10.5em',
-        }
-    })
-);
+        },
+    }
+}));
