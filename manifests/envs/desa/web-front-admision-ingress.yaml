@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - desa.frontadmision.admision.40.121.134.234.nip.io 
+      - desa.front.admision.40.121.134.234.nip.io 
       secretName: admision-web-cert
   rules:
-  - host: desa.frontadmision.admision.40.121.134.234.nip.io 
+  - host: desa.front.admision.40.121.134.234.nip.io 
     http:
       paths:
       - backend:
