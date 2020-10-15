@@ -36,12 +36,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     textBoxAchs: {
         fontSize: "16px !important"
     },
-    backgroundBoxAchs: {
-        backgroundColor: "#DFF3F2 !important",
-        width: "25.715em",
-        height: "32em",
-        padding: "16px"
-    },
+
     starIcon: {
         display: "flex",
         borderRadius: "1em",
@@ -229,6 +224,18 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
         borderRadius: "10px",
     },
+    avatar: {
+        border: "1px solid #DEDEDE !important",
+        backgroundColor: "#FFFFFF !important",
+        color: "#DEDEDE !important",
+        verticalAlign: "middle",
+        padding: "1.92em",
+        fontSize: "32px !important",
+        boxSizing: "border-box",
+        // width: "5em",
+        // height: "5em",
+    },
+
     '@media (max-width: 767px)': {
         backPosicion: {
             marginLeft: "0.5em",
@@ -237,28 +244,23 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             display: "flex",
             justifyContent: "center",
         },
-        avatar: {
-            border: "1px solid #DEDEDE !important",
-            backgroundColor: "#FFFFFF !important",
-            color: "#DEDEDE !important",
-            verticalAlign: "middle",
-            padding: "1.92em",
-            fontSize: "32px !important",
-            boxSizing: "border-box",
-            // width: "5em",
-            // height: "5em",
-        },
         avatarContainerRight: {
             display: "flex",
             justifyContent: "center",
             float: "right",
+        },
+        backgroundBoxAchs: {
+            backgroundColor: "#DFF3F2 !important",
+            width: "25.715em",
+            height: "32em",
+            padding: "16px"
         },
     },
     '@media (min-width: 768px)': {
         backPosicion: {
             display: 'none',
         },
-        avatar: {
+        avatarHeader: {
             border: "1px solid #DEDEDE !important",
             backgroundColor: "#FFFFFF !important",
             color: "#DEDEDE !important",
@@ -277,5 +279,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             alignItems: 'center',
             color: '#FFFFFF'
         },
+
     }
 }));

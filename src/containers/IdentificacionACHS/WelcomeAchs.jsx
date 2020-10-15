@@ -12,6 +12,7 @@ import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/Star';
+import Header from "../../components/header/index";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -32,6 +33,13 @@ const SessionAchs = (props) => {
 
   return (
     <div className={comunStyle.rootWhite}>
+      <div className={comunStyle.header}> 
+      <Header
+        dispatch={() => dispatch(logout())}
+        userMsal={ microsoftReducer.userMsal }
+        // step={1}
+      />
+      </div>
       <div className={welcomeStyle.backgroundBoxAchs}>
 
         <div className={welcomeStyle.avatarContainer}>

@@ -3,20 +3,13 @@ import { getComunStyle } from "../../css/comun";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-// import { shallowEqual, useSelector } from "react-redux";
-
 
 const header = (props) => {
-  const { dispatch, microsoftReducer  } = props;
+  const { dispatch, userMsal } = props;
   const comunClass = getComunStyle();
   const welcomeStyle = getWelcomeStyle();
 
-//   const {
-//     microsoftReducer: { userMsal },
-//   } = useSelector((state) => state, shallowEqual);
-
-//  const { iniciales, displayName } = userMsal;
-
+ const { iniciales, displayName } = userMsal;
 
   return (
     <div className={comunClass.header}>
@@ -27,9 +20,9 @@ const header = (props) => {
         style={{width: "64px", height: "64px", margin:"auto 85%"}}   
       />
       <div className={welcomeStyle.avatarContainer}>
-          <Avatar className={welcomeStyle.avatar}>
-            GM
-            {/* {microsoftReducer.userMsal.iniciales} */}
+          <Avatar className={welcomeStyle.avatarHeader}>
+            {/* GM */}
+            {iniciales}
           </Avatar>
           <Typography
             variant="p"
@@ -38,14 +31,15 @@ const header = (props) => {
               comunClass.tituloCerrarSesion,
             ]}
           >
-            Gelen
-            {/* {microsoftReducer.userMsal.displayName} */}
+            {/* Gelen */}
+            {displayName}
           </Typography>
 
           <Typography
             variant="inherit"
             component="p"
             className={comunClass.tituloCerrarSesion}
+            style={{ cursor: 'pointer'}}
             onClick={()=> dispatch()}
           > 
             Cerrar sesión

@@ -56,7 +56,7 @@ const Achs = () => {
       <div className={comunStyle.header}> 
       <Header
         dispatch={() => dispatch(logout())}
-        // step={1}
+        userMsal={userMsal}
       />
       </div>
       <div className={ welcomeStyle.backPosicion }> 
