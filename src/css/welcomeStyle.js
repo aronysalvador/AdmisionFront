@@ -50,12 +50,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     star: {
         color: "#00B2A9 !important",
     },
-
-    marginStar: {
-        display: "table",
-        marginLeft: "auto",
-        marginRight: "auto",
-    },
     button: {
         width: "100%",
         height: "4em",
@@ -255,6 +249,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             height: "32em",
             padding: "16px"
         },
+        marginStar: {
+            display: "table",
+            marginLeft: "auto",
+            marginRight: "auto",
+        },
     },
     '@media (min-width: 768px)': {
         backPosicion: {
@@ -273,12 +272,26 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             display: 'flex'
         },
         avatarContainer: {
-            display: "flex",
+            display: "inline-flex",
             justifyContent: "end",
             margin: 'auto',
             alignItems: 'center',
             color: '#FFFFFF'
         },
+        backgroundBoxAchs: {
+            backgroundColor: "#016C2E !important",
+            // width: "25.715em",
+            // height: "32em",
+            padding: "10px 64px"
+        },
+        marginBoxGreen: {
+            display: "inline-flex",
+            // marginLeft: "auto",
+            // marginRight: "auto",
+        },
+        contentBlock: {
+            display: 'block'
+        }
 
     }
 }));

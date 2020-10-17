@@ -9,7 +9,7 @@ const header = (props) => {
   const comunClass = getComunStyle();
   const welcomeStyle = getWelcomeStyle();
 
- const { iniciales, displayName } = userMsal;
+  const { iniciales, displayName } = userMsal;
 
   return (
     <div className={comunClass.header}>
@@ -17,11 +17,11 @@ const header = (props) => {
         alt="logo" 
         src={"static/letterACHS.svg"}
         // style={step === 0.1 ?  {width: "64px", height: "64px", marginLeft:"47%"}: {width: "64px", height: "64px", marginLeft:"25%"}}
-        style={{width: "64px", height: "64px", margin:"auto 85%"}}   
+        style={{width: "64px", height: "64px", margin:"auto", marginLeft:"25%"}}   
       />
-      <div className={welcomeStyle.avatarContainer}>
+      <div className={comunClass.containerHeader}>
+        <div className={welcomeStyle.avatarContainer}>
           <Avatar className={welcomeStyle.avatarHeader}>
-            {/* GM */}
             {iniciales}
           </Avatar>
           <Typography
@@ -31,7 +31,6 @@ const header = (props) => {
               comunClass.tituloCerrarSesion,
             ]}
           >
-            {/* Gelen */}
             {displayName}
           </Typography>
 
@@ -45,7 +44,7 @@ const header = (props) => {
             Cerrar sesión
           </Typography>
         </div>
-        
+      </div>
     </div>
   );
 };

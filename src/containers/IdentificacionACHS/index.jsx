@@ -115,10 +115,10 @@ const Achs = () => {
             )}
           />
         </div>
-        <div className={comunStyle.bottomElement}>
+        <div className={[comunStyle.bottomElement]}>
           <Button
             variant="contained"
-            className={comunStyle.buttonAchs}  
+            className={[comunStyle.buttonAchs, comunStyle.bottomMargin]}  
             type="submit"
             disabled={inputValue !== valueError || inputValue === ''}
             onClick={() => {

@@ -51,7 +51,6 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "0.75em",
             lineHeight: "0.875em",
         },
-
         titleBlack: {
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
@@ -115,6 +114,9 @@ export const getComunStyle = makeStyles((theme) => ({
             textAlign: "center",
             letterSpacing: "0.03em", //"2px",
             color: "#787878", //"#373737",
+        },
+        textCenter: {
+            textAlign: "center !important",
         },
 
         //BOTONES
@@ -466,7 +468,10 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         displayDesk: {
             display: 'none'
-        }
+        },
+        displayMobile: {
+            display: 'block'
+        },
     },
 
     '@media (min-width: 768px)': {
@@ -497,6 +502,19 @@ export const getComunStyle = makeStyles((theme) => ({
             textAlign: 'center',
             fontFamily: 'Catamaran'
         },
+        boxDesk: {
+            width: '60%', //'416px',
+            maxWidth: '860px',
+            // height: '354px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            // marginTop: '50px',
+            padding: '33px'
+        },
         boxSesion: {
             width: '416px',
             height: '354px',
@@ -526,11 +544,15 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex'
         },
         bottomElement: {
-            padding: "40px !important",
+            padding: "40px 10% !important",
             // position: "absolute",
             right: "0",
             left: "0",
             bottom: "0",
+        },
+        bottomMargin: {
+            margin: '11.5%',
+            width: '77% !important',
         },
         paddingElement: {
             padding: "0px 20%",
@@ -556,6 +578,22 @@ export const getComunStyle = makeStyles((theme) => ({
             },
             marginTop: "5px",
         },
+        buttonAchs2: {
+            width: "100%",
+            background: "#FFFFFF",
+            border: "2px solid #007A33",
+            boxSizing: "border-box",
+            borderRadius: "0.71em",
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "1.125em",
+            lineHeight: "1.125em",
+            color: "#007A33",
+            textTransform: "inherit",
+            height: "3.5em",
+            marginTop: "5px",
+        },
         tituloCerrarSesion: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -563,7 +601,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "16px",
             lineHeight: "18px",
             margin: 'auto 15px',
-            // marginLeft: "150%",
+            // marginLeft: "40%",
             // marginTop: '22px',
             color: "#FFFFFF",
         },
@@ -583,17 +621,49 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: '28px',
             color: '#373737',
         },
+        textAchsContentWhite: {
+            fontFamily: "Catamaran",
+            fontSize: "16px",
+            fontStyle: "normal",
+            color: "#FFFFFF",
+        },
         textCenterDesk: {
             textAlign: "center !important",
         },
         displayDesk: {
             display: 'block'
         },
+        displayMobile: {
+            display: 'none'
+        },
+        containerHeader: {
+            alignSelf: 'center',
+            minInlineSize: 'fit-content',
+            transform: 'translate(70%)',
+        }
+    },
+    '@media (min-width: 830px)': {
+        containerHeader: {
+            alignSelf: 'center',
+            minInlineSize: 'fit-content',
+            transform: 'translate(100%)',
+        }
+    },
+    '@media (min-width: 980px)': {
+        containerHeader: {
+            alignSelf: 'center',
+            minInlineSize: 'fit-content',
+            transform: 'translate(140%)',
+        }
+    },
+    '@media (min-width: 1200px)': {
+        containerHeader: {
+            alignSelf: 'center',
+            minInlineSize: 'fit-content',
+            transform: 'translate(200%)',
+        }
+    },
 
-    },
-    textCenter: {
-        textAlign: "center !important",
-    },
     tituloTextbox: {
         letterSpacing: ".03em",
         fontSize: "1em",

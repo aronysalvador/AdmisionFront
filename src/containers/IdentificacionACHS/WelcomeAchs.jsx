@@ -32,7 +32,7 @@ const SessionAchs = (props) => {
   ];
 
   return (
-    <div className={comunStyle.rootWhite}>
+    <div className={[comunStyle.rootWhite, comunStyle.headerSesion]}>
       <div className={comunStyle.header}> 
       <Header
         dispatch={() => dispatch(logout())}
@@ -47,48 +47,46 @@ const SessionAchs = (props) => {
             {microsoftReducer.userMsal.iniciales}
           </Avatar>
         </div>
-        
         <div className={spaceStyle.space1} />
-        <div className={welcomeStyle.bienvenidoContainer}>
-          <Typography
-            variant="p"
-            component="p"
-            className={[
-              comunStyle.textAchsContent,
-              comunStyle.textCenter,
-            ]}
-          >
-            Hola,
-          </Typography>
-        </div>
 
-        <div className={welcomeStyle.bienvenidoContainer}>
-          <Typography
-            variant="p"
-            component="p"
-            className={[
-              comunStyle.textAchsContent,
-              comunStyle.textCenter,
-              welcomeStyle.bienvenidoAchs,
-            ]}
-          >
-            {microsoftReducer.userMsal.displayName}
-          </Typography>
+        <div className={welcomeStyle.marginBoxGreen}>
+          <div className={welcomeStyle.contentBlock}>
+            <Typography
+              variant="p"
+              component="p"
+              className={[
+                comunStyle.textAchsContent,
+                comunStyle.textAchsContentWhite,
+                comunStyle.textCenter,
+              ]}
+            >
+              Hola,
+            </Typography>
+            <Typography
+              variant="p"
+              component="p"
+              className={[
+                comunStyle.textAchsContent,
+                comunStyle.textAchsContentWhite,
+                comunStyle.textCenter,
+                welcomeStyle.bienvenidoAchs,
+              ]}
+            >
+              {microsoftReducer.userMsal.displayName}
+            </Typography>
+            <Typography
+              variant="p"
+              component="p"
+              className={[
+                comunStyle.textAchsContent,
+                comunStyle.textAchsContentWhite,
+                comunStyle.textCenter,
+              ]}
+            >
+              Admisionista
+            </Typography>
+          </div>
         </div>
-
-        <div>
-          <Typography
-            variant="p"
-            component="p"
-            className={[
-              comunStyle.textAchsContent,
-              comunStyle.textCenter,
-            ]}
-          >
-            Admisionista
-          </Typography>
-        </div>
-      
         <div className={welcomeStyle.marginStar}>
           <Button
             variant="contained"
@@ -100,33 +98,47 @@ const SessionAchs = (props) => {
           </Button>
         </div>
         <div className={spaceStyle.space1} />
-        <div className={welcomeStyle.boxCentroAlign} >
-          <div className={welcomeStyle.boxCentroAchs} 
-          style={{ cursor: 'pointer'}}
-          onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
-            <img
-              alt="Centro ACHS"
-              src="./static/hospital.png"
-              style={{ color: "#007A33" }}
-            />
-            <div className={comunStyle.textCenter}> { contenidoCentroAchs } </div>
-            <div className={welcomeStyle.textBoxAchs}>Centro</div>
-          </div>
-          <div className={welcomeStyle.boxCentroAchs}>
-            <img
-              alt="Tiempo Admisión Promedio"
-              src="./static/check.png"
-              style={{ width:"20px", height:"20px" }}
-            />
-            8 minutos
-            <div className={welcomeStyle.textBoxAchs}>Admisión promedio</div>
+        <div>
+          <div className={welcomeStyle.boxCentroAlign} >
+            <div className={welcomeStyle.boxCentroAchs} 
+            style={{ cursor: 'pointer'}}
+            onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
+              <img
+                alt="Centro ACHS"
+                src="./static/hospital.png"
+                style={{ color: "#007A33" }}
+              />
+              <div className={comunStyle.textCenter}> { contenidoCentroAchs } </div>
+              <div className={welcomeStyle.textBoxAchs}>Centro</div>
+            </div>
+            <div className={welcomeStyle.boxCentroAchs}>
+              <img
+                alt="Tiempo Admisión Promedio"
+                src="./static/check.png"
+                style={{ width:"20px", height:"20px" }}
+              />
+              8 minutos
+              <div className={welcomeStyle.textBoxAchs}>Admisión promedio</div>
+            </div>
           </div>
         </div>
         <div className={spaceStyle.space2} />
       </div>
       <div className={comunStyle.bottomElement}  
-      style={{padding:'16px 16px 33px 16px'}} >
-        <div>
+      style={{padding:'16px 16px 33px 16px', position: 'relative'}} >
+        <div className={comunStyle.boxDesk}>
+          <div className={comunStyle.displayDesk}>
+            <Typography
+              variant="p"
+              component="p"
+              className={[
+                comunStyle.subtitleBlack,
+                comunStyle.textCenter,
+              ]}
+            >
+              Comienza creando una nueva admisión
+            </Typography>
+          </div>
           <Button
             className={comunStyle.buttonAchs}
             variant="contained"
@@ -136,7 +148,7 @@ const SessionAchs = (props) => {
           </Button>
         </div>
         <div className={spaceStyle.space1} />
-        <div>
+        <div className={comunStyle.displayMobile}>
           <Button
             className={comunStyle.buttonAchs2}
             variant="contained"

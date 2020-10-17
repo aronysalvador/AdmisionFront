@@ -49,11 +49,12 @@ const useStyles = makeStyles((theme) => ({
         paper: {
             width: '100%',
             boxShadow: 'none',
-            background: "linear-gradient(180deg, #EAEAEA 60%, #F4F4F4 40%)",
+            background: 'linear-gradient(180deg, #EAEAEA 60%, #F4F4F4 40%)',
         },
         paperFix: {
             width: '100%',
             boxShadow: 'none',
+            background: '#F4F4F4',
         }
     }
 
