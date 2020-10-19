@@ -469,6 +469,7 @@ export const getComunStyle = makeStyles((theme) => ({
         displayDesk: {
             display: 'none'
         },
+
         displayMobile: {
             display: 'block'
         },
@@ -633,6 +634,9 @@ export const getComunStyle = makeStyles((theme) => ({
         displayDesk: {
             display: 'block'
         },
+        displayDeskFlex: {
+            display: 'flex'
+        },
         displayMobile: {
             display: 'none'
         },
@@ -642,6 +646,7 @@ export const getComunStyle = makeStyles((theme) => ({
             transform: 'translate(70%)',
         }
     },
+
     '@media (min-width: 830px)': {
         containerHeader: {
             alignSelf: 'center',

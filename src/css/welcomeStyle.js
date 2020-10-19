@@ -83,12 +83,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         lineHeight: "34px",
         color: "#007A33",
     },
-    titleContainer: {
-        padding: "0.5em 1.5em 0.5em 1.5em",
-        background: "#FFFFFF",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
-    },
+
     txtBegin: {
         textAlign: "center",
         fontFamily: "Catamaran",
@@ -96,7 +91,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontWeight: "bold",
         fontSize: "16px",
         lineHeight: "20px",
-        color: "#000000",
+        // color: "#000000",
         marginLeft: "20px",
     },
     subTitleBegin: {
@@ -130,15 +125,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "0.87em",
         textAlign: "center",
     },
-    divRow: {
-        display: "flex",
-        alignItems: "center",
-    },
-    divRowBottom: {
-        display: "flex",
-        alignItems: "center",
-        marginBottom: "20px",
-    },
+
     divRowBottom2: {
         display: "flex",
         alignItems: "center",
@@ -152,16 +139,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         height: "54px",
         verticalAlign: "middle",
     },
-    iconAlignIndicaciones: {
-        alignSelf: "flex-start",
-        display: "flex",
-    },
-    titleContainerCards: {
-        padding: "1.5em",
-        background: "#FFFFFF",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
-    },
+
     itemBegin: {
         marginLeft: "20px",
     },
@@ -254,6 +232,31 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             marginLeft: "auto",
             marginRight: "auto",
         },
+        titleContainer: {
+            padding: "0.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        titleContainerCards: {
+            padding: "1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        iconAlignIndicaciones: {
+            alignSelf: "flex-start",
+            display: "flex",
+        },
+        divRow: {
+            display: "flex",
+            alignItems: "center",
+        },
+        divRowBottom: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "20px",
+        },
     },
     '@media (min-width: 768px)': {
         backPosicion: {
@@ -282,7 +285,14 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             backgroundColor: "#016C2E !important",
             // width: "25.715em",
             // height: "32em",
-            padding: "10px 64px"
+            padding: "10px 64px",
+        },
+        backgroundBoxAchsDesk: {
+            backgroundColor: "#016C2E !important",
+            // width: "25.715em",
+            // height: "32em",
+            padding: "10px 64px",
+            color: "white !important"
         },
         marginBoxGreen: {
             display: "inline-flex",
@@ -291,7 +301,26 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         contentBlock: {
             display: 'block'
-        }
-
+        },
+        titleContainerCards: {
+            padding: "1.5em",
+            background: "#FFFFFF",
+            // boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        iconAlignIndicaciones: {
+            alignSelf: "flex-start",
+            // display: "flex",
+            textAlign: "center",
+        },
+        divRow: {
+            display: "block",
+            alignItems: "center",
+        },
+        divRowBottom: {
+            display: "block",
+            alignItems: "center",
+            marginBottom: "20px",
+        },
     }
 }));

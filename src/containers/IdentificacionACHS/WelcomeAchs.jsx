@@ -41,7 +41,8 @@ const SessionAchs = (props) => {
       />
       </div>
       <div className={welcomeStyle.backgroundBoxAchs}>
-
+      
+      <div className={comunStyle.displayDeskFlex}>
         <div className={welcomeStyle.avatarContainer}>
           <Avatar className={welcomeStyle.avatar}>
             {microsoftReducer.userMsal.iniciales}
@@ -122,7 +123,8 @@ const SessionAchs = (props) => {
             </div>
           </div>
         </div>
-        <div className={spaceStyle.space2} />
+      </div>
+      <div className={spaceStyle.space2} />
       </div>
       <div className={comunStyle.bottomElement}  
       style={{padding:'16px 16px 33px 16px', position: 'relative'}} >
