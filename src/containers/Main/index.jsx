@@ -79,6 +79,8 @@ import NoQuotes from "../AffiliateValidations/NoQuotes";
 import NoVigente from "../AffiliateValidations/NoVigente";
 import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 
+import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, microsoftReducer } = props;
@@ -550,6 +552,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <CategoriaOcupacional />
+            </Paper>
+          </div>
+        );
+      case 25.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TrabajadorIndependiente />
             </Paper>
           </div>
         );
