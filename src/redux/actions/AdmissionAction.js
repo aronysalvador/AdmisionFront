@@ -422,13 +422,13 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
         }
 
         const {siniestroID,EpisodioID} = data.content[0]        
-        dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0})) 
+        dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: data.status  })) 
 
       })
-      .catch((err) =>{ dispatch(handleSetStep(1002)); dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0}));  } );
+      .catch((err) =>{ dispatch(handleSetStep(1002)); dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500}));  } );
   } catch (error) {
     const { LogForm: {ID} } = getState();
-    dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0})); 
+    dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500})); 
     dispatch(handleSetStep(1002));
   }
 };
