@@ -464,7 +464,8 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'none'
         },
         header: {
-            display: 'none'
+            display: 'none',
+            width: '100%'
         },
         displayDesk: {
             display: 'none'
@@ -506,6 +507,7 @@ export const getComunStyle = makeStyles((theme) => ({
         boxDesk: {
             width: '60%', //'416px',
             maxWidth: '860px',
+            minWidth: '600px',
             // height: '354px',
             border: '0',
             background: 'white !important',
@@ -514,7 +516,8 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: 'center',
             margin: 'auto',
             // marginTop: '50px',
-            padding: '33px'
+            padding: '33px',
+            textAlign: 'center',
         },
         boxSesion: {
             width: '416px',
@@ -563,7 +566,7 @@ export const getComunStyle = makeStyles((theme) => ({
             bottom: "0",
         },
         buttonAchs: {
-            width: "100%",
+            width: "50%", //"100%",
             background: "#007A33",
             borderRadius: "0.71em",
             fontFamily: "Catamaran",
@@ -578,9 +581,10 @@ export const getComunStyle = makeStyles((theme) => ({
                 background: "#104F28",
             },
             marginTop: "5px",
+            minWidth: "260px"
         },
         buttonAchs2: {
-            width: "100%",
+            width: "50%", //"100%",
             background: "#FFFFFF",
             border: "2px solid #007A33",
             boxSizing: "border-box",
@@ -594,6 +598,7 @@ export const getComunStyle = makeStyles((theme) => ({
             textTransform: "inherit",
             height: "3.5em",
             marginTop: "5px",
+            minWidth: "260px"
         },
         tituloCerrarSesion: {
             fontFamily: "Catamaran",
@@ -622,6 +627,23 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: '28px',
             color: '#373737',
         },
+        titleBlack2: {
+            fontFamily: 'Catamaran',
+            fontStyle: 'normal',
+            fontWeight: 'bold',
+            fontSize: '40px',
+            lineHeight: '44px',
+            color: '#373737',
+        },
+        titleBlue: {
+            fontFamily: 'Catamaran',
+            fontStyle: 'normal',
+            fontWeight: 'bold',
+            fontSize: '20px',
+            lineHeight: '28px',
+            color: ' #00b2a9',
+            display: "contents",
+        },
         textAchsContentWhite: {
             fontFamily: "Catamaran",
             fontSize: "16px",
@@ -630,6 +652,11 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         textCenterDesk: {
             textAlign: "center !important",
+        },
+        titleCenterDesk: {
+            textAlign: "center !important",
+            position: "relative",
+            marginTop: "0px"
         },
         displayDesk: {
             display: 'block'
@@ -643,31 +670,32 @@ export const getComunStyle = makeStyles((theme) => ({
         containerHeader: {
             alignSelf: 'center',
             minInlineSize: 'fit-content',
-            transform: 'translate(70%)',
+            position: 'absolute',
+            right: '10%'
         }
     },
 
-    '@media (min-width: 830px)': {
-        containerHeader: {
-            alignSelf: 'center',
-            minInlineSize: 'fit-content',
-            transform: 'translate(100%)',
-        }
-    },
-    '@media (min-width: 980px)': {
-        containerHeader: {
-            alignSelf: 'center',
-            minInlineSize: 'fit-content',
-            transform: 'translate(140%)',
-        }
-    },
-    '@media (min-width: 1200px)': {
-        containerHeader: {
-            alignSelf: 'center',
-            minInlineSize: 'fit-content',
-            transform: 'translate(200%)',
-        }
-    },
+    // '@media (min-width: 830px)': {
+    //     containerHeader: {
+    //         alignSelf: 'center',
+    //         minInlineSize: 'fit-content',
+    //         transform: 'translate(100%)',
+    //     }
+    // },
+    // '@media (min-width: 980px)': {
+    //     containerHeader: {
+    //         alignSelf: 'center',
+    //         minInlineSize: 'fit-content',
+    //         transform: 'translate(140%)',
+    //     }
+    // },
+    // '@media (min-width: 1200px)': {
+    //     containerHeader: {
+    //         alignSelf: 'center',
+    //         minInlineSize: 'fit-content',
+    //         transform: 'translate(200%)',
+    //     }
+    // },
 
     tituloTextbox: {
         letterSpacing: ".03em",

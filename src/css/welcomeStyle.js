@@ -72,17 +72,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     beginContainer: {
         padding: "16px 16px 0 16px",
     },
-    textContainer: {
-        padding: "16px 0",
-    },
-    titleBegin: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "25px",
-        lineHeight: "34px",
-        color: "#007A33",
-    },
 
     txtBegin: {
         textAlign: "center",
@@ -93,6 +82,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         lineHeight: "20px",
         // color: "#000000",
         marginLeft: "20px",
+        verticalAlign: "super"
     },
     subTitleBegin: {
         fontFamily: "Catamaran",
@@ -140,9 +130,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         verticalAlign: "middle",
     },
 
-    itemBegin: {
-        marginLeft: "20px",
-    },
     itemText: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -252,12 +239,31 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             display: "flex",
             alignItems: "center",
         },
+        divRow2: {
+            display: "flex",
+            alignItems: "center",
+        },
         divRowBottom: {
             display: "flex",
             alignItems: "center",
             marginBottom: "20px",
         },
+        titleBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "25px",
+            lineHeight: "34px",
+            color: "#007A33",
+        },
+        textContainer: {
+            padding: "16px 0",
+        },
+        itemBegin: {
+            marginLeft: "20px",
+        },
     },
+
     '@media (min-width: 768px)': {
         backPosicion: {
             display: 'none',
@@ -312,15 +318,38 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             alignSelf: "flex-start",
             // display: "flex",
             textAlign: "center",
+            height: "40px"
         },
         divRow: {
             display: "block",
             alignItems: "center",
+            paddingBottom: "30px",
+        },
+        divRow2: {
+            display: "block",
+            alignItems: "center",
+            paddingBottom: "30px",
+            width: "33%"
         },
         divRowBottom: {
             display: "block",
             alignItems: "center",
             marginBottom: "20px",
+            width: "33%"
+        },
+        titleBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "32px",
+            lineHeight: "34px",
+            // color: "#007A33",
+        },
+        textContainer: {
+            paddingBottom: "10px",
+        },
+        itemBegin: {
+            marginLeft: "0px",
         },
     }
 }));

@@ -33,7 +33,7 @@ const SessionAchs = (props) => {
 
   return (
     <div className={[comunStyle.rootWhite, comunStyle.headerSesion]}>
-      <div className={comunStyle.header}> 
+      <div className={comunStyle.displayDesk}> 
       <Header
         dispatch={() => dispatch(logout())}
         userMsal={ microsoftReducer.userMsal }

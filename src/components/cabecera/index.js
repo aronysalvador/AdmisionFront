@@ -16,10 +16,17 @@ const Cabecera = (props) => {
                     <Typography variant="p" component="p" className={comunClass.tituloACHS}>
                     </Typography>
                 </div> 
-                <div  className={spaceStyle.space1} />
+                <div className={comunClass.displayMobile}>
+                    <div className={spaceStyle.space1} />
+                </div>
                 <div className={comunClass.buttonVolverContainerBarra}>
                     <Link style={{cursor: 'pointer'}} onClick={()=> dispatch()}>
-                        <ArrowBackIosIcon style={{ color: "#373737" }} />
+                        <div className={comunClass.displayMobile}>
+                            <ArrowBackIosIcon style={{ color: "#373737" }} />
+                        </div>
+                        <div className={comunClass.displayDesk}>
+                            <ArrowBackIosIcon style={{ color: "#fff" }} />
+                        </div>
                     </Link>
                 </div> 
                 <div className={comunClass.barraContainer}>

@@ -4,7 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import Link from '@material-ui/core/Link'
+// import Link from '@material-ui/core/Link'
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Indiciaciones from "../../components/Indicaciones";
@@ -22,10 +22,9 @@ const Start = (props) =>{
     const comunStyle = getComunStyle();
     const spaceStyle = getSpaceStyle();
 
-
     return(
         <div className={[comunStyle.rootBegin]}>
-            <div className={comunStyle.header}> 
+            <div className={comunStyle.displayDesk}> 
                 <Header
                     dispatch={() => dispatch(logout())}
                     userMsal={ microsoftReducer.userMsal }
@@ -34,25 +33,26 @@ const Start = (props) =>{
             </div>
             <div className={ welcomeStyle.backgroundBoxAchsDesk }>
                 <div className={welcomeStyle.beginContainer}>
-                    <Cabecera dispatch={() => dispatch(handleSetStep(1))} color="#373737" percentage={-1} noSpace={true} />
+                    <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} noSpace={true} />
+
                     <div className={[comunStyle.displayMobile]}>
                         <div className={[welcomeStyle.avatarContainerRight]}>
                             <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
                         </div>
-                        <div className={spaceStyle.space3} />
+                        <div className={spaceStyle.space6} />
                     </div>
-                    <div className={comunStyle.textCenterDesk}>
-                        <div className={welcomeStyle.textContainer}>
+                    <div className={comunStyle.titleCenterDesk}>
+                        <div className={welcomeStyle.textContainer} >
                             <Typography
                             variant="h1"
                             component="h1"
                             className={welcomeStyle.titleBegin}
                             >
-                                ¡Empecemos una nueva admisión!
+                                ¡Empecemos!
                             </Typography>
                         </div>
                         <div className={welcomeStyle.titleContainer}>
-                            <div className={welcomeStyle.divRow}>
+                            <div className={welcomeStyle.divRow} >
                                 <ThumbUpIcon />   
                                 <Typography
                                 variant="p"
@@ -77,6 +77,9 @@ const Start = (props) =>{
                         >
                         Por ahora ten en cuenta:
                     </Typography>
+                    <div className={comunStyle.displayDesk}>
+                        <div className={spaceStyle.space2} />
+                    </div>
                     <div className={comunStyle.boxDesk}>
                         <Indiciaciones
                             indicaciones={[
@@ -96,7 +99,7 @@ const Start = (props) =>{
                                     icono: "work.svg",
                                     textoPrimario: "Solicita los datos",
                                     textoSecundario: "",
-                                    clase: welcomeStyle.divRow,
+                                    clase: welcomeStyle.divRow2,
                                 },
                             ]}
                         />
@@ -114,14 +117,14 @@ const Start = (props) =>{
                         </div>
                     </div>
                 </div>
-                <div style={{padding: "10px 16px 0 16px"}} className={comunStyle.displayMobile}>
+                {/* <div style={{padding: "10px 16px 0 16px"}} className={comunStyle.displayMobile}>
                     <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent, welcomeStyle.terminos]} >
                         Al hacer click en empezar,  
                         <Link className={[comunStyle.textAchsContent, welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
                             aceptas nuestros  <span style={{textDecoration: 'underline'}}>Términos y condiciones</span>
                         </Link>
                     </Typography>
-                </div>
+                </div> */}
                 
             </div>            
         </div>

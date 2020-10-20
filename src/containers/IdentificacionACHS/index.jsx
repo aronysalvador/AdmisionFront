@@ -53,7 +53,7 @@ const Achs = () => {
 
   return (
     <div className={comunStyle.root}>
-      <div className={comunStyle.header}> 
+      <div className={comunStyle.displayDesk}> 
       <Header
         dispatch={() => dispatch(logout())}
         userMsal={userMsal}
@@ -63,6 +63,9 @@ const Achs = () => {
         <Cabecera dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
       </div>
       <div className={spaceStyle.space1} />
+      <div className={comunStyle.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
       <Typography className={[comunStyle.titleBlack, comunStyle.textCenterDesk]}>Te encuentras en:</Typography>
       <div className={spaceStyle.space2} />
 
