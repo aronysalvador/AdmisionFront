@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 const TrabajoActualContainer = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { percentage, ingresoTrabajoActual } = useSelector(
+  const { percentage, ingresoTrabajoActual, TrabajadorIndependiente } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
@@ -56,10 +56,12 @@ const TrabajoActualContainer = () => {
     return anios.indexOf(new Date(ingresoTrabajoActualValue).getFullYear());
   }
 
+  let back = TrabajadorIndependiente !== "" ? 25.1 : 25 ;
+
   return (
     <div className={root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(25))}
+        dispatch={() => dispatch(handleSetStep(back))}
         percentage={percentage}
       />
       <Typography className={titleBlack}>
