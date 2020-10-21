@@ -415,7 +415,7 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
           dispatch(updateForm("siniestroID", siniestroID));
           dispatch(handleSetStep(1001));
         }
-        if (data.status === 500) {
+        else{
           const mensajeErrorSAP = data.mensaje;
           dispatch(updateForm("mensajeErrorSAP", mensajeErrorSAP));
           dispatch(handleSetStep(1002));
