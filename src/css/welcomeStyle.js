@@ -6,13 +6,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "2em",
         fontWeight: "bold",
     },
-    bienvenidoAchs: {
-        fontSize: "25px",
-        fontWeight: "bold",
-    },
+
     boxCentroAlign: {
         display: "flex",
         justifyContent: "space-between",
+        minWidth: "305px",
     },
     boxCentroAchs: {
         display: "inline-flex",
@@ -20,6 +18,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         alignItems: "center",
         flexDirection: "column",
         width: "45%",
+        minWidth: "146px",
         height: "116px", //"90px",
         border: "2px solid #007A33",
         borderSpacing: "2px",
@@ -263,6 +262,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         itemBegin: {
             marginLeft: "20px",
         },
+        bienvenidoAchs: {
+            fontSize: "25px",
+            fontWeight: "bold",
+        },
     },
 
     '@media (min-width: 768px)': {
@@ -293,7 +296,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             backgroundColor: "#016C2E !important",
             // width: "25.715em",
             // height: "32em",
-            padding: "10px 10%",
+            padding: "64px 5%",
         },
         backgroundBoxAchsDesk: {
             backgroundColor: "#016C2E !important",
@@ -354,7 +357,19 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         boxCentroAlignDesk: {
             position: 'absolute',
-            right: '10%'
+            right: '5%'
         },
-    }
+        bienvenidoAchs: {
+            fontSize: "20px",
+            fontWeight: "bold",
+        },
+
+    },
+
+    '@media (min-width: 860px)': {
+        bienvenidoAchs: {
+            fontSize: "25px",
+            fontWeight: "bold",
+        },
+    },
 }));

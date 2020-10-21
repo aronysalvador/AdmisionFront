@@ -27,9 +27,12 @@ const Identification = (props) => {
         // step={1}
       />
     </div>
-    <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
+    <div className={comunClass.beginContainerDesk}>
+      <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
+    </div>
+    
     <div className={comunClass.displayDesk}>
-      <div className={ comunClass.textCenterDesk } style={{padding: "24px"}}>
+      <div className={ comunClass.titlePrimaryDesk }>
         <Grid component="span" className={comunClass.textPrimaryDesk}>
           <Typography variant="p" component="p" className={comunClass.titleBlack2}>
             Empecemos completando algunos datos 

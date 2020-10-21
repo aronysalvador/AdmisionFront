@@ -549,22 +549,19 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex'
         },
         bottomElement: {
-            padding: "40px 10% !important",
-            // position: "absolute",
-            right: "0",
-            left: "0",
-            bottom: "0",
+            padding: "40px 0",
+            textAlign: "center",
         },
-        bottomMargin: {
-            margin: '11.5%',
-            width: '77% !important',
-        },
+        // bottomMargin: {
+        //     margin: '11.5%',
+        //     width: '77% !important',
+        // },
         paddingElement: {
-            padding: "0px 20%",
-            // position: "absolute",
-            right: "0",
-            left: "0",
-            bottom: "0",
+            // padding: "0px 20%",
+            // // position: "absolute",
+            // right: "0",
+            // left: "0",
+            // bottom: "0",
         },
         buttonAchs: {
             width: "50%", //"100%",
@@ -582,7 +579,8 @@ export const getComunStyle = makeStyles((theme) => ({
                 background: "#104F28",
             },
             marginTop: "5px",
-            minWidth: "260px"
+            minWidth: "300px",
+            maxWidth: "328px",
         },
         buttonAchs2: {
             width: "50%", //"100%",
@@ -599,7 +597,8 @@ export const getComunStyle = makeStyles((theme) => ({
             textTransform: "inherit",
             height: "3.5em",
             marginTop: "5px",
-            minWidth: "260px"
+            minWidth: "300px",
+            maxWidth: "328px",
         },
         tituloCerrarSesion: {
             fontFamily: "Catamaran",
@@ -695,10 +694,42 @@ export const getComunStyle = makeStyles((theme) => ({
             right: '-3%',
             width: '301px',
             marginBottom: '32px'
+        },
+        containerTextBox: {
+            width: '328px',
+            textAlign: 'left',
+            margin: 'auto',
+        },
+        beginContainerDesk: {
+            width: '90%',
+            margin: 'auto',
+        },
+        barraContainer: {
+            position: 'relative',
+            width: '90%',
+            right: '-70px',
+            marginTop: '-20px',
+        },
+        titlePrimaryDesk: {
+            width: '60%',
+            margin: 'auto',
+            marginTop: '30px',
+            marginBottom: '30px'
         }
     },
-
-    tituloTextbox: {
+    '@media (min-width: 860px)': {
+        beginContainerDesk: {
+            width: '70%',
+            margin: 'auto',
+        },
+    },
+    '@media (min-width: 1100px)': {
+        beginContainerDesk: {
+            width: '60%',
+            margin: 'auto',
+        },
+    },
+    tituloTextBox: {
         letterSpacing: ".03em",
         fontSize: "1em",
         fontWeight: "normal",

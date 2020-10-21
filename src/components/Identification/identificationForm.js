@@ -27,56 +27,69 @@ const form = (props) => {
   const spaceStyle = getSpaceStyle();
 
   return (
-
     <form onSubmit={handleSubmit}>
-      <div>
-        <Typography
-          variant="h1"
-          component="h1"
-          className={classesComun.titleBlack}
-        >
-          Ingresa el           
-              <Grid component="span"  className={classesComun.titleBlue} style={{display: "contents"}}>
-                  &nbsp;RUT
-              </Grid>
-              &nbsp;del paciente{" "}
-        </Typography>{" "}
-      </div>{" "}
-      <div className={spaceStyle.space2} />{" "}
-
-
-      <Typography className={classesComun.tituloTextbox}>
-        RUT
-      </Typography>
-      <div>
-        <TextField
-          id="rut"
-          value={values.rut}
-          onChange={(e)=>{  if(e.currentTarget.value.length > 1){ e.currentTarget.value=formateaRut(e.currentTarget.value); handleChange(e) }else{ handleChange(e) } } }
-          
-          onBlur={handleBlur}
-          helperText={touched.rut ? errors.rut : ""}
-          error={touched.rut && Boolean(errors.rut)}
-          className={classesComun.borderBox}
-          margin="dense"
-          variant="outlined"
-          fullWidth
-          autoComplete="off"
-          type="text"
-        />
-      </div>{" "}
-      <div className={spaceStyle.space12} />{" "}
-      <div className={spaceStyle.space4} />{" "}
-      <div className={classesComun.bottomElement}>
-        <Button
-          className={classesComun.buttonAchs}
-          variant="contained"
-          disabled={isSubmitting}
-          type="submit"
-        >
-          Continuar{" "}
-        </Button>{" "}
-      </div>{" "}
+      <div className={classesComun.displayDesk}>
+        <div className={ classesComun.textCenterDesk } style={{padding: "24px"}}>
+          <Grid component="span" className={classesComun.textPrimaryDesk}>
+            <Typography variant="p" component="p" className={classesComun.titleBlack2}>
+              Empecemos completando algunos datos 
+            </Typography>
+          </Grid>
+          <Grid component="span">
+            <img alt="identify" src="static/identify.svg" />
+          </Grid>
+        </div>
+      </div>
+      <div className={classesComun.boxDesk}>
+        <div>
+          <Typography
+            variant="h1"
+            component="h1"
+            className={[classesComun.titleBlack, classesComun.subtitleBlack]}
+          >
+            Ingresa el           
+            <Grid component="span"  className={classesComun.titleBlue} style={{display: "contents"}}>
+              &nbsp;RUT
+            </Grid>
+            &nbsp;del paciente{" "}
+          </Typography>{" "}
+        </div>{" "}
+        <div className={spaceStyle.space2} />{" "}
+        <div className={classesComun.containerTextBox}>
+          <Typography className={classesComun.tituloTextBox}>
+            RUT
+          </Typography>
+          <div>
+            <TextField
+              id="rut"
+              value={values.rut}
+              onChange={(e)=>{  if(e.currentTarget.value.length > 1){ e.currentTarget.value=formateaRut(e.currentTarget.value); handleChange(e) }else{ handleChange(e) } } }
+              
+              onBlur={handleBlur}
+              helperText={touched.rut ? errors.rut : ""}
+              error={touched.rut && Boolean(errors.rut)}
+              className={classesComun.borderBox}
+              margin="dense"
+              variant="outlined"
+              fullWidth
+              autoComplete="off"
+              type="text"
+            />
+          </div>{" "}
+        </div>
+        <div className={spaceStyle.space12} />{" "}
+        <div className={spaceStyle.space4} />{" "}
+        <div className={classesComun.bottomElement}>
+          <Button
+            className={classesComun.buttonAchs}
+            variant="contained"
+            disabled={isSubmitting}
+            type="submit"
+          >
+            Continuar{" "}
+          </Button>{" "}
+        </div>{" "}
+      </div>
     </form>
   );
 };

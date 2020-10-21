@@ -77,7 +77,7 @@ const Achs = () => {
           </Typography>
           <div className={spaceStyle.space2} />
         </center>
-        <div className={comunStyle.paddingElement}>
+        <div className={comunStyle.containerTextBox}>
           <Typography className={comunStyle.tituloTextbox} variant="subtitle2">
             Centro
           </Typography>

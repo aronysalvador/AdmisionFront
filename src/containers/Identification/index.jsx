@@ -6,9 +6,11 @@ import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useEffect } from "react";
 import { CLEAR_STATE } from "../../redux/types/addmissionFormType";
+import Header from "../../components/header/index";
+import { logout } from "../../redux/actions/microsoft.action";
 
 const Identification = (props) => {
-  const { dispatch, addmissionForm } = props;
+  const { dispatch, addmissionForm, microsoftReducer } = props;
 
   const initFn = useCallback(() => {
     dispatch({ type: CLEAR_STATE });
@@ -23,6 +25,13 @@ const Identification = (props) => {
 
   return (
     <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          dispatch={() => dispatch(logout())}
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
       <Cabecera
         dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
         percentage={addmissionForm.percentage}
@@ -33,9 +42,10 @@ const Identification = (props) => {
     </div>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(Identification);
