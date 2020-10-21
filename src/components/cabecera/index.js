@@ -31,7 +31,9 @@ const Cabecera = (props) => {
                             <ArrowBackIosIcon style={{ color: "#373737" }} />
                         </div>
                         <div className={comunClass.displayDesk}>
-                            <ArrowBackIosIcon style={{ color: "#fff" }} />
+                            <ArrowBackIosIcon style={percentage === -1 ? { color: "#fff" } : { color: "#373737" }}
+                                // step === 1.1 
+                            />
                         </div>
                     </Link>
                 </div> 

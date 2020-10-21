@@ -8,16 +8,17 @@ export const getSpaceStyle = makeStyles((theme) => ({
     space2: {
         height: '2.5em',
     },
+    space3: {
+        height: '3.75em',
+    },
+    space4: {
+        height: '5em',
+    },
+    space5: {
+        height: '6.25em',
+    },
+
     '@media (max-width: 767px)': {
-        space3: {
-            height: '3.75em',
-        },
-        space4: {
-            height: '5em',
-        },
-        space5: {
-            height: '6.25em',
-        },
         space6: {
             height: '7.5em',
         },
