@@ -678,10 +678,14 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         textPrimaryDesk: {
             display: "inline-block",
-            width: "65%",
+            width: "73%", //"65%",
             textAlign: "left",
             maxWidth: "460px",
             verticalAlign: "top"
+        },
+        imgPrimaryDesk: {
+            position: "relative",
+            right: "-10%",
         },
         alignBtnSiniesterLeft: {
             position: 'relative',
@@ -711,7 +715,7 @@ export const getComunStyle = makeStyles((theme) => ({
             marginTop: '-20px',
         },
         titlePrimaryDesk: {
-            width: '60%',
+            width: '90%',
             margin: 'auto',
             marginTop: '30px',
             marginBottom: '30px'
@@ -719,16 +723,76 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     '@media (min-width: 860px)': {
         beginContainerDesk: {
-            width: '70%',
+            width: '75%',
             margin: 'auto',
         },
+        titlePrimaryDesk: {
+            width: '75%',
+            margin: 'auto',
+            marginTop: '30px',
+            marginBottom: '30px'
+        },
+        imgPrimaryDesk: {
+            position: "relative",
+            right: "-15%",
+        },
+
     },
-    '@media (min-width: 1100px)': {
+    '@media (min-width: 1060px)': {
         beginContainerDesk: {
             width: '60%',
             margin: 'auto',
         },
+        titlePrimaryDesk: {
+            width: '60%',
+            margin: 'auto',
+            marginTop: '30px',
+            marginBottom: '30px'
+        },
+        imgPrimaryDesk: {
+            position: "relative",
+            right: "-18%",
+        },
     },
+    '@media (min-width: 1280px)': {
+        imgPrimaryDesk: {
+            position: "relative",
+            right: "-25%",
+        },
+    },
+    '@media (min-width: 1540px)': {
+        beginContainerDesk: {
+            width: '50%',
+            margin: 'auto',
+        },
+        titlePrimaryDesk: {
+            width: '50%',
+            margin: 'auto',
+            marginTop: '30px',
+            marginBottom: '30px'
+        },
+        imgPrimaryDesk: {
+            position: "relative",
+            right: "-30%",
+        },
+    },
+    '@media (min-width: 1800px)': {
+        beginContainerDesk: {
+            width: '40%',
+            margin: 'auto',
+        },
+        titlePrimaryDesk: {
+            width: '40%',
+            margin: 'auto',
+            marginTop: '30px',
+            marginBottom: '30px'
+        },
+        imgPrimaryDesk: {
+            position: "relative",
+            right: "-35%",
+        },
+    },
+
     tituloTextBox: {
         letterSpacing: ".03em",
         fontSize: "1em",

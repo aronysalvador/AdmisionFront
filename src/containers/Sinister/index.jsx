@@ -38,7 +38,7 @@ const Identification = (props) => {
             Empecemos completando algunos datos 
           </Typography>
         </Grid>
-        <Grid component="span">
+        <Grid component="span" className={comunClass.imgPrimaryDesk}>
           <img alt="identify" src="static/identify.svg" />
         </Grid>
       </div>
