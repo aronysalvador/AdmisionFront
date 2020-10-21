@@ -196,6 +196,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
 
     '@media (max-width: 767px)': {
+        /* For mobile phones */
         backPosicion: {
             marginLeft: "0.5em",
         },
@@ -265,6 +266,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
 
     '@media (min-width: 768px)': {
+        /* Medium devices (landscape tablets, 768px and up) */
         backPosicion: {
             display: 'none',
         },
@@ -282,8 +284,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         avatarContainer: {
             display: "inline-flex",
-            justifyContent: "end",
-            margin: 'auto',
+            // justifyContent: "end",
+            // margin: 'auto',
             alignItems: 'center',
             color: '#FFFFFF'
         },
@@ -291,7 +293,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             backgroundColor: "#016C2E !important",
             // width: "25.715em",
             // height: "32em",
-            padding: "10px 64px",
+            padding: "10px 10%",
         },
         backgroundBoxAchsDesk: {
             backgroundColor: "#016C2E !important",
@@ -301,9 +303,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             color: "white !important"
         },
         marginBoxGreen: {
-            display: "inline-flex",
-            // marginLeft: "auto",
-            // marginRight: "auto",
+            display: 'grid',
+            margin: 'auto 23px'
         },
         contentBlock: {
             display: 'block'
@@ -350,6 +351,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         itemBegin: {
             marginLeft: "0px",
+        },
+        boxCentroAlignDesk: {
+            position: 'absolute',
+            right: '10%'
         },
     }
 }));

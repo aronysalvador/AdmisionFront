@@ -13,103 +13,103 @@ import { logout } from "../../redux/actions/microsoft.action";
 
 const Identification = (props) => {
 
-    const { dispatch, addmissionForm, microsoftReducer } = props
-    const classes = siniestroStyle()
-    const comunClass = getComunStyle()
-    const spaceStyle = getSpaceStyle()
-    const [buttonOver, setButtonOver] = useState(false)
+  const { dispatch, addmissionForm, microsoftReducer } = props
+  const classes = siniestroStyle()
+  const comunClass = getComunStyle()
+  const spaceStyle = getSpaceStyle()
+  const [buttonOver, setButtonOver] = useState(false)
 
-    return (<div className={comunClass.root}>
-                <div className={comunClass.displayDesk}> 
-                    <Header
-                        dispatch={() => dispatch(logout())}
-                        userMsal={ microsoftReducer.userMsal }
-                        // step={1}
-                    />
-                </div>
-                <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
-                <div className={comunClass.displayDesk}>
-                    <div className={ comunClass.textCenterDesk } style={{padding: "24px"}}>
-                        <Grid component="span" style={{display: "inline-block", width: "50%", textAlign: "left", maxWidth: "460px", verticalAlign: "top"}}>
-                            <Typography variant="p" component="p" className={comunClass.titleBlack2}>
-                                Empecemos completando algunos datos 
-                            </Typography>
-                        </Grid>
-                        <Grid component="span">
-                            <img alt="identify" src="static/identify.svg" />
-                        </Grid>
-                    </div>
-                </div>
-                <div className={comunClass.boxDesk}>
-                    <div>
-                        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.subtitleBlack]}>
-                        Selecciona la opción que 
-                            <Grid component="span"  className={comunClass.titleBlue}>
-                                &nbsp;mejor describa lo que le sucedió
-                            </Grid>
-                        </Typography>
-                    </div>
-                    <div className={spaceStyle.space2} />
-                    <div>
-                        <Button className={classes.button} variant="contained" onClick={()=>{ 
-                            var tipo = { Id:1, Descripcion: "Accidente Trabajo" }
-                            dispatch(updateForm("tipoSiniestro", tipo));
-                            dispatch(handleSetStep(3));   
-                        }}
-                        onMouseOver={() =>{
-                            setButtonOver(true)
-                        }}
-                        onMouseOut={() =>{
-                            setButtonOver(false)
-                        }}
-                        >
-                            <img alt="Accidente de Trabajo" src={!buttonOver ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
-                            
-                            <div>Accidente de trabajo <br/>
-                            <span className={classes.textButton}>En su lugar de trabajo</span>
-                            </div>
-
-                            {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
-                            
-                        </Button>
-                    </div>
-                    <div  className={spaceStyle.space1} />
-                    <div>
-                        <Button className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
-                            <div><img alt="Accidente de Trayecto" src="./static/trayectoCard.png" className={classes.imgButton}/></div>
-                            <div>Accidente de trayecto <br/>
-                            <span className={classes.textButton}>Entre el trabajo y su hogar</span>
-                            </div>
-                        </Button>
-                    </div>
-                    <div  className={spaceStyle.space1} />
-                    <div>
-                        <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
-                            <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
-                            <div>Enfermedad Profesional <br/>
-                                <span className={classes.textButton}>A causa del ejercicio profesional</span>
-                            </div>
-                        </Button>
-                    </div>  
-                    <div  className={spaceStyle.space1} />
-                    <div>
-                        <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
-                            <div><img alt="Licencia Rechazada" src="./static/licenciaCard.png" className={classes.imgButton} /></div>
-                            <div>Licencia Rechazada <br/>
-                                <span className={classes.textButton}>Por Isapre o Fonasa</span>
-                            </div>
-                        </Button>
-                    </div>  
-                </div>
-
+  return (<div className={comunClass.root}>
+    <div className={comunClass.displayDesk}> 
+      <Header
+        dispatch={() => dispatch(logout())}
+        userMsal={ microsoftReducer.userMsal }
+        // step={1}
+      />
+    </div>
+    <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
+    <div className={comunClass.displayDesk}>
+      <div className={ comunClass.textCenterDesk } style={{padding: "24px"}}>
+        <Grid component="span" className={comunClass.textPrimaryDesk}>
+          <Typography variant="p" component="p" className={comunClass.titleBlack2}>
+            Empecemos completando algunos datos 
+          </Typography>
+        </Grid>
+        <Grid component="span">
+          <img alt="identify" src="static/identify.svg" />
+        </Grid>
+      </div>
+    </div>
+    <div className={comunClass.boxDesk}>
+      <div>
+        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.subtitleBlack]}>
+          Selecciona la opción que 
+          <Grid component="span"  className={comunClass.titleBlue}>
+            &nbsp;mejor describa lo que le sucedió
+          </Grid>
+        </Typography>
+      </div>
+      <div className={spaceStyle.space2} />
+      <div className={comunClass.displayDeskInline}>
+        <div className={comunClass.alignBtnSiniesterLeft}>
+          <Button className={classes.button} variant="contained" onClick={()=>{ 
+            var tipo = { Id:1, Descripcion: "Accidente Trabajo" }
+            dispatch(updateForm("tipoSiniestro", tipo));
+            dispatch(handleSetStep(3));   
+            }}
+            onMouseOver={() =>{
+              setButtonOver(true)
+            }}
+            onMouseOut={() =>{
+              setButtonOver(false)
+            }}
+          >
+            <img alt="Accidente de Trabajo" src={!buttonOver ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
+            <div>Accidente de trabajo <br/>
+                <span className={classes.textButton}>En su lugar de trabajo</span>
             </div>
-        );
-    }
+            {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+          </Button>
+        </div>
+        <div  className={spaceStyle.space1} />
+        <div className={comunClass.alignBtnSiniesterRight}>
+          <Button className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
+            <div><img alt="Accidente de Trayecto" src="./static/trayectoCard.png" className={classes.imgButton}/></div>
+            <div>Accidente de trayecto <br/>
+              <span className={classes.textButton}>Entre el trabajo y su hogar</span>
+            </div>
+          </Button>
+        </div>
+        <div className={spaceStyle.space1} />
+      </div>
+      <div className={comunClass.displayDeskInline}>
+        <div className={comunClass.alignBtnSiniesterLeft}>
+          <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
+                <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
+                <div>Enfermedad Profesional <br/>
+                    <span className={classes.textButton}>A causa del ejercicio profesional</span>
+                </div>
+            </Button>
+        </div>  
+        <div  className={spaceStyle.space1} />
+        <div className={comunClass.alignBtnSiniesterRight}>
+          <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
+            <div><img alt="Licencia Rechazada" src="./static/licenciaCard.png" className={classes.imgButton} /></div>
+            <div>Licencia Rechazada <br/>
+              <span className={classes.textButton}>Por Isapre o Fonasa</span>
+            </div>
+          </Button>
+        </div> 
+      </div>
+    </div>
+  </div>
+  );
+}
 
 const mapStateToProps = ({ addmissionForm,  microsoftReducer}) => {
-    return {
-        addmissionForm : addmissionForm,
-        microsoftReducer: microsoftReducer
-    }
+  return {
+    addmissionForm : addmissionForm,
+    microsoftReducer: microsoftReducer
+  }
 }
 export default connect(mapStateToProps)(Identification);

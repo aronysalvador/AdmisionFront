@@ -59,6 +59,7 @@ const Session = (props) => {
           >
             <Button
               className={comunStyle.buttonAchs}
+              style={{width: '100%'}}
               variant="contained"
               onClick={() => dispatch(login(["user.read"]))}
             >

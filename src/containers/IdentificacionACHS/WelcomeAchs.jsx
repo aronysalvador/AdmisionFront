@@ -87,19 +87,20 @@ const SessionAchs = (props) => {
               Admisionista
             </Typography>
           </div>
+          <div className={welcomeStyle.marginStar}>
+            <Button
+              variant="contained"
+              size="small"
+              className={[classes.button, welcomeStyle.starIcon]}
+              startIcon={<StarIcon className={welcomeStyle.star} />}
+            >
+              4.9
+            </Button>
+          </div>
         </div>
-        <div className={welcomeStyle.marginStar}>
-          <Button
-            variant="contained"
-            size="small"
-            className={[classes.button, welcomeStyle.starIcon]}
-            startIcon={<StarIcon className={welcomeStyle.star} />}
-          >
-            4.9
-          </Button>
-        </div>
+        
         <div className={spaceStyle.space1} />
-        <div>
+        <div className={welcomeStyle.boxCentroAlignDesk}>
           <div className={welcomeStyle.boxCentroAlign} >
             <div className={welcomeStyle.boxCentroAchs} 
             style={{ cursor: 'pointer'}}

@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export const getComunStyle = makeStyles((theme) => ({
 
     '@media (max-width: 767px)': {
+        /* For mobile phones */
         // CONTAINERS
         rootContainer: {
             position: "relative",
@@ -507,7 +508,7 @@ export const getComunStyle = makeStyles((theme) => ({
         boxDesk: {
             width: '60%', //'416px',
             maxWidth: '860px',
-            minWidth: '600px',
+            minWidth: '700px',
             // height: '354px',
             border: '0',
             background: 'white !important',
@@ -664,6 +665,9 @@ export const getComunStyle = makeStyles((theme) => ({
         displayDeskFlex: {
             display: 'flex'
         },
+        displayDeskInline: {
+            display: 'inline-flex'
+        },
         displayMobile: {
             display: 'none'
         },
@@ -672,30 +676,27 @@ export const getComunStyle = makeStyles((theme) => ({
             minInlineSize: 'fit-content',
             position: 'absolute',
             right: '10%'
+        },
+        textPrimaryDesk: {
+            display: "inline-block",
+            width: "65%",
+            textAlign: "left",
+            maxWidth: "460px",
+            verticalAlign: "top"
+        },
+        alignBtnSiniesterLeft: {
+            position: 'relative',
+            right: '3%',
+            width: '301px',
+            marginBottom: '32px'
+        },
+        alignBtnSiniesterRight: {
+            position: 'relative',
+            right: '-3%',
+            width: '301px',
+            marginBottom: '32px'
         }
     },
-
-    // '@media (min-width: 830px)': {
-    //     containerHeader: {
-    //         alignSelf: 'center',
-    //         minInlineSize: 'fit-content',
-    //         transform: 'translate(100%)',
-    //     }
-    // },
-    // '@media (min-width: 980px)': {
-    //     containerHeader: {
-    //         alignSelf: 'center',
-    //         minInlineSize: 'fit-content',
-    //         transform: 'translate(140%)',
-    //     }
-    // },
-    // '@media (min-width: 1200px)': {
-    //     containerHeader: {
-    //         alignSelf: 'center',
-    //         minInlineSize: 'fit-content',
-    //         transform: 'translate(200%)',
-    //     }
-    // },
 
     tituloTextbox: {
         letterSpacing: ".03em",
