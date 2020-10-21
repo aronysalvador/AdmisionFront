@@ -32,10 +32,12 @@ const Identification = (props) => {
           // step={1}
         />
       </div>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
-        percentage={addmissionForm.percentage}
-      />
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
+          percentage={addmissionForm.percentage}
+        />
+      </div>
       <div>
         <IdentificationForm  />
       </div>
