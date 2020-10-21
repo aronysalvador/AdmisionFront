@@ -11,10 +11,12 @@ import Button from "@material-ui/core/Button";
 import { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
+import Header from "../../components/header/index";
+import { logout } from "../../redux/actions/microsoft.action";
 
 
 const PersonalData = (props) => {
-  const { dispatch, addmissionForm } = props;
+  const { dispatch, addmissionForm, microsoftReducer } = props;
   const comunClass = getComunStyle();
   //const spaceStyle = getSpaceStyle();
 
@@ -27,23 +29,17 @@ const PersonalData = (props) => {
   // ];
   const contenidoDireccionEmpresa = [Format.formatizar(addmissionForm.DireccionEmpresa)];
   const contenidoRazonSocialForm = [addmissionForm.razonSocial ? Format.formatizar(addmissionForm.razonSocial.name) : null];
-
   const contenidoRutEmpresa = [addmissionForm.rutEmpresa];
-
   const tituloDireccion = "Dirección particular";
   const contenidoDireccion = [Format.formatizar(addmissionForm.direccionParticular)];
-
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
-
   const [loading, setLoading] = useState(false)
 
   const handleNext = () => {
-
     setLoading(true)
-
     const {
       razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,
       rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
@@ -62,17 +58,26 @@ const PersonalData = (props) => {
       if(rut && rutEmpresa && SucursalEmpresaObjeto){
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
       }else{
-         dispatch(handleSetStep(500));
+        dispatch(handleSetStep(500));
       }
     }
   };
 
   return (
     <div className={comunClass.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(3))}
-        percentage={addmissionForm.percentage}
-      />
+      <div className={comunClass.displayDesk}> 
+        <Header
+          dispatch={() => dispatch(logout())}
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(3))}
+          percentage={addmissionForm.percentage}
+        />
+      </div>
       <div>
         <Typography variant="p" component="p" className={comunClass.titleBlack}>
           Empieza
@@ -81,45 +86,54 @@ const PersonalData = (props) => {
           </Grid>           
           {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
         </Typography>
+      
+        <div className={comunClass.displayDesk}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" />
+          </Grid>
+        </div>
       </div>
-      {/* <div className={spaceStyle.space1} /> */}
-      <BoxEmpresa
-        contenidoDireccionEmpresa={contenidoDireccionEmpresa}
-        contenidoRazonSocialForm={contenidoRazonSocialForm}
-        contenidoRutEmpresa={contenidoRutEmpresa}
-        titulo={tituloEmpresa}
-        step={5.4} />
-      {/* <div className={spaceStyle.spaceMin1} /> */}
-      <BoxACHS
-        titulo={tituloTelefono}
-        contenido={contenidoTelefono}
-        step={5.3}
-      />
-      {/* <div className={spaceStyle.spaceMin1} /> */}
-      <BoxACHS
-        titulo={tituloDireccion}
-        contenido={contenidoDireccion}
-        step={5.2}
-      />
-      {/* <div className={spaceStyle.spaceMin1} /> */}
+      <div className={comunClass.boxDesk}>
+        {/* <div className={spaceStyle.space1} /> */}
+        <BoxEmpresa
+          contenidoDireccionEmpresa={contenidoDireccionEmpresa}
+          contenidoRazonSocialForm={contenidoRazonSocialForm}
+          contenidoRutEmpresa={contenidoRutEmpresa}
+          titulo={tituloEmpresa}
+          step={5.4} />
+        {/* <div className={spaceStyle.spaceMin1} /> */}
+        <BoxACHS
+          titulo={tituloTelefono}
+          contenido={contenidoTelefono}
+          step={5.3}
+        />
+        {/* <div className={spaceStyle.spaceMin1} /> */}
+        <BoxACHS
+          titulo={tituloDireccion}
+          contenido={contenidoDireccion}
+          step={5.2}
+        />
+        {/* <div className={spaceStyle.spaceMin1} /> */}
 
-      <div className={comunClass.bottomElement}>
-        <Button
-          className={comunClass.buttonAchs}
-          //variant="contained"
-          disabled={loading}
-          onClick={() => handleNext()}
-        >
-          Sí, es correcta
-        </Button>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            //variant="contained"
+            disabled={loading}
+            onClick={() => handleNext()}
+          >
+            Sí, es correcta
+          </Button>
+        </div>
       </div>
     </div>
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer, microsoftReducer
   };
 }
 
