@@ -686,7 +686,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '36px',
         lineHeight: '44px',
         color: '#00b2a9',
-    },
+      },
       textAchsContentWhite: {
           fontFamily: "Catamaran",
           fontSize: "16px",
@@ -787,6 +787,23 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: "28px",
         alignItems: "center",
         color: "#081C15",
+      },
+      siniesterList: {
+        display: 'flow-root',
+        overflow: 'auto',
+        height: '19em',
+        '&::-webkit-scrollbar': {
+          width: 8,
+        },
+        '&::-webkit-scrollbar-track': {
+          boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+          webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: 'rgba(0,0,0,.2)',
+          outline: '0px solid slategrey',
+          borderRadius: 4,
+        },
       },
   },
 
