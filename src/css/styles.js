@@ -55,7 +55,14 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
             boxShadow: 'none',
             background: '#F4F4F4',
-        }
+        },
+        paperNoColor: {
+            width: '100%',
+            boxShadow: 'none',
+            // marginTop: '0.5em',
+            // padding: '1.145em', //'0.5em 0.5em 1em 0.5em',
+            backgroundColor: "#373737",
+        },
     }
 
 

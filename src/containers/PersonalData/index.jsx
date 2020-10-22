@@ -95,7 +95,7 @@ const PersonalData = (props) => {
           </Grid>
         </div>
       </div>
-      <div className={comunClass.boxDesk} style={{width:'100%'}}>
+      <div className={comunClass.boxDesk} style={{width:'90%'}}>
         {/* <div className={spaceStyle.space1} /> */}
         <BoxEmpresa
           contenidoDireccionEmpresa={contenidoDireccionEmpresa}
