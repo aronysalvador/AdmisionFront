@@ -29,13 +29,13 @@ const form = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={classesComun.displayDesk}>
-        <div className={ classesComun.textCenterDesk } style={{padding: "24px"}}>
+        <div className={classesComun.titlePrimaryDesk} >
           <Grid component="span" className={classesComun.textPrimaryDesk}>
             <Typography variant="p" component="p" className={classesComun.titleBlack2}>
-              Empecemos completando algunos datos 
+              Empecemos completando <br /> algunos datos 
             </Typography>
           </Grid>
-          <Grid component="span">
+          <Grid component="span" className={classesComun.imgPrimaryDesk}>
             <img alt="identify" src="static/identify.svg" />
           </Grid>
         </div>
@@ -89,6 +89,9 @@ const form = (props) => {
             Continuar{" "}
           </Button>{" "}
         </div>{" "}
+      </div>
+      <div className={classesComun.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </form>
   );

@@ -13,28 +13,26 @@ const BoxACHS = (props) => {
     return (<div className={classes.container}>
                 <Grid container>
                     <Grid item xs={11} >
-                    <div className={classes.cuerpo}>
-                    <div>
-                        <Typography color="textSecondary" gutterBottom className={classes.itemId}>
-                            {titulo}
-                        </Typography>
-                    </div>
-                    <div>
-                        {contenido.map((item,index) => {
-                            return <div key={index}  id={index} className={classes.itemFecha}>{item}</div>
-                        })}
-                    </div>
-                </div>
-                
+                        <div className={classes.cuerpo}>
+                            <div>
+                                <Typography color="textSecondary" gutterBottom className={classes.itemId}>
+                                    {titulo}
+                                </Typography>
+                            </div>
+                            <div>
+                                {contenido.map((item,index) => {
+                                    return <div key={index}  id={index} className={classes.itemFecha}>{item}</div>
+                                })}
+                            </div>
+                        </div>
                     </Grid>
                     <Grid item xs={1} className={classes.asidePersonalData}>
-                    <div>
-                    {" "}
-                    <ChevronRightIcon style={{cursor : "pointer"}} onClick={() => dispatch(handleSetStep(step))} />
-                </div>
+                        <div>
+                            {" "}
+                            <ChevronRightIcon style={{cursor : "pointer"}} onClick={() => dispatch(handleSetStep(step))} />
+                        </div>
                     </Grid>
-                    </Grid>
-                
+                </Grid>
             </div>
     );
 }

@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 
-const header = (props) => {
+const Header = (props) => {
   const { dispatch, userMsal, addmissionForm } = props;
   const comunClass = getComunStyle();
   const welcomeStyle = getWelcomeStyle();
+
+  // const [header, setheader] = useState('');
 
   const { iniciales, displayName } = userMsal;
   // const { step } = addmissionForm;
@@ -52,4 +54,4 @@ const header = (props) => {
     </div>
   );
 };
-export default header;
+export default Header;

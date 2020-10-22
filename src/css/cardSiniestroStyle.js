@@ -2,19 +2,6 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export const cardSiniestroStyles = makeStyles((theme) => ({
 
-    container: {
-        marginTop: "15px",
-        display: "flex",
-        flexFlow: "row wrap",
-        justifyContent: "center",
-        alignItems: "center",
-        alignContent: "stretch",
-        backgroundColor: "#FFFFFF",
-        padding: "15px",
-        borderRadius: "10px",
-        cursor: "pointer",
-    },
-
     itemId: {
         display: "flex",
         margin: "0 auto",
@@ -68,4 +55,42 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
         lineHeight: '1.25em',
         color: '#00B2A9',
     },
+    '@media (max-width: 767px)': {
+        /* For mobile phones */
+        container: {
+            marginTop: "15px",
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "stretch",
+            backgroundColor: "#FFFFFF",
+            padding: "15px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            boxShadow: "0px 4px 4px rgba(44, 44, 44, 0.06)",
+            boxSizing: "border-box"
+        },
+    },
+    '@media (min-width: 768px)': {
+        /* Medium devices (landscape tablets, 768px and up) */
+        container: {
+            margin: "15px 10px",
+            display: "inline-flex",
+            flexFlow: "row wrap",
+            justifyContent: "center",
+            // alignItems: "center",
+            alignContent: "stretch",
+            backgroundColor: "#FFFFFF",
+            padding: "15px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            boxShadow: "0px 4px 4px rgba(44, 44, 44, 0.06)",
+            boxSizing: "border-box",
+            width: "30%", //"247px",
+            height: "226px",
+            textAlign: "left",
+        },
+    }
+
 }));

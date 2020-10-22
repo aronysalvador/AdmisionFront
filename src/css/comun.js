@@ -477,7 +477,9 @@ export const getComunStyle = makeStyles((theme) => ({
   displayDesk: {
     display: 'none'
   },
-
+  displayDeskInline: {
+    display: 'none'
+},
   displayMobile: {
     display: 'block'
   },
@@ -656,19 +658,35 @@ export const getComunStyle = makeStyles((theme) => ({
           fontFamily: 'Catamaran',
           fontStyle: 'normal',
           fontWeight: 'bold',
-          fontSize: '40px',
+          fontSize: '36px',
           lineHeight: '44px',
           color: '#373737',
       },
+      titleGray: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '36px',
+        lineHeight: '44px',
+        color: '#787878',
+    },
       titleBlue: {
           fontFamily: 'Catamaran',
           fontStyle: 'normal',
           fontWeight: 'bold',
           fontSize: '20px',
           lineHeight: '28px',
-          color: ' #00b2a9',
+          color: '#00b2a9',
           display: "contents",
       },
+      titleBlue2: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '36px',
+        lineHeight: '44px',
+        color: '#00b2a9',
+    },
       textAchsContentWhite: {
           fontFamily: "Catamaran",
           fontSize: "16px",
@@ -705,7 +723,7 @@ export const getComunStyle = makeStyles((theme) => ({
           display: "inline-block",
           width: "73%", //"65%",
           textAlign: "left",
-          maxWidth: "460px",
+          // maxWidth: "460px",
           verticalAlign: "top"
       },
       imgPrimaryDesk: {
@@ -773,20 +791,40 @@ export const getComunStyle = makeStyles((theme) => ({
   },
 
   '@media (min-width: 860px)': {
-      beginContainerDesk: {
-          width: '75%',
-          margin: 'auto',
-      },
-      titlePrimaryDesk: {
-          width: '75%',
-          margin: 'auto',
-          marginTop: '30px',
-          marginBottom: '30px'
-      },
-      imgPrimaryDesk: {
-          position: "relative",
-          right: "-15%",
-      },
+    beginContainerDesk: {
+        width: '75%',
+        margin: 'auto',
+    },
+    titlePrimaryDesk: {
+        width: '75%',
+        margin: 'auto',
+        marginTop: '30px',
+        marginBottom: '30px'
+    },
+    // titleBlack2: {
+    //   fontFamily: 'Catamaran',
+    //   fontStyle: 'normal',
+    //   fontWeight: 'bold',
+    //   fontSize: '40px',
+    //   lineHeight: '44px',
+    //   color: '#373737',
+    // },
+    // titleGray: {
+    //   fontFamily: 'Catamaran',
+    //   fontStyle: 'normal',
+    //   fontWeight: 'bold',
+    //   fontSize: '40px',
+    //   lineHeight: '44px',
+    //   color: '#787878',
+    // },
+    // titleBlue2: {
+    //   fontFamily: 'Catamaran',
+    //   fontStyle: 'normal',
+    //   fontWeight: 'bold',
+    //   fontSize: '40px',
+    //   lineHeight: '44px',
+    //   color: '#00b2a9',
+    // },
 
   },
 
@@ -801,18 +839,18 @@ export const getComunStyle = makeStyles((theme) => ({
           marginTop: '30px',
           marginBottom: '30px'
       },
-      imgPrimaryDesk: {
-          position: "relative",
-          right: "-18%",
-      },
+      // imgPrimaryDesk: {
+      //     position: "relative",
+      //     right: "-18%",
+      // },
   },
 
-  '@media (min-width: 1280px)': {
-      imgPrimaryDesk: {
-          position: "relative",
-          right: "-25%",
-      },
-  },
+  // '@media (min-width: 1280px)': {
+  //     imgPrimaryDesk: {
+  //         position: "relative",
+  //         right: "-25%",
+  //     },
+  // },
 
   '@media (min-width: 1540px)': {
       beginContainerDesk: {
@@ -825,10 +863,10 @@ export const getComunStyle = makeStyles((theme) => ({
           marginTop: '30px',
           marginBottom: '30px'
       },
-      imgPrimaryDesk: {
-          position: "relative",
-          right: "-30%",
-      },
+      // imgPrimaryDesk: {
+      //     position: "relative",
+      //     right: "-30%",
+      // },
   },
 
   '@media (min-width: 1800px)': {
@@ -842,10 +880,10 @@ export const getComunStyle = makeStyles((theme) => ({
           marginTop: '30px',
           marginBottom: '30px'
       },
-      imgPrimaryDesk: {
-          position: "relative",
-          right: "-35%",
-      },
+      // imgPrimaryDesk: {
+      //     position: "relative",
+      //     right: "-35%",
+      // },
   },
 
   tituloTextBox: {

@@ -35,7 +35,7 @@ const Identification = (props) => {
       <div className={ comunClass.titlePrimaryDesk }>
         <Grid component="span" className={comunClass.textPrimaryDesk}>
           <Typography variant="p" component="p" className={comunClass.titleBlack2}>
-            Empecemos completando algunos datos 
+            Empecemos completando <br /> algunos datos 
           </Typography>
         </Grid>
         <Grid component="span" className={comunClass.imgPrimaryDesk}>
@@ -104,6 +104,9 @@ const Identification = (props) => {
           </Button>
         </div> 
       </div>
+    </div>
+    <div className={comunClass.displayDesk}>
+      <div className={spaceStyle.space2} />
     </div>
   </div>
   );

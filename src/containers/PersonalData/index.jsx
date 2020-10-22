@@ -4,7 +4,7 @@ import { getComunStyle } from "../../css/comun";
 import { handleSetStep, validarAfiliacion } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Typography from "@material-ui/core/Typography";
-//import { getSpaceStyle } from "../../css/spaceStyle";
+import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHS from "../../components/share/BoxACHS/index";
 import BoxEmpresa from "../../components/share/BoxEmpresa/index";
 import Button from "@material-ui/core/Button";
@@ -18,7 +18,7 @@ import { logout } from "../../redux/actions/microsoft.action";
 const PersonalData = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
   const comunClass = getComunStyle();
-  //const spaceStyle = getSpaceStyle();
+  const spaceStyle = getSpaceStyle();
 
   const tituloEmpresa = "Dirección de la Sucursal";
   // const contenidoEmpresa = [
@@ -78,22 +78,24 @@ const PersonalData = (props) => {
           percentage={addmissionForm.percentage}
         />
       </div>
-      <div>
-        <Typography variant="p" component="p" className={comunClass.titleBlack}>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Empieza
-          <Grid component="span"  className={comunClass.titleBlue}>
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;verificando los datos de <br/>
-          </Grid>           
+          </Grid>  
+          <Grid component="span"  className={comunClass.titleGray}>
           {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
+          </Grid>         
         </Typography>
       
-        <div className={comunClass.displayDesk}>
+        <div className={comunClass.displayDeskInline}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/identify.svg" />
           </Grid>
         </div>
       </div>
-      <div className={comunClass.boxDesk}>
+      <div className={comunClass.boxDesk} style={{width:'100%'}}>
         {/* <div className={spaceStyle.space1} /> */}
         <BoxEmpresa
           contenidoDireccionEmpresa={contenidoDireccionEmpresa}
@@ -126,6 +128,9 @@ const PersonalData = (props) => {
           </Button>
         </div>
       </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
     </div>
   );
 };
@@ -133,7 +138,7 @@ const PersonalData = (props) => {
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
-    microsoftReducer, microsoftReducer
+    microsoftReducer: microsoftReducer
   };
 }
 
