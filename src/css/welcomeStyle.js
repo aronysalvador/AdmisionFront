@@ -114,7 +114,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "0.87em",
         textAlign: "center",
     },
-
     divRowBottom2: {
         display: "flex",
         alignItems: "center",
@@ -123,12 +122,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     bottomBegin: {
         marginTop: "10px",
     },
-    iconCircular: {
-        width: "54px",
-        height: "54px",
-        verticalAlign: "middle",
-    },
-
     itemText: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -252,8 +245,16 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontFamily: "Catamaran",
             fontStyle: "normal",
             fontWeight: "bold",
-            fontSize: "25px",
+            fontSize: "32px", //"25px",
             lineHeight: "34px",
+            color: "#007A33",
+        },
+        titleBegin2: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "20px",
+            lineHeight: "28px",
             color: "#007A33",
         },
         textContainer: {
@@ -265,6 +266,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         bienvenidoAchs: {
             fontSize: "25px",
             fontWeight: "bold",
+        },
+        iconCircular: {
+            width: "54px",
+            height: "54px",
+            verticalAlign: "middle",
         },
     },
 
@@ -349,6 +355,14 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             lineHeight: "34px",
             // color: "#007A33",
         },
+        titleBegin2: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "20px",
+            lineHeight: "28px",
+            // color: "#007A33",
+        },
         textContainer: {
             paddingBottom: "10px",
         },
@@ -362,6 +376,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         bienvenidoAchs: {
             fontSize: "20px",
             fontWeight: "bold",
+        },
+        iconCircular: {
+            width: "37px",
+            height: "37px",
+            verticalAlign: "middle",
         },
 
     },

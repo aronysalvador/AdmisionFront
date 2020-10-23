@@ -699,6 +699,13 @@ export const getComunStyle = makeStyles((theme) => ({
           position: "relative",
           marginTop: "0px"
       },
+      titleDesk: {
+        position: 'relative',
+        margin: '-15px auto 30px',
+        display: 'flex',
+        width: '90%',
+        justifyContent: 'space-around',
+    },
       displayDesk: {
           display: 'block'
       },
@@ -724,6 +731,10 @@ export const getComunStyle = makeStyles((theme) => ({
           // maxWidth: "460px",
           verticalAlign: "top"
       },
+    //   imgDesk: {
+    //     position: "relative",
+    //     right: "-100%",
+    // },
       imgPrimaryDesk: {
           position: "relative",
           right: "-10%",

@@ -29,7 +29,7 @@ const form = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={classesComun.displayDesk}>
-        <div className={classesComun.titlePrimaryDesk} >
+        <div className={classesComun.titlePrimaryDesk}>
           <Grid component="span" className={classesComun.textPrimaryDesk}>
             <Typography variant="p" component="p" className={classesComun.titleBlack2}>
               Empecemos completando <br /> algunos datos 

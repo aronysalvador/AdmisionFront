@@ -46,15 +46,17 @@ console.log(step);
                             percentage={-1} 
                             noSpace={true} />
                     </div>
-                    <div className={[comunStyle.displayMobile]}>
-                        <div className={[welcomeStyle.avatarContainerRight]}>
+                    <div className={comunStyle.displayMobile}>
+                        <div className={welcomeStyle.avatarContainerRight}>
                             <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
                         </div>
                         <div className={spaceStyle.space6} />
                     </div>
-                    <div >
+                    <div className={comunStyle.titleDesk}>
                         <div className={welcomeStyle.TextContainer}>
-                            <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                            <div className={comunStyle.displayMobile}>
+                                <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                            </div>    
                             <Typography
                             variant="h1"
                             component="h1"
@@ -62,16 +64,21 @@ console.log(step);
                             >
                                 ¡Excelente!
                             </Typography>
+                            <div style={{display: 'flex'}}>
+                                <Typography
+                                variant="p"
+                                component="p"
+                                className={[welcomeStyle.titleBegin2, welcomeStyle.subtitleBegin]}
+                                >
+                                    Usuario Identificado&nbsp;
+                                </Typography>
+                                <div className={comunStyle.displayDeskInline}>
+                                    <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                                </div>
+                            </div>
+                            
                         </div>
-                        <div >
-                            <Typography
-                            variant="h1"
-                            component="h1"
-                            className={welcomeStyle.titleBegin}
-                            >
-                                Usuario Identificado
-                            </Typography>
-                        </div>
+                        
                         <div className={comunStyle.displayDeskInline}>
                             <Grid component="span" className={comunStyle.imgPrimaryDesk}>
                                 <img alt="excelente" src="static/excelent.svg" />
