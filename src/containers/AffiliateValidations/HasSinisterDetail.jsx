@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { getComunStyle } from "../../css/comun";
 import {  Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
+import Header from "../../components/header/index";
+import { logout } from "../../redux/actions/microsoft.action";
 
 const HasSinisterDetail = (props) => {
-  const { addmissionForm, dispatch } = props;
+  const { addmissionForm, dispatch, microsoftReducer } = props;
 
   const { siniestroDetalle } = addmissionForm;
   useEffect(() => {
@@ -15,10 +18,18 @@ const HasSinisterDetail = (props) => {
   });
 
   const spaceStyle = getSpaceStyle();
+  const comunClass = getComunStyle();
   const blackStyle = getBlackTheme();
 
   return (
     <div>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          dispatch={() => dispatch(logout())}
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
       <CabeceraSinBarra
         dispatch={() => dispatch(handleSetStep(5.831))}
         color="#FFFFFF"
@@ -204,9 +215,10 @@ const HasSinisterDetail = (props) => {
     </div>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(HasSinisterDetail);
