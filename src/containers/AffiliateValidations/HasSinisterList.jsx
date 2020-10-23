@@ -126,20 +126,23 @@ const PersonalData = (props) => {
           {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2} </div>)
           : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
           </div>
+          
           <div className={comunClass.bottomElement}>
-            <Button
-              className={comunClass.buttonAchs}
-              onClick={() => dispatch(handleSetStep(5.9))}
-            >
-              Continuar en SAP
-            </Button>
-            <div className={spaceStyle.space1} />
-            <Button
-              className={comunClass.buttonAchs2}
-              onClick={() => handleNext()}
-            >
-              Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
-            </Button>
+            <div className={comunClass.paddingElement}>
+              <Button
+                className={comunClass.buttonAchs}
+                onClick={() => dispatch(handleSetStep(5.9))}
+              >
+                Continuar en SAP
+              </Button>
+              <div className={spaceStyle.space1} />
+              <Button
+                className={comunClass.buttonAchs2}
+                onClick={() => handleNext()}
+              >
+                Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
+              </Button>
+            </div>
           </div>
         </div>
       </div>

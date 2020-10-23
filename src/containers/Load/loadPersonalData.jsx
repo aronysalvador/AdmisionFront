@@ -60,7 +60,7 @@ const LoadPersonalData = (props) => {
         >
           Un momento por favor
         </Typography>
-        <div >
+        <div>
           <img
             alt="load"
             src="./static/Loader_1.gif"

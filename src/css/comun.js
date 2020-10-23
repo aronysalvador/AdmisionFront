@@ -584,11 +584,9 @@ export const getComunStyle = makeStyles((theme) => ({
       //     width: '77% !important',
       // },
       paddingElement: {
-          // padding: "0px 20%",
-          // // position: "absolute",
-          // right: "0",
-          // left: "0",
-          // bottom: "0",
+        display: 'flex',
+        justifyContent: 'space-around',
+        margin: '0 1%'
       },
       buttonAchs: {
           width: "50%", //"100%",
