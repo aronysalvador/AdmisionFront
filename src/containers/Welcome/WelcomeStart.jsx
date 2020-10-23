@@ -27,14 +27,13 @@ const Start = (props) =>{
             <div className={comunStyle.displayDesk}> 
                 <Header
                     dispatch={() => dispatch(logout())}
-                    userMsal={ microsoftReducer.userMsal }
+                    userMsal={microsoftReducer.userMsal}
                     // step={1}
                 />
             </div>
-            <div className={ welcomeStyle.backgroundBoxAchsDesk }>
+            <div className={welcomeStyle.backgroundBoxAchsDesk}>
                 <div className={welcomeStyle.beginContainer}>
                     <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} noSpace={true} />
-
                     <div className={[comunStyle.displayMobile]}>
                         <div className={[welcomeStyle.avatarContainerRight]}>
                             <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
@@ -125,8 +124,10 @@ const Start = (props) =>{
                         </Link>
                     </Typography>
                 </div> */}
-                
-            </div>            
+            </div>   
+            <div className={comunStyle.displayDesk}>
+                <div className={spaceStyle.space2} />
+            </div>         
         </div>
     )
 }
