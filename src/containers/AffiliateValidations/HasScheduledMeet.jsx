@@ -87,6 +87,7 @@ const HasScheduledMeet = (props) => {
             >
               Continuar en SAP
             </Button>
+            {/* <div className={spaceStyle.space1} /> */}
             <Button
               className={blackStyle.buttonFooter2}
               onClick={() => {

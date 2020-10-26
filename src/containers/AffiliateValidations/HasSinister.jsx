@@ -28,11 +28,14 @@ const HasSinister = (props) => {
       </div>
       <div className={blackStyle.root}>
         <div className={spaceStyle.space2} />
-          <img
-            alt="load"
-            src="./static/siniestro.png"
-            className={blackStyle.img}
-          />
+        <div className={comunClass.displayDesk}> 
+          <div className={spaceStyle.space2} />
+        </div>
+        <img
+          alt="load"
+          src="./static/cita-agendada.svg" //siniestro.png
+          className={blackStyle.img}
+        />
         <div className={spaceStyle.space3} />
         <Typography
           color="textSecondary"

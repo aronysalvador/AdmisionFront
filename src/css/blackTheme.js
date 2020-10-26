@@ -65,10 +65,11 @@ export const getBlackTheme = makeStyles((theme) => ({
         "&:hover": {
             background: "#FFFFFF",
         },
+        margin: "8px 0"
     },
 
     buttonFooter2: {
-        marginTop: "1.145em",
+        // marginTop: "1.145em",
         width: "100%",
         minWidth: "20em",
         fontFamily: "Catamaran",
@@ -84,8 +85,8 @@ export const getBlackTheme = makeStyles((theme) => ({
         "&:hover": {
             background: "transparent",
         },
+        margin: "8px 0"
     },
-
 
     containerRowQuote: {
         alignItems: "center",
@@ -129,6 +130,16 @@ export const getBlackTheme = makeStyles((theme) => ({
             alignItems: "center",
             color: "#FFFFFF",
         },
+        textWarning2: {
+            textAlign: "center",
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "1.563em",
+            lineHeight: "1.6875em",
+            alignItems: "center",
+            color: "#081C15",
+        },
         textMessage: {
             textAlign: "center",
             fontFamily: "Catamaran",
@@ -137,6 +148,17 @@ export const getBlackTheme = makeStyles((theme) => ({
             lineHeight: "1.250em",
             alignItems: "center",
             color: "#06D6A0",
+            padding: "0em 4em",
+        },
+        textMessage2: {
+            textAlign: "center",
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "1.250em",
+            lineHeight: "1.250em",
+            alignItems: "center",
+            color: "#007A33",
             padding: "0em 4em",
         },
         textFinal: {
@@ -155,6 +177,10 @@ export const getBlackTheme = makeStyles((theme) => ({
             width: "100%",
             padding: "10px",
             justifyContent: "space-evenly",
+        },
+        listDetails: {
+            width: '100%',
+            textAlign: 'center',
         },
     },
 
@@ -180,6 +206,16 @@ export const getBlackTheme = makeStyles((theme) => ({
             alignItems: "center",
             color: "#FFFFFF",
         },
+        textWarning2: {
+            textAlign: "center",
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "2.2857em",
+            lineHeight: "2.4285em",
+            alignItems: "center",
+            color: "#081C15",
+        },
         textMessage: {
             textAlign: "center",
             fontFamily: "Catamaran",
@@ -190,6 +226,17 @@ export const getBlackTheme = makeStyles((theme) => ({
             alignItems: "center",
             color: "#06D6A0",
             // padding: "0em 4em",
+        },
+        textMessage2: {
+            textAlign: "center",
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "1.4285em",
+            // lineHeight: "2em",
+            alignItems: "center",
+            color: "#007A33",
+            padding: "0em 4em",
         },
         textFinal: {
             textAlign: "center",
@@ -210,9 +257,26 @@ export const getBlackTheme = makeStyles((theme) => ({
             padding: "10px",
             justifyContent: "space-evenly",
         },
+        containerQuoteDesk: {
+            display: "flex",
+            borderRadius: "10px",
+            border: "1px solid #FFFFFF",
+            width: "50%",
+            maxWidth: "31.746em",
+            padding: "10px",
+            justifyContent: "space-evenly",
+        },
+        listDetails: {
+            // width: '100%',
+            textAlign: 'center',
+            flexGrow: '0',
+            maxWidth: '49%',
+            flexBasis: '50%',
+        },
+
     },
 
-    '@media (min-height: 775px)': {
+    '@media (min-height: 800px)': { //775px
         root: {
             height: "1420px"
         }

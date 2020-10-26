@@ -6,64 +6,78 @@ import { Button } from "@material-ui/core";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { getBlackTheme } from "../../css/blackTheme";
+import Header from "../../components/header/index";
+import { logout } from "../../redux/actions/microsoft.action";
 
 const NoCuentaSap = (props) => {
-  const { dispatch } = props;
+  const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
   const blackStyle = getBlackTheme();
 
   return (
-    <div className={blackStyle.root}>
-      <div className={spaceStyle.space5} />
-      <div>
-      <img
-          alt="load"
-          src="./static/error-siniestro.svg"
-          className={blackStyle.img}
+    <>
+      <div className={comunClass.displayDesk}> 
+        <Header
+            dispatch={() => dispatch(logout())}
+            userMsal={ microsoftReducer.userMsal }
+            // step={1}
         />
       </div>
-      <div className={spaceStyle.space2} />
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        className={blackStyle.textWarning}
-      >
-        ¡Lo sentimos!
-      </Typography>
-      <div className={spaceStyle.space1} />
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        className={blackStyle.textNoAfiliate}
-      >
-        No tienes cuenta SAP con permisos para realizar esta acción
-      </Typography>
-      <div className={spaceStyle.space1} />
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        className={blackStyle.textDetailSimpleNoSAP}
-      >
-        Comunicate con tu administrador de cuenta
-      </Typography>
-
-      
-      <div className={comunClass.bottomElement}>
-        <Button
-          className={blackStyle.buttonFooter}
-            onClick={() => dispatch(handleSetStep(0)) }
+      <div className={blackStyle.root}>
+        <div className={spaceStyle.space5} />
+        <div>
+        <img
+            alt="load"
+            src="./static/error-siniestro.svg"
+            className={blackStyle.img}
+          />
+        </div>
+        <div className={spaceStyle.space2} />
+        <Typography
+          color="textSecondary"
+          gutterBottom
+          className={blackStyle.textWarning}
         >
-          Entendido
-        </Button>
+          ¡Lo sentimos!
+        </Typography>
+        <div className={spaceStyle.space1} />
+        <Typography
+          color="textSecondary"
+          gutterBottom
+          className={blackStyle.textNoAfiliate}
+        >
+          No tienes cuenta SAP&nbsp;
+            <br className={comunClass.displayDesk}/>
+            con permisos para realizar esta acción
+        </Typography>
+        <div className={spaceStyle.space1} />
+        <Typography
+          color="textSecondary"
+          gutterBottom
+          className={blackStyle.textDetailSimpleNoSAP}
+        >
+          Comunicate con tu administrador de cuenta
+        </Typography>
+
+        
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={blackStyle.buttonFooter}
+              onClick={() => dispatch(handleSetStep(0)) }
+          >
+            Entendido
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(NoCuentaSap);
