@@ -95,11 +95,11 @@ stages:
             repository: $(DockerRepositoryDesa)
             command: push
             tags: $(ImageTag)                    
-        - task: AzureWebAppContainer@1
-          inputs:
-            azureSubscription: $(azureSubcritionDESA)
-            appName: $(appNameDESAFront)
-            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)   
+        # - task: AzureWebAppContainer@1
+        #   inputs:
+        #     azureSubscription: $(azureSubcritionDESA)
+        #     appName: $(appNameDESAFront)
+        #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)   
 
         - task: KubernetesManifest@0
           inputs:
@@ -156,11 +156,11 @@ stages:
             repository: $(DockerRepositoryQA)
             command: push
             tags: $(ImageTag)                    
-        - task: AzureWebAppContainer@1
-          inputs:
-            azureSubscription: $(azureSubcritionQA) 
-            appName: $(appNameQAFront) 
-            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
+        # - task: AzureWebAppContainer@1
+        #   inputs:
+        #     azureSubscription: $(azureSubcritionQA) 
+        #     appName: $(appNameQAFront) 
+        #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
 
         - task: KubernetesManifest@0
           inputs:
