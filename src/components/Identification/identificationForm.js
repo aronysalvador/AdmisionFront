@@ -78,7 +78,9 @@ const form = (props) => {
           </div>{" "}
         </div>
         <div className={spaceStyle.space12} />{" "}
-        <div className={spaceStyle.space4} />{" "}
+        <div className={classesComun.displayMobile}>
+          <div className={spaceStyle.space4} />{" "}
+        </div>
         <div className={classesComun.bottomElement}>
           <Button
             className={classesComun.buttonAchs}
