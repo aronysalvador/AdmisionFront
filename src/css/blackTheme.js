@@ -45,10 +45,6 @@ export const getBlackTheme = makeStyles((theme) => ({
         color: "#FFFFFF",
     },
 
-    imgNoAfiliate: {
-        width: "7em",
-    },
-
     buttonFooter: {
         width: "100%",
         minWidth: "20em",
@@ -111,7 +107,7 @@ export const getBlackTheme = makeStyles((theme) => ({
         root: {
             position: "relative",
             width: "22.5em",
-            height: "43em",
+            height: "40em", //"43em",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
@@ -119,6 +115,9 @@ export const getBlackTheme = makeStyles((theme) => ({
         },
         img: {
             width: "11em",
+        },
+        imgNoAfiliate: {
+            width: "7em",
         },
         textWarning: {
             textAlign: "center",
@@ -194,6 +193,9 @@ export const getBlackTheme = makeStyles((theme) => ({
             alignItems: "center",
         },
         img: {
+            width: "14em",
+        },
+        imgNoAfiliate: {
             width: "14em",
         },
         textWarning: {
