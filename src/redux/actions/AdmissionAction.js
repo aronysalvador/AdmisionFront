@@ -14,6 +14,7 @@ import { formateaRut } from "../../helpers/rut";
 import { handleLog, handlEndLog } from "./Log";
 import { FechaHora } from './../../helpers/utils'
 import { Pipes } from "./../../containers/EditarTelefono/phone";
+import {getSucursales} from "./SucursalesAction";
 
 const totalSteps = 27;
 
@@ -145,6 +146,7 @@ export const saveRut = (rut) => {
           dispatch(handleSetStep(STEP));
 
           dispatch(saveRazonSocial(result.data.content.response.RutPagador));
+          dispatch(getSucursales(result.data.content.response.RutPagador))
 
           dispatch(updateForm("cita", result.data.content.response.cita));
           dispatch(
