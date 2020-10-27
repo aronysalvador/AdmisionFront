@@ -1,17 +1,24 @@
-import React, { useState} from "react"
-import { getComunStyle } from "../../css/comun"
-import { Button, Typography } from "@material-ui/core"
-import Cabecera from "../../components/cabecera/index"
-import { useSelector, shallowEqual, useDispatch } from "react-redux"
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
-import { getSpaceStyle } from "../../css/spaceStyle"
-import DireccionGeo from '../../components/share/DireccionGeo'
-import { validarDireccion  } from './../../helpers/utils'
-import Grid from '@material-ui/core/Grid';
+import React, { useState } from "react";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import Cabecera from "../../components/cabecera/index";
+import DireccionGeo from "../../components/share/DireccionGeo";
+import { validarDireccion  } from "./../../helpers/utils";
+import { Button, Typography } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import { getSpaceStyle } from "../../css/spaceStyle";
+import { getComunStyle } from "../../css/comun";
+import Header from "../../components/header/index";
+import { logout } from "../../redux/actions/microsoft.action";
+
 
 const DireccionParticular = () => {
   const {
     addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj },
+  } = useSelector((state) => state, shallowEqual)
+
+  const {
+    microsoftReducer: microsoftReducer,
   } = useSelector((state) => state, shallowEqual)
 
   const [direccion, setDireccion] = useState(() => {
@@ -31,14 +38,7 @@ const DireccionParticular = () => {
 
   const dispatch = useDispatch()
 
-  const {
-    root,
-    buttonAchs,
-    tituloTextbox,
-    bottomElement,
-    titleBlue,
-    titleBlack
-  } = getComunStyle()
+  const comunClass = getComunStyle()
   const spaceStyle = getSpaceStyle()
   const { googleMap } = getComunStyle()
   
@@ -61,51 +61,76 @@ const DireccionParticular = () => {
  }
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.1))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Ingresa
-        <Grid component="span"  className={titleBlue}>
-          &nbsp;la dirección en donde vive el paciente
-        </Grid>                  
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <Typography className={tituloTextbox} variant="subtitle2">
-        Dirección particular
-      </Typography>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+            dispatch={() => dispatch(logout())}
+            userMsal={ microsoftReducer.userMsal }
+            // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(5.1))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Ingresa
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;la dirección en donde vive el paciente
+          </Grid>                  
+        </Typography>
+        <div className={comunClass.displayDeskInline}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk} style={{width:'90%'}}>
+        <div className={spaceStyle.space2} />
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextbox} variant="subtitle2">
+            Dirección particular
+          </Typography>
 
-      <DireccionGeo       
-        comunStyle={getComunStyle()}
-        direccion={direccion} 
-        setMapa={setMapaUrl} 
-        setDireccion={setDireccion} 
-        clearData={clearData}
-        showDinamicMap={()=> {
-          setDireccion({description: ''}); 
-          dispatch(handleSetStep(5.21))
-        }}
-      />
-      {(mapaUrl)?
-      <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
-      :null}
-
-      <div className={bottomElement}>
-        <Button
-          className={buttonAchs}
-          variant="contained"
-          disabled={!valido}
-          onClick={() => {
-            dispatch(updateForm("direccionParticular", direccion.description))
-            dispatch(updateForm("direccionParticularObj", direccion))
-            dispatch(updateForm("comunaDireccionParticular", nombreComuna))
-            dispatch(handleSetStep(5.1))
-          }}
-        >
-          Guardar dirección
-        </Button>
+          <DireccionGeo       
+            comunStyle={getComunStyle()}
+            direccion={direccion} 
+            setMapa={setMapaUrl} 
+            setDireccion={setDireccion} 
+            clearData={clearData}
+            showDinamicMap={()=> {
+              setDireccion({description: ''}); 
+              dispatch(handleSetStep(5.21))
+            }}
+          />
+          {(mapaUrl)?
+          <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
+          :null}
+        </div>
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space4} />
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            disabled={!valido}
+            onClick={() => {
+              dispatch(updateForm("direccionParticular", direccion.description))
+              dispatch(updateForm("direccionParticularObj", direccion))
+              dispatch(updateForm("comunaDireccionParticular", nombreComuna))
+              dispatch(handleSetStep(5.1))
+            }}
+          >
+            Guardar dirección
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   )

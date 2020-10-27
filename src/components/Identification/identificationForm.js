@@ -2,7 +2,6 @@ import React from "react";
 import { withFormik } from "formik";
 import { connect } from "react-redux";
 import { updateForm, handleSetStep } from "../../redux/actions/AdmissionAction";
-
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Rut, formateaRut } from "../../helpers/rut";
@@ -23,40 +22,40 @@ const form = (props) => {
     handleSubmit
   } = props;
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className={classesComun.displayDesk}>
-        <div className={classesComun.titlePrimaryDesk}>
-          <Grid component="span" className={classesComun.textPrimaryDesk}>
-            <Typography variant="p" component="p" className={classesComun.titleBlack2}>
+      <div className={comunClass.displayDesk}>
+        <div className={comunClass.titlePrimaryDesk}>
+          <Grid component="span" className={comunClass.textPrimaryDesk}>
+            <Typography variant="p" component="p" className={comunClass.titleBlack2}>
               Empecemos completando <br /> algunos datos 
             </Typography>
           </Grid>
-          <Grid component="span" className={classesComun.imgPrimaryDesk}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/identify.svg" />
           </Grid>
         </div>
       </div>
-      <div className={classesComun.boxDesk}>
+      <div className={comunClass.boxDesk}>
         <div>
           <Typography
             variant="h1"
             component="h1"
-            className={[classesComun.titleBlack, classesComun.subtitleBlack]}
+            className={[comunClass.titleBlack, comunClass.subtitleBlack]}
           >
             Ingresa el           
-            <Grid component="span"  className={classesComun.titleBlue} style={{display: "contents"}}>
+            <Grid component="span"  className={comunClass.titleBlue} style={{display: "contents"}}>
               &nbsp;RUT
             </Grid>
             &nbsp;del paciente{" "}
           </Typography>{" "}
         </div>{" "}
         <div className={spaceStyle.space2} />{" "}
-        <div className={classesComun.containerTextBox}>
-          <Typography className={classesComun.tituloTextBox}>
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextBox}>
             RUT
           </Typography>
           <div>
@@ -68,7 +67,7 @@ const form = (props) => {
               onBlur={handleBlur}
               helperText={touched.rut ? errors.rut : ""}
               error={touched.rut && Boolean(errors.rut)}
-              className={classesComun.borderBox}
+              className={comunClass.borderBox}
               margin="dense"
               variant="outlined"
               fullWidth
@@ -78,12 +77,12 @@ const form = (props) => {
           </div>{" "}
         </div>
         <div className={spaceStyle.space12} />{" "}
-        <div className={classesComun.displayMobile}>
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space4} />{" "}
         </div>
-        <div className={classesComun.bottomElement}>
+        <div className={comunClass.bottomElement}>
           <Button
-            className={classesComun.buttonAchs}
+            className={comunClass.buttonAchs}
             variant="contained"
             disabled={isSubmitting}
             type="submit"
@@ -92,7 +91,7 @@ const form = (props) => {
           </Button>{" "}
         </div>{" "}
       </div>
-      <div className={classesComun.displayDesk}>
+      <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
       </div>
     </form>

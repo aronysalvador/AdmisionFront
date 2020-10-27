@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import IdentificationForm from "../../components/Identification/identificationForm";

@@ -128,6 +128,13 @@ export const getComunStyle = makeStyles((theme) => ({
     left: "0",
     bottom: "0",
   },
+  bottomElementMap: {
+    padding: "1.145em 0", //"1.145em 1.145em 2.4em 1.145em",
+    position: "absolute",
+    right: "0",
+    left: "0",
+    bottom: "0",
+  },
   buttonAchs: {
     width: "100%",
     background: "#007A33",
@@ -547,6 +554,20 @@ export const getComunStyle = makeStyles((theme) => ({
           padding: '33px',
           textAlign: 'center',
       },
+      boxDeskMap: {
+        width: '60%', 
+        maxWidth: '860px',
+        minWidth: '700px',
+        border: '0',
+        background: 'white !important',
+        boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+        borderRadius: '8px',
+        alignItems: 'center',
+        margin: 'auto',
+        textAlign: 'center',
+        position: 'relative',
+        height: '573px',
+    },
       boxSesion: {
           width: '416px',
           height: '354px',
@@ -578,6 +599,14 @@ export const getComunStyle = makeStyles((theme) => ({
       bottomElement: {
           padding: "40px 0",
           textAlign: "center",
+      },
+      bottomElementMap: {
+        padding: '40px 0',
+        textAlign: 'center',
+        position: 'absolute',
+        bottom: '2em',
+        right: '0',
+        left: '0',
       },
       // bottomMargin: {
       //     margin: '11.5%',
