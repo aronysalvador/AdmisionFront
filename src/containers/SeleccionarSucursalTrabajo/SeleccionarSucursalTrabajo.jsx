@@ -8,7 +8,7 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomSucursalItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSucursalItem";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
+
 
 const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const dispatch = useDispatch();
@@ -32,7 +32,6 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

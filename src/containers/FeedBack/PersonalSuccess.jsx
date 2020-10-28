@@ -7,7 +7,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Indiciaciones from "../../components/Indicaciones";
 import Cabecera from "../../components/cabecera/cabeceraSinBarra";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
+
 import { Grid } from '@material-ui/core';
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";
@@ -25,7 +25,6 @@ console.log(step);
         <div className={comunStyle.rootBegin}>
             <div className={comunStyle.displayDesk}> 
                 <Header
-                    dispatch={() => dispatch(logout())}
                     userMsal={ microsoftReducer.userMsal }
                     // step={1}
                 />

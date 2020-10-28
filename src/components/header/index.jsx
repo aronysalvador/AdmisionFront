@@ -1,19 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
+import { logout } from "../../redux/actions/microsoft.action";
 
 const Header = (props) => {
-  const { dispatch, userMsal, addmissionForm } = props;
+  const { userMsal } = props;
   const comunClass = getComunStyle();
   const welcomeStyle = getWelcomeStyle();
-
-  // const [header, setheader] = useState('');
+  const dispatch = useDispatch();
 
   const { iniciales, displayName } = userMsal;
-  // const { step } = addmissionForm;
-  console.log(addmissionForm);
+
   return (
     <div className={comunClass.header}>
       <div class="container" style={{display:"flex", width: "100%"}}>
@@ -43,7 +43,7 @@ const Header = (props) => {
                 component="p"
                 className={comunClass.tituloCerrarSesion}
                 style={{ cursor: 'pointer'}}
-                onClick={()=> dispatch()}
+                onClick={()=> dispatch(logout())}
               > 
                 Cerrar sesión
               </Typography>
