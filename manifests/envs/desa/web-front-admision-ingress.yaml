@@ -18,4 +18,4 @@ spec:
       - backend:
           serviceName: web-front-admision-service
           servicePort: 80
-        path: /         
+        path: /admision         
