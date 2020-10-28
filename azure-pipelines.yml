@@ -158,23 +158,23 @@ stages:
             command: push
             tags: $(ImageTag)    
 
-        # - task: AzureWebAppContainer@1
-        #   inputs:
-        #     azureSubscription: $(azureSubcritionQA) 
-        #     appName: $(appNameQAFront) 
-        #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
+         - task: AzureWebAppContainer@1
+           inputs:
+             azureSubscription: $(azureSubcritionQA) 
+             appName: $(appNameQAFront) 
+             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
 
-        - task: KubernetesManifest@0
-          inputs:
-            action: 'deploy'
-            kubernetesServiceConnection: 'AKS-QA-SALUD-NS-ADMISIONDIGITAL'
-            namespace: 'admisiondigital'
-            manifests: |
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-cluster-issuer.yaml
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
-            containers: crdesacontainer.azurecr.io/qa/admision_digital/achs-fr-admision:$(ImageTag)            
+        #- task: KubernetesManifest@0
+        #  inputs:
+        #    action: 'deploy'
+        #    kubernetesServiceConnection: 'AKS-QA-SALUD-NS-ADMISIONDIGITAL'
+        #    namespace: 'admisiondigital'
+        #    manifests: |
+        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
+        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-cluster-issuer.yaml
+        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
+        #    containers: crdesacontainer.azurecr.io/qa/admision_digital/achs-fr-admision:$(ImageTag)            
 # QA #
 
 # PROD #
