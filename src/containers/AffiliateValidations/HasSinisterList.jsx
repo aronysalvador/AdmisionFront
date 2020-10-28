@@ -119,7 +119,7 @@ const PersonalData = (props) => {
             </Grid>
           </div>
         </div>
-        <div className={comunClass.boxDesk} style={{width:'100%'}}>
+        <div className={comunClass.boxDesk}>
           <div>
           {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2} </div>)
           : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}

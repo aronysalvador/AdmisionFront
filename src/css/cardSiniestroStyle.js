@@ -91,6 +91,9 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
             height: "226px",
             textAlign: "left",
         },
+        iconRight: {
+            float: 'right'
+        }
     }
 
 }));

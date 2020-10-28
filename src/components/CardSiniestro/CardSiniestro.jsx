@@ -36,7 +36,7 @@ const CardSiniestro = (props) => {
       </div>
       <div className={styles.aside}>
         {" "}
-        <ChevronRightIcon />
+        <ChevronRightIcon  className={styles.iconRight}/>
       </div>
     </div>
   );
