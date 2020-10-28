@@ -9,13 +9,13 @@ metadata:
 spec:
   tls:
     - hosts:
-      - desa.salud.achs.cl 
+      - api.desa.salud.achs.cl 
       secretName: admision-web-cert
   rules:
-  - host: desa.salud.achs.cl
+  - host: api.desa.salud.achs.cl
     http:
       paths:
       - backend:
           serviceName: web-front-admision-service
           servicePort: 80
-        path: /admision         
+        path: /         
