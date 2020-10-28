@@ -6,7 +6,6 @@ import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const HasSinister = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -21,7 +20,6 @@ const HasSinister = (props) => {
     <>
       <div className={comunClass.displayDesk}> 
         <Header
-            dispatch={() => dispatch(logout())}
             userMsal={ microsoftReducer.userMsal }
             // step={1}
         />

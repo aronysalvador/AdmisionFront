@@ -9,7 +9,6 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Indiciaciones from "../../components/Indicaciones";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
@@ -26,7 +25,6 @@ const Start = (props) =>{
         <div className={[comunStyle.rootBegin]}>
             <div className={comunStyle.displayDesk}> 
                 <Header
-                    dispatch={() => dispatch(logout())}
                     userMsal={microsoftReducer.userMsal}
                     // step={1}
                 />

@@ -7,39 +7,41 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const EditarDireccionSucursal = () => {
   const {
     addmissionForm: { percentage, sucursales, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
+  const microsoftReducer = useSelector((state) => state, shallowEqual);
+
   const [sucursalEmpresa, setSucursalEmpresa] = useState(SucursalEmpresaObjeto);
   
   const dispatch = useDispatch();
 
-  const {
-    root,
-    buttonAchs,
-    tituloTextbox,
-    bottomElement,
-    titleBlue,
-    titleBlack
-  } = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   return (
-    <div className={root}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
       <Cabecera
         dispatch={() => dispatch(handleSetStep(5.5))}
         percentage={percentage}
       />
-      <Typography className={titleBlack} variant="h2">
+      <Typography className={comunClass.titleBlack} variant="h2">
         Identifica 
-        <Grid component="span"  className={titleBlue}>
+        <Grid component="span"  className={comunClass.titleBlue}>
           &nbsp;la dirección de la sucursal 
         </Grid>         
         &nbsp;en donde trabaja
       </Typography>
       <div className={spaceStyle.space2} />
-      <Typography className={tituloTextbox} variant="h2">
+      <Typography className={comunClass.tituloTextbox} variant="h2">
         Dirección
       </Typography>
       <AutoComplete
@@ -53,11 +55,11 @@ const EditarDireccionSucursal = () => {
         getOptionLabel={(option) => option?.direccion}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
-      <div className={bottomElement}>
+      <div className={comunClass.bottomElement}>
         <Button
           variant="contained"
           disabled={!sucursalEmpresa}
-          className={buttonAchs}
+          className={comunClass.buttonAchs}
           onClick={() => {
             dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
             dispatch(updateForm("SucursalEmpresaObjeto", sucursalEmpresa));

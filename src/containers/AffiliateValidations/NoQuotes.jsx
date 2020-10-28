@@ -8,7 +8,6 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoQuotesCard from './NoQuotesCard';
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const NoQuotes = (props) => {
 
@@ -22,7 +21,6 @@ const NoQuotes = (props) => {
     <div>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

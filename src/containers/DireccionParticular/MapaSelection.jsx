@@ -7,7 +7,6 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import Mapa from '../../components/share/DireccionGeo/Mapa'
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const MapaSelection = () => {
 
@@ -96,7 +95,6 @@ const MapaSelection = () => {
     <div className={comunClass.rootContainer}> 
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

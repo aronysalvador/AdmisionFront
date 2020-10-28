@@ -8,7 +8,6 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoAfiliateCard from './NoAfiliateCard';
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const NoAfiliate = (props) => {
 
@@ -22,7 +21,6 @@ const NoAfiliate = (props) => {
     <div>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

@@ -5,8 +5,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
-
 
 const ContinueSAP = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -24,7 +22,6 @@ const ContinueSAP = (props) => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

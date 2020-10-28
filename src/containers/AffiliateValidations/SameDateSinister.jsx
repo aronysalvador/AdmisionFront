@@ -7,7 +7,6 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const SameDateSinister = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -20,7 +19,6 @@ const SameDateSinister = (props) => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-            dispatch={() => dispatch(logout())}
             userMsal={ microsoftReducer.userMsal }
             // step={1}
         />

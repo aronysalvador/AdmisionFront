@@ -11,8 +11,6 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import { setCenter } from "../../redux/actions/UserCenterAction";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
-
 
 const Achs = () => {
   const {
@@ -55,7 +53,6 @@ const Achs = () => {
     <div className={comunStyle.root}>
       <div className={comunStyle.displayDesk}> 
       <Header
-        dispatch={() => dispatch(logout())}
         userMsal={userMsal}
       />
       </div>

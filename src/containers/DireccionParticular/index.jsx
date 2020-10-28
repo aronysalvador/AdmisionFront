@@ -9,8 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
-
 
 const DireccionParticular = () => {
   const {
@@ -64,7 +62,6 @@ const DireccionParticular = () => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-            dispatch={() => dispatch(logout())}
             userMsal={ microsoftReducer.userMsal }
             // step={1}
         />

@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
         paperFix: {
             width: '100%',
             boxShadow: 'none',
-            background: 'linear-gradient(180deg, #EAEAEA 60%, #F4F4F4 40%)', //'#F4F4F4',
+            background: '#F4F4F4',
         },
         paperNoColor: {
             width: '100%',

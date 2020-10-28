@@ -6,7 +6,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { getBlackTheme } from "../../css/blackTheme";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const HasScheduledMeet = (props) => {
   const { addmissionForm, dispatch, microsoftReducer } = props;
@@ -21,9 +20,8 @@ const HasScheduledMeet = (props) => {
     <>
       <div className={comunClass.displayDesk}> 
         <Header
-            dispatch={() => dispatch(logout())}
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
         />
       </div>
       <div className={blackStyle.root}>

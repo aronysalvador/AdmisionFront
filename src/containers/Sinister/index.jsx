@@ -9,7 +9,6 @@ import {getComunStyle} from '../../css/comun'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import Cabecera from '../../components/cabecera/index'
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const Identification = (props) => {
 
@@ -22,7 +21,6 @@ const Identification = (props) => {
   return (<div className={comunClass.root}>
     <div className={comunClass.displayDesk}> 
       <Header
-        dispatch={() => dispatch(logout())}
         userMsal={ microsoftReducer.userMsal }
         // step={1}
       />

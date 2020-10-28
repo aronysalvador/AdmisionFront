@@ -5,7 +5,9 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import Header from "../../components/header/index";
+
 const getUseStyles = makeStyles({
   center: {
     paddingLeft: "3.4375em",
@@ -48,9 +50,19 @@ const ErrorSucursal = (props) => {
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();
+
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+
   const dispatch = useDispatch();
+
   return (
     <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
       <div className={spaceStyle.space5} />
       <div className={useStyles.center}>
         <img

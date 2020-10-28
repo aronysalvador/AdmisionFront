@@ -5,8 +5,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { saveRut } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
-
 
 const LoadPersonalData = (props) => {
   const { addmissionForm, dispatch, microsoftReducer } = props;
@@ -28,7 +26,6 @@ const LoadPersonalData = (props) => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

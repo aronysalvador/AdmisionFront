@@ -13,7 +13,6 @@ import Grid from '@material-ui/core/Grid';
 import Switch from '@material-ui/core/Switch';
 import { ErrorOutline } from "@material-ui/icons";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const EditarTelefono = () => {
   const {
@@ -74,7 +73,6 @@ const EditarTelefono = () => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

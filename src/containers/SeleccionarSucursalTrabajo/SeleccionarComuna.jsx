@@ -10,7 +10,6 @@ import CardSucursal from "../../components/CardSucursal/CardSucursal";
 import { getComuna } from "../../redux/actions/ComunaAction";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
@@ -78,7 +77,6 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

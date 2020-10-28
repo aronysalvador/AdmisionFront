@@ -7,7 +7,6 @@ import Cabecera from "../../components/cabecera/index";
 import { useEffect } from "react";
 import { CLEAR_STATE } from "../../redux/types/addmissionFormType";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const Identification = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -27,7 +26,6 @@ const Identification = (props) => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

@@ -7,8 +7,6 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
-
 
 const HasSinisterDetail = (props) => {
   const { addmissionForm, dispatch, microsoftReducer } = props;
@@ -25,7 +23,6 @@ const HasSinisterDetail = (props) => {
     <div>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />

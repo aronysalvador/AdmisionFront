@@ -12,8 +12,6 @@ import { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
-
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -67,7 +65,6 @@ const PersonalData = (props) => {
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
         <Header
-          dispatch={() => dispatch(logout())}
           userMsal={ microsoftReducer.userMsal }
           // step={1}
         />
