@@ -158,11 +158,11 @@ stages:
             command: push
             tags: $(ImageTag)    
 
-         - task: AzureWebAppContainer@1
-           inputs:
-             azureSubscription: $(azureSubcritionQA) 
-             appName: $(appNameQAFront) 
-             containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
+        - task: AzureWebAppContainer@1
+          inputs:
+            azureSubscription: $(azureSubcritionQA) 
+            appName: $(appNameQAFront) 
+            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
 
         #- task: KubernetesManifest@0
         #  inputs:
