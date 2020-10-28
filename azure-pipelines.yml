@@ -28,8 +28,8 @@ variables:
     value: 'https://desa.orquestador.admision.40.121.134.234.nip.io'
     # value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
   - name: urlOrquestadorQA 
-    value: 'https://qa.orquestador.admision.52.149.214.89.nip.io'
-   # value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
+  # value: 'https://qa.orquestador.admision.52.149.214.89.nip.io'
+    value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
   - name: urlOrquestadorSTG 
     value: 'https://wa-stg-admdig-msorquestador.azurewebsites.net'
   - name: urlOrquestadorPROD 
