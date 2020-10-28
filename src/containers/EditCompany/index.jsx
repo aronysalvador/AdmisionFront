@@ -16,7 +16,7 @@ const EditCompany = () => {
     (state) => state.addmissionForm, shallowEqual);
 
   const {
-    microsoftReducer: microsoftReducer
+    microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();

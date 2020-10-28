@@ -18,7 +18,7 @@ const DireccionParticular = () => {
   } = useSelector((state) => state, shallowEqual)
 
   const {
-    microsoftReducer: microsoftReducer,
+    microsoftReducer
   } = useSelector((state) => state, shallowEqual)
 
   const [direccion, setDireccion] = useState(() => {

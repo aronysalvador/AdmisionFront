@@ -21,7 +21,7 @@ const MapaSelection = () => {
   } = useSelector((state) => state, shallowEqual)
 
   const {
-    microsoftReducer: microsoftReducer,
+    microsoftReducer,
   } = useSelector((state) => state, shallowEqual)
 
 
