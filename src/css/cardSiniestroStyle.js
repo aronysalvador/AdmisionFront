@@ -85,10 +85,9 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
             padding: "15px",
             borderRadius: "10px",
             cursor: "pointer",
-            boxShadow: "0px 4px 4px rgba(44, 44, 44, 0.06)",
+            boxShadow: "1px 1px 5px rgba(44, 44, 44, 0.25)",
             boxSizing: "border-box",
             width: "30%", //"247px",
-            height: "226px",
             textAlign: "left",
         },
     }
