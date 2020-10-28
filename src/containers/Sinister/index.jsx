@@ -53,7 +53,7 @@ const Identification = (props) => {
         </Typography>
       </div>
       <div className={spaceStyle.space2} />
-      <div className={comunClass.displayDeskInline}>
+      <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
           <Button className={classes.button} variant="contained" onClick={()=>{ 
             var tipo = { Id:1, Descripcion: "Accidente Trabajo" }
@@ -85,7 +85,7 @@ const Identification = (props) => {
         </div>
         <div className={spaceStyle.space1} />
       </div>
-      <div className={comunClass.displayDeskInline}>
+      <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
           <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
                 <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>

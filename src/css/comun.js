@@ -486,7 +486,7 @@ export const getComunStyle = makeStyles((theme) => ({
   },
   displayDeskInline: {
     display: 'none'
-},
+  },
   displayMobile: {
     display: 'block'
   },
@@ -743,6 +743,9 @@ export const getComunStyle = makeStyles((theme) => ({
       },
       displayDeskInline: {
           display: 'inline-flex'
+      },
+      displayOnlyDeskInline: {
+        display: 'inline-flex'
       },
       displayMobile: {
           display: 'none'
