@@ -302,7 +302,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             backgroundColor: "#016C2E !important",
             // width: "25.715em",
             // height: "32em",
-            padding: "64px 5%",
+            padding: "64px 10%", //5%
         },
         backgroundBoxAchsDesk: {
             backgroundColor: "#016C2E !important",

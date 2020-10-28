@@ -63,13 +63,13 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     var lookupObject  = {};
 
     for(var i in originalArray) {
-       lookupObject[originalArray[i][prop]] = originalArray[i];
+      lookupObject[originalArray[i][prop]] = originalArray[i];
     }
 
     for(i in lookupObject) {
-        newArray.push(lookupObject[i]);
+      newArray.push(lookupObject[i]);
     }
-     return newArray;
+    return newArray;
   }
 
   console.log(listaComunas);
@@ -103,34 +103,36 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       </div>
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
-        <Typography className={comunClass.tituloTextbox} variant="subtitle2">
-          Comuna
-        </Typography>
-        <AutoComplete
-          value={comuna}
-          onChange={(event, value) => {
-            console.log({ value });
-            const sucursalesComuna = sucursalesEmpresa.filter(
-              (x) =>
-                x.id_comuna === value?.codigo_comuna &&
-                parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
-            );
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextbox} variant="subtitle2">
+            Comuna
+          </Typography>
+          <AutoComplete
+            value={comuna}
+            onChange={(event, value) => {
+              console.log({ value });
+              const sucursalesComuna = sucursalesEmpresa.filter(
+                (x) =>
+                  x.id_comuna === value?.codigo_comuna &&
+                  parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
+              );
 
-            console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
-            setNumeroSucursales(sucursalesComuna.length);
-            setSucursales(sucursalesComuna);
-            setComuna(value);
-          }}
-          size="small"
-          fullWidth
-          options={listaComunas}
-          getOptionLabel={(option) => option.nombre}
-          renderInput={(params) => <TextField {...params} variant="outlined" />}
-        />
-        <div className={spaceStyle.space2} />
-        {numeroSucursales === 1 ? (
-          <CardSucursal sucursales={sucursales[0]} />
-        ) : null}
+              console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
+              setNumeroSucursales(sucursalesComuna.length);
+              setSucursales(sucursalesComuna);
+              setComuna(value);
+            }}
+            size="small"
+            fullWidth
+            options={listaComunas}
+            getOptionLabel={(option) => option.nombre}
+            renderInput={(params) => <TextField {...params} variant="outlined" />}
+          />
+          <div className={spaceStyle.space2} />
+          {numeroSucursales === 1 ? (
+            <CardSucursal sucursales={sucursales[0]} />
+          ) : null}
+        </div>
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}

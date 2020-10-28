@@ -241,7 +241,8 @@ const HasSinisterDetail = (props) => {
         </div>
       </div>
       <div className={comunClass.displayDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={spaceStyle.space5} />
+        <div className={spaceStyle.space5} />
       </div>
     </div>
   );

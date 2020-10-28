@@ -14,6 +14,7 @@ const CardSucursal = ({ sucursales }) => {
         backgroundColor: "#FFFFFF",
         borderRadius: "10px",
         padding: "10px",
+        boxShadow: "1px 1px 5px rgba(44, 44, 44, 0.25)",
       }}
     >
       <h3 style={{ color: "#007A33", fontSize: "20px" }}>Sucursal</h3>

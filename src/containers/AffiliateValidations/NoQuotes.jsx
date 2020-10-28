@@ -64,26 +64,27 @@ const NoQuotes = (props) => {
         </div>
 
         <NoQuotesCard />
-  
-        <div className={comunClass.bottomElement}>
-          <Button
-            className={blackStyle.buttonFooter}
-            onClick={() => {
-              dispatch(handleSetStep(5.7));
-            }}
-          >
-            Continuar admisión
-          </Button>
-          {/* <div className={spaceStyle.spaceMin1} /> */}
-          <Button
-            className={blackStyle.buttonFooter2}
-            onClick={() => {
-              dispatch(handleSetStep(1.1));
-            }}
-          >
-            Volver al inicio
-          </Button>
-        </div>
+        <div className={blackStyle.containerBottom}>
+          <div className={comunClass.bottomElement}>
+            <Button
+              className={blackStyle.buttonFooter}
+              onClick={() => {
+                dispatch(handleSetStep(5.7));
+              }}
+            >
+              Continuar admisión
+            </Button>
+            {/* <div className={spaceStyle.spaceMin1} /> */}
+            <Button
+              className={blackStyle.buttonFooter2}
+              onClick={() => {
+                dispatch(handleSetStep(1.1));
+              }}
+            >
+              Volver al inicio
+            </Button>
+          </div>
+        </div> 
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />

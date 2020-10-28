@@ -75,8 +75,8 @@ const HasScheduledMeet = (props) => {
           
         </div>
 
-        <div className={comunClass.bottomElement}>
-          <div className={comunClass.paddingElement}>
+        <div className={blackStyle.containerBottom}>
+          <div className={comunClass.bottomElement}>
             <Button
               className={blackStyle.buttonFooter}
               onClick={() => {

@@ -70,6 +70,9 @@ const NoCuentaSap = (props) => {
             Entendido
           </Button>
         </div>
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space2} />
+        </div>
       </div>
     </>
   );

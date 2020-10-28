@@ -300,18 +300,11 @@ export const getComunStyle = makeStyles((theme) => ({
     width: "20%",
     float: "left",
   },
-
-  googleMap: {
-    width: "100%",
-    borderRadius: "20px",
-    padding: "10px",
-  },
   textAchsContentGreen: {
     fontFamily: "Catamaran",
     fontStyle: "normal",
     color: "#007A33",
   },
-
   barraContainer: {
     paddingTop: "0.5em",
     width: "17.75em",
@@ -951,5 +944,11 @@ export const getComunStyle = makeStyles((theme) => ({
       fontFamily: "Catamaran",
       fontStyle: "normal",
       color: "#787878",
+  },
+  googleMap: {
+    width: "100%",
+    borderRadius: "20px",
+    padding: "10px",
+    textAlign: "center"
   },
 }));

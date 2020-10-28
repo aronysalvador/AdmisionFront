@@ -85,7 +85,7 @@ const DireccionParticular = () => {
           </Grid>
         </div>
       </div>
-      <div className={comunClass.boxDesk} style={{width:'90%'}}>
+      <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextbox} variant="subtitle2">
@@ -103,13 +103,16 @@ const DireccionParticular = () => {
               dispatch(handleSetStep(5.21))
             }}
           />
-          {(mapaUrl)?
-          <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
-          :null}
+          <center>
+            <div className={comunClass.displayDesk}>
+              <div className={spaceStyle.space1} />
+            </div>
+            {(mapaUrl)?
+            <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
+            :null}
+          </center>
         </div>
-        <div className={comunClass.displayDesk}>
-          <div className={spaceStyle.space4} />
-        </div>
+
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}

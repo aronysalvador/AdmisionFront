@@ -10,7 +10,7 @@ const BoxACHS = (props) => {
     const { titulo, contenido, step } = props
     const classes = cardSiniestroStyles();
     const dispatch = useDispatch();
-    return (<div className={classes.container}>
+    return (<div className={classes.containerBox}>
                 <Grid container>
                     <Grid item xs={11} >
                         <div className={classes.cuerpo}>

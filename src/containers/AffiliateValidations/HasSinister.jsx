@@ -59,6 +59,9 @@ const HasSinister = (props) => {
             {/* Ver sus(s) siniestro(s) */}
           </Button>
         </div>
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space4} />
+        </div>
       </div>
     </>
   );

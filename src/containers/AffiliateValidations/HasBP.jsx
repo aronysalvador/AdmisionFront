@@ -62,7 +62,7 @@ const HasBP = (props) => {
           Atiéndelo usando SAP
         </Typography>
         <div className={comunClass.displayDesk}>
-          <div className={spaceStyle.space2} />
+          <div className={spaceStyle.space1} />
         </div>
         <div className={comunClass.bottomElement}>
           <Button
@@ -74,6 +74,7 @@ const HasBP = (props) => {
             Continuar en SAP
           </Button>
         </div>
+        
       </div>
     </>
   );

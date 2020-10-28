@@ -71,6 +71,20 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
             boxShadow: "0px 4px 4px rgba(44, 44, 44, 0.06)",
             boxSizing: "border-box"
         },
+        containerBox: {
+            marginTop: "15px",
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "stretch",
+            backgroundColor: "#FFFFFF",
+            padding: "15px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            boxShadow: "0px 4px 4px rgba(44, 44, 44, 0.06)",
+            boxSizing: "border-box"
+        },
     },
     '@media (min-width: 768px)': {
         /* Medium devices (landscape tablets, 768px and up) */
@@ -89,6 +103,23 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
             boxSizing: "border-box",
             width: "30%", //"247px",
             textAlign: "left",
+        },
+        containerBox: {
+            margin: "15px 10px",
+            display: "inline-flex",
+            flexFlow: "row wrap",
+            justifyContent: "center",
+            // alignItems: "center",
+            alignContent: "stretch",
+            backgroundColor: "#FFFFFF",
+            padding: "15px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            boxShadow: "1px 1px 5px rgba(44, 44, 44, 0.25)",
+            boxSizing: "border-box",
+            width: "30%", //"247px",
+            textAlign: "left",
+            minHeight: "190px",
         },
         iconRight: {
             float: 'right'

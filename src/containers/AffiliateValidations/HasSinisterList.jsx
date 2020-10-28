@@ -133,7 +133,9 @@ const PersonalData = (props) => {
               >
                 Continuar en SAP
               </Button>
-              <div className={spaceStyle.space1} />
+              <div className={comunClass.displayMobile}>
+                <div className={spaceStyle.space1} />
+              </div>
               <Button
                 className={comunClass.buttonAchs2}
                 onClick={() => handleNext()}

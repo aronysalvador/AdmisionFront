@@ -275,12 +275,15 @@ export const getBlackTheme = makeStyles((theme) => ({
             maxWidth: '49%',
             flexBasis: '50%',
         },
+        containerBottom: {
+            maxWidth: '40%'
+        }
 
     },
 
-    '@media (min-height: 800px)': { //775px
-        root: {
-            height: "1420px"
-        }
-    }
+    // '@media (min-height: 800px)': { //775px
+    //     root: {
+    //         height: "1420px"
+    //     }
+    // }
 }));

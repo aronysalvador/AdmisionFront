@@ -164,7 +164,7 @@ const Main = (props) => {
       case 5:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <LoadPersonalData />
             </Paper>
           </div>
@@ -308,7 +308,7 @@ const Main = (props) => {
       case 5.833:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <SameDateSinister />
             </Paper>
           </div>
@@ -316,7 +316,7 @@ const Main = (props) => {
       case 5.9:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <ContinueSAP />
             </Paper>
           </div>
