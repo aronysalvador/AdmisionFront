@@ -20,9 +20,7 @@ const EditarTelefono = () => {
     addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado },
   } = useSelector((state) => state, shallowEqual);
 
-  const {
-    microsoftReducer: microsoftReducer
-  } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
 
