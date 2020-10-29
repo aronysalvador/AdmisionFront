@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { getComunStyle } from "../../css/comun";
 import { Button, Typography, withStyles } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import InputMasked from "./InputMasked";

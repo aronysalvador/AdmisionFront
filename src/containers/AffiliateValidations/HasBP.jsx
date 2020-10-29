@@ -74,7 +74,9 @@ const HasBP = (props) => {
             Continuar en SAP
           </Button>
         </div>
-        
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space2} />
+        </div>
       </div>
     </>
   );

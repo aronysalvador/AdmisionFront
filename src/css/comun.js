@@ -105,16 +105,7 @@ export const getComunStyle = makeStyles((theme) => ({
     lineHeight: '22px',
     color: '#007A33',
   },
-  tituloSelectorFecha: {
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontWeight: "600", //"bold",
-    fontSize: "14px",
-    lineHeight: "14px",
-    textAlign: "center",
-    letterSpacing: "0.03em", //"2px",
-    color: "#787878", //"#373737",
-  },
+  
   textCenter: {
     textAlign: "center !important",
   },
@@ -316,49 +307,6 @@ export const getComunStyle = makeStyles((theme) => ({
     pullRight: {
       float: "right",
     },
-    selectorRuedaItemPrincipal: {
-      fontFamily: 'Helvetica',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: '20px',
-      lineHeight: '22px',
-      textAlign: "center",
-      color: '#007A33',
-    },
-    selectorRuedaItemsCostados: {
-      fontFamily: 'Helvetica',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: '16px',
-      lineHeight: '22px',
-      textAlign: "center",
-      color: '#787878',
-      padding: "5px 0",
-    },
-    selectorRuedaItemsCostados2: {
-      fontFamily: 'Helvetica',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: '16px',
-      lineHeight: '22px',
-      textAlign: "center",
-      color: '#DEDEDE !important',
-      // padding: "5px 0",
-    },
-    selectorRuedaBordesItemPrincipal: {
-      margin: "0",
-      opacity: "0.2",
-    },
-    boxHoras: {
-      background: "white",
-      borderRadius: "10px",
-      padding: "8px 25px",
-    },
-    boxTitleHoras: {
-      borderRadius: "10px",
-      padding: "8px 25px",
-    },
-
     borderBox: {
       border: "yellow",
       "&:hover": {
@@ -604,10 +552,10 @@ export const getComunStyle = makeStyles((theme) => ({
       paddingElement: {
         display: 'flex',
         justifyContent: 'space-around',
-        margin: '0 1%'
+        // margin: '0 1%'
       },
       buttonAchs: {
-          width: "50%", //"100%",
+          width: "50%",
           background: "#007A33",
           borderRadius: "0.71em",
           fontFamily: "Catamaran",
@@ -623,10 +571,10 @@ export const getComunStyle = makeStyles((theme) => ({
           },
           marginTop: "5px",
           minWidth: "300px",
-          maxWidth: "328px",
+          maxWidth: '60%',//"328px",
       },
       buttonAchs2: {
-          width: "50%", //"100%",
+          width: "50%", 
           background: "#FFFFFF",
           border: "2px solid #007A33",
           boxSizing: "border-box",
@@ -641,8 +589,45 @@ export const getComunStyle = makeStyles((theme) => ({
           height: "3.5em",
           marginTop: "5px",
           minWidth: "300px",
-          maxWidth: "328px",
+          maxWidth: '60%',//"328px",
       },
+      buttonAchsSiniester: {
+        width: "40%",
+        background: "#007A33",
+        borderRadius: "0.71em",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "1.125em",
+        lineHeight: "1.125em",
+        color: "#FFFFFF",
+        textTransform: "inherit",
+        height: "3.5em",
+        "&:hover": {
+            background: "#104F28",
+        },
+        marginTop: "5px",
+        minWidth: "300px",
+        maxWidth: '60%',//"328px",
+    },
+    buttonAchsSiniester2: {
+        width: "40%", 
+        background: "#FFFFFF",
+        border: "2px solid #007A33",
+        boxSizing: "border-box",
+        borderRadius: "0.71em",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "1.125em",
+        lineHeight: "1.125em",
+        color: "#007A33",
+        textTransform: "inherit",
+        height: "3.5em",
+        marginTop: "5px",
+        minWidth: "300px",
+        maxWidth: '60%',//"328px",
+    },
       tituloCerrarSesion: {
           fontFamily: "Catamaran",
           fontStyle: "normal",
@@ -773,7 +758,8 @@ export const getComunStyle = makeStyles((theme) => ({
           marginBottom: '32px'
       },
       containerTextBox: {
-          width: '328px',
+          width: '50%', //'328px',
+          minWidth:'300px',
           textAlign: 'left',
           margin: 'auto',
       },
@@ -986,5 +972,81 @@ export const getComunStyle = makeStyles((theme) => ({
     borderRadius: "20px",
     padding: "10px",
     textAlign: "center"
+  },
+  tituloSelectorFecha: {
+    fontFamily: "Catamaran",
+    fontStyle: "normal",
+    fontWeight: "600", //"bold",
+    fontSize: "14px",
+    lineHeight: "14px",
+    textAlign: "center",
+    letterSpacing: "0.03em", //"2px",
+    color: "#787878", //"#373737",
+  },
+  selectorRuedaItemPrincipal: {
+    fontFamily: 'Helvetica',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '20px',
+    lineHeight: '22px',
+    textAlign: "center",
+    color: '#007A33',
+  },
+  selectorRuedaItemsCostados: {
+    fontFamily: 'Helvetica',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '22px',
+    textAlign: "center",
+    color: '#787878',
+    padding: "5px 0",
+  },
+  selectorRuedaItemsCostados2: {
+    fontFamily: 'Helvetica',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '22px',
+    textAlign: "center",
+    color: '#DEDEDE !important',
+    // padding: "5px 0",
+  },
+  selectorRuedaBordesItemPrincipal: {
+    margin: "0",
+    opacity: "0.2",
+  },
+  boxHoras: {
+    background: "white",
+    borderRadius: "10px",
+    padding: "8px 25px",
+    boxShadow: "1px 4px 4px rgba(0, 0, 0, 0.25)"
+  },
+  boxTitleHoras: {
+    borderRadius: "10px",
+    padding: "8px 25px",
+  },
+  boxCalendar: {
+    background: "white",
+    borderRadius: "10px",
+    padding: "10px",
+    boxShadow: "1px 4px 4px rgba(0, 0, 0, 0.25)"
+  },
+  txtCalendar: {
+    fontFamily: "Helvetica",
+    fontSize: "18px",
+    fontWeight: "bold",
+    // lineHeight: '22px',
+    float: "left",
+    clear: "left",
+  },
+  txtTodayCalendar: {
+    display: "block",
+    textAlign: "center",
+    fontFamily: 'Catamaran',
+    fontWeight: 'bold',
+    fontSize: '1em',
+    // lineHeight: '1em',
+    letterSpacing: '0.03em'
   },
 }));

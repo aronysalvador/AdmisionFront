@@ -60,7 +60,7 @@ const HasSinister = (props) => {
           </Button>
         </div>
         <div className={comunClass.displayDesk}>
-          <div className={spaceStyle.space4} />
+          <div className={spaceStyle.space5} />
         </div>
       </div>
     </>

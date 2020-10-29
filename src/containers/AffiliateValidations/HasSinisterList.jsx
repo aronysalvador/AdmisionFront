@@ -128,7 +128,7 @@ const PersonalData = (props) => {
           <div className={comunClass.bottomElement}>
             <div className={comunClass.paddingElement}>
               <Button
-                className={comunClass.buttonAchs}
+                className={[comunClass.buttonAchs, comunClass.buttonAchsSiniester]}
                 onClick={() => dispatch(handleSetStep(5.9))}
               >
                 Continuar en SAP
@@ -137,7 +137,7 @@ const PersonalData = (props) => {
                 <div className={spaceStyle.space1} />
               </div>
               <Button
-                className={comunClass.buttonAchs2}
+                className={[comunClass.buttonAchs2, comunClass.buttonAchsSiniester2]}
                 onClick={() => handleNext()}
               >
                 Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
