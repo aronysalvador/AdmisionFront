@@ -8,14 +8,14 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const RelatoFinal = (props) => {
-  const { dispatch, addmissionForm } = props;
-
-  const classesComun = getComunStyle();
-  const spaceStyle = getSpaceStyle();
-
+  const { dispatch, addmissionForm, microsoftReducer } = props;
   const { relatoAccidente, volverAConcatenar } = addmissionForm;
+
+  const comunClass = getComunStyle();
+  const spaceStyle = getSpaceStyle();
 
   const getRelato = () => {
     return (
@@ -53,108 +53,119 @@ const RelatoFinal = (props) => {
   };
 
   return (
-    <div className={classesComun.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(8))}
-        percentage={addmissionForm.percentage}
-      />
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(8))}
+          percentage={addmissionForm.percentage}
+        />
+      </div>
       <div>
         <form onSubmit={() => saveAnswer(localValue)}>
-          <div>
+          <div className={comunClass.titlePrimaryDesk}>
             <Typography
               variant="h1"
               component="h1"
-              className={classesComun.titleBlack}
+              className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
             >
               Por favor,
-            <Grid component="span"  className={classesComun.titleBlue}>
-              &nbsp;confirma el relato
-            </Grid>   
+              <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                &nbsp;confirma el relato
+              </Grid>   
             </Typography>
+            <div className={comunClass.displayDeskInline}>
+              <Grid component="span" className={comunClass.imgPrimaryDesk}>
+                <img alt="identify" src="static/relato.svg" />
+              </Grid>
+            </div>
           </div>
-          <div className={spaceStyle.space1}></div>
-          <div
-            className={classesComun.boxRootRelato}
-          >
-            {isEdit ? (
-              <div>
-                <div
-                  className={classesComun.boxRelato}
-                >
-                  <div style={{ fontWeight: "bold" }}>Relato:</div>
-                  {/* <div>
-                    <a
-                      style={{
-                        cursor: "pointer",
-                        textDecoration: "underline",
-                        color: "#DEDEDE",
+          <div className={comunClass.boxDesk}>
+            <div className={spaceStyle.space1}></div>
+            <div className={comunClass.boxRootRelato}>
+              {isEdit ? (
+                <div>
+                  <div className={comunClass.boxRelato}>
+                    <div style={{ fontWeight: "bold" }}>Relato:</div>
+                    {/* <div>
+                      <a
+                        style={{
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                          color: "#DEDEDE",
+                        }}
+                        onClick={() => setEditable(false)}
+                      >
+                        Confirmar
+                      </a>
+                    </div> */}
+                    </div>
+                    <TextField
+                      id="txtRespuesta"
+                      label=""
+                      value={localValue}
+                      margin="dense"
+                      variant="outlined"
+                      fullWidth
+                      rows={13}
+                      multiline
+                      scroll={
+                        {width: 8}}
+                      inputProps={{
+                        maxLength: 700,
+                        style: { 
+                          fontFamily: "Catamaran", 
+                          fontSize: "1em",
+                        },
                       }}
-                      onClick={() => setEditable(false)}
-                    >
-                      Confirmar
-                    </a>
-                  </div> */}
-                </div>
-
-                <TextField
-                  id="txtRespuesta"
-                  label=""
-                  value={localValue}
-                  margin="dense"
-                  variant="outlined"
-                  fullWidth
-                  rows={13}
-                  multiline
-                  scroll={
-                    {width: 8}}
-                  inputProps={{
-                    maxLength: 700,
-                    style: { 
-                      fontFamily: "Catamaran", 
-                      fontSize: "1em",
-                    },
-                  }}
-                  onChange={onChangeHandler}
-                />
-                <div style={{ marginBottom: "28px", marginTop: "5px" }}>
-                  <label className={classesComun.pullRight}>
-                    {localValue.length}/700
-                  </label>
-                </div>
-              </div>
-            ) : (
-              <div>
-                <div
-                  className={classesComun.boxRelato}
-                >
-                  <div style={{ fontWeight: "bold" }}>Relato:</div>
-                  <div>
-                    <div
-                      className={classesComun.buttonEditRelato}
-                      onClick={() => setEditable(true)}
-                    >
-                      Editar
+                      onChange={onChangeHandler}
+                    />
+                    <div style={{ marginBottom: "28px", marginTop: "5px", textAlign: "right" }}>
+                      <label className={comunClass.pullRight}>
+                        {localValue.length}/700
+                      </label>
                     </div>
                   </div>
+              ) : (
+                <div>
+                  <div className={comunClass.boxRelato}>
+                    <div style={{ fontWeight: "bold" }}>Relato:</div>
+                    <div>
+                      <div
+                        className={comunClass.buttonEditRelato}
+                        onClick={() => setEditable(true)}
+                      >
+                        Editar
+                      </div>
+                    </div>
+                  </div>
+                  <div className={comunClass.boxRelatoText}>
+                    {localValue}
+                  </div>
                 </div>
-                <div
-                  className={classesComun.boxRelatoText}
-                >
-                  {localValue}
-                </div>
-              </div>
-            )}
+              )}
+            </div>
+            <div className={comunClass.displayMobile}>
+            <div className={spaceStyle.space1} />
           </div>
-          <div className={spaceStyle.space1}></div>
-          <div className={classesComun.bottomElement}>
-            <Button
-              className={classesComun.buttonAchs}
-              variant="contained"
-              type="submit"
-              disabled={isDisabled()}
-            >
-              Relato correcto
-            </Button>
+            <div className={comunClass.bottomElement}>
+              <Button
+                className={comunClass.buttonAchs}
+                variant="contained"
+                type="submit"
+                disabled={isDisabled()}
+              >
+                Relato correcto
+              </Button>
+            </div>
+          </div>
+          <div className={comunClass.displayDesk}>
+            <div className={spaceStyle.space2} />
           </div>
         </form>
       </div>
@@ -162,9 +173,10 @@ const RelatoFinal = (props) => {
   );
 };
 
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(RelatoFinal);

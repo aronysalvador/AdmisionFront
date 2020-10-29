@@ -4,10 +4,12 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import QuestionForm from "../../components/Questions/questionForm";
+import Header from "../../components/header/index";
 
 const AccidentObjectForm = (props) => {
-  const { dispatch, addmissionForm } = props;
+  const { dispatch, addmissionForm, microsoftReducer } = props;
   const { objetoAccidente } = addmissionForm;
+
   const comunClass = getComunStyle();
 
   const respuestaOriginal  = objetoAccidente;
@@ -21,14 +23,23 @@ const AccidentObjectForm = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
-        percentage={addmissionForm.percentage}
-      />
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(--addmissionForm.step))}
+          percentage={addmissionForm.percentage}
+        />
+      </div>
       <div>
         <QuestionForm
-          titulo={ ' "El accidente ocurrió con..." ' }
-          pregunta={<br/>}
+          titulo2={ ' "El accidente ' }
+          pregunta={ 'ocurrió con..." ' }
+          // pregunta={<br/>}
           placeholder={
             "Ejemplo: Con la escalera - con el suelo - al caer tineta en el pie"
           }
@@ -40,9 +51,10 @@ const AccidentObjectForm = (props) => {
   );
 };
 
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(AccidentObjectForm);

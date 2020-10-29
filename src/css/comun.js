@@ -37,7 +37,6 @@ export const getComunStyle = makeStyles((theme) => ({
     backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
     padding: 0,
   },
-
   // TEXTOS
   textAchsContent: {
     fontFamily: "Catamaran",
@@ -119,7 +118,6 @@ export const getComunStyle = makeStyles((theme) => ({
   textCenter: {
     textAlign: "center !important",
   },
-
   //BOTONES
   bottomElement: {
     padding: "1.145em 0", //"1.145em 1.145em 2.4em 1.145em",
@@ -228,281 +226,279 @@ export const getComunStyle = makeStyles((theme) => ({
     paddingBottom: "10px",
     fontWeight: "bold",
     "&:hover": {
+      background: "#DFF3F2",
+      border: "2px solid #00B2A9",
+      justifyContent: "center",
+      flexDirection: "row",
+      }
+    },
+    buttonAchsRight: {
+      width: "46%",
+      //  height: "90px",
+      background: "#FFFFFF", //#007A33
+      border: "2px solid #787878",
+      boxSizing: "border-box",
+      boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+      borderRadius: "10px",
+      fontFamily: "Catamaran",
+      fontStyle: "normal",
+      fontWeight: "bold",
+      fontSize: "1.145em",
+      lineHeight: "1.285em",
+      color: "#373737",
+      textTransform: "inherit", //"capitalize",
+      height: "4.8em",
+      float: "right",
+      marginBottom: "16px",
+      "&:hover": {
         background: "#DFF3F2",
         border: "2px solid #00B2A9",
-        justifyContent: "center",
-        flexDirection: "row",
-    }
-  },
-  buttonAchsRight: {
-    width: "46%",
-    //  height: "90px",
-    background: "#FFFFFF", //#007A33
-    border: "2px solid #787878",
-    boxSizing: "border-box",
-    boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
-    borderRadius: "10px",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "1.145em",
-    lineHeight: "1.285em",
-    color: "#373737",
-    textTransform: "inherit", //"capitalize",
-    height: "4.8em",
-    float: "right",
-    marginBottom: "16px",
-    "&:hover": {
-        background: "#DFF3F2",
-        border: "2px solid #00B2A9",
+      },
     },
-  },
-  buttonAchsLeft: {
-    width: "46%",
-    //height: "90px",
-    background: "#FFFFFF", //#007A33
-    border: "2px solid #787878",
-    boxSizing: "border-box",
-    boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
-    borderRadius: "10px",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "1.145em",
-    lineHeight: "1.285em",
-    color: "#373737",
-    textTransform: "inherit", //"capitalize",
-    height: "4.8em",
-    float: "left",
-    marginBottom: "16px",
-    "&:hover": {
-        background: "#DFF3F2",
-        border: "2px solid #00B2A9",
+    buttonAchsLeft: {
+      width: "46%",
+      //height: "90px",
+      background: "#FFFFFF", //#007A33
+      border: "2px solid #787878",
+      boxSizing: "border-box",
+      boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+      borderRadius: "10px",
+      fontFamily: "Catamaran",
+      fontStyle: "normal",
+      fontWeight: "bold",
+      fontSize: "1.145em",
+      lineHeight: "1.285em",
+      color: "#373737",
+      textTransform: "inherit", //"capitalize",
+      height: "4.8em",
+      float: "left",
+      marginBottom: "16px",
+      "&:hover": {
+          background: "#DFF3F2",
+          border: "2px solid #00B2A9",
+      },
     },
-  },
+    mediumDivider: {
+      width: "47%",
+    },
+    flexDivider: {
+      display: "flex",
+      alignItems: "center",
+    },
+    emMargin: {
+      margin: "0.5em",
+    },
+    buttonVolverContainer: {
+      width: "20%",
+      float: "left",
+    },
+    buttonVolverContainerBarra: {
+      width: "20%",
+      float: "left",
+    },
+    textAchsContentGreen: {
+      fontFamily: "Catamaran",
+      fontStyle: "normal",
+      color: "#007A33",
+    },
+    barraContainer: {
+      paddingTop: "0.5em",
+      width: "17.75em",
+      float: "left",
+    },
+    buttonVolverColor: {
+      color: "#373737",
+    },
+    cleanFloat: {
+      float: "none",
+      clear: "both",
+    },
+    pullRight: {
+      float: "right",
+    },
+    selectorRuedaItemPrincipal: {
+      fontFamily: 'Helvetica',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: '20px',
+      lineHeight: '22px',
+      textAlign: "center",
+      color: '#007A33',
+    },
+    selectorRuedaItemsCostados: {
+      fontFamily: 'Helvetica',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: '16px',
+      lineHeight: '22px',
+      textAlign: "center",
+      color: '#787878',
+      padding: "5px 0",
+    },
+    selectorRuedaItemsCostados2: {
+      fontFamily: 'Helvetica',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: '16px',
+      lineHeight: '22px',
+      textAlign: "center",
+      color: '#DEDEDE !important',
+      // padding: "5px 0",
+    },
+    selectorRuedaBordesItemPrincipal: {
+      margin: "0",
+      opacity: "0.2",
+    },
+    boxHoras: {
+      background: "white",
+      borderRadius: "10px",
+      padding: "8px 25px",
+    },
+    boxTitleHoras: {
+      borderRadius: "10px",
+      padding: "8px 25px",
+    },
 
-  mediumDivider: {
-    width: "47%",
-  },
-  flexDivider: {
-    display: "flex",
-    alignItems: "center",
-  },
-  emMargin: {
-    margin: "0.5em",
-  },
-
-  buttonVolverContainer: {
-    width: "20%",
-    float: "left",
-  },
-  buttonVolverContainerBarra: {
-    width: "20%",
-    float: "left",
-  },
-  textAchsContentGreen: {
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    color: "#007A33",
-  },
-  barraContainer: {
-    paddingTop: "0.5em",
-    width: "17.75em",
-    float: "left",
-  },
-  buttonVolverColor: {
-    color: "#373737",
-  },
-  cleanFloat: {
-    float: "none",
-    clear: "both",
-  },
-  pullRight: {
-    float: "right",
-  },
-  selectorRuedaItemPrincipal: {
-    fontFamily: 'Helvetica',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '20px',
-    lineHeight: '22px',
-    textAlign: "center",
-    color: '#007A33',
-  },
-  selectorRuedaItemsCostados: {
-    fontFamily: 'Helvetica',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '16px',
-    lineHeight: '22px',
-    textAlign: "center",
-    color: '#787878',
-    padding: "5px 0",
-  },
-  selectorRuedaItemsCostados2: {
-    fontFamily: 'Helvetica',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '16px',
-    lineHeight: '22px',
-    textAlign: "center",
-    color: '#DEDEDE !important',
-    // padding: "5px 0",
-  },
-  selectorRuedaBordesItemPrincipal: {
-    margin: "0",
-    opacity: "0.2",
-  },
-  boxHoras: {
-    background: "white",
-    borderRadius: "10px",
-    padding: "8px 25px",
-  },
-  boxTitleHoras: {
-    borderRadius: "10px",
-    padding: "8px 25px",
-  },
-
-  borderBox: {
-    border: "yellow",
-    "&:hover": {
-      border: "#007A33",
+    borderBox: {
+      border: "yellow",
+      "&:hover": {
+        border: "#007A33",
+      },
+    },
+    cajaRutSiniestroContainer: {
+      width: "48%",
+      border: "1px solid #787878",
+      borderRadius: "10px",
+      padding: "10px",
+      height: "60px",
+      paddingBottom: "5px",
+      backgroundColor: "#FFFFFF",
+    },
+    cajaRutSiniestroItem: {
+      display: "flex",
+      justifyContent: "space-around",
+      alignItems: "left",
+      flexDirection: "column",
+    },
+    cajaRutSiniestroTextoPrimario: {
+      color: "#373737",
+      fontWeight: "bold",
+      fontSize: "15px",
+    },
+    cajaRutSiniestroTextoSecundario: {
+      color: "#787878",
+      fontWeight: "bold",
+      fontSize: "15px",
+    },
+    iconLocation: {
+      marginRight: '10px',
+      maxHeight: "15px",
+      verticalAlign: "middle",
+    },
+    siniesterList: {
+      display: 'flow-root',
+      overflow: 'auto',
+      height: '24.5em',
+      '&::-webkit-scrollbar': {
+        width: 8,
+      },
+      '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'rgba(0,0,0,.2)',
+        outline: '0px solid slategrey',
+        borderRadius: 4,
+      },
+    },
+    boxRootRelato: {
+      padding: "5px",
+      backgroundColor: "#FFFFFF",
+      border: "1px solid #FAFAFA",
+      borderRadius: "10px",
+      minHeight: "350px",
+      overFlowY: "auto",
+    },
+    boxRelato: {
+      display: "flex",
+      justifyContent: "space-between",
+      padding: "10px",
+    },
+    boxRelatoText: {
+      fontFamily: "Catamaran",
+      fontSize: "1em",
+      lineHeight: "1.563em",
+      padding: "10px",
+      overflowWrap: "break-word",
+      overflow: "auto",
+      height: "24em",
+      '&::-webkit-scrollbar': {
+        width: 8,
+      },
+      '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'rgba(0,0,0,.2)',
+        outline: '0px solid slategrey',
+        borderRadius: 4,
+      },
+    },
+    buttonEditRelato: {
+      cursor: "pointer",
+      textDecoration: "underline",
+      color: "#DEDEDE",
+    },
+    imgAchs: {
+      width: '60px', //"4.28125em",
+      float: 'right'
+    },
+    imgProfile: {
+      width: '64px',
+      height: '64px',
+      display: 'none'
+    },
+    imgLoadData: {
+      width: "15.625em",
+    },
+    imgLoadData2: {
+      width: "7.28125em",
+    },
+    header: {
+      display: 'none',
+      width: '100%'
+    },
+    displayDesk: {
+      display: 'none'
+    },
+    displayDeskInline: {
+      display: 'none'
+    },
+    displayMobile: {
+      display: 'block'
+    },
+    txtLoadData: {
+      textAlign: "center",
+      fontFamily: "Catamaran",
+      fontStyle: "normal",
+      fontWeight: "bold",
+      fontSize: "1.5625em",
+      lineHeight: "1.6875em",
+      alignItems: "center",
+      color: "#081C15",
+    },
+    txtLoadData2: {
+      textAlign: "center",
+      fontFamily: "Catamaran",
+      fontStyle: "normal",
+      fontSize: "1em",
+      lineHeight: "1.5625em",
+      alignItems: "center",
+      color: "#081C15",
     },
   },
-  cajaRutSiniestroContainer: {
-    width: "48%",
-    border: "1px solid #787878",
-    borderRadius: "10px",
-    padding: "10px",
-    height: "60px",
-    paddingBottom: "5px",
-    backgroundColor: "#FFFFFF",
-  },
-  cajaRutSiniestroItem: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "left",
-    flexDirection: "column",
-  },
-  cajaRutSiniestroTextoPrimario: {
-    color: "#373737",
-    fontWeight: "bold",
-    fontSize: "15px",
-  },
-  cajaRutSiniestroTextoSecundario: {
-    color: "#787878",
-    fontWeight: "bold",
-    fontSize: "15px",
-  },
-  iconLocation: {
-    marginRight: '10px',
-    maxHeight: "15px",
-    verticalAlign: "middle",
-  },
-  siniesterList: {
-    display: 'flow-root',
-    overflow: 'auto',
-    height: '24.5em',
-    '&::-webkit-scrollbar': {
-      width: 8,
-    },
-    '&::-webkit-scrollbar-track': {
-      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-      webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: 'rgba(0,0,0,.2)',
-      outline: '0px solid slategrey',
-      borderRadius: 4,
-    },
-  },
-  boxRootRelato: {
-    padding: "5px",
-    backgroundColor: "#FFFFFF",
-    border: "1px solid #FAFAFA",
-    borderRadius: "10px",
-    minHeight: "350px",
-    overFlowY: "auto",
-  },
-  boxRelato: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "10px",
-  },
-  boxRelatoText: {
-    fontFamily: "Catamaran",
-    fontSize: "1em",
-    lineHeight: "1.563em",
-    padding: "10px",
-    overflowWrap: "break-word",
-    overflow: "auto",
-    height: "24em",
-    '&::-webkit-scrollbar': {
-      width: 8,
-    },
-    '&::-webkit-scrollbar-track': {
-      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-      webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: 'rgba(0,0,0,.2)',
-      outline: '0px solid slategrey',
-      borderRadius: 4,
-    },
-  },
-  buttonEditRelato: {
-    cursor: "pointer",
-    textDecoration: "underline",
-    color: "#DEDEDE",
-  },
-  imgAchs: {
-    width: '60px', //"4.28125em",
-    float: 'right'
-  },
-  imgProfile: {
-    width: '64px',
-    height: '64px',
-    display: 'none'
-  },
-  imgLoadData: {
-    width: "15.625em",
-  },
-  imgLoadData2: {
-    width: "7.28125em",
-  },
-  header: {
-    display: 'none',
-    width: '100%'
-  },
-  displayDesk: {
-    display: 'none'
-  },
-  displayDeskInline: {
-    display: 'none'
-  },
-  displayMobile: {
-    display: 'block'
-  },
-  txtLoadData: {
-    textAlign: "center",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "1.5625em",
-    lineHeight: "1.6875em",
-    alignItems: "center",
-    color: "#081C15",
-  },
-  txtLoadData2: {
-    textAlign: "center",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontSize: "1em",
-    lineHeight: "1.5625em",
-    alignItems: "center",
-    color: "#081C15",
-  },
-},
 
   '@media (min-width: 768px)': {
       /* Medium devices (landscape tablets, 768px and up) */
@@ -727,7 +723,7 @@ export const getComunStyle = makeStyles((theme) => ({
         display: 'flex',
         width: '90%',
         justifyContent: 'space-around',
-    },
+      },
       displayDesk: {
           display: 'block'
       },
@@ -838,6 +834,46 @@ export const getComunStyle = makeStyles((theme) => ({
           outline: '0px solid slategrey',
           borderRadius: 4,
         },
+      },
+      boxRootRelato: {
+        padding: "5px",
+        backgroundColor: "#FFFFFF",
+        border: "1px solid #FAFAFA",
+        borderRadius: "10px",
+        // minHeight: "250px",
+        overFlowY: "auto",
+      },
+      boxRelato: {
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "10px",
+      },
+      boxRelatoText: {
+        fontFamily: "Catamaran",
+        fontSize: "1em",
+        lineHeight: "1.563em",
+        padding: "10px",
+        overflowWrap: "break-word",
+        overflow: "auto",
+        height: "8em",
+        textAlign: "initial",
+        '&::-webkit-scrollbar': {
+          width: 8,
+        },
+        '&::-webkit-scrollbar-track': {
+          boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+          webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: 'rgba(0,0,0,.2)',
+          outline: '0px solid slategrey',
+          borderRadius: 4,
+        },
+      },
+      buttonEditRelato: {
+        cursor: "pointer",
+        textDecoration: "underline",
+        color: "#DEDEDE",
       },
   },
 
