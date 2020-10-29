@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: web-front-admision-ingress
+  name: web-front-admision-ingress2
   annotations:
        kubernetes.io/ingress.class: nginx
        cert-manager.io/cluster-issuer: admision-cert
@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - desa.front.admision.40.121.134.234.nip.io 
+      - api.desa.salud.achs.cl 
       secretName: admision-web-cert
   rules:
-  - host: desa.front.admision.40.121.134.234.nip.io 
+  - host: api.desa.salud.achs.cl
     http:
       paths:
       - backend:
