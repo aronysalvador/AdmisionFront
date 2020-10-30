@@ -131,9 +131,7 @@ const FechaHoraSiniestro = () => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            onClick={() => { 
-              handleNext();
-            }}
+            onClick={() => { handleNext() }}
           >
             Continuar
           </Button>

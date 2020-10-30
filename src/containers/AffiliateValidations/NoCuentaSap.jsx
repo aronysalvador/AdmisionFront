@@ -7,7 +7,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { getBlackTheme } from "../../css/blackTheme";
 import Header from "../../components/header/index";
-import { logout } from "../../redux/actions/microsoft.action";
 
 const NoCuentaSap = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -20,7 +19,6 @@ const NoCuentaSap = (props) => {
     <>
       <div className={comunClass.displayDesk}> 
         <Header
-            dispatch={() => dispatch(logout())}
             userMsal={ microsoftReducer.userMsal }
             // step={1}
         />
@@ -49,8 +47,8 @@ const NoCuentaSap = (props) => {
           className={blackStyle.textNoAfiliate}
         >
           No tienes cuenta SAP&nbsp;
-            <br className={comunClass.displayDesk}/>
-            con permisos para realizar esta acción
+          <br className={comunClass.displayDesk}/>
+          con permisos para realizar esta acción
         </Typography>
         <div className={spaceStyle.space1} />
         <Typography
@@ -61,7 +59,6 @@ const NoCuentaSap = (props) => {
           Comunicate con tu administrador de cuenta
         </Typography>
 
-        
         <div className={comunClass.bottomElement}>
           <Button
             className={blackStyle.buttonFooter}
