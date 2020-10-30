@@ -70,18 +70,18 @@ const LugarExactoSiniestro = () => {
         <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]} style={{paddingBottom:'20px'}}>
           Indica la dirección 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-                &nbsp;en donde ocurrió el accidente
+            &nbsp;en donde ocurrió el accidente
           </Grid>          
         </Typography>
         <div className={comunClass.displayDeskInline}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" />
+            <img alt="relato" src="static/relato.svg" />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextbox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextbox}>
             Dirección accidente
           </Typography>
           <DireccionGeo
