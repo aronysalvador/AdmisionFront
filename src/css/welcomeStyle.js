@@ -313,7 +313,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         marginBoxGreen: {
             display: 'grid',
-            margin: 'auto 23px'
+            margin: 'auto 1em'
         },
         contentBlock: {
             display: 'block'

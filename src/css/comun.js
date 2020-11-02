@@ -396,8 +396,8 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     buttonEditRelato: {
       cursor: "pointer",
-      textDecoration: "underline",
-      color: "#DEDEDE",
+      // textDecoration: "underline",
+      color: "#373737", //"#DEDEDE",
     },
     imgAchs: {
       width: '60px', //"4.28125em",
@@ -858,8 +858,8 @@ export const getComunStyle = makeStyles((theme) => ({
       },
       buttonEditRelato: {
         cursor: "pointer",
-        textDecoration: "underline",
-        color: "#DEDEDE",
+        // textDecoration: "underline",
+        color: "#373737", //"#DEDEDE",
       },
   },
 
