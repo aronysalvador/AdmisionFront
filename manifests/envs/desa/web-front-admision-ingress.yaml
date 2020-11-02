@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: web-front-admision-ingress
+  annotations:
+       kubernetes.io/ingress.class: nginx
+       cert-manager.io/cluster-issuer: admision-cert
+
+spec:
+  tls:
+    - hosts:
+      - desa.front.admision.40.121.134.234.nip.io 
+      secretName: admision-web-cert
+  rules:
+  - host: desa.front.admision.40.121.134.234.nip.io 
+    http:
+      paths:
+      - backend:
+          serviceName: web-front-admision-service
+          servicePort: 80
+        path: /         

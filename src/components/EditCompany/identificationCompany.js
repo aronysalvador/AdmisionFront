@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { Rut, formateaRut } from "../../helpers/rut";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { updateForm } from "../../redux/actions/AdmissionAction";
+import { getValidar } from "../../redux/actions/SucursalesAction";
 
 const IdentificationCompany = () => {
   const dispatch = useDispatch();
@@ -16,37 +16,9 @@ const IdentificationCompany = () => {
 
   const [isValid, setIsValid] = useState(true);
 
-  const validar = async(rut) => {
-    
-    if (isValid) {
-      
-      const test = await fetch( process.env.REACT_APP_RAZON_SOCIAL_RUT+rut)
-      const json = await test.json()
-
-
-      if(json.content.response[0] !== undefined){
-
-        dispatch(updateForm("razonSocial", json.content.response[0])) 
-        dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
-        //dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
-        dispatch(updateForm("rutEmpresa", rut));
-      }else{
-
-       // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
-       dispatch(updateForm("rutEmpresa", rut));
-        dispatch(updateForm("razonSocial", "")) 
-        dispatch(updateForm("razonSocialForm", "")) 
-        
-      }
-      
-    }else{
-      
-      dispatch(updateForm("rutEmpresa", "")) 
-      dispatch(updateForm("razonSocial", "")) 
-      dispatch(updateForm("razonSocialForm", "")) 
-    }
+  const validar = (isValid,rut) => {
+      dispatch(getValidar(isValid,rut)); 
   };
-
 
   return (
     <div>
@@ -64,7 +36,7 @@ const IdentificationCompany = () => {
           setRut(format!==undefined ? format : e.target.value);       
           setIsValid(Rut.validaRut(format));   
         }}
-        onBlur={() => validar(rut)}
+        onBlur={() => validar(isValid, rut)}
       />{" "}
     </div>
   );

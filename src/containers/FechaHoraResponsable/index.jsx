@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestro";
+import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";

@@ -13,6 +13,8 @@ import { formateaRut } from "../../helpers/rut";
 
 import { handleLog, handlEndLog } from "./Log";
 import { FechaHora } from './../../helpers/utils'
+import { Pipes } from "./../../containers/EditarTelefono/phone";
+import {getSucursales} from "./SucursalesAction";
 
 const totalSteps = 27;
 
@@ -144,6 +146,7 @@ export const saveRut = (rut) => {
           dispatch(handleSetStep(STEP));
 
           dispatch(saveRazonSocial(result.data.content.response.RutPagador));
+          dispatch(getSucursales(result.data.content.response.RutPagador))
 
           dispatch(updateForm("cita", result.data.content.response.cita));
           dispatch(
@@ -198,7 +201,7 @@ export const saveRut = (rut) => {
 
               result.data.content.response.telefonoParticular === "0"
                 ? ""
-                : result.data.content.response.telefonoParticular
+                : Pipes.advanced(result.data.content.response.telefonoParticular)
             )
           );
           dispatch(
@@ -399,6 +402,8 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
       rut_paciente: addmissionForm.rut, //"8960683-7",
       mail_admisionista: userMsal.email,
       admision_json: JsonSap,
+      telefono_paciente: addmissionForm.telefonoParticular,
+      email_paciente: addmissionForm.emailusuario
     };
 
     //console.log("*********************************************")
@@ -412,20 +417,20 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
           dispatch(updateForm("siniestroID", siniestroID));
           dispatch(handleSetStep(1001));
         }
-        if (data.status === 500) {
+        else{
           const mensajeErrorSAP = data.mensaje;
           dispatch(updateForm("mensajeErrorSAP", mensajeErrorSAP));
           dispatch(handleSetStep(1002));
         }
 
         const {siniestroID,EpisodioID} = data.content[0]        
-        dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0})) 
+        dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: data.status  })) 
 
       })
-      .catch((err) =>{ dispatch(handleSetStep(1002)); dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0}));  } );
+      .catch((err) =>{ dispatch(handleSetStep(1002)); dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500}));  } );
   } catch (error) {
     const { LogForm: {ID} } = getState();
-    dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0})); 
+    dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500})); 
     dispatch(handleSetStep(1002));
   }
 };

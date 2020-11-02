@@ -48,32 +48,13 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
-    // const comunasSucursal = sucursalesEmpresa.map((sucursal) =>
-    //   comunaList.find(
-    //     (x) =>
-    //       x?.codigo_comuna === sucursal?.id_comuna &&
-    //       parseInt(sucursal?.codigo_region) === parseInt(x?.codigo_region)
-    //   )
-    // );
-
-    // const uniqueAddresses = Array.from(
-    //   new Set(comunasSucursal.map((a) => a?.codigo_comuna))
-    // ).map((id) => {
-    //   return comunasSucursal.find((a) => a?.codigo_comuna === id);
-    // });
-
-    // const uniqueAddressesWithOutUndefined = uniqueAddresses.filter(function (
-    //   id
-    // ) {
-    //   return id;
-    // });
-
     var variables = []
     sucursalesEmpresa.forEach((sucursal,i) =>{
       variables.push({id: i,codigo_region: sucursal.codigo_region,codigo_comuna:sucursal.id_comuna, nombre: sucursal.comuna})
     })
 
     var uniqueArray = removeDuplicates(variables, "nombre");
+    uniqueArray.sort((a,b) => a.nombre < b.nombre ? -1 : +(a.nombre > b.nombre));
     console.log("uniqueArray is: " + JSON.stringify(uniqueArray));    
 
     setListaComunas(uniqueArray);

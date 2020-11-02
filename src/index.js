@@ -29,13 +29,13 @@ const store = createStore(
 );
 let persistor = persistStore(store);
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <Provider store={store} pers>
       <PersistGate persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById("root")
 );
 
