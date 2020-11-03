@@ -16,7 +16,7 @@ const Profesion = () => {
     addmissionForm: { percentage, profesionForm },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
- 
+
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -56,7 +56,7 @@ const Profesion = () => {
       <div className={comunClass.titlePrimaryDesk}>
         <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Selecciona la 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;profesión u oficio
           </Grid>          
           &nbsp;que mejor se ajusta al paciente
