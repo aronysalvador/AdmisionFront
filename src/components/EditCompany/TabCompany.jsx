@@ -103,8 +103,8 @@ const TabCompany = (props) => {
 
   return (
     <div className={comunClass.containerTextBox}>
-      <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68">
-        <Tab
+      <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered >
+          <Tab
           classes={
             value === 0 ? { root: classes.root2 } : { root: classes.root4 }
           }

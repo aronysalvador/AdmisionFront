@@ -68,9 +68,9 @@ const HealthForecast = (props) => {
           &nbsp;Previsión de salud
           </Grid>     
         </Typography>
-        <div className={comunClass.displayDeskInline}>
+        <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" />
+            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -105,32 +105,32 @@ const HealthForecast = (props) => {
 
             <div>
               <Button
-              className={comunClass.buttonAchsRight}
-              // style={{justifyContent: "center"}}
-              variant="contained"
-              type="submit"
-              disabled={getIsapres.length === 0}
-              value={getIsapres.length !== 0 ? getIsapres[12].id : null}
-              onClick={() => clickSendIsapres(getIsapres[12])}
-              onMouseOver={() =>{ setButtonOver2(true) }}
-              onMouseOut={() =>{ setButtonOver2(false) }}
+                className={comunClass.buttonAchsRight}
+                // style={{justifyContent: "center"}}
+                variant="contained"
+                type="submit"
+                disabled={getIsapres.length === 0}
+                value={getIsapres.length !== 0 ? getIsapres[12].id : null}
+                onClick={() => clickSendIsapres(getIsapres[12])}
+                onMouseOver={() =>{ setButtonOver2(true) }}
+                onMouseOut={() =>{ setButtonOver2(false) }}
               >
-              {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[12].nombre)}</p> : null}
-              {buttonOver2 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[12].nombre)}</p> : null}
+                {buttonOver2 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
               <Button
-              className={comunClass.buttonAchsLeft}
-              // style={{justifyContent: "center"}}
-              variant="contained"
-              type="submit"
-              disabled={getIsapres.length === 0}
-              value={getIsapres.length !== 0 ? getIsapres[25].id : null}
-              onClick={() => clickSendIsapres(getIsapres[25])}
-              onMouseOver={() =>{  setButtonOver3(true) }}
-              onMouseOut={() =>{ setButtonOver3(false) }}
+                className={comunClass.buttonAchsLeft}
+                // style={{justifyContent: "center"}}
+                variant="contained"
+                type="submit"
+                disabled={getIsapres.length === 0}
+                value={getIsapres.length !== 0 ? getIsapres[25].id : null}
+                onClick={() => clickSendIsapres(getIsapres[25])}
+                onMouseOver={() =>{  setButtonOver3(true) }}
+                onMouseOut={() =>{ setButtonOver3(false) }}
               >
-              {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[25].nombre)}</p> : null}
-              {buttonOver3 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[25].nombre)}</p> : null}
+                {buttonOver3 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
             </div>
 
@@ -174,13 +174,9 @@ const HealthForecast = (props) => {
             variant="contained"
             type="submit"
             onClick={() => dispatch(handleSetStep(19.1))}
-            onMouseOver={() =>{
-              setButtonOver6(true)
-            }}
-            onMouseOut={() =>{
-              setButtonOver6(false)
-            }}
-            >
+            onMouseOver={() =>{ setButtonOver6(true) }}
+            onMouseOut={() =>{ setButtonOver6(false) }}
+          >
             Otra Isapre
             {buttonOver6 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>

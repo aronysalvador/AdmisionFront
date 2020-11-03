@@ -60,9 +60,9 @@ const Afp = () => {
               &nbsp;AFP o Previsión Social
           </Grid>          
         </Typography>
-        <div className={comunClass.displayDeskInline}>
+        <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" />
+            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -77,7 +77,7 @@ const Afp = () => {
             onChange={(event, value) => {
               setAFP(value);
             }}
-            style={{ width: 300 }}
+            // style={{ width: 300 }}
             options={afpList}
             getOptionLabel={(option) => option.nombre}
             renderInput={(params) => (

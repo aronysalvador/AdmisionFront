@@ -28,9 +28,9 @@ const QuestionResponsable = (props) => {
         />
       </div>
       <QuestionTestigoResponsable
-        titulo={"¿Se le "}
-        titulo2={"reportó el accidente a un responsable"}
-        titulo3={"  en la empresa?"}
+        titulo={"¿Se le"}
+        titulo2={"reportó el accidente a un responsable "}
+        titulo3={"en la empresa?"}
         accionButoonA={() => dispatch(handleSetStep(16))}
         accionButoonB={() => {
           dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));

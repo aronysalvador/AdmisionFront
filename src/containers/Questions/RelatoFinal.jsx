@@ -79,14 +79,16 @@ const RelatoFinal = (props) => {
                 &nbsp;confirma el relato
               </Grid>   
             </Typography>
-            <div className={comunClass.displayDeskInline}>
+            <div className={comunClass.displayDeskImg}>
               <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="identify" src="static/relato.svg" />
+                <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth}/>
               </Grid>
             </div>
           </div>
           <div className={comunClass.boxDesk}>
-            <div className={spaceStyle.space1}></div>
+            <div className={comunClass.displayMobile}> 
+              <div className={spaceStyle.space1}></div>
+            </div>
             <div className={comunClass.boxRootRelato}>
               {isEdit ? (
                 <div>
@@ -112,7 +114,7 @@ const RelatoFinal = (props) => {
                       margin="dense"
                       variant="outlined"
                       fullWidth
-                      rows={13}
+                      rows={12}
                       multiline
                       scroll={
                         {width: 8}}
@@ -125,7 +127,7 @@ const RelatoFinal = (props) => {
                       }}
                       onChange={onChangeHandler}
                     />
-                    <div style={{ marginBottom: "28px", marginTop: "5px", textAlign: "right" }}>
+                    <div style={{ marginBottom: "5px", marginTop: "5px", textAlign: "right" }}>
                       <label className={comunClass.pullRight}>
                         {localValue.length}/700
                       </label>

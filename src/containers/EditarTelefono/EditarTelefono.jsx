@@ -87,7 +87,7 @@ const EditarTelefono = () => {
         <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Ingresa el 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-          &nbsp;teléfono personal
+            &nbsp;teléfono personal
           </Grid>          
         </Typography>
         <div className={comunClass.displayDeskImg}>

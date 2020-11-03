@@ -37,7 +37,7 @@ const AccidentObjectForm = (props) => {
       </div>
       <div>
         <QuestionForm
-          titulo2={ ' "El accidente ' }
+          titulo2={ ' "El accidente' }
           pregunta={ 'ocurrió con..." ' }
           // pregunta={<br/>}
           placeholder={

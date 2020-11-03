@@ -65,15 +65,17 @@ const RelatoSuccess = (props) => {
               >
                 ¡Excelente!
               </Typography>
-              <Typography
-                variant="h1"
-                component="h1"
-                className={welcomeStyle.titleBegin}
-              >
-                Relato capturado
-              </Typography>
-              <div className={comunStyle.displayDeskInline}>
-                <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+              <div style={{display: 'flex'}}>
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  className={[welcomeStyle.titleBegin2, welcomeStyle.subtitleBegin]}
+                >
+                  Relato capturado&nbsp;
+                </Typography>
+                <div className={comunStyle.displayDeskInline}>
+                  <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                </div>
               </div>
             </div>
             <div className={comunStyle.displayDeskInline}>
