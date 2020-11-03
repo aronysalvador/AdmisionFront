@@ -82,7 +82,7 @@ const HealthForecastIsapre = (props) => {
           </Typography>
           <div className={comunClass.displayDeskImg}>
             <Grid component="span" className={comunClass.imgPrimaryDesk}>
-              <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+              <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
             </Grid>
           </div>
         </div>
