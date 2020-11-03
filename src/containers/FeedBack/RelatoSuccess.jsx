@@ -17,6 +17,7 @@ const RelatoSuccess = (props) => {
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  
   return (
     <div className={comunStyle.rootBegin}>
       <div className={comunStyle.displayDesk}> 
@@ -69,7 +70,7 @@ const RelatoSuccess = (props) => {
                 <Typography
                   variant="h1"
                   component="h1"
-                  className={[welcomeStyle.titleBegin2, welcomeStyle.subtitleBegin]}
+                  className={[welcomeStyle.titleBegin]} //titleBegin2, welcomeStyle.subtitleBegin
                 >
                   Relato capturado&nbsp;
                 </Typography>

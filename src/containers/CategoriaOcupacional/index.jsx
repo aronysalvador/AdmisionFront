@@ -9,17 +9,21 @@ import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/
 import { getCategoriaOcupacionalPrincipal } from "./../../redux/actions/CategoriaOcupacionalAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const CategoriaOcupacional = () => {
   const {
     addmissionForm: { percentage, categoriaOcupacionalForm },
   } = useSelector((state) => state, shallowEqual);
 
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+
   const categoriaOcupacional = !categoriaOcupacionalForm ? "" : categoriaOcupacionalForm
 
   const dispatch = useDispatch();
 
   const spaceStyle = getSpaceStyle();
+  const comunClass = getComunStyle();
 
   const initFn = useCallback(() => {
     dispatch(getCategoriaOcupacionalPrincipal(""));
@@ -34,42 +38,61 @@ const CategoriaOcupacional = () => {
     shallowEqual
   );
 
-  const { root, titleBlack, titleBlue } = getComunStyle();
-
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(24))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Selecciona la  
-        <Grid component="span"  className={titleBlue}>
-          &nbsp;categoría ocupacional
-        </Grid>         
-        &nbsp;más adecuada
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        {categoriaList.map((categoria) => (
-          <BotonSeleccionarCustom
-            key={categoria.id}
-            data={categoria}
-            itemForm={"categoriaOcupacionalForm"}
-            selected={categoria.id === categoriaOcupacional.id}
-            step={26}
-          >
-            <BotonSeleccionarCustomItem {...categoria} />
-          </BotonSeleccionarCustom>
-        ))}
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(24))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Selecciona la  
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;categoría ocupacional
+          </Grid>         
+          &nbsp;más adecuada
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+
+      <div className={comunClass.boxDesk}>
+        <div className={spaceStyle.space2} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          {categoriaList.map((categoria) => (
+            <BotonSeleccionarCustom
+              key={categoria.id}
+              data={categoria}
+              itemForm={"categoriaOcupacionalForm"}
+              selected={categoria.id === categoriaOcupacional.id}
+              step={26}
+            >
+              <BotonSeleccionarCustomItem {...categoria} />
+            </BotonSeleccionarCustom>
+          ))}
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

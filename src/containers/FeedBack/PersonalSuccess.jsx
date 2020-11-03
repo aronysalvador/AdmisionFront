@@ -67,7 +67,7 @@ console.log(step);
                   <Typography
                   variant="p"
                   component="p"
-                  className={[welcomeStyle.titleBegin2, welcomeStyle.subtitleBegin]}
+                  className={[welcomeStyle.titleBegin]} //titleBegin2, welcomeStyle.subtitleBegin
                   >
                     Usuario Identificado&nbsp;
                   </Typography>

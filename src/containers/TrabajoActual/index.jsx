@@ -7,14 +7,15 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import TrabajoActual from "../../components/TrabajoActual/TrabajoActual";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const TrabajoActualContainer = () => {
   const spaceStyle = getSpaceStyle();
 
   const { percentage, ingresoTrabajoActual } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+    (state) => state.addmissionForm, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+
   const [ingresoTrabajoActualValue, setIngresoTrabajo] = useState(
     ingresoTrabajoActual
   );
@@ -44,7 +45,7 @@ const TrabajoActualContainer = () => {
 
   const anios = fnAnios()
 
-  const { buttonAchs, root, bottomElement, titleBlue, titleBlack } = getComunStyle();
+  const comunClass = getComunStyle();
   const dispatch = useDispatch();
 
   function setTrabajoActual(value) {
@@ -57,40 +58,63 @@ const TrabajoActualContainer = () => {
   }
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(25))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Indica la
-        <Grid component="span"  className={titleBlue}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(25))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Indica la
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;fecha aproximada en que ingresó
-        </Grid>  
-        &nbsp;a su trabajo actual
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <TrabajoActual
-        onChange={setTrabajoActual}
-        meses={meses}
-        anios={anios}
-        indiceMesFromState={new Date(ingresoTrabajoActualValue).getMonth()}
-        indiceAnioFromState={
-          getAnioIndex() === -1 ? anios.length - 1 : getAnioIndex()
-        }
-      />
-      <div className={bottomElement}>
-        <Button
-          className={buttonAchs}
-          onClick={() => {
-            dispatch(
-              updateForm("ingresoTrabajoActual", ingresoTrabajoActualValue)
-            );
-            dispatch(handleSetStep(26.1));
-          }}
-        >
-          Confirmar
-        </Button>
+          </Grid>  
+          &nbsp;a su trabajo actual
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
+        <TrabajoActual
+          onChange={setTrabajoActual}
+          meses={meses}
+          anios={anios}
+          indiceMesFromState={new Date(ingresoTrabajoActualValue).getMonth()}
+          indiceAnioFromState={
+            getAnioIndex() === -1 ? anios.length - 1 : getAnioIndex()
+          }
+        />
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            onClick={() => {
+              dispatch(
+                updateForm("ingresoTrabajoActual", ingresoTrabajoActualValue)
+              );
+              dispatch(handleSetStep(26.1));
+            }}
+          >
+            Confirmar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

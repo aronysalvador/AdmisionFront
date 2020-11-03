@@ -92,15 +92,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         color: "#373737",
         marginBottom: "10px",
     },
-    pBegin: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: "13px",
-        lineHeight: "16px",
-        color: "#000000",
-        maxWidth: "210px",
-    },
     itemText2: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -113,11 +104,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     terminos: {
         fontSize: "0.87em",
         textAlign: "center",
-    },
-    divRowBottom2: {
-        display: "flex",
-        alignItems: "center",
-        marginBottom: "5px",
     },
     bottomBegin: {
         marginTop: "10px",
@@ -168,12 +154,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         "&:hover": {
             background: "#104F28",
         },
-    },
-    titleContainerCards2: {
-        padding: "1.5em 1.5em 0.5em 1.5em",
-        background: "#FFFFFF",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
     },
     avatar: {
         border: "1px solid #DEDEDE !important",
@@ -271,6 +251,26 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             width: "54px",
             height: "54px",
             verticalAlign: "middle",
+        },
+        pBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            fontSize: "13px",
+            lineHeight: "16px",
+            color: "#000000",
+            maxWidth: "210px",
+        },
+        divRowBottom2: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "5px",
+        },
+        titleContainerCards2: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
         },
     },
 
@@ -381,6 +381,27 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             width: "37px",
             height: "37px",
             verticalAlign: "middle",
+        },
+        pBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            fontSize: "13px",
+            lineHeight: "16px",
+            color: "#000000",
+            // maxWidth: "210px",
+        },
+        divRowBottom2: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "5px",
+            justifyContent: "center",
+        },
+        titleContainerCards2: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            // boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
         },
 
     },
