@@ -64,14 +64,14 @@ const EditCompany = () => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-          Identifica la empresa en la que trabaja con su 
+          Identifica la empresa en la que trabaja con su
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;razón social o RUT
           </Grid>      
         </Typography>
-        <div className={comunClass.displayDeskInline}>
+        <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" />
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

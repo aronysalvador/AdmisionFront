@@ -424,6 +424,9 @@ export const getComunStyle = makeStyles((theme) => ({
     displayDeskInline: {
       display: 'none'
     },
+    displayDeskImg: {
+      display: 'none'
+    },
     displayMobile: {
       display: 'block'
     },
@@ -659,7 +662,7 @@ export const getComunStyle = makeStyles((theme) => ({
           fontFamily: 'Catamaran',
           fontStyle: 'normal',
           fontWeight: 'bold',
-          fontSize: '36px',
+          fontSize: '32px',
           lineHeight: '44px',
           color: '#373737',
       },
@@ -684,7 +687,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: '36px',
+        fontSize: '32px',
         lineHeight: '44px',
         color: '#00b2a9',
       },
@@ -718,6 +721,9 @@ export const getComunStyle = makeStyles((theme) => ({
       displayDeskInline: {
           display: 'inline-flex'
       },
+      displayDeskImg: {
+        display: 'contents'
+      },
       displayOnlyDeskInline: {
         display: 'inline-flex'
       },
@@ -735,15 +741,20 @@ export const getComunStyle = makeStyles((theme) => ({
           width: "73%", //"65%",
           textAlign: "left",
           // maxWidth: "460px",
-          verticalAlign: "top"
+          verticalAlign: "top",
+          minHeight: '88px'
       },
     //   imgDesk: {
     //     position: "relative",
     //     right: "-100%",
     // },
       imgPrimaryDesk: {
-          position: "relative",
-          right: "-10%",
+          // position: "relative",
+          // right: "-10%",
+          float: 'right'
+      },
+      imgPrimaryWidth: {
+        width: '100px'
       },
       alignBtnSiniesterLeft: {
           position: 'relative',
@@ -776,7 +787,7 @@ export const getComunStyle = makeStyles((theme) => ({
       titlePrimaryDesk: {
           width: '90%',
           margin: 'auto',
-          marginTop: '30px',
+          marginTop: '20px',
           marginBottom: '30px'
       },
       imgLoadData: {

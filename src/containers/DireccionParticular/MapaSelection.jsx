@@ -111,18 +111,18 @@ const MapaSelection = () => {
       <div className={comunClass.boxDeskMap}>
         <div>
           {coords ? (
-                <Mapa 
-                  lat={coords.latitude}
-                  lng={coords.longitude}
-                  direccion={direccion}
-                  setDireccion={setDireccion}
-                  setPlaceId={setPlaceId}    
-                  DireccionTemporal={DireccionTemporal}
-                  LatTemporal={LatTemporal}     
-                  LongTemporal={LongTemporal}   
-                />
+            <Mapa 
+              lat={coords.latitude}
+              lng={coords.longitude}
+              direccion={direccion}
+              setDireccion={setDireccion}
+              setPlaceId={setPlaceId}    
+              DireccionTemporal={DireccionTemporal}
+              LatTemporal={LatTemporal}     
+              LongTemporal={LongTemporal}   
+            />
           ) : (
-              <Typography>Cargando....</Typography>
+            <Typography>Cargando....</Typography>
           )}
         </div>
         <div className={[comunClass.bottomElementMap]} style={{padding: '0 20px 20px 20px'}}>

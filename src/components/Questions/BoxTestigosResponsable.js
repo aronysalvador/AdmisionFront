@@ -18,7 +18,7 @@ const QuestionTestigoResponsable = (props) => {
         <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           {titulo}
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;{titulo2} 
+            {titulo2} 
           </Grid>
           {titulo3}
         </Typography>

@@ -37,7 +37,7 @@ const AccidentPlaceForm = (props) => {
       </div>
       <div>
         <QuestionForm
-          titulo={' "Al momento del accidente '}
+          titulo={' "Al momento del accidente'}
           titulo2={'estaba..." '}
           placeholder={
             "Ejemplo: Caminando por el patio del colegio, corriendo para alcanzar la micro, sentado en mi escritorio"

@@ -37,7 +37,7 @@ const Identification = (props) => {
           </Typography>
         </Grid>
         <Grid component="span" className={comunClass.imgPrimaryDesk}>
-          <img alt="identify" src="static/identify.svg" />
+          <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
         </Grid>
       </div>
     </div>

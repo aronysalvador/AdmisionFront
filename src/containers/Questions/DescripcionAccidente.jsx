@@ -42,8 +42,8 @@ const AccidentDescriptionForm = (props) => {
       </div>
       <div>
         <QuestionForm
-          titulo={' "Lo que ocurrió '}
-          titulo2={'fue que... y '}
+          titulo={' "Lo que ocurrió'}
+          titulo2={'fue que... y'}
           pregunta={'la lesión '}
           pregunta2={'que presenta es..." '}
           placeholder={

@@ -79,16 +79,16 @@ const PersonalData = (props) => {
         <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Empieza
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;verificando los datos de <br/>
+            &nbsp;verificando los datos de<br/>
           </Grid>  
           <Grid component="span"  className={comunClass.titleGray}>
-          {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
+            {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
           </Grid>         
         </Typography>
       
-        <div className={comunClass.displayDeskInline}>
+        <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" />
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

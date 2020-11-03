@@ -94,9 +94,10 @@ const PersonalData = (props) => {
               variant="p"
               component="p"
               className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} <br/> tiene&nbsp;
+                {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} 
+                <br/>tiene&nbsp;
               <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-                &nbsp;{contenidoSiniestros.length} siniestros
+                {contenidoSiniestros.length} siniestros
               </Grid>                   
               &nbsp;creados
             </Typography>
@@ -113,9 +114,9 @@ const PersonalData = (props) => {
               &nbsp;creado
             </Typography>
           )}
-          <div className={comunClass.displayDeskInline}>
+          <div className={comunClass.displayDeskImg}>
             <Grid component="span" className={comunClass.imgPrimaryDesk}>
-              <img alt="identify" src="static/identify.svg" />
+              <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
             </Grid>
           </div>
         </div>

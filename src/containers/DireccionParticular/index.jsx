@@ -79,9 +79,9 @@ const DireccionParticular = () => {
             &nbsp;la dirección en donde vive el paciente
           </Grid>                  
         </Typography>
-        <div className={comunClass.displayDeskInline}>
+        <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" />
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
