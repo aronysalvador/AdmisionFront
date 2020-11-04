@@ -108,14 +108,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     bottomBegin: {
         marginTop: "10px",
     },
-    itemText: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "16px",
-        lineHeight: "20px",
-        color: "#000000",
-    },
     rutSiniestroContainer: {
         display: "flex",
         flexDirection: "row",
@@ -226,6 +218,16 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             alignItems: "center",
             marginBottom: "20px",
         },
+        divRowBottom2: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "5px",
+        },
+        divRowPantallaFinal: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "20px",
+        },
         titleBegin: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -248,15 +250,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         itemBegin: {
             marginLeft: "20px",
         },
-        bienvenidoAchs: {
-            fontSize: "25px",
-            fontWeight: "bold",
-        },
-        iconCircular: {
-            width: "54px",
-            height: "54px",
-            verticalAlign: "middle",
-        },
         pBegin: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -266,10 +259,22 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             color: "#000000",
             maxWidth: "210px",
         },
-        divRowBottom2: {
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "5px",
+        itemText: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "16px",
+            lineHeight: "18px",
+            color: "#000000",
+        },
+        bienvenidoAchs: {
+            fontSize: "25px",
+            fontWeight: "bold",
+        },
+        iconCircular: {
+            width: "54px",
+            height: "54px",
+            verticalAlign: "middle",
         },
         titleContainerCards2: {
             padding: "1.5em 1.5em 0.5em 1.5em",
@@ -283,6 +288,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             borderRadius: "10px",
         },
+
     },
 
     '@media (min-width: 768px)': {
@@ -358,6 +364,18 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             marginBottom: "20px",
             width: "33%"
         },
+        divRowBottom2: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "5px",
+            justifyContent: "center",
+        },
+        divRowPantallaFinal: {
+            display: "block",
+            alignItems: "center",
+            paddingBottom: "30px",
+            width: "150px",
+        },
         titleBegin: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -397,16 +415,18 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontFamily: "Catamaran",
             fontStyle: "normal",
             fontWeight: "normal",
-            fontSize: "13px",
+            fontSize: "16px",
             lineHeight: "16px",
             color: "#000000",
             // maxWidth: "210px",
         },
-        divRowBottom2: {
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "5px",
-            justifyContent: "center",
+        itemText: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "20px",
+            lineHeight: "28px",
+            color: "#000000",
         },
         titleContainerCards2: {
             padding: "1.5em 1.5em 0.5em 1.5em",

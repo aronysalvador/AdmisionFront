@@ -726,7 +726,8 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'block'
         },
         displayDeskFlex: {
-            display: 'flex'
+            display: 'flex',
+            justifyContent: 'space-around'
         },
         displayDeskInline: {
             display: 'inline-flex'

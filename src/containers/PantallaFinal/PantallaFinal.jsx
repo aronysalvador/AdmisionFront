@@ -61,7 +61,7 @@ const PantallaFinal = (props) => {
             </div>
 
             <div className={spaceStyle.space2} />
-            
+
             <div className={welcomeStyle.rutSiniestroContainer}>
               <CajaRutSiniestro
                 textoPrincipal={siniestroID}
@@ -103,7 +103,7 @@ const PantallaFinal = (props) => {
                   icono: "espera.svg",
                   textoPrimario: "Esperar en sala",
                   textoSecundario: "al llamado del doctor",
-                  clase: welcomeStyle.divRowBottom,
+                  clase: welcomeStyle.divRowPantallaFinal,
                 },
                 // {
                 //   icono: "sms.svg",
@@ -115,7 +115,7 @@ const PantallaFinal = (props) => {
                   icono: "work.svg",
                   textoPrimario: "Si el paciente presenta dolor",
                   textoSecundario: "avisa a la ECS",
-                  clase: welcomeStyle.divRow,
+                  clase: welcomeStyle.divRowPantallaFinal,
                 },
               ]}
             />
