@@ -41,7 +41,7 @@ RUN npm install --silent
 RUN npm install react-scripts -g --silent
 COPY . /usr/src/app
 
-#RUN npm test || exit 1
+###RUN npm test || exit 1
 
 RUN npm run build
 

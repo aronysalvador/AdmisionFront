@@ -1,11 +1,7 @@
 import { obtenerData } from  './../redux/actions/AdmissionAction';
 
 describe("Load",()=>{
-    it("Mostrar variables de entorno",async()=>{
-        console.log("ENTORNO")
-        console.log(process.env)
-        console.log("ENTORNO")
-    })
+  
     it("Probar Endpoint que obtiene data de Afiliado",async()=>{
         const resultado = await obtenerData('11111111-1')
          //console.log(resultado.data.content)

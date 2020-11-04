@@ -46,7 +46,37 @@ const BotonSeleccionarCustom = (props) => {
               setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 1000);
               //dispatch(handleSetStep(26.4));
             }
-          } else {
+          } 
+          
+          else if (itemForm === "categoriaOcupacionalForm") {
+            if (data.nombre === "Empleadores" || data.nombre === "Cuenta Propia") {
+              dispatch(
+                updateForm(
+                  itemForm,
+                  !isSelected ? { ...data, selected: !isSelected } : {}
+                )
+              );
+              setTimeout(function(){ dispatch(handleSetStep(25.1)); }, 1000);
+            } else {
+              dispatch(
+                updateForm(
+                  itemForm,
+                  !isSelected ? { ...data, selected: !isSelected } : {}
+                )
+              );
+              setTimeout(function(){ dispatch(handleSetStep(26)); }, 1000);
+              //dispatch(handleSetStep(26.4));
+            }
+          }
+          
+          
+          
+          
+          
+          
+          
+          
+          else {
             dispatch(
               updateForm(
                 itemForm,

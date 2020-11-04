@@ -30,22 +30,24 @@ const EditCompany = () => {
 
   const handleNext= async() => {
     setCargando(true)
-    await dispatch(getSucursales(rutEmpresa)); 
-
+    if(sucursalesList.length!==0) await dispatch(getSucursales(rutEmpresa));
+    
   }
 
   React.useEffect(()=>{
     if(cargando){
       if(!loading){
         if(sucursalesList.length>0){
-          dispatch(handleSetStep(5.5))
+          
+            dispatch(handleSetStep(5.5))
+          
         }else{
           dispatch(handleSetStep(5.14))
         }
       }
     }
     // eslint-disable-next-line
-  },[loading])
+  },[cargando, loading])
 
 
   return (

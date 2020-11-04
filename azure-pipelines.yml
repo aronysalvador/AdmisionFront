@@ -7,56 +7,56 @@ trigger:
       - release/*
       - develop
       - hotfix/*
-      #- feature/*   
- 
+      #- feature/*
+
 variables:
-  - group: VARIABLE-ENTORNO-ADMISIONDIGITAL 
+  - group: VARIABLE-ENTORNO-ADMISIONDIGITAL
 
   - name: Repository
-    value: 'admision_digital/achs-fr-admision'
+    value: "admision_digital/achs-fr-admision"
   - name: DockerRepositoryDesa
-    value: desa/${{variables['Repository'] }} 
+    value: desa/${{variables['Repository'] }}
   - name: DockerRepositoryQA
-    value: qa/${{variables['Repository'] }} 
+    value: qa/${{variables['Repository'] }}
   - name: DockerRepositoryProd
-    value: prod/${{variables['Repository'] }} 
+    value: prod/${{variables['Repository'] }}
 
   - name: ImageTag
-    value: '_$(Build.BuildId)'
+    value: "_$(Build.BuildId)"
 
-  - name: urlOrquestadorDesa 
-    value: 'https://desa.orquestador.admision.40.121.134.234.nip.io'
+  - name: urlOrquestadorDesa
+    value: "https://desa.orquestador.admision.40.121.134.234.nip.io"
     # value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
-  - name: urlOrquestadorQA 
-    value: 'https://qa.orquestador.admision.52.149.214.89.nip.io'
-   # value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
-  - name: urlOrquestadorSTG 
-    value: 'https://wa-stg-admdig-msorquestador.azurewebsites.net'
-  - name: urlOrquestadorPROD 
-    value: 'https://wa-prod-admdig-msorquestador.azurewebsites.net'
+  - name: urlOrquestadorQA
+    # value: 'https://qa.orquestador.admision.52.149.214.89.nip.io'
+    value: "https://wa-qa-admisiondigital-msorquestador.azurewebsites.net"
+  - name: urlOrquestadorSTG
+    value: "https://wa-stg-admdig-msorquestador.azurewebsites.net"
+  - name: urlOrquestadorPROD
+    value: "https://wa-prod-admdig-msorquestador.azurewebsites.net"
 
 pool:
-    vmImage: $(vmImageName)
+  vmImage: $(vmImageName)
 
-stages: 
+stages:
   - stage: INFO
-    displayName: 'Building'
+    displayName: "Building"
     jobs:
-    - deployment: Info
-      displayName: 'Info'
-      environment: 'Info' 
-    - job: Build
-      displayName: 'Info' 
-      steps:
-        - script: |
-            echo "TargetBranch" $(System.PullRequest.TargetBranch)
-            echo "sourceBranch " $(System.pullRequest.sourceBranch) 
-             
+      - deployment: Info
+        displayName: "Info"
+        environment: "Info"
+      - job: Build
+        displayName: "Info"
+        steps:
+          - script: |
+              echo "TargetBranch" $(System.PullRequest.TargetBranch)
+              echo "sourceBranch " $(System.pullRequest.sourceBranch)
+
   # STAGES
 
   # DESA #
   - stage: Deploy_DESA
-    displayName: 'Building Desploy DESA'
+    displayName: "Building Desploy DESA"
     condition: |
       or(
         and(
@@ -71,114 +71,116 @@ stages:
           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
           eq(variables['Build.Reason'], 'PullRequest')
         )
-      ) 
+      )
     jobs:
-    - deployment: Deploy
-      displayName: 'Deploy DESA'
-      environment: 'Deploy_DESA' 
-    - job: Build
-      displayName: 'Deploy_DESA' 
-      steps:
-        #- task: Docker@2
-        #  displayName: Build Docker Image
-        #  inputs:
-        #    containerRegistry: $(ContainerRegistryName)
-        #    repository: $(DockerRepositoryDesa)
-        #    command: build
-        #    Dockerfile: ./Dockerfile 
-        #    tags: $(ImageTag)   
-        #    arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESAFront) 
-        #- task: Docker@2
-        #  displayName: Push Docker Image
-        #  inputs:
-        #    containerRegistry: $(ContainerRegistryName)
-        #    repository: $(DockerRepositoryDesa)
-        #    command: push
-        #    tags: $(ImageTag)                    
-        # - task: AzureWebAppContainer@1
-        #   inputs:
-        #     azureSubscription: $(azureSubcritionDESA)
-        #     appName: $(appNameDESAFront)
-        #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)   
+      - deployment: Deploy
+        displayName: "Deploy DESA"
+        environment: "Deploy_DESA"
+      - job: Build
+        displayName: "Deploy_DESA"
+        steps:
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(DockerRepositoryDesa)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+              arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESAFront)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(DockerRepositoryDesa)
+              command: push
+              tags: $(ImageTag)
 
-        - task: KubernetesManifest@0
-          inputs:
-            action: 'deploy'
-            kubernetesServiceConnection: 'AKS-DESA-SALUD-NS-ADMISIONDIGITAL'
-            namespace: 'admisiondigital'
-            manifests: |
-                      /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
-                      /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-service.yaml
-                      /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-ingress.yaml
-            containers: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_19801
-            #containers: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:$(ImageTag)
+          # - task: AzureWebAppContainer@1
+          #   inputs:
+          #     azureSubscription: $(azureSubcritionDESA)
+          #     appName: $(appNameDESAFront)
+          #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)
 
-# DESA #
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-DESA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-ingress.yaml
+              containers: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_19801
+              #containers: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:$(ImageTag)
 
-# QA #
+  # DESA #
+
+  # QA #
   - stage: Deploy_QA
-    displayName: 'Building Deploy QA'
+    displayName: "Building Deploy QA"
     condition: |
-       or( 
+      or( 
+        and(
+           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchQa']),
+           startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
+           eq(variables['Build.Reason'], 'PullRequest')
+         ), 
          and(
-            startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchQa']),
-            startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
-            eq(variables['Build.Reason'], 'PullRequest')
-          ), 
-          and(
-            startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployQaHotfix']),
-            eq(variables['Build.Reason'], 'PullRequest')
-          ),
-          and(
-            startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
-            eq(variables['Build.Reason'], 'PullRequest')
-          )
-        )
+           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployQaHotfix']),
+           eq(variables['Build.Reason'], 'PullRequest')
+         ),
+         and(
+           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
+           eq(variables['Build.Reason'], 'PullRequest')
+         )
+       )
     jobs:
-    - deployment: Deploy
-      displayName: 'Deploy QA'
-      environment: 'Deploy_QA'
-    - job: Build
-      displayName: 'Deploy QA'
-      steps:
-        - task: Docker@2
-          displayName: Build Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryQA)
-            command: build
-            Dockerfile: ./Dockerfile 
-            tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQAFront) 
-        - task: Docker@2
-          displayName: Push Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryQA)
-            command: push
-            tags: $(ImageTag)                    
-        # - task: AzureWebAppContainer@1
-        #   inputs:
-        #     azureSubscription: $(azureSubcritionQA) 
-        #     appName: $(appNameQAFront) 
-        #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
+      - deployment: Deploy
+        displayName: "Deploy QA"
+        environment: "Deploy_QA"
+      - job: Build
+        displayName: "Deploy QA"
+        steps:
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(DockerRepositoryQA)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+              arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQAFront)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(DockerRepositoryQA)
+              command: push
+              tags: $(ImageTag)
 
-        - task: KubernetesManifest@0
-          inputs:
-            action: 'deploy'
-            kubernetesServiceConnection: 'AKS-QA-SALUD-NS-ADMISIONDIGITAL'
-            namespace: 'admisiondigital'
-            manifests: |
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-cluster-issuer.yaml
-                      /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
-            containers: crdesacontainer.azurecr.io/qa/admision_digital/achs-fr-admision:$(ImageTag)            
-# QA #
+          - task: AzureWebAppContainer@1
+            inputs:
+              azureSubscription: $(azureSubcritionQA)
+              appName: $(appNameQAFront)
+              containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag)
 
-# PROD #
+          #- task: KubernetesManifest@0
+          #  inputs:
+          #    action: 'deploy'
+          #    kubernetesServiceConnection: 'AKS-QA-SALUD-NS-ADMISIONDIGITAL'
+          #    namespace: 'admisiondigital'
+          #    manifests: |
+          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
+          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-cluster-issuer.yaml
+          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
+          #    containers: crdesacontainer.azurecr.io/qa/admision_digital/achs-fr-admision:$(ImageTag)
+  # QA #
+
+  # PROD #
   - stage: Deploy_PROD
-    displayName: 'Building Deploy PROD'
+    displayName: "Building Deploy PROD"
     condition: |
       or(
         and(
@@ -194,34 +196,34 @@ stages:
           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
           eq(variables['Build.Reason'], 'PullRequest')
         )         
-       )  
+       )
     jobs:
-    - deployment: Deploy
-      displayName: 'Deploy PROD'
-      environment: 'Deploy_PROD'
-    - job: Build
-      displayName: 'Deploy PROD'
-      steps:
-        - task: Docker@2
-          displayName: Build Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryProd)
-            command: build
-            Dockerfile: ./Dockerfile 
-            tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorPROD) --build-arg idAzure=$(azureAdProd) --build-arg app=$(appNameProdFront) 
-        - task: Docker@2
-          displayName: Push Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryProd)
-            command: push
-            tags: $(ImageTag)                    
-        - task: AzureWebAppContainer@1
-          inputs:
-            azureSubscription: $(azureSubcritionProd)
-            appName: $(appNameProdFront)
-            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryProd):$(ImageTag)   
-# PROD #      
+      - deployment: Deploy
+        displayName: "Deploy PROD"
+        environment: "Deploy_PROD"
+      - job: Build
+        displayName: "Deploy PROD"
+        steps:
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(DockerRepositoryProd)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+              arguments: --build-arg urlOrquestador=$(urlOrquestadorPROD) --build-arg idAzure=$(azureAdProd) --build-arg app=$(appNameProdFront)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(DockerRepositoryProd)
+              command: push
+              tags: $(ImageTag)
+          - task: AzureWebAppContainer@1
+            inputs:
+              azureSubscription: $(azureSubcritionProd)
+              appName: $(appNameProdFront)
+              containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryProd):$(ImageTag)
+# PROD #
 

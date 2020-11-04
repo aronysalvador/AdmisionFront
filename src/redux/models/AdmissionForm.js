@@ -57,5 +57,7 @@ export const AdmissionForm = {
     comunaDireccionParticular: "",
 
     BP: "",
-    mensajeErrorSAP: ""
+    mensajeErrorSAP: "",
+
+    TrabajadorIndependiente: ""
 };

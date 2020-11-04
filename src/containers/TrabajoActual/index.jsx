@@ -12,10 +12,12 @@ import Header from "../../components/header/index";
 const TrabajoActualContainer = () => {
   const spaceStyle = getSpaceStyle();
 
-  const { percentage, ingresoTrabajoActual } = useSelector(
-    (state) => state.addmissionForm, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
+  const { percentage, ingresoTrabajoActual, TrabajadorIndependiente } = useSelector(
+    (state) => state.addmissionForm,
+    shallowEqual
+  );
   const [ingresoTrabajoActualValue, setIngresoTrabajo] = useState(
     ingresoTrabajoActual
   );
@@ -57,6 +59,8 @@ const TrabajoActualContainer = () => {
     return anios.indexOf(new Date(ingresoTrabajoActualValue).getFullYear());
   }
 
+  let back = TrabajadorIndependiente !== "" ? 25.1 : 25 ;
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -67,7 +71,7 @@ const TrabajoActualContainer = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(25))}
+          dispatch={() => dispatch(handleSetStep(back))}
           percentage={percentage}
         />
       </div>
