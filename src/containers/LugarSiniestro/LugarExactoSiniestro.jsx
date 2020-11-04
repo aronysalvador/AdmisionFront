@@ -81,7 +81,7 @@ const LugarExactoSiniestro = () => {
       </div>
       <div className={comunClass.boxDesk}>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextbox}>
+          <Typography className={comunClass.tituloTextBox}>
             Dirección accidente
           </Typography>
           <DireccionGeo
@@ -100,7 +100,7 @@ const LugarExactoSiniestro = () => {
           :null}
         </div> 
         <div className={comunClass.displayDesk}>
-          <div className={spaceStyle.space2} />
+          <div className={spaceStyle.space1} />
         </div>
         <div className={comunClass.bottomElement}>
           <Button

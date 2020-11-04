@@ -123,7 +123,7 @@ const TabCompany = (props) => {
         <Typography
           variant="p"
           component="p"
-          className={comunClass.tituloTextbox}
+          className={comunClass.tituloTextBox}
         >
           Razón Social
         </Typography>
@@ -136,7 +136,7 @@ const TabCompany = (props) => {
         <Typography
           variant="p"
           component="p"
-          className={[comunClass.tituloTextbox]}
+          className={[comunClass.tituloTextBox]}
         >
           RUT
         </Typography>

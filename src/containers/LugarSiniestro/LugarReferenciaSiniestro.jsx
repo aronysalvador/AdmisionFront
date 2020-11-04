@@ -59,7 +59,7 @@ const LugarReferenciaSiniestro = () => {
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextbox}>
+          <Typography className={comunClass.tituloTextBox}>
             Referencia
           </Typography>
           <TextField

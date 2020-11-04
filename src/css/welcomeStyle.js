@@ -166,6 +166,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         // width: "5em",
         // height: "5em",
     },
+    divRowBottomEmail: {
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "5px",
+    },
 
     '@media (max-width: 767px)': {
         /* For mobile phones */
@@ -267,6 +272,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             marginBottom: "5px",
         },
         titleContainerCards2: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        titleContainerCardsEmail: {
             padding: "1.5em 1.5em 0.5em 1.5em",
             background: "#FFFFFF",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
@@ -401,6 +412,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             padding: "1.5em 1.5em 0.5em 1.5em",
             background: "#FFFFFF",
             // boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        titleContainerCardsEmail: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             borderRadius: "10px",
         },
 

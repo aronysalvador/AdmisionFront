@@ -92,7 +92,7 @@ const HealthForecastIsapre = (props) => {
             <Typography
               variant="p"
               component="p"
-              className={[comunClass.tituloTextbox]}
+              className={[comunClass.tituloTextBox]}
             >
               Isapre
             </Typography>

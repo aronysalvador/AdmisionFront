@@ -104,7 +104,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextbox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextBox} variant="subtitle2">
             Comuna
           </Typography>
           <AutoComplete

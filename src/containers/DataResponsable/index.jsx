@@ -87,7 +87,7 @@ const DataResponsable = () => {
             <Typography
               variant="p"
               component="p"
-              className={[comunClass.tituloTextbox]}
+              className={[comunClass.tituloTextBox]}
             >
               Nombre
             </Typography>
@@ -125,7 +125,7 @@ const DataResponsable = () => {
             <Typography
               variant="p"
               component="p"
-              className={[comunClass.tituloTextbox]}
+              className={[comunClass.tituloTextBox]}
             >
               Cargo o Relación
             </Typography>

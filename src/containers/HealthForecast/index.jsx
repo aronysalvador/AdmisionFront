@@ -192,7 +192,7 @@ const HealthForecast = (props) => {
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
-    microsoftReducer, microsoftReducer
+    microsoftReducer: microsoftReducer
   };
 }
 

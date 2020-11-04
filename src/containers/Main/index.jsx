@@ -630,7 +630,7 @@ const Main = (props) => {
       case 1002:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <ErrorCaso />
             </Paper>
           </div>

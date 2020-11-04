@@ -112,8 +112,8 @@ const EditarTelefono = () => {
           />
           <div className={spaceStyle.space1} />
 
-          <div className={welcomeStyle.titleContainerCards2}>
-            <div  className={welcomeStyle.divRowBottom2}>
+          <div className={welcomeStyle.titleContainerCardsEmail}>
+            <div  className={welcomeStyle.divRowBottomEmail}>
                 <ErrorOutline />
                 <Typography
                   variant="p"
@@ -123,7 +123,7 @@ const EditarTelefono = () => {
                   Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
                 </Typography>
             </div>
-            <div  className={welcomeStyle.divRowBottom2}>
+            <div  className={welcomeStyle.divRowBottomEmail}>
               <Typography
                     variant="p"
                     component="p"
@@ -132,7 +132,7 @@ const EditarTelefono = () => {
                     ¿Está seguro de continuar?
               </Typography>
             </div>
-            <div  className={welcomeStyle.divRowBottom2}>
+            <div  className={welcomeStyle.divRowBottomEmail}>
               <CustomSwitch
                 checked={stateCheck}
                 onChange={handleChange}

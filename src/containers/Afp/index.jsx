@@ -57,19 +57,19 @@ const Afp = () => {
         <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Escribe la 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-              &nbsp;AFP o Previsión Social
+            &nbsp;AFP o Previsión Social
           </Grid>          
         </Typography>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextbox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextBox}>
             AFP
           </Typography>
           <AutoComplete
