@@ -458,7 +458,7 @@ export const getComunStyle = makeStyles((theme) => ({
     buttonEditRelato: {
         cursor: "pointer",
         textDecoration: "underline",
-        color: "#DEDEDE",
+        color: "#373737",
     },
 
 }));
