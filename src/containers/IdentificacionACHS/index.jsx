@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getCentros } from "./../../redux/actions/CentrosAchsAction";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -11,7 +11,6 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import { setCenter } from "../../redux/actions/UserCenterAction";
 import Header from "../../components/header/index";
-import Grid from '@material-ui/core/Grid';
 
 const Achs = () => {
   const {
@@ -70,15 +69,15 @@ const Achs = () => {
       <div className={comunStyle.boxGeneral} >
         <center className={comunStyle.displayDesk}>
           <div className={spaceStyle.space2} />
-          <Typography className={comunStyle.subtitleBlack}>
+          <Grid className={comunStyle.subtitleBlack}>
             Ingresa el centro en el cual trabajas
-          </Typography>
+          </Grid>
           <div className={spaceStyle.space2} />
         </center>
         <div className={comunStyle.containerTextBox}>
-          <Typography className={comunStyle.tituloTextbox}>
+          <Grid className={comunStyle.tituloTextbox}>
             Centro
-          </Typography>
+          </Grid>
           <AutoComplete
             value={centros}
             onChange={(event, value) => {

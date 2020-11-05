@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -33,25 +33,25 @@ const NoCuentaSap = (props) => {
           />
         </div>
         <div className={spaceStyle.space2} />
-        <Typography
+        <Grid
           className={blackStyle.textWarning}
         >
           ¡Lo sentimos!
-        </Typography>
+        </Grid>
         <div className={spaceStyle.space1} />
-        <Typography
+        <Grid
           className={blackStyle.textNoAfiliate}
         >
           No tienes cuenta SAP&nbsp;
           <br className={comunClass.displayDesk}/>
           con permisos para realizar esta acción
-        </Typography>
+        </Grid>
         <div className={spaceStyle.space1} />
-        <Typography
+        <Grid
           className={blackStyle.textDetailSimpleNoSAP}
         >
           Comunicate con tu administrador de cuenta
-        </Typography>
+        </Grid>
 
         <div className={comunClass.bottomElement}>
           <Button

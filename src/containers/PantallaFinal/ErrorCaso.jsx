@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -33,26 +33,26 @@ const ErrorCaso = (props) => {
           />
         </div>
         <div className={spaceStyle.space1} />
-        <Typography
+        <Grid
           className={comunClass.textErrorP}
         >
           ¡Ha ocurrido un error
           <br />
           creando tu caso!
-        </Typography>
+        </Grid>
         <div className={spaceStyle.space1} />
 
-        <Typography
+        <Grid
           className={comunClass.textErrorRed}
         >
           Error: "{String(mensajeErrorSAP).trim()}"
-        </Typography>
+        </Grid>
 
-        <Typography
+        <Grid
           className={comunClass.textErrorS}
         >
           Por favor, vuelve a intentarlo
-        </Typography>
+        </Grid>
         <div className={comunClass.bottomElement} style={{padding: '1.145em'}}>
           <Button
             className={comunClass.buttonAchs}

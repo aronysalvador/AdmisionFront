@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 
@@ -15,7 +15,6 @@ const Header = (props) => {
 
   const comunClass = getComunStyle();
   const welcomeStyle = getWelcomeStyle();
-  
 
   return (
     <div className={comunClass.header}>
@@ -23,7 +22,6 @@ const Header = (props) => {
         <img 
           alt="logo" 
           src={"static/letterACHS.svg"}
-          // style={step === 0.1 ?  {width: "64px", height: "64px", marginLeft:"47%"}: {width: "64px", height: "64px", marginLeft:"25%"}}
           style={{width: "64px", height: "64px", margin:"auto 10%"}}   //marginLeft:"25%"
         />
         <div className={comunClass.containerHeader}>
@@ -31,21 +29,17 @@ const Header = (props) => {
             <Avatar className={welcomeStyle.avatarHeader}>
               {iniciales}
             </Avatar>
-            <Typography className={comunClass.tituloCerrarSesion}>
+            <Grid className={comunClass.tituloCerrarSesion}>
               {displayName}
-            </Typography>
-            {/* <div ststep yle={step > 1 && { display: "none" }}> */}
+            </Grid>
             {(step === 1 || step === 1.1 || step === 40 || step === 1001) && 
-            
-            <Typography
+              <Grid
                 className={comunClass.tituloCerrarSesion}
                 style={{ cursor: 'pointer'}}
                 onClick={()=> dispatch(logout())}
               > 
                 Cerrar sesión
-              </Typography> }
-              
-            {/* </div> */}
+              </Grid> }
           </div>
         </div>
       </div>
