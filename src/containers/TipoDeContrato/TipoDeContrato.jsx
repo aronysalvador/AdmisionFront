@@ -9,15 +9,15 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import { getContrato } from "../../redux/actions/TipoContratoAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const TipoDeContrato = () => {
   const dispatch = useDispatch();
-  const { root, titleBlue, titleBlack } = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const { step, percentage, tipoDeContrato } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+    (state) => state.addmissionForm, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const initFn = useCallback(() => {
     dispatch(getContrato(""));
@@ -28,33 +28,48 @@ const TipoDeContrato = () => {
   }, [initFn]);
 
   const { data: contratoList } = useSelector(
-    (state) => state.tipoContratoForm,
-    shallowEqual
-  );
+    (state) => state.tipoContratoForm, shallowEqual);
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(step - 1))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        ¿Qué  
-        <Grid component="span"  className={titleBlue}>
-         &nbsp;tipo de contrato
-        </Grid>      
-        &nbsp;tiene el paciente?
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
+    <div className={comunClass.root}>
+       <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(step - 1))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          ¿Qué  
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;tipo de contrato
+          </Grid>      
+          &nbsp;tiene el paciente?
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+
+      <div className={comunClass.boxDesk}>
+        <div className={spaceStyle.space2} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
         {contratoList.map((contrato) => (
           <BotonSeleccionarCustom
             key={contrato.id}
@@ -66,7 +81,11 @@ const TipoDeContrato = () => {
             <BotonSeleccionarCustomItem {...contrato} />
           </BotonSeleccionarCustom>
         ))}
+        </div>
       </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div> 
     </div>
   );
 };

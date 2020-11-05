@@ -33,7 +33,6 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
 
  // const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
-
   
   useEffect(() => {
     if (horas > 23) setHoras(0);
@@ -63,7 +62,6 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   let start2 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
   let start3 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
 
-  
   const longPressDownHora = () => {
       setHoras((h) => --h);
       setT(setTimeout(longPressDownHora, start));
@@ -114,7 +112,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
       if(intended > 5)
           return (intended-6)
       return intended
-  }
+  };
 
   const obtenHora= (intended) => {
     if(intended < 0)
@@ -123,32 +121,22 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
       return "0"+intended
     if(intended > 23)
       return "0"+Math.abs((24-intended))
-
     return intended
-}
+  };
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       <Grid item direction="column">
-        <Grid
-          item
-          className={comunStyle.boxTitleHoras}
-        >
+        <Grid item className={comunStyle.boxTitleHoras}>
           <div className={comunStyle.tituloSelectorFecha}>
             Hora
           </div>
         </Grid>
-
-        <Grid
-          item
-          className={comunStyle.boxHoras}
-        >
+        <Grid item className={comunStyle.boxHoras}>
           <div>
             <Button
               variant="text"
-              // onClick={() => {
-              //   setHoras((h) => --h);
-              // }}
+              // onClick={() => { setHoras((h) => --h) }}
               onMouseDown={() => {
                 longPressDownHora();
               }}
@@ -164,7 +152,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             {obtenHora(horas-2)}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-          {obtenHora(horas-1)}
+            {obtenHora(horas-1)}
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemPrincipal}>
@@ -175,34 +163,29 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             {obtenHora(horas+1)}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-          {obtenHora(horas+2)}
+            {obtenHora(horas+2)}
           </div>
-          
           
           {/* <div className={spaceStyle.spaceMin1} /> */}
           <div>
             <Button
               variant="text"
-             // disabled={ horas === new Date().getHours()}
-              // onClick={() => {
-              //   setHoras((h) => ++h);
-              // }}
+              // disabled={ horas === new Date().getHours()}
+              // onClick={() => { setHoras((h) => ++h) }}
               onMouseDown={() => {
                 longPressUPHora();
               }}
               onMouseUp={() => {
                 onMouseUp2();
               }}
-              
             >
-              <KeyboardArrowDown/>
+              <KeyboardArrowDown />
             </Button>
           </div>
         </Grid>
       </Grid>
       <Grid item direction="column">
-        <Grid
-          item
+        <Grid item
           className={comunStyle.boxTitleHoras}
           style={{ marginLeft: "25px" }}
         >
@@ -210,24 +193,20 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             Minutos
           </div>
         </Grid>
-        <Grid
-          item
+        <Grid item
           className={comunStyle.boxHoras}
-          style={{ marginLeft: "20px" }}
+          style={{marginLeft: "20px"}}
         >
           <div>
             <Button
               variant="text"
-              // onClick={() => {
-              //   setIndiceMinutos((m) => --m);
-              // }}
+              // onClick={() => { setIndiceMinutos((m) => --m)}}
               onMouseDown={() => {
                 longPressDownMinutos();
               }}
               onMouseUp={() => {
                 onMouseUp();
               }}
-              
             >
               <KeyboardArrowUp />
             </Button>
@@ -237,7 +216,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             {minutos[obtenPosicion(indiceMinutos-2)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-          {minutos[obtenPosicion(indiceMinutos-1)]}
+            {minutos[obtenPosicion(indiceMinutos-1)]}
             {/* {minutos === 0
               ? 59
               : minutos - 1 < 10
@@ -251,19 +230,17 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemsCostados}>
-          {minutos[obtenPosicion(indiceMinutos+1)]}
+            {minutos[obtenPosicion(indiceMinutos+1)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-          {minutos[obtenPosicion(indiceMinutos+2)]}
+            {minutos[obtenPosicion(indiceMinutos+2)]}
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div>
             <Button
               variant="text"
              // disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
-              // onClick={() => {
-              //   setIndiceMinutos((m) => ++m);
-              // }}
+             // onClick={() => { setIndiceMinutos((m) => ++m) }}
               onMouseDown={() => {
                 longPressUPMinutos();
               }}
@@ -271,9 +248,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
                 onMouseUp3();
               }}
             >
-              <KeyboardArrowDown
-                
-              />
+              <KeyboardArrowDown />
             </Button>
           </div>
         </Grid>

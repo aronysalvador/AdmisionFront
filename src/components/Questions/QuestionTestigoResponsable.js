@@ -8,42 +8,48 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 const QuestionButton = (props) => {
   const { titulo, titulo2, titulo3, accionButoonA, accionButoonB, tituloA, tituloB } = props;
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   return (
     <div>
-      <div>
-        <Typography variant="p" component="p" className={classesComun.titleBlack}>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           {titulo}
-          <Grid component="span"  className={classesComun.titleBlue}>
-              &nbsp;{titulo2} 
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;{titulo2} 
           </Grid>          
           {titulo3}
         </Typography>
-      </div>
-
-      <div className={classesComun.bottomElement}>
-        <div>
-          <Button
-            className={classesComun.buttonAchs}
-            variant="contained"
-            type="submit"
-            onClick={() => accionButoonA()}
-          >
-            {tituloA}
-          </Button>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
         </div>
-        <div className={spaceStyle.space1} />
-        <div>
-          <Button
-            className={classesComun.buttonAchs2}
-            variant="contained"
-            type="submit"
-            onClick={() => accionButoonB()}
-          >
-            {tituloB}
-          </Button>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.bottomElement}>
+          <div>
+            <Button
+              className={comunClass.buttonAchs}
+              variant="contained"
+              type="submit"
+              onClick={() => accionButoonA()}
+            >
+              {tituloA}
+            </Button>
+          </div>
+          <div className={spaceStyle.space1} />
+          <div>
+            <Button
+              className={comunClass.buttonAchs2}
+              variant="contained"
+              type="submit"
+              onClick={() => accionButoonB()}
+            >
+              {tituloB}
+            </Button>
+          </div>
         </div>
       </div>
     </div>

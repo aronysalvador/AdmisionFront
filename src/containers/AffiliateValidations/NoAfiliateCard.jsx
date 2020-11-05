@@ -1,6 +1,7 @@
 import React from "react";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
 import { ErrorOutline } from "@material-ui/icons";
+import { getComunStyle } from "../../css/comun";
 
 const NoAfiliateCard = () => {
   const {
@@ -8,16 +9,19 @@ const NoAfiliateCard = () => {
     cardTextNoAfilate,
     cardText,
   } = getTrabajoHabitualCardStyle();
+  const comunClass = getComunStyle();
+
   return (
     <div className={container}>
-      <div>
+      <div className={comunClass.textCenterDesk}>
         <ErrorOutline />
       </div>
       <div className={cardTextNoAfilate}>
         <span className={cardText}>
-        Si consideras que es una consulta de urgencia continúa la atención en SAP.
-        <br/><br/>
-        En caso contrario, terminar atención y derivar al paciente a su mutualidad.
+          Si consideras que es una consulta de urgencia continúa la atención en SAP.
+          <br/>
+          <br className={comunClass.displayMobile}/>
+          En caso contrario, terminar atención y derivar al paciente a su mutualidad.
         </span>
       </div>
     </div>

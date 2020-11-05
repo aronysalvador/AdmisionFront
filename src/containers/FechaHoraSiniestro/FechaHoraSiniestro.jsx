@@ -8,19 +8,19 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const FechaHoraSiniestro = () => {
-  const spaceStyle = getSpaceStyle();
-
   const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+    (state) => state.addmissionForm, shallowEqual);
+  
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const { days, month, year, horas, minutos } = fechaHoraSiniestro;
 
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
-  const { buttonAchs, root, bottomElement, titleBlack, titleBlue } = getComunStyle();
+  const comunClass = getComunStyle();
+  const spaceStyle = getSpaceStyle();
 
   const minutosArray = [0, 10, 20, 30, 40, 50]
 
@@ -75,53 +75,70 @@ const FechaHoraSiniestro = () => {
       );
       dispatch(handleSetStep(5.83));
     }
-
-  
   };
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(9))}
-        percentage={percentage}
-      />
-      <Typography
-        variant="h1"
-        component="h1"
-        className={titleBlack}
-        >
-        ¿
-        
-        <Grid component="span"  className={titleBlue}>
-         Cuándo y a qué hora&nbsp;
-        </Grid> 
-
-        sucedió el accidente?
-      </Typography>
-      <div className={spaceStyle.space3} />
-      <FechaSiniestroCalendar
-        onChange={setFechaValueSiniestro}
-        daysFromState={days}
-        monthFromState={month}
-        yearFromState={year}
-      />
-      <div className={spaceStyle.space1} />
-      <HoraSiniestro
-        onChange={setHoraValueSiniestro}
-        horasFromState={horas}
-        indiceMinutosFromState={minutosArray.indexOf(minutos)}
-        minutos={minutosArray}
-      />
-      <div className={bottomElement}>
-        <Button
-          className={buttonAchs}
-          onClick={() => { 
-            handleNext();
-           
-          }}
-        >
-          Continuar
-        </Button>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(9))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography
+          variant="h1"
+          component="h1"
+          className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
+          >
+          ¿
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            Cuándo y a qué hora&nbsp;
+          </Grid> 
+          sucedió el accidente?
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space3} />
+        </div>
+        <div className={comunClass.containerTextBox}>
+          <FechaSiniestroCalendar
+            onChange={setFechaValueSiniestro}
+            daysFromState={days}
+            monthFromState={month}
+            yearFromState={year}
+          />
+          <div className={spaceStyle.space1} />
+          <HoraSiniestro
+            onChange={setHoraValueSiniestro}
+            horasFromState={horas}
+            indiceMinutosFromState={minutosArray.indexOf(minutos)}
+            minutos={minutosArray}
+          />
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            onClick={() => { handleNext() }}
+          >
+            Continuar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

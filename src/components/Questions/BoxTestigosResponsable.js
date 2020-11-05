@@ -9,39 +9,48 @@ import BoxACHSEditDelete from "../share/BoxACHSEditDelete/index";
 const QuestionTestigoResponsable = (props) => {
   const { titulo, titulo2, titulo3, tituloTestigo, contenidoTestigo, irA } = props;
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   return (
     <div>
-      <div>
-      <Typography variant="p" component="p" className={classesComun.titleBlack}>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           {titulo}
-
-          <Grid component="span"  className={classesComun.titleBlue}>
-              &nbsp;{titulo2} 
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            {titulo2} 
           </Grid>
-          
           {titulo3}
         </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
       </div>
-      <div>
-        <div className={spaceStyle.space1} />
-        <BoxACHSEditDelete
-          titulo={tituloTestigo}
-          contenido={contenidoTestigo}
-        />
-      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.containerTextBox}>
+          <div className={spaceStyle.space1} />
+          <BoxACHSEditDelete
+            titulo={tituloTestigo}
+            contenido={contenidoTestigo}
+            // style={{margin:'15px 0', width: '100%'}}
+          />
+        </div>
 
-      <div className={classesComun.bottomElement}>
-        <Button
-          className={classesComun.buttonAchs}
-          variant="contained"
-          type="submit"
-          onClick={() => irA()}
-        >
-          Continuar
-        </Button>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            type="submit"
+            onClick={() => irA()}
+          >
+            Continuar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

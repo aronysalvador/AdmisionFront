@@ -7,12 +7,15 @@ import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { getRazonAlertaPrincipal } from "./../../redux/actions/AlertaCalificacionRazonAction";
 import BotonSeleccionarCustomItemAlerta from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemAlerta";
+import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const AlertaCalificacionRazon = () => {
   const {
     addmissionForm: { percentage, razonAlertaForm },
   } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const razon =  !razonAlertaForm ? "" : razonAlertaForm 
 
@@ -26,46 +29,65 @@ const AlertaCalificacionRazon = () => {
     initFn();
   }, [initFn]);
 
-
   const { data: razonAlertaList } = useSelector(
     (state) => state.razonAlertaForm,
     shallowEqual
   );
 
-  const { root, titleBlue, titleBlack } = getComunStyle();
+  const comunClass = getComunStyle();
+  const spaceStyle = getSpaceStyle();
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(26.1))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Selecciona
-        <Grid component="span"  className={titleBlue}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(26.1))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Selecciona
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;la razón de la alerta
-        </Grid>          
-      </Typography>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        {razonAlertaList && razonAlertaList.map((razonAlerta) => (
-          <BotonSeleccionarCustom
-            key={razonAlerta.glosa}
-            data={razonAlerta}
-            itemForm={"razonAlertaForm"}
-            selected={razonAlerta.glosa === razon.glosa}
-          >
-            <BotonSeleccionarCustomItemAlerta {...razonAlerta} />
-          </BotonSeleccionarCustom>
-        ))}
+          </Grid>          
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          {razonAlertaList && razonAlertaList.map((razonAlerta) => (
+            <BotonSeleccionarCustom
+              key={razonAlerta.glosa}
+              data={razonAlerta}
+              itemForm={"razonAlertaForm"}
+              selected={razonAlerta.glosa === razon.glosa}
+            >
+              <BotonSeleccionarCustomItemAlerta {...razonAlerta} />
+            </BotonSeleccionarCustom>
+          ))}
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

@@ -92,21 +92,19 @@ const TabCompany = (props) => {
         aria-labelledby={`simple-tab-${index}`}
       >
         {value === index && (
-         
-            <div>{children} </div>
-         
+          <div>{children} </div>
         )}
       </div>
     );
-  }
+  };
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const classes = useStyles();
 
   return (
-    <div>
-      <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68">
-        <Tab
+    <div className={comunClass.containerTextBox}>
+      <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered >
+          <Tab
           classes={
             value === 0 ? { root: classes.root2 } : { root: classes.root4 }
           }
@@ -125,7 +123,7 @@ const TabCompany = (props) => {
         <Typography
           variant="p"
           component="p"
-          className={classesComun.tituloTextbox}
+          className={comunClass.tituloTextBox}
         >
           Razón Social
         </Typography>
@@ -138,7 +136,7 @@ const TabCompany = (props) => {
         <Typography
           variant="p"
           component="p"
-          className={[classesComun.tituloTextbox]}
+          className={[comunClass.tituloTextBox]}
         >
           RUT
         </Typography>

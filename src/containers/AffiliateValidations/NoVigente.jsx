@@ -7,10 +7,11 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoAfiliateCard from './NoAfiliateCard';
+import Header from "../../components/header/index";
 
 const NoVigente = (props) => {
 
-  const { dispatch } = props;
+  const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
@@ -18,11 +19,23 @@ const NoVigente = (props) => {
 
   return (
     <div>
-      <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.1))} 
-        color="#FFFFFF"
-      />
-      <div className={blackStyle.root} style={{height: "40em"}}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space1} />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <CabeceraSinBarra
+          dispatch={() => dispatch(handleSetStep(5.1))} 
+          color="#FFFFFF"
+        />
+      </div>
+      <div className={blackStyle.root}>
+      {/* style={{height: "40em"}}  */}
         <img
           alt="load"
           src="./static/error-siniestro.svg"
@@ -41,14 +54,18 @@ const NoVigente = (props) => {
           gutterBottom
           className={blackStyle.textNoAfiliate}
         >
-          Sucursal de este paciente no está vigente en ACHS
+          Sucursal de este paciente&nbsp;
+          <br className={comunClass.displayDesk}/> 
+          no está vigente en ACHS
         </Typography>
         <div className={spaceStyle.space1} />
-        
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space1} />
+        </div>
+
         <NoAfiliateCard />
 
         <div className={comunClass.bottomElement}>
-          
           <div className={spaceStyle.space2} />
           <Button
             className={blackStyle.buttonFooter}
@@ -60,12 +77,16 @@ const NoVigente = (props) => {
           </Button>
         </div>
       </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
     </div>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(NoVigente);

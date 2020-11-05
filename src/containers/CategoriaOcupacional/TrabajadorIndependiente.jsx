@@ -6,6 +6,7 @@ import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import Header from "../../components/header/index";
 
 const TrabajadorIndependiente = () => {
   const {
@@ -14,14 +15,9 @@ const TrabajadorIndependiente = () => {
 
   const dispatch = useDispatch();
 
-  const {
-    root,
-    buttonAchs,
-    bottomElement,
-    buttonAchs2,
-    titleBlack, 
-    titleBlue } = getComunStyle();
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const handleOnClick = (respuesta) => {
@@ -29,42 +25,58 @@ const TrabajadorIndependiente = () => {
     dispatch(handleSetStep(26)); //++stepx
   };
 
-
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(25))}
-        percentage={percentage}
-      />
-      <div>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(25))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
         <Typography
           variant="h1"
           component="h1"
-          className={titleBlack}
-         >
-            <Grid component="span"  className={titleBlue}>
-                ¿Paciente declara  renta&nbsp;
-            </Grid>   
-             en servicios impuestos internos como trabajador independiente?    
+          className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
+        >
+          ¿<Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            Paciente declara renta&nbsp;
+          </Grid>   
+          en servicios impuestos internos como trabajador independiente?    
         </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
       </div>
-
-      <div className={bottomElement}>
-        <div className={spaceStyle.spaceMin1}></div>
-        <Button
-          variant="contained"
-          className={buttonAchs}
-          onClick={() => handleOnClick("Si")}
-        >
-          Sí
-        </Button>
-        <div className={spaceStyle.spaceMin1}></div>
-        <Button
-          className={buttonAchs2}
-          onClick={() => handleOnClick("No")}
-        >
-          No
-        </Button>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.bottomElement}>
+          <div className={spaceStyle.spaceMin1}></div>
+          <Button
+            variant="contained"
+            className={comunClass.buttonAchs}
+            onClick={() => handleOnClick("Si")}
+          >
+            Sí
+          </Button>
+          <div className={spaceStyle.spaceMin1}></div>
+          <Button
+            className={comunClass.buttonAchs2}
+            onClick={() => handleOnClick("No")}
+          >
+            No
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

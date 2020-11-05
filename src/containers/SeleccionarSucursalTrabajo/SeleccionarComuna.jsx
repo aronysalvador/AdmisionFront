@@ -9,6 +9,7 @@ import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
 import { getComuna } from "../../redux/actions/ComunaAction";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const {
@@ -17,6 +18,8 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     cantidadSucursales,
     sucursales: sucursales2,
   } = useSelector((state) => state.addmissionForm, shallowEqual);
+
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const { data: comunaList } = useSelector(
     (state) => state.comunaForm,
@@ -37,14 +40,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     initFn();
   }, [initFn]);
 
-  const {
-    buttonAchs,
-    root,
-    bottomElement,
-    tituloTextbox,
-    titleBlue,
-    titleBlack,
-  } = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
@@ -67,85 +63,107 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     var lookupObject  = {};
 
     for(var i in originalArray) {
-       lookupObject[originalArray[i][prop]] = originalArray[i];
+      lookupObject[originalArray[i][prop]] = originalArray[i];
     }
 
     for(i in lookupObject) {
-        newArray.push(lookupObject[i]);
+      newArray.push(lookupObject[i]);
     }
-     return newArray;
+    return newArray;
   }
 
   console.log(listaComunas);
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.4))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Identifica
-        <Grid component="span"  className={titleBlue}>
-              &nbsp;la comuna de la sucursal
-        </Grid>                  
-        &nbsp;en donde trabaja
-      </Typography>
-      <div className={spaceStyle.space2}></div>
-      <Typography className={tituloTextbox} variant="subtitle2">
-        Comuna
-      </Typography>
-      <AutoComplete
-        value={comuna}
-        onChange={(event, value) => {
-          console.log({ value });
-          const sucursalesComuna = sucursalesEmpresa.filter(
-            (x) =>
-              x.id_comuna === value?.codigo_comuna &&
-              parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
-          );
-
-          console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
-          setNumeroSucursales(sucursalesComuna.length);
-          setSucursales(sucursalesComuna);
-          setComuna(value);
-        }}
-        size="small"
-        fullWidth
-        options={listaComunas}
-        getOptionLabel={(option) => option.nombre}
-        renderInput={(params) => <TextField {...params} variant="outlined" />}
-      />
-      <div className={spaceStyle.space2}></div>
-      {numeroSucursales === 1 ? (
-        <CardSucursal sucursales={sucursales[0]} />
-      ) : null}
-      <div className={bottomElement}>
-        <Button
-          className={buttonAchs}
-          variant="contained"
-          disabled={!comuna}
-          onClick={() => {
-            dispatch(updateForm("cantidadSucursales", numeroSucursales));
-            dispatch(updateForm("comunaSucursal", comuna));
-            if (numeroSucursales > 1) {
-              dispatch(updateForm("sucursales", sucursales));
-              dispatch(handleSetStep(5.6));
-            }
-            if (numeroSucursales === 1) {
-              dispatch(updateForm("sucursales", sucursales));
-              dispatch(updateForm("SucursalEmpresaObjeto", sucursales[0]));
-              dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
-              dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
-              dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
-              dispatch(
-                updateForm("sucursalCargo", sucursales[0].sucursalCargo)
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(5.4))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Identifica
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;la comuna de la sucursal
+          </Grid>                  
+          &nbsp;en donde trabaja
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={spaceStyle.space2} />
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextBox} variant="subtitle2">
+            Comuna
+          </Typography>
+          <AutoComplete
+            value={comuna}
+            onChange={(event, value) => {
+              console.log({ value });
+              const sucursalesComuna = sucursalesEmpresa.filter(
+                (x) =>
+                  x.id_comuna === value?.codigo_comuna &&
+                  parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
               );
-              dispatch(handleSetStep(5.1));
-            }
-          }}
-        >
-          Confirmar
-        </Button>
+
+              console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
+              setNumeroSucursales(sucursalesComuna.length);
+              setSucursales(sucursalesComuna);
+              setComuna(value);
+            }}
+            size="small"
+            fullWidth
+            options={listaComunas}
+            getOptionLabel={(option) => option.nombre}
+            renderInput={(params) => <TextField {...params} variant="outlined" />}
+          />
+          <div className={spaceStyle.space2} />
+          {numeroSucursales === 1 ? (
+            <CardSucursal sucursales={sucursales[0]} />
+          ) : null}
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            disabled={!comuna}
+            onClick={() => {
+              dispatch(updateForm("cantidadSucursales", numeroSucursales));
+              dispatch(updateForm("comunaSucursal", comuna));
+              if (numeroSucursales > 1) {
+                dispatch(updateForm("sucursales", sucursales));
+                dispatch(handleSetStep(5.6));
+              }
+              if (numeroSucursales === 1) {
+                dispatch(updateForm("sucursales", sucursales));
+                dispatch(updateForm("SucursalEmpresaObjeto", sucursales[0]));
+                dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
+                dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
+                dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
+                dispatch(
+                  updateForm("sucursalCargo", sucursales[0].sucursalCargo)
+                );
+                dispatch(handleSetStep(5.1));
+              }
+            }}
+          >
+            Confirmar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

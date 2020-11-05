@@ -16,7 +16,7 @@ const RutPaciente = () => {
 
   return (
     <div>
-        <Typography className={comunClass.tituloTextbox}>
+        <Typography className={comunClass.tituloTextBox}>
           RUT
         </Typography>
         <TextField

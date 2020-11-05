@@ -9,6 +9,7 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 /*
 REVISARE EL 
   const {
@@ -19,21 +20,15 @@ const Afp = () => {
   const {
     addmissionForm: { percentage, afpForm },
   } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-  const {
-    buttonAchs,
-    root,
-    bottomElement,
-    tituloTextbox,
-    titleBlack,
-    titleBlue
-  } = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const [afp, setAFP] = useState(() => {
     return !afpForm ? "" : afpForm;
   });
-
+  const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
   const dispatch = useDispatch();
 
   const initFn = useCallback(() => {
@@ -44,63 +39,80 @@ const Afp = () => {
     initFn()
   }, [initFn]);
 
-  const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
-
-
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(18.1))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Escribe la 
-        <Grid component="span"  className={titleBlue}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(18.1))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Escribe la 
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;AFP o Previsión Social
-        </Grid>          
-      </Typography>
-      <div className={spaceStyle.space2} />
-
-      <Typography className={tituloTextbox} variant="subtitle2">
-        AFP
-      </Typography>
-      <AutoComplete
-        value={afp}
-        onChange={(event, value) => {
-          setAFP(value);
-        }}
-        style={{ width: 300 }}
-        options={afpList}
-        getOptionLabel={(option) => option.nombre}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="outlined"
-            InputProps={{
-              ...params.InputProps,
-              style: {
-                paddingTop: "3px",
-                paddingBottom: "3px",
-                paddingLeft: "5xp",
-                marginTop: "7px",
-              },
+          </Grid>          
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={spaceStyle.space2} />
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextBox}>
+            AFP
+          </Typography>
+          <AutoComplete
+            value={afp}
+            onChange={(event, value) => {
+              setAFP(value);
             }}
+            // style={{ width: 300 }}
+            options={afpList}
+            getOptionLabel={(option) => option.nombre}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
+                }}
+              />
+            )}
           />
-        )}
-      />
-
-      <div className={bottomElement}>
-        <Button
-          variant="contained"
-          className={buttonAchs}
-          disabled={!afp}
-          onClick={() => {
-            dispatch(updateForm("afpForm", afp));
-            dispatch(handleSetStep(19));
-          }}
-        >
-          Continuar
-        </Button>
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            variant="contained"
+            className={comunClass.buttonAchs}
+            disabled={!afp}
+            onClick={() => {
+              dispatch(updateForm("afpForm", afp));
+              dispatch(handleSetStep(19));
+            }}
+          >
+            Continuar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

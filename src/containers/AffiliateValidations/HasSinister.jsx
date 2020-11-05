@@ -4,10 +4,11 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
-import { handleSetStep } from '../../redux/actions/AdmissionAction'
+import { handleSetStep } from '../../redux/actions/AdmissionAction';
+import Header from "../../components/header/index";
 
 const HasSinister = (props) => {
-  const { dispatch, addmissionForm } = props;
+  const { dispatch, addmissionForm, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
@@ -16,44 +17,59 @@ const HasSinister = (props) => {
   const siniestroOpciones = addmissionForm.siniestroOpciones;
 
   return (
-    <div className={blackStyle.root}>
-      <div className={spaceStyle.space2} />
+    <>
+      <div className={comunClass.displayDesk}> 
+        <Header
+            userMsal={ microsoftReducer.userMsal }
+            // step={1}
+        />
+      </div>
+      <div className={blackStyle.root}>
+        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayDesk}> 
+          <div className={spaceStyle.space2} />
+        </div>
         <img
           alt="load"
-          src="./static/siniestro.png"
+          src="./static/cita-agendada.svg" //siniestro.png
           className={blackStyle.img}
         />
-      <div className={spaceStyle.space3} />
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        className={blackStyle.textWarning}
-      >
-       ¡Atención!
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        className={blackStyle.textMessage}
-      >{siniestroOpciones.mensajeAlerta}
-      </Typography>
-      <div className={comunClass.bottomElement}>
-        <Button
-          className={blackStyle.buttonFooter}
-          onClick={() => {
-            dispatch(handleSetStep(5.831));
-          }}
-        >{siniestroOpciones.mensajeBoton}
-          {/* Ver sus(s) siniestro(s) */}
-        </Button>
+        <div className={spaceStyle.space3} />
+        <Typography
+          color="textSecondary"
+          gutterBottom
+          className={blackStyle.textWarning}
+        >
+        ¡Atención!
+        </Typography>
+        <div className={spaceStyle.space2} />
+        <Typography
+          color="textSecondary"
+          gutterBottom
+          className={blackStyle.textMessage}
+        >{siniestroOpciones.mensajeAlerta}
+        </Typography>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={blackStyle.buttonFooter}
+            onClick={() => {
+              dispatch(handleSetStep(5.831));
+            }}
+          >{siniestroOpciones.mensajeBoton}
+            {/* Ver sus(s) siniestro(s) */}
+          </Button>
+        </div>
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space5} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(HasSinister);

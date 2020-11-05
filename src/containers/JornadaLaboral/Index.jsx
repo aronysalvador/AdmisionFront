@@ -7,14 +7,16 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import JornadaLaboral from "../../components/JornadaLaboral/JornadaLaboral";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const JornadaLaboralContainer = () => {
   const spaceStyle = getSpaceStyle();
 
   const { step, percentage, inicioJornadaLaboral, finJornadaLaboral } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+    (state) => state.addmissionForm, shallowEqual);
+
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+
   const [inicioJornadaLaboralValue, setInicioJornada] = useState(inicioJornadaLaboral);
   const [finJornadaLaboralValue, setFinJornada] = useState(finJornadaLaboral);
 
@@ -32,7 +34,7 @@ const JornadaLaboralContainer = () => {
 
   const horarios = fnHorarios()
 
-  const { buttonAchs, root, bottomElement, titleBlue, titleBlack } = getComunStyle();
+  const comunClass = getComunStyle();
   const dispatch = useDispatch();
 
   function setJornadaLaboral(value) {
@@ -42,42 +44,62 @@ const JornadaLaboralContainer = () => {
 
   console.log("INICIO VALUE", inicioJornadaLaboralValue);
   console.log("FIN VALUE", finJornadaLaboralValue);
-  
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(21))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        ¿A qué hora 
-        <Grid component="span"  className={titleBlue}>
-          &nbsp;inicia y termina su jornada laboral?
-        </Grid>           
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <JornadaLaboral
-        onChange={setJornadaLaboral}
-        horarios={horarios}
-        indiceInicioFromState={horarios.indexOf(inicioJornadaLaboralValue)}
-        indiceFinFromState={horarios.indexOf(finJornadaLaboralValue)}
-      />
-      <div className={bottomElement}>
-        <Button
-          className={buttonAchs}
-          onClick={() => {
-            dispatch(
-              updateForm("inicioJornadaLaboral", inicioJornadaLaboralValue)
-            );
-            dispatch(
-              updateForm("finJornadaLaboral", finJornadaLaboralValue)
-            );
-            dispatch(handleSetStep(step + 1));
-          }}
-        >
-          Confirmar
-        </Button>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(21))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          ¿A qué hora 
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;inicia y termina su jornada laboral?
+          </Grid>           
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+
+      <div className={comunClass.boxDesk}>
+        <div className={spaceStyle.space2} />
+        <JornadaLaboral
+          onChange={setJornadaLaboral}
+          horarios={horarios}
+          indiceInicioFromState={horarios.indexOf(inicioJornadaLaboralValue)}
+          indiceFinFromState={horarios.indexOf(finJornadaLaboralValue)}
+        />
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            onClick={() => {
+              dispatch(
+                updateForm("inicioJornadaLaboral", inicioJornadaLaboralValue)
+              );
+              dispatch(
+                updateForm("finJornadaLaboral", finJornadaLaboralValue)
+              );
+              dispatch(handleSetStep(step + 1));
+            }}
+          >
+            Confirmar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

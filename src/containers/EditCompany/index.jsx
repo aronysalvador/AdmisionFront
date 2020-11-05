@@ -8,21 +8,25 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getSucursales } from "../../redux/actions/SucursalesAction";
+import Header from "../../components/header/index";
 
 const EditCompany = () => {
-  const spaceStyle = getSpaceStyle();
-
   const { percentage, razonSocial, rutEmpresa } = useSelector(
-    (state) => state.addmissionForm,
-    shallowEqual
-  );
+    (state) => state.addmissionForm, shallowEqual);
 
-  const { buttonAchs, root, bottomElement, titleBlack, titleBlue } = getComunStyle();
+  const {
+    microsoftReducer
+  } = useSelector((state) => state, shallowEqual);
+
   const dispatch = useDispatch();
 
   const { sucursalesForm: {loading, data: sucursalesList} } = useSelector((state) => state, shallowEqual);
 
-  const [cargando, setCargando]= React.useState(false)
+  const [cargando, setCargando]= React.useState(false);
+
+  const spaceStyle = getSpaceStyle();
+  const comunClass = getComunStyle();
+  
 
   const handleNext= async() => {
     setCargando(true)
@@ -47,33 +51,54 @@ const EditCompany = () => {
 
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.1))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-      Identifica la empresa en la que trabaja con su 
-          <Grid component="span"  className={titleBlue}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(5.1))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Identifica la empresa en la que trabaja con su
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;razón social o RUT
           </Grid>      
-      </Typography>
-      <div className={spaceStyle.space2} />
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
 
-      <TabCompany />
+      <div className={comunClass.boxDesk}>
+        <div className={spaceStyle.space2} />
 
-      <div className={bottomElement}>
-        <Button
-          className={buttonAchs}
-          variant="contained"
-          type="submit"
-          disabled={!razonSocial || !rutEmpresa || cargando}
-          onClick={() => {
-            handleNext()
-          }}
-        >
-          Confirmar Empresa
-        </Button>
+        <TabCompany />
+
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            type="submit"
+            disabled={!razonSocial || !rutEmpresa || cargando}
+            onClick={() => {
+              handleNext()
+            }}
+          >
+            Confirmar Empresa
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

@@ -3,29 +3,27 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getAFP } from "../../redux/actions/AfpAction";
 import {  Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
+import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 
 const BotonesAFP = () => {
   const {
     addmissionForm: { percentage, afpForm, responsable },
   } = useSelector((state) => state, shallowEqual);
-
-  const {
-    root,
-    titleBlack,
-    titleBlue,
-    cardsButtonOther,
-    cardsButtonAlign
-  } = getComunStyle();
-
-  const tipoAFP = !afpForm ? "" : afpForm;
-
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
+  const comunClass = getComunStyle();
+  const spaceStyle = getSpaceStyle();
+
+  const tipoAFP = !afpForm ? "" : afpForm;
+  const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
+  
   const initFn = useCallback(() => {
     dispatch(getAFP(""));
   }, [dispatch]);
@@ -34,27 +32,40 @@ const BotonesAFP = () => {
     initFn()
   }, [initFn]);
   
-
-  const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
   const [buttonOver, setButtonOver] = useState(false);
 
   let back = responsable?.nombre.length > 0 ?  17.1 : 15
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(back))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Ingresa la 
-        <Grid component="span"  className={titleBlue}>
-              &nbsp;o Previsión Social
-        </Grid>            
-        &nbsp;a la que pertenece
-      </Typography>
-
-        <div className={cardsButtonAlign}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(back))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Ingresa la 
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;AFP o Previsión Social
+          </Grid>            
+          &nbsp;a la que pertenece
+        </Typography>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.cardsButtonAlign}>
             {afpList.slice(0,6).map((afp) => (
             <BotonSeleccionarCustom
                 key={afp.codigo}
@@ -72,7 +83,7 @@ const BotonesAFP = () => {
         
         <div
           onClick={() => {dispatch(handleSetStep(18))}}
-          className={cardsButtonOther}
+          className={comunClass.cardsButtonOther}
           onMouseOver={() =>{
             setButtonOver(true)
           }}
@@ -80,11 +91,13 @@ const BotonesAFP = () => {
               setButtonOver(false)
           }}
         >
-          
           Otra AFP
           {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "relative", bottom: "25px", left: "105px"}} /> }
         </div> : null }
-        
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
     </div>
   );
 };

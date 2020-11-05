@@ -16,13 +16,13 @@ const PasaportePaciente = () => {
   return (
     <div>
       <div className={spaceStyle.space1} />
-      <div className={comunClass.textCenter} >
+      <center>
         <img
           alt="pasaporte"
           src="./static/validandoAlerta.png"
           style={{width:'146px'}}
         />
-      </div>
+      </center>
       <div className={spaceStyle.space1} />
       <Typography
         color="textSecondary"
