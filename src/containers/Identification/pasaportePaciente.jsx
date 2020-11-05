@@ -15,6 +15,7 @@ const PasaportePaciente = () => {
 
   return (
     <div>
+      <div className={spaceStyle.space1} />
       <div className={comunClass.textCenter} >
         <img
           alt="pasaporte"
