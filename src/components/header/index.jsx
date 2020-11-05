@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Typography from "@material-ui/core/Typography";
@@ -8,11 +8,14 @@ import { logout } from "../../redux/actions/microsoft.action";
 
 const Header = (props) => {
   const { userMsal } = props;
-  const comunClass = getComunStyle();
-  const welcomeStyle = getWelcomeStyle();
+  const { iniciales, displayName } = userMsal;
+  const { addmissionForm: { step } } = useSelector((state) => state, shallowEqual);
+
   const dispatch = useDispatch();
 
-  const { iniciales, displayName } = userMsal;
+  const comunClass = getComunStyle();
+  const welcomeStyle = getWelcomeStyle();
+  
 
   return (
     <div className={comunClass.header}>
@@ -37,8 +40,10 @@ const Header = (props) => {
             >
               {displayName}
             </Typography>
-            {/* <div style={step > 1 && { display: "none" }}> */}
-              <Typography
+            {/* <div ststep yle={step > 1 && { display: "none" }}> */}
+            {(step === 1 || step === 1.1 || step === 40 || step === 1001) && 
+            
+            <Typography
                 variant="inherit"
                 component="p"
                 className={comunClass.tituloCerrarSesion}
@@ -46,7 +51,8 @@ const Header = (props) => {
                 onClick={()=> dispatch(logout())}
               > 
                 Cerrar sesión
-              </Typography>
+              </Typography> }
+              
             {/* </div> */}
           </div>
         </div>

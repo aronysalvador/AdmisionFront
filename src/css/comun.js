@@ -727,7 +727,6 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         displayDeskFlex: {
             display: 'flex',
-            justifyContent: 'space-around'
         },
         displayDeskInline: {
             display: 'inline-flex'
@@ -740,6 +739,10 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         displayMobile: {
             display: 'none'
+        },
+        displayDeskFlexFinal: {
+            display: 'flex',
+            justifyContent: 'space-around'
         },
         containerHeader: {
             alignSelf: 'center',

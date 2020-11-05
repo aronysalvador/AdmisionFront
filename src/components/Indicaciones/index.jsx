@@ -9,7 +9,7 @@ const IndiciacionesPacientes = ({ indicaciones }) => {
 
   return (
     <div className={[welcomeStyle.titleContainerCards]}>
-      <div className={comunStyle.displayDeskFlex}>
+      <div className={comunStyle.displayDeskFlexFinal}>
       {indicaciones.map(({ icono, textoPrimario, textoSecundario, clase }, i) => (
         <div key={i}  className={clase}>
           <div className={welcomeStyle.iconAlignIndicaciones}><img src={`./static/${icono}`} alt="" />
