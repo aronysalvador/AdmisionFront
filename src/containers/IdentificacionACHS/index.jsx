@@ -69,13 +69,13 @@ const Achs = () => {
       <div className={comunStyle.boxGeneral} >
         <center className={comunStyle.displayDesk}>
           <div className={spaceStyle.space2} />
-          <Typography className={comunStyle.subtitleBlack} variant="subtitle2">
+          <Typography className={comunStyle.subtitleBlack}>
             Ingresa el centro en el cual trabajas
           </Typography>
           <div className={spaceStyle.space2} />
         </center>
         <div className={comunStyle.containerTextBox}>
-          <Typography className={comunStyle.tituloTextbox} variant="subtitle2">
+          <Typography className={comunStyle.tituloTextbox}>
             Centro
           </Typography>
           <AutoComplete

@@ -105,10 +105,10 @@ const PersonalData = (props) => {
             <Typography
               variant="p"
               component="p"
-              className={comunClass.titleBlack}
+              className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
             >
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} tiene
-              <Grid component="span"  className={comunClass.titleBlue}>
+              <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 &nbsp;este siniestro
               </Grid>                 
               &nbsp;creado

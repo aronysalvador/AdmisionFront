@@ -134,11 +134,7 @@ const Identification = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography
-            variant="h1"
-            component="h1"
-            className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
-          >
+        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
             Ingresa el           
             <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]} style={{display: "contents"}}>
                 &nbsp;RUT o documento de identidad
