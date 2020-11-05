@@ -54,12 +54,12 @@ const Afp = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Escribe la 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;AFP o Previsión Social
           </Grid>          
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
@@ -62,12 +61,12 @@ const HealthForecast = (props) => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Selecciona la 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
           &nbsp;Previsión de salud
           </Grid>     
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

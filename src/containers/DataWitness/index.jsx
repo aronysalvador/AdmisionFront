@@ -56,12 +56,12 @@ const DataWitness = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid  className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Solicita una 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
           &nbsp;referencia del testigo
           </Grid>                    
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -75,9 +75,7 @@ const DataWitness = () => {
         <div className={comunClass.containerTextBox}>
           <div>
             <Typography
-              variant="p"
-              component="p"
-              className={[comunClass.tituloTextBox]}
+              className={comunClass.tituloTextBox}
             >
               Nombre
             </Typography>
@@ -111,9 +109,7 @@ const DataWitness = () => {
           <div className={spaceStyle.space1} />
           <div>
             <Typography
-              variant="p"
-              component="p"
-              className={[comunClass.tituloTextBox]}
+              className={comunClass.tituloTextBox}
             >
               Cargo o Relación
             </Typography>

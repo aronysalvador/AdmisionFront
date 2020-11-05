@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getAFP } from "../../redux/actions/AfpAction";
-import {  Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
@@ -51,13 +50,13 @@ const BotonesAFP = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Ingresa la 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;AFP o Previsión Social
           </Grid>            
           &nbsp;a la que pertenece
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

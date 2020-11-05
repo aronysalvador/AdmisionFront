@@ -6,7 +6,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 
@@ -69,16 +68,14 @@ const RelatoFinal = (props) => {
       <div>
         <form onSubmit={() => saveAnswer(localValue)}>
           <div className={comunClass.titlePrimaryDesk}>
-            <Typography
-              variant="h1"
-              component="h1"
+            <Grid
               className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
             >
               Por favor,
               <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 &nbsp;confirma el relato
               </Grid>   
-            </Typography>
+            </Grid>
             <div className={comunClass.displayDeskImg}>
               <Grid component="span" className={comunClass.imgPrimaryDesk}>
                 <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth}/>

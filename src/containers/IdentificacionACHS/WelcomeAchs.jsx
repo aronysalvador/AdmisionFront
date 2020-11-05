@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
@@ -49,9 +49,7 @@ const SessionAchs = (props) => {
           <div className={spaceStyle.space1} />
           <div className={welcomeStyle.marginBoxGreen}>
             <div className={welcomeStyle.contentBlock}>
-              <Typography
-                variant="p"
-                component="p"
+              <Grid
                 className={[
                   comunStyle.textAchsContent,
                   comunStyle.textAchsContentWhite,
@@ -59,10 +57,8 @@ const SessionAchs = (props) => {
                 ]}
               >
                 Hola,
-              </Typography>
-              <Typography
-                variant="p"
-                component="p"
+              </Grid>
+              <Grid
                 className={[
                   comunStyle.textAchsContent,
                   comunStyle.textAchsContentWhite,
@@ -71,10 +67,8 @@ const SessionAchs = (props) => {
                 ]}
               >
                 {microsoftReducer.userMsal.displayName}
-              </Typography>
-              <Typography
-                variant="p"
-                component="p"
+              </Grid>
+              <Grid
                 className={[
                   comunStyle.textAchsContent,
                   comunStyle.textAchsContentWhite,
@@ -82,7 +76,7 @@ const SessionAchs = (props) => {
                 ]}
               >
                 Admisionista
-              </Typography>
+              </Grid>
             </div>
             <div className={welcomeStyle.marginStar}>
               <Button
@@ -129,16 +123,14 @@ const SessionAchs = (props) => {
       style={{padding:'16px 16px 33px 16px', position: 'relative'}} >
         <div className={comunStyle.boxDesk}>
           <div className={comunStyle.displayDesk}>
-            <Typography
-              variant="p"
-              component="p"
+            <Grid
               className={[
                 comunStyle.subtitleBlack,
                 comunStyle.textCenter,
               ]}
             >
               Comienza creando una nueva admisión
-            </Typography>
+            </Grid>
           </div>
           <div className={comunStyle.displayDesk}>
             <div className={spaceStyle.space1} />

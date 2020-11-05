@@ -1,6 +1,6 @@
 import React from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -40,13 +40,13 @@ const TrabajoHabitual = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>  
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]} variant="subtitle2">
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]} variant="subtitle2">
           ¿Al momento del accidente, desarrollaba su
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;trabajo habitual
           </Grid>  
           ?
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth}/>

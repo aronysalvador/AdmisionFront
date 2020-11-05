@@ -54,13 +54,13 @@ const Profesion = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Selecciona la 
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;profesión u oficio
           </Grid>          
           &nbsp;que mejor se ajusta al paciente
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -71,7 +71,7 @@ const Profesion = () => {
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextBox}>
             Profesión u oficio
           </Typography>
           <AutoComplete

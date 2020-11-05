@@ -60,16 +60,12 @@ const RelatoSuccess = (props) => {
                 />
               </div> 
               <Typography
-                variant="h1"
-                component="h1"
                 className={welcomeStyle.titleBegin}
               >
                 ¡Excelente!
               </Typography>
               <div style={{display: 'flex'}}>
                 <Typography
-                  variant="h1"
-                  component="h1"
                   className={[welcomeStyle.titleBegin]} //titleBegin2, welcomeStyle.subtitleBegin
                 >
                   Relato capturado&nbsp;
@@ -93,8 +89,6 @@ const RelatoSuccess = (props) => {
         </div>
         <div className={comunStyle.textCenterDesk}>
           <Typography
-            variant="h5"
-            component="h5"
             className={welcomeStyle.subTitleBegin}
           >
             Ahora revisarás su información laboral:
