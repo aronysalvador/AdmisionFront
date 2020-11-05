@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { crearAdmisionSiniestroSAP } from "../../redux/actions/AdmissionAction";
@@ -33,19 +33,19 @@ const CreandoCaso = (props) => {
             className={comunClass.imgLoadData} />
         </div>
         <div className={spaceStyle.space3} />
-        <Typography
+        <Grid
           className={comunClass.txtLoadData}
         >
           Estamos creando&nbsp;
           <br className={comunClass.displayMobile}/>
           tu caso
-        </Typography>
+        </Grid>
         <div className={spaceStyle.space1} />
-        <Typography
+        <Grid
           className={comunClass.txtLoadData2}
         >
           Un momento por favor
-        </Typography>
+        </Grid>
         <div>
           <img
             alt="load"
