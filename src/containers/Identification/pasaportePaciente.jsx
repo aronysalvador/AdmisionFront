@@ -28,13 +28,13 @@ const PasaportePaciente = () => {
         className={comunClass.textErrorP2}
       >
         Ups! Todavía no tenemos construido este camino
-      </ Grid>
+      </Grid>
 
-      < Grid
+      <Grid
         className={comunClass.textErrorS}
       >
         Por favor ingresa por Sap
-      </ Grid>
+      </Grid>
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs2}

@@ -88,13 +88,13 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Identifica
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;la comuna de la sucursal
           </Grid>                  
           &nbsp;en donde trabaja
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
@@ -104,7 +104,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextBox}>
             Comuna
           </Typography>
           <AutoComplete
