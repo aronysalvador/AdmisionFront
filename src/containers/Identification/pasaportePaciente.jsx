@@ -26,7 +26,7 @@ const PasaportePaciente = () => {
       <div className={spaceStyle.space1} />
       <Typography
         color="textSecondary"
-        gutterBottom
+        // gutterBottom
         className={comunClass.textErrorP2}
       >
         Ups! Todavía no tenemos construido este camino
@@ -34,7 +34,7 @@ const PasaportePaciente = () => {
 
       <Typography
         color="textSecondary"
-        gutterBottom
+        // gutterBottom
         className={comunClass.textErrorS}
       >
         Por favor ingresa por Sap

@@ -31,21 +31,13 @@ const Header = (props) => {
             <Avatar className={welcomeStyle.avatarHeader}>
               {iniciales}
             </Avatar>
-            <Typography
-              variant="p"
-              component="p"
-              className={[
-                comunClass.tituloCerrarSesion,
-              ]}
-            >
+            <Typography className={[comunClass.tituloCerrarSesion ]}>
               {displayName}
             </Typography>
             {/* <div ststep yle={step > 1 && { display: "none" }}> */}
             {(step === 1 || step === 1.1 || step === 40 || step === 1001) && 
             
             <Typography
-                variant="inherit"
-                component="p"
                 className={comunClass.tituloCerrarSesion}
                 style={{ cursor: 'pointer'}}
                 onClick={()=> dispatch(logout())}

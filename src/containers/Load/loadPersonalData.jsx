@@ -42,7 +42,6 @@ const LoadPersonalData = (props) => {
         <div className={spaceStyle.space3} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData}
         >
           Estamos validando&nbsp;
@@ -52,7 +51,6 @@ const LoadPersonalData = (props) => {
         <div className={spaceStyle.space1} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData2}
         >
           Un momento por favor
