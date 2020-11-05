@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
@@ -34,17 +34,13 @@ const Session = (props) => {
               className={ comunStyle.imgProfile }
               />
           </center>
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
           >
             Bienvenido/a
-          </Typography>
+          </Grid>
         
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
           >
             <br />
@@ -52,7 +48,7 @@ const Session = (props) => {
             <br />
             admisiones de pacientes
             <br />
-          </Typography>
+          </Grid>
         
           <div className={comunStyle.bottomElement}
           style={{padding: '1.5em'}}

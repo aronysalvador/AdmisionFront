@@ -65,16 +65,12 @@ const AlertaCalificacion = () => {
                 />
               </div>
               <Typography
-                variant="h1"
-                component="h1"
                 className={welcomeStyle.titleBegin}
               >
                 ¡WOW!
               </Typography>
               <div style={{display: 'flex'}}>
                 <Typography
-                  variant="h1"
-                  component="h1"
                   className={welcomeStyle.titleBegin}
                 >
                   Eso fue rápido&nbsp;
@@ -98,8 +94,6 @@ const AlertaCalificacion = () => {
         </div>
         <div className={comunStyle.textCenterDesk}>
           <Typography
-            variant="h5"
-            component="h5"
             className={welcomeStyle.subTitleBegin}
           >
             Para la creación del caso
@@ -112,8 +106,6 @@ const AlertaCalificacion = () => {
               <div  className={welcomeStyle.divRowBottom2}>
                 <ErrorOutline />
                 <Typography
-                  variant="p"
-                  component="p"
                   className={welcomeStyle.itemText2}
                 >
                   Pide un e-mail al paciente
@@ -121,8 +113,6 @@ const AlertaCalificacion = () => {
               </div>
               <div  className={welcomeStyle.divRowBottom2}>
                 <Typography
-                      variant="p"
-                      component="p"
                       className={welcomeStyle.pBegin}
                     >
                       Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar. 

@@ -22,7 +22,6 @@ const ErrorCaso = (props) => {
       <div className={comunClass.displayDesk}> 
         <Header
             userMsal={ microsoftReducer.userMsal }
-            // step={1}
         />
       </div>
       <div className={spaceStyle.space3} />
@@ -35,8 +34,6 @@ const ErrorCaso = (props) => {
         </div>
         <div className={spaceStyle.space1} />
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={comunClass.textErrorP}
         >
           ¡Ha ocurrido un error
@@ -46,16 +43,12 @@ const ErrorCaso = (props) => {
         <div className={spaceStyle.space1} />
 
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={comunClass.textErrorRed}
         >
           Error: "{String(mensajeErrorSAP).trim()}"
         </Typography>
 
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={comunClass.textErrorS}
         >
           Por favor, vuelve a intentarlo

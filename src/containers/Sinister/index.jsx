@@ -32,7 +32,7 @@ const Identification = (props) => {
     <div className={comunClass.displayDesk}>
       <div className={ comunClass.titlePrimaryDesk }>
         <Grid component="span" className={comunClass.textPrimaryDesk}>
-          <Typography variant="p" component="p" className={comunClass.titleBlack2}>
+          <Typography  className={comunClass.titleBlack2}>
             Empecemos completando <br /> algunos datos 
           </Typography>
         </Grid>
@@ -43,12 +43,12 @@ const Identification = (props) => {
     </div>
     <div className={comunClass.boxDesk}>
       <div>
-        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.subtitleBlack]}>
+        <Grid className={[comunClass.titleBlack, comunClass.subtitleBlack]}>
           Selecciona la opción que 
           <Grid component="span"  className={comunClass.titleBlue}>
             &nbsp;mejor describa lo que le sucedió
           </Grid>
-        </Typography>
+        </Grid>
       </div>
       <div className={spaceStyle.space2} />
       <div className={comunClass.displayOnlyDeskInline}>

@@ -34,8 +34,6 @@ const CreandoCaso = (props) => {
         </div>
         <div className={spaceStyle.space3} />
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData}
         >
           Estamos creando&nbsp;
@@ -44,8 +42,6 @@ const CreandoCaso = (props) => {
         </Typography>
         <div className={spaceStyle.space1} />
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData2}
         >
           Un momento por favor

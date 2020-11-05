@@ -55,13 +55,13 @@ const Cargo = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           ¿Cuál es el  
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;cargo
           </Grid>                 
           &nbsp;del paciente en la empresa?
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -72,7 +72,7 @@ const Cargo = () => {
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextBox}>
             Cargo
           </Typography>
           <div>

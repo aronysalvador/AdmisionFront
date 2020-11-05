@@ -11,6 +11,7 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import { setCenter } from "../../redux/actions/UserCenterAction";
 import Header from "../../components/header/index";
+import Grid from '@material-ui/core/Grid';
 
 const Achs = () => {
   const {
@@ -63,7 +64,7 @@ const Achs = () => {
       <div className={comunStyle.displayDesk}>
         <div className={spaceStyle.space2} />
       </div>
-      <Typography className={[comunStyle.titleBlack, comunStyle.textCenterDesk]}>Te encuentras en:</Typography>
+      <Grid  className={[comunStyle.titleBlack, comunStyle.textCenterDesk]}>Te encuentras en:</Grid >
       <div className={spaceStyle.space2} />
 
       <div className={comunStyle.boxGeneral} >

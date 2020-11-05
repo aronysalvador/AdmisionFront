@@ -47,7 +47,6 @@ const CausaNoLaboral = () => {
       <div className={comunClass.displayDesk}> 
         <Header
           userMsal={ microsoftReducer.userMsal }
-          // step={1}
         />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -57,12 +56,12 @@ const CausaNoLaboral = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Selecciona la razón de
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;posible causa no laboral
           </Grid>                  
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -72,7 +71,7 @@ const CausaNoLaboral = () => {
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextBox} >
             Selecciona
           </Typography>
           <AutoComplete
@@ -80,7 +79,6 @@ const CausaNoLaboral = () => {
             onChange={(event, value) => {
               setCausas(value);
             }}
-            // style={{ width: 300 }}
             options={fixedCausasList}
             getOptionLabel={(option) => option.glosa}
             renderInput={(params) => (

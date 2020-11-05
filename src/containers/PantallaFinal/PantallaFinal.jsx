@@ -48,8 +48,6 @@ const PantallaFinal = (props) => {
               <div className={spaceStyle.spaceMin1} />
                 <div style={{display: 'inline-flex'}}>
                   <Typography
-                    variant="h1"
-                    component="h1"
                     className={welcomeStyle.titleBegin}
                   >
                     Accidente ingresado&nbsp;
@@ -87,8 +85,6 @@ const PantallaFinal = (props) => {
         </div>
         <div className={comunStyle.textCenterDesk}>
           <Typography
-            variant="h5"
-            component="h5"
             className={welcomeStyle.subTitleBegin}
           >
             Luego de la firma pide al paciente:

@@ -1,6 +1,6 @@
 import React from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
@@ -28,7 +28,6 @@ const AccidenteEnSucursal = () => {
       <div className={comunClass.displayDesk}> 
         <Header
           userMsal={ microsoftReducer.userMsal }
-          // step={1}
         />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -38,16 +37,14 @@ const AccidenteEnSucursal = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography
-          variant="h1"
-          component="h1"
+        <Grid
           className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
         >
           ¿Accidente ocurrió en  
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;sucursal a la que pertenece el trabajador?
           </Grid>          
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

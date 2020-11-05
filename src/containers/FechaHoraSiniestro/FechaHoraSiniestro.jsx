@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
-import { Button, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -92,9 +92,7 @@ const FechaHoraSiniestro = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography
-          variant="h1"
-          component="h1"
+        <Grid
           className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
           >
           ¿
@@ -102,7 +100,7 @@ const FechaHoraSiniestro = () => {
             Cuándo y a qué hora&nbsp;
           </Grid> 
           sucedió el accidente?
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

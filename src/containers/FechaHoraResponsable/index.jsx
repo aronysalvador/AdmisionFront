@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
-import { Button, Typography } from "@material-ui/core";
+import { Button} from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
@@ -54,12 +54,12 @@ const FechaHoraResponsable = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             ¿Cuándo y a que hora se le avisó 
           </Grid>          
           &nbsp;al responsable?
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -26,9 +25,7 @@ const FormQuestion = (props) => {
   return (
     <form onSubmit={() => accion(localValue)}>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography
-          variant="h1"
-          component="h1"
+        <Grid
           className={[comunClass.titleBlue, comunClass.titleBlue2, comunClass.textPrimaryDesk]}
         >
           {titulo}
@@ -41,7 +38,7 @@ const FormQuestion = (props) => {
           <Grid component="span"  className={[comunClass.titleBlack, comunClass.titleBlack2]}>
             &nbsp;{pregunta2}
           </Grid>
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -51,18 +48,8 @@ const FormQuestion = (props) => {
       <div className={comunClass.displayMobile}>
         <div className={spaceStyle.space2}></div>
       </div>
-      {/* <div>
-        <Typography
-          variant="h2"
-          component="h2"
-          className={[comunClass.titleBlack, comunClass.titleBlack2]}
-        >
-          {pregunta}
-        </Typography>
-      </div> */}
       <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
         <div>
-        {/* className={comunClass.scrollText} */}
           <TextField
             id="txtRespuesta"
             placeholder={placeholder}
