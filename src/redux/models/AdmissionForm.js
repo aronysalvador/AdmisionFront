@@ -59,5 +59,6 @@ export const AdmissionForm = {
   BP: "",
   mensajeErrorSAP: "",
 
-  TrabajadorIndependiente: ""
+  TrabajadorIndependiente: "",
+  tab: 0
 };
