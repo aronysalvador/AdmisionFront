@@ -31,7 +31,7 @@ const Header = (props) => {
             <Avatar className={welcomeStyle.avatarHeader}>
               {iniciales}
             </Avatar>
-            <Typography className={[comunClass.tituloCerrarSesion ]}>
+            <Typography className={comunClass.tituloCerrarSesion}>
               {displayName}
             </Typography>
             {/* <div ststep yle={step > 1 && { display: "none" }}> */}

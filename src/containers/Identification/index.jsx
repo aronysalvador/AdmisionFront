@@ -3,7 +3,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import RutPaciente from "./rutPaciente";
 import PasaportePaciente from "./pasaportePaciente";
-import Typography from "@material-ui/core/Typography";
+//import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { makeStyles } from "@material-ui/core/styles";
@@ -134,13 +134,13 @@ const Identification = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
             Ingresa el           
             <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]} style={{display: "contents"}}>
                 &nbsp;RUT o documento de identidad
             </Grid>
             &nbsp;del paciente
-          </Typography>
+          </Grid>
           <div className={comunClass.displayDeskImg}>
             <Grid component="span" className={comunClass.imgPrimaryDesk}>
               <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
