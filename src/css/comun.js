@@ -97,6 +97,16 @@ export const getComunStyle = makeStyles((theme) => ({
         textAlign: "center",
         color: "#081C15",
     },
+    textErrorP2: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "1.25em",
+        lineHeight: "1.75em",
+        alignItems: "center",
+        textAlign: "center",
+        color: "#081C15",
+    },
     textErrorS: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
