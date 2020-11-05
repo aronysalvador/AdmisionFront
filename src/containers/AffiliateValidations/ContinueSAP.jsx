@@ -34,7 +34,6 @@ const ContinueSAP = (props) => {
         <div className={spaceStyle.space3} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData}
         >
           Entendido&nbsp;
@@ -44,7 +43,6 @@ const ContinueSAP = (props) => {
         <div className={spaceStyle.space1} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData2}
         >
           Un momento por favor

@@ -19,7 +19,7 @@ const BoxEmpresa = (props) => {
                     <Grid item xs={11} >
                         <div className={classes.cuerpo}>
                             <div>
-                                <Typography color="textSecondary" gutterBottom className={classes.itemId}>
+                                <Typography color="textSecondary" className={classes.itemId}>
                                     {titulo}
                                     {/* <EditIcon style={{cursor : "pointer"}} onClick={() => dispatch(handleSetStep(step))} /> */}
                                 </Typography>

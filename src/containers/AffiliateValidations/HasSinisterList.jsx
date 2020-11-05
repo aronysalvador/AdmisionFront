@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
-import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
@@ -90,29 +89,22 @@ const PersonalData = (props) => {
         </div>
         <div className={comunClass.titlePrimaryDesk}>
           {origen === "getRut" ? (
-            <Typography
-              variant="p"
-              component="p"
-              className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-                {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} 
-                <br/>tiene&nbsp;
+            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} 
+              <br/>tiene&nbsp;
               <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 {contenidoSiniestros.length} siniestros
               </Grid>                   
               &nbsp;creados
-            </Typography>
+            </Grid>
           ) : (
-            <Typography
-              variant="p"
-              component="p"
-              className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
-            >
+            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} tiene
               <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 &nbsp;este siniestro
               </Grid>                 
               &nbsp;creado
-            </Typography>
+            </Grid>
           )}
           <div className={comunClass.displayDeskImg}>
             <Grid component="span" className={comunClass.imgPrimaryDesk}>

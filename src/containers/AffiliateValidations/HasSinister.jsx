@@ -37,7 +37,6 @@ const HasSinister = (props) => {
         <div className={spaceStyle.space3} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textWarning}
         >
         ¡Atención!
@@ -45,7 +44,6 @@ const HasSinister = (props) => {
         <div className={spaceStyle.space2} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textMessage}
         >{siniestroOpciones.mensajeAlerta}
         </Typography>

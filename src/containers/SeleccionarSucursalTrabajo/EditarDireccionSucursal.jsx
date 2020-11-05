@@ -36,13 +36,13 @@ const EditarDireccionSucursal = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Identifica 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;la dirección de la sucursal 
           </Grid>         
           &nbsp;en donde trabaja
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskInline}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/identify.svg" />

@@ -120,11 +120,7 @@ const TabCompany = (props) => {
       </Tabs>
 
       <TabPanel value={value} index={0} style={{padding:"0"}}>
-        <Typography
-          variant="p"
-          component="p"
-          className={comunClass.tituloTextBox}
-        >
+        <Typography className={comunClass.tituloTextBox}>
           Razón Social
         </Typography>
         <div>
@@ -133,11 +129,7 @@ const TabCompany = (props) => {
       </TabPanel>
       
       <TabPanel value={value} index={1}>
-        <Typography
-          variant="p"
-          component="p"
-          className={[comunClass.tituloTextBox]}
-        >
+        <Typography className={[comunClass.tituloTextBox]} >
           RUT
         </Typography>
         <div>

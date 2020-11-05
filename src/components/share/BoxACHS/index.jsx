@@ -15,7 +15,7 @@ const BoxACHS = (props) => {
                     <Grid item xs={11} >
                         <div className={classes.cuerpo}>
                             <div>
-                                <Typography color="textSecondary" gutterBottom className={classes.itemId}>
+                                <Typography color="textSecondary" className={classes.itemId}>
                                     {titulo}
                                 </Typography>
                             </div>

@@ -84,12 +84,12 @@ const EditarTelefono = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Ingresa el 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;teléfono personal
           </Grid>          
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
@@ -123,13 +123,9 @@ const EditarTelefono = () => {
                   Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
                 </Typography>
             </div>
-            <div  className={welcomeStyle.divRowBottomEmail}>
-              <Typography
-                    variant="p"
-                    component="p"
-                    className={welcomeStyle.pBegin}
-                  >
-                    ¿Está seguro de continuar?
+            <div className={welcomeStyle.divRowBottomEmail}>
+              <Typography className={welcomeStyle.pBegin}>
+                ¿Está seguro de continuar?
               </Typography>
             </div>
             <div  className={welcomeStyle.divRowBottomEmail}>

@@ -56,19 +56,11 @@ console.log(step);
                 <div className={comunStyle.displayMobile}>
                   <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
                 </div>    
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  className={welcomeStyle.titleBegin}
-                >
+                <Typography className={welcomeStyle.titleBegin}>
                   ¡Excelente!
                 </Typography>
                 <div style={{display: 'flex'}}>
-                  <Typography
-                  variant="p"
-                  component="p"
-                  className={[welcomeStyle.titleBegin]} //titleBegin2, welcomeStyle.subtitleBegin
-                  >
+                  <Typography className={welcomeStyle.titleBegin}>
                     Usuario Identificado&nbsp;
                   </Typography>
                   <div className={comunStyle.displayDeskInline}>
@@ -90,11 +82,7 @@ console.log(step);
             <div className={spaceStyle.space2} />   
           </div>
           <div className={comunStyle.textCenterDesk}>
-            <Typography
-              variant="h5"
-              component="h5"
-              className={welcomeStyle.subTitleBegin}
-              >
+            <Typography className={welcomeStyle.subTitleBegin}>
               Ahora capturarás el relato:
             </Typography>
             <div className={comunStyle.displayDesk}>

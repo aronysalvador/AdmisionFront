@@ -4,7 +4,7 @@ import { handleSetStep} from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
 
 const PasaportePaciente = () => {
 
@@ -24,17 +24,17 @@ const PasaportePaciente = () => {
         />
       </center>
       <div className={spaceStyle.space1} />
-      <Typography
+      <Grid
         className={comunClass.textErrorP2}
       >
         Ups! Todavía no tenemos construido este camino
-      </Typography>
+      </ Grid>
 
-      <Typography
+      < Grid
         className={comunClass.textErrorS}
       >
         Por favor ingresa por Sap
-      </Typography>
+      </ Grid>
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs2}

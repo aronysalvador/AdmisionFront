@@ -44,14 +44,12 @@ const NoQuotes = (props) => {
         <div className={spaceStyle.space1} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textWarning}
         >
         ¡Atención!
         </Typography>
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textNoAfiliate}
         >
           No tenemos cotizaciones&nbsp;
