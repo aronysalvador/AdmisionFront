@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -36,20 +36,20 @@ const LoadRazonAlerta = () => {
           />
         </div>
         <div className={spaceStyle.space3} />
-        <Typography className={comunClass.txtLoadDataGreen}>
+        <Grid className={comunClass.txtLoadDataGreen}>
           ¡EXCELENTE!
-        </Typography>
-        <Typography
+        </Grid>
+        <Grid
           className={comunClass.txtLoadData2}
         >
           Tu alerta ha sido ingresada
-        </Typography>
+        </Grid>
         <div className={spaceStyle.space1} />
-        <Typography
+        <Grid
           className={comunClass.txtLoadData2}
         >
           Un momento por favor
-        </Typography>
+        </Grid>
         <div>
           <img
             alt="load"

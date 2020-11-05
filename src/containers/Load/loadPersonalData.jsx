@@ -40,19 +40,13 @@ const LoadPersonalData = (props) => {
           />
         </div>
         <div className={spaceStyle.space3} />
-        <Typography
-          color="textSecondary"
-          className={comunClass.txtLoadData}
-        >
+        <Typography className={comunClass.txtLoadData}>
           Estamos validando&nbsp;
           <br className={comunClass.displayMobile}/>
           tus datos
         </Typography>
         <div className={spaceStyle.space1} />
-        <Typography
-          color="textSecondary"
-          className={comunClass.txtLoadData2}
-        >
+        <Typography className={comunClass.txtLoadData2}>
           Un momento por favor
         </Typography>
         <div>
