@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { CLEAR_STATE } from "../../redux/types/addmissionFormType";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Header from "../../components/header/index";
 
 const useStyles = makeStyles({
   root: {
@@ -86,9 +87,9 @@ const useStyles = makeStyles({
 
 const Identification = () => {
   const {
-    addmissionForm: { percentage , tab},
+    addmissionForm: { percentage , tab}, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-
+  
   const dispatch = useDispatch();
 
   const initFn = useCallback(() => {
@@ -120,35 +121,53 @@ const Identification = () => {
 
   return (
     <div className={comunClass.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(2))}
-        percentage={percentage}
-      />
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(2))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Typography
+            variant="h1"
+            component="h1"
+            className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
+          >
+            Ingresa el           
+            <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]} style={{display: "contents"}}>
+                &nbsp;RUT o documento de identidad
+            </Grid>
+            &nbsp;del paciente
+          </Typography>
+          <div className={comunClass.displayDeskImg}>
+            <Grid component="span" className={comunClass.imgPrimaryDesk}>
+              <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+            </Grid>
+          </div>
+        </div>
+      <div className={comunClass.boxDesk}>
+        <div className={spaceStyle.space2} />
+        <div className={comunClass.containerTextBox}>
+            <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered>
+              <Tab classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 }} label="RUT"  />
+              <Tab classes={value === 1 ? { root: classes.root3 } : { root: classes.root }} label="Pasaporte"  />
+            </Tabs>
 
-      <Typography
-          variant="h1"
-          component="h1"
-          className={comunClass.titleBlack}
-        >
-          Ingresa el           
-          <Grid component="span"  className={comunClass.titleBlue} style={{display: "contents"}}>
-              &nbsp;RUT o documento de identidad
-          </Grid>
-          &nbsp;del paciente
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" >
-        <Tab classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 }} label="RUT"  />
-        <Tab classes={value === 1 ? { root: classes.root3 } : { root: classes.root }} label="Pasaporte"  />
-      </Tabs>
+            <TabPanel value={tab} index={0}>
+              <RutPaciente/>
+            </TabPanel>
 
-      <TabPanel value={tab} index={0}>
-        <RutPaciente/>
-      </TabPanel>
-
-      <TabPanel value={tab} index={1}>
-        <PasaportePaciente/>
-      </TabPanel>
+            <TabPanel value={tab} index={1}>
+              <PasaportePaciente/>
+            </TabPanel>
+          </div>
+      </div>
     </div>
   );
 };

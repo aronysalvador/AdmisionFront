@@ -424,7 +424,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontFamily: "Catamaran",
             fontStyle: "normal",
             fontWeight: "bold",
-            fontSize: "20px",
+            fontSize: "18px",
             lineHeight: "28px",
             color: "#000000",
         },
