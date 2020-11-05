@@ -123,7 +123,7 @@ const TabCompany = (props) => {
 
       <TabPanel value={value} index={0} style={{padding:"0"}}>
         <Typography
-          variant="p"
+          variant="inherit"
           component="p"
           className={classesComun.tituloTextbox}
         >
@@ -136,9 +136,9 @@ const TabCompany = (props) => {
       
       <TabPanel value={value} index={1}>
         <Typography
-          variant="p"
+          variant="inherit"
           component="p"
-          className={[classesComun.tituloTextbox]}
+          className={classesComun.tituloTextbox}
         >
           RUT
         </Typography>

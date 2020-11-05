@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { Rut, formateaRut } from "../../helpers/rut";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
@@ -16,9 +16,10 @@ const IdentificationCompany = () => {
 
   const [isValid, setIsValid] = useState(true);
 
-  const validar = (isValid,rut) => {
-      dispatch(getValidar(isValid,rut)); 
+  const validar = (isValid) => {
+      dispatch(getValidar(isValid, rut)); 
   };
+
 
   return (
     <div>
@@ -33,10 +34,10 @@ const IdentificationCompany = () => {
         error={!isValid }
         onChange={(e) => {
           var format = formateaRut(e.target.value);
-          setRut(format!==undefined ? format : e.target.value);       
+          setRut(format);       
           setIsValid(Rut.validaRut(format));   
         }}
-        onBlur={() => validar(isValid, rut)}
+        onBlur={() => validar(isValid)}
       />{" "}
     </div>
   );
