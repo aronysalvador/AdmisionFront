@@ -43,13 +43,13 @@ const LugarReferenciaSiniestro = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Pide al paciente el
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;sitio específico 
           </Grid>        
           &nbsp;de donde ocurrió el accidente
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -92,7 +92,7 @@ const LugarReferenciaSiniestro = () => {
               ),
             }}
           />
-          <Typography className={mobileCaption} variant="subtitle1">
+          <Typography className={mobileCaption}>
             Ejemplo: Piso 21, Área 453, Puesto 12A
           </Typography>
         </div>

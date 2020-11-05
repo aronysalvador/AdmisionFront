@@ -41,8 +41,6 @@ const Start = (props) =>{
                     <div className={comunStyle.titleCenterDesk}>
                         <div className={welcomeStyle.textContainer} >
                             <Typography
-                            variant="h1"
-                            component="h1"
                             className={welcomeStyle.titleBegin}
                             >
                                 ¡Empecemos!
@@ -52,8 +50,6 @@ const Start = (props) =>{
                             <div className={welcomeStyle.divRow} >
                                 <ThumbUpIcon />   
                                 <Typography
-                                variant="p"
-                                component="p"
                                 className={welcomeStyle.txtBegin}
                                 style={{display:"inline-flex"}}
                                 >
@@ -68,8 +64,6 @@ const Start = (props) =>{
                 <div className={spaceStyle.space2} />
                 <div className={comunStyle.textCenterDesk}>
                     <Typography
-                        variant="h5"
-                        component="h5"
                         className={welcomeStyle.subTitleBegin}
                         >
                         Por ahora ten en cuenta:

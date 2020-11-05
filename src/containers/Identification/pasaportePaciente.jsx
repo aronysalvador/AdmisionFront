@@ -25,16 +25,12 @@ const PasaportePaciente = () => {
       </center>
       <div className={spaceStyle.space1} />
       <Typography
-        color="textSecondary"
-        // gutterBottom
         className={comunClass.textErrorP2}
       >
         Ups! Todavía no tenemos construido este camino
       </Typography>
 
       <Typography
-        color="textSecondary"
-        // gutterBottom
         className={comunClass.textErrorS}
       >
         Por favor ingresa por Sap

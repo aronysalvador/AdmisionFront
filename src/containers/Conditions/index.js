@@ -18,16 +18,14 @@ const Conditions = (props) => {
     <div className={comunClass.root}>
       <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={-1} />
       <div>
-        <Typography variant="p" component="p" className={comunClass.pregunta}>
+        <Typography className={comunClass.pregunta}>
           Términos y condiciones
         </Typography>
       </div>
       <div className={spaceStyle.space3} />
       <div>
         <Typography
-          variant="p"
-          component="p"
-          className={[classes.condiciones1]}
+          className={classes.condiciones1}
         >
           - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           <br />
@@ -44,7 +42,7 @@ const Conditions = (props) => {
       </div>
       <div className={spaceStyle.space3} />
       <div className={classes.condiciones2Container}>
-        <Typography variant="p" component="p" className={classes.condiciones2}>
+        <Typography  className={classes.condiciones2}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras turpis
           amet lorem lorem. In id nisl, vulputate lacus, libero hendrerit. In
           sed sed est, egestas ultrices sed egestas. Diam elementum ut magna

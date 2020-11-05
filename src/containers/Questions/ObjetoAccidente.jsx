@@ -26,7 +26,6 @@ const AccidentObjectForm = (props) => {
       <div className={comunClass.displayDesk}> 
         <Header
           userMsal={ microsoftReducer.userMsal }
-          // step={1}
         />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -39,7 +38,6 @@ const AccidentObjectForm = (props) => {
         <QuestionForm
           titulo2={ ' "El accidente' }
           pregunta={ 'ocurrió con..." ' }
-          // pregunta={<br/>}
           placeholder={
             "Ejemplo: Con la escalera - con el suelo - al caer tineta en el pie"
           }

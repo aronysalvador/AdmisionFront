@@ -3,7 +3,6 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import RutPaciente from "./rutPaciente";
 import PasaportePaciente from "./pasaportePaciente";
-//import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { makeStyles } from "@material-ui/core/styles";

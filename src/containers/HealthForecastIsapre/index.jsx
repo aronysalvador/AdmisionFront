@@ -70,16 +70,14 @@ const HealthForecastIsapre = (props) => {
       </div>
       <form>
         <div className={comunClass.titlePrimaryDesk}>
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
           >
             Escribe la 
             <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
               &nbsp;Isapre
             </Grid>                    
-          </Typography>
+          </Grid>
           <div className={comunClass.displayDeskImg}>
             <Grid component="span" className={comunClass.imgPrimaryDesk}>
               <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -90,9 +88,7 @@ const HealthForecastIsapre = (props) => {
           <div className={spaceStyle.space2} />
           <div className={comunClass.containerTextBox}>
             <Typography
-              variant="p"
-              component="p"
-              className={[comunClass.tituloTextBox]}
+              className={comunClass.tituloTextBox}
             >
               Isapre
             </Typography>
