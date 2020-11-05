@@ -88,12 +88,12 @@ const ValidarCorreoElectronico = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Enviaremos los documentos al siguiente&nbsp;
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             e-mail
-          </Grid>     {" "}
-        </Typography>
+          </Grid> 
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
@@ -143,8 +143,6 @@ const ValidarCorreoElectronico = () => {
             <div  className={welcomeStyle.divRowBottomEmail}>
               <ErrorOutline />
               <Typography
-                variant="p"
-                component="p"
                 className={welcomeStyle.itemText2}
               >
                 Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin e-mail</span>
@@ -152,8 +150,6 @@ const ValidarCorreoElectronico = () => {
             </div>
             <div  className={welcomeStyle.divRowBottomEmail}>
               <Typography
-                variant="p"
-                component="p"
                 className={welcomeStyle.pBegin}
               >
                 ¿Está seguro de continuar sin e-mail?
@@ -161,8 +157,6 @@ const ValidarCorreoElectronico = () => {
             </div>
             <div  className={welcomeStyle.divRowBottomEmail}>
               <Typography
-                variant="p"
-                component="p"
                 className={welcomeStyle.pBegin}
               >
                 No podremos enviar una copia de los documentos al paciente.

@@ -4,7 +4,6 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import { getRemuneracion } from "../../redux/actions/TipoRemuneracionAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
@@ -46,13 +45,13 @@ const Remuneracion = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           ¿Qué tipo de  
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;remuneración
           </Grid>         
           &nbsp;tiene el paciente?
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

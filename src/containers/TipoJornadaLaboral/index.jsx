@@ -2,7 +2,6 @@ import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
@@ -42,7 +41,6 @@ const TipoJornadaLaboral = () => {
       <div className={comunClass.displayDesk}> 
         <Header
           userMsal={ microsoftReducer.userMsal }
-          // step={1}
         />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -52,12 +50,12 @@ const TipoJornadaLaboral = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Selecciona la opción que mejor defina el 
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;tipo de jornada
           </Grid>          
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />

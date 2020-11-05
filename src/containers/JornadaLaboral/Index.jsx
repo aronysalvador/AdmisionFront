@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -60,12 +60,12 @@ const JornadaLaboralContainer = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           ¿A qué hora 
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;inicia y termina su jornada laboral?
           </Grid>           
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
