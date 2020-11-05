@@ -46,6 +46,7 @@ export const getValidar = (isValid, rut) => async (dispatch) => {
     payload: true,
   });
   if (isValid) {
+    dispatch(updateForm("rutEmpresa", rut));
    await obtenerValidacion(rut)
       .then(async(response) => {
            
@@ -72,11 +73,6 @@ export const getValidar = (isValid, rut) => async (dispatch) => {
         console.log(error)
         
       })
-  }else{
-      
-    dispatch(updateForm("rutEmpresa", "")) 
-    dispatch(updateForm("razonSocial", "")) 
-    dispatch(updateForm("razonSocialForm", "")) 
-  };
+  }
 
 };

@@ -74,7 +74,7 @@ const PersonalData = (props) => {
         percentage={addmissionForm.percentage}
       />
       <div>
-        <Typography variant="p" component="p" className={comunClass.titleBlack}>
+        <Typography variant="inherit" component="p" className={comunClass.titleBlack}>
           Empieza
           <Grid component="span"  className={comunClass.titleBlue}>
             &nbsp;verificando los datos de <br/>
