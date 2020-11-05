@@ -34,7 +34,6 @@ const HasBP = (props) => {
         <div className={spaceStyle.space3} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textWarning}
         >
         ¡Atención!
@@ -44,7 +43,6 @@ const HasBP = (props) => {
         </div>
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textMessage}
         >
           Este paciente&nbsp;
@@ -56,7 +54,6 @@ const HasBP = (props) => {
         </div>
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textFinal}
         >
           Atiéndelo usando SAP

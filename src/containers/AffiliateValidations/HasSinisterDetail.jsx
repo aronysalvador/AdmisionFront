@@ -35,7 +35,6 @@ const HasSinisterDetail = (props) => {
         <div className={comunClass.displayDesk}>
           <Typography
             color="textSecondary"
-            gutterBottom
             className={blackStyle.textWarning}
           >
             Detalle de siniestro
@@ -52,14 +51,12 @@ const HasSinisterDetail = (props) => {
               </div>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 ID Siniestro
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.id}
@@ -68,14 +65,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 CUN
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.CUN}
@@ -84,14 +79,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 Cod único nac ext
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.codigoUnicoNacionalExterno}
@@ -100,14 +93,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 CeSa
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.cesa}
@@ -116,14 +107,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple} 
               >
                 Paciente
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.paciente}
@@ -132,20 +121,17 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 InterL comercial
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.interLComercial}
               </Typography>
-              <div className={spaceStyle.spaceMin1} />
-              
+              <div className={spaceStyle.spaceMin1} />              
             </Grid>
             <Grid item className={comunClass.displayDesk}>
               <hr style={{color: "#FFFFFF", margin: "30px 0", minHeight: "80%"}} />
@@ -156,13 +142,11 @@ const HasSinisterDetail = (props) => {
               </div>
               <Typography
               color="textSecondary"
-              gutterBottom
               className={blackStyle.textDetailStrong}>
                 Descripción siniestro
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.descripcion}
@@ -171,14 +155,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 Descripción Tipo Ley
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.tipoLey}
@@ -187,14 +169,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 Creado el
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.fecha}
@@ -203,14 +183,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 Hora creación
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 {/* {siniestroDetalle.hora} */}
@@ -220,14 +198,12 @@ const HasSinisterDetail = (props) => {
 
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 Reposo Activo
               </Typography>
               <Typography
                 color="textSecondary"
-                gutterBottom
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.reposoActivo === "NO" ? "No" : "Sí"}

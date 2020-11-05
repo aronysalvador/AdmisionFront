@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, validarAfiliacion } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
-import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHS from "../../components/share/BoxACHS/index";
 import BoxEmpresa from "../../components/share/BoxEmpresa/index";
@@ -76,7 +75,7 @@ const PersonalData = (props) => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Empieza
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;verificando los datos de<br/>
@@ -84,7 +83,7 @@ const PersonalData = (props) => {
           <Grid component="span"  className={comunClass.titleGray}>
             {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
           </Grid>         
-        </Typography>
+        </Grid>
       
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
@@ -117,7 +116,6 @@ const PersonalData = (props) => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            //variant="contained"
             disabled={loading}
             onClick={() => handleNext()}
           >

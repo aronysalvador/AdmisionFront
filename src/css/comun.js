@@ -836,7 +836,7 @@ export const getComunStyle = makeStyles((theme) => ({
         siniesterList: {
             display: 'flow-root',
             overflow: 'auto',
-            height: '19em',
+            height: '17em',
             '&::-webkit-scrollbar': {
                 width: 8,
             },

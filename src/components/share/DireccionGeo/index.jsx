@@ -109,14 +109,14 @@ const DireccionGeo = (props) => {
                   renderOption={(option) => {   
                     if(option.description==='Fijar en el mapa'){                   
                       return(
-                        <Typography className={comunStyle.txtGreen} variant="subtitle2">
+                        <Typography className={comunStyle.txtGreen}>
                           <img alt="Location" src="static/location.png" className={comunStyle.iconLocation} />
                           {option.description}
                         </Typography>
                       )
                     }else{
                       return(
-                        <Typography variant="subtitle2">
+                        <Typography>
                           {option.description}
                         </Typography>
                       )

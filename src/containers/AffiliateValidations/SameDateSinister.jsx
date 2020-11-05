@@ -31,15 +31,12 @@ const SameDateSinister = (props) => {
         <div className={spaceStyle.space3} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textWarning2}
         >
           ¡Atención!
         </Typography>
         <div className={spaceStyle.space1} />
         <Typography
-          // color="textSecondary"
-          gutterBottom
           className={blackStyle.textMessage2}
         >
           Este paciente&nbsp;

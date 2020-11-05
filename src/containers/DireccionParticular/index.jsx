@@ -39,7 +39,6 @@ const DireccionParticular = () => {
   const comunClass = getComunStyle()
   const spaceStyle = getSpaceStyle()
   const { googleMap } = getComunStyle()
-  
 
   const [valido, setValido] = useState(false)
   React.useEffect(()=>{
@@ -73,12 +72,12 @@ const DireccionParticular = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography variant="p" component="p" className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Ingresa
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;la dirección en donde vive el paciente
           </Grid>                  
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
