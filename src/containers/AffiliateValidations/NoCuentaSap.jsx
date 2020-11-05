@@ -34,16 +34,12 @@ const NoCuentaSap = (props) => {
         </div>
         <div className={spaceStyle.space2} />
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={blackStyle.textWarning}
         >
           ¡Lo sentimos!
         </Typography>
         <div className={spaceStyle.space1} />
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={blackStyle.textNoAfiliate}
         >
           No tienes cuenta SAP&nbsp;
@@ -52,8 +48,6 @@ const NoCuentaSap = (props) => {
         </Typography>
         <div className={spaceStyle.space1} />
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={blackStyle.textDetailSimpleNoSAP}
         >
           Comunicate con tu administrador de cuenta

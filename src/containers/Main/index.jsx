@@ -515,7 +515,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 21: //Hasta Aqui llegue
+      case 21: 
         return (
           <div className={layout}>
             <Paper className={paper}>

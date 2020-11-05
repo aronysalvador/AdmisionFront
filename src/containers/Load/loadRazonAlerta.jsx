@@ -24,7 +24,6 @@ const LoadRazonAlerta = () => {
       <div className={comunClass.displayDesk}> 
         <Header
           userMsal={ microsoftReducer.userMsal }
-          // step={1}
         />
       </div>
       <div className={spaceStyle.space5} />
@@ -37,20 +36,16 @@ const LoadRazonAlerta = () => {
           />
         </div>
         <div className={spaceStyle.space3} />
-        <Typography variant="p" component="p" className={comunClass.txtLoadDataGreen}>
+        <Typography className={comunClass.txtLoadDataGreen}>
           ¡EXCELENTE!
         </Typography>
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData2}
         >
           Tu alerta ha sido ingresada
         </Typography>
         <div className={spaceStyle.space1} />
         <Typography
-          color="textSecondary"
-          gutterBottom
           className={comunClass.txtLoadData2}
         >
           Un momento por favor

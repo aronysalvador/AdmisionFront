@@ -43,12 +43,12 @@ const Identification = (props) => {
     </div>
     <div className={comunClass.boxDesk}>
       <div>
-        <Typography className={[comunClass.titleBlack, comunClass.subtitleBlack]}>
+        <Grid className={[comunClass.titleBlack, comunClass.subtitleBlack]}>
           Selecciona la opción que 
           <Grid component="span"  className={comunClass.titleBlue}>
             &nbsp;mejor describa lo que le sucedió
           </Grid>
-        </Typography>
+        </Grid>
       </div>
       <div className={spaceStyle.space2} />
       <div className={comunClass.displayOnlyDeskInline}>

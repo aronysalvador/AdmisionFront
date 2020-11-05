@@ -1,6 +1,6 @@
 import React from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography } from "@material-ui/core";
+import { Button} from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
@@ -40,16 +40,14 @@ const TrabajadorIndependiente = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Typography
-          variant="h1"
-          component="h1"
+        <Grid
           className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
         >
           ¿<Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             Paciente declara renta&nbsp;
           </Grid>   
           en servicios impuestos internos como trabajador independiente?    
-        </Typography>
+        </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
             <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
