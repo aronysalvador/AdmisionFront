@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
-import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid';
 import {siniestroStyle} from '../../css/siniestroStyle'
 import Button from "@material-ui/core/Button"
@@ -32,9 +31,9 @@ const Identification = (props) => {
     <div className={comunClass.displayDesk}>
       <div className={ comunClass.titlePrimaryDesk }>
         <Grid component="span" className={comunClass.textPrimaryDesk}>
-          <Typography  className={comunClass.titleBlack2}>
+          <Grid  className={comunClass.titleBlack2}>
             Empecemos completando <br /> algunos datos 
-          </Typography>
+          </Grid>
         </Grid>
         <Grid component="span" className={comunClass.imgPrimaryDesk}>
           <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
