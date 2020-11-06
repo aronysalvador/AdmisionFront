@@ -60,10 +60,7 @@ const DireccionParticular = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -85,7 +82,9 @@ const DireccionParticular = () => {
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox} variant="subtitle2">
             Dirección particular

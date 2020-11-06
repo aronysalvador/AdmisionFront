@@ -18,9 +18,8 @@ REVISARE EL
 */
 const Afp = () => {
   const {
-    addmissionForm: { percentage, afpForm },
+    addmissionForm: { percentage, afpForm }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -42,10 +41,7 @@ const Afp = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera

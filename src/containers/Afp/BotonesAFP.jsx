@@ -12,9 +12,9 @@ import Header from "../../components/header/index";
 
 const BotonesAFP = () => {
   const {
-    addmissionForm: { percentage, afpForm, responsable },
+    addmissionForm: { percentage, afpForm, responsable }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+
   const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
@@ -38,10 +38,7 @@ const BotonesAFP = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera

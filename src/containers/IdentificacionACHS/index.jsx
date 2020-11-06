@@ -21,7 +21,7 @@ const Achs = () => {
     microsoftReducer: { userMsal },
   } = useSelector((state) => state, shallowEqual);
 
- const { email } = userMsal;
+  const { email } = userMsal;
 
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -47,7 +47,6 @@ const Achs = () => {
     (state) => state.centrosAchsForm,
     shallowEqual
   );
-
 
   return (
     <div className={comunStyle.root}>
@@ -75,7 +74,7 @@ const Achs = () => {
           <div className={spaceStyle.space2} />
         </center>
         <div className={comunStyle.containerTextBox}>
-          <Grid className={comunStyle.tituloTextbox}>
+          <Grid className={comunStyle.tituloTextBox}>
             Centro
           </Grid>
           <AutoComplete

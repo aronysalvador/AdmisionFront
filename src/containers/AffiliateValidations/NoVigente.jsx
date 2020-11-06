@@ -20,10 +20,7 @@ const NoVigente = (props) => {
   return (
     <div>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space1} />
@@ -57,14 +54,16 @@ const NoVigente = (props) => {
           no está vigente en ACHS
         </Typography>
         <div className={spaceStyle.space1} />
-        <div className={comunClass.displayDesk}>
+        {/* <div className={comunClass.displayDesk}>
           <div className={spaceStyle.space1} />
-        </div>
+        </div> */}
 
         <NoAfiliateCard />
 
         <div className={comunClass.bottomElement}>
-          <div className={spaceStyle.space2} />
+          <div className={comunClass.displayMobile}>
+            <div className={spaceStyle.space2} />
+          </div>
           <Button
             className={blackStyle.buttonFooter}
             onClick={() => {

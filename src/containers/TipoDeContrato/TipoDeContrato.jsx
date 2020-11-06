@@ -32,10 +32,7 @@ const TipoDeContrato = () => {
   return (
     <div className={comunClass.root}>
        <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -59,7 +56,9 @@ const TipoDeContrato = () => {
       </div>
 
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
         <div
           style={{
             display: "flex",

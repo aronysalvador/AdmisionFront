@@ -121,10 +121,7 @@ const Identification = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -134,20 +131,22 @@ const Identification = () => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-            Ingresa el           
-            <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]} style={{display: "contents"}}>
-                &nbsp;RUT o documento de identidad
-            </Grid>
-            &nbsp;del paciente
+          Ingresa el           
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]} style={{display: "contents"}}>
+            &nbsp;RUT o documento de identidad
           </Grid>
-          <div className={comunClass.displayDeskImg}>
-            <Grid component="span" className={comunClass.imgPrimaryDesk}>
-              <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
-            </Grid>
-          </div>
+          &nbsp;del paciente
+        </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
         </div>
+      </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
             <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered>
               <Tab classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 }} label="RUT"  />

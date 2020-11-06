@@ -717,7 +717,7 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         titleDesk: {
             position: 'relative',
-            margin: '-15px auto 30px',
+            // margin: '-15px auto 30px',
             display: 'flex',
             width: '90%',
             justifyContent: 'space-around',
@@ -891,11 +891,11 @@ export const getComunStyle = makeStyles((theme) => ({
             color: "#373737", //"#DEDEDE",
         },
         cajaRutSiniestroContainer: {
-            width: "48%",
+            // width: "48%",
             border: "1px solid #787878",
             borderRadius: "10px",
             padding: "10px",
-            height: "60px",
+            height: "70px",
             paddingBottom: "5px",
             backgroundColor: "#FFFFFF",
         },
@@ -906,14 +906,14 @@ export const getComunStyle = makeStyles((theme) => ({
             flexDirection: "column",
         },
         cajaRutSiniestroTextoPrimario: {
-            color: "#373737",
+            color: "#104F28",
             fontWeight: "bold",
-            fontSize: "15px",
+            fontSize: "22px",
         },
         cajaRutSiniestroTextoSecundario: {
             color: "#787878",
             fontWeight: "bold",
-            fontSize: "15px",
+            fontSize: "16px",
         },
         textErrorRed: {
             textAlign: "center",
@@ -984,7 +984,7 @@ export const getComunStyle = makeStyles((theme) => ({
             paddingTop: "15px", //"35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check2.svg")})`,
+            backgroundImage: `url(${require("./../img/check3.svg")})`,
             backgroundRepeat: "no-repeat",
         },
         cardsButtonOther: {
@@ -1113,12 +1113,27 @@ export const getComunStyle = makeStyles((theme) => ({
         // },
     },
 
-    // '@media (min-width: 1280px)': {
-    //     imgPrimaryDesk: {
-    //         position: "relative",
-    //         right: "-25%",
-    //     },
-    // },
+    '@media (min-width: 1280px)': {
+        botonSeleccionado: {
+            marginTop: "10px",
+            marginBottom: "10px",
+            display: "flex",
+            justifyContent: "center", //"space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "45%",
+            height: "90px",
+            backgroundColor: "#DFF3F2 !important",
+            border: "2px solid #00B2A9 !important",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px", //"35px",
+            paddingBottom: "10px",
+            color: "#373737",
+            backgroundImage: `url(${require("./../img/check4.svg")})`,
+            backgroundRepeat: "no-repeat",
+        },
+    },
 
     '@media (min-width: 1540px)': {
         beginContainerDesk: {
