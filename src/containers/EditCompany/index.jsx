@@ -14,9 +14,7 @@ const EditCompany = () => {
   const { percentage, razonSocial, rutEmpresa } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
 
-  const {
-    microsoftReducer
-  } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
 
@@ -26,21 +24,17 @@ const EditCompany = () => {
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
-  
 
   const handleNext= async() => {
     setCargando(true)
     if(sucursalesList.length!==0) await dispatch(getSucursales(rutEmpresa));
-    
   }
 
   React.useEffect(()=>{
     if(cargando){
       if(!loading){
         if(sucursalesList.length>0){
-          
             dispatch(handleSetStep(5.5))
-          
         }else{
           dispatch(handleSetStep(5.14))
         }
@@ -49,14 +43,10 @@ const EditCompany = () => {
     // eslint-disable-next-line
   },[cargando, loading])
 
-
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -67,7 +57,7 @@ const EditCompany = () => {
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Identifica la empresa en la que trabaja con su
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;razón social o RUT
           </Grid>      
         </Grid>
