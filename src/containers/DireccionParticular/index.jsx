@@ -13,9 +13,6 @@ import Header from "../../components/header/index";
 const DireccionParticular = () => {
   const {
     addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj },
-  } = useSelector((state) => state, shallowEqual)
-
-  const {
     microsoftReducer
   } = useSelector((state) => state, shallowEqual)
 
@@ -102,9 +99,6 @@ const DireccionParticular = () => {
             }}
           />
           <center>
-            <div className={comunClass.displayDesk}>
-              <div className={spaceStyle.space1} />
-            </div>
             {(mapaUrl)?
             <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
             :null}

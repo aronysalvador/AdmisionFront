@@ -71,7 +71,9 @@ const Achs = () => {
           <Grid className={comunStyle.subtitleBlack}>
             Ingresa el centro en el cual trabajas
           </Grid>
-          <div className={spaceStyle.space2} />
+          <div className={comunStyle.displayMobile}>
+            <div className={spaceStyle.space2} />
+          </div>
         </center>
         <div className={comunStyle.containerTextBox}>
           <Grid className={comunStyle.tituloTextBox}>

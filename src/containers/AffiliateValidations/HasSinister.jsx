@@ -19,11 +19,9 @@ const HasSinister = (props) => {
   return (
     <>
       <div className={comunClass.displayDesk}> 
-        <Header
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
+      <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
       <div className={blackStyle.root}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.displayDesk}> 
@@ -41,7 +39,7 @@ const HasSinister = (props) => {
         >
         ¡Atención!
         </Typography>
-        <div className={spaceStyle.space2} />
+        {/* <div className={spaceStyle.space2} /> */}
         <Typography
           color="textSecondary"
           className={blackStyle.textMessage}

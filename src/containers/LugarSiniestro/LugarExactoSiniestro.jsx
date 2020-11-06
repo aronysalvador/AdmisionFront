@@ -13,9 +13,8 @@ import Header from "../../components/header/index";
 const LugarExactoSiniestro = () => {
   const {
     addmissionForm: { step, percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro },
+    microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const [sucursal, setSucursal] = useState(() => {
     return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : ""
@@ -55,10 +54,7 @@ const LugarExactoSiniestro = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -95,13 +91,15 @@ const LugarExactoSiniestro = () => {
               dispatch(handleSetStep(11.1))
             }}
           />
-          {(mapaUrl)?
-          <img alt="MapaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
-          :null}
+          <center>
+            {(mapaUrl)?
+            <img alt="MapaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
+            :null}
+          </center>
         </div> 
-        <div className={comunClass.displayDesk}>
+        {/* <div className={comunClass.displayDesk}>
           <div className={spaceStyle.space1} />
-        </div>
+        </div> */}
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}

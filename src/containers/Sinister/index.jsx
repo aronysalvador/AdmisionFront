@@ -32,7 +32,7 @@ const Identification = (props) => {
       <div className={ comunClass.titlePrimaryDesk }>
         <Grid component="span" className={comunClass.textPrimaryDesk}>
           <Grid  className={comunClass.titleBlack2}>
-            Empecemos completando <br /> algunos datos 
+            Empecemos completando <br className={comunClass.displayMobile}/> algunos datos 
           </Grid>
         </Grid>
         <Grid component="span" className={comunClass.imgPrimaryDesk}>

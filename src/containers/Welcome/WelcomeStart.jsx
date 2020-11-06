@@ -24,10 +24,7 @@ const Start = (props) =>{
     return(
         <div className={[comunStyle.rootBegin]}>
             <div className={comunStyle.displayDesk}> 
-                <Header
-                    userMsal={microsoftReducer.userMsal}
-                    // step={1}
-                />
+                <Header userMsal={microsoftReducer.userMsal}/>
             </div>
             <div className={welcomeStyle.backgroundBoxAchsDesk}>
                 <div className={welcomeStyle.beginContainer}>
@@ -61,7 +58,10 @@ const Start = (props) =>{
                 </div>
             </div>
             <div className={welcomeStyle.beginContainer}>
-                <div className={spaceStyle.space2} />
+                <div className={comunStyle.displayMobile}>
+                    <div className={spaceStyle.space1} />
+                </div>
+                <div className={spaceStyle.space1} />
                 <div className={comunStyle.textCenterDesk}>
                     <Typography
                         className={welcomeStyle.subTitleBegin}
@@ -69,7 +69,7 @@ const Start = (props) =>{
                         Por ahora ten en cuenta:
                     </Typography>
                     <div className={comunStyle.displayDesk}>
-                        <div className={spaceStyle.space2} />
+                        <div className={spaceStyle.space1} />
                     </div>
                     <div className={comunStyle.boxDesk}>
                         <Indiciaciones

@@ -347,7 +347,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 8.1: 
+      case 8.1: //Verificar numeración del case
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -515,7 +515,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 21: 
+      case 21:
         return (
           <div className={layout}>
             <Paper className={paper}>
