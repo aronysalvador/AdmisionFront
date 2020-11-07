@@ -408,6 +408,7 @@ export const getComunStyle = makeStyles((theme) => ({
         display: 'flow-root',
         overflow: 'auto',
         height: '24.5em',
+        paddingRight: '1em',
         '&::-webkit-scrollbar': {
             width: 8,
         },
@@ -459,6 +460,5 @@ export const getComunStyle = makeStyles((theme) => ({
         cursor: "pointer",
         textDecoration: "underline",
         color: "#DEDEDE",
-    },
-
+    }
 }));

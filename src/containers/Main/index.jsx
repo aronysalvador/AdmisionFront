@@ -52,6 +52,8 @@ import DireccionParticular from "../DireccionParticular/index";
 import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
 
 import HasBP from "../AffiliateValidations/HasBP";
+import InfoPersonal1 from "../NoTieneBP/InfoPersonal1";
+
 import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
 import HasSinister from "../AffiliateValidations/HasSinister";
 import HasSinisterDetail from "../AffiliateValidations/HasSinisterDetail";
@@ -86,7 +88,7 @@ const Main = (props) => {
   const { addmissionForm, microsoftReducer } = props;
 
   const initFn = useCallback(() => {
-    if(!microsoftReducer.authenticatedMsal) {
+    if (!microsoftReducer.authenticatedMsal) {
       //Para no tener que estar autenticando siempre se puede comentar esta línea
       // addmissionForm.step = 0;
     }
@@ -102,7 +104,7 @@ const Main = (props) => {
     layoutFix,
     paperFix,
     blackLayout,
-    paperNoColor,  
+    paperNoColor,
   } = classes;
 
   const renderForm = (step) => {
@@ -275,6 +277,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 5.812:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <InfoPersonal1 />
+            </Paper>
+          </div>
+        );
       case 5.82:
         return (
           <div className={blackLayout}>
@@ -370,7 +380,7 @@ const Main = (props) => {
               <FechaHoraSiniestro />
             </Paper>
           </div>
-        );        
+        );
       case 11:
         return (
           <div className={layout}>
@@ -395,14 +405,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-        case 12.1:
+      case 12.1:
         return (
           <div className={layout}>
             <Paper className={paper}>
               <AccidenteEnSucursal />
             </Paper>
           </div>
-        );  
+        );
       case 13:
         return (
           <div className={layout}>
@@ -511,7 +521,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Cargo /> 
+              <Cargo />
             </Paper>
           </div>
         );
@@ -519,7 +529,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoJornadaLaboral /> 
+              <TipoJornadaLaboral />
             </Paper>
           </div>
         );
@@ -686,7 +696,8 @@ const Main = (props) => {
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer };
+    microsoftReducer: microsoftReducer,
+  };
 }
 
 export default connect(mapStateToProps)(Main);
