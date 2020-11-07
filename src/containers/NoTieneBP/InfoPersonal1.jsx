@@ -343,13 +343,10 @@ const SinBPInfoPersonal1 = () => {
         <div>
           <DateMasked
             mask={Mask.advanced}
-            fechaNacimiento={setTelefono}
-            handleOnChange={handleOnChange}
-            telefono={telefono}
-            disabled={stateCheck}
+            fechaNacimiento={fechaNacimiento}
           />
 
-          <TextField
+          {/* <TextField
             id="fechaNacimiento"
             value={fechaNacimiento}
             onChange={(e) => saveFechaNacimiento(e.target.value)}
@@ -371,7 +368,7 @@ const SinBPInfoPersonal1 = () => {
                 </InputAdornment>
               ),
             }}
-          />
+          /> */}
         </div>
 
         <div className={spaceStyle.space1} />
