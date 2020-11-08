@@ -10,6 +10,8 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import AutoComplete from "@material-ui/lab/Autocomplete";
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
 
 //Action de Redux
 import { sendCargo } from "../../redux/actions/AdmissionAction";
@@ -66,8 +68,8 @@ const SinBPInfoPersonal1 = () => {
     return bpForm.masculino
       ? "Masculino"
       : bpForm.femenino
-      ? "Femenino"
-      : "Otro";
+        ? "Femenino"
+        : "Otro";
   });
 
   const { percentage } = useSelector(
@@ -75,6 +77,11 @@ const SinBPInfoPersonal1 = () => {
     shallowEqual
   );
   const [sexos, setSexo] = useState(["Masculino", "Femenino", "Otro"]);
+
+  const handleChange = (event) => {
+    console.log("HANDLE CHANGE", event.target.value);
+    saveFechaNacimiento(event.target.value);
+  };
 
   const clickConfirmar = () => {
     // dispatch(sendCargo(nombre, cargos));
@@ -341,10 +348,39 @@ const SinBPInfoPersonal1 = () => {
         </div>
 
         <div>
-          <DateMasked
-            mask={Mask.advanced}
-            fechaNacimiento={fechaNacimiento}
+          <TextField
+            id="fechaNacimiento"
+            value={fechaNacimiento}
+            onChange={(e) => saveFechaNacimiento(e.target.value)}
+            margin="dense"
+            variant="outlined"
+            autoComplete="off"
+            type="text"
+            fullWidth           
+            InputProps={{
+              inputComponent:DateMasked,
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => {
+                      saveFechaNacimiento("");
+                    }}
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
+          {/* <FormControl>
+            <Input
+              value={fechaNacimiento}
+              onChange={handleChange}
+              name="textmask"
+              id="formatted-text-mask-input"
+              inputComponent={DateMasked}
+            />
+          </FormControl> */}
 
           {/* <TextField
             id="fechaNacimiento"
