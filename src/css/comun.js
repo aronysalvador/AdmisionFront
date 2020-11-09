@@ -343,10 +343,14 @@ export const getComunStyle = makeStyles((theme) => ({
             maxHeight: "15px",
             verticalAlign: "middle",
         },
+        bpList: {
+            paddingRight: '10px',
+        },
         siniesterList: {
             display: 'flow-root',
             overflow: 'auto',
             height: '24.5em',
+
             '&::-webkit-scrollbar': {
                 width: 8,
             },

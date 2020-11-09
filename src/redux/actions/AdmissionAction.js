@@ -222,23 +222,27 @@ export const saveRut = (rut) => {
         } else {
           // NO TIENE BP
           //dispatch(setStep(500, 0));
-          
+          console.log(getState());
           const { microsoftReducer: { userMsal } } = getState();
           const { email } = userMsal;
           const { addmissionForm: {centrosForm, tipoSiniestro } } = getState();
           dispatch(handleLog({email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: "" })) 
+          console.log("UPDATEFORM", result.data.content.response);
 
-          dispatch(setStep(5.81, 0));
-          dispatch(updateForm("rut", ""));
-          dispatch(updateForm("razonSocial", ""));
-          dispatch(updateForm("rutEmpresa", ""));
-          dispatch(updateForm("isAfiliado", "No"));
-          dispatch(updateForm("SucursalEmpresa", ""));
-          dispatch(updateForm("DireccionEmpresa", ""));
-          dispatch(updateForm("comunaEmpresa", ""));
-          dispatch(updateForm("direccionParticular", ""));
-          dispatch(updateForm("telefonoParticular", ""));
-          dispatch(updateForm("BP", ""));
+          //dispatch(setBP(result.data.content.response));
+
+          dispatch(updateForm("bpForm", result.data.content.response));
+          dispatch(setStep(5.812, 0));
+          // dispatch(updateForm("rut", ""));
+          // dispatch(updateForm("razonSocial", ""));
+          // dispatch(updateForm("rutEmpresa", ""));
+          // dispatch(updateForm("isAfiliado", "No"));
+          // dispatch(updateForm("SucursalEmpresa", ""));
+          // dispatch(updateForm("DireccionEmpresa", ""));
+          // dispatch(updateForm("comunaEmpresa", ""));
+          // dispatch(updateForm("direccionParticular", ""));
+          // dispatch(updateForm("telefonoParticular", ""));
+          // dispatch(updateForm("BP", ""));
 
         }
       })
