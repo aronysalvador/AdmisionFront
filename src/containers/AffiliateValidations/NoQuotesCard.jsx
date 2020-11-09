@@ -13,8 +13,10 @@ const NoQuotesCard = () => {
   
   return (
     <div className={containerNoQuote}>
-      <div>
-        <ErrorOutline />
+      <div className={comunClass.displayMobile}>
+        <div>
+          <ErrorOutline />
+        </div>
       </div>
       <div className={cardTextNoAfilate}>
         <span className={cardText}>

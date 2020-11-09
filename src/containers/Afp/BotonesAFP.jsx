@@ -47,7 +47,7 @@ const BotonesAFP = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Ingresa la 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;AFP o Previsión Social
@@ -60,7 +60,7 @@ const BotonesAFP = () => {
           </Grid>
         </div>
       </div>
-      <div className={comunClass.boxDesk}>
+      <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.cardsButtonAlign}>
             {afpList.slice(0,6).map((afp) => (
             <BotonSeleccionarCustom

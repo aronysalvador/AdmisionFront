@@ -598,7 +598,7 @@ const Main = (props) => {
       case 26.4:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <LoadRazonAlerta />
             </Paper>
           </div>
@@ -614,7 +614,7 @@ const Main = (props) => {
       case 1000:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <CreandoCaso />
             </Paper>
           </div>

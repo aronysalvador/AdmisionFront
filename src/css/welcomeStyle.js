@@ -6,7 +6,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "2em",
         fontWeight: "bold",
     },
-
     boxCentroAlign: {
         display: "flex",
         justifyContent: "space-between",
@@ -35,7 +34,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     textBoxAchs: {
         fontSize: "16px !important"
     },
-
     starIcon: {
         display: "flex",
         borderRadius: "1em",
@@ -71,7 +69,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     beginContainer: {
         padding: "16px 16px 0 16px",
     },
-
     txtBegin: {
         textAlign: "center",
         fontFamily: "Catamaran",
@@ -105,16 +102,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "0.87em",
         textAlign: "center",
     },
-    bottomBegin: {
-        marginTop: "10px",
-    },
     rutSiniestroContainer: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
     },
-
     img: {
         height: "1.5em",
         width: "1.5em",
@@ -288,6 +281,9 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             borderRadius: "10px",
         },
+        bottomBegin: {
+            marginTop: "10px",
+        },
 
     },
 
@@ -345,7 +341,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             alignSelf: "flex-start",
             // display: "flex",
             textAlign: "center",
-            height: "40px"
+            height: "32px"
         },
         divRow: {
             display: "block",
@@ -355,13 +351,13 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         divRow2: {
             display: "block",
             alignItems: "center",
-            paddingBottom: "30px",
+            paddingBottom: "10px", //"30px",
             width: "33%"
         },
         divRowBottom: {
             display: "block",
             alignItems: "center",
-            marginBottom: "20px",
+            marginBottom: "10px", //"20px",
             width: "33%"
         },
         divRowBottom2: {
@@ -373,7 +369,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         divRowPantallaFinal: {
             display: "block",
             alignItems: "center",
-            paddingBottom: "30px",
+            paddingBottom: "10px", //"30px",
             width: "150px",
         },
         titleBegin: {

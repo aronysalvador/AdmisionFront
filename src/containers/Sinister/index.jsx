@@ -19,10 +19,7 @@ const Identification = (props) => {
 
   return (<div className={comunClass.root}>
     <div className={comunClass.displayDesk}> 
-      <Header
-        userMsal={ microsoftReducer.userMsal }
-        // step={1}
-      />
+      <Header userMsal={ microsoftReducer.userMsal }/>
     </div>
     <div className={comunClass.beginContainerDesk}>
       <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
@@ -30,10 +27,8 @@ const Identification = (props) => {
     
     <div className={comunClass.displayDesk}>
       <div className={ comunClass.titlePrimaryDesk }>
-        <Grid component="span" className={comunClass.textPrimaryDesk}>
-          <Grid  className={comunClass.titleBlack2}>
-            Empecemos completando <br className={comunClass.displayMobile}/> algunos datos 
-          </Grid>
+        <Grid component="span" className={[comunClass.textPrimaryDesk, comunClass.titleBlack]}>
+          Empecemos completando algunos datos 
         </Grid>
         <Grid component="span" className={comunClass.imgPrimaryDesk}>
           <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
@@ -66,7 +61,7 @@ const Identification = (props) => {
           >
             <img alt="Accidente de Trabajo" src={!buttonOver ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
             <div>Accidente de trabajo <br/>
-                <span className={classes.textButton}>En su lugar de trabajo</span>
+              <span className={classes.textButton}>En su lugar de trabajo</span>
             </div>
             {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
@@ -85,11 +80,11 @@ const Identification = (props) => {
       <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
           <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
-                <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
-                <div>Enfermedad Profesional <br/>
-                    <span className={classes.textButton}>A causa del ejercicio profesional</span>
-                </div>
-            </Button>
+            <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
+            <div>Enfermedad Profesional <br/>
+              <span className={classes.textButton}>A causa del ejercicio profesional</span>
+            </div>
+          </Button>
         </div>  
         <div  className={spaceStyle.space1} />
         <div className={comunClass.alignBtnSiniesterRight}>

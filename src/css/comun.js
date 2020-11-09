@@ -414,6 +414,9 @@ export const getComunStyle = makeStyles((theme) => ({
         imgLoadData2: {
             width: "7.28125em",
         },
+        imgPass: {
+            width: '146px'
+        },
         header: {
             display: 'none',
             width: '100%'
@@ -504,6 +507,19 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: '33px',
             textAlign: 'center',
         },
+        boxDeskCardBtn: {
+            width: '60%',
+            maxWidth: '860px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '30px 100px',
+            textAlign: 'center',
+        },
         boxDeskMap: {
             width: '60%',
             maxWidth: '860px',
@@ -547,7 +563,7 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex'
         },
         bottomElement: {
-            padding: "40px 0",
+            padding: "30px 0",
             textAlign: "center",
         },
         bottomElementMap: {
@@ -565,8 +581,8 @@ export const getComunStyle = makeStyles((theme) => ({
         paddingElement: {
             display: 'flex',
             justifyContent: 'space-around',
-            // margin: '0 1%'
         },
+
         buttonAchs: {
             width: "50%",
             background: "#007A33",
@@ -656,8 +672,8 @@ export const getComunStyle = makeStyles((theme) => ({
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
             fontWeight: 'bold',
-            fontSize: '32px',
-            lineHeight: '34px',
+            fontSize: '26px', //'32px',
+            lineHeight: '34px', //'44px',
             color: '#373737',
         },
         subtitleBlack: {
@@ -668,20 +684,20 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: '28px',
             color: '#373737',
         },
-        titleBlack2: {
-            fontFamily: 'Catamaran',
-            fontStyle: 'normal',
-            fontWeight: 'bold',
-            fontSize: '32px',
-            lineHeight: '44px',
-            color: '#373737',
-        },
+        // titleBlack2: {
+        //     fontFamily: 'Catamaran',
+        //     fontStyle: 'normal',
+        //     fontWeight: 'bold',
+        //     fontSize: '32px',
+        //     lineHeight: '44px',
+        //     color: '#373737',
+        // },
         titleGray: {
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
             fontWeight: 'bold',
-            fontSize: '36px',
-            lineHeight: '44px',
+            fontSize: '26px', //'32px',
+            lineHeight: '34px', //'44px',
             color: '#787878',
         },
         titleBlue: {
@@ -697,8 +713,8 @@ export const getComunStyle = makeStyles((theme) => ({
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
             fontWeight: 'bold',
-            fontSize: '32px',
-            lineHeight: '44px',
+            fontSize: '26px', //'32px',
+            lineHeight: '34px',
             color: '#00b2a9',
         },
         textAchsContentWhite: {
@@ -716,11 +732,11 @@ export const getComunStyle = makeStyles((theme) => ({
             marginTop: "0px"
         },
         titleDesk: {
+            // width: '90%',
             position: 'relative',
-            // margin: '-15px auto 30px',
             display: 'flex',
-            width: '90%',
             justifyContent: 'space-around',
+            // margin: '-15px auto 30px',
         },
         displayDesk: {
             display: 'block'
@@ -752,17 +768,17 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         textPrimaryDesk: {
             display: "inline-block",
-            width: "73%", //"65%",
+            width: "86%", //"73%", "65%",
             textAlign: "left",
             // maxWidth: "460px",
             verticalAlign: "top",
-            minHeight: '88px'
+            minHeight: '73px' //'88px'
         },
         imgPrimaryDesk: {
             float: 'right'
         },
         imgPrimaryWidth: {
-            width: '100px'
+            width: '80px' //'100px'
         },
         alignBtnSiniesterLeft: {
             position: 'relative',
@@ -785,6 +801,7 @@ export const getComunStyle = makeStyles((theme) => ({
         beginContainerDesk: {
             width: '90%',
             margin: 'auto',
+            position: 'relative'
         },
         barraContainer: {
             position: 'relative',
@@ -796,13 +813,16 @@ export const getComunStyle = makeStyles((theme) => ({
             width: '90%',
             margin: 'auto',
             marginTop: '20px',
-            marginBottom: '30px'
+            marginBottom: '20px', //'30px'
         },
         imgLoadData: {
-            width: "300px",
+            width: "14em",
         },
         imgLoadData2: {
             width: "116px",
+        },
+        imgPass: {
+            width: '90px'
         },
         txtLoadData: {
             textAlign: "center",
@@ -891,13 +911,14 @@ export const getComunStyle = makeStyles((theme) => ({
             color: "#373737", //"#DEDEDE",
         },
         cajaRutSiniestroContainer: {
-            // width: "48%",
+            width: "11em",
             border: "1px solid #787878",
             borderRadius: "10px",
             padding: "10px",
-            height: "70px",
+            height: "5em",
             paddingBottom: "5px",
             backgroundColor: "#FFFFFF",
+            marginRight: "0.5em"
         },
         cajaRutSiniestroItem: {
             display: "flex",
@@ -1062,37 +1083,14 @@ export const getComunStyle = makeStyles((theme) => ({
         beginContainerDesk: {
             width: '75%',
             margin: 'auto',
+            position: 'relative'
         },
         titlePrimaryDesk: {
             width: '75%',
             margin: 'auto',
-            marginTop: '30px',
-            marginBottom: '30px'
+            marginTop: '20px', //'30px'
+            marginBottom: '20px', //'30px'
         },
-        // titleBlack2: {
-        //   fontFamily: 'Catamaran',
-        //   fontStyle: 'normal',
-        //   fontWeight: 'bold',
-        //   fontSize: '40px',
-        //   lineHeight: '44px',
-        //   color: '#373737',
-        // },
-        // titleGray: {
-        //   fontFamily: 'Catamaran',
-        //   fontStyle: 'normal',
-        //   fontWeight: 'bold',
-        //   fontSize: '40px',
-        //   lineHeight: '44px',
-        //   color: '#787878',
-        // },
-        // titleBlue2: {
-        //   fontFamily: 'Catamaran',
-        //   fontStyle: 'normal',
-        //   fontWeight: 'bold',
-        //   fontSize: '40px',
-        //   lineHeight: '44px',
-        //   color: '#00b2a9',
-        // },
 
     },
 
@@ -1100,12 +1098,13 @@ export const getComunStyle = makeStyles((theme) => ({
         beginContainerDesk: {
             width: '60%',
             margin: 'auto',
+            position: 'relative'
         },
         titlePrimaryDesk: {
             width: '60%',
             margin: 'auto',
-            marginTop: '30px',
-            marginBottom: '30px'
+            marginTop: '20px', //'30px'
+            marginBottom: '20px', //'30px'
         },
         // imgPrimaryDesk: {
         //     position: "relative",
@@ -1139,12 +1138,13 @@ export const getComunStyle = makeStyles((theme) => ({
         beginContainerDesk: {
             width: '50%',
             margin: 'auto',
+            position: 'relative'
         },
         titlePrimaryDesk: {
             width: '50%',
             margin: 'auto',
-            marginTop: '30px',
-            marginBottom: '30px'
+            marginTop: '20px', //'30px'
+            marginBottom: '20px', //'30px'
         },
         // imgPrimaryDesk: {
         //     position: "relative",
@@ -1156,12 +1156,13 @@ export const getComunStyle = makeStyles((theme) => ({
         beginContainerDesk: {
             width: '40%',
             margin: 'auto',
+            position: 'relative'
         },
         titlePrimaryDesk: {
             width: '40%',
             margin: 'auto',
-            marginTop: '30px',
-            marginBottom: '30px'
+            marginTop: '20px', //'30px'
+            marginBottom: '20px', //'30px'
         },
         // imgPrimaryDesk: {
         //     position: "relative",
@@ -1185,46 +1186,6 @@ export const getComunStyle = makeStyles((theme) => ({
         padding: "10px",
         textAlign: "center"
     },
-    // titleBlack: {
-    //     fontFamily: 'Catamaran',
-    //     fontStyle: 'normal',
-    //     fontWeight: 'bold',
-    //     fontSize: '20px',
-    //     lineHeight: '28px',
-    //     color: '#373737',
-    // },
-    // titleBlue: {
-    //     fontFamily: 'Catamaran',
-    //     fontStyle: 'normal',
-    //     fontWeight: 'bold',
-    //     fontSize: '20px',
-    //     lineHeight: '28px',
-    //     color: ' #00b2a9',
-    //     display: "contents",
-    // },
-    // textCenter: {
-    //     textAlign: "center !important",
-    // },
-    // textErrorRed: {
-    //     textAlign: "center",
-    //     fontFamily: "Catamaran",
-    //     fontStyle: "normal",
-    //     fontWeight: "bold",
-    //     fontSize: "1.5625em",
-    //     lineHeight: "1.6875em",
-    //     alignItems: "center",
-    //     color: "red",
-    // },
-    // textErrorP: {
-    //     fontFamily: "Catamaran",
-    //     fontStyle: "normal",
-    //     fontWeight: "bold",
-    //     fontSize: "1.785em",
-    //     lineHeight: "1.929em",
-    //     alignItems: "center",
-    //     textAlign: "center",
-    //     color: "#081C15",
-    // },
     textErrorP2: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -1235,15 +1196,7 @@ export const getComunStyle = makeStyles((theme) => ({
         textAlign: "center",
         color: "#081C15",
     },
-    // textErrorS: {
-    //     fontFamily: "Catamaran",
-    //     fontStyle: "normal",
-    //     fontSize: "1.145em",
-    //     lineHeight: "1.785em",
-    //     alignItems: "center",
-    //     textAlign: "center",
-    //     color: "#081C15",
-    // },
+
     txtGreen: {
         fontFamily: 'Helvetica',
         fontStyle: 'normal',

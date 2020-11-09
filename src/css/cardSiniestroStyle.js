@@ -23,8 +23,8 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
     },
     itemFecha: {
         margin: "5px auto",
-        fontSize: "22px",
-        lineHeight: "27px",
+        fontSize: "20px", //"22px",
+        lineHeight: "24px", //"27px",
         fontWeight: "bold",
         color: "#373737",
     },

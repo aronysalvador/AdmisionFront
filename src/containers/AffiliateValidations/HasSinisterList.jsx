@@ -75,10 +75,7 @@ const PersonalData = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div>
         <div className={comunClass.beginContainerDesk}>
@@ -91,7 +88,7 @@ const PersonalData = (props) => {
           {origen === "getRut" ? (
             <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} 
-              <br/>tiene&nbsp;
+              <br className={comunClass.displayMobile}/>&nbsp;tiene&nbsp;
               <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 {contenidoSiniestros.length} siniestros
               </Grid>                   

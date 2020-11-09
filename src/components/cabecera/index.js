@@ -20,7 +20,7 @@ const Cabecera = (props) => {
         </div>   */}
                 
                 <div className={comunClass.displayDesk}>
-                    <div className={spaceStyle.space2} />
+                    <div className={spaceStyle.space1} />
                 </div>
                 <div className={comunClass.displayMobile}>
                     <div className={spaceStyle.space1} />

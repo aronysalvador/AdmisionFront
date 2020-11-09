@@ -14,11 +14,7 @@ import Header from "../../components/header/index";
 
 const Achs = () => {
   const {
-    addmissionForm: { centrosForm },
-  } = useSelector((state) => state, shallowEqual);
-
-  const {
-    microsoftReducer: { userMsal },
+    addmissionForm: { centrosForm }, microsoftReducer: { userMsal },
   } = useSelector((state) => state, shallowEqual);
 
   const { email } = userMsal;
@@ -51,9 +47,7 @@ const Achs = () => {
   return (
     <div className={comunStyle.root}>
       <div className={comunStyle.displayDesk}> 
-      <Header
-        userMsal={userMsal}
-      />
+        <Header userMsal={userMsal}/>
       </div>
       <div className={ welcomeStyle.backPosicion }> 
         <Cabecera dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
@@ -63,7 +57,9 @@ const Achs = () => {
         <div className={spaceStyle.space2} />
       </div>
       <Grid  className={[comunStyle.titleBlack, comunStyle.textCenterDesk]}>Te encuentras en:</Grid >
-      <div className={spaceStyle.space2} />
+      <div className={comunStyle.displayMobile}>
+        <div className={spaceStyle.space2} />
+      </div>
 
       <div className={comunStyle.boxGeneral} >
         <center className={comunStyle.displayDesk}>
@@ -71,8 +67,9 @@ const Achs = () => {
           <Grid className={comunStyle.subtitleBlack}>
             Ingresa el centro en el cual trabajas
           </Grid>
+          <div className={spaceStyle.space1} />
           <div className={comunStyle.displayMobile}>
-            <div className={spaceStyle.space2} />
+            <div className={spaceStyle.space1} />
           </div>
         </center>
         <div className={comunStyle.containerTextBox}>

@@ -91,10 +91,7 @@ const MapaSelection = () => {
   return (
     <div className={comunClass.rootContainer}> 
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <div style={{padding: '0.5em'}}> 
@@ -106,7 +103,7 @@ const MapaSelection = () => {
         </div>
       </div>
       <div className={comunClass.displayDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={spaceStyle.spaceMin1} />
       </div>
       <div className={comunClass.boxDeskMap}>
         <div>

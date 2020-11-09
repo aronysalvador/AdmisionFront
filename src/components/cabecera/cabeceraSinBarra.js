@@ -12,14 +12,9 @@ const CabeceraSinBarra = (props) => {
 
   return (
     <div>
-      {/* <div className={comunClass.logoAchsContainer}>
-        <Typography
-          variant="p"
-          component="p"
-          className={comunClass.tituloACHS}
-        ></Typography>
-      </div> */}
-      <div className={spaceStyle.space1} />
+
+        <div className={spaceStyle.space1} />
+
       <div className={comunClass.buttonVolverContainerBarra}>
         <Link href="#" onClick={() => dispatch()}>
           <ArrowBackIosIcon style={{ color: color }} /> 

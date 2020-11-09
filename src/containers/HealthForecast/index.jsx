@@ -49,10 +49,7 @@ const HealthForecast = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -61,7 +58,7 @@ const HealthForecast = (props) => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Selecciona la 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
           &nbsp;Previsión de salud
@@ -73,7 +70,7 @@ const HealthForecast = (props) => {
           </Grid>
         </div>
       </div>
-      <div className={comunClass.boxDesk}>
+      <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.displayMobile}> 
           <div className={spaceStyle.space2} />
         </div>
