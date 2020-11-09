@@ -56,7 +56,7 @@ const SinBPInfoPersonal2 = () => {
   const spaceStyle = getSpaceStyle();
 
   const clickConfirmar = () => {
-     dispatch(updateForm("bpForm", {nacionalidad, pais, idioma}));
+     dispatch(updateForm("bpForm2", {nacionalidad, pais, idioma}));
      dispatch(handleSetStep(5.4));
   };
 
