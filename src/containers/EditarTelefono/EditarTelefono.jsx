@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { getComunStyle } from "../../css/comun";
 import { Button, Typography, withStyles } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import InputMasked from "./InputMasked";
@@ -12,11 +12,14 @@ import { Pipes } from "./phone";
 import Grid from '@material-ui/core/Grid';
 import Switch from '@material-ui/core/Switch';
 import { ErrorOutline } from "@material-ui/icons";
+import Header from "../../components/header/index";
 
 const EditarTelefono = () => {
   const {
     addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado },
   } = useSelector((state) => state, shallowEqual);
+
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
 
@@ -27,15 +30,7 @@ const EditarTelefono = () => {
     return TelefonoEmpleado ? true : false;
   });
 
-  const {
-    root,
-    buttonAchs,
-    tituloTextbox,
-    bottomElement,
-    titleBlack,
-    titleBlue
-  } = getComunStyle();
-  
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle()
 
@@ -75,75 +70,88 @@ const EditarTelefono = () => {
   })(Switch);
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.1))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack} variant="h2">
-        Ingresa el 
-        <Grid component="span"  className={titleBlue}>
-        &nbsp;teléfono personal
-        </Grid>          
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <Typography className={tituloTextbox} variant="h2">
-        Teléfono
-      </Typography>
-
-      <InputMasked
-        mask={Mask.advanced}
-        setTelefonoIsValid={setTelefonoIsValid}
-        setTelefono={setTelefono}
-        handleOnChange={handleOnChange}
-        telefono={telefono}
-        disabled={stateCheck}
-      />
-
-    <div className={spaceStyle.space1} />
-
-    <div className={welcomeStyle.titleContainerCards2}>
-      <div  className={welcomeStyle.divRowBottom2}>
-          <ErrorOutline />
-          <Typography
-            variant="p"
-            component="p"
-            className={welcomeStyle.itemText2}
-          >
-            Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
-          </Typography>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
-      <div  className={welcomeStyle.divRowBottom2}>
-        <Typography
-              variant="p"
-              component="p"
-              className={welcomeStyle.pBegin}
-            >
-              ¿Está seguro de continuar?
-        </Typography>
-      </div>
-      <div  className={welcomeStyle.divRowBottom2}>
-        <CustomSwitch
-          checked={stateCheck}
-          onChange={handleChange}
-          color="default"
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(5.1))}
+          percentage={percentage}
         />
       </div>
-    </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+          Ingresa el 
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;teléfono personal
+          </Grid>          
+        </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextBox}>
+            Teléfono
+          </Typography>
+          <InputMasked
+            mask={Mask.advanced}
+            setTelefonoIsValid={setTelefonoIsValid}
+            setTelefono={setTelefono}
+            handleOnChange={handleOnChange}
+            telefono={telefono}
+            disabled={stateCheck}
+          />
+          <div className={spaceStyle.space1} />
 
-
-      <div className={bottomElement}>
-        <Button
-          variant="contained"
-          className={buttonAchs}
-          disabled={!telefonoIsValid}
-          onClick={() => {
-            dispatch(updateForm("telefonoParticular", telefono));
-            dispatch(handleSetStep(5.1));
-          }}
-        >
-          Actualizar
-        </Button>
+          <div className={welcomeStyle.titleContainerCardsEmail}>
+            <div  className={welcomeStyle.divRowBottomEmail}>
+                <ErrorOutline />
+                <Typography
+                  variant="p"
+                  component="p"
+                  className={welcomeStyle.itemText2}
+                >
+                  Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
+                </Typography>
+            </div>
+            <div className={welcomeStyle.divRowBottomEmail}>
+              <Typography className={welcomeStyle.pBegin}>
+                ¿Está seguro de continuar?
+              </Typography>
+            </div>
+            <div  className={welcomeStyle.divRowBottomEmail}>
+              <CustomSwitch
+                checked={stateCheck}
+                onChange={handleChange}
+                color="default"
+              />
+            </div>
+          </div>
+        </div> 
+        <div className={comunClass.bottomElement}>
+          <Button
+            variant="contained"
+            className={comunClass.buttonAchs}
+            disabled={!telefonoIsValid}
+            onClick={() => {
+              dispatch(updateForm("telefonoParticular", telefono));
+              dispatch(handleSetStep(5.1));
+            }}
+          >
+            Actualizar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

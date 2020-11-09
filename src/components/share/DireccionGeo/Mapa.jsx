@@ -26,7 +26,6 @@ const Mapa = (props) => {
             }
         }
     }
-     
 
     // useEffect((lat,lng, lookForDirection, LatTemporal, LongTemporal, DireccionTemporal, setDireccion, setPlaceId)=>{
     useEffect(()=>{
@@ -50,8 +49,6 @@ const Mapa = (props) => {
         }
     };
 
-
-
     return(
         <div>     
             <Map
@@ -74,7 +71,7 @@ const Mapa = (props) => {
                     position: "absolute",
                     right: "0",
                     left: "0",
-                    bottom: "6.5em",
+                    bottom: "8.5em",
             }}>
                 <Typography style={{
                     fontFamily: 'Catamaran',

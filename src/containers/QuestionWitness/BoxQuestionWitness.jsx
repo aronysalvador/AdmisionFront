@@ -5,10 +5,11 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import BoxTestigosResponsable from "../../components/Questions/BoxTestigosResponsable";
 import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
+import Header from "../../components/header/index";
 
 const QuestionWitness = (props) => {
-  const { dispatch, addmissionForm } = props;
-  const classesComun = getComunStyle();
+  const { dispatch, addmissionForm, microsoftReducer } = props;
+  const comunClass = getComunStyle();
   const classes = cardSiniestroStyles();
 
   const tituloTestigo = "Testigo";
@@ -19,26 +20,35 @@ const QuestionWitness = (props) => {
   ];
 
   return (
-    <div className={classesComun.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(14))}
-        percentage={addmissionForm.percentage}
-      />
-      <BoxTestigosResponsable
-        titulo={"¿Alguien fue  "}
-        titulo2={"testigo"} 
-        titulo3={" de lo que sucedió?"}
-        tituloTestigo={tituloTestigo}
-        contenidoTestigo={contenidoTestigo}
-        irA={() => dispatch(handleSetStep(15))}
-      />
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(14))}
+          percentage={addmissionForm.percentage}
+        />
+      </div>
+        <BoxTestigosResponsable
+          titulo={"¿Alguien fue  "}
+          titulo2={"testigo"} 
+          titulo3={" de lo que sucedió?"}
+          tituloTestigo={tituloTestigo}
+          contenidoTestigo={contenidoTestigo}
+          irA={() => dispatch(handleSetStep(15))}
+        />
     </div>
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 }
 

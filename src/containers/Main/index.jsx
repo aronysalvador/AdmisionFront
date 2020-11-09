@@ -169,7 +169,7 @@ const Main = (props) => {
       case 5:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <LoadPersonalData />
             </Paper>
           </div>
@@ -329,7 +329,7 @@ const Main = (props) => {
       case 5.833:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <SameDateSinister />
             </Paper>
           </div>
@@ -337,7 +337,7 @@ const Main = (props) => {
       case 5.9:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <ContinueSAP />
             </Paper>
           </div>
@@ -366,7 +366,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 8.1: //Verificar numeración del case
+      case 8.1: 
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -534,7 +534,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 21:
+      case 21: 
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -649,7 +649,7 @@ const Main = (props) => {
       case 1002:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperFix}>
               <ErrorCaso />
             </Paper>
           </div>

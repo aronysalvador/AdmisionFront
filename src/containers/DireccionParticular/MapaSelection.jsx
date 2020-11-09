@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react"
-import { getComunStyle } from "../../css/comun"
-import { Button, Typography } from "@material-ui/core"
-import Cabecera from "../../components/cabecera/index"
+import React, { useState, useEffect } from "react";
+import { getComunStyle } from "../../css/comun";
+import { getSpaceStyle } from "../../css/spaceStyle";
+import { Button, Typography } from "@material-ui/core";
+import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import Mapa from '../../components/share/DireccionGeo/Mapa'
+import Header from "../../components/header/index";
 
 const MapaSelection = () => {
 
@@ -17,6 +19,7 @@ const MapaSelection = () => {
     addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal },
   } = useSelector((state) => state, shallowEqual)
 
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual)
 
   useEffect(()=>{
       getLocation()
@@ -40,8 +43,8 @@ const MapaSelection = () => {
             })
         },
         function(error) {
-             console.error("Error Code = " + error.code + " - " + error.message);
-             setCoords({
+            console.error("Error Code = " + error.code + " - " + error.message);
+            setCoords({
               latitude: 'notset',
               longitude: 'notset',
             })
@@ -50,7 +53,8 @@ const MapaSelection = () => {
     );
   }
 
-  const comun = getComunStyle()
+  const comunClass = getComunStyle()
+  const spaceStyle = getSpaceStyle();
 
   const handleSelect = async() => {
 
@@ -73,7 +77,6 @@ const MapaSelection = () => {
     ))
 
     dispatch(handleSetStep(5.2))
-   
   }
 
   const googleMapsGetMap = async(placeId) => {
@@ -85,45 +88,55 @@ const MapaSelection = () => {
     }
 }
 
-
   return (
-    <div className={comun.rootContainer}> 
-
-      <div style={{padding: '0.5em'}}> 
-        <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.2))}
-          percentage={percentage}
-          noSpace={true}
+    <div className={comunClass.rootContainer}> 
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
         />
       </div>
-
-        {coords ? (
-               <Mapa 
-                  lat={coords.latitude}
-                  lng={coords.longitude}
-                  direccion={direccion}
-                  setDireccion={setDireccion}
-                  setPlaceId={setPlaceId}    
-                  DireccionTemporal={DireccionTemporal}
-                  LatTemporal={LatTemporal}     
-                  LongTemporal={LongTemporal}   
-               />
-        ) : (
-           <Typography>Cargando....</Typography>
-        )}
-
-
-      <div className={comun.bottomElement} style={{padding: '0 20px 20px 20px'}}>
-        <Button
-          className={comun.buttonAchs}
-          variant="contained"
-          disabled={direccion ? false : true}
-          onClick={() => {
-            handleSelect()
-          }}
-        >
-          Seleccionar dirección
-        </Button>
+      <div className={comunClass.beginContainerDesk}>
+        <div style={{padding: '0.5em'}}> 
+          <Cabecera
+            dispatch={() => dispatch(handleSetStep(5.2))}
+            percentage={percentage}
+            noSpace={true}
+          />
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
+      <div className={comunClass.boxDeskMap}>
+        <div>
+          {coords ? (
+            <Mapa 
+              lat={coords.latitude}
+              lng={coords.longitude}
+              direccion={direccion}
+              setDireccion={setDireccion}
+              setPlaceId={setPlaceId}    
+              DireccionTemporal={DireccionTemporal}
+              LatTemporal={LatTemporal}     
+              LongTemporal={LongTemporal}   
+            />
+          ) : (
+            <Typography>Cargando....</Typography>
+          )}
+        </div>
+        <div className={[comunClass.bottomElementMap]} style={{padding: '0 20px 20px 20px'}}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            disabled={direccion ? false : true}
+            onClick={() => {
+              handleSelect()
+            }}
+          >
+            Seleccionar dirección
+          </Button>
+        </div>
       </div>
     </div>
   )

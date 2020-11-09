@@ -3,22 +3,20 @@ import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
-import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
 import { Format } from "../../helpers/strings";
+import Header from "../../components/header/index";
 
 const PersonalData = (props) => {
-  const { dispatch, addmissionForm } = props;
+  const { dispatch, addmissionForm, microsoftReducer } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const contenidoSiniestros = addmissionForm.siniestros;
   const { origen, siniestroTemp } = addmissionForm.siniestroOpciones;
-
-
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
@@ -61,7 +59,7 @@ const PersonalData = (props) => {
       dispatch(handleSetStep(STEP));
     } else {
       if(origen === "sameDate"){ //Si ya estaba creando la admisión
-       dispatch(handleSetStep(11));
+        dispatch(handleSetStep(11));
       }else{
         dispatch(handleSetStep(5.833));
       }
@@ -76,70 +74,82 @@ const PersonalData = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <div>
-        <CabeceraSinBarra
-          dispatch={() => dispatch(handleSetStep(5.83))}
-          color="#373737"
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
         />
-        <div className={spaceStyle.space2} />
-        <div>
+      </div>
+      <div>
+        <div className={comunClass.beginContainerDesk}>
+          <CabeceraSinBarra dispatch={() => dispatch(handleSetStep(5.83))} color="#373737" />
+        </div>
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
+        <div className={comunClass.titlePrimaryDesk}>
           {origen === "getRut" ? (
-            <Typography
-              variant="p"
-              component="p"
-              className={comunClass.titleBlack}>
-             {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} <br/> tiene&nbsp;
-              <Grid component="span"  className={comunClass.titleBlue}>
-                &nbsp;{contenidoSiniestros.length} siniestros
+            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} 
+              <br/>tiene&nbsp;
+              <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                {contenidoSiniestros.length} siniestros
               </Grid>                   
               &nbsp;creados
-            </Typography>
+            </Grid>
           ) : (
-            <Typography
-              variant="p"
-              component="p"
-              className={comunClass.titleBlack}
-            >
+            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} tiene
-              <Grid component="span"  className={comunClass.titleBlue}>
+              <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 &nbsp;este siniestro
               </Grid>                 
               &nbsp;creado
-            </Typography>
+            </Grid>
           )}
+          <div className={comunClass.displayDeskImg}>
+            <Grid component="span" className={comunClass.imgPrimaryDesk}>
+              <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+            </Grid>
+          </div>
         </div>
-        <div>
-        {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2}
-        </div>)
-        : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
+        <div className={comunClass.boxDesk}>
+          <div>
+          {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2} </div>)
+          : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
+          </div>
+          
+          <div className={comunClass.bottomElement}>
+            <div className={comunClass.paddingElement}>
+              <Button
+                className={[comunClass.buttonAchs, comunClass.buttonAchsSiniester]}
+                onClick={() => dispatch(handleSetStep(5.9))}
+              >
+                Continuar en SAP
+              </Button>
+              <div className={comunClass.displayMobile}>
+                <div className={spaceStyle.space1} />
+              </div>
+              <Button
+                className={[comunClass.buttonAchs2, comunClass.buttonAchsSiniester2]}
+                onClick={() => handleNext()}
+              >
+                Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
+              </Button>
+            </div>
+          </div>
         </div>
-
       </div>
-
-      <div>
-        <div className={comunClass.bottomElement}>
-          <Button
-            className={comunClass.buttonAchs}
-            onClick={() => dispatch(handleSetStep(5.9))}
-          >
-            Continuar en SAP
-          </Button>
-          <div className={spaceStyle.space1} />
-          <Button
-            className={comunClass.buttonAchs2}
-            onClick={() => handleNext()}
-          >
-            Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
-          </Button>
-        </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 }
 

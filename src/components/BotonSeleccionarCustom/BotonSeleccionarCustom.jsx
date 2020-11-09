@@ -68,14 +68,7 @@ const BotonSeleccionarCustom = (props) => {
               //dispatch(handleSetStep(26.4));
             }
           }
-          
-          
-          
-          
-          
-          
-          
-          
+
           else {
             dispatch(
               updateForm(

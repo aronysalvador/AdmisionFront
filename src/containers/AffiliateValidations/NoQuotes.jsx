@@ -7,10 +7,11 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoQuotesCard from './NoQuotesCard';
+import Header from "../../components/header/index";
 
 const NoQuotes = (props) => {
 
-  const { dispatch } = props;
+  const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
@@ -18,11 +19,23 @@ const NoQuotes = (props) => {
 
   return (
     <div>
-      <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.1))} 
-        color="#FFFFFF"
-      />
-      <div className={blackStyle.root} style={{height: "40em"}}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space1} />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <CabeceraSinBarra
+          dispatch={() => dispatch(handleSetStep(5.1))} 
+          color="#FFFFFF"
+        />
+      </div>
+      <div className={blackStyle.root}>
+      {/* style={{height: "40em"}}  */}
         <img
           alt="load"
           src="./static/error-siniestro.svg"
@@ -31,49 +44,56 @@ const NoQuotes = (props) => {
         <div className={spaceStyle.space1} />
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textWarning}
         >
         ¡Atención!
         </Typography>
         <Typography
           color="textSecondary"
-          gutterBottom
           className={blackStyle.textNoAfiliate}
         >
-          No tenemos cotizaciones por este paciente
+          No tenemos cotizaciones&nbsp;
+          <br className={comunClass.displayDesk}/> 
+          por este paciente
         </Typography>
         <div className={spaceStyle.space1} />
-        
-        <NoQuotesCard />
-        {/* <div className={spaceStyle.space2} /> */}
-  
-        <div className={comunClass.bottomElement}>
-          <Button
-            className={blackStyle.buttonFooter}
-            onClick={() => {
-              dispatch(handleSetStep(5.7));
-            }}
-          >
-            Continuar admisión
-          </Button>
-          {/* <div className={spaceStyle.spaceMin1} /> */}
-          <Button
-            className={blackStyle.buttonFooter2}
-            onClick={() => {
-              dispatch(handleSetStep(1.1));
-            }}
-          >
-            Volver al inicio
-          </Button>
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space1} />
         </div>
+
+        <NoQuotesCard />
+        <div className={blackStyle.containerBottom}>
+          <div className={comunClass.bottomElement}>
+            <Button
+              className={blackStyle.buttonFooter}
+              onClick={() => {
+                dispatch(handleSetStep(5.7));
+              }}
+            >
+              Continuar admisión
+            </Button>
+            {/* <div className={spaceStyle.spaceMin1} /> */}
+            <Button
+              className={blackStyle.buttonFooter2}
+              onClick={() => {
+                dispatch(handleSetStep(1.1));
+              }}
+            >
+              Volver al inicio
+            </Button>
+          </div>
+        </div> 
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(NoQuotes);
