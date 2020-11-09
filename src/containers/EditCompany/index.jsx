@@ -11,7 +11,7 @@ import { getSucursales } from "../../redux/actions/SucursalesAction";
 import Header from "../../components/header/index";
 
 const EditCompany = () => {
-  const { percentage, razonSocial, rutEmpresa } = useSelector(
+  const { percentage, razonSocial, rutEmpresa, creacionBP } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);

@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import DateMasked from "./DateMasked";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
 
 //Action de Redux
-import { sendCargo } from "../../redux/actions/AdmissionAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -86,28 +82,24 @@ const SinBPInfoPersonal1 = () => {
         percentage={percentage}
       />
       <div>
-        <Typography
-          variant="p"
-          component="p"
+        <Grid
           className={classesComun.titleBlack}
         >
           Identifica la información
           <Grid component="span" className={classesComun.titleBlue}>
             &nbsp;personal del paciente
           </Grid>
-        </Typography>
+        </Grid>
       </div>
       <div className={spaceStyle.space2} />
 
-      <div className={classesComun.siniesterList}>
+      <Grid className={[classesComun.bpList, classesComun.siniesterList]}>
         <div>
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[classesComun.tituloTextbox]}
           >
             Nombres
-          </Typography>
+          </Grid>
         </div>
 
         <div>
@@ -145,13 +137,11 @@ const SinBPInfoPersonal1 = () => {
         <div className={spaceStyle.space1} />
 
         <div>
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[classesComun.tituloTextbox]}
           >
             Apellido Paterno
-          </Typography>
+          </Grid>
         </div>
 
         <div>
@@ -186,13 +176,11 @@ const SinBPInfoPersonal1 = () => {
         <div className={spaceStyle.space1} />
 
         <div>
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[classesComun.tituloTextbox]}
           >
             Apellido Materno
-          </Typography>
+          </Grid>
         </div>
 
         <div>
@@ -244,13 +232,13 @@ const SinBPInfoPersonal1 = () => {
             }}
           >
             <div>
-              <Typography
+              <Grid
                 variant="p"
                 component="p"
                 className={[classesComun.tituloTextbox]}
               >
                 Sexo
-              </Typography>
+              </Grid>
             </div>
 
             <div>
@@ -288,13 +276,13 @@ const SinBPInfoPersonal1 = () => {
             }}
           >
             <div>
-              <Typography
+              <Grid
                 variant="p"
                 component="p"
                 className={[classesComun.tituloTextbox]}
               >
                 Fecha de Nacimiento
-              </Typography>
+              </Grid>
             </div>
 
             <div>
@@ -328,13 +316,11 @@ const SinBPInfoPersonal1 = () => {
         <div className={spaceStyle.space1} />
 
         <div>
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[classesComun.tituloTextbox]}
           >
             Fecha de Nacimiento
-          </Typography>
+          </Grid>
         </div>
 
         <div>
@@ -400,13 +386,11 @@ const SinBPInfoPersonal1 = () => {
         <div className={spaceStyle.space1} />
 
         <div>
-          <Typography
-            variant="p"
-            component="p"
+          <Grid
             className={[classesComun.tituloTextbox]}
           >
             Sexo
-          </Typography>
+          </Grid>
         </div>
 
         <div>
@@ -434,7 +418,7 @@ const SinBPInfoPersonal1 = () => {
             )}
           />
         </div>
-      </div>
+      </Grid>
 
       <div className={classesComun.bottomElement}>
         <Button

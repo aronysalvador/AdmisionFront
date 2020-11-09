@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
@@ -11,7 +11,6 @@ import { getPaises } from "./../../redux/actions/PaisesAction";
 import { getIdiomas } from "./../../redux/actions/IdiomasAction";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
 
 //Action de Redux
 import { sendCargo } from "../../redux/actions/AdmissionAction";
@@ -57,6 +56,7 @@ const SinBPInfoPersonal2 = () => {
 
   const clickConfirmar = () => {
      dispatch(updateForm("bpForm2", {nacionalidad, pais, idioma}));
+     dispatch(updateForm("creacionBP", true));
      dispatch(handleSetStep(5.4));
   };
 
@@ -67,26 +67,22 @@ const SinBPInfoPersonal2 = () => {
         percentage={percentage}
       />
       <div>
-        <Typography
-          variant="p"
-          component="p"
+        <Grid
           className={classesComun.titleBlack}
         >
           Identifica la información
           <Grid component="span" className={classesComun.titleBlue}>
             &nbsp;personal del paciente
           </Grid>
-        </Typography>
+        </Grid>
       </div>
       <div className={spaceStyle.space2} />
       <div>
-        <Typography
-          variant="p"
-          component="p"
+        <Grid
           className={[classesComun.tituloTextbox]}
         >
           Nacionalidad
-          </Typography>
+          </Grid>
       </div>
 
       <div>
@@ -117,13 +113,11 @@ const SinBPInfoPersonal2 = () => {
       </div>
       <div className={spaceStyle.space2} />
       <div>
-        <Typography
-          variant="p"
-          component="p"
+        <Grid
           className={[classesComun.tituloTextbox]}
         >
           País de nacimiento
-          </Typography>
+          </Grid>
       </div>
 
       <div>
@@ -154,13 +148,11 @@ const SinBPInfoPersonal2 = () => {
       </div>
       <div className={spaceStyle.space2} />
       <div>
-        <Typography
-          variant="p"
-          component="p"
+        <Grid
           className={[classesComun.tituloTextbox]}
         >
           Idioma
-          </Typography>
+          </Grid>
       </div>
 
       <div>
