@@ -52,7 +52,8 @@ import DireccionParticular from "../DireccionParticular/index";
 import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
 
 import HasBP from "../AffiliateValidations/HasBP";
-import InfoPersonal1 from "../NoTieneBP/InfoPersonal1";
+import SinBPInfoPersonal1 from "../NoTieneBP/InfoPersonal1";
+import SinBPInfoPersonal2 from "../NoTieneBP/InfoPersonal2";
 
 import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
 import HasSinister from "../AffiliateValidations/HasSinister";
@@ -281,7 +282,15 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <InfoPersonal1 />
+              <SinBPInfoPersonal1 />
+            </Paper>
+          </div>
+        );
+      case 5.813:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <SinBPInfoPersonal2 />
             </Paper>
           </div>
         );
@@ -703,7 +712,7 @@ function mapStateToProps({ addmissionForm, microsoftReducer }) {
 export default connect(mapStateToProps)(Main);
 
 /**
- * 
+ *
  return <SeleccionarSucursalTrabajo />;
 
 

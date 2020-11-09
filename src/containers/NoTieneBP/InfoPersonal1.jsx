@@ -20,12 +20,6 @@ import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 
 const SinBPInfoPersonal1 = () => {
-  // const {
-  //   bpForm: { percentage },
-  // } = useSelector((state) => state.addmissionForm, shallowEqual);
-  // const {
-  //   addmissionForm: { percentage, afpForm, responsable },
-  // } = useSelector((state) => state, shallowEqual);
   const bpForm = useSelector(
     (state) => state.addmissionForm.bpForm,
     shallowEqual
@@ -40,7 +34,6 @@ const SinBPInfoPersonal1 = () => {
   };
 
   //State
-
   const [nombre, saveNombre] = useState(() => {
     return !bpForm.nombre ? "" : Capitalize(bpForm.nombre);
   });
@@ -54,9 +47,7 @@ const SinBPInfoPersonal1 = () => {
   });
 
   const formatDate = (fecha) => {
-    console.log("FECHA", fecha);
     let fechaSplitted = fecha.split("-");
-    console.log("FECHA SPLITTED", fechaSplitted);
     return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
   };
 
@@ -79,14 +70,13 @@ const SinBPInfoPersonal1 = () => {
   const [sexos, setSexo] = useState(["Masculino", "Femenino", "Otro"]);
 
   const handleChange = (event) => {
-    console.log("HANDLE CHANGE", event.target.value);
     saveFechaNacimiento(event.target.value);
   };
 
   const clickConfirmar = () => {
     // dispatch(sendCargo(nombre, cargos));
-    // dispatch(updateForm("testigoForm", nombre + "-" + cargos));
-    // dispatch(handleSetStep(14.1));
+     dispatch(updateForm("bpForm", {nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo}));
+     dispatch(handleSetStep(5.813));
   };
 
   return (
