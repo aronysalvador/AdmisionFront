@@ -41,6 +41,8 @@ export const obtenerValidacion = async (rut) => {
 
 
 export const getValidar = (isValid, rut) => async (dispatch) => {
+  if(rut.length <= 7)
+    return;
   dispatch({
     type: GET_SUCURSALES_INIT,
     payload: true,
