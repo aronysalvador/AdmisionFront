@@ -130,7 +130,7 @@ const Identification = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Ingresa el           
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]} style={{display: "contents"}}>
             &nbsp;RUT o documento de identidad
