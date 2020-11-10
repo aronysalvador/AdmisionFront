@@ -71,8 +71,8 @@ const SinBPInfoPersonal1 = () => {
 
   const clickConfirmar = () => {
     // dispatch(sendCargo(nombre, cargos));
-     dispatch(updateForm("bpForm", {nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo}));
-     dispatch(handleSetStep(5.813));
+    dispatch(updateForm("bpForm", { nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo }));
+    dispatch(handleSetStep(5.813));
   };
 
   return (
@@ -233,8 +233,6 @@ const SinBPInfoPersonal1 = () => {
           >
             <div>
               <Grid
-                variant="p"
-                component="p"
                 className={[classesComun.tituloTextbox]}
               >
                 Sexo
@@ -277,8 +275,6 @@ const SinBPInfoPersonal1 = () => {
           >
             <div>
               <Grid
-                variant="p"
-                component="p"
                 className={[classesComun.tituloTextbox]}
               >
                 Fecha de Nacimiento
@@ -294,7 +290,7 @@ const SinBPInfoPersonal1 = () => {
                 variant="outlined"
                 autoComplete="off"
                 type="text"
-                fullWidth
+                
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -348,39 +344,6 @@ const SinBPInfoPersonal1 = () => {
               ),
             }}
           />
-          {/* <FormControl>
-            <Input
-              value={fechaNacimiento}
-              onChange={handleChange}
-              name="textmask"
-              id="formatted-text-mask-input"
-              inputComponent={DateMasked}
-            />
-          </FormControl> */}
-
-          {/* <TextField
-            id="fechaNacimiento"
-            value={fechaNacimiento}
-            onChange={(e) => saveFechaNacimiento(e.target.value)}
-            margin="dense"
-            variant="outlined"
-            autoComplete="off"
-            type="text"
-            fullWidth
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => {
-                      saveFechaNacimiento("");
-                    }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          /> */}
         </div>
 
         <div className={spaceStyle.space1} />
@@ -418,25 +381,25 @@ const SinBPInfoPersonal1 = () => {
             )}
           />
         </div>
-      </Grid>
+      </Grid> 
 
-      <div className={classesComun.bottomElement}>
-        <Button
-          className={classesComun.buttonAchs}
-          variant="contained"
-          type="submit"
-          disabled={
-            !nombre ||
-            !apellidoPaterno ||
-            !apellidoMaterno ||
-            !fechaNacimiento ||
-            !sexo
-          }
-          onClick={() => clickConfirmar()}
-        >
-          Confirmar
+        <div className={classesComun.bottomElement}>
+          <Button
+            className={classesComun.buttonAchs}
+            variant="contained"
+            type="submit"
+            disabled={
+              !nombre ||
+              !apellidoPaterno ||
+              !apellidoMaterno ||
+              !fechaNacimiento ||
+              !sexo
+            }
+            onClick={() => clickConfirmar()}
+          >
+            Confirmar
         </Button>
-      </div>
+        </div>
     </div>
   );
 };

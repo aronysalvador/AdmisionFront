@@ -20,9 +20,15 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 const SinBPInfoPersonal2 = () => {
   const {
-    addmissionForm: { percentage, nacionalidadForm, idiomaForm, paisForm },
+    addmissionForm: { percentage, bpForm, nacionalidadForm, idiomaForm, paisForm },
   } = useSelector((state) => state, shallowEqual);
+
   
+  const { data: nacionalidadList } = useSelector((state) => state.nacionalidadForm, shallowEqual);
+  const { data: paisesList } = useSelector((state) => state.paisForm, shallowEqual);
+  const { data: idiomasList } = useSelector((state) => state.idiomaForm, shallowEqual);
+
+
   const dispatch = useDispatch();
 
   const initFn = useCallback(() => {
@@ -35,26 +41,37 @@ const SinBPInfoPersonal2 = () => {
     initFn()
   }, [initFn]);
 
-
+  
   const [nacionalidad, setNacionalidad] = useState(() => {
-    return !nacionalidadForm ? "" : nacionalidadForm;
+    console.log("NACIONALIDAD", nacionalidadForm);
+    console.log(nacionalidadList);
+    return !nacionalidadForm ? {nombre: "Chileno"} : nacionalidadForm;
   });
   const [idioma, setIdioma] = useState(() => {
-    return !idiomaForm ? "" : idiomaForm;
+    return !idiomaForm ? {nombre: "Español"} : idiomaForm;
   });
   const [pais, setPais] = useState(() => {
-    return !paisForm ? "" : paisForm;
+    return !paisForm ? {nombre: "Chile"} : paisForm;
   });
-
-  const { data: nacionalidadList } = useSelector((state) => state.nacionalidadForm, shallowEqual);
-  const { data: paisesList } = useSelector((state) => state.paisForm, shallowEqual);
-  const { data: idiomasList } = useSelector((state) => state.idiomaForm, shallowEqual);
 
 
   const classesComun = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const clickConfirmar = () => {
+    dispatch(
+      updateForm("datosAdicionalesSAP", {
+        apellidoMaterno: bpForm.apellidoMaterno,
+        apellidoPaterno: bpForm.apellidoPaterno,
+        nombre: bpForm.nombre,
+        fechaNacimiento: bpForm.fechaNacimiento,
+        masculino: bpForm.sexo == "Masculino" ? "X" : "",
+        femenino:  bpForm.sexo == "Femenino" ? "X" : "",
+        nacionalidad: nacionalidad,
+        lugarNacimiento: "",
+        estadoCivil: "",
+      })
+    );
      dispatch(updateForm("bpForm2", {nacionalidad, pais, idioma}));
      dispatch(updateForm("creacionBP", true));
      dispatch(handleSetStep(5.4));
@@ -63,7 +80,7 @@ const SinBPInfoPersonal2 = () => {
   return (
     <div className={classesComun.root}>
       <Cabecera
-        dispatch={() => dispatch(handleSetStep(3))}
+        dispatch={() => dispatch(handleSetStep(5.812))}
         percentage={percentage}
       />
       <div>
