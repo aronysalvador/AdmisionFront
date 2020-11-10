@@ -15,7 +15,7 @@ const HoraSiniestroDesk = ({
 }) => {
 
   const [inputValue2,setInputValue2]= useState(() =>{
-    return  `${horasFromState}:${indiceMinutosFromState}0`;
+    return !horasFromState? "" : `${horasFromState}:${indiceMinutosFromState}0`;
   })
 
   const comunClass = getComunStyle();
