@@ -701,14 +701,6 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: '28px',
             color: '#373737',
         },
-        // titleBlack2: {
-        //     fontFamily: 'Catamaran',
-        //     fontStyle: 'normal',
-        //     fontWeight: 'bold',
-        //     fontSize: '32px',
-        //     lineHeight: '44px',
-        //     color: '#373737',
-        // },
         titleGray: {
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
@@ -886,6 +878,13 @@ export const getComunStyle = makeStyles((theme) => ({
                 outline: '0px solid slategrey',
                 borderRadius: 4,
             },
+        },
+        bpList: {
+            // paddingRight: '10px',
+            height: '25em !important',
+        },
+        widthDateSex: {
+            width: "48%"
         },
         boxRootRelato: {
             padding: "5px",

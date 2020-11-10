@@ -38,8 +38,8 @@ const SameDateSinister = (props) => {
         <div className={spaceStyle.space1} />
         <Typography className={blackStyle.textMessage2}>
           Este paciente tiene un siniestro activo&nbsp;
-            <br className={comunClass.displayDesk}/>
-            en la misma fecha
+          <br className={comunClass.displayDesk}/>
+          en la misma fecha
         </Typography>
         
         <div className={comunClass.bottomElement} style={{ padding: '1.145em' }}>

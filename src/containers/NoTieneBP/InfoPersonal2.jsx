@@ -11,6 +11,7 @@ import { getPaises } from "./../../redux/actions/PaisesAction";
 import { getIdiomas } from "./../../redux/actions/IdiomasAction";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
+import Header from "../../components/header/index";
 
 //Action de Redux
 //import { sendCargo } from "../../redux/actions/AdmissionAction";
@@ -21,6 +22,7 @@ import TextField from "@material-ui/core/TextField";
 const SinBPInfoPersonal2 = () => {
   const {
     addmissionForm: { percentage, bpForm, nacionalidadForm, idiomaForm, paisForm },
+    microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   
@@ -53,7 +55,7 @@ const SinBPInfoPersonal2 = () => {
   });
 
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const clickConfirmar = () => {
@@ -76,136 +78,135 @@ const SinBPInfoPersonal2 = () => {
   };
 
   return (
-    <div className={classesComun.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.812))}
-        percentage={percentage}
-      />
-      <div>
-        <Grid
-          className={classesComun.titleBlack}
-        >
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(5.812))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={ comunClass.titlePrimaryDesk }>
+        <Grid component="span" className={[comunClass.textPrimaryDesk, comunClass.titleBlack]}>
           Identifica la información
-          <Grid component="span" className={classesComun.titleBlue}>
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;personal del paciente
           </Grid>
         </Grid>
-      </div>
-      <div className={spaceStyle.space2} />
-      <div>
-        <Grid
-          className={[classesComun.tituloTextbox]}
-        >
-          Nacionalidad
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
           </Grid>
+        </div>
       </div>
-
-      <div>
-      <AutoComplete
-        value={nacionalidad}
-        onChange={(event, value) => {
-          setNacionalidad(value);
-        }}
-        style={{ width: 300 }}
-        options={nacionalidadList}
-         getOptionLabel={(option) => option.nombre}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="outlined"
-            InputProps={{
-              ...params.InputProps,
-              style: {
-                paddingTop: "3px",
-                paddingBottom: "3px",
-                paddingLeft: "5xp",
-                marginTop: "7px",
-              },
-            }}
-          />
-        )}
-      />
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
+        <div className={comunClass.containerTextBox}>
+          <div>
+            <Grid className={[comunClass.tituloTextBox]}>
+              Nacionalidad
+            </Grid>
+          
+            <AutoComplete
+              value={nacionalidad}
+              onChange={(event, value) => {
+                setNacionalidad(value);
+              }}
+              options={nacionalidadList}
+              getOptionLabel={(option) => option.nombre}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      paddingTop: "3px",
+                      paddingBottom: "3px",
+                      paddingLeft: "5xp",
+                      marginTop: "7px",
+                    },
+                  }}
+                />
+              )}
+            />
+          </div>
+          <div className={spaceStyle.space2} />
+          <div>
+            <Grid className={[comunClass.tituloTextBox]}>
+              País de nacimiento
+            </Grid>
+            <AutoComplete
+              value={pais}
+              onChange={(event, value) => {
+                setPais(value);
+              }}
+              options={paisesList}
+              getOptionLabel={(option) => option.nombre}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      paddingTop: "3px",
+                      paddingBottom: "3px",
+                      paddingLeft: "5xp",
+                      marginTop: "7px",
+                    },
+                  }}
+                />
+              )}
+            />
+          </div>
+          <div className={spaceStyle.space2} />
+          <div>
+            <Grid className={[comunClass.tituloTextBox]}>
+              Idioma
+            </Grid>
+            <AutoComplete
+              value={idioma}
+              onChange={(event, value) => {
+                setIdioma(value);
+              }}
+              options={idiomasList}
+              getOptionLabel={(option) => option.nombre}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      paddingTop: "3px",
+                      paddingBottom: "3px",
+                      paddingLeft: "5xp",
+                      marginTop: "7px",
+                    },
+                  }}
+                />
+              )}
+            />
+          </div>
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            type="submit"
+            onClick={() => clickConfirmar()}
+          >
+            Confirmar
+          </Button>
+        </div>
       </div>
-      <div className={spaceStyle.space2} />
-      <div>
-        <Grid
-          className={[classesComun.tituloTextbox]}
-        >
-          País de nacimiento
-          </Grid>
-      </div>
-
-      <div>
-      <AutoComplete
-        value={pais}
-        onChange={(event, value) => {
-          setPais(value);
-        }}
-        style={{ width: 300 }}
-        options={paisesList}
-         getOptionLabel={(option) => option.nombre}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="outlined"
-            InputProps={{
-              ...params.InputProps,
-              style: {
-                paddingTop: "3px",
-                paddingBottom: "3px",
-                paddingLeft: "5xp",
-                marginTop: "7px",
-              },
-            }}
-          />
-        )}
-      />
-      </div>
-      <div className={spaceStyle.space2} />
-      <div>
-        <Grid
-          className={[classesComun.tituloTextbox]}
-        >
-          Idioma
-          </Grid>
-      </div>
-
-      <div>
-      <AutoComplete
-        value={idioma}
-        onChange={(event, value) => {
-          setIdioma(value);
-        }}
-        style={{ width: 300 }}
-        options={idiomasList}
-         getOptionLabel={(option) => option.nombre}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="outlined"
-            InputProps={{
-              ...params.InputProps,
-              style: {
-                paddingTop: "3px",
-                paddingBottom: "3px",
-                paddingLeft: "5xp",
-                marginTop: "7px",
-              },
-            }}
-          />
-        )}
-      />
-      </div>
-
-      <div className={classesComun.bottomElement}>
-        <Button
-          className={classesComun.buttonAchs}
-          variant="contained"
-          type="submit"
-          onClick={() => clickConfirmar()}
-        >
-          Confirmar
-        </Button>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

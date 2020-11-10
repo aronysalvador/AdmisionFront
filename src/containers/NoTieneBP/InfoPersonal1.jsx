@@ -14,16 +14,17 @@ import AutoComplete from "@material-ui/lab/Autocomplete";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
+import Header from "../../components/header/index";
 
 const SinBPInfoPersonal1 = () => {
   const bpForm = useSelector(
     (state) => state.addmissionForm.bpForm,
     shallowEqual
   );
-
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const Capitalize = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -76,227 +77,64 @@ const SinBPInfoPersonal1 = () => {
   };
 
   return (
-    <div className={classesComun.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(3))}
-        percentage={percentage}
-      />
-      <div>
-        <Grid
-          className={classesComun.titleBlack}
-        >
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(3))}
+          percentage={percentage}
+        />
+      </div>
+      
+      <div className={ comunClass.titlePrimaryDesk }>
+        <Grid component="span" className={[comunClass.textPrimaryDesk, comunClass.titleBlack]}>
           Identifica la información
-          <Grid component="span" className={classesComun.titleBlue}>
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;personal del paciente
           </Grid>
         </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
       </div>
-      <div className={spaceStyle.space2} />
-
-      <Grid className={[classesComun.bpList, classesComun.siniesterList]}>
-        <div>
-          <Grid
-            className={[classesComun.tituloTextbox]}
-          >
-            Nombres
-          </Grid>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space1} />
         </div>
-
-        <div>
-          <TextField
-            id="nombre"
-            value={nombre}
-            onChange={(e) => saveNombre(e.target.value)}
-            margin="dense"
-            variant="outlined"
-            autoComplete="off"
-            type="text"
-            fullWidth
-            InputProps={{
-              style: { textTransform: "capitalize !important" },
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  style={{
-                    textTransform: "capitalize !important",
-                  }}
-                >
-                  <IconButton
-                    onClick={() => {
-                      saveNombre("");
-                    }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </div>
-
-        <div className={spaceStyle.space1} />
-
-        <div>
-          <Grid
-            className={[classesComun.tituloTextbox]}
-          >
-            Apellido Paterno
-          </Grid>
-        </div>
-
-        <div>
-          <TextField
-            id="apellidoPaterno"
-            value={apellidoPaterno}
-            onChange={(e) => saveApellidoPaterno(e.target.value)}
-            margin="dense"
-            variant="outlined"
-            autoComplete="off"
-            type="text"
-            fullWidth
-            InputProps={{
-              style: {
-                textTransform: "capitalize",
-              },
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => {
-                      saveApellidoPaterno("");
-                    }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </div>
-
-        <div className={spaceStyle.space1} />
-
-        <div>
-          <Grid
-            className={[classesComun.tituloTextbox]}
-          >
-            Apellido Materno
-          </Grid>
-        </div>
-
-        <div>
-          <TextField
-            id="apellidoMaterno"
-            value={apellidoMaterno}
-            onChange={(e) => saveApellidoMaterno(e.target.value)}
-            margin="dense"
-            variant="outlined"
-            autoComplete="off"
-            type="text"
-            fullWidth
-            InputProps={{
-              style: {
-                textTransform: "capitalize !important",
-              },
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => {
-                      saveApellidoMaterno("");
-                    }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </div>
-
-        {/* <div className={spaceStyle.space1} />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            flexDirection: "row",
-            flexWrap: "wrap",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexDirection: "column",
-              flexWrap: "wrap",
-              width: "55%",
-            }}
-          >
+        <div className={comunClass.containerTextBox}>
+          {/* <Grid className={[comunClass.bpList, comunClass.siniesterList]}> */}
             <div>
-              <Grid
-                className={[classesComun.tituloTextbox]}
-              >
-                Sexo
+              <Grid className={[comunClass.tituloTextBox]}>
+                Nombres
               </Grid>
-            </div>
-
-            <div>
-              <AutoComplete
-                value={sexo}
-                onChange={(event, value) => {
-                  saveSexo(value);
-                }}
-                options={sexos}
-                getOptionLabel={(option) => option}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    InputProps={{
-                      ...params.InputProps,
-                      style: {
-                        paddingTop: "3px",
-                        paddingBottom: "3px",
-                        paddingLeft: "5xp",
-                        marginTop: "7px",
-                      },
-                    }}
-                  />
-                )}
-              />
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexDirection: "column",
-              flexWrap: "wrap",
-            }}
-          >
-            <div>
-              <Grid
-                className={[classesComun.tituloTextbox]}
-              >
-                Fecha de Nacimiento
-              </Grid>
-            </div>
-
-            <div>
               <TextField
-                id="fechaNacimiento"
-                value={fechaNacimiento}
-                onChange={(e) => saveFechaNacimiento(e.target.value)}
+                id="nombre"
+                value={nombre}
+                onChange={(e) => saveNombre(e.target.value)}
                 margin="dense"
                 variant="outlined"
                 autoComplete="off"
                 type="text"
-                
+                fullWidth
                 InputProps={{
+                  style: {
+                    textTransform: "capitalize !important",
+                    paddingRight: "0",
+                  },
                   endAdornment: (
-                    <InputAdornment position="end">
+                    <InputAdornment
+                      position="end"
+                      style={{
+                        textTransform: "capitalize !important",
+                      }}
+                    >
                       <IconButton
                         onClick={() => {
-                          saveFechaNacimiento("");
+                          saveNombre("");
                         }}
                       >
                         <ClearIcon />
@@ -306,86 +144,150 @@ const SinBPInfoPersonal1 = () => {
                 }}
               />
             </div>
-          </div>
-        </div> */}
 
-        <div className={spaceStyle.space1} />
+            <div className={spaceStyle.space1} />
 
-        <div>
-          <Grid
-            className={[classesComun.tituloTextbox]}
-          >
-            Fecha de Nacimiento
-          </Grid>
-        </div>
-
-        <div>
-          <TextField
-            id="fechaNacimiento"
-            value={fechaNacimiento}
-            onChange={(e) => saveFechaNacimiento(e.target.value)}
-            margin="dense"
-            variant="outlined"
-            autoComplete="off"
-            type="text"
-            fullWidth           
-            InputProps={{
-              inputComponent:DateMasked,
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => {
-                      saveFechaNacimiento("");
-                    }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </div>
-
-        <div className={spaceStyle.space1} />
-
-        <div>
-          <Grid
-            className={[classesComun.tituloTextbox]}
-          >
-            Sexo
-          </Grid>
-        </div>
-
-        <div>
-          <AutoComplete
-            value={sexo}
-            onChange={(event, value) => {
-              saveSexo(value);
-            }}
-            options={sexos}
-            getOptionLabel={(option) => option}
-            renderInput={(params) => (
+            <div>
+              <Grid className={[comunClass.tituloTextBox]}>
+                Apellido Paterno
+              </Grid>
               <TextField
-                {...params}
+                id="apellidoPaterno"
+                value={apellidoPaterno}
+                onChange={(e) => saveApellidoPaterno(e.target.value)}
+                margin="dense"
                 variant="outlined"
+                autoComplete="off"
+                type="text"
+                fullWidth
                 InputProps={{
-                  ...params.InputProps,
                   style: {
-                    paddingTop: "3px",
-                    paddingBottom: "3px",
-                    paddingLeft: "5xp",
-                    marginTop: "7px",
+                    textTransform: "capitalize !important",
+                    paddingRight: "0",
                   },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={() => {
+                          saveApellidoPaterno("");
+                        }}
+                      >
+                        <ClearIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
                 }}
               />
-            )}
-          />
-        </div>
-      </Grid> 
+            </div>
 
-        <div className={classesComun.bottomElement}>
+            <div className={spaceStyle.space1} />
+
+            <div>
+              <Grid className={[comunClass.tituloTextBox]}>
+                Apellido Materno
+              </Grid>
+              <TextField
+                id="apellidoMaterno"
+                value={apellidoMaterno}
+                onChange={(e) => saveApellidoMaterno(e.target.value)}
+                margin="dense"
+                variant="outlined"
+                autoComplete="off"
+                type="text"
+                fullWidth
+                InputProps={{
+                  style: {
+                    textTransform: "capitalize !important",
+                    paddingRight: "0",
+                  },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={() => {
+                          saveApellidoMaterno("");
+                        }}
+                      >
+                        <ClearIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+
+            <div className={spaceStyle.space1} />
+            <div className={comunClass.paddingElement}>
+              <div className={[comunClass.widthDateSex]}>
+                <Grid className={[comunClass.tituloTextBox]}>
+                  Fecha de Nacimiento
+                </Grid>
+                <TextField
+                  id="fechaNacimiento"
+                  value={fechaNacimiento}
+                  onChange={(e) => saveFechaNacimiento(e.target.value)}
+                  margin="dense"
+                  variant="outlined"
+                  autoComplete="off"
+                  type="text"
+                  fullWidth           
+                  InputProps={{
+                    inputComponent:DateMasked,
+                    style: {
+                      marginRight: "10px",
+                      paddingRight: "0",
+                    },
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={() => {
+                            saveFechaNacimiento("");
+                          }}
+                        >
+                          <ClearIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+
+              <div className={spaceStyle.space1} />
+
+              <div className={[comunClass.widthDateSex]}>
+                <Grid className={[comunClass.tituloTextBox]}>
+                  Sexo
+                </Grid>
+                <AutoComplete
+                  value={sexo}
+                  onChange={(event, value) => {
+                    saveSexo(value);
+                  }}
+                  options={sexos}
+                  getOptionLabel={(option) => option}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      variant="outlined"
+                      InputProps={{
+                        ...params.InputProps,
+                        style: {
+                          paddingTop: "3px",
+                          paddingBottom: "3px",
+                          paddingLeft: "5xp",
+                          paddingRight: "0",
+                          marginTop: "6px",
+                        },
+                      }}
+                    />
+                  )}
+                />
+              </div>
+            </div>
+          {/* </Grid>  */}
+        </div>
+        <div className={comunClass.bottomElement}>
           <Button
-            className={classesComun.buttonAchs}
+            className={comunClass.buttonAchs}
             variant="contained"
             type="submit"
             disabled={
@@ -398,8 +300,12 @@ const SinBPInfoPersonal1 = () => {
             onClick={() => clickConfirmar()}
           >
             Confirmar
-        </Button>
+          </Button>
         </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
     </div>
   );
 };
