@@ -5,9 +5,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import { ThemeProvider } from "@material-ui/styles";
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
-import specialBlue from "./../../util/color/specialBlue";
-import { createMuiTheme } from "@material-ui/core";
-
+import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
 
 const FechaSiniestroDesk = ({
   onChange,
@@ -29,13 +27,6 @@ const FechaSiniestroDesk = ({
 
   const comunClass = getComunStyle();
 
-  const defaultMaterialTheme = createMuiTheme({
-    palette: {
-        primary: specialBlue,
-    },
-
-  });
-
   const onDateChange = (date, value) => {
     setInputValue(value);
     let fechaSplit=value.split('-')
@@ -52,7 +43,7 @@ const FechaSiniestroDesk = ({
         </Grid>
       </div>
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={"es"}>
-        <ThemeProvider theme={defaultMaterialTheme}>
+        <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
             inputVariant="outlined"
             disableFuture
@@ -64,11 +55,7 @@ const FechaSiniestroDesk = ({
             InputAdornmentProps={{ position: 'start'}}
             fullWidth
             invalidDateMessage="Formato invalido"
-            keyboardIcon={
-            <svg  width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 9V11H4V9H6ZM10 9V11H8V9H10ZM14 9V11H12V9H14ZM16 2C16.5304 2 17.0391 2.21071 17.4142 2.58579C17.7893 2.96086 18 3.46957 18 4V18C18 18.5304 17.7893 19.0391 17.4142 19.4142C17.0391 19.7893 16.5304 20 16 20H2C1.46957 20 0.960859 19.7893 0.585786 19.4142C0.210714 19.0391 0 18.5304 0 18V4C0 3.46957 0.210714 2.96086 0.585786 2.58579C0.960859 2.21071 1.46957 2 2 2H3V0H5V2H13V0H15V2H16ZM16 18V7H2V18H16ZM6 13V15H4V13H6ZM10 13V15H8V13H10ZM14 13V15H12V13H14Z" fill="#787878"/>
-            </svg>}
-
+            keyboardIcon={<img alt="calendar" src="static/iconCalendar.svg"/>}
       />
       </ThemeProvider>
       </MuiPickersUtilsProvider>          
