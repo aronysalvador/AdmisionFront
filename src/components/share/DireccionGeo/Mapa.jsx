@@ -20,7 +20,6 @@ const Mapa = (props) => {
             const test = await fetch(`${process.env.REACT_APP_GEO_DIRECTION}?lat=${lat}&lng=${lng}`)
             const json = await test.json()      
             if(json){
-                console.log(json.content[0].results[0].formatted_address)
                 setDireccion(json.content[0].results[0].formatted_address)
                 setPlaceId(json.content[0].results[0].place_id)
             }
@@ -42,8 +41,6 @@ const Mapa = (props) => {
         const { latLng } = coord;
         const lat = latLng.lat();
         const lng = latLng.lng();
-        console.log(lat)
-        console.log(lng)
         if(lat && lng){
             lookForDirection(lat,lng)  
         }

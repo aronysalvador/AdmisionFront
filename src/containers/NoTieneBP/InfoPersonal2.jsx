@@ -13,10 +13,10 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 
 //Action de Redux
-import { sendCargo } from "../../redux/actions/AdmissionAction";
-import { InputAdornment } from "@material-ui/core";
-import { IconButton } from "material-ui";
-import ClearIcon from "@material-ui/icons/Clear";
+//import { sendCargo } from "../../redux/actions/AdmissionAction";
+//import { InputAdornment } from "@material-ui/core";
+//import { IconButton } from "material-ui";
+//import ClearIcon from "@material-ui/icons/Clear";
 
 const SinBPInfoPersonal2 = () => {
   const {
@@ -43,8 +43,6 @@ const SinBPInfoPersonal2 = () => {
 
   
   const [nacionalidad, setNacionalidad] = useState(() => {
-    console.log("NACIONALIDAD", nacionalidadForm);
-    console.log(nacionalidadList);
     return !nacionalidadForm ? {nombre: "Chileno"} : nacionalidadForm;
   });
   const [idioma, setIdioma] = useState(() => {
@@ -65,8 +63,8 @@ const SinBPInfoPersonal2 = () => {
         apellidoPaterno: bpForm.apellidoPaterno,
         nombre: bpForm.nombre,
         fechaNacimiento: bpForm.fechaNacimiento,
-        masculino: bpForm.sexo == "Masculino" ? "X" : "",
-        femenino:  bpForm.sexo == "Femenino" ? "X" : "",
+        masculino: bpForm.sexo === "Masculino" ? "X" : "",
+        femenino:  bpForm.sexo === "Femenino" ? "X" : "",
         nacionalidad: nacionalidad,
         lugarNacimiento: "",
         estadoCivil: "",

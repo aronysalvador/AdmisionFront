@@ -3,7 +3,7 @@ import {
   GET_NACIONALIDAD_SUCCESS,
   GET_NACIONALIDAD_FAILURE,
 } from "../types/nacionalidadType";
-import Axios from "axios";
+//import Axios from "axios";
 
 export const getData = async () => {
   //return Axios.get(process.env.REACT_APP_NACIONALIDADES);

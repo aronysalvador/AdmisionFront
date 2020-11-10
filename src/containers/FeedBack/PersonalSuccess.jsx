@@ -14,11 +14,11 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 
 
 const PersonalSuccess = (props) =>{
-    const { dispatch, microsoftReducer, step } = props;
+    const { dispatch, microsoftReducer } = props;
     const welcomeStyle = getWelcomeStyle();
     const comunStyle = getComunStyle();
     const spaceStyle = getSpaceStyle();
-console.log(step);
+
     return(
       <div className={comunStyle.rootBegin}>
         <div className={comunStyle.displayDesk}> 

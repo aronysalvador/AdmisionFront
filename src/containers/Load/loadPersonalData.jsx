@@ -14,7 +14,6 @@ const LoadPersonalData = (props) => {
   }, [dispatch, addmissionForm ]);
 
   useEffect( () => {
-    console.log("LOAD PERSONAL DATA...");  
     initFn()
      // eslint-disable-next-line
   },[]);

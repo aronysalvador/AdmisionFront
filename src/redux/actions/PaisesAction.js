@@ -3,7 +3,7 @@ import {
   GET_PAIS_SUCCESS,
   GET_PAIS_FAILURE,
 } from "../types/paisType";
-import Axios from "axios";
+//import Axios from "axios";
 
 export const getData = async () => {
   //return Axios.get(process.env.REACT_APP_IDIOMAS);

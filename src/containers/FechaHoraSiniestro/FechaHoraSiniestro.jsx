@@ -30,11 +30,9 @@ const FechaHoraSiniestro = () => {
 
   function setFechaValueSiniestro(value) {
     setFechaSiniestro({ ...value });
-    console.log(value)
   }
 
   function setHoraValueSiniestro(value) {
-    console.log(value)
     value.minutos = minutosArray[value.indiceMinutos];
     setHoraSiniestro({ ...value });
   }
@@ -47,7 +45,6 @@ const FechaHoraSiniestro = () => {
       const dias = fechaCasted.getDate() + 1;
       const mes = fechaCasted.getMonth() + 1;
       const anio = fechaCasted.getFullYear();
-      console.log(dias, mes, anio);
       if(dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year) {
         siniestroTemp = x;
       }
