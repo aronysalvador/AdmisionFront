@@ -10,6 +10,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { IconButton } from "material-ui";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
+import { Format } from "../../helpers/strings";
 
 const LugarReferenciaSiniestro = () => {
   let {
@@ -63,7 +64,7 @@ const LugarReferenciaSiniestro = () => {
         required
         fullWidth
         onChange={(e) => {
-          let texto = e.target.value;
+          let texto = Format.caracteresInvalidos(e.target.value);
           setIsLugarReferenciaValid(texto.length > 0);
           setLugarReferencia(texto);
         }}
