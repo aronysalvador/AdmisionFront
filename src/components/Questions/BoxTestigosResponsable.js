@@ -14,7 +14,7 @@ const QuestionTestigoResponsable = (props) => {
   return (
     <div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           {titulo}
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             {titulo2} 
@@ -29,7 +29,9 @@ const QuestionTestigoResponsable = (props) => {
       </div>
       <div className={comunClass.boxDesk}>
         <div className={comunClass.containerTextBox}>
-          <div className={spaceStyle.space1} />
+          <div className={comunClass.displayMobile}>
+            <div className={spaceStyle.space1} />
+          </div>
           <BoxACHSEditDelete
             titulo={tituloTestigo}
             contenido={contenidoTestigo}

@@ -346,7 +346,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         divRow: {
             display: "block",
             alignItems: "center",
-            paddingBottom: "30px",
+            paddingBottom: "10px", //"30px",
         },
         divRow2: {
             display: "block",

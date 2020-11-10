@@ -17,9 +17,8 @@ const MapaSelection = () => {
 
   const {
     addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal },
+    microsoftReducer
   } = useSelector((state) => state, shallowEqual)
-
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual)
 
   useEffect(()=>{
       getLocation()

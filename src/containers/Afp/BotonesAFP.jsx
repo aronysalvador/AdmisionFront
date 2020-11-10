@@ -88,7 +88,7 @@ const BotonesAFP = () => {
           }}
         >
           Otra AFP
-          {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "relative", bottom: "25px", left: "105px"}} /> }
+          {buttonOver && <img src="./static/check.svg"alt="check" className={comunClass.cardsButtonOtherCheck} /> }
         </div> : null }
       </div>
       <div className={comunClass.displayDesk}>

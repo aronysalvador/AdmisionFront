@@ -26,9 +26,7 @@ const AccidenteEnSucursal = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -37,9 +35,7 @@ const AccidenteEnSucursal = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid
-          className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
-        >
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           ¿Accidente ocurrió en  
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;sucursal a la que pertenece el trabajador?
@@ -53,7 +49,9 @@ const AccidenteEnSucursal = () => {
       </div>
       <div className={comunClass.boxDesk}>
         <div className={comunClass.bottomElement}>
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={comunClass.displayMobile}>
+            <div className={spaceStyle.spaceMin1} />
+          </div>
           <Button
             variant="contained"
             className={comunClass.buttonAchs}

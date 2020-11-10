@@ -182,7 +182,7 @@ export const getComunStyle = makeStyles((theme) => ({
             paddingBottom: "10px",
         },
         botonSeleccionado: {
-            marginTop: "10px",
+            // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
             justifyContent: "center", //"space-around",
@@ -222,6 +222,11 @@ export const getComunStyle = makeStyles((theme) => ({
                 justifyContent: "center",
                 flexDirection: "row",
             }
+        },
+        cardsButtonOtherCheck: {
+            position: "relative",
+            bottom: "25px",
+            left: "105px"
         },
         buttonAchsRight: {
             width: "46%",
@@ -462,28 +467,30 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: "center",
             color: "#007A33",
         },
+        googleMap: {
+            width: "100%",
+            borderRadius: "20px",
+            padding: "10px",
+            textAlign: "center"
+        },
     },
 
     '@media (min-width: 768px)': {
         /* Medium devices (landscape tablets, 768px and up) */
         root: {
             width: '100%',
-            // background: "linear-gradient(180deg, #F4F4F4 50%, #EAEAEA 50%)",
         },
         imgAchs: {
             width: '64px',
-            // height: '64px',
             marginBottom: '40px',
         },
         header: {
-            // width: '1441px',
             height: '63px',
             border: '0',
             background: '#007A33',
             display: 'flex'
         },
         headerSesion: {
-            // width: '1441px',
             height: '700px', //'813px',
             border: '0',
             background: 'linear-gradient(180deg, #007A33 50%, #F4F4F4 50%)',
@@ -533,6 +540,12 @@ export const getComunStyle = makeStyles((theme) => ({
             textAlign: 'center',
             position: 'relative',
             height: '573px',
+        },
+        googleMap: {
+            width: "250px", //"100%",
+            borderRadius: "20px",
+            padding: "10px",
+            textAlign: "center"
         },
         boxSesion: {
             width: '416px',
@@ -973,7 +986,7 @@ export const getComunStyle = makeStyles((theme) => ({
             flexWrap: "wrap",
         },
         cardsButton: {
-            marginTop: "10px",
+            // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
             justifyContent: "space-around",
@@ -990,14 +1003,14 @@ export const getComunStyle = makeStyles((theme) => ({
             paddingBottom: "10px",
         },
         botonSeleccionado: {
-            marginTop: "10px",
+            // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
             justifyContent: "center", //"space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "45%",
-            height: "90px",
+            height: "6em", //"90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
@@ -1015,7 +1028,7 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: "center",
             flexDirection: "column",
             width: "100%",
-            height: "90px",
+            height: "6em", //"90px",
             background: "#FFF",
             border: "2px solid #787878",
             borderSpacing: "2px",
@@ -1031,9 +1044,14 @@ export const getComunStyle = makeStyles((theme) => ({
                 flexDirection: "row",
             }
         },
+        cardsButtonOtherCheck: {
+            position: "relative",
+            bottom: "25px",
+            left: "205px"
+        },
         buttonAchsRight: {
             width: "46%",
-            //  height: "90px",
+            height: "4.8em", //"90px",
             background: "#FFFFFF", //#007A33
             border: "2px solid #787878",
             boxSizing: "border-box",
@@ -1046,7 +1064,6 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: "1.285em",
             color: "#373737",
             textTransform: "inherit", //"capitalize",
-            height: "4.8em",
             float: "right",
             marginBottom: "16px",
             "&:hover": {
@@ -1056,7 +1073,7 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         buttonAchsLeft: {
             width: "46%",
-            //height: "90px",
+            height: "4.8em", //"90px",
             background: "#FFFFFF", //#007A33
             border: "2px solid #787878",
             boxSizing: "border-box",
@@ -1069,7 +1086,6 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: "1.285em",
             color: "#373737",
             textTransform: "inherit", //"capitalize",
-            height: "4.8em",
             float: "left",
             marginBottom: "16px",
             "&:hover": {
@@ -1091,7 +1107,6 @@ export const getComunStyle = makeStyles((theme) => ({
             marginTop: '20px', //'30px'
             marginBottom: '20px', //'30px'
         },
-
     },
 
     '@media (min-width: 1060px)': {
@@ -1106,22 +1121,18 @@ export const getComunStyle = makeStyles((theme) => ({
             marginTop: '20px', //'30px'
             marginBottom: '20px', //'30px'
         },
-        // imgPrimaryDesk: {
-        //     position: "relative",
-        //     right: "-18%",
-        // },
     },
 
     '@media (min-width: 1280px)': {
         botonSeleccionado: {
-            marginTop: "10px",
+            // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
             justifyContent: "center", //"space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "45%",
-            height: "90px",
+            height: "6em", //"90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
@@ -1131,6 +1142,37 @@ export const getComunStyle = makeStyles((theme) => ({
             color: "#373737",
             backgroundImage: `url(${require("./../img/check4.svg")})`,
             backgroundRepeat: "no-repeat",
+        },
+        cardsButtonOtherCheck: {
+            position: "relative",
+            bottom: "25px",
+            left: "240px"
+        },
+    },
+    '@media (min-width: 1440px)': {
+        botonSeleccionado: {
+            // marginTop: "10px",
+            marginBottom: "10px",
+            display: "flex",
+            justifyContent: "center", //"space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "45%",
+            height: "6em", //"90px",
+            backgroundColor: "#DFF3F2 !important",
+            border: "2px solid #00B2A9 !important",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px", //"35px",
+            paddingBottom: "10px",
+            color: "#373737",
+            backgroundImage: `url(${require("./../img/check5.svg")})`,
+            backgroundRepeat: "no-repeat",
+        },
+        cardsButtonOtherCheck: {
+            position: "relative",
+            bottom: "25px",
+            left: "280px"
         },
     },
 
@@ -1146,10 +1188,6 @@ export const getComunStyle = makeStyles((theme) => ({
             marginTop: '20px', //'30px'
             marginBottom: '20px', //'30px'
         },
-        // imgPrimaryDesk: {
-        //     position: "relative",
-        //     right: "-30%",
-        // },
     },
 
     '@media (min-width: 1800px)': {
@@ -1164,10 +1202,6 @@ export const getComunStyle = makeStyles((theme) => ({
             marginTop: '20px', //'30px'
             marginBottom: '20px', //'30px'
         },
-        // imgPrimaryDesk: {
-        //     position: "relative",
-        //     right: "-35%",
-        // },
     },
 
     tituloTextBox: {
@@ -1180,12 +1214,6 @@ export const getComunStyle = makeStyles((theme) => ({
         // textTransform: "uppercase",
         color: "#787878",
     },
-    googleMap: {
-        width: "100%",
-        borderRadius: "20px",
-        padding: "10px",
-        textAlign: "center"
-    },
     textErrorP2: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
@@ -1196,7 +1224,6 @@ export const getComunStyle = makeStyles((theme) => ({
         textAlign: "center",
         color: "#081C15",
     },
-
     txtGreen: {
         fontFamily: 'Helvetica',
         fontStyle: 'normal',

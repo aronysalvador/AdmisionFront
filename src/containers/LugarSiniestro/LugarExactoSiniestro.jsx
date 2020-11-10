@@ -63,7 +63,7 @@ const LugarExactoSiniestro = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]} style={{paddingBottom:'20px'}}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]} style={{paddingBottom:'20px'}}>
           Indica la dirección 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;en donde ocurrió el accidente

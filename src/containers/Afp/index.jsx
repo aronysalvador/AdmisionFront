@@ -63,7 +63,9 @@ const Afp = () => {
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
             AFP

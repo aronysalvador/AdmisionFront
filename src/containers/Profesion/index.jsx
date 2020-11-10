@@ -13,9 +13,8 @@ import Header from "../../components/header/index";
 
 const Profesion = () => {
   const {
-    addmissionForm: { percentage, profesionForm },
+    addmissionForm: { percentage, profesionForm }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -42,10 +41,7 @@ const Profesion = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -54,7 +50,7 @@ const Profesion = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Selecciona la 
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;profesión u oficio
@@ -69,7 +65,9 @@ const Profesion = () => {
       </div>
 
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
             Profesión u oficio
