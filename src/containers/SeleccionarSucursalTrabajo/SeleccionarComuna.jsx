@@ -17,6 +17,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     comunaSucursal,
     cantidadSucursales,
     sucursales: sucursales2,
+    creacionBP
   } = useSelector((state) => state.addmissionForm, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -153,7 +154,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
                 dispatch(
                   updateForm("sucursalCargo", sucursales[0].sucursalCargo)
                 );
-                dispatch(handleSetStep(5.1));
+                creacionBP ? dispatch(handleSetStep(5.2)) : dispatch(handleSetStep(5.1));
               }
             }}
           >
