@@ -110,8 +110,6 @@ import {
         BP: datos.BP
     }
 
-    console.log(params)
-
     return await Axios.post(process.env.REACT_APP_LOG, params);
   };
   

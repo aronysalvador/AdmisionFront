@@ -73,7 +73,6 @@ export const saveRut = (rut) => {
   return (dispatch, getState) => {
     obtenerData(rut)
       .then((result) => {
-        // console.log("REUSLT", result);
         let BpCreado = result.data.content.response.BpCreado;
         if (BpCreado) {
           //Guardar datos adicionales paciente requeridos por SAP
@@ -227,9 +226,6 @@ export const saveRut = (rut) => {
           const { email } = userMsal;
           const { addmissionForm: {centrosForm, tipoSiniestro } } = getState();
           dispatch(handleLog({email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: "" })) 
-          console.log("UPDATEFORM", result.data.content.response);
-
-          //dispatch(setBP(result.data.content.response));
 
           dispatch(updateForm("bpForm", result.data.content.response));
           dispatch(setStep(5.812, 0));
@@ -354,12 +350,10 @@ export const validarAfiliacion = (data) => (dispatch) => {
       // });
       // console.log( response.data.content.response )
 
-      console.log(response.data.content);
       if (Object.entries(response.data.content).length === 0) {
         //respuesta vacia
         dispatch(handleSetStep(500));
       } else {
-        console.log(response.data.content.response.length);
         if (response.data.content.response.length === 0) {
           dispatch(handleSetStep(500));
         } else {

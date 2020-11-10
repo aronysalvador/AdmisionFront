@@ -22,7 +22,6 @@ import {
   
     getData(email, centrosForm)
       .then((response) => {
-          console.log(response)
           if(response.status === 200){
             dispatch(successCallUserCenter());
           }else{

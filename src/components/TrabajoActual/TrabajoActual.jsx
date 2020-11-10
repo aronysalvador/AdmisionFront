@@ -199,7 +199,6 @@ const TrabajoActual = ({
               variant="text"
               disabled={anios[indiceAnio] >= fechaActual.getFullYear()}
               onClick={() => {
-                console.log("CLICK DOWN");
                 //Si la fecha seleccionada es mayor a la fecha actual, se vuelve a establecer la fecha con el mes actual
                 if (
                   indiceMes > fechaActual.getMonth() - 1 &&

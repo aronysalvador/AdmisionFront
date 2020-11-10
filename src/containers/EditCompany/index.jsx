@@ -27,7 +27,7 @@ const EditCompany = () => {
 
   const handleNext= async() => {
     setCargando(true)
-    if(sucursalesList.length==0) await dispatch(getSucursales(rutEmpresa));
+    if(sucursalesList.length===0) await dispatch(getSucursales(rutEmpresa));
   }
 
   React.useEffect(()=>{

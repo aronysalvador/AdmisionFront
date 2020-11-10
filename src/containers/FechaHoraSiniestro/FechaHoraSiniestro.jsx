@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
+import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
+import HoraSiniestroDesk from "./../../components/HoraSiniestro/HoraSiniestroDesk";
 import { Button } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -43,7 +45,6 @@ const FechaHoraSiniestro = () => {
       const dias = fechaCasted.getDate() + 1;
       const mes = fechaCasted.getMonth() + 1;
       const anio = fechaCasted.getFullYear();
-      console.log(dias, mes, anio);
       if(dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year) {
         siniestroTemp = x;
       }
@@ -112,19 +113,40 @@ const FechaHoraSiniestro = () => {
           <div className={spaceStyle.space3} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <FechaSiniestroCalendar
-            onChange={setFechaValueSiniestro}
-            daysFromState={days}
-            monthFromState={month}
-            yearFromState={year}
-          />
+          <div className={comunClass.displayMobile}>
+            <FechaSiniestroCalendar
+              onChange={setFechaValueSiniestro}
+              daysFromState={days}
+              monthFromState={month}
+              yearFromState={year}
+            />
+          </div>
+          <div className={comunClass.displayDesk}>
+            <FechaSiniestroDesk
+              onChange={setFechaValueSiniestro}
+              daysFromState={days}
+              monthFromState={month}
+              yearFromState={year}
+            />
+          </div>
+          
           <div className={spaceStyle.space1} />
-          <HoraSiniestro
-            onChange={setHoraValueSiniestro}
-            horasFromState={horas}
-            indiceMinutosFromState={minutosArray.indexOf(minutos)}
-            minutos={minutosArray}
-          />
+          <div className={comunClass.displayMobile}>
+            <HoraSiniestro
+              onChange={setHoraValueSiniestro}
+              horasFromState={horas}
+              indiceMinutosFromState={minutosArray.indexOf(minutos)}
+              minutos={minutosArray}
+            />
+          </div>
+          <div className={comunClass.displayDesk}>
+            <HoraSiniestroDesk
+                onChange={setHoraValueSiniestro}
+                horasFromState={horas}
+                indiceMinutosFromState={minutosArray.indexOf(minutos)}
+                minutos={minutosArray}
+              />
+          </div>
         </div>
         <div className={comunClass.bottomElement}>
           <Button

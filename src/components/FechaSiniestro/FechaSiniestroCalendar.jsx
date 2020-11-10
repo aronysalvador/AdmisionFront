@@ -23,12 +23,6 @@ const FechaSiniestro = ({
 }) => {
 
   const date = new Date();
-
-  // useEffect(()=>{
-  //     console.log("date")
-  //     console.log(date)
-  // },[date])
-
   const [calendar, setCalendar] = useState(false);
   const defaultMaterialTheme = createMuiTheme({
       palette: {
@@ -232,9 +226,6 @@ const FechaSiniestro = ({
           var dia = e._d.getDate(); 
           var mes = e._d.getMonth();
           var anio = e._d.getFullYear();   
-          // console.log("dia: "+dia); 
-          // console.log("mes: "+ mes); 
-          // console.log("anio: "+ anio); 
           setDays(dia); 
           setMonth(mes+1)
           setYear(anio)
