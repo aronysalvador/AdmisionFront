@@ -123,7 +123,6 @@ const SinBPInfoPersonal1 = () => {
                 InputProps={{
                   style: {
                     textTransform: "capitalize !important",
-                    borderRadius: "10px",
                     paddingRight: "0",
                   },
                   endAdornment: (
@@ -164,7 +163,6 @@ const SinBPInfoPersonal1 = () => {
                 InputProps={{
                   style: {
                     textTransform: "capitalize !important",
-                    borderRadius: "10px",
                     paddingRight: "0",
                   },
                   endAdornment: (
@@ -200,7 +198,6 @@ const SinBPInfoPersonal1 = () => {
                 InputProps={{
                   style: {
                     textTransform: "capitalize !important",
-                    borderRadius: "10px",
                     paddingRight: "0",
                   },
                   endAdornment: (
@@ -237,7 +234,6 @@ const SinBPInfoPersonal1 = () => {
                     inputComponent:DateMasked,
                     style: {
                       marginRight: "10px",
-                      borderRadius: "10px",
                       paddingRight: "0",
                     },
                     endAdornment: (
@@ -280,7 +276,6 @@ const SinBPInfoPersonal1 = () => {
                           paddingLeft: "5xp",
                           paddingRight: "0",
                           marginTop: "6px",
-                          borderRadius: "10px",
                         },
                       }}
                     />
