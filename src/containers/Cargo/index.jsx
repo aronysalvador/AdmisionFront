@@ -9,6 +9,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import ClearIcon from '@material-ui/icons/Clear';
 import { IconButton } from "material-ui";
 import Grid from '@material-ui/core/Grid';
+import { Format } from "../../helpers/strings";
 
 const Cargo = () => {
   const {
@@ -67,7 +68,7 @@ const Cargo = () => {
         <TextField
           id="cargo"
           value={cargo}
-          onChange={(e) => saveCargo(e.target.value)}
+          onChange={(e) => saveCargo(Format.caracteresInvalidos(e.target.value))}
           helperText={
             error
               ? "Debe ingresar al menos 5 caracteres"
