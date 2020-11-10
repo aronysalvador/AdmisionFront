@@ -28,10 +28,7 @@ const TrabajoHabitual = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -40,7 +37,7 @@ const TrabajoHabitual = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>  
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]} variant="subtitle2">
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           ¿Al momento del accidente, desarrollaba su
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;trabajo habitual
@@ -56,7 +53,9 @@ const TrabajoHabitual = () => {
       <div className={comunClass.boxDesk}>
         <div className={comunClass.bottomElement}>
           <TrabajoHabitualCard />
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={comunClass.displayMobile}> 
+            <div className={spaceStyle.spaceMin1} />
+          </div>
           <Button
             variant="contained"
             className={comunClass.buttonAchs}

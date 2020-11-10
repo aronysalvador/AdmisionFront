@@ -102,9 +102,6 @@ const DireccionParticular = () => {
             }}
           />
           <center>
-            <div className={comunClass.displayDesk}>
-              <div className={spaceStyle.space1} />
-            </div>
             {(mapaUrl)?
             <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
             :null}

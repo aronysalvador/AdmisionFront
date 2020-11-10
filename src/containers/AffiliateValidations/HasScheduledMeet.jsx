@@ -19,10 +19,8 @@ const HasScheduledMeet = (props) => {
   return (
     <>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
+        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
       </div>
       <div className={blackStyle.root}>
         <div className={comunClass.displayMobile}>
@@ -37,19 +35,11 @@ const HasScheduledMeet = (props) => {
           className={blackStyle.img}
         />
         <div className={spaceStyle.space1} />
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textWarning}
-        >
+        <Typography className={blackStyle.textWarning}>
           ¡Atención!
         </Typography>
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textMessage}
-        >
-          Este paciente&nbsp;
-          <br className={comunClass.displayDesk}/>
-          tiene una cita agendada
+        <Typography className={blackStyle.textMessage}>
+          Este paciente tiene una cita agendada
         </Typography>
         <div className={spaceStyle.space1} />
         <div className={blackStyle.containerQuote}>
@@ -70,13 +60,13 @@ const HasScheduledMeet = (props) => {
               </div>
             </>
           )}
-          
         </div>
 
         <div className={blackStyle.containerBottom}>
           <div className={comunClass.bottomElement}>
+            <div className={comunClass.paddingElement}>
             <Button
-              className={blackStyle.buttonFooter}
+              className={[blackStyle.buttonFooter, blackStyle.buttonFooterSpace]}
               onClick={() => {
                 dispatch(handleSetStep(5.9));
               }}
@@ -102,6 +92,7 @@ const HasScheduledMeet = (props) => {
             >
               Crear nueva admisión
             </Button>
+            </div>
           </div>
         </div>
       </div>

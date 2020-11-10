@@ -22,16 +22,14 @@ const LoadRazonAlerta = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={spaceStyle.space5} />
       <center>
         <div>
           <img
             alt="load"
-            src="./static/validandoAlerta.png"
+            src="./static/exito.svg"
             className={comunClass.imgLoadData}
           />
         </div>

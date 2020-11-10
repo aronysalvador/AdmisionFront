@@ -8,7 +8,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
 
 const HasBP = (props) => {
- 
+
   const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
@@ -18,64 +18,50 @@ const HasBP = (props) => {
   return (
   <>
     <div className={comunClass.displayDesk}> 
-        <Header
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
-        />
-      </div>
-      <div className={blackStyle.root}>
-        
-        <div className={spaceStyle.space2} />
-          <img
-            alt="load"
-            src="./static/error-siniestro.svg"
-            className={blackStyle.img}
-          />
-        <div className={spaceStyle.space3} />
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textWarning}
-        >
+      <Header userMsal={ microsoftReducer.userMsal }/>
+      <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+    </div>
+    <div className={blackStyle.root}>
+      <div className={spaceStyle.space2} />
+      <img
+        alt="load"
+        src="./static/error-siniestro.svg"
+        className={blackStyle.img}
+      />
+      <div className={spaceStyle.space3} />
+      <Typography className={blackStyle.textWarning}>
         ¡Atención!
-        </Typography>
-        <div className={comunClass.displayMobile}>
-          <div className={spaceStyle.space1} />
-        </div>
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textMessage}
-        >
-          Este paciente&nbsp;
-          <br className={comunClass.displayDesk}/>
-          no tiene un BP creado
-        </Typography>
-        <div className={comunClass.displayMobile}>
-          <div className={spaceStyle.space2} />
-        </div>
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textFinal}
-        >
-          Atiéndelo usando SAP
-        </Typography>
-        <div className={comunClass.displayDesk}>
-          <div className={spaceStyle.space1} />
-        </div>
-        <div className={comunClass.bottomElement}>
-          <Button
-            className={blackStyle.buttonFooter}
-            onClick={() => {
-              dispatch(handleSetStep(5.9));
-            }}
-          >
-            Continuar en SAP
-          </Button>
-        </div>
-        <div className={comunClass.displayDesk}>
-          <div className={spaceStyle.space2} />
-        </div>
+      </Typography>
+      <div className={comunClass.displayMobile}>
+        <div className={spaceStyle.space1} />
       </div>
-    </>
+      <Typography className={blackStyle.textMessage}>
+        Este paciente no tiene un BP creado
+      </Typography>
+      <div className={comunClass.displayMobile}>
+        <div className={spaceStyle.space2} />
+      </div>
+      <Typography className={blackStyle.textFinal}>
+        Atiéndelo usando SAP
+      </Typography>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space1} />
+      </div>
+      <div className={comunClass.bottomElement}>
+        <Button
+          className={blackStyle.buttonFooter}
+          onClick={() => {
+            dispatch(handleSetStep(5.9));
+          }}
+        >
+          Continuar en SAP
+        </Button>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
+    </div>
+  </>
   );
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {

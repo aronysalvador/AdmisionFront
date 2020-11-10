@@ -69,8 +69,9 @@ const EditCompany = () => {
       </div>
 
       <div className={comunClass.boxDesk}>
+      <div className={comunClass.displayMobile}> 
         <div className={spaceStyle.space2} />
-
+      </div>
         <TabCompany />
 
         <div className={comunClass.bottomElement}>

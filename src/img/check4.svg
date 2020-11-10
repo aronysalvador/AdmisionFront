@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="310"
+   width="250"
    height="24.1017"
-   viewBox="0 0 309.99999 24.1017"
+   viewBox="0 0 249.99999 24.1017"
    version="1.1"
    id="svg4"
    sodipodi:docname="check4.svg"
@@ -43,7 +43,7 @@
      id="namedview6"
      showgrid="false"
      inkscape:zoom="2.8177596"
-     inkscape:cx="193.82705"
+     inkscape:cx="188.55268"
      inkscape:cy="12.508476"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -59,7 +59,7 @@
      transform="translate(155.46404,1.0923956)">
     <g
        id="g824"
-       transform="translate(130)">
+       transform="translate(70)">
       <path
          d="m 12,1.9978623 c -5.514,0 -10,4.4657928 -10,9.9549547 0,5.489162 4.486,9.954955 10,9.954955 5.514,0 10,-4.465793 10,-9.954955 C 22,6.4636551 17.514,1.9978623 12,1.9978623 Z M 10.001,16.345939 6.288,12.657628 7.7,11.248006 l 2.299,2.284663 5.294,-5.2701536 1.414,1.4076307 z"
          id="path2"
@@ -82,7 +82,7 @@
     </g>
     <rect
        y="0.40677965"
-       x="-156.12056"
+       x="-172.12056"
        height="24.101696"
        width="309.91705"
        id="rect826"

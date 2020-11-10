@@ -13,9 +13,8 @@ import Header from "../../components/header/index";
 
 const Cargo = () => {
   const {
-    addmissionForm: { step, percentage, cargoForm },
+    addmissionForm: { step, percentage, cargoForm }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   //State
   const [cargo, saveCargo] = useState(() => {
@@ -43,10 +42,7 @@ const Cargo = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -55,7 +51,7 @@ const Cargo = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           ¿Cuál es el  
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;cargo
@@ -70,7 +66,9 @@ const Cargo = () => {
       </div>
 
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
             Cargo

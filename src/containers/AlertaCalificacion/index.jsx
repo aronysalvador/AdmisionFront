@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { getBlackTheme } from "../../css/blackTheme";
 import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
@@ -19,20 +20,18 @@ const AlertaCalificacion = () => {
 
   const dispatch = useDispatch();
   const welcomeStyle = getWelcomeStyle();
-  const comunStyle = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const blackStyle = getBlackTheme();
 
   return (
-    <div className={comunStyle.rootBegin}>
-      <div className={comunStyle.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+    <div className={comunClass.rootBegin}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
-          <div className={comunStyle.displayMobile}>
+          <div className={comunClass.displayMobile}>
             <Cabecera
               dispatch={() => dispatch(handleSetStep(26))}
               color="#373737"
@@ -40,14 +39,14 @@ const AlertaCalificacion = () => {
               noSpace={true}
             />
           </div>
-          <div className={comunStyle.displayDesk}>
+          <div className={comunClass.displayDesk}>
             <Cabecera 
               dispatch={() => dispatch(handleSetStep(26))} 
               color={"#fff" } 
               percentage={-1} 
               noSpace={true} />
           </div>
-          <div className={comunStyle.displayMobile}>
+          <div className={comunClass.displayMobile}>
             <div className={welcomeStyle.avatarContainerRight}>
               <Avatar className={welcomeStyle.avatar}>
                 {microsoftReducer.userMsal.iniciales}
@@ -55,33 +54,29 @@ const AlertaCalificacion = () => {
             </div>
             <div className={spaceStyle.space6} />
           </div>
-          <div className={comunStyle.titleDesk}>
+          <div className={comunClass.titleDesk}>
             <div className={welcomeStyle.TextContainer}>
-              <div className={comunStyle.displayMobile}>
+              <div className={comunClass.displayMobile}>
                 <img
                   alt="Excelente"
                   src="static/icon-check.png"
                   className={welcomeStyle.iconCircular}
                 />
               </div>
-              <Typography
-                className={welcomeStyle.titleBegin}
-              >
+              <Typography className={welcomeStyle.titleBegin}>
                 ¡WOW!
               </Typography>
               <div style={{display: 'flex'}}>
-                <Typography
-                  className={welcomeStyle.titleBegin}
-                >
+                <Typography className={welcomeStyle.titleBegin}>
                   Eso fue rápido&nbsp;
                 </Typography>
-                <div className={comunStyle.displayDeskInline}>
+                <div className={comunClass.displayDeskInline}>
                   <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
                 </div>
               </div>
             </div>
-            <div className={comunStyle.displayDeskInline}>
-              <Grid component="span" className={comunStyle.imgPrimaryDesk}>
+            <div className={comunClass.displayDeskInline}>
+              <Grid component="span" className={comunClass.imgPrimaryDesk}>
                 <img alt="excelente" src="static/excelent.svg" />
               </Grid>
             </div>
@@ -89,57 +84,53 @@ const AlertaCalificacion = () => {
         </div>
       </div>
       <div className={welcomeStyle.beginContainer}>
-        <div className={comunStyle.displayDesk}> 
-          <div className={spaceStyle.space2} />   
+        <div className={comunClass.displayDesk}> 
+          <div className={spaceStyle.space1} />   
         </div>
-        <div className={comunStyle.textCenterDesk}>
-          <Typography
-            className={welcomeStyle.subTitleBegin}
-          >
+        <div className={comunClass.textCenterDesk}>
+          <Typography className={welcomeStyle.subTitleBegin}>
             Para la creación del caso
           </Typography>
-          <div className={comunStyle.displayDesk}>
-            <div className={spaceStyle.space2} />
+          <div className={comunClass.displayDesk}>
+            <div className={spaceStyle.space1} />
           </div>
-          <div className={comunStyle.boxDesk}>
+          <div className={comunClass.boxDesk}>
             <div className={welcomeStyle.titleContainerCards2}>
               <div  className={welcomeStyle.divRowBottom2}>
                 <ErrorOutline />
-                <Typography
-                  className={welcomeStyle.itemText2}
-                >
+                <Typography className={welcomeStyle.itemText2}>
                   Pide un e-mail al paciente
                 </Typography>
               </div>
               <div  className={welcomeStyle.divRowBottom2}>
-                <Typography
-                      className={welcomeStyle.pBegin}
-                    >
-                      Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar. 
+                <Typography className={welcomeStyle.pBegin}>
+                  Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar. 
                 </Typography>
               </div>
             </div>
             <div className={welcomeStyle.bottomBegin}>
-              <Button
-                className={comunStyle.buttonAchs}
-                variant="contained"
-                onClick={() => dispatch(handleSetStep(27))}
-              >
-                Continuar
-              </Button>
-              <div className={spaceStyle.space1}></div>
-              <Button
-                className={comunStyle.buttonAchs2}
-                variant="contained"
-                onClick={() => dispatch(handleSetStep(26.2))}
-              >
-                Levantar alerta de calificación
-              </Button>    
+              <div className={comunClass.paddingElement}>
+                <Button
+                  className={[comunClass.buttonAchs, blackStyle.buttonFooterSpace]}
+                  variant="contained"
+                  onClick={() => dispatch(handleSetStep(27))}
+                >
+                  Continuar
+                </Button>
+                <div className={spaceStyle.space1} />
+                <Button
+                  className={comunClass.buttonAchs2}
+                  variant="contained"
+                  onClick={() => dispatch(handleSetStep(26.2))}
+                >
+                  Levantar alerta de calificación
+                </Button>
+              </div>    
             </div>
           </div>
         </div>
       </div>  
-      <div className={comunStyle.displayDesk}>
+      <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
       </div>
     </div>

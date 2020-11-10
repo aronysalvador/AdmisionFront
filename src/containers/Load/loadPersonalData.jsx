@@ -31,7 +31,7 @@ const LoadPersonalData = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/validandoDatos.png"
+            src="./static/validandoDatos.svg"
             className={comunClass.imgLoadData}
           />
         </div>

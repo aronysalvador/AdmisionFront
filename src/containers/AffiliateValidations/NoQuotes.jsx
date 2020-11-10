@@ -20,10 +20,8 @@ const NoQuotes = (props) => {
   return (
     <div>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
+        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space1} />
@@ -52,9 +50,7 @@ const NoQuotes = (props) => {
           color="textSecondary"
           className={blackStyle.textNoAfiliate}
         >
-          No tenemos cotizaciones&nbsp;
-          <br className={comunClass.displayDesk}/> 
-          por este paciente
+          No tenemos cotizaciones por este paciente
         </Typography>
         <div className={spaceStyle.space1} />
         <div className={comunClass.displayDesk}>
@@ -64,23 +60,25 @@ const NoQuotes = (props) => {
         <NoQuotesCard />
         <div className={blackStyle.containerBottom}>
           <div className={comunClass.bottomElement}>
-            <Button
-              className={blackStyle.buttonFooter}
-              onClick={() => {
-                dispatch(handleSetStep(5.7));
-              }}
-            >
-              Continuar admisión
-            </Button>
-            {/* <div className={spaceStyle.spaceMin1} /> */}
-            <Button
-              className={blackStyle.buttonFooter2}
-              onClick={() => {
-                dispatch(handleSetStep(1.1));
-              }}
-            >
-              Volver al inicio
-            </Button>
+            <div className={comunClass.paddingElement}>
+              <Button
+                className={[blackStyle.buttonFooter, blackStyle.buttonFooterSpace]}
+                onClick={() => {
+                  dispatch(handleSetStep(5.7));
+                }}
+              >
+                Continuar admisión
+              </Button>
+              {/* <div className={spaceStyle.spaceMin1} /> */}
+              <Button
+                className={blackStyle.buttonFooter2}
+                onClick={() => {
+                  dispatch(handleSetStep(1.1));
+                }}
+              >
+                Volver al inicio
+              </Button>
+            </div>
           </div>
         </div> 
       </div>

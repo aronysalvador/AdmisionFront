@@ -12,10 +12,8 @@ import Header from "../../components/header/index";
 
 const CausaNoLaboral = () => {
   const {
-    addmissionForm: { percentage, razonAlertaForm },
+    addmissionForm: { percentage, razonAlertaForm }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -45,9 +43,7 @@ const CausaNoLaboral = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -56,7 +52,7 @@ const CausaNoLaboral = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Selecciona la razón de
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;posible causa no laboral
@@ -69,7 +65,9 @@ const CausaNoLaboral = () => {
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox} >
             Selecciona

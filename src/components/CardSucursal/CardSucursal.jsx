@@ -17,7 +17,7 @@ const CardSucursal = ({ sucursales }) => {
         boxShadow: "1px 1px 5px rgba(44, 44, 44, 0.25)",
       }}
     >
-      <h3 style={{ color: "#007A33", fontSize: "20px" }}>Sucursal</h3>
+      <h3 style={{color: "#007A33", fontSize: "20px", margin: "7px 0px"}}>Sucursal</h3>
       {/* <div style={{ fontSize: "16px" }}>{nombre}</div> */}
       <div style={{ fontSize: "16px" }}>{direccion}</div>
       <div style={{ fontSize: "16px" }}>{region}</div>
