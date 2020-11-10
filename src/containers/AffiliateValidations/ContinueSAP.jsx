@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -21,10 +21,7 @@ const ContinueSAP = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space5} />
       <center>
@@ -32,21 +29,15 @@ const ContinueSAP = (props) => {
           <img alt="load" src="./static/exito.png" className={comunClass.imgLoadData} />
         </div>
         <div className={spaceStyle.space3} />
-        <Typography
-          color="textSecondary"
-          className={comunClass.txtLoadData}
-        >
+        <Grid className={comunClass.txtLoadData}>
           Entendido&nbsp;
           <br className={comunClass.displayMobile}/>
           continúa en SAP
-        </Typography>
+        </Grid>
         <div className={spaceStyle.space1} />
-        <Typography
-          color="textSecondary"
-          className={comunClass.txtLoadData2}
-        >
+        <Grid className={comunClass.txtLoadData2}>
           Un momento por favor
-        </Typography>
+        </Grid>
         <div>
           <img
             alt="load"

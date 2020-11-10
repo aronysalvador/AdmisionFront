@@ -4,7 +4,7 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { TextField, Button } from "@material-ui/core";
 import { Rut, formateaRut } from "../../helpers/rut";
 import { getComunStyle } from "../../css/comun";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 const RutPaciente = () => {
 
@@ -16,9 +16,9 @@ const RutPaciente = () => {
 
   return (
     <div>
-        <Typography className={comunClass.tituloTextBox}>
+        <Grid className={comunClass.tituloTextBox}>
           RUT
-        </Typography>
+        </Grid>
         <TextField
           type="text"
           value={rut}

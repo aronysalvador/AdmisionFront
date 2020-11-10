@@ -17,6 +17,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     comunaSucursal,
     cantidadSucursales,
     sucursales: sucursales2,
+    creacionBP
   } = useSelector((state) => state.addmissionForm, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -76,10 +77,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -102,7 +100,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div> 
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
             Comuna
@@ -154,7 +154,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
                 dispatch(
                   updateForm("sucursalCargo", sucursales[0].sucursalCargo)
                 );
-                dispatch(handleSetStep(5.1));
+                creacionBP ? dispatch(handleSetStep(5.2)) : dispatch(handleSetStep(5.1));
               }
             }}
           >

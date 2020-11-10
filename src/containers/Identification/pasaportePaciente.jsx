@@ -24,15 +24,11 @@ const PasaportePaciente = () => {
         />
       </center>
       <div className={spaceStyle.space1} />
-      <Grid
-        className={comunClass.textErrorP2}
-      >
+      <Grid className={comunClass.textErrorP2}>
         Ups! Todavía no tenemos construido este camino
       </Grid>
 
-      <Grid
-        className={comunClass.textErrorS}
-      >
+      <Grid className={comunClass.textErrorS}>
         Por favor ingresa por Sap
       </Grid>
       <div className={comunClass.bottomElement}>

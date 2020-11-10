@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Typography, withStyles } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm, validarAfiliacion } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
@@ -16,7 +16,7 @@ import Header from "../../components/header/index";
 
 const EditarTelefono = () => {
   const {
-    addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado },
+    addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -72,14 +72,11 @@ const EditarTelefono = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.1))}
+          dispatch={() => (creacionBP ? dispatch(handleSetStep(5.2)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
       </div>
@@ -97,7 +94,9 @@ const EditarTelefono = () => {
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
             Teléfono
@@ -144,8 +143,21 @@ const EditarTelefono = () => {
             disabled={!telefonoIsValid}
             onClick={() => {
               dispatch(updateForm("telefonoParticular", telefono));
-              dispatch(handleSetStep(5.1));
-            }}
+              if(creacionBP)
+              {
+                if(rut && rutEmpresa && SucursalEmpresaObjeto){
+                  dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
+                }else{
+                  dispatch(handleSetStep(500));
+                }
+              }
+              else 
+              { //Flujo normal
+                dispatch(handleSetStep(5.1))
+              }
+            }
+          }
+
           >
             Actualizar
           </Button>

@@ -12,7 +12,7 @@ import Header from "../../components/header/index";
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj },
+    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj, creacionBP },
   } = useSelector((state) => state, shallowEqual)
 
   const {
@@ -60,14 +60,11 @@ const DireccionParticular = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.1))}
+          dispatch={() => ( creacionBP ? dispatch(handleSetStep(5.4)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
       </div>
@@ -85,7 +82,9 @@ const DireccionParticular = () => {
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox} variant="subtitle2">
             Dirección particular
@@ -121,7 +120,7 @@ const DireccionParticular = () => {
               dispatch(updateForm("direccionParticular", direccion.description))
               dispatch(updateForm("direccionParticularObj", direccion))
               dispatch(updateForm("comunaDireccionParticular", nombreComuna))
-              dispatch(handleSetStep(5.1))
+              creacionBP ? dispatch(handleSetStep(5.3)) : dispatch(handleSetStep(5.1));
             }}
           >
             Guardar dirección

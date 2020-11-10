@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { saveRut } from "../../redux/actions/AdmissionAction";
@@ -25,10 +25,7 @@ const LoadPersonalData = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space5} />
       <center>
@@ -40,15 +37,15 @@ const LoadPersonalData = (props) => {
           />
         </div>
         <div className={spaceStyle.space3} />
-        <Typography className={comunClass.txtLoadData}>
+        <Grid className={comunClass.txtLoadData}>
           Estamos validando&nbsp;
           <br className={comunClass.displayMobile}/>
           tus datos
-        </Typography>
+        </Grid>
         <div className={spaceStyle.space1} />
-        <Typography className={comunClass.txtLoadData2}>
+        <Grid className={comunClass.txtLoadData2}>
           Un momento por favor
-        </Typography>
+        </Grid>
         <div>
           <img
             alt="load"

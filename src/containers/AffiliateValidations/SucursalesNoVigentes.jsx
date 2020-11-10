@@ -57,14 +57,16 @@ const SucursalesNoVigentes = (props) => {
           no tiene sucursales vigentes
         </Typography>
         <div className={spaceStyle.space1} />
-        <div className={comunClass.displayDesk}>
+        {/* <div className={comunClass.displayDesk}>
           <div className={spaceStyle.space1} />
-        </div>
+        </div> */}
 
         <NoAfiliateCard />
   
         <div className={comunClass.bottomElement}>
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
+        </div>
           <Button
             className={blackStyle.buttonFooter}
             onClick={() => {

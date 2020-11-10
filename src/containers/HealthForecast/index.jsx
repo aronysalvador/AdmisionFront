@@ -74,8 +74,9 @@ const HealthForecast = (props) => {
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={spaceStyle.space2} />
-
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
         {getIsapres.length > 0 && ( 
           <>
             <div className={comunClass.textCenter}>
@@ -94,12 +95,13 @@ const HealthForecast = (props) => {
                 {buttonOver1 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
             </div>
-
-            <div className={spaceStyle.space1} />
-            <div className={comunClass.flexDivider}>
-            <Divider className={comunClass.mediumDivider} />
-            <em className={comunClass.emMargin} style={{ fontStyle: "inherit"}}> o </em>
-            <Divider className={comunClass.mediumDivider} /> </div>
+            <div className={comunClass.displayMobile}> 
+              <div className={spaceStyle.space1} />
+              <div className={comunClass.flexDivider}>
+              <Divider className={comunClass.mediumDivider} />
+              <em className={comunClass.emMargin} style={{ fontStyle: "inherit"}}> o </em>
+              <Divider className={comunClass.mediumDivider} /> </div>
+            </div>
             <div className={spaceStyle.space1} />
 
             <div>
