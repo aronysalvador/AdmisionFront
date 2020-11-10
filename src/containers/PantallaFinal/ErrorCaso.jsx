@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import { getBlackTheme } from "../../css/blackTheme";
+// import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -11,7 +11,7 @@ import Header from "../../components/header/index";
 const ErrorCaso = (props) => {
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
-  const blackStyle = getBlackTheme();
+  // const blackStyle = getBlackTheme();
   const dispatch = useDispatch();
 
   const {

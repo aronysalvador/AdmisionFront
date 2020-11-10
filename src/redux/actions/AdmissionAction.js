@@ -73,7 +73,6 @@ export const saveRut = (rut) => {
   return (dispatch, getState) => {
     obtenerData(rut)
       .then((result) => {
-        // console.log("REUSLT", result);
         let BpCreado = result.data.content.response.BpCreado;
         if (BpCreado) {
           //Guardar datos adicionales paciente requeridos por SAP
@@ -222,23 +221,24 @@ export const saveRut = (rut) => {
         } else {
           // NO TIENE BP
           //dispatch(setStep(500, 0));
-          
+          console.log(getState());
           const { microsoftReducer: { userMsal } } = getState();
           const { email } = userMsal;
           const { addmissionForm: {centrosForm, tipoSiniestro } } = getState();
           dispatch(handleLog({email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: "" })) 
 
-          dispatch(setStep(5.81, 0));
-          dispatch(updateForm("rut", ""));
-          dispatch(updateForm("razonSocial", ""));
-          dispatch(updateForm("rutEmpresa", ""));
-          dispatch(updateForm("isAfiliado", "No"));
-          dispatch(updateForm("SucursalEmpresa", ""));
-          dispatch(updateForm("DireccionEmpresa", ""));
-          dispatch(updateForm("comunaEmpresa", ""));
-          dispatch(updateForm("direccionParticular", ""));
-          dispatch(updateForm("telefonoParticular", ""));
-          dispatch(updateForm("BP", ""));
+          dispatch(updateForm("bpForm", result.data.content.response));
+          dispatch(setStep(5.812, 0));
+          // dispatch(updateForm("rut", ""));
+          // dispatch(updateForm("razonSocial", ""));
+          // dispatch(updateForm("rutEmpresa", ""));
+          // dispatch(updateForm("isAfiliado", "No"));
+          // dispatch(updateForm("SucursalEmpresa", ""));
+          // dispatch(updateForm("DireccionEmpresa", ""));
+          // dispatch(updateForm("comunaEmpresa", ""));
+          // dispatch(updateForm("direccionParticular", ""));
+          // dispatch(updateForm("telefonoParticular", ""));
+          // dispatch(updateForm("BP", ""));
 
         }
       })
@@ -350,12 +350,10 @@ export const validarAfiliacion = (data) => (dispatch) => {
       // });
       // console.log( response.data.content.response )
 
-      console.log(response.data.content);
       if (Object.entries(response.data.content).length === 0) {
         //respuesta vacia
         dispatch(handleSetStep(500));
       } else {
-        console.log(response.data.content.response.length);
         if (response.data.content.response.length === 0) {
           dispatch(handleSetStep(500));
         } else {

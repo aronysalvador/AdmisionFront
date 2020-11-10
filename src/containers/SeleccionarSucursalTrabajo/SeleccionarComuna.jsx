@@ -17,6 +17,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     comunaSucursal,
     cantidadSucursales,
     sucursales: sucursales2,
+    creacionBP
   } = useSelector((state) => state.addmissionForm, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -51,8 +52,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
 
     var uniqueArray = removeDuplicates(variables, "nombre");
     uniqueArray.sort((a,b) => a.nombre < b.nombre ? -1 : +(a.nombre > b.nombre));
-    console.log("uniqueArray is: " + JSON.stringify(uniqueArray));    
-
+ 
     setListaComunas(uniqueArray);
 
     // eslint-disable-next-line
@@ -72,7 +72,6 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     return newArray;
   }
 
-  console.log(listaComunas);
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -109,14 +108,11 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
           <AutoComplete
             value={comuna}
             onChange={(event, value) => {
-              console.log({ value });
               const sucursalesComuna = sucursalesEmpresa.filter(
                 (x) =>
                   x.id_comuna === value?.codigo_comuna &&
                   parseInt(value?.codigo_region) === parseInt(x?.codigo_region)
               );
-
-              console.log({ sucursalesComuna, cantidad: sucursalesComuna.length });
               setNumeroSucursales(sucursalesComuna.length);
               setSucursales(sucursalesComuna);
               setComuna(value);
@@ -153,7 +149,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
                 dispatch(
                   updateForm("sucursalCargo", sucursales[0].sucursalCargo)
                 );
-                dispatch(handleSetStep(5.1));
+                creacionBP ? dispatch(handleSetStep(5.2)) : dispatch(handleSetStep(5.1));
               }
             }}
           >

@@ -21,10 +21,6 @@ const AccidentDescriptionForm = (props) => {
     }
 
   };
-  //  useEffect(() => {
-  //   setEditable(false);
-  //   console.log("EDITABLE ES", isEdit);
-  // }, []);
 
   return (
     <div className={comunClass.root}>

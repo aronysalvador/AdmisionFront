@@ -348,10 +348,14 @@ export const getComunStyle = makeStyles((theme) => ({
             maxHeight: "15px",
             verticalAlign: "middle",
         },
+        bpList: {
+            paddingRight: '10px',
+        },
         siniesterList: {
             display: 'flow-root',
             overflow: 'auto',
             height: '24.5em',
+
             '&::-webkit-scrollbar': {
                 width: 8,
             },
@@ -924,7 +928,7 @@ export const getComunStyle = makeStyles((theme) => ({
             color: "#373737", //"#DEDEDE",
         },
         cajaRutSiniestroContainer: {
-            width: "11em",
+            width: "12em",
             border: "1px solid #787878",
             borderRadius: "10px",
             padding: "10px",

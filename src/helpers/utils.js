@@ -43,7 +43,6 @@ export const validarDireccion=async(direccion)=> {
                     comuna = fragmentos[2].toUpperCase().trim()
                 }
             }
-            console.log(comuna)
             respuesta.comuna=comuna
             var response =  await validarComuna(comuna);
             var valida=response.ok ? true : false;
@@ -57,16 +56,13 @@ export const validarDireccion=async(direccion)=> {
 
 const validarComuna = async (comuna) => {
     return new Promise(async function (resolve, reject) {        
-        console.log("validando comuna: "+comuna+"...") 
         const result = await getData()
         if(result.status === 200){
           var COMUNAS = result.data.content[0]
             if(Array.isArray(COMUNAS)){       
 
                   var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
-                  console.log(resultValid) 
                   if( resultValid !== undefined  ){
-                    console.log("¡comuna: "+comuna+" valida!")
                     resolve({ok: true});
                   }else{ resolve({ok: false}); }
 

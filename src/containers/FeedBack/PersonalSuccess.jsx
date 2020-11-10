@@ -13,7 +13,7 @@ import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
 const PersonalSuccess = (props) =>{
-    const { dispatch, microsoftReducer, step } = props;
+    const { dispatch, microsoftReducer } = props;
     const welcomeStyle = getWelcomeStyle();
     const comunStyle = getComunStyle();
     const spaceStyle = getSpaceStyle();

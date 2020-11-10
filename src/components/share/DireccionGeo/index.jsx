@@ -45,7 +45,6 @@ const DireccionGeo = (props) => {
         const test = await fetch(`${process.env.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
         const json = await test.json()      
         if(Array.isArray(json.content)){
-            console.log(json.content[0].result.geometry.location)
             dispatch(updateForm("LatTemporal", json.content[0].result.geometry.location.lat))
             dispatch(updateForm("LongTemporal", json.content[0].result.geometry.location.lng))
         }

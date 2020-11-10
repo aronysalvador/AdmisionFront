@@ -11,7 +11,7 @@ import { getSucursales } from "../../redux/actions/SucursalesAction";
 import Header from "../../components/header/index";
 
 const EditCompany = () => {
-  const { percentage, razonSocial, rutEmpresa } = useSelector(
+  const { percentage, razonSocial, rutEmpresa, creacionBP } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -27,7 +27,7 @@ const EditCompany = () => {
 
   const handleNext= async() => {
     setCargando(true)
-    if(sucursalesList.length!==0) await dispatch(getSucursales(rutEmpresa));
+    if(sucursalesList.length===0) await dispatch(getSucursales(rutEmpresa));
   }
 
   React.useEffect(()=>{
@@ -50,7 +50,7 @@ const EditCompany = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.1))}
+          dispatch={() => (creacionBP ? dispatch(handleSetStep(5.813)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
       </div>
