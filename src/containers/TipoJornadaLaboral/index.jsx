@@ -12,9 +12,8 @@ import Header from "../../components/header/index";
 
 const TipoJornadaLaboral = () => {
   const {
-    addmissionForm: { percentage, tipoJornadaForm },
+    addmissionForm: { percentage, tipoJornadaForm }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const tipoJornadaLaboral = !tipoJornadaForm ? "" : tipoJornadaForm;
 
@@ -29,9 +28,7 @@ const TipoJornadaLaboral = () => {
   }, [initFn]);
 
   const { data: tipoJornadaList } = useSelector(
-    (state) => state.tipoJornadaLaboralForm,
-    shallowEqual
-  );
+    (state) => state.tipoJornadaLaboralForm, shallowEqual);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -39,9 +36,7 @@ const TipoJornadaLaboral = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -50,7 +45,7 @@ const TipoJornadaLaboral = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Selecciona la opción que mejor defina el 
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;tipo de jornada
@@ -62,7 +57,7 @@ const TipoJornadaLaboral = () => {
           </Grid>
         </div>
       </div>
-      <div className={comunClass.boxDesk}>
+      <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.cardsButtonAlign}>
           {tipoJornadaList.map((tipoJornada) => (
             <BotonSeleccionarCustom

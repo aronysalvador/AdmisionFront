@@ -13,8 +13,10 @@ const NoAfiliateCard = () => {
 
   return (
     <div className={container}>
-      <div className={comunClass.textCenterDesk}>
-        <ErrorOutline />
+      <div className={comunClass.displayMobile}>
+        <div className={comunClass.textCenterDesk}>
+          <ErrorOutline />
+        </div>
       </div>
       <div className={cardTextNoAfilate}>
         <span className={cardText}>

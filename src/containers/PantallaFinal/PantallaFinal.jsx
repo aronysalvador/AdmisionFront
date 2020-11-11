@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
-import { getComunStyle } from "../../css/comun";
+import { getComunStyle } from "../../css/comun"
 import { getSpaceStyle } from "../../css/spaceStyle";
 import IndiciacionesPacientes from "../../components/Indicaciones";
 import CajaRutSiniestro from "./CajaRutSiniestro";
@@ -16,19 +16,16 @@ const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
   const { siniestroID, rut } = addmissionForm;
   const welcomeStyle = getWelcomeStyle();
-  const comunStyle = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   return (
-    <div className={comunStyle.rootBegin}>
-      <div className={comunStyle.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+    <div className={comunClass.rootBegin}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
-          <div className={comunStyle.displayMobile}>
+          <div className={comunClass.displayMobile}>
             <div className={welcomeStyle.avatarContainerRight}>
               <Avatar className={welcomeStyle.avatar}>
                 {microsoftReducer.userMsal.iniciales}
@@ -36,43 +33,43 @@ const PantallaFinal = (props) => {
             </div>
             <div className={spaceStyle.space6} />
           </div>
-          <div className={comunStyle.titleDesk}>
-            <div className={welcomeStyle.TextContainer}>
-              <div className={comunStyle.displayMobile}>
-                <img
-                  alt="Excelente"
-                  src="static/icon-check.png"
-                  className={welcomeStyle.iconCircular}
-                />
-              </div>
-              <div className={spaceStyle.spaceMin1} />
+          <div className={comunClass.titleDeskFinal}>
+            <div style={{display: 'block'}}>
+              <div className={welcomeStyle.TextContainer}>
+                <div className={comunClass.displayMobile}>
+                  <img
+                    alt="Excelente"
+                    src="static/icon-check.png"
+                    className={welcomeStyle.iconCircular}
+                  />
+                </div>
+                <div className={spaceStyle.spaceMin1} />
                 <div style={{display: 'inline-flex'}}>
-                  <Typography
-                    className={welcomeStyle.titleBegin}
-                  >
+                  <Typography className={welcomeStyle.titleBegin}>
                     Accidente ingresado&nbsp;
                   </Typography>
                 </div>
-              <div className={comunStyle.displayDeskInline} style={{verticalAlign: 'bottom'}}>
-                <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                <div className={comunClass.displayDeskInline} style={{verticalAlign: 'bottom'}}>
+                  <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                </div>
+              </div>
+              <div className={spaceStyle.space1} />  
+              <div className={comunClass.displayMobile}>
+                <div className={spaceStyle.space1} />
+              </div>          
+              <div className={welcomeStyle.rutSiniestroContainer}>
+                <CajaRutSiniestro
+                  textoPrincipal={siniestroID}
+                  textoSecundario="ID Siniestro"
+                />
+                <CajaRutSiniestro
+                  textoPrincipal={rut}
+                  textoSecundario="Rut Paciente"
+                />
               </div>
             </div>
-
-            <div className={spaceStyle.space2} />
-
-            <div className={welcomeStyle.rutSiniestroContainer}>
-              <CajaRutSiniestro
-                textoPrincipal={siniestroID}
-                textoSecundario="ID Siniestro"
-              />
-              <CajaRutSiniestro
-                textoPrincipal={rut}
-                textoSecundario="Rut Paciente"
-              />
-            </div>
-            
-            <div className={comunStyle.displayDeskInline}>
-              <Grid component="span" className={comunStyle.imgPrimaryDesk}>
+            <div className={comunClass.displayDeskInline}>
+              <Grid component="span" className={comunClass.imgPrimaryDesk}>
                 <img alt="excelente" src="static/excelent.svg" />
               </Grid>
             </div>
@@ -80,19 +77,18 @@ const PantallaFinal = (props) => {
         </div>
       </div>
       <div className={welcomeStyle.beginContainer}>
-        <div className={comunStyle.displayDesk}> 
-          <div className={spaceStyle.space2} />   
-        </div>
-        <div className={comunStyle.textCenterDesk}>
-          <Typography
-            className={welcomeStyle.subTitleBegin}
-          >
+        
+        <div className={comunClass.textCenterDesk}>
+          <div className={comunClass.displayDesk}>
+            <div className={spaceStyle.space1} />
+          </div>
+          <Typography className={welcomeStyle.subTitleBegin}>
             Luego de la firma pide al paciente:
           </Typography>
-          <div className={comunStyle.displayDesk}>
-            <div className={spaceStyle.space2} />
+          <div className={comunClass.displayDesk}>
+            <div className={spaceStyle.space1} />
           </div>
-          <div className={comunStyle.boxDesk}>
+          <div className={comunClass.boxDesk}>
             <IndiciacionesPacientes
               indicaciones={[
                 {
@@ -116,20 +112,24 @@ const PantallaFinal = (props) => {
               ]}
             />
             <div className={welcomeStyle.bottomBegin}>
-              <div className={spaceStyle.spaceMin1} />
+              <div className={comunClass.displayMobile}>
+                <div className={spaceStyle.spaceMin1} />
+              </div>
               <Button
-                className={[comunStyle.buttonAchs, comunStyle.pantallaFinalBotones]}
+                className={[comunClass.buttonAchs, comunClass.pantallaFinalBotones]}
                 variant="contained"
                 onClick={() => dispatch(handleSetStep(1.1))}
               >
                 Firma de documentos en SAP
               </Button>
-              <div className={spaceStyle.spaceMin1} />
+              <div className={comunClass.displayMobile}>
+                <div className={spaceStyle.spaceMin1} />
+              </div>
             </div>
           </div>
         </div>
       </div>  
-      <div className={comunStyle.displayDesk}>
+      <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
       </div>  
     </div>

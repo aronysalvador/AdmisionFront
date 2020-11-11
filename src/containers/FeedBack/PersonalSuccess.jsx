@@ -12,20 +12,16 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
-
 const PersonalSuccess = (props) =>{
-    const { dispatch, microsoftReducer, step } = props;
+    const { dispatch, microsoftReducer } = props;
     const welcomeStyle = getWelcomeStyle();
     const comunStyle = getComunStyle();
     const spaceStyle = getSpaceStyle();
-console.log(step);
+
     return(
       <div className={comunStyle.rootBegin}>
         <div className={comunStyle.displayDesk}> 
-          <Header
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
-          />
+          <Header userMsal={ microsoftReducer.userMsal }/>
         </div>
         <div className={welcomeStyle.backgroundBoxAchsDesk}>
           <div className={welcomeStyle.beginContainer}>
@@ -79,14 +75,14 @@ console.log(step);
         </div>
         <div className={welcomeStyle.beginContainer}>
           <div className={comunStyle.displayDesk}> 
-            <div className={spaceStyle.space2} />   
+            <div className={spaceStyle.space1} />   
           </div>
           <div className={comunStyle.textCenterDesk}>
             <Typography className={welcomeStyle.subTitleBegin}>
               Ahora capturarás el relato:
             </Typography>
             <div className={comunStyle.displayDesk}>
-              <div className={spaceStyle.space2} />
+              <div className={spaceStyle.space1} />
             </div>
             <div className={comunStyle.boxDesk}>
               <Indiciaciones
@@ -107,7 +103,7 @@ console.log(step);
                     icono: "work.svg",
                     textoPrimario: "Mantén la autenticidad",
                     textoSecundario: "sin alterar los sucesos",
-                    clase: welcomeStyle.divRow,
+                    clase: welcomeStyle.divRow2,
                   },
                 ]}
               />

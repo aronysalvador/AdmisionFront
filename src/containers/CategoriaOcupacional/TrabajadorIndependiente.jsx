@@ -10,12 +10,10 @@ import Header from "../../components/header/index";
 
 const TrabajadorIndependiente = () => {
   const {
-    addmissionForm: { percentage},
+    addmissionForm: { percentage }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
-
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -28,10 +26,7 @@ const TrabajadorIndependiente = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -40,9 +35,7 @@ const TrabajadorIndependiente = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid
-          className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
-        >
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           ¿<Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             Paciente declara renta&nbsp;
           </Grid>   
@@ -56,7 +49,9 @@ const TrabajadorIndependiente = () => {
       </div>
       <div className={comunClass.boxDesk}>
         <div className={comunClass.bottomElement}>
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={comunClass.displayMobile}> 
+            <div className={spaceStyle.spaceMin1} />
+          </div>
           <Button
             variant="contained"
             className={comunClass.buttonAchs}

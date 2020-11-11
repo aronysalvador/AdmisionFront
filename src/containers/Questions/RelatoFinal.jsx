@@ -111,7 +111,7 @@ const RelatoFinal = (props) => {
                       margin="dense"
                       variant="outlined"
                       fullWidth
-                      rows={12}
+                      rows={10}
                       multiline
                       scroll={
                         {width: 8}}

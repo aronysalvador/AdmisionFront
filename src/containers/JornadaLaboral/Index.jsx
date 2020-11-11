@@ -42,9 +42,6 @@ const JornadaLaboralContainer = () => {
     setFinJornada(value.horaFin);
   }
 
-  console.log("INICIO VALUE", inicioJornadaLaboralValue);
-  console.log("FIN VALUE", finJornadaLaboralValue);
-
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 

@@ -19,10 +19,8 @@ const HasSinister = (props) => {
   return (
     <>
       <div className={comunClass.displayDesk}> 
-        <Header
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
+        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
       </div>
       <div className={blackStyle.root}>
         <div className={spaceStyle.space2} />
@@ -35,24 +33,17 @@ const HasSinister = (props) => {
           className={blackStyle.img}
         />
         <div className={spaceStyle.space3} />
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textWarning}
-        >
-        ¡Atención!
+        <Typography className={blackStyle.textWarning}>
+          ¡Atención!
         </Typography>
-        <div className={spaceStyle.space2} />
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textMessage}
-        >{siniestroOpciones.mensajeAlerta}
+        {/* <div className={spaceStyle.space2} /> */}
+        <Typography className={blackStyle.textMessage}>
+          {siniestroOpciones.mensajeAlerta}
         </Typography>
         <div className={comunClass.bottomElement}>
           <Button
             className={blackStyle.buttonFooter}
-            onClick={() => {
-              dispatch(handleSetStep(5.831));
-            }}
+            onClick={() => { dispatch(handleSetStep(5.831)) }}
           >{siniestroOpciones.mensajeBoton}
             {/* Ver sus(s) siniestro(s) */}
           </Button>

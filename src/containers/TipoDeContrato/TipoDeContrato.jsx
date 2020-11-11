@@ -55,7 +55,7 @@ const TipoDeContrato = () => {
         </div>
       </div>
 
-      <div className={comunClass.boxDesk}>
+      <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.displayMobile}> 
           <div className={spaceStyle.space2} />
         </div>

@@ -63,10 +63,7 @@ const PersonalData = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -78,7 +75,7 @@ const PersonalData = (props) => {
         <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
           Empieza
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;verificando los datos de<br/>
+            &nbsp;verificando los datos de&nbsp;<br className={comunClass.displayMobile}/>
           </Grid>  
           <Grid component="span"  className={comunClass.titleGray}>
             {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}

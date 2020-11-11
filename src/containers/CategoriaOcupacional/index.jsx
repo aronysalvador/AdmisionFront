@@ -47,7 +47,7 @@ const CategoriaOcupacional = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Selecciona la  
           <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;categoría ocupacional
@@ -61,7 +61,7 @@ const CategoriaOcupacional = () => {
         </div>
       </div>
 
-      <div className={comunClass.boxDesk}>
+      <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.displayMobile}> 
           <div className={spaceStyle.space2} />
         </div>

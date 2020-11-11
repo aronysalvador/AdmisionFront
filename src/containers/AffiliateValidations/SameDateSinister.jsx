@@ -18,38 +18,34 @@ const SameDateSinister = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-            userMsal={ microsoftReducer.userMsal }
-            // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
-      <div className={spaceStyle.space5} />
+      <div className={comunClass.displayMobile}> 
+        <div className={spaceStyle.space3} />
+      </div>
+      <div className={spaceStyle.space2} />
       <center>
         <div>
-          <img alt="load" src="./static/notificacion.png" />
+          <img alt="load" src="./static/notificacion.svg" />
         </div>
-        <div className={spaceStyle.space3} />
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textWarning2}
-        >
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
+        <div className={spaceStyle.space1} />
+        <Typography className={blackStyle.textWarning2}>
           ¡Atención!
         </Typography>
         <div className={spaceStyle.space1} />
-        <Typography
-          className={blackStyle.textMessage2}
-        >
-          Este paciente&nbsp;
-            <br className={comunClass.displayDesk}/>
-            tiene un siniestro activo&nbsp;
-            <br className={comunClass.displayDesk}/>
-            en la misma fecha
+        <Typography className={blackStyle.textMessage2}>
+          Este paciente tiene un siniestro activo&nbsp;
+          <br className={comunClass.displayDesk}/>
+          en la misma fecha
         </Typography>
         
-        <div className={comunClass.bottomElement}>
+        <div className={comunClass.bottomElement} style={{ padding: '1.145em' }}>
           <Button
             className={comunClass.buttonAchs}
-              onClick={() => dispatch(handleSetStep(5.1)) }
+            onClick={() => dispatch(handleSetStep(5.1)) }
           >
             Entendido
           </Button>

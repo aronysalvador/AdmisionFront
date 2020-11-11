@@ -44,10 +44,7 @@ const DataWitness = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -56,7 +53,7 @@ const DataWitness = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid  className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Solicita una 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
           &nbsp;referencia del testigo
@@ -74,9 +71,7 @@ const DataWitness = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <div>
-            <Typography
-              className={comunClass.tituloTextBox}
-            >
+            <Typography className={comunClass.tituloTextBox}>
               Nombre
             </Typography>
           </div>

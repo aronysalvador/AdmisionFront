@@ -26,7 +26,7 @@ const ContinueSAP = (props) => {
       <div className={spaceStyle.space5} />
       <center>
         <div>
-          <img alt="load" src="./static/exito.png" className={comunClass.imgLoadData} />
+          <img alt="load" src="./static/exito.svg" className={comunClass.imgLoadData} />
         </div>
         <div className={spaceStyle.space3} />
         <Grid className={comunClass.txtLoadData}>
@@ -41,7 +41,7 @@ const ContinueSAP = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_1.gif"
+            src="./static/Loader_2.gif"
             className={comunClass.imgLoadData2}
           />
         </div>

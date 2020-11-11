@@ -14,7 +14,6 @@ const LoadPersonalData = (props) => {
   }, [dispatch, addmissionForm ]);
 
   useEffect( () => {
-    console.log("LOAD PERSONAL DATA...");  
     initFn()
      // eslint-disable-next-line
   },[]);
@@ -32,7 +31,7 @@ const LoadPersonalData = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/validandoDatos.png"
+            src="./static/validandoDatos.svg"
             className={comunClass.imgLoadData}
           />
         </div>
@@ -49,7 +48,7 @@ const LoadPersonalData = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_1.gif"
+            src="./static/Loader_2.gif"
             className={comunClass.imgLoadData2}
           />
         </div>

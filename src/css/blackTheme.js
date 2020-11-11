@@ -196,7 +196,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             width: "14em",
         },
         imgNoAfiliate: {
-            width: "14em",
+            width: "8em",
         },
         textWarning: {
             textAlign: "center",
@@ -277,7 +277,10 @@ export const getBlackTheme = makeStyles((theme) => ({
         },
         containerBottom: {
             maxWidth: '40%'
-        }
+        },
+        buttonFooterSpace: {
+            marginRight: '20px'
+        },
 
     },
 

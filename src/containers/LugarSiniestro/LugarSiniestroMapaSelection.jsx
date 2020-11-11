@@ -14,9 +14,9 @@ const LugarSiniestroMapaSelection = () => {
   const [placeId, setPlaceId]=useState(null);
   const [coords, setCoords]= useState(null);
   const dispatch = useDispatch();
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const {
     addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal },
+    microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   useEffect(()=>{
@@ -84,10 +84,7 @@ const LugarSiniestroMapaSelection = () => {
   return (
     <div className={comunClass.rootContainer}> 
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <div style={{padding: '0.5em'}}>
@@ -99,7 +96,7 @@ const LugarSiniestroMapaSelection = () => {
         </div>
       </div>
       <div className={comunClass.displayDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={spaceStyle.spaceMin1} />
       </div>
       <div className={comunClass.boxDeskMap}>
         <div>

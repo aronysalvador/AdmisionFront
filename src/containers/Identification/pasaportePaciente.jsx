@@ -19,8 +19,8 @@ const PasaportePaciente = () => {
       <center>
         <img
           alt="pasaporte"
-          src="./static/validandoAlerta.png"
-          style={{width:'146px'}}
+          src="./static/exito.svg" //validandoAlerta.png"
+          className={comunClass.imgPass}
         />
       </center>
       <div className={spaceStyle.space1} />

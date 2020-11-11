@@ -20,10 +20,8 @@ const SucursalesNoVigentes = (props) => {
   return (
     <div>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
+        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space1} />
@@ -42,24 +40,13 @@ const SucursalesNoVigentes = (props) => {
           className={blackStyle.imgNoAfiliate}
         />
         <div className={spaceStyle.space1} />
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textWarning}
-        >
-        ¡Atención!
+        <Typography className={blackStyle.textWarning}>
+          ¡Atención!
         </Typography>
-        <Typography
-          color="textSecondary"
-          className={blackStyle.textNoAfiliate}
-        >
-          La empresa seleccionada&nbsp;
-          <br className={comunClass.displayDesk}/> 
-          no tiene sucursales vigentes
+        <Typography className={blackStyle.textNoAfiliate}>
+          La empresa seleccionada no tiene sucursales vigentes
         </Typography>
         <div className={spaceStyle.space1} />
-        {/* <div className={comunClass.displayDesk}>
-          <div className={spaceStyle.space1} />
-        </div> */}
 
         <NoAfiliateCard />
   
@@ -69,9 +56,7 @@ const SucursalesNoVigentes = (props) => {
         </div>
           <Button
             className={blackStyle.buttonFooter}
-            onClick={() => {
-              dispatch(handleSetStep(1.1));
-            }}
+            onClick={() => { dispatch(handleSetStep(1.1)) }}
           >
             Volver al inicio
           </Button>

@@ -12,7 +12,7 @@ import Header from "../../components/header/index";
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj },
+    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj, creacionBP },
   } = useSelector((state) => state, shallowEqual)
 
   const {
@@ -64,7 +64,7 @@ const DireccionParticular = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.1))}
+          dispatch={() => ( creacionBP ? dispatch(handleSetStep(5.4)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
       </div>
@@ -102,9 +102,6 @@ const DireccionParticular = () => {
             }}
           />
           <center>
-            <div className={comunClass.displayDesk}>
-              <div className={spaceStyle.space1} />
-            </div>
             {(mapaUrl)?
             <img alt="MapaDireccionParticular" className={googleMap}  src={mapaUrl} />
             :null}
@@ -120,7 +117,7 @@ const DireccionParticular = () => {
               dispatch(updateForm("direccionParticular", direccion.description))
               dispatch(updateForm("direccionParticularObj", direccion))
               dispatch(updateForm("comunaDireccionParticular", nombreComuna))
-              dispatch(handleSetStep(5.1))
+              creacionBP ? dispatch(handleSetStep(5.3)) : dispatch(handleSetStep(5.1));
             }}
           >
             Guardar dirección

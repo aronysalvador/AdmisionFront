@@ -21,10 +21,7 @@ const RelatoSuccess = (props) => {
   return (
     <div className={comunStyle.rootBegin}>
       <div className={comunStyle.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
@@ -59,15 +56,11 @@ const RelatoSuccess = (props) => {
                   className={welcomeStyle.iconCircular}
                 />
               </div> 
-              <Typography
-                className={welcomeStyle.titleBegin}
-              >
+              <Typography className={welcomeStyle.titleBegin}>
                 ¡Excelente!
               </Typography>
               <div style={{display: 'flex'}}>
-                <Typography
-                  className={[welcomeStyle.titleBegin]} //titleBegin2, welcomeStyle.subtitleBegin
-                >
+                <Typography className={welcomeStyle.titleBegin}>
                   Relato capturado&nbsp;
                 </Typography>
                 <div className={comunStyle.displayDeskInline}>
@@ -85,16 +78,14 @@ const RelatoSuccess = (props) => {
       </div>  
       <div className={welcomeStyle.beginContainer}>
         <div className={comunStyle.displayDesk}> 
-          <div className={spaceStyle.space2} />   
+          <div className={spaceStyle.space1} />   
         </div>
         <div className={comunStyle.textCenterDesk}>
-          <Typography
-            className={welcomeStyle.subTitleBegin}
-          >
+          <Typography className={welcomeStyle.subTitleBegin}>
             Ahora revisarás su información laboral:
           </Typography>
           <div className={comunStyle.displayDesk}>
-            <div className={spaceStyle.space2} />
+            <div className={spaceStyle.space1} />
           </div>
           <div className={comunStyle.boxDesk}>
             <Indiciaciones

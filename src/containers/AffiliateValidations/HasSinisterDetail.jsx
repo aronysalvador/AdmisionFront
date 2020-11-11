@@ -22,10 +22,8 @@ const HasSinisterDetail = (props) => {
   return (
     <div>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
+        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra

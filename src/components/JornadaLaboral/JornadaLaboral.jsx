@@ -6,7 +6,6 @@ import { getComunStyle } from "../../css/comun";
 
 const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, horarios }) => {
   const [indiceInicio, setIndiceInicio] = useState(() => {
-    console.log("indiceInicioFromState", indiceInicioFromState);
     return indiceInicioFromState === -1 ? 17 : indiceInicioFromState;
   });
 
