@@ -25,10 +25,6 @@ const SinBPInfoPersonal2 = () => {
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
-  
-  const { data: nacionalidadList } = useSelector((state) => state.nacionalidadForm, shallowEqual);
-  const { data: paisesList } = useSelector((state) => state.paisForm, shallowEqual);
-  const { data: idiomasList } = useSelector((state) => state.idiomaForm, shallowEqual);
 
 
   const dispatch = useDispatch();
@@ -43,15 +39,19 @@ const SinBPInfoPersonal2 = () => {
     initFn()
   }, [initFn]);
 
-  
+    
+  const { data: nacionalidadList } = useSelector((state) => state.nacionalidadForm, shallowEqual);
+  const { data: paisesList } = useSelector((state) => state.paisForm, shallowEqual);
+  const { data: idiomasList } = useSelector((state) => state.idiomaForm, shallowEqual);
+
   const [nacionalidad, setNacionalidad] = useState(() => {
-    return !nacionalidadForm ? {nombre: "Chileno"} : nacionalidadForm;
+    return !nacionalidadForm ? {key: "CL", value: "chilena"} : nacionalidadForm;
   });
   const [idioma, setIdioma] = useState(() => {
-    return !idiomaForm ? {nombre: "Español"} : idiomaForm;
+    return !idiomaForm ? {key: "ES", value: "Español"} : idiomaForm;
   });
   const [pais, setPais] = useState(() => {
-    return !paisForm ? {nombre: "Chile"} : paisForm;
+    return !paisForm ? {key: "CL", value: "Chile"} : paisForm;
   });
 
 
@@ -117,7 +117,7 @@ const SinBPInfoPersonal2 = () => {
                 setNacionalidad(value);
               }}
               options={nacionalidadList}
-              getOptionLabel={(option) => option.nombre}
+              getOptionLabel={(option) => option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -146,7 +146,7 @@ const SinBPInfoPersonal2 = () => {
                 setPais(value);
               }}
               options={paisesList}
-              getOptionLabel={(option) => option.nombre}
+              getOptionLabel={(option) => option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -175,7 +175,7 @@ const SinBPInfoPersonal2 = () => {
                 setIdioma(value);
               }}
               options={idiomasList}
-              getOptionLabel={(option) => option.nombre}
+              getOptionLabel={(option) => option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}

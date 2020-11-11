@@ -64,14 +64,10 @@ const SinBPInfoPersonal1 = () => {
     (state) => state.addmissionForm,
     shallowEqual
   );
-  const [sexos, setSexo] = useState(["Masculino", "Femenino", "Otro"]);
 
-  const handleChange = (event) => {
-    saveFechaNacimiento(event.target.value);
-  };
+  const sexos = ["Masculino", "Femenino", "Otro"];
 
   const clickConfirmar = () => {
-    // dispatch(sendCargo(nombre, cargos));
     dispatch(updateForm("bpForm", { nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo }));
     dispatch(handleSetStep(5.813));
   };
@@ -106,8 +102,7 @@ const SinBPInfoPersonal1 = () => {
           <div className={spaceStyle.space1} />
         </div>
         <div className={comunClass.containerTextBox}>
-          {/* <Grid className={[comunClass.bpList, comunClass.siniesterList]}> */}
-            <div>
+           
               <Grid className={[comunClass.tituloTextBox]}>
                 Nombres
               </Grid>
@@ -143,11 +138,10 @@ const SinBPInfoPersonal1 = () => {
                   ),
                 }}
               />
-            </div>
+          
 
             <div className={spaceStyle.space1} />
 
-            <div>
               <Grid className={[comunClass.tituloTextBox]}>
                 Apellido Paterno
               </Grid>
@@ -178,11 +172,10 @@ const SinBPInfoPersonal1 = () => {
                   ),
                 }}
               />
-            </div>
+         
 
             <div className={spaceStyle.space1} />
 
-            <div>
               <Grid className={[comunClass.tituloTextBox]}>
                 Apellido Materno
               </Grid>
@@ -213,7 +206,6 @@ const SinBPInfoPersonal1 = () => {
                   ),
                 }}
               />
-            </div>
 
             <div className={spaceStyle.space1} />
             <div className={comunClass.paddingElement}>
@@ -263,7 +255,7 @@ const SinBPInfoPersonal1 = () => {
                     saveSexo(value);
                   }}
                   options={sexos}
-                  getOptionLabel={(option) => option}
+                  getOptionLabel={(option) => option}                  
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -283,7 +275,6 @@ const SinBPInfoPersonal1 = () => {
                 />
               </div>
             </div>
-          {/* </Grid>  */}
         </div>
         <div className={comunClass.bottomElement}>
           <Button
