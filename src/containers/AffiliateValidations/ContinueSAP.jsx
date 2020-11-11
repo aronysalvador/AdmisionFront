@@ -41,7 +41,7 @@ const ContinueSAP = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_1.gif"
+            src="./static/Loader_2.gif"
             className={comunClass.imgLoadData2}
           />
         </div>

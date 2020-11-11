@@ -33,7 +33,7 @@ const PantallaFinal = (props) => {
             </div>
             <div className={spaceStyle.space6} />
           </div>
-          <div className={comunClass.titleDesk}>
+          <div className={comunClass.titleDeskFinal}>
             <div style={{display: 'block'}}>
               <div className={welcomeStyle.TextContainer}>
                 <div className={comunClass.displayMobile}>
@@ -53,7 +53,10 @@ const PantallaFinal = (props) => {
                   <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
                 </div>
               </div>
-              <div className={spaceStyle.space2} />            
+              <div className={spaceStyle.space1} />  
+              <div className={comunClass.displayMobile}>
+                <div className={spaceStyle.space1} />
+              </div>          
               <div className={welcomeStyle.rutSiniestroContainer}>
                 <CajaRutSiniestro
                   textoPrincipal={siniestroID}

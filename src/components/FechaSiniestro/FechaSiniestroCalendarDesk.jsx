@@ -52,7 +52,7 @@ const FechaSiniestroDesk = ({
             onChange={onDateChange}
             animateYearScrolling            
             disableToolbar  // seleccionar año
-            InputAdornmentProps={{ position: 'start'}}
+            InputAdornmentProps={{ position: 'start', paddingLeft: '6px'}}
             fullWidth
             invalidDateMessage="Formato invalido"
             keyboardIcon={<img alt="calendar" src="static/iconCalendar.svg"/>}
