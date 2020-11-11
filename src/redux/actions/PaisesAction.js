@@ -3,29 +3,10 @@ import {
   GET_PAIS_SUCCESS,
   GET_PAIS_FAILURE,
 } from "../types/paisType";
-//import Axios from "axios";
+import Axios from "axios";
 
 export const getData = async () => {
-  //return Axios.get(process.env.REACT_APP_IDIOMAS);
-  return {
-    content: [
-      {
-        nombre: "Chile",
-        id: 1,
-        codigo: 'CHI'
-      },
-      {
-        nombre: "Perú",
-        id: 2,
-        codigo: 'PER'
-      },
-      {
-        nombre: "Bolivia",
-        id: 3,
-        codigo: 'BOL'
-      }
-    ]
-  }
+  return Axios.get(process.env.REACT_APP_PAISES);
 };
 
 export const getPaises = () => async (dispatch) => {
@@ -36,8 +17,7 @@ export const getPaises = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      // dispatch(successCall(response.data.content[0]));
-      dispatch(successCall(response.content));
+      dispatch(successCall(response.data.content[0]));
     })
     .catch((error) => {
       dispatch(errorCall());

@@ -3,50 +3,10 @@ import {
   GET_NACIONALIDAD_SUCCESS,
   GET_NACIONALIDAD_FAILURE,
 } from "../types/nacionalidadType";
-//import Axios from "axios";
+import Axios from "axios";
 
 export const getData = async () => {
-  //return Axios.get(process.env.REACT_APP_NACIONALIDADES);
-  // return {
-  //   content: [
-  //     {
-  //       nombre: "Chileno",
-  //       id: 1,
-  //       codigo: 'CHI'
-  //     },
-  //     {
-  //       nombre: "Peruano",
-  //       id: 2,
-  //       codigo: 'PER'
-  //     },
-  //     {
-  //       nombre: "Argentino",
-  //       id: 3,
-  //       codigo: 'ARG'
-  //     }
-  //   ],
-  //   status: 200,
-  //   mensaje: "Operación exitosa"
-  // }
-  return {
-    content: [
-      {
-        nombre: "Chileno",
-        id: 1,
-        codigo: 'CHI'
-      },
-      {
-        nombre: "Peruano",
-        id: 2,
-        codigo: 'PER'
-      },
-      {
-        nombre: "Argentino",
-        id: 3,
-        codigo: 'ARG'
-      }
-    ]
-  }
+  return Axios.get(process.env.REACT_APP_NACIONALIDADES);
 }
 
 export const getNacionalidades = () => async (dispatch) => {
@@ -56,7 +16,7 @@ export const getNacionalidades = () => async (dispatch) => {
   });
   getData()
     .then((response) => {
-      dispatch(successCall(response.content));
+      dispatch(successCall(response.data.content[0]));
     })
     .catch((error) => {
       dispatch(errorCall());
