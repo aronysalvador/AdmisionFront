@@ -746,6 +746,13 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex',
             justifyContent: 'space-around',
             // margin: '-15px auto 30px',
+            marginTop: '-30px'
+        },
+        titleDeskFinal: {
+            // width: '90%',
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'space-around',
         },
         displayDesk: {
             display: 'block'

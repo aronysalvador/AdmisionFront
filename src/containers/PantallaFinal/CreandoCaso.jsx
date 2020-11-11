@@ -29,7 +29,7 @@ const CreandoCaso = (props) => {
       <center>
         <div>
           <img alt="load" 
-            src="./static/caso2.png" 
+            src="./static/creandoCaso.svg" 
             className={comunClass.imgLoadData} />
         </div>
         <div className={spaceStyle.space3} />
@@ -49,7 +49,7 @@ const CreandoCaso = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_1.gif"
+            src="./static/Loader_2.gif"
             className={comunClass.imgLoadData2}
           />
         </div>

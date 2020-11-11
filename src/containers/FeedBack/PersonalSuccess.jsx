@@ -103,7 +103,7 @@ const PersonalSuccess = (props) =>{
                     icono: "work.svg",
                     textoPrimario: "Mantén la autenticidad",
                     textoSecundario: "sin alterar los sucesos",
-                    clase: welcomeStyle.divRow,
+                    clase: welcomeStyle.divRow2,
                   },
                 ]}
               />
