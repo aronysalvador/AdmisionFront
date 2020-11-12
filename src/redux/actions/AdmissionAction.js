@@ -395,6 +395,8 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     delete JsonSap["cita"];
     delete JsonSap["step"];
     delete JsonSap["percentaje"];
+    if(JsonSap.razonAlertaForm.id === 6)
+      delete JsonSap["razonAlertaForm"];
 
     const objeto = {
       id_tipo: 1,
