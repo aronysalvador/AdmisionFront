@@ -742,7 +742,7 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         titleDesk: {
             // width: '90%',
-            position: 'relative',
+            // position: 'relative',
             display: 'flex',
             justifyContent: 'space-around',
             // margin: '-15px auto 30px',

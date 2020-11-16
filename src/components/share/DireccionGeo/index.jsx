@@ -110,7 +110,7 @@ const DireccionGeo = (props) => {
                       return(
                         <Typography className={comunStyle.txtGreen}>
                           <img alt="Location" src="static/location.png" className={comunStyle.iconLocation} />
-                          {option.description}
+                          <span style={{marginLeft:"5px"}}>{option.description}</span>
                         </Typography>
                       )
                     }else{
