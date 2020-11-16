@@ -6,7 +6,7 @@ import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
-import { validarDireccion } from './../../helpers/utils'
+import { validarDireccionSN } from './../../helpers/utils'
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 
@@ -46,7 +46,7 @@ const LugarExactoSiniestro = () => {
   },[sucursal])
   
   const validaDireccion = async()=>{
-    const resultado = await validarDireccion(sucursal)
+    const resultado = await validarDireccionSN(sucursal)
     setNombreComuna(resultado.comuna)
     setValido(resultado.valida)
   }
