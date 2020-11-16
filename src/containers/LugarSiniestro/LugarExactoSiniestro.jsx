@@ -12,7 +12,7 @@ import Header from "../../components/header/index";
 
 const LugarExactoSiniestro = () => {
   const {
-    addmissionForm: { step, percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro },
+    addmissionForm: { step, percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, tipoSiniestro, DireccionEmpresa },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
@@ -90,6 +90,7 @@ const LugarExactoSiniestro = () => {
               setSucursal({description: ''}); 
               dispatch(handleSetStep(11.1))
             }}
+            direccionTemporal={tipoSiniestro.Id===1?DireccionEmpresa:""}
           />
           <center>
             {(mapaUrl)?
