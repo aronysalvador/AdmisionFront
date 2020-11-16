@@ -23,6 +23,7 @@ const DireccionGeo = (props) => {
     const [options, setOptions] = React.useState([DinamycOption])
 
     React.useEffect(()=>{
+      
       if(direccionTemporal){
         setearDirection(direccionTemporal)
       }
@@ -37,7 +38,7 @@ const DireccionGeo = (props) => {
       var predictions = (Array.isArray(json.content[0].predictions)) ? json.content[0].predictions : []  
       predictions[predictions.length]=DinamycOption  
 
-      if(predictions.length>0){
+      if(predictions.length>1){
         setDireccion(predictions[0]);
         googleMapsGetMap(predictions[0])
       }
