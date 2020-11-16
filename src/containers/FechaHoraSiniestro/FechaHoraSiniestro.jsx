@@ -21,6 +21,7 @@ const FechaHoraSiniestro = () => {
 
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
+  const [invalid, setInvalid] = useState(true);
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -29,6 +30,10 @@ const FechaHoraSiniestro = () => {
   const dispatch = useDispatch();
 
   function setFechaValueSiniestro(value) {
+    if(value.year <= 1900)
+      setInvalid(true)
+    else
+      setInvalid(false)
     setFechaSiniestro({ ...value });
   }
 
@@ -151,6 +156,7 @@ const FechaHoraSiniestro = () => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
+            disabled={invalid}
             onClick={() => { handleNext() }}
           >
             Continuar
