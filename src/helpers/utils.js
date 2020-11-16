@@ -24,13 +24,12 @@ export function Hora(){
 }
 
 export const eliminarDiacriticos=(texto)=> {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"").replace(/ /g,"");
 }
 
 export const validarDireccion=async(direccion)=> {
     
     var respuesta = { valida: false, comuna: null  };
-
     if(typeof direccion.description === 'string'){
      
         const fragmentos  = direccion.description.split(",")
