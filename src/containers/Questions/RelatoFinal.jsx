@@ -133,6 +133,7 @@ const RelatoFinal = (props) => {
                       className={classesComun.buttonEditRelato}
                       onClick={() => setEditable(true)}
                     >
+                      <img alt="editar relato" src="static/editar-relato.svg" />
                       Editar
                     </div>
                   </div>
