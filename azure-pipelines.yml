@@ -12,6 +12,9 @@ trigger:
 variables:
   - group: VARIABLE-ENTORNO-ADMISIONDIGITAL
 
+  - name: Repositorio
+    value: "salud/admision-digital/front-admision"
+
   - name: Repository
     value: "admision_digital/achs-fr-admision"
   - name: DockerRepositoryDesa
@@ -58,19 +61,9 @@ stages:
   - stage: Deploy_DESA
     displayName: "Building Desploy DESA"
     condition: |
-      or(
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        ), 
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployDesaHotfix']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        ),
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        )
+      and(
+        startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
+        eq(variables['Build.Reason'], 'PullRequest')
       )
     jobs:
       - deployment: Deploy
@@ -83,7 +76,7 @@ stages:
             displayName: Build Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(DockerRepositoryDesa)
+              repository: $(Repositorio)
               command: build
               Dockerfile: ./Dockerfile
               tags: $(ImageTag)
@@ -92,16 +85,14 @@ stages:
             displayName: Push Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(DockerRepositoryDesa)
+              repository: $(Repositorio)
               command: push
               tags: $(ImageTag)
-
-          # - task: AzureWebAppContainer@1
-          #   inputs:
-          #     azureSubscription: $(azureSubcritionDESA)
-          #     appName: $(appNameDESAFront)
-          #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)
-
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
           - task: KubernetesManifest@0
             inputs:
               action: "deploy"
@@ -111,8 +102,7 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
                 /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-ingress.yaml
-             # containers: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_19801
-              containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
 
   # DESA #
 
