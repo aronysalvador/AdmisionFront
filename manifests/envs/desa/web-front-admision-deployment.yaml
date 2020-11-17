@@ -13,9 +13,9 @@ spec:
     spec:
       containers:
       - name: web-front-admision
-        env:
+        env:   
           - name: PUBLIC_URL
-            value: /web-admision/      
+            value: /web-admision     
         image: imagen          
         imagePullPolicy: Always
         ports:
