@@ -92,7 +92,7 @@ stages:
             displayName: Get secrets
             inputs:
               script: |
-                sed -i "s/imagen/$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)/" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
           - task: KubernetesManifest@0
             inputs:
               action: "deploy"
