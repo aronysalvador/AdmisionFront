@@ -24,13 +24,39 @@ export function Hora(){
 }
 
 export const eliminarDiacriticos=(texto)=> {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"").replace(/ /g,"");
+}
+
+export const validarDireccionSN=async(direccion)=> {
+    
+    var respuesta = { valida: false, comuna: null  };
+
+    if(typeof direccion.description === 'string'){
+     
+        const fragmentos  = direccion.description.split(",")
+          if(Array.isArray(fragmentos) && fragmentos.length >= 3 ){     
+            var comuna = fragmentos[fragmentos.length-2].toUpperCase().trim()                                             
+            if(comuna.includes("REGIÓN")){
+                if(fragmentos.length<5){
+                    comuna = fragmentos[1].toUpperCase().trim()
+                }else{
+                    comuna = fragmentos[2].toUpperCase().trim()
+                }
+            }
+            respuesta.comuna=comuna
+            var response =  await validarComuna(comuna);
+            var valida=response.ok ? true : false;
+            respuesta.valida=valida
+          }
+      }
+
+
+      return respuesta;
 }
 
 export const validarDireccion=async(direccion)=> {
     
     var respuesta = { valida: false, comuna: null  };
-
     if(typeof direccion.description === 'string'){
      
         const fragmentos  = direccion.description.split(",")

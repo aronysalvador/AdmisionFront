@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { Format } from "../../helpers/strings";
 
 const FormQuestion = (props) => {
   const { titulo, titulo2, pregunta, pregunta2, placeholder, accion, valueFromState } = props;
@@ -14,7 +15,7 @@ const FormQuestion = (props) => {
   });
 
   const onChangeHandler = (event) => {
-    setLocalValue(event.target.value);
+    setLocalValue(Format.caracteresInvalidos(event.target.value));
   };
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
