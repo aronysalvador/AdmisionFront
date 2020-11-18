@@ -23,7 +23,7 @@ const DireccionGeo = (props) => {
     const googleMapsAutoComplete = async(newInputValue) =>{
       sleep(5)  
       if(newInputValue){
-          const test = await fetch(`${process.env.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${newInputValue}`)
+          const test = await fetch(`${window.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${newInputValue}`)
           const json = await test.json()      
           var predictions = (Array.isArray(json.content[0].predictions)) ? json.content[0].predictions : []  
           predictions[predictions.length]=DinamycOption        
@@ -34,7 +34,7 @@ const DireccionGeo = (props) => {
     }
     const googleMapsGetMap = async(newValue) => {
       if(newValue){
-        let urlMapa = `${process.env.REACT_APP_GEO_STATICMAP}?id=${newValue?.place_id}&size=300x280`
+        let urlMapa = `${window.REACT_APP_GEO_STATICMAP}?id=${newValue?.place_id}&size=300x280`
         setMapa(urlMapa)
       }
     }
@@ -42,7 +42,7 @@ const DireccionGeo = (props) => {
     const handleDinamic = async() => {
       if(direccion){
         dispatch(updateForm("DireccionTemporal", direccion))
-        const test = await fetch(`${process.env.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
+        const test = await fetch(`${window.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
         const json = await test.json()      
         if(Array.isArray(json.content)){
             dispatch(updateForm("LatTemporal", json.content[0].result.geometry.location.lat))

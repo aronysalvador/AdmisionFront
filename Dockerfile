@@ -6,35 +6,9 @@ WORKDIR /usr/src/app
 
 ### VARIABLES DE ENTORNO ###
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
-ARG urlOrquestador=default
 ARG idAzure=default
 ARG app=default
-ENV REACT_APP_ISAPRES=$urlOrquestador/api/sap/isapres/
-ENV REACT_APP_AFP=$urlOrquestador/api/sap/afp/
-ENV REACT_APP_NACIONALIDADES=$urlOrquestador/api/datosPaciente/nacionalidades/
-ENV REACT_APP_IDIOMAS=$urlOrquestador/api/datosPaciente/idiomas/
-ENV REACT_APP_PAISES=$urlOrquestador/api/datosPaciente/paises/
-ENV REACT_APP_CATEGORIA_OCUPACIONAL=$urlOrquestador/api/sap/categoriaOcupacional/
-ENV REACT_APP_TIPO_CONTRATO=$urlOrquestador/api/sap/tipoContrato/
-ENV REACT_APP_JORNADA_TRABAJO=$urlOrquestador/api/sap/jornadaTrabajo/
-ENV REACT_APP_TIPO_REMUNERACIONES=$urlOrquestador/api/sap/tipoRemuneracion/
-ENV REACT_APP_COMUNA=$urlOrquestador/api/sap/comunas
-ENV REACT_APP_SUCURSALES=$urlOrquestador/api/sap/sucursales
-ENV REACT_APP_CENTROSACHS=$urlOrquestador/api/sap/centros
-ENV REACT_APP_PROFESION=$urlOrquestador/api/sap/profesiones
-ENV REACT_APP_ALERTAS=$urlOrquestador/api/sap/alertas
-ENV REACT_APP_RAZONSOCIAL=$urlOrquestador/api/sap/razonSocialByName?companyName=
-ENV REACT_APP_CENTER_USER=$urlOrquestador/api/sap/centrosUser
-ENV REACT_APP_LOG=$urlOrquestador/api/logs/
-ENV REACT_APP_RAZON_SOCIAL_RUT=$urlOrquestador/api/sap/razonSocialByRut?rut=
-ENV REACT_APP_VALIDAR_DATA_EMPRESA=$urlOrquestador/api/paciente/
-ENV REACT_APP_VALIDAR_DATA_PACIENTE=$urlOrquestador/api/paciente/getPaciente
-ENV REACT_APP_INTEGRACION_SAP=$urlOrquestador/api/sap/integracionsap
-ENV REACT_APP_HOMOLOGACION=$urlOrquestador/api/admisionista/getAliasSapByEmail
-ENV REACT_APP_GEO_AUTOCOMPLETE=$urlOrquestador/api/geo/autocompletarDirecciones
-ENV REACT_APP_GEO_STATICMAP=$urlOrquestador/api/geo/getMapaEstatico
-ENV REACT_APP_GEO_LATLNG=$urlOrquestador/api/geo/getLatLng
-ENV REACT_APP_GEO_DIRECTION=$urlOrquestador/api/geo/getDireccion
+
 ENV REACT_APP_MICROSOFT_AUTH_CLIENTID=$idAzure
 ENV REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL=https://$app.azurewebsites.net
 ### VARIABLES DE ENTORNO ###
@@ -50,6 +24,11 @@ RUN npm run build
 
 ### STAGE 2: Production Environment ###
 FROM nginx:1.13.12-alpine
+RUN apk add -U dos2unix
+RUN apk add --no-cache -U jq
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
+COPY docker-entrypoint.sh reemplazar_envs.sh /
+RUN dos2unix reemplazar_envs.sh
+RUN chmod +x docker-entrypoint.sh reemplazar_envs.sh
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/docker-entrypoint.sh"]

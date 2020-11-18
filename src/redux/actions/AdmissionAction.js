@@ -62,11 +62,11 @@ export const formatRut = (rut) => {
 };
 
 export const obtenerData = async (rut) => {
-  return Axios.get(process.env.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`);
+  return Axios.get(window.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`);
 };
 
 export const obtenerDataRazon = async (rutEmpresa) => {
-  return Axios.get(process.env.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa);
+  return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa);
 };
 
 export const saveRut = (rut) => {
@@ -331,7 +331,7 @@ const sendCallCentroAchs = (nombre, codigo, uoMedica, uoTratamiento) => ({
 
 export const validarData = async (data) => {
   return Axios.get(
-    process.env.REACT_APP_VALIDAR_DATA_EMPRESA +
+    window.REACT_APP_VALIDAR_DATA_EMPRESA +
       "validate?rutPaciente=" +
       data.rutPaciente +
       "&rutEmpresa=" +
@@ -408,7 +408,7 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     //console.log(JSON.stringify(objeto))
     //console.log("*********************************************")
 
-    Axios.post(process.env.REACT_APP_INTEGRACION_SAP, objeto)
+    Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto)
       .then(({ data }) => {
         if (data.status === 200) {
           const siniestroID = data.content[0].siniestroID;

@@ -22,7 +22,7 @@ const RazonSocial = () => {
       setSearch(newInputValue)
       if(newInputValue){
         if(newInputValue.length % 4 === 0 && newInputValue !== search)  {
-          const test = await fetch(process.env.REACT_APP_RAZONSOCIAL+ newInputValue)
+          const test = await fetch(window.REACT_APP_RAZONSOCIAL+ newInputValue)
           const json = await test.json()
           var predictions = (Array.isArray(json.content?.response)) ? json.content.response : []           
           setOptions(predictions)
