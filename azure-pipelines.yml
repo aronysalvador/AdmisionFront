@@ -7,7 +7,6 @@ trigger:
       - release/*
       - develop
       - hotfix/*
-      #- feature/*
 
 variables:
   - group: VARIABLE-ENTORNO-ADMISIONDIGITAL
@@ -15,27 +14,12 @@ variables:
   - name: Repositorio
     value: "salud/admision-digital/front-admision"
 
-  - name: Repository
-    value: "admision_digital/achs-fr-admision"
-  - name: DockerRepositoryDesa
-    value: desa/${{variables['Repository'] }}
-  - name: DockerRepositoryQA
-    value: qa/${{variables['Repository'] }}
-  - name: DockerRepositoryProd
-    value: prod/${{variables['Repository'] }}
-
   - name: ImageTag
     value: "_$(Build.BuildId)"
 
-  - name: urlOrquestadorDesa
-    value: "https://desa.salud.achs.cl/orquestador"
-    # value: "https://desa.orquestador.admision.40.121.134.234.nip.io"
-    # value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
-  - name: urlOrquestadorQA
-    # value: 'https://qa.orquestador.admision.52.149.214.89.nip.io'
-    value: "https://wa-qa-admisiondigital-msorquestador.azurewebsites.net"
-  - name: urlOrquestadorSTG
-    value: "https://wa-stg-admdig-msorquestador.azurewebsites.net"
+  
+  - name: DockerRepositoryProd
+    value: prod/admision_digital/achs-fr-admision
   - name: urlOrquestadorPROD
     value: "https://wa-prod-admdig-msorquestador.azurewebsites.net"
 
@@ -81,7 +65,7 @@ stages:
               command: build
               Dockerfile: ./Dockerfile
               tags: $(ImageTag)
-              arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESAFront)
+              arguments: --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESAFront)
           - task: Docker@2
             displayName: Push Docker Image
             inputs:
@@ -111,20 +95,10 @@ stages:
   - stage: Deploy_QA
     displayName: "Building Deploy QA"
     condition: |
-      or( 
-        and(
-           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchQa']),
-           startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
-           eq(variables['Build.Reason'], 'PullRequest')
-         ), 
-         and(
-           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployQaHotfix']),
-           eq(variables['Build.Reason'], 'PullRequest')
-         ),
-         and(
-           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
-           eq(variables['Build.Reason'], 'PullRequest')
-         )
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchQa']),
+         startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
+         eq(variables['Build.Reason'], 'PullRequest')
        )
     jobs:
       - deployment: Deploy
@@ -133,41 +107,72 @@ stages:
       - job: Build
         displayName: "Deploy QA"
         steps:
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-QA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+          
+  # QA #
+
+  # QAHOTFIX #
+  - stage: Deploy_QA_Hotfix
+    displayName: "Building Desploy Qa Hotfix"
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployQaHotfix']),
+         startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy QA Hotfix"
+        environment: "Deploy_QA"
+      - job: Build
+        displayName: "Deploy QA Hotfix"
+        steps:
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(DockerRepositoryQA)
+              repository: $(Repositorio)
               command: build
               Dockerfile: ./Dockerfile
               tags: $(ImageTag)
-              arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQAFront)
+              arguments: --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQAFront)
           - task: Docker@2
             displayName: Push Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(DockerRepositoryQA)
+              repository: $(Repositorio)
               command: push
               tags: $(ImageTag)
-
-          - task: AzureWebAppContainer@1
+          - task: CmdLine@2
+            displayName: Get secrets
             inputs:
-              azureSubscription: $(azureSubcritionQA)
-              appName: $(appNameQAFront)
-              containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag)
-
-          #- task: KubernetesManifest@0
-          #  inputs:
-          #    action: 'deploy'
-          #    kubernetesServiceConnection: 'AKS-QA-SALUD-NS-ADMISIONDIGITAL'
-          #    namespace: 'admisiondigital'
-          #    manifests: |
-          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
-          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
-          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-cluster-issuer.yaml
-          #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
-          #    containers: crdesacontainer.azurecr.io/qa/admision_digital/achs-fr-admision:$(ImageTag)
-  # QA #
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-QA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+  # QAHOTFIX #
 
   # PROD #
   - stage: Deploy_PROD
