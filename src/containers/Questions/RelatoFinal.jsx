@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button, Typography, withStyles } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import Checkbox from '@material-ui/core/Checkbox';
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -15,6 +17,7 @@ const RelatoFinal = (props) => {
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const welcomeStyle = getWelcomeStyle();
 
   const getRelato = () => {
     return (
@@ -49,6 +52,29 @@ const RelatoFinal = (props) => {
 
   const isDisabled = () => {
     return localValue.length < 15;
+  };
+
+  const [stateCheckbox, setStateCheckbox] = useState(false);
+  const BlueCheckbox = withStyles({
+    root: {
+      '&$checked': {
+        color: '#00B2A9',
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox color="default" {...props} />);
+
+  const handleCheckBoxChange = (event) => {
+    // console.log(event)
+    console.log(event.target.checked)
+    setStateCheckbox( event.target.checked );
+      // if(event.target.checked){
+    //     setIsEmailValid(true)
+    //   }else{
+    //     setIsEmailValid(false);
+    //   }
+      
+    //   setUserEmail("");
   };
 
   return (
@@ -150,6 +176,14 @@ const RelatoFinal = (props) => {
                 </div>
               )}
             </div>
+
+            <Typography className={welcomeStyle.switchText} style={{display: "flex", alignItems: "center", fontWeight: 'bold'}}>
+              <Grid component="span">
+                <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+              </Grid>
+              Corresponde a cobertura <b>SOAP</b>
+            </Typography>
+
             <div className={comunClass.displayMobile}>
             <div className={spaceStyle.space1} />
           </div>
