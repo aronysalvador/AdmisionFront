@@ -13,7 +13,10 @@ spec:
     spec:
       containers:
       - name: web-front-admision
-        image: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_18287           
+        env:   
+          - name: PUBLIC_URL
+            value: /web-admision     
+        image: imagen          
         imagePullPolicy: Always
         env:
           - name: "REACT_APP_ISAPRES"

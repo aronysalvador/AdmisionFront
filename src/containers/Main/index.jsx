@@ -696,8 +696,10 @@ const Main = (props) => {
 
   return (
     <MuiThemeProvider>
-      <CssBaseline />
-      {renderForm(addmissionForm.step)}
+      <>
+        <CssBaseline />
+        {renderForm(addmissionForm.step)}
+      </>
     </MuiThemeProvider>
   );
 };
