@@ -15,6 +15,7 @@ spec:
       - name: web-qa-front-admision
         image: imagen         
         imagePullPolicy: Always
+        env:
           - name: PUBLIC_URL
             value: /web-admision     
           - name: "REACT_APP_ISAPRES"
