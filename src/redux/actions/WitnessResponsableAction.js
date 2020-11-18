@@ -6,7 +6,7 @@ import {
 import Axios from "axios";
 
 export const obtenerData = async() =>{
-    return await  Axios.get(process.env.REACT_APP_CARGOS)
+    return await  Axios.get(window.REACT_APP_CARGOS)
 }
 
 export const searchCargos = () =>async(dispatch) =>{
