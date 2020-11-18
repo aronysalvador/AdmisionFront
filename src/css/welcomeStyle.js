@@ -162,7 +162,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '1.075em',
         lineHeight: '1.786em',
-        color: '#787878'
+        color: '#787878',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 
     '@media (max-width: 767px)': {

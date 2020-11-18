@@ -389,7 +389,7 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: "10px",
             overflowWrap: "break-word",
             overflow: "auto",
-            height: "24em",
+            height: "23em",
             '&::-webkit-scrollbar': {
                 width: 8,
             },

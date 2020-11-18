@@ -65,7 +65,6 @@ const RelatoFinal = (props) => {
   })((props) => <Checkbox color="default" {...props} />);
 
   const handleCheckBoxChange = (event) => {
-    // console.log(event)
     console.log(event.target.checked)
     setStateCheckbox( event.target.checked );
       // if(event.target.checked){
@@ -80,10 +79,7 @@ const RelatoFinal = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -94,9 +90,7 @@ const RelatoFinal = (props) => {
       <div>
         <form onSubmit={() => saveAnswer(localValue)}>
           <div className={comunClass.titlePrimaryDesk}>
-            <Grid
-              className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
-            >
+            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
               Por favor,
               <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 &nbsp;confirma el relato
@@ -175,14 +169,16 @@ const RelatoFinal = (props) => {
                   </div>
                 </div>
               )}
+
+              <Typography className={welcomeStyle.switchText}>
+                <Grid component="span">
+                  <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+                </Grid>
+                Corresponde a cobertura &nbsp;<b>SOAP</b>
+              </Typography>
             </div>
 
-            <Typography className={welcomeStyle.switchText} style={{display: "flex", alignItems: "center", fontWeight: 'bold'}}>
-              <Grid component="span">
-                <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
-              </Grid>
-              Corresponde a cobertura <b>SOAP</b>
-            </Typography>
+            
 
             <div className={comunClass.displayMobile}>
             <div className={spaceStyle.space1} />
