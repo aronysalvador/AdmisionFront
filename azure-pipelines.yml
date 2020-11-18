@@ -121,7 +121,7 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
-              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)
           
   # QA #
 
