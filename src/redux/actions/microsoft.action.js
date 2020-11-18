@@ -79,7 +79,7 @@ export const getAccount = () => async (dispatch) => {
 };
 
 export const getCenters = async(email) => {
-  return  await Axios.get(process.env.REACT_APP_CENTER_USER+'?email='+email);
+  return  await Axios.get(window.REACT_APP_CENTER_USER+'?email='+email);
 }
 
 const isNuevaAdmisionista = async(dispatch, email) => {
@@ -94,7 +94,7 @@ const isNuevaAdmisionista = async(dispatch, email) => {
 };
 
 export const obtenerUsuarioSap = async (email) => {
-  return Axios.get(process.env.REACT_APP_HOMOLOGACION+'?email='+email);
+  return Axios.get(window.REACT_APP_HOMOLOGACION+'?email='+email);
 };
 
 

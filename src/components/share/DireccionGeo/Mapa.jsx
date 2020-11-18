@@ -17,7 +17,7 @@ const Mapa = (props) => {
     const lookForDirection = async(lat,lng) => {
         if(lat && lng){
             // const test = await fetch(`http://localhost:8080/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
-            const test = await fetch(`${process.env.REACT_APP_GEO_DIRECTION}?lat=${lat}&lng=${lng}`)
+            const test = await fetch(`${window.REACT_APP_GEO_DIRECTION}?lat=${lat}&lng=${lng}`)
             const json = await test.json()      
             if(json){
                 setDireccion(json.content[0].results[0].formatted_address)

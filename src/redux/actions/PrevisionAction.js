@@ -6,7 +6,7 @@ import {
 import Axios from "axios";
 
 export const fetchData = async () => {     
-  return await Axios.get(process.env.REACT_APP_ISAPRES);
+  return await Axios.get(window.REACT_APP_ISAPRES);
 };
 
 export const searchIsapres = () => async (dispatch) => {
