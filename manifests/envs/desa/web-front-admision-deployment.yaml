@@ -13,12 +13,11 @@ spec:
     spec:
       containers:
       - name: web-front-admision
-        env:   
-          - name: PUBLIC_URL
-            value: /web-admision     
         image: imagen          
         imagePullPolicy: Always
         env:
+          - name: PUBLIC_URL
+            value: /web-admision     
           - name: "REACT_APP_ISAPRES"
             value: "https://desa.salud.achs.cl/orquestador/api/sap/isapres/"
           - name: "REACT_APP_AFP"
