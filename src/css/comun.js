@@ -1317,5 +1317,10 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '1em',
         // lineHeight: '1em',
         letterSpacing: '0.03em'
+    },  
+    buttonEditRelato: {
+        cursor: "pointer",
+        textDecoration: "underline",
+        color: "#373737",
     },
 }));
