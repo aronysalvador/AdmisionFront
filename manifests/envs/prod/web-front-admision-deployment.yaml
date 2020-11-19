@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-prod-front-admision
+spec:
+  selector:
+    matchLabels:
+      app: web-prod-front-admision
+  template:
+    metadata:
+      labels:
+        app: web-prod-front-admision
+    spec:
+      containers:
+      - name: web-prod-front-admision
+        image: imagen         
+        imagePullPolicy: Always
+        env:
+          - name: PUBLIC_URL
+            value: /web-admision     
+          - name: "REACT_APP_ISAPRES"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/isapres/"
+          - name: "REACT_APP_AFP"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/afp/"
+          - name: "REACT_APP_NACIONALIDADES"
+            value: "https://prod.salud.achs.cl/orquestador/api/datosPaciente/nacionalidades/"
+          - name: "REACT_APP_IDIOMAS"
+            value: "https://prod.salud.achs.cl/orquestador/api/datosPaciente/idiomas/"
+          - name: "REACT_APP_PAISES"
+            value: "https://prod.salud.achs.cl/orquestador/api/datosPaciente/paises/"
+          - name: "REACT_APP_CATEGORIA_OCUPACIONAL"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/categoriaOcupacional/"
+          - name: "REACT_APP_TIPO_CONTRATO"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/tipoContrato/"
+          - name: "REACT_APP_JORNADA_TRABAJO"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/jornadaTrabajo/"
+          - name: "REACT_APP_TIPO_REMUNERACIONES"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/tipoRemuneracion/"
+          - name: "REACT_APP_COMUNA"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/comunas"
+          - name: "REACT_APP_SUCURSALES"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/sucursales"
+          - name: "REACT_APP_CENTROSACHS"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/centros"
+          - name: "REACT_APP_PROFESION"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/profesiones"
+          - name: "REACT_APP_ALERTAS"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/alertas"
+          - name: "REACT_APP_RAZONSOCIAL"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/razonSocialByName?companyName="
+          - name: "REACT_APP_CENTER_USER"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/centrosUser"
+          - name: "REACT_APP_LOG"
+            value: "https://prod.salud.achs.cl/orquestador/api/logs/"
+          - name: "REACT_APP_RAZON_SOCIAL_RUT"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/razonSocialByRut?rut="
+          - name: "REACT_APP_VALIDAR_DATA_EMPRESA"
+            value: "https://prod.salud.achs.cl/orquestador/api/paciente/"
+          - name: "REACT_APP_VALIDAR_DATA_PACIENTE"
+            value: "https://prod.salud.achs.cl/orquestador/api/paciente/getPaciente"
+          - name: "REACT_APP_INTEGRACION_SAP"
+            value: "https://prod.salud.achs.cl/orquestador/api/sap/integracionsap"
+          - name: "REACT_APP_HOMOLOGACION"
+            value: "https://prod.salud.achs.cl/orquestador/api/admisionista/getAliasSapByEmail"
+          - name: "REACT_APP_GEO_AUTOCOMPLETE"
+            value: "https://prod.salud.achs.cl/orquestador/api/geo/autocompletarDirecciones"
+          - name: "REACT_APP_GEO_STATICMAP"
+            value: "https://prod.salud.achs.cl/orquestador/api/geo/getMapaEstatico"
+          - name: "REACT_APP_GEO_LATLNG"
+            value: "https://prod.salud.achs.cl/orquestador/api/geo/getLatLng"
+          - name: "REACT_APP_GEO_DIRECTION"
+            value: "https://prod.salud.achs.cl/orquestador/api/geo/getDireccion"
+          - name: "REACT_APP_MICROSOFT_AUTH_CLIENTID"
+            value: azureID
+          - name: "REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL"
+            value: "https://desa.salud.achs.cl/web-admision/"
+        ports:
+        - containerPort: 80
+        resources:
+          requests: 
+            cpu: 250m
+            memory: 64Mi
+          limits: 
+            cpu: 500m
+            memory: 512Mi
+      imagePullSecrets:
+      - name: regcred-crdesacontainer 
