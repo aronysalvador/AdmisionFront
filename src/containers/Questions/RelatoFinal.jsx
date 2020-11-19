@@ -40,9 +40,18 @@ const RelatoFinal = (props) => {
     }
   });
 
+  const [stateCheckbox, setStateCheckbox] = useState(false);
+
+  const handleCheckBoxChange = (event) => {
+    setStateCheckbox( event.target.checked );
+  };
+
+  var respSoap = stateCheckbox ? "si" : "no" ;
+
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
+    dispatch(updateForm("coberturaSoap", respSoap));
     dispatch(handleSetStep(9));
   };
 
@@ -54,7 +63,6 @@ const RelatoFinal = (props) => {
     return localValue.length < 15;
   };
 
-  const [stateCheckbox, setStateCheckbox] = useState(false);
   const BlueCheckbox = withStyles({
     root: {
       '&$checked': {
@@ -63,18 +71,6 @@ const RelatoFinal = (props) => {
     },
     checked: {},
   })((props) => <Checkbox color="default" {...props} />);
-
-  const handleCheckBoxChange = (event) => {
-    console.log(event.target.checked)
-    setStateCheckbox( event.target.checked );
-      // if(event.target.checked){
-    //     setIsEmailValid(true)
-    //   }else{
-    //     setIsEmailValid(false);
-    //   }
-      
-    //   setUserEmail("");
-  };
 
   return (
     <div className={comunClass.root}>
@@ -111,18 +107,6 @@ const RelatoFinal = (props) => {
                 <div>
                   <div className={comunClass.boxRelato}>
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
-                    {/* <div>
-                      <a
-                        style={{
-                          cursor: "pointer",
-                          textDecoration: "underline",
-                          color: "#DEDEDE",
-                        }}
-                        onClick={() => setEditable(false)}
-                      >
-                        Confirmar
-                      </a>
-                    </div> */}
                     </div>
                     <TextField
                       id="txtRespuesta"
@@ -177,8 +161,6 @@ const RelatoFinal = (props) => {
                 Corresponde a cobertura &nbsp;<b>SOAP</b>
               </Typography>
             </div>
-
-            
 
             <div className={comunClass.displayMobile}>
             <div className={spaceStyle.space1} />
