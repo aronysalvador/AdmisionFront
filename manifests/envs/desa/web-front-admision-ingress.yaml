@@ -20,6 +20,14 @@ spec:
         backend:
           serviceName: web-front-admision-service
           servicePort: 80
+      - path: /web-firmadigital(/?.*)
+        backend:
+          serviceName: web-front-firmadigital-service
+          servicePort: 80   
+      - path: /web-digitalizador-documentos(/?.*)
+        backend:
+          serviceName: web-front-digitalizaciondocumentos-service
+          servicePort: 80   
       - path: /orquestador/(.*)
         backend:
           serviceName: api-orquestador-service
