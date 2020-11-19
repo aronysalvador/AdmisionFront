@@ -11,7 +11,7 @@ import {
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
 
-import { handleLog, handlEndLog } from "./Log";
+import { handleLog, handlEndLog, stepLogPage } from "./Log";
 import { FechaHora } from './../../helpers/utils'
 import { Pipes } from "./../../containers/EditarTelefono/phone";
 import {getSucursales} from "./SucursalesAction";
@@ -46,7 +46,11 @@ export const updateForm = (stateType, value) => {
 };
 
 export const handleSetStep = (step) => {
-  return (dispatch) => {
+  return (dispatch , getState) => {
+    const { LogForm: {ID} } = getState();
+
+    ID !== 0 && dispatch(stepLogPage({Id: ID, fecha: FechaHora(), opcion: 7, id_campo: step}))
+    
     dispatch(setStep(step, getPercentage(step)));
   };
 };
