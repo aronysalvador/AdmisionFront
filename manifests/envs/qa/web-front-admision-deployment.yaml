@@ -71,7 +71,7 @@ spec:
           - name: "REACT_APP_GEO_DIRECTION"
             value: "https://qa.salud.achs.cl/orquestador/api/geo/getDireccion"
           - name: "REACT_APP_MICROSOFT_AUTH_CLIENTID"
-            value: $azureID
+            value: azureID
           - name: "REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL"
             value: "https://desa.salud.achs.cl/web-admision/"
         ports:
