@@ -20,7 +20,16 @@ spec:
         backend:
           serviceName: web-qa-front-admision-service
           servicePort: 80
+      - path: /web-firmadigital(/?.*)
+        backend:
+          serviceName: web-qa-front-firmadigital-service
+          servicePort: 80   
+      - path: /web-digitalizador-documentos(/?.*)
+        backend:
+          serviceName: web-qa-front-digitalizaciondocumentos-service
+          servicePort: 80   
       - path: /orquestador/(.*)
         backend:
           serviceName: api-qa-orquestador-service
-          servicePort: 80          
+          servicePort: 80
+       
