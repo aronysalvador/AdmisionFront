@@ -6,11 +6,8 @@ WORKDIR /usr/src/app
 
 ### VARIABLES DE ENTORNO ###
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
-ARG idAzure=default
-ARG app=default
 
-ENV REACT_APP_MICROSOFT_AUTH_CLIENTID=$idAzure
-ENV REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL=https://$app.azurewebsites.net
+
 ### VARIABLES DE ENTORNO ###
 
 COPY package.json /usr/src/app/package.json

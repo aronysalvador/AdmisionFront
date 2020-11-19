@@ -65,7 +65,6 @@ stages:
               command: build
               Dockerfile: ./Dockerfile
               tags: $(ImageTag)
-              arguments: --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESAFront)
           - task: Docker@2
             displayName: Push Docker Image
             inputs:
@@ -78,6 +77,7 @@ stages:
             inputs:
               script: |
                 sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdDesarrollo)?" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
           - task: KubernetesManifest@0
             inputs:
               action: "deploy"
@@ -112,6 +112,7 @@ stages:
             inputs:
               script: |
                 sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdQa)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
           - task: KubernetesManifest@0
             inputs:
               action: "deploy"
@@ -149,7 +150,6 @@ stages:
               command: build
               Dockerfile: ./Dockerfile
               tags: $(ImageTag)
-              arguments: --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQAFront)
           - task: Docker@2
             displayName: Push Docker Image
             inputs:
@@ -162,6 +162,7 @@ stages:
             inputs:
               script: |
                 sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdQa)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
           - task: KubernetesManifest@0
             inputs:
               action: "deploy"
