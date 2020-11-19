@@ -737,7 +737,7 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         titleCenterDesk: {
             textAlign: "center !important",
-            position: "relative",
+            // position: "relative",
             marginTop: "0px"
         },
         titleDesk: {
@@ -1317,7 +1317,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '1em',
         // lineHeight: '1em',
         letterSpacing: '0.03em'
-    },  
+    },
     buttonEditRelato: {
         cursor: "pointer",
         textDecoration: "underline",

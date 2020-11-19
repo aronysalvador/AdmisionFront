@@ -15,7 +15,8 @@ const Identification = (props) => {
   const classes = siniestroStyle()
   const comunClass = getComunStyle()
   const spaceStyle = getSpaceStyle()
-  const [buttonOver, setButtonOver] = useState(false)
+  const [buttonOverTrabajo, setButtonOverTrabajo] = useState(false)
+  const [buttonOverTrayecto, setButtonOverTrayecto] = useState(false)
 
   return (<div className={comunClass.root}>
     <div className={comunClass.displayDesk}> 
@@ -52,27 +53,37 @@ const Identification = (props) => {
             dispatch(updateForm("tipoSiniestro", tipo));
             dispatch(handleSetStep(3));   
             }}
-            onMouseOver={() =>{
-              setButtonOver(true)
-            }}
-            onMouseOut={() =>{
-              setButtonOver(false)
-            }}
+            onMouseOver={() =>{ setButtonOverTrabajo(true) }}
+            onMouseOut={() =>{ setButtonOverTrabajo(false) }}
           >
-            <img alt="Accidente de Trabajo" src={!buttonOver ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
+            <img alt="Accidente de Trabajo" src={!buttonOverTrabajo ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
             <div>Accidente de trabajo <br/>
               <span className={classes.textButton}>En su lugar de trabajo</span>
             </div>
-            {buttonOver && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+            {buttonOverTrabajo && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
         </div>
         <div  className={spaceStyle.space1} />
         <div className={comunClass.alignBtnSiniesterRight}>
-          <Button className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
+          {/* <Button className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
             <div><img alt="Accidente de Trayecto" src="./static/trayectoCard.png" className={classes.imgButton}/></div>
             <div>Accidente de trayecto <br/>
               <span className={classes.textButton}>Entre el trabajo y su hogar</span>
             </div>
+          </Button> */}
+          <Button className={classes.button} variant="contained" onClick={()=>{ 
+            var tipo = { Id:2, Descripcion: "Accidente Trayecto" }
+            dispatch(updateForm("tipoSiniestro", tipo));
+            dispatch(handleSetStep(3));   
+            }}
+            onMouseOver={() =>{ setButtonOverTrayecto(true) }}
+            onMouseOut={() =>{ setButtonOverTrayecto(false) }}
+          >
+            <img alt="Accidente de Trayecto" src={!buttonOverTrayecto ? "./static/trayecto.svg" : "./static/trayecto-active.svg"} className={classes.imgButton} />
+            <div>Accidente de Trayecto <br/>
+              <span className={classes.textButton}>Entre el trabajo y su hogar</span>
+            </div>
+            {buttonOverTrayecto && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
         </div>
         <div className={spaceStyle.space1} />
