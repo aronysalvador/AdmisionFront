@@ -73,7 +73,7 @@ spec:
           - name: "REACT_APP_MICROSOFT_AUTH_CLIENTID"
             value: azureID
           - name: "REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL"
-            value: "https://desa.salud.achs.cl/web-admision/"
+            value: "https://prod.salud.achs.cl/web-admision/"
         ports:
         - containerPort: 80
         resources:
