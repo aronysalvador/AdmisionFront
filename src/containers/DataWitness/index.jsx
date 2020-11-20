@@ -22,7 +22,7 @@ import { Pipes } from "../../containers/EditarTelefono/phone";
 
 const DataWitness = () => {
   const {
-    addmissionForm: { testigos, percentage, tipoSiniestro },
+    addmissionForm: { testigos, percentage, tipoSiniestro, step },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -151,6 +151,7 @@ const DataWitness = () => {
               setTelefono={setTelefono}
               handleOnChange={handleOnChange}
               telefono={telefono}
+              step={step}
             />
           </div>}
         </div>
