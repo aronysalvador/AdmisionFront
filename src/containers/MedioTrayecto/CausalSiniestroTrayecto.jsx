@@ -15,13 +15,18 @@ import { Format } from "../../helpers/strings";
 
 const CausalSiniestroTrayecto = () => {
   let {
-    addmissionForm: { percentage, medioTransporteSiniestro },
+    addmissionForm: { percentage, mecanismoCausalSiniestro, posibleCausaSiniestro },
   } = useSelector((state) => state, shallowEqual);
 
-  const [medioTransporte, setMedioTransporte] = useState(() => {
-    return !medioTransporteSiniestro ? "" : medioTransporteSiniestro;
+  const [mecanismoCausal, setMecanismoCausal] = useState(() => {
+    return !mecanismoCausalSiniestro ? "" : mecanismoCausalSiniestro;
   });
-  const [medioTransporteValid, setMedioTransporteValid] = useState(true);
+  const [mecanismoCausalValid, setMecanismoCausalValid] = useState(true);
+
+  const [posibleCausa, setPosibleCausa] = useState(() => {
+    return !posibleCausaSiniestro ? "" : posibleCausaSiniestro;
+  });
+  const [posibleCausaValid, setPosibleCausaValid] = useState(true);
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -37,7 +42,7 @@ const CausalSiniestroTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.7))}//6.01
+          dispatch={() => dispatch(handleSetStep(6.02))}
           percentage={percentage}
         />
       </div>
@@ -66,10 +71,10 @@ const CausalSiniestroTrayecto = () => {
           <TextField
             autoComplete
             helperText={
-              !medioTransporteValid && "Debes ingresar al menos un medio de transporte"
+              !mecanismoCausalValid && "Debes ingresar al menos un medio de transporte"
             }
-            error={!medioTransporteValid}
-            value={medioTransporte}
+            error={!mecanismoCausalValid}
+            value={mecanismoCausal}
             variant="outlined"
             size="small"
             margin="dense"
@@ -77,13 +82,13 @@ const CausalSiniestroTrayecto = () => {
             fullWidth
             onChange={(e) => {
               let texto = Format.caracteresInvalidos(e.target.value);
-              setMedioTransporteValid(texto.length > 0);
-              setMedioTransporte(texto);
+              setMecanismoCausalValid(texto.length > 0);
+              setMecanismoCausal(texto);
             }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => { setMedioTransporte("") }}>
+                  <IconButton onClick={() => { setMecanismoCausal("") }}>
                     <ClearIcon />
                   </IconButton>
                 </InputAdornment>
@@ -93,17 +98,19 @@ const CausalSiniestroTrayecto = () => {
           <Typography className={mobileCaption}>
             Ejemplo:  Caída, golpe, atropello, otros.
           </Typography>
+
           <div className={spaceStyle.space2} />
+
           <Typography className={comunClass.tituloTextBox}>
             Posible Causa
           </Typography>
           <TextField
             autoComplete
             helperText={
-              !medioTransporteValid && "Debes ingresar al menos un medio de transporte"
+              !posibleCausaValid && "Debes ingresar al menos un medio de transporte"
             }
-            error={!medioTransporteValid}
-            value={medioTransporte}
+            error={!posibleCausaValid}
+            value={posibleCausa}
             variant="outlined"
             size="small"
             margin="dense"
@@ -111,13 +118,13 @@ const CausalSiniestroTrayecto = () => {
             fullWidth
             onChange={(e) => {
               let texto = Format.caracteresInvalidos(e.target.value);
-              setMedioTransporteValid(texto.length > 0);
-              setMedioTransporte(texto);
+              setPosibleCausaValid(texto.length > 0);
+              setPosibleCausa(texto);
             }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => { setMedioTransporte("") }}>
+                  <IconButton onClick={() => { setPosibleCausa("") }}>
                     <ClearIcon />
                   </IconButton>
                 </InputAdornment>
@@ -130,12 +137,13 @@ const CausalSiniestroTrayecto = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={medioTransporte.length <= 3 || !medioTransporteValid}
+            disabled={(mecanismoCausal.length <= 3 || !mecanismoCausalValid) && (posibleCausa.length <= 3 || !posibleCausaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("medioTransporteSiniestro", medioTransporte));
-              dispatch(handleSetStep(6)); //6.03
+              dispatch(updateForm("mecanismoCausalSiniestro", mecanismoCausal));
+              dispatch(updateForm("posibleCausaSiniestro", posibleCausa));
+              dispatch(handleSetStep(6));
             }}
           >
             Continuar

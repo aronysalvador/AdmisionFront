@@ -99,7 +99,7 @@ const MedioTransporteTrayecto = () => {
             variant="contained"
             onClick={() => {
               dispatch(updateForm("medioTransporteSiniestro", medioTransporte));
-              dispatch(handleSetStep(6)); //6.03
+              dispatch(handleSetStep(6.03));
             }}
           >
             Continuar
