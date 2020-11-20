@@ -26,10 +26,7 @@ const AccidentPlaceForm = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera

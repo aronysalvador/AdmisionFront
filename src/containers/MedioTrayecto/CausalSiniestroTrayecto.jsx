@@ -137,7 +137,7 @@ const CausalSiniestroTrayecto = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={(mecanismoCausal.length <= 3 || !mecanismoCausalValid) && (posibleCausa.length <= 3 || !posibleCausaValid)}
+            disabled={(mecanismoCausal.length <= 3 || !mecanismoCausalValid) || (posibleCausa.length <= 3 || !posibleCausaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
