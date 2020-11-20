@@ -15,13 +15,7 @@ variables:
     value: "salud/admision-digital/front-admision"
 
   - name: ImageTag
-    value: "_$(Build.BuildId)"
-
-  
-  - name: DockerRepositoryProd
-    value: prod/admision_digital/achs-fr-admision
-  - name: urlOrquestadorPROD
-    value: "https://wa-prod-admdig-msorquestador.azurewebsites.net"
+    value: "_$(Build.BuildId)"  
 
 pool:
   vmImage: $(vmImageName)
@@ -88,7 +82,6 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-ingress.yaml
               containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
-
   # DESA #
 
   # QA #
@@ -111,7 +104,7 @@ stages:
             displayName: Get secrets
             inputs:
               script: |
-                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
                 sed -i "s?azureID?$(azureAdQa)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
           - task: KubernetesManifest@0
             inputs:
@@ -122,8 +115,7 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
-              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)
-          
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)          
   # QA #
 
   # QAHOTFIX #
@@ -175,24 +167,15 @@ stages:
               containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
   # QAHOTFIX #
 
-  # PROD #
+
+# PROD #
   - stage: Deploy_PROD
     displayName: "Building Deploy PROD"
     condition: |
-      or(
-        and(
+       and(
           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchProd']),
           startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchProd']),
           eq(variables['Build.Reason'], 'PullRequest')
-        ), 
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployProdHotfix']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        ),        
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        )         
        )
     jobs:
       - deployment: Deploy
@@ -201,26 +184,68 @@ stages:
       - job: Build
         displayName: "Deploy PROD"
         steps:
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdProd)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-PROD-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)          
+# PROD #
+
+# PRODHOTFIX #
+  - stage: Deploy_PROD_Hotfix
+    displayName: "Building Desploy PROD Hotfix"
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployProdHotfix']),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy PROD Hotfix"
+        environment: "Deploy_PROD"
+      - job: Build
+        displayName: "Deploy PROD Hotfix"
+        steps:
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(DockerRepositoryProd)
+              repository: $(Repositorio)
               command: build
               Dockerfile: ./Dockerfile
               tags: $(ImageTag)
-              arguments: --build-arg urlOrquestador=$(urlOrquestadorPROD) --build-arg idAzure=$(azureAdProd) --build-arg app=$(appNameProdFront)
           - task: Docker@2
             displayName: Push Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(DockerRepositoryProd)
+              repository: $(Repositorio)
               command: push
               tags: $(ImageTag)
-          - task: AzureWebAppContainer@1
+          - task: CmdLine@2
+            displayName: Get secrets
             inputs:
-              azureSubscription: $(azureSubcritionProd)
-              appName: $(appNameProdFront)
-              containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryProd):$(ImageTag)
-# PROD #
-
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdProd)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-PROD-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+  # PRODHOTFIX #
