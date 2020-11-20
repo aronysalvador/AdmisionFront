@@ -84,6 +84,7 @@ import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 
 import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
 import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
+import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -359,14 +360,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      // case 6.03:
-      //   return (
-      //     <div className={layout}>
-      //       <Paper className={paper}>
-      //         <CausaSiniestroTrayecto />
-      //       </Paper>
-      //     </div>
-      //   );
+      case 6.03:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CausalSiniestroTrayecto />
+            </Paper>
+          </div>
+        );
       case 6:
         return (
           <div className={layout}>

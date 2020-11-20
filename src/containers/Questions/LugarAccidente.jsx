@@ -8,7 +8,7 @@ import Header from "../../components/header/index";
 
 const AccidentPlaceForm = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { lugarAccidente } = addmissionForm;
+  const { lugarAccidente, tipoSiniestro } = addmissionForm;
   const respuestaOriginal = lugarAccidente;
   
   const comunClass = getComunStyle();
@@ -20,6 +20,8 @@ const AccidentPlaceForm = (props) => {
       dispatch(updateForm("volverAConcatenar", true));
     }
   };
+ 
+  let step = tipoSiniestro.Id === 1 ? 5.7 : 6.03;
 
   return (
     <div className={comunClass.root}>
@@ -31,7 +33,7 @@ const AccidentPlaceForm = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.7))}
+          dispatch={() => dispatch(handleSetStep(step))}
           percentage={addmissionForm.percentage}
         />
       </div>
