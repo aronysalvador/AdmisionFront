@@ -60,5 +60,7 @@ export const AdmissionForm = {
     mensajeErrorSAP: "",
 
     TrabajadorIndependiente: "",
-    tab: 0
+    tab: 0,
+
+    coberturaSoap: ""
 };

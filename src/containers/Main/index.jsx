@@ -83,6 +83,7 @@ import NoVigente from "../AffiliateValidations/NoVigente";
 import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 
 import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
+import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -342,6 +343,30 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      // case 6.01:
+      //   return (
+      //     <div className={layout}>
+      //       <Paper className={paper}>
+      //         <TipoRutaTrayecto />
+      //       </Paper>
+      //     </div>
+      //   );
+      case 6.02:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <MedioTransporteTrayecto />
+            </Paper>
+          </div>
+        );
+      // case 6.03:
+      //   return (
+      //     <div className={layout}>
+      //       <Paper className={paper}>
+      //         <CausaSiniestroTrayecto />
+      //       </Paper>
+      //     </div>
+      //   );
       case 6:
         return (
           <div className={layout}>

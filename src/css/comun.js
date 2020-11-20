@@ -389,7 +389,7 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: "10px",
             overflowWrap: "break-word",
             overflow: "auto",
-            height: "24em",
+            height: "23em",
             '&::-webkit-scrollbar': {
                 width: 8,
             },
@@ -1320,7 +1320,7 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     buttonEditRelato: {
         cursor: "pointer",
-        textDecoration: "underline",
+        // textDecoration: "underline",
         color: "#373737",
     },
 }));
