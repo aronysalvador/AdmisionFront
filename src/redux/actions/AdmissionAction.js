@@ -48,9 +48,10 @@ export const updateForm = (stateType, value) => {
 export const handleSetStep = (step) => {
   return (dispatch , getState) => {
     const { LogForm: {ID} } = getState();
+    if(step !== -1 && step !== 0 && step !== 1 && step !== 1.1  && step !== 2 && step !== 3){     
+      ID !== 0 && dispatch(stepLogPage({Id: ID, fecha: FechaHora(), opcion: 7, id_campo: step}))
+    }
 
-    ID !== 0 && dispatch(stepLogPage({Id: ID, fecha: FechaHora(), opcion: 7, id_campo: step}))
-    
     dispatch(setStep(step, getPercentage(step)));
   };
 };
