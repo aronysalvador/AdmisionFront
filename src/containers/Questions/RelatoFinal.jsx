@@ -13,7 +13,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar } = addmissionForm;
+  const { relatoAccidente, volverAConcatenar, tipoSiniestro } = addmissionForm;
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -52,7 +52,11 @@ const RelatoFinal = (props) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
     dispatch(updateForm("coberturaSoap", respSoap));
-    dispatch(handleSetStep(9));
+    if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
+    dispatch(handleSetStep(10))
+    dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
+    }
+    else dispatch(handleSetStep(9)) //Accidente de Trabajo
   };
 
   const onChangeHandler = (event) => {

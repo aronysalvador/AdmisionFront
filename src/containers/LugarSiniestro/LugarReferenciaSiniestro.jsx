@@ -15,7 +15,7 @@ import { Format } from "../../helpers/strings";
 
 const LugarReferenciaSiniestro = () => {
   let {
-    addmissionForm: { step, percentage, lugarReferenciaSiniestro },
+    addmissionForm: { step, percentage, lugarReferenciaSiniestro, tipoSiniestro },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
   const [lugarReferencia, setLugarReferencia] = useState(() => {
@@ -103,7 +103,11 @@ const LugarReferenciaSiniestro = () => {
             variant="contained"
             onClick={() => {
               dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-              dispatch(handleSetStep(12.1)); //++stepx
+              if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
+                dispatch(handleSetStep(13))
+                dispatch(updateForm("AccidenteEnSucursal", "no"))
+                }
+                else dispatch(handleSetStep(12.1)) //Accidente de Trabajo
             }}
           >
             Continuar

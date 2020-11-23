@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, useDispatch, useSelector, shallowEqual } from "react-redux";
+import { connect, useSelector, shallowEqual } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -21,7 +21,7 @@ const PersonalSuccess = (props) =>{
     const spaceStyle = getSpaceStyle();
 
     const handleStep = () => {
-      if(tipoSiniestro.Id == 2) //Accidente de Trayecto
+      if(tipoSiniestro.Id === 2) //Accidente de Trayecto
         dispatch(handleSetStep(6.01))
       else dispatch(handleSetStep(6)) //Accidente de Trabajo
     }

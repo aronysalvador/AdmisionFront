@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 
 const FechaHoraSiniestro = () => {
-  const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
+  const { step, percentage, fechaHoraSiniestro, siniestros, tipoSiniestro } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -83,17 +83,16 @@ const FechaHoraSiniestro = () => {
     }
   };
 
+  let stepBack = tipoSiniestro.Id === 1 ? 9 : 8.1;
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(9))}
+          dispatch={() => dispatch(handleSetStep(stepBack))}
           percentage={percentage}
         />
       </div>
