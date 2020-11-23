@@ -21,6 +21,7 @@ import centrosAchsForm from "../reducers/CentrosAchsReducer";
 import profesionForm from "../reducers/ProfesionReducer";
 import userCenterForm from "../reducers/UserCenterReducer";
 import LogForm from "../reducers/LogReducer";
+import tipoAccidenteTrayectoForm from "../reducers/TipoAccidenteTrayecto";
 
 export default combineReducers({
   addmissionForm,
@@ -44,5 +45,6 @@ export default combineReducers({
   centrosAchsForm,
   profesionForm,
   userCenterForm,
-  LogForm
+  LogForm,
+  tipoAccidenteTrayectoForm
 });

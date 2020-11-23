@@ -11,7 +11,7 @@ import {
         centrosForm
       }
 
-    return Axios.post(process.env.REACT_APP_CENTER_USER, params);
+    return Axios.post(window.REACT_APP_CENTER_USER, params);
   };
   
   export const setCenter = (email, centrosForm) => async (dispatch) => {

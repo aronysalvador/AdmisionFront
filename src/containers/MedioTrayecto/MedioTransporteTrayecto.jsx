@@ -35,7 +35,7 @@ const MedioTransporteTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.7))}//6.01
+          dispatch={() => dispatch(handleSetStep(6.01))}
           percentage={percentage}
         />
       </div>

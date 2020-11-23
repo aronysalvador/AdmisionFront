@@ -7,7 +7,7 @@ import Axios from "axios";
 import { updateForm } from "./AdmissionAction";
 
 export const obtenerData = async (rut) => {
-  return Axios.get(`${process.env.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`);
+  return Axios.get(`${window.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`);
 };
 
 export const getSucursales = (rut) => async (dispatch) => {
@@ -36,7 +36,7 @@ export const getSucursales = (rut) => async (dispatch) => {
 
 
 export const obtenerValidacion = async (rut) => {
-  return Axios.get(process.env.REACT_APP_RAZON_SOCIAL_RUT+rut);
+  return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT+rut);
 };
 
 
