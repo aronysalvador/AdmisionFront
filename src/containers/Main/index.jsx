@@ -85,6 +85,7 @@ import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
 import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
 import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
+import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -348,7 +349,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <TipoRutaTrayecto />
+              <TipoAccidenteTrayecto />
             </Paper>
           </div>
         );

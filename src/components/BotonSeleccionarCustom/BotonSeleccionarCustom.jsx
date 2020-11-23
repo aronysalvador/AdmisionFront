@@ -68,7 +68,15 @@ const BotonSeleccionarCustom = (props) => {
               //dispatch(handleSetStep(26.4));
             }
           }
-
+          else if (itemForm === "tipoAccidenteTrayectoForm") {
+            dispatch(
+              updateForm(
+                itemForm,
+                !isSelected ? { ...data, selected: !isSelected } : {}
+              )
+            );
+            setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 1000);
+          }
           else {
             dispatch(
               updateForm(

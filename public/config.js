@@ -2,6 +2,7 @@ window.REACT_APP_ISAPRES="https://desa.salud.achs.cl/orquestador/api/sap/isapres
 window.REACT_APP_AFP="https://desa.salud.achs.cl/orquestador/api/sap/afp/"
 window.REACT_APP_NACIONALIDADES="https://desa.salud.achs.cl/orquestador/api/datosPaciente/nacionalidades/"
 window.REACT_APP_IDIOMAS="https://desa.salud.achs.cl/orquestador/api/datosPaciente/idiomas/"
+window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO="http://localhost:81/api/trayecto/getTipoAccidente"
 window.REACT_APP_PAISES="https://desa.salud.achs.cl/orquestador/api/datosPaciente/paises/"
 window.REACT_APP_CATEGORIA_OCUPACIONAL="https://desa.salud.achs.cl/orquestador/api/sap/categoriaOcupacional/"
 window.REACT_APP_TIPO_CONTRATO="https://desa.salud.achs.cl/orquestador/api/sap/tipoContrato/"
