@@ -344,14 +344,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      // case 6.01:
-      //   return (
-      //     <div className={layout}>
-      //       <Paper className={paper}>
-      //         <TipoRutaTrayecto />
-      //       </Paper>
-      //     </div>
-      //   );
+      case 6.01:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TipoRutaTrayecto />
+            </Paper>
+          </div>
+        );
       case 6.02:
         return (
           <div className={layout}>
