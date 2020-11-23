@@ -55,14 +55,7 @@ const TipoAccidenteTrayecto = () => {
       </div>
       <div className={spaceStyle.space2} />
       <div className={comunClass.boxDeskCardBtn}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexDirection: "row",
-            flexFlow: "column"
-          }}
-        >
+        <div className={comunClass.cardBtn}>
           {tipoAccidenteTrayectoList && tipoAccidenteTrayectoList.map((tipo) => (
           
             <BotonSeleccionarCustomSingle
