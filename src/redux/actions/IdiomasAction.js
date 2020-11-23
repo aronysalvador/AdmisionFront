@@ -6,7 +6,7 @@ import {
 import Axios from "axios";
 
 export const getData = async () => {
-  return Axios.get(process.env.REACT_APP_IDIOMAS);
+  return Axios.get(window.REACT_APP_IDIOMAS);
 };
 
 export const getIdiomas = () => async (dispatch) => {

@@ -389,7 +389,7 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: "10px",
             overflowWrap: "break-word",
             overflow: "auto",
-            height: "24em",
+            height: "23em",
             '&::-webkit-scrollbar': {
                 width: 8,
             },
@@ -737,12 +737,12 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         titleCenterDesk: {
             textAlign: "center !important",
-            position: "relative",
+            // position: "relative",
             marginTop: "0px"
         },
         titleDesk: {
             // width: '90%',
-            position: 'relative',
+            // position: 'relative',
             display: 'flex',
             justifyContent: 'space-around',
             // margin: '-15px auto 30px',
@@ -1317,5 +1317,10 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '1em',
         // lineHeight: '1em',
         letterSpacing: '0.03em'
+    },
+    buttonEditRelato: {
+        cursor: "pointer",
+        // textDecoration: "underline",
+        color: "#373737",
     },
 }));

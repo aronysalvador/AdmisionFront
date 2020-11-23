@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button, Typography, withStyles } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import Checkbox from '@material-ui/core/Checkbox';
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -15,6 +17,7 @@ const RelatoFinal = (props) => {
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
+  const welcomeStyle = getWelcomeStyle();
 
   const getRelato = () => {
     return (
@@ -37,9 +40,18 @@ const RelatoFinal = (props) => {
     }
   });
 
+  const [stateCheckbox, setStateCheckbox] = useState(false);
+
+  const handleCheckBoxChange = (event) => {
+    setStateCheckbox( event.target.checked );
+  };
+
+  var respSoap = stateCheckbox ? "si" : "no" ;
+
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
+    dispatch(updateForm("coberturaSoap", respSoap));
     dispatch(handleSetStep(9));
   };
 
@@ -51,13 +63,19 @@ const RelatoFinal = (props) => {
     return localValue.length < 15;
   };
 
+  const BlueCheckbox = withStyles({
+    root: {
+      '&$checked': {
+        color: '#00B2A9',
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox color="default" {...props} />);
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -68,9 +86,7 @@ const RelatoFinal = (props) => {
       <div>
         <form onSubmit={() => saveAnswer(localValue)}>
           <div className={comunClass.titlePrimaryDesk}>
-            <Grid
-              className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
-            >
+            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
               Por favor,
               <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
                 &nbsp;confirma el relato
@@ -91,18 +107,6 @@ const RelatoFinal = (props) => {
                 <div>
                   <div className={comunClass.boxRelato}>
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
-                    {/* <div>
-                      <a
-                        style={{
-                          cursor: "pointer",
-                          textDecoration: "underline",
-                          color: "#DEDEDE",
-                        }}
-                        onClick={() => setEditable(false)}
-                      >
-                        Confirmar
-                      </a>
-                    </div> */}
                     </div>
                     <TextField
                       id="txtRespuesta"
@@ -149,7 +153,15 @@ const RelatoFinal = (props) => {
                   </div>
                 </div>
               )}
+
+              <Typography className={welcomeStyle.switchText}>
+                <Grid component="span">
+                  <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+                </Grid>
+                Corresponde a cobertura &nbsp;<b>SOAP</b>
+              </Typography>
             </div>
+
             <div className={comunClass.displayMobile}>
             <div className={spaceStyle.space1} />
           </div>

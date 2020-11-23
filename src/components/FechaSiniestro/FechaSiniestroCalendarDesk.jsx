@@ -29,8 +29,13 @@ const FechaSiniestroDesk = ({
 
   const onDateChange = (date, value) => {
     setInputValue(value);
-    let fechaSplit=value.split('-')
-    onChange({ days:parseInt(fechaSplit[0]),month:parseInt(fechaSplit[1]), year:parseInt(fechaSplit[2])})
+    if(value){
+      let fechaSplit=value.split('-')
+      onChange({ days:parseInt(fechaSplit[0]),month:parseInt(fechaSplit[1]), year:parseInt(fechaSplit[2])})
+    }
+    else
+      onChange({days:0,month:0, year:0})
+    
   };
 
   return (

@@ -25,7 +25,7 @@ import {
   //       inicio
   //   }
 
-  //   return Axios.post(process.env.REACT_APP_LOG_BEGIN, params);
+  //   return Axios.post(window.REACT_APP_LOG_BEGIN, params);
   // };
   
   // export const createLog = (email, inicio) => async (dispatch) => {
@@ -63,7 +63,7 @@ import {
   //       ID,
   //       fin
   //   }
-  //   return Axios.post(process.env.REACT_APP_LOG_END, params);
+  //   return Axios.post(window.REACT_APP_LOG_END, params);
   // };
   
   // export const endLog = (ID, fin) => async (dispatch) => {
@@ -110,7 +110,7 @@ import {
         BP: datos.BP
     }
 
-    return await Axios.post(process.env.REACT_APP_LOG, params);
+    return await Axios.post(window.REACT_APP_LOG, params);
   };
   
   export const handleLog = (datos) => (dispatch) => {
@@ -144,7 +144,7 @@ import {
   };
 
   // export const handleUpdate = async (params) => {
-  //   return await Axios.post(process.env.REACT_APP_LOG, params);
+  //   return await Axios.post(window.REACT_APP_LOG, params);
   // };
     
   // export const handleLogUpdate = (datos) => (dispatch) => {
@@ -179,7 +179,7 @@ import {
 
   export const handleEnd = async (params) => {
     params.opcion=100;
-    return await Axios.post(process.env.REACT_APP_LOG, params);
+    return await Axios.post(window.REACT_APP_LOG, params);
   };
     
   export const handlEndLog = (datos) => (dispatch, getState) => {

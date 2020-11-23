@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
-import Autocomplete from '@material-ui/lab/Autocomplete'
+import { getSucursales } from "../../redux/actions/SucursalesAction";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 //import CircularProgress from '@material-ui/core/CircularProgress';
 
 const RazonSocial = () => {
@@ -22,21 +23,13 @@ const RazonSocial = () => {
       setSearch(newInputValue)
       if(newInputValue){
         if(newInputValue.length % 4 === 0 && newInputValue !== search)  {
-          const test = await fetch(process.env.REACT_APP_RAZONSOCIAL+ newInputValue)
+          const test = await fetch(window.REACT_APP_RAZONSOCIAL+ newInputValue)
           const json = await test.json()
           var predictions = (Array.isArray(json.content?.response)) ? json.content.response : []           
           setOptions(predictions)
         }
       }
     }
-
-   
-
-    useEffect(() => {
-      if (!loading) {
-        return undefined;
-      }
-    }, [loading]);
 
   return (
     <div style={{padding:"0"}}>
@@ -63,6 +56,7 @@ const RazonSocial = () => {
                     
                   }}
                   onChange={(event,value) => {
+                    dispatch(getSucursales(value?.rut.replace(/\./g,'').toUpperCase()))
                     dispatch(updateForm("razonSocial", value)) 
                     dispatch(updateForm("razonSocialForm", value?.name)) 
                     dispatch(updateForm("rutEmpresa", value?.rut));        

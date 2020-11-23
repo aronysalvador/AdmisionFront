@@ -17,6 +17,7 @@ import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import { Format } from "../../helpers/strings";
 
 const DataResponsable = () => {
   const {
@@ -90,7 +91,7 @@ const DataResponsable = () => {
             <TextField
               id="nombre"
               value={nombre}
-              onChange={(e) => saveNombre(e.target.value)}
+              onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
               helperText="Ejemplo: Luis Morales"
               margin="dense"
               variant="outlined"
@@ -124,7 +125,7 @@ const DataResponsable = () => {
             <TextField
               id="cargos"
               value={cargos}
-              onChange={(e) => saveCargos(e.target.value)}
+              onChange={(e) => saveCargos(Format.caracteresInvalidos(e.target.value))}
               helperText="Ejemplo: Jefe de área, Prevencionista"
               margin="dense"
               variant="outlined"

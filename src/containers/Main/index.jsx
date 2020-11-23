@@ -83,6 +83,8 @@ import NoVigente from "../AffiliateValidations/NoVigente";
 import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 
 import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
+import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
+import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -339,6 +341,30 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paperFix}>
               <ContinueSAP />
+            </Paper>
+          </div>
+        );
+      case 6.01:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TipoRutaTrayecto />
+            </Paper>
+          </div>
+        );
+      case 6.02:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <MedioTransporteTrayecto />
+            </Paper>
+          </div>
+        );
+      case 6.03:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CausalSiniestroTrayecto />
             </Paper>
           </div>
         );
@@ -696,8 +722,10 @@ const Main = (props) => {
 
   return (
     <MuiThemeProvider>
-      <CssBaseline />
-      {renderForm(addmissionForm.step)}
+      <>
+        <CssBaseline />
+        {renderForm(addmissionForm.step)}
+      </>
     </MuiThemeProvider>
   );
 };
