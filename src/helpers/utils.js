@@ -44,9 +44,13 @@ export const validarDireccionSN=async(direccion)=> {
                 }
             }
             respuesta.comuna=comuna
-            var response =  await validarComuna(comuna);
-            var valida=response.ok ? true : false;
-            respuesta.valida=valida
+            let comunaSAP =  await validarComuna(comuna);
+            if(comunaSAP !== null){
+                respuesta.valida=true
+                respuesta.comuna = comunaSAP
+            }else
+                respuesta.valida = false
+            
           }
       }
 
@@ -70,9 +74,13 @@ export const validarDireccion=async(direccion)=> {
                 }
             }
             respuesta.comuna=comuna
-            var response =  await validarComuna(comuna);
-            var valida=response.ok ? true : false;
-            respuesta.valida=valida
+            let comunaSAP =  await validarComuna(comuna);
+            if(comunaSAP !== null){
+                respuesta.valida=true
+                respuesta.comuna = comunaSAP
+            }else
+                respuesta.valida = false
+            
           }
       }
 
@@ -89,10 +97,10 @@ const validarComuna = async (comuna) => {
 
                   var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
                   if( resultValid !== undefined  ){
-                    resolve({ok: true});
-                  }else{ resolve({ok: false}); }
+                    resolve(resultValid.nombre);
+                  }else{ resolve(null); }
 
-            }else{ resolve({ok: false}); }
-        }else{ resolve({ok: false}); }
+            }else{ resolve(null); }
+        }else{ resolve(null); }
     });
 };
