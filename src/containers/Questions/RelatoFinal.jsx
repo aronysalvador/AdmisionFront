@@ -8,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import { Format } from "../../helpers/strings";
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -44,7 +45,7 @@ const RelatoFinal = (props) => {
   };
 
   const onChangeHandler = (event) => {
-    setLocalValue(event.target.value);
+    setLocalValue(Format.caracteresInvalidos(event.target.value));
   };
 
   const isDisabled = () => {
