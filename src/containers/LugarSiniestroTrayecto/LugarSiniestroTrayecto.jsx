@@ -12,15 +12,15 @@ import Header from "../../components/header/index";
 
 const LugarSiniestroTrayecto = () => {
   const {
-    addmissionForm: { step, percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, tipoSiniestro, DireccionEmpresa },
+    addmissionForm: { percentage, sucursalEmpresaDiaSiniestroTrayecto, urlMapaSucursalDiaSiniestroTrayecto, DireccionEmpresa },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   const [sucursal, setSucursal] = useState(() => {
-    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : ""
+    return sucursalEmpresaDiaSiniestroTrayecto ? sucursalEmpresaDiaSiniestroTrayecto : ""
   });
   const [mapaUrl, setMapaUrl] = useState(() => {
-    return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : ""
+    return urlMapaSucursalDiaSiniestroTrayecto ? urlMapaSucursalDiaSiniestroTrayecto : ""
   });
   const [nombreComuna,setNombreComuna]=useState("");
 
@@ -30,8 +30,8 @@ const LugarSiniestroTrayecto = () => {
   const spaceStyle = getSpaceStyle();
 
   const clearData = () => {
-    dispatch(updateForm("sucursalEmpresaSiniestro", ""))
-    dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
+    dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", ""))
+    dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", ""))
   }
 
   const [valido, setValido] = useState(false)
@@ -64,9 +64,9 @@ const LugarSiniestroTrayecto = () => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]} style={{paddingBottom:'20px'}}>
-          Indica la dirección 
+          Indica la dirección del
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;en donde ocurrió el accidente
+            &nbsp;lugar de trabajo el día del accidente
           </Grid>          
         </Grid>
         <div className={comunClass.displayDeskImg}>
@@ -78,7 +78,7 @@ const LugarSiniestroTrayecto = () => {
       <div className={comunClass.boxDesk}>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
-            Dirección accidente
+            Dirección de trabajo
           </Typography>
           <DireccionGeo
             comunStyle={getComunStyle()}
@@ -90,11 +90,11 @@ const LugarSiniestroTrayecto = () => {
               setSucursal({description: ''}); 
               dispatch(handleSetStep(12.3))
             }}
-            // direccionTemporal={tipoSiniestro.Id===1?DireccionEmpresa:""}
+            direccionTemporal={DireccionEmpresa}
           />
           <center>
             {(mapaUrl)?
-            <img alt="MapaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
+            <img alt="MapaDiaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
             :null}
           </center>
         </div> 
@@ -107,9 +107,9 @@ const LugarSiniestroTrayecto = () => {
             variant="contained"
             disabled={!valido}
             onClick={() => {
-              dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
-              dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
-              dispatch(updateForm("comunaSiniestro", nombreComuna))
+              dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", sucursal))
+              dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", mapaUrl))
+              dispatch(updateForm("comunaDiaSiniestroTrayecto", nombreComuna))
               dispatch(handleSetStep(13))
             }}
           >

@@ -54,7 +54,7 @@ const LugarSiniestroTrayectoMapa = () => {
 
   const handleSelect = async() => {
     googleMapsGetMap(placeId)
-    dispatch(updateForm("sucursalEmpresaSiniestro", 
+    dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", 
     {
       description: direccion,
       place_id: placeId, 
@@ -75,7 +75,7 @@ const LugarSiniestroTrayectoMapa = () => {
   const googleMapsGetMap = async(placeId) => {
     if(placeId){
       let urlMapa =  `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
-      dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
+      dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", urlMapa))
     }else{
       console.log("no place")
     }
