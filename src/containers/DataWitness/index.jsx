@@ -16,10 +16,13 @@ import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import InputMasked from "../../containers/EditarTelefono/InputMasked";
+import Mask from "../../containers/EditarTelefono/phone";
+import { Pipes } from "../../containers/EditarTelefono/phone";
 
 const DataWitness = () => {
   const {
-    addmissionForm: { testigos, percentage },
+    addmissionForm: { testigos, percentage, tipoSiniestro, step },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -39,7 +42,18 @@ const DataWitness = () => {
   const clickSendTestigo = () => {
     dispatch(sendCargo(nombre, cargos));
     dispatch(updateForm("testigoForm", nombre + "-" + cargos));
+    dispatch(updateForm("telefonoTestigo", telefono)) //¿se debe incluir en sendCargo?
     dispatch(handleSetStep(14.1));
+  };
+
+  const [telefono, setTelefono] = useState("+56 9");
+
+  const handleOnChange = (e) => {
+    const value = e.target.value;
+    if (value !== telefono) {
+      const result = Pipes.advanced(value);
+      setTelefono(result);
+    }
   };
 
   return (
@@ -90,11 +104,7 @@ const DataWitness = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => {
-                        saveNombre("");
-                      }}
-                    >
+                    <IconButton onClick={() => { saveNombre("") }}>
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
@@ -104,9 +114,7 @@ const DataWitness = () => {
           </div>
           <div className={spaceStyle.space1} />
           <div>
-            <Typography
-              className={comunClass.tituloTextBox}
-            >
+            <Typography className={comunClass.tituloTextBox}>
               Cargo o Relación
             </Typography>
           </div>
@@ -124,11 +132,7 @@ const DataWitness = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => {
-                        saveCargos("");
-                      }}
-                    >
+                    <IconButton onClick={() => { saveCargos("") }}>
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
@@ -136,6 +140,20 @@ const DataWitness = () => {
               }}
             />
           </div>
+          <div className={spaceStyle.space1} />
+          {tipoSiniestro.Id === 2 &&
+          <div>
+            <Typography className={comunClass.tituloTextBox}>
+              Teléfono (Opcional)
+            </Typography>
+            <InputMasked
+              mask={Mask.advanced}
+              setTelefono={setTelefono}
+              handleOnChange={handleOnChange}
+              telefono={telefono}
+              step={step}
+            />
+          </div>}
         </div>
         <div className={comunClass.bottomElement}>
           <Button

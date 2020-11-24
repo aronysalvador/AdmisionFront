@@ -4,31 +4,37 @@ import { Button, Typography, TextField, InputAdornment } from "@material-ui/core
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { siniestroStyle } from "../../css/siniestroStyle";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { siniestroStyle } from "../../css/siniestroStyle";
 import { IconButton } from "material-ui";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 
-const LugarReferenciaSiniestro = () => {
+const CausalSiniestroTrayecto = () => {
   let {
-    addmissionForm: { step, percentage, lugarReferenciaSiniestro, tipoSiniestro },
+    addmissionForm: { percentage, mecanismoCausalSiniestro, posibleCausaSiniestro },
   } = useSelector((state) => state, shallowEqual);
-  let stepx = step;
-  const [lugarReferencia, setLugarReferencia] = useState(() => {
-    return !lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro;
+
+  const [mecanismoCausal, setMecanismoCausal] = useState(() => {
+    return !mecanismoCausalSiniestro ? "" : mecanismoCausalSiniestro;
   });
-  const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(true);
+  const [mecanismoCausalValid, setMecanismoCausalValid] = useState(true);
+
+  const [posibleCausa, setPosibleCausa] = useState(() => {
+    return !posibleCausaSiniestro ? "" : posibleCausaSiniestro;
+  });
+  const [posibleCausaValid, setPosibleCausaValid] = useState(true);
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
-  const { mobileCaption } = siniestroStyle();
   const spaceStyle = getSpaceStyle();
+  const { mobileCaption } = siniestroStyle();
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -36,17 +42,17 @@ const LugarReferenciaSiniestro = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(--stepx))}
+          dispatch={() => dispatch(handleSetStep(6.02))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Pide al paciente el
+        ¿Cuál fue la 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;sitio específico 
+            &nbsp;causa del accidente
           </Grid>        
-          &nbsp;de donde ocurrió el accidente
+          &nbsp;?
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
@@ -60,14 +66,15 @@ const LugarReferenciaSiniestro = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
-            Referencia
+            Mecanismo Causal
           </Typography>
           <TextField
+            autoComplete
             helperText={
-              !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
+              !mecanismoCausalValid && "Debes ingresar al menos un medio de transporte"
             }
-            error={!isLugarReferenciaValid}
-            value={lugarReferencia}
+            error={!mecanismoCausalValid}
+            value={mecanismoCausal}
             variant="outlined"
             size="small"
             margin="dense"
@@ -75,39 +82,68 @@ const LugarReferenciaSiniestro = () => {
             fullWidth
             onChange={(e) => {
               let texto = Format.caracteresInvalidos(e.target.value);
-              setIsLugarReferenciaValid(texto.length > 0);
-              setLugarReferencia(texto);
+              setMecanismoCausalValid(texto.length > 0);
+              setMecanismoCausal(texto);
             }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => {
-                        setLugarReferencia("");
-                      }}
-                    >
-                      <ClearIcon />
-                    </IconButton>
-                  </InputAdornment>
-              ),
+                  <IconButton onClick={() => { setMecanismoCausal("") }}>
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              )
             }}
           />
           <Typography className={mobileCaption}>
-            Ejemplo: Piso 21, Área 453, Puesto 12A
+            Ejemplo:  Caída, golpe, atropello, otros.
+          </Typography>
+
+          <div className={spaceStyle.space2} />
+
+          <Typography className={comunClass.tituloTextBox}>
+            Posible Causa
+          </Typography>
+          <TextField
+            autoComplete
+            helperText={
+              !posibleCausaValid && "Debes ingresar al menos un medio de transporte"
+            }
+            error={!posibleCausaValid}
+            value={posibleCausa}
+            variant="outlined"
+            size="small"
+            margin="dense"
+            required
+            fullWidth
+            onChange={(e) => {
+              let texto = Format.caracteresInvalidos(e.target.value);
+              setPosibleCausaValid(texto.length > 0);
+              setPosibleCausa(texto);
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => { setPosibleCausa("") }}>
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+          />
+          <Typography className={mobileCaption}>
+            Ejemplo: Desnivel en el piso, poca visibilidad.
           </Typography>
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
+            disabled={(mecanismoCausal.length <= 3 || !mecanismoCausalValid) || (posibleCausa.length <= 3 || !posibleCausaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-              if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-                dispatch(handleSetStep(13))
-                dispatch(updateForm("AccidenteEnSucursal", "no"))
-                }
-                else dispatch(handleSetStep(12.1)) //Accidente de Trabajo
+              dispatch(updateForm("mecanismoCausalSiniestro", mecanismoCausal));
+              dispatch(updateForm("posibleCausaSiniestro", posibleCausa));
+              dispatch(handleSetStep(6));
             }}
           >
             Continuar
@@ -121,4 +157,4 @@ const LugarReferenciaSiniestro = () => {
   );
 };
 
-export default LugarReferenciaSiniestro;
+export default CausalSiniestroTrayecto;

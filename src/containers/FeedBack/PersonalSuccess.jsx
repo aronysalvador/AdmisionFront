@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect, useSelector, shallowEqual } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -14,9 +14,17 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 
 const PersonalSuccess = (props) =>{
     const { dispatch, microsoftReducer } = props;
+    const { addmissionForm: { tipoSiniestro },
+    } = useSelector((state) => state, shallowEqual);
     const welcomeStyle = getWelcomeStyle();
     const comunStyle = getComunStyle();
     const spaceStyle = getSpaceStyle();
+
+    const handleStep = () => {
+      if(tipoSiniestro.Id === 2) //Accidente de Trayecto
+        dispatch(handleSetStep(6.01))
+      else dispatch(handleSetStep(6)) //Accidente de Trabajo
+    }
 
     return(
       <div className={comunStyle.rootBegin}>
@@ -114,7 +122,7 @@ const PersonalSuccess = (props) =>{
                 <Button
                   className={comunStyle.buttonAchs}
                   variant="contained"
-                  onClick={() => dispatch(handleSetStep(6))}
+                  onClick={() => handleStep()}
                 >
                   Capturar el relato
                 </Button>

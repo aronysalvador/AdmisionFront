@@ -8,20 +8,20 @@ import Header from "../../components/header/index";
 
 const QuestionWitness = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
+  const { tipoSiniestro } = addmissionForm;
 
   const comunClass = getComunStyle();
+
+  let step = tipoSiniestro.Id === 1 ? 12.1 : 12
 
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(12.1))}
+          dispatch={() => dispatch(handleSetStep(step))}
           percentage={addmissionForm.percentage}
         />
       </div>

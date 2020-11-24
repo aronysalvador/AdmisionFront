@@ -4,7 +4,6 @@ import { Button, Typography, TextField, InputAdornment } from "@material-ui/core
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { siniestroStyle } from "../../css/siniestroStyle";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { IconButton } from "material-ui";
@@ -13,22 +12,22 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 
-const LugarReferenciaSiniestro = () => {
+const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { step, percentage, lugarReferenciaSiniestro, tipoSiniestro },
+    addmissionForm: { percentage, medioTransporteSiniestro },
   } = useSelector((state) => state, shallowEqual);
-  let stepx = step;
-  const [lugarReferencia, setLugarReferencia] = useState(() => {
-    return !lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro;
+
+  const [medioTransporte, setMedioTransporte] = useState(() => {
+    return !medioTransporteSiniestro ? "" : medioTransporteSiniestro;
   });
-  const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(true);
+  const [medioTransporteValid, setMedioTransporteValid] = useState(true);
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
-  const { mobileCaption } = siniestroStyle();
   const spaceStyle = getSpaceStyle();
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -36,17 +35,17 @@ const LugarReferenciaSiniestro = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(--stepx))}
+          dispatch={() => dispatch(handleSetStep(6.01))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Pide al paciente el
+        Indica  
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;sitio específico 
+            &nbsp;el medio de transporte
           </Grid>        
-          &nbsp;de donde ocurrió el accidente
+          &nbsp;que utilizaba al momento del accidente
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
@@ -60,14 +59,15 @@ const LugarReferenciaSiniestro = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
-            Referencia
+            Medio de transporte
           </Typography>
           <TextField
+            autoComplete
             helperText={
-              !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
+              !medioTransporteValid && "Debes ingresar al menos un medio de transporte"
             }
-            error={!isLugarReferenciaValid}
-            value={lugarReferencia}
+            error={!medioTransporteValid}
+            value={medioTransporte}
             variant="outlined"
             size="small"
             margin="dense"
@@ -75,39 +75,31 @@ const LugarReferenciaSiniestro = () => {
             fullWidth
             onChange={(e) => {
               let texto = Format.caracteresInvalidos(e.target.value);
-              setIsLugarReferenciaValid(texto.length > 0);
-              setLugarReferencia(texto);
+              setMedioTransporteValid(texto.length > 0);
+              setMedioTransporte(texto);
             }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => {
-                        setLugarReferencia("");
-                      }}
-                    >
-                      <ClearIcon />
-                    </IconButton>
-                  </InputAdornment>
-              ),
+                  <IconButton onClick={() => { setMedioTransporte("") }}>
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              )
             }}
           />
-          <Typography className={mobileCaption}>
+          {/* <Typography className={mobileCaption}>
             Ejemplo: Piso 21, Área 453, Puesto 12A
-          </Typography>
+          </Typography> */}
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
+            disabled={medioTransporte.length <= 3 || !medioTransporteValid}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-              if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-                dispatch(handleSetStep(13))
-                dispatch(updateForm("AccidenteEnSucursal", "no"))
-                }
-                else dispatch(handleSetStep(12.1)) //Accidente de Trabajo
+              dispatch(updateForm("medioTransporteSiniestro", medioTransporte));
+              dispatch(handleSetStep(6.03));
             }}
           >
             Continuar
@@ -121,4 +113,4 @@ const LugarReferenciaSiniestro = () => {
   );
 };
 
-export default LugarReferenciaSiniestro;
+export default MedioTransporteTrayecto;

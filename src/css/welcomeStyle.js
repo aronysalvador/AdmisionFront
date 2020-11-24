@@ -156,6 +156,17 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         alignItems: "center",
         marginBottom: "5px",
     },
+    switchText: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '1.075em',
+        lineHeight: '1.786em',
+        color: '#787878',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
 
     '@media (max-width: 767px)': {
         /* For mobile phones */

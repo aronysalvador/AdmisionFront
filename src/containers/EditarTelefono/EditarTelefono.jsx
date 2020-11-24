@@ -16,7 +16,7 @@ import Header from "../../components/header/index";
 
 const EditarTelefono = () => {
   const {
-    addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto },
+    addmissionForm: { step, percentage, telefonoParticular: TelefonoEmpleado, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -108,6 +108,7 @@ const EditarTelefono = () => {
             handleOnChange={handleOnChange}
             telefono={telefono}
             disabled={stateCheck}
+            step={step}
           />
           <div className={spaceStyle.space1} />
 
