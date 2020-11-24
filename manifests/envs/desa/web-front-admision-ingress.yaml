@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - desa-sprint10.salud.achs.cl
+      - desa.salud.achs.cl/sprint10
       secretName: admision-web-cert
   rules:
-  - host: desa-sprint10.salud.achs.cl 
+  - host: desa.salud.achs.cl/sprint10 
     http:
       paths:
       - path: /web-admision(/?.*)
