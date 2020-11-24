@@ -43,7 +43,6 @@ export const validarDireccionSN=async(direccion)=> {
                     comuna = fragmentos[2].toUpperCase().trim()
                 }
             }
-            respuesta.comuna=comuna
             let comunaSAP =  await validarComuna(comuna);
             if(comunaSAP !== null){
                 respuesta.valida=true
@@ -73,7 +72,6 @@ export const validarDireccion=async(direccion)=> {
                     comuna = fragmentos[2].toUpperCase().trim()
                 }
             }
-            respuesta.comuna=comuna
             let comunaSAP =  await validarComuna(comuna);
             if(comunaSAP !== null){
                 respuesta.valida=true
