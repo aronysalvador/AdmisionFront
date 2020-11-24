@@ -157,21 +157,30 @@ stages:
               repository: $(Repositorio)
               command: push
               tags: $(ImageTag)
-          - task: CmdLine@2
-            displayName: Get secrets
+          # - task: CmdLine@2
+          #   displayName: Get secrets
+          #   inputs:
+          #     script: |
+          #       sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+          # - task: KubernetesManifest@0
+          #   inputs:
+          #     action: "deploy"
+          #     kubernetesServiceConnection: "AKS-QA-SALUD-NS-ADMISIONDIGITAL"
+          #     namespace: "admisiondigital"
+          #     manifests: |
+          #       /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+          #       /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
+          #       /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
+          #     containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+           - task: AzureWebAppContainer@1
+
             inputs:
-              script: |
-                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
-          - task: KubernetesManifest@0
-            inputs:
-              action: "deploy"
-              kubernetesServiceConnection: "AKS-QA-SALUD-NS-ADMISIONDIGITAL"
-              namespace: "admisiondigital"
-              manifests: |
-                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
-                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
-                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
-              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+
+              azureSubscription: $(azureSubcritionQA)
+
+              appName: $(appNameQAFront)
+
+              containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag)
   # QAHOTFIX #
 
   # PROD #
