@@ -2,6 +2,9 @@ import {
     POST_LOG_INIT,
     POST_LOG_SUCCESS,
     POST_LOG_FAILURE,
+    POST_LOG_INIT_STEP,
+    POST_LOG_SUCCESS_STEP,
+    POST_LOG_FAILURE_STEP,
     LOAD_LOG_STATE_SESSIONSTORAGE
   } from "../types/LogType";
   import Axios from "axios";
@@ -143,6 +146,7 @@ import {
     });
   };
 
+
   // export const handleUpdate = async (params) => {
   //   return await Axios.post(window.REACT_APP_LOG, params);
   // };
@@ -228,3 +232,36 @@ import {
   //       payload: 0
   //     });
   // };
+
+  export const handleStepLogPage = async (params) => {
+    return await Axios.post(process.env.REACT_APP_LOG, params);
+  };
+
+  export const stepLogPage = (datos) => (dispatch) => {
+    dispatch({
+      type: POST_LOG_INIT_STEP,
+      payload: true,
+    });
+
+    console.log(datos)
+    handleStepLogPage(datos)
+      .then((response) => {
+          if(response.status === 200){  
+            dispatch(successCallLogStep()); 
+
+          }
+      })
+      .catch((error) => {
+        dispatch(errorCallLogStep(error))
+      });
+
+      const successCallLogStep = ID => ({
+        type: POST_LOG_SUCCESS_STEP
+      });
+  
+      const errorCallLogStep = (error) => ({
+        type: POST_LOG_FAILURE_STEP,
+        payload: error
+      });
+  
+  };
