@@ -176,7 +176,7 @@ stages:
             inputs:
               azureSubscription: $(azureSubcritionQA)
               appName: $(appNameQAFront)
-              containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag)
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
   # QAHOTFIX #
 
   # PROD #
