@@ -104,7 +104,7 @@ const LugarReferenciaSiniestro = () => {
             onClick={() => {
               dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
               if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-                dispatch(handleSetStep(13))
+                dispatch(handleSetStep(12.2)) //13
                 dispatch(updateForm("AccidenteEnSucursal", "no"))
                 }
                 else dispatch(handleSetStep(12.1)) //Accidente de Trabajo
