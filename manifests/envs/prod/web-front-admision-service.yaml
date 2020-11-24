@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-front-admision-service-sprint10
+  name: web-prod-front-admision-service
 spec:
   selector:
-    app: web-front-admision-sprint10
+    app: web-prod-front-admision
   ports:
   - protocol: TCP
     port: 80
