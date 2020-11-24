@@ -172,14 +172,10 @@ stages:
           #       /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
           #       /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
           #     containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
-           - task: AzureWebAppContainer@1
-
+          - task: AzureWebAppContainer@1
             inputs:
-
               azureSubscription: $(azureSubcritionQA)
-
               appName: $(appNameQAFront)
-
               containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag)
   # QAHOTFIX #
 
