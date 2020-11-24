@@ -15,6 +15,7 @@ import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
+import { Format } from "../../helpers/strings";
 
 const SinBPInfoPersonal1 = () => {
   const bpForm = useSelector(
@@ -109,7 +110,7 @@ const SinBPInfoPersonal1 = () => {
               <TextField
                 id="nombre"
                 value={nombre}
-                onChange={(e) => saveNombre(e.target.value)}
+                onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
                 margin="dense"
                 variant="outlined"
                 autoComplete="off"
@@ -148,7 +149,7 @@ const SinBPInfoPersonal1 = () => {
               <TextField
                 id="apellidoPaterno"
                 value={apellidoPaterno}
-                onChange={(e) => saveApellidoPaterno(e.target.value)}
+                onChange={(e) => saveApellidoPaterno(Format.caracteresInvalidos(e.target.value))}
                 margin="dense"
                 variant="outlined"
                 autoComplete="off"
@@ -182,7 +183,7 @@ const SinBPInfoPersonal1 = () => {
               <TextField
                 id="apellidoMaterno"
                 value={apellidoMaterno}
-                onChange={(e) => saveApellidoMaterno(e.target.value)}
+                onChange={(e) => saveApellidoMaterno(Format.caracteresInvalidos(e.target.value))}
                 margin="dense"
                 variant="outlined"
                 autoComplete="off"
