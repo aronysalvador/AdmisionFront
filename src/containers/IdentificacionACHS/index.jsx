@@ -82,7 +82,6 @@ const Achs = () => {
               setCENTROS(value);
               value ? setValueError(value?.Centro_m)  : setValueError("");          
             }}
-            freeSolo
             inputValue={inputValue}
             onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
