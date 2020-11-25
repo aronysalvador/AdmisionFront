@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -11,10 +11,12 @@ import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import AutoComplete from "@material-ui/lab/Autocomplete";
+import { getMediosTransporteTrayecto } from "../../redux/actions/TrayectoAction";
 
 const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { percentage, medioTransporteSiniestro },
+    addmissionForm: { percentage, medioTransporteSiniestro, mediosTransporteForm },
   } = useSelector((state) => state, shallowEqual);
 
   const [medioTransporte, setMedioTransporte] = useState(() => {
@@ -24,6 +26,19 @@ const MedioTransporteTrayecto = () => {
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
+
+  const initFn = useCallback(() => {
+    dispatch(getMediosTransporteTrayecto());
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
+  const { data: sugerenciasMedios } = useSelector(
+    (state) => state.mediosTransporteForm,
+    shallowEqual
+  );
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -61,7 +76,37 @@ const MedioTransporteTrayecto = () => {
           <Typography className={comunClass.tituloTextBox}>
             Medio de transporte
           </Typography>
-          <TextField
+          <AutoComplete
+            //value={medioTransporte}
+            freeSolo
+            onInputChange={(event, newInputValue) => {
+              console.log("newinpuvalue", newInputValue);
+               let texto = Format.caracteresInvalidos(newInputValue);
+               console.log("texto", texto);
+               setMedioTransporteValid(texto.length > 0);
+               setMedioTransporte(texto);
+            }}
+            // style={{ width: 300 }}
+            options={sugerenciasMedios}
+            getOptionLabel={(option) => option.nombre}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                error={!medioTransporteValid}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
+                }}
+              />
+            )}
+          />
+          {/* <TextField
             autoComplete
             helperText={
               !medioTransporteValid && "Debes ingresar al menos un medio de transporte"
@@ -87,7 +132,7 @@ const MedioTransporteTrayecto = () => {
                 </InputAdornment>
               )
             }}
-          />
+          /> */}
           {/* <Typography className={mobileCaption}>
             Ejemplo: Piso 21, Área 453, Puesto 12A
           </Typography> */}

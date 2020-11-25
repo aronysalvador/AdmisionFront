@@ -62,7 +62,7 @@ const TipoAccidenteTrayecto = () => {
               key={tipo.key}
               data={tipo}
               itemForm={"tipoAccidenteTrayectoForm"}
-              selected={tipo.key === tipoAccidente.codigo}
+              selected={tipo.key === tipoAccidente.key}
             >
               <BotonSeleccionarCustomItemTipoAccidenteTrayecto {...tipo} />
             </BotonSeleccionarCustomSingle>

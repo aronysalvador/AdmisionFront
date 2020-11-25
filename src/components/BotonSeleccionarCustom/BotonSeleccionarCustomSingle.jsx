@@ -28,7 +28,7 @@ const BotonSeleccionarCustomSingle = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
-            setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 100000);
+            setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 1000);
           }
           else {
             dispatch(
