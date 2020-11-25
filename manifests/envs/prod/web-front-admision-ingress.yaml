@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: web-front-admision-ingress
+  name: web-prod-front-admision-ingress
   annotations:
        kubernetes.io/ingress.class: nginx
        cert-manager.io/cluster-issuer: letsencrypt
@@ -10,25 +10,26 @@ metadata:
 spec:
   tls:
     - hosts:
-      - desa.salud.achs.cl
+      - prod.salud.achs.cl
       secretName: admision-web-cert
   rules:
-  - host: desa.salud.achs.cl 
+  - host: prod.salud.achs.cl 
     http:
       paths:
       - path: /web-admision(/?.*)
         backend:
-          serviceName: web-front-admision-service
+          serviceName: web-prod-front-admision-service
           servicePort: 80
       - path: /web-firmadigital(/?.*)
         backend:
-          serviceName: web-front-firmadigital-service
+          serviceName: web-prod-front-firmadigital-service
           servicePort: 80   
       - path: /web-digitalizador-documentos(/?.*)
         backend:
-          serviceName: web-front-digitalizaciondocumentos-service
+          serviceName: web-prod-front-digitalizaciondocumentos-service
           servicePort: 80   
       - path: /orquestador/(.*)
         backend:
-          serviceName: api-orquestador-service
-          servicePort: 80       
+          serviceName: api-prod-orquestador-service
+          servicePort: 80
+       
