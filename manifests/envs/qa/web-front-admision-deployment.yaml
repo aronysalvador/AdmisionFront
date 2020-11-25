@@ -16,7 +16,7 @@ spec:
         image: imagen         
         imagePullPolicy: Always
         env:
-          - name: PUBLIC_URL/sprint10
+          - name: PUBLIC_URL
             value: /web-admision     
           - name: "REACT_APP_ISAPRES"
             value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/isapres/"
