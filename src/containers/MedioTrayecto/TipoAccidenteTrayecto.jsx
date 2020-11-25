@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useCallback } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -15,13 +15,12 @@ const TipoAccidenteTrayecto = () => {
     addmissionForm: { percentage, tipoAccidenteTrayectoForm },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-
-  const [tipoAccidente, setTipoAccidente] = useState(() => {
-    return !tipoAccidenteTrayectoForm ? "" : tipoAccidenteTrayectoForm;
-  });
+  
+  
   const dispatch = useDispatch();
 
   const initFn = useCallback(() => {
+
     dispatch(getTiposAccidenteTrayecto());
   }, [dispatch]);
 
@@ -31,6 +30,8 @@ const TipoAccidenteTrayecto = () => {
 
   const { data: tipoAccidenteTrayectoList } = useSelector((state) => state.tipoAccidenteTrayectoForm, shallowEqual);
 
+  let tipoAccidente = !tipoAccidenteTrayectoForm ? "" : tipoAccidenteTrayectoForm
+  
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -62,7 +63,7 @@ const TipoAccidenteTrayecto = () => {
               key={tipo.key}
               data={tipo}
               itemForm={"tipoAccidenteTrayectoForm"}
-              selected={tipo.key === tipoAccidente.codigo}
+              selected={tipo.key === tipoAccidente.key}
             >
               <BotonSeleccionarCustomItemTipoAccidenteTrayecto {...tipo} />
             </BotonSeleccionarCustomSingle>

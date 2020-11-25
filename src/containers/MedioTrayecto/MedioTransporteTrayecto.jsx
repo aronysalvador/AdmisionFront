@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
+import { Button, Typography, TextField, } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { IconButton } from "material-ui";
-import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import { Format } from "../../helpers/strings";
+import AutoComplete from "@material-ui/lab/Autocomplete";
+import { getMediosTransporteTrayecto } from "../../redux/actions/TrayectoAction";
 
 const MedioTransporteTrayecto = () => {
   let {
@@ -20,10 +19,28 @@ const MedioTransporteTrayecto = () => {
   const [medioTransporte, setMedioTransporte] = useState(() => {
     return !medioTransporteSiniestro ? "" : medioTransporteSiniestro;
   });
-  const [medioTransporteValid, setMedioTransporteValid] = useState(true);
+
+  // const [medioTransporteValid, setMedioTransporteValid] = useState(true);
   
+  // const [transporteSeleccionado, setTransporteSeleccionado] = useState( () => {
+  //   return !transporteForm ? {id: 0, nombre: ""} : transporteForm;
+  // });
+
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
+
+  const initFn = useCallback(() => {
+    dispatch(getMediosTransporteTrayecto());
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
+  const { data: sugerenciasMedios } = useSelector(
+    (state) => state.mediosTransporteForm,
+    shallowEqual
+  );
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -61,40 +78,34 @@ const MedioTransporteTrayecto = () => {
           <Typography className={comunClass.tituloTextBox}>
             Medio de transporte
           </Typography>
-          <TextField
-            autoComplete
-            helperText={
-              !medioTransporteValid && "Debes ingresar al menos un medio de transporte"
-            }
-            error={!medioTransporteValid}
+          <AutoComplete
             value={medioTransporte}
-            variant="outlined"
-            size="small"
-            margin="dense"
-            required
-            fullWidth
-            onChange={(e) => {
-              let texto = Format.caracteresInvalidos(e.target.value);
-              setMedioTransporteValid(texto.length > 0);
-              setMedioTransporte(texto);
+            onChange={(event, value) => {
+              setMedioTransporte(value);
             }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={() => { setMedioTransporte("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
+            // style={{ width: 300 }}
+            options={sugerenciasMedios}
+            getOptionLabel={(option) => option.nombre}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
+                }}
+              />
+            )}
           />
-          {/* <Typography className={mobileCaption}>
-            Ejemplo: Piso 21, Área 453, Puesto 12A
-          </Typography> */}
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={medioTransporte.length <= 3 || !medioTransporteValid}
+            disabled={!medioTransporte}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {

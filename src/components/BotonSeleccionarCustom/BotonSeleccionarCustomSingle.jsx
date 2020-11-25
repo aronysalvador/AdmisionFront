@@ -5,7 +5,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 
 const BotonSeleccionarCustomSingle = (props) => {
-  const { data, itemForm, selected, step, handlerGuardarData } = props;
+  const { data, itemForm, selected, step } = props;
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const BotonSeleccionarCustomSingle = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
-            setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 100000);
+            setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 1000);
           }
           else {
             dispatch(
