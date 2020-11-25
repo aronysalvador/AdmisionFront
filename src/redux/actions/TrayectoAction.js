@@ -2,6 +2,9 @@ import {
   GET_TRAYECTO_INIT,
   GET_TRAYECTO_SUCCESS,
   GET_TRAYECTO_FAILURE,
+  GET_TRAYECTO_MEDIOTRANSPORTE_INIT,
+  GET_TRAYECTO_MEDIOTRANSPORTE_SUCCESS,
+  GET_TRAYECTO_MEDIOTRANSPORTE_FAILURE,
 } from "../types/trayectoType";
 import Axios from "axios";
 
@@ -40,13 +43,12 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
 
 export const getMediosTransporteTrayecto = () => async (dispatch) => {
   dispatch({
-    type: GET_TRAYECTO_INIT,
+    type: GET_TRAYECTO_MEDIOTRANSPORTE_INIT,
     payload: true,
   });
 
   getDataMediosTransporte()
     .then((response) => {
-      console.log("MEDIOS DE TRANSPORTE:", response.data.content[0]);
       dispatch(successCall(response.data.content[0]));
     })
     .catch((error) => {
@@ -54,11 +56,11 @@ export const getMediosTransporteTrayecto = () => async (dispatch) => {
     });
 
   const successCall = (dato) => ({
-    type: GET_TRAYECTO_SUCCESS,
+    type: GET_TRAYECTO_MEDIOTRANSPORTE_SUCCESS,
     payload: dato,
   });
 
   const errorCall = () => ({
-    type: GET_TRAYECTO_FAILURE,
+    type: GET_TRAYECTO_MEDIOTRANSPORTE_FAILURE,
   });
 };
