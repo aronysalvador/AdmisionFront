@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: web-front-admision-ingress-sprint10
+  name: web-front-admision-ingress
   annotations:
        kubernetes.io/ingress.class: nginx
        cert-manager.io/cluster-issuer: letsencrypt
@@ -10,25 +10,25 @@ metadata:
 spec:
   tls:
     - hosts:
-      - desa.salud.achs.cl/sprint10
+      - desa.salud.achs.cl
       secretName: admision-web-cert
   rules:
-  - host: desa.salud.achs.cl/sprint10 
+  - host: desa.salud.achs.cl 
     http:
       paths:
       - path: /web-admision(/?.*)
         backend:
-          serviceName: web-front-admision-service-sprint10
+          serviceName: web-front-admision-service
           servicePort: 80
       - path: /web-firmadigital(/?.*)
         backend:
-          serviceName: web-front-firmadigital-service-sprint10
+          serviceName: web-front-firmadigital-service
           servicePort: 80   
       - path: /web-digitalizador-documentos(/?.*)
         backend:
-          serviceName: web-front-digitalizaciondocumentos-service-sprint10
+          serviceName: web-front-digitalizaciondocumentos-service
           servicePort: 80   
       - path: /orquestador/(.*)
         backend:
-          serviceName: api-orquestador-service-sprint10
+          serviceName: api-orquestador-service
           servicePort: 80       
