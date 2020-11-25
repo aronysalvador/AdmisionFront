@@ -74,6 +74,10 @@ spec:
             value: azureID
           - name: "REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL"
             value: "https://qa.sprint10.52.149.214.89.nip.io/web-admision/"
+          - name: "REACT_APP_TIPO_ACCIDENTE_TRAYECTO"
+            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getTipoAccidente/"
+          - name: "REACT_APP_MEDIO_TRANSPORTE_TRAYECTO"
+            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getMediosTransporte"
         ports:
         - containerPort: 80
         resources:

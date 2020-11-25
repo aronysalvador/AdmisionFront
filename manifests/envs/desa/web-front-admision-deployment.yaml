@@ -74,6 +74,10 @@ spec:
             value: azureID
           - name: "REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL"
             value: "https://desa.salud.achs.cl/web-admision/"
+          - name: "REACT_APP_TIPO_ACCIDENTE_TRAYECTO"
+            value: "https://desa.salud.achs.cl/orquestador/api/trayecto/getTipoAccidente/"
+          - name: "REACT_APP_MEDIO_TRANSPORTE_TRAYECTO"
+            value: "https://desa.salud.achs.cl/orquestador/api/trayecto/getMediosTransporte"
 
         ports:
         - containerPort: 80
