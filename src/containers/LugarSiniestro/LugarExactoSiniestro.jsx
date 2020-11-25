@@ -17,10 +17,10 @@ const LugarExactoSiniestro = () => {
   } = useSelector((state) => state, shallowEqual);
 
   const [sucursal, setSucursal] = useState(() => {
-    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : ""
+    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : "";
   });
   const [mapaUrl, setMapaUrl] = useState(() => {
-    return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : ""
+    return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : "";
   });
   const [nombreComuna,setNombreComuna]=useState("");
 
@@ -90,7 +90,7 @@ const LugarExactoSiniestro = () => {
               setSucursal({description: ''}); 
               dispatch(handleSetStep(11.1))
             }}
-            direccionTemporal={tipoSiniestro.Id===1?DireccionEmpresa:""}
+            direccionTemporal={(tipoSiniestro.Id===1 && !sucursalEmpresaSiniestro)?DireccionEmpresa:""}
           />
           <center>
             {(mapaUrl)?

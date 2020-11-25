@@ -90,7 +90,7 @@ const LugarSiniestroTrayecto = () => {
               setSucursal({description: ''}); 
               dispatch(handleSetStep(12.3))
             }}
-            direccionTemporal={DireccionEmpresa}
+            direccionTemporal={!sucursalEmpresaDiaSiniestroTrayecto?DireccionEmpresa:""}
           />
           <center>
             {(mapaUrl)?
