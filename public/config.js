@@ -25,5 +25,5 @@ window.REACT_APP_GEO_AUTOCOMPLETE = "https://desa.salud.achs.cl/orquestador/api/
 window.REACT_APP_GEO_STATICMAP = "https://desa.salud.achs.cl/orquestador/api/geo/getMapaEstatico"
 window.REACT_APP_GEO_LATLNG = "https://desa.salud.achs.cl/orquestador/api/geo/getLatLng"
 window.REACT_APP_GEO_DIRECTION = "https://desa.salud.achs.cl/orquestador/api/geo/getDireccion"
-window.REACT_APP_MICROSOFT_AUTH_CLIENTID = "4e942a7f-082a-4293-9e67-02049d21697b"
+window.REACT_APP_MICROSOFT_AUTH_CLIENTID = "2cc60262-0026-48a5-ac2a-a088e9704f30"
 window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL = "https://desa.salud.achs.cl/web-admision/"
