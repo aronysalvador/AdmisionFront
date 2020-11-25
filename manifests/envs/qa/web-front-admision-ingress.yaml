@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - qa.salud.achs.cl/sprint10
+      - qa.sprint10.52.149.214.89.nip.io 
       secretName: admision-web-cert
   rules:
-  - host: qa.salud.achs.cl/sprint10 
+  - host: qa.sprint10.52.149.214.89.nip.io
     http:
       paths:
       - path: /web-admision(/?.*)
