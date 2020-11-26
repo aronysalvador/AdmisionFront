@@ -41,6 +41,7 @@ const MedioTransporteTrayecto = () => {
     (state) => state.mediosTransporteForm,
     shallowEqual
   );
+console.log(sugerenciasMedios);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();

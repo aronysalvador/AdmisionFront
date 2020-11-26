@@ -87,6 +87,9 @@ import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
 import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
 import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
+import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
+import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, microsoftReducer } = props;
@@ -446,6 +449,22 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <AccidenteEnSucursal />
+            </Paper>
+          </div>
+        );
+      case 12.2:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarSiniestroTrayecto />
+            </Paper>
+          </div>
+        );
+      case 12.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarSiniestroTrayectoMapa />
             </Paper>
           </div>
         );
