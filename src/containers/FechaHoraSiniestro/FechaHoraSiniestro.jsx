@@ -34,49 +34,44 @@ const FechaHoraSiniestro = () => {
   const dispatch = useDispatch();
 
   function setFechaValueSiniestro(value) {
-    let current = new Date();
-    console.log(`Año form: ${value.year} - Año Actual: ${current.getFullYear()}`)
-    console.log(`mes form: ${value.month} - mes Actual: ${current.getMonth()}`)
-    console.log(`dia form: ${value.days} - dia Actual: ${current.getDate()}`)
-    if(value.year <= 1900 || 
-      !(value.year <= current.getFullYear() && value.month <= current.getMonth()+1 && value.days <= current.getDate())
-      )
-      setInvalidFecha(true)
-    else{
-      setInvalidFecha(false)
-      if(value.days < current.getDate())
-          setInvalidHora(false)
-    }
-      
-    
-    
     setFechaSiniestro({ ...value });
   }
 
+  function setHoraValueSiniestro(value) {
+    value.minutos = minutosArray[value.indiceMinutos];  
+    setHoraSiniestro({ ...value });
+  }
 
-
-  const isValidTime = () =>{
+  React.useEffect(() => {
     let current = new Date();
+
+    //========= Fecha =======
+    if(fechaSiniestro.year <= 1900 || 
+      !(fechaSiniestro.year <= current.getFullYear() && fechaSiniestro.month <= current.getMonth()+1 && fechaSiniestro.days <= current.getDate())
+      )
+      setInvalidFecha(true)
+    else
+      setInvalidFecha(false)
+
+    //====== Fin Fecha ======
+
+
+    //====== Hora =======
     if(
-      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days === current.getDate()) &&
+      (horaSiniestro.horas === -1 || horaSiniestro.minutos === -1 || horaSiniestro.minutos === undefined)
+      ||
+      ((fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days === current.getDate()) &&
       (
         (horaSiniestro.horas > current.getHours()) ||
         (horaSiniestro.horas === current.getHours() && horaSiniestro.minutos > current.getMinutes())
-      )
+      ))
     )
     setInvalidHora(true)
   else
     setInvalidHora(false)
-  }
+  //====== Fin Hora =======
+  }, [horaSiniestro.horas, horaSiniestro.minutos, fechaSiniestro])
 
-  function setHoraValueSiniestro(value) {
-    value.minutos = minutosArray[value.indiceMinutos];
-    let current = new Date();
-    
-    isvalidTime()
-
-    setHoraSiniestro({ ...value });
-  }
 
   const handleNext = () => {
     let siniestroTemp = undefined;
@@ -175,7 +170,7 @@ const FechaHoraSiniestro = () => {
           <div className={comunClass.displayMobile}>
             <HoraSiniestro
               onChange={setHoraValueSiniestro}
-              horasFromState={horas}
+              horasFromState={horas-1}
               indiceMinutosFromState={minutosArray.indexOf(minutos)}
               minutos={minutosArray}
             />
@@ -183,7 +178,7 @@ const FechaHoraSiniestro = () => {
           <div className={comunClass.displayDesk}>
             <HoraSiniestroDesk
                 onChange={setHoraValueSiniestro}
-                horasFromState={horas}
+                horasFromState={horas-1}
                 indiceMinutosFromState={minutosArray.indexOf(minutos)}
                 minutos={minutosArray}
               />
