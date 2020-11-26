@@ -14,7 +14,8 @@ const LoadRazonAlerta = () => {
     setTimeout(function () {
       dispatch(handleSetStep(26.1));
     }, 2000);
-  });
+    // eslint-disable-next-line
+  },[]);
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
