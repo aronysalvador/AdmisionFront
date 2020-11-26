@@ -6,21 +6,21 @@ import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
-import { validarDireccionSN } from './../../helpers/utils'
+import { validarDireccion } from '../../helpers/utils'
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 
-const LugarExactoSiniestro = () => {
+const LugarSiniestroTrayecto = () => {
   const {
-    addmissionForm: { step, percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, tipoSiniestro, DireccionEmpresa },
+    addmissionForm: { percentage, sucursalEmpresaDiaSiniestroTrayecto, urlMapaSucursalDiaSiniestroTrayecto, DireccionEmpresa },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   const [sucursal, setSucursal] = useState(() => {
-    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : "";
+    return sucursalEmpresaDiaSiniestroTrayecto ? sucursalEmpresaDiaSiniestroTrayecto : ""
   });
   const [mapaUrl, setMapaUrl] = useState(() => {
-    return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : "";
+    return urlMapaSucursalDiaSiniestroTrayecto ? urlMapaSucursalDiaSiniestroTrayecto : ""
   });
   const [nombreComuna,setNombreComuna]=useState("");
 
@@ -30,8 +30,8 @@ const LugarExactoSiniestro = () => {
   const spaceStyle = getSpaceStyle();
 
   const clearData = () => {
-    dispatch(updateForm("sucursalEmpresaSiniestro", ""))
-    dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
+    dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", ""))
+    dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", ""))
   }
 
   const [valido, setValido] = useState(false)
@@ -46,7 +46,7 @@ const LugarExactoSiniestro = () => {
   },[sucursal])
   
   const validaDireccion = async()=>{
-    const resultado = await validarDireccionSN(sucursal)
+    const resultado = await validarDireccion(sucursal)
     setNombreComuna(resultado.comuna)
     setValido(resultado.valida)
   }
@@ -58,15 +58,15 @@ const LugarExactoSiniestro = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(step - 1))}
+          dispatch={() => dispatch(handleSetStep(12))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]} style={{paddingBottom:'20px'}}>
-          Indica la dirección 
+          Indica la dirección del
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;en donde ocurrió el accidente
+            &nbsp;lugar de trabajo el día del accidente
           </Grid>          
         </Grid>
         <div className={comunClass.displayDeskImg}>
@@ -78,7 +78,7 @@ const LugarExactoSiniestro = () => {
       <div className={comunClass.boxDesk}>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
-            Dirección accidente
+            Dirección de trabajo
           </Typography>
           <DireccionGeo
             comunStyle={getComunStyle()}
@@ -88,13 +88,13 @@ const LugarExactoSiniestro = () => {
             clearData={clearData}
             showDinamicMap={()=> {
               setSucursal({description: ''}); 
-              dispatch(handleSetStep(11.1))
+              dispatch(handleSetStep(12.3))
             }}
-            direccionTemporal={(tipoSiniestro.Id===1 && !sucursalEmpresaSiniestro)?DireccionEmpresa:""}
+            direccionTemporal={!sucursalEmpresaDiaSiniestroTrayecto?DireccionEmpresa:""}
           />
           <center>
             {(mapaUrl)?
-            <img alt="MapaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
+            <img alt="MapaDiaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
             :null}
           </center>
         </div> 
@@ -107,10 +107,10 @@ const LugarExactoSiniestro = () => {
             variant="contained"
             disabled={!valido}
             onClick={() => {
-              dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
-              dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
-              dispatch(updateForm("comunaSiniestro", nombreComuna))
-              dispatch(handleSetStep(step + 1))
+              dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", sucursal))
+              dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", mapaUrl))
+              dispatch(updateForm("comunaDiaSiniestroTrayecto", nombreComuna))
+              dispatch(handleSetStep(13))
             }}
           >
             Confirmar
@@ -123,4 +123,4 @@ const LugarExactoSiniestro = () => {
     </div>
   )
 }
-export default LugarExactoSiniestro;
+export default LugarSiniestroTrayecto;

@@ -12,7 +12,7 @@ const QuestionWitness = (props) => {
 
   const comunClass = getComunStyle();
 
-  let step = tipoSiniestro.Id === 1 ? 12.1 : 12
+  let step = tipoSiniestro.Id === 1 ? 12.1 : 12.2
 
   return (
     <div className={comunClass.root}>
