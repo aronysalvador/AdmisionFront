@@ -45,6 +45,8 @@ const MedioTransporteTrayecto = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
+  console.log(sugerenciasMedios)
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -79,13 +81,23 @@ const MedioTransporteTrayecto = () => {
             Medio de transporte
           </Typography>
           <AutoComplete
-            value={medioTransporte}
-            onChange={(event, value) => {
-              setMedioTransporte(value);
+            //inputValue={!medioTransporteSiniestro ? medioTransporte :medioTransporteSiniestro}
+            inputValue={medioTransporte}
+            onInputChange={(event, value) => {
+              if(value !== ""){
+                setMedioTransporte(value);
+              }
             }}
+            // onInputChange={(event, value) => {
+            //   debugger
+            //   //setMedioTransporte(value);
+              
+            // }}
+            freeSolo
             // style={{ width: 300 }}
             options={sugerenciasMedios}
-            getOptionLabel={(option) => option.nombre}
+           
+            getOptionLabel={(option) =>  option.nombre }
             renderInput={(params) => (
               <TextField
                 {...params}
