@@ -27,7 +27,6 @@ export const getRazonAlertaPrincipal = () => async (dispatch , getState) => {
          data.splice(0,1)
          dispatch(successCallRazonAlerta(data));
        }
-      
     })
     .catch((error) => {
       dispatch(errorCallRazonAlerta());
