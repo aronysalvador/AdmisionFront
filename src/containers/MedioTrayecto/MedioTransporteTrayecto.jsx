@@ -85,9 +85,8 @@ console.log(sugerenciasMedios);
             //inputValue={!medioTransporteSiniestro ? medioTransporte :medioTransporteSiniestro}
             inputValue={medioTransporte}
             onInputChange={(event, value) => {
-              if(value !== ""){
-                setMedioTransporte(value);
-              }
+              event&&setMedioTransporte(value);
+              
             }}
             // onInputChange={(event, value) => {
             //   debugger
