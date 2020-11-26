@@ -13,6 +13,8 @@ const HoraSiniestroDesk = ({
   minutos,
 }) => {
 
+  console.log((new Date().setHours(new Date().getHours() - 1)).now)
+
   if(horasFromState?.toString().length === 1){
     horasFromState = ("0" + horasFromState).slice(-2)
   }
@@ -26,13 +28,30 @@ const HoraSiniestroDesk = ({
   const onDateChange = (date, value) => {
     setInputValue2(value)
     if(value?.length){
+      let horas = -1;
+      let indiceMinutos = -1;
+      let minutos = -1;
+
       let horasDetails = value.split(':')
-      let horas= parseInt(horasDetails[0])
-      let minutos = parseInt(horasDetails[1])
-      let indiceMinutos = parseInt(horasDetails[1].substr(0,1))   
-      if(horas && minutos && indiceMinutos){
-        onChange({ horas, indiceMinutos, minutos});
+      console.log(horasDetails[0])
+      if(horasDetails[0].includes("_"))
+        horas = -1;
+
+      
+      else
+        horas = parseInt(horasDetails[0])
+
+      if(horasDetails[1].includes("_")){
+        indiceMinutos = -1
+        minutos = -1
       }
+      else if(parseInt(horasDetails[1]) >= 0 && parseInt(horasDetails[1]) <= 59){
+        indiceMinutos = parseInt(horasDetails[1].substr(0,1)) 
+        minutos = parseInt(horasDetails[1])
+      }
+  
+      onChange({ horas, indiceMinutos, minutos});
+
     }
   };
 
@@ -50,10 +69,11 @@ const HoraSiniestroDesk = ({
           <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
             <KeyboardTimePicker
             inputVariant="outlined"
+            value={new Date(new Date().setHours(new Date().getHours()-1))}
             inputValue={inputValue2}
             onChange={onDateChange}
             InputAdornmentProps={{ position: 'start'}}
-            clearable
+
             ampm={false}
             fullWidth
             invalidDateMessage="Formato invalido"
