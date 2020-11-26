@@ -87,7 +87,7 @@ console.log(sugerenciasMedios);
             }}
             // style={{ width: 300 }}
             options={sugerenciasMedios}
-            // getOptionLabel={(option) => option.nombre}
+            getOptionLabel={(option) => option.nombre}
             renderInput={(params) => (
               <TextField
                 {...params}
