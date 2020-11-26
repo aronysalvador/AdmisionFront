@@ -18,12 +18,19 @@ const BotonSeleccionarCustom = (props) => {
 
   useEffect(() => {
     setIsSelected(selected);
-    // if(itemForm === "razonAlertaForm"){
-    //   if(!selected && data.id=== razonAlertaForm.id){
-    //     dispatch(updateForm("razonAlertaForm", ""));
-    //   }
-    // }
-  }, [selected ]);
+
+  }, [selected]);
+
+  useEffect(() => {
+    if(itemForm === "razonAlertaForm"){
+      if(isSelected !== undefined){
+        if(!isSelected && data?.id=== razonAlertaForm?.id){
+          dispatch(updateForm("razonAlertaForm", { id: 7 , glosa: ""}));
+        }
+      }
+    }
+    // eslint-disable-next-line
+  }, [isSelected]);
 
   return (
     <div
@@ -53,10 +60,7 @@ const BotonSeleccionarCustom = (props) => {
                     !isSelected ? { ...data, selected: !isSelected } : {}
                   )
                 );
-             
-              debugger
-              //setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 1000);
-              //dispatch(handleSetStep(26.4));
+              setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 1000);
             }
           } 
           
