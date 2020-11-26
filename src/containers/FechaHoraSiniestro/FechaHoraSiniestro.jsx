@@ -13,6 +13,9 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 
 const FechaHoraSiniestro = () => {
+  const comunClass = getComunStyle();
+  const spaceStyle = getSpaceStyle();
+
   const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
   
@@ -21,24 +24,57 @@ const FechaHoraSiniestro = () => {
 
   const [fechaSiniestro, setFechaSiniestro] = useState({});
   const [horaSiniestro, setHoraSiniestro] = useState({});
-  const [invalid, setInvalid] = useState(true);
-  const comunClass = getComunStyle();
-  const spaceStyle = getSpaceStyle();
+  const [invalidFecha, setInvalidFecha] = useState(true);
+  const [invalidHora, setInvalidHora] = useState(true);
+
+
 
   const minutosArray = [0, 10, 20, 30, 40, 50]
 
   const dispatch = useDispatch();
 
   function setFechaValueSiniestro(value) {
-    if(value.year <= 1900)
-      setInvalid(true)
-    else
-      setInvalid(false)
+    let current = new Date();
+    console.log(`Año form: ${value.year} - Año Actual: ${current.getFullYear()}`)
+    console.log(`mes form: ${value.month} - mes Actual: ${current.getMonth()}`)
+    console.log(`dia form: ${value.days} - dia Actual: ${current.getDate()}`)
+    if(value.year <= 1900 || 
+      !(value.year <= current.getFullYear() && value.month <= current.getMonth()+1 && value.days <= current.getDate())
+      )
+      setInvalidFecha(true)
+    else{
+      setInvalidFecha(false)
+      if(value.days < current.getDate())
+          setInvalidHora(false)
+    }
+      
+    
+    
     setFechaSiniestro({ ...value });
+  }
+
+
+
+  const isValidTime = () =>{
+    let current = new Date();
+    if(
+      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days === current.getDate()) &&
+      (
+        (horaSiniestro.horas > current.getHours()) ||
+        (horaSiniestro.horas === current.getHours() && horaSiniestro.minutos > current.getMinutes())
+      )
+    )
+    setInvalidHora(true)
+  else
+    setInvalidHora(false)
   }
 
   function setHoraValueSiniestro(value) {
     value.minutos = minutosArray[value.indiceMinutos];
+    let current = new Date();
+    
+    isvalidTime()
+
     setHoraSiniestro({ ...value });
   }
 
@@ -156,7 +192,7 @@ const FechaHoraSiniestro = () => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            disabled={invalid}
+            disabled={invalidFecha || invalidHora}
             onClick={() => { handleNext() }}
           >
             Continuar
