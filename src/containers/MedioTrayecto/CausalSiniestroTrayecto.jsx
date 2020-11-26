@@ -71,7 +71,7 @@ const CausalSiniestroTrayecto = () => {
           <TextField
             autoComplete
             helperText={
-              !mecanismoCausalValid && "Debes ingresar al menos un medio de transporte"
+              !mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"
             }
             error={!mecanismoCausalValid}
             value={mecanismoCausal}
@@ -107,7 +107,7 @@ const CausalSiniestroTrayecto = () => {
           <TextField
             autoComplete
             helperText={
-              !posibleCausaValid && "Debes ingresar al menos un medio de transporte"
+              !posibleCausaValid && "Debes ingresar al menos una posible causa"
             }
             error={!posibleCausaValid}
             value={posibleCausa}

@@ -41,6 +41,7 @@ const MedioTransporteTrayecto = () => {
     (state) => state.mediosTransporteForm,
     shallowEqual
   );
+console.log(sugerenciasMedios);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -79,13 +80,14 @@ const MedioTransporteTrayecto = () => {
             Medio de transporte
           </Typography>
           <AutoComplete
+            // freeSolo
             value={medioTransporte}
             onChange={(event, value) => {
               setMedioTransporte(value);
             }}
             // style={{ width: 300 }}
             options={sugerenciasMedios}
-            getOptionLabel={(option) => option.nombre}
+            // getOptionLabel={(option) => option.nombre}
             renderInput={(params) => (
               <TextField
                 {...params}
