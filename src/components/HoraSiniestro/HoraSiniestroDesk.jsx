@@ -13,14 +13,16 @@ const HoraSiniestroDesk = ({
   minutos,
 }) => {
 
-  console.log((new Date().setHours(new Date().getHours() - 1)).now)
-
   if(horasFromState?.toString().length === 1){
     horasFromState = ("0" + horasFromState).slice(-2)
   }
 
   const [inputValue2,setInputValue2]= useState(() =>{
-    return !horasFromState? "" : `${horasFromState}:${indiceMinutosFromState}0`;
+    if(!horasFromState){
+      let time = new Date(new Date().setHours(new Date().getHours()-1))
+      return `${(time.getHours() < 10)?"0"+time.getHours():time.getHours()}:${time.getMinutes()}`;
+    }else
+      return `${horasFromState}:${indiceMinutosFromState}0`;
   })
 
   const comunClass = getComunStyle();
@@ -69,7 +71,7 @@ const HoraSiniestroDesk = ({
           <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
             <KeyboardTimePicker
             inputVariant="outlined"
-            value={new Date(new Date().setHours(new Date().getHours()-1))}
+            value={new Date(inputValue2)}
             inputValue={inputValue2}
             onChange={onDateChange}
             InputAdornmentProps={{ position: 'start'}}
