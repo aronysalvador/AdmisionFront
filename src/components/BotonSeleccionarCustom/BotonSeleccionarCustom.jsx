@@ -26,6 +26,7 @@ const BotonSeleccionarCustom = (props) => {
       if(isSelected !== undefined){
         if(!isSelected && data?.id=== razonAlertaForm?.id){
           dispatch(updateForm("razonAlertaForm", { id: 7 , glosa: ""}));
+          setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 500);
         }
       }
     }
