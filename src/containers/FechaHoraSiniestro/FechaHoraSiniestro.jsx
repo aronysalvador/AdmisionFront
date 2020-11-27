@@ -170,7 +170,7 @@ const FechaHoraSiniestro = () => {
           <div className={comunClass.displayMobile}>
             <HoraSiniestro
               onChange={setHoraValueSiniestro}
-              horasFromState={horas-1}
+              horasFromState={horas}
               indiceMinutosFromState={minutosArray.indexOf(minutos)}
               minutos={minutosArray}
             />
@@ -178,7 +178,7 @@ const FechaHoraSiniestro = () => {
           <div className={comunClass.displayDesk}>
             <HoraSiniestroDesk
                 onChange={setHoraValueSiniestro}
-                horasFromState={horas-1}
+                horasFromState={horas}
                 indiceMinutosFromState={minutosArray.indexOf(minutos)}
                 minutos={minutosArray}
               />
