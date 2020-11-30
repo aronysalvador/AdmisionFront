@@ -62,5 +62,7 @@ export const AdmissionForm = {
     TrabajadorIndependiente: "",
     tab: 0,
 
-    coberturaSoap: ""
+    coberturaSoap: "",
+
+    CamposDocumentos: { tag: "", valor: "" }
 };

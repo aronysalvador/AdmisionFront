@@ -16,7 +16,7 @@ import relato from './../../img/relato.svg';
 
 const CausalSiniestroTrayecto = () => {
   let {
-    addmissionForm: { percentage, mecanismoCausalSiniestro, posibleCausaSiniestro },
+    addmissionForm: { percentage, mecanismoCausalSiniestro, posibleCausaSiniestro, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [mecanismoCausal, setMecanismoCausal] = useState(() => {
@@ -142,8 +142,10 @@ const CausalSiniestroTrayecto = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("mecanismoCausalSiniestro", mecanismoCausal));
-              dispatch(updateForm("posibleCausaSiniestro", posibleCausa));
+              let respMecanismoCausa = [...CamposDocumentos, {tag:"Mecanismo", valor: mecanismoCausal}, {tag:"posibleCausa", valor: posibleCausa}];
+              dispatch(updateForm("CamposDocumentos", respMecanismoCausa));
+              // dispatch(updateForm("mecanismoCausalSiniestro", mecanismoCausal));
+              // dispatch(updateForm("posibleCausaSiniestro", posibleCausa));
               dispatch(handleSetStep(6));
             }}
           >

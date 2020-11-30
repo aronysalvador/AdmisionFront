@@ -14,13 +14,14 @@ import relato from './../../img/relato.svg';
 
 const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { percentage, medioTransporteSiniestro },
+    addmissionForm: { percentage, medioTransporteSiniestro, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [medioTransporte, setMedioTransporte] = useState(() => {
     return !medioTransporteSiniestro ? "" : medioTransporteSiniestro;
   });
 
+console.log(CamposDocumentos);
   // const [medioTransporteValid, setMedioTransporteValid] = useState(true);
   
   // const [transporteSeleccionado, setTransporteSeleccionado] = useState( () => {
@@ -122,9 +123,9 @@ console.log(sugerenciasMedios);
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("medioTransporteSiniestro", medioTransporte)); 
-              var respDoc = {tag:"MedioTransp", valor: {medioTransporte}};
-              dispatch(updateForm("CamposDocumentos", respDoc));
+              // dispatch(updateForm("medioTransporteSiniestro", medioTransporte)); 
+              let respMedioTransp = [{tag:"MedioTransp", valor: medioTransporte}];
+              dispatch(updateForm("CamposDocumentos", respMedioTransp));
               dispatch(handleSetStep(6.03));
             }}
           >
