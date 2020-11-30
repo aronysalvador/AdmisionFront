@@ -17,6 +17,7 @@ const Identification = (props) => {
   const spaceStyle = getSpaceStyle()
   const [buttonOverTrabajo, setButtonOverTrabajo] = useState(false)
   const [buttonOverTrayecto, setButtonOverTrayecto] = useState(false)
+  const [buttonOverEP, setButtonOverEP] = useState(false)
 
   return (<div className={comunClass.root}>
     <div className={comunClass.displayDesk}> 
@@ -65,12 +66,6 @@ const Identification = (props) => {
         </div>
         <div  className={spaceStyle.space1} />
         <div className={comunClass.alignBtnSiniesterRight}>
-          {/* <Button className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
-            <div><img alt="Accidente de Trayecto" src="./static/trayectoCard.png" className={classes.imgButton}/></div>
-            <div>Accidente de trayecto <br/>
-              <span className={classes.textButton}>Entre el trabajo y su hogar</span>
-            </div>
-          </Button> */}
           <Button className={classes.button} variant="contained" onClick={()=>{ 
             var tipo = { Id:2, Descripcion: "Accidente Trayecto" }
             dispatch(updateForm("tipoSiniestro", tipo));
@@ -90,11 +85,25 @@ const Identification = (props) => {
       </div>
       <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
-          <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
+          {/* <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
             <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
             <div>Enfermedad Profesional <br/>
               <span className={classes.textButton}>A causa del ejercicio profesional</span>
             </div>
+          </Button> */}
+          <Button className={classes.button} variant="contained" onClick={()=>{ 
+            var tipo = { Id:3, Descripcion: "Enfermedad Profesional" }
+            dispatch(updateForm("tipoSiniestro", tipo));
+            dispatch(handleSetStep(3));   
+            }}
+            onMouseOver={() =>{ setButtonOverEP(true) }}
+            onMouseOut={() =>{ setButtonOverEP(false) }}
+          >
+            <img alt="Enfermedad Profesional" src={!buttonOverEP ? "./static/enfermedad-profesional.svg" : "./static/enfermedad-profesional-active.svg"} className={classes.imgButton} />
+            <div>Enfermedad Profesional <br/>
+              <span className={classes.textButton}>A causa del ejercicio profesional</span>
+            </div>
+            {buttonOverEP && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
         </div>  
         <div  className={spaceStyle.space1} />
