@@ -85,12 +85,6 @@ const Identification = (props) => {
       </div>
       <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
-          {/* <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}} >
-            <div><img alt="Enfermedad Profesional" src="./static/epCard.png" className={classes.imgButton} /></div>
-            <div>Enfermedad Profesional <br/>
-              <span className={classes.textButton}>A causa del ejercicio profesional</span>
-            </div>
-          </Button> */}
           <Button className={classes.button} variant="contained" onClick={()=>{ 
             var tipo = { Id:3, Descripcion: "Enfermedad Profesional" }
             dispatch(updateForm("tipoSiniestro", tipo));
@@ -99,7 +93,7 @@ const Identification = (props) => {
             onMouseOver={() =>{ setButtonOverEP(true) }}
             onMouseOut={() =>{ setButtonOverEP(false) }}
           >
-            <img alt="Enfermedad Profesional" src={!buttonOverEP ? "./static/enfermedad-profesional.svg" : "./static/enfermedad-profesional-active.svg"} className={classes.imgButton} />
+            <img alt="Enfermedad Profesional" src={!buttonOverEP ? "./static/enfermedad-profesional.svg" : "./static/enfermedad-profesional-active.svg"} className={classes.imgButton} style={{marginRight: '10px'}} />
             <div>Enfermedad Profesional <br/>
               <span className={classes.textButton}>A causa del ejercicio profesional</span>
             </div>
