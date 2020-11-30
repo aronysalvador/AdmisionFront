@@ -11,6 +11,8 @@ import IndiciacionesPacientes from "../../components/Indicaciones";
 import CajaRutSiniestro from "./CajaRutSiniestro";
 import Header from "../../components/header/index";
 import { Grid } from '@material-ui/core';
+import check from './../../img/icon-check.png'
+import excelent from './../../img/excelent.svg'
 
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
@@ -39,7 +41,7 @@ const PantallaFinal = (props) => {
                 <div className={comunClass.displayMobile}>
                   <img
                     alt="Excelente"
-                    src="static/icon-check.png"
+                    src={check}
                     className={welcomeStyle.iconCircular}
                   />
                 </div>
@@ -50,7 +52,7 @@ const PantallaFinal = (props) => {
                   </Typography>
                 </div>
                 <div className={comunClass.displayDeskInline} style={{verticalAlign: 'bottom'}}>
-                  <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
                 </div>
               </div>
               <div className={spaceStyle.space1} />  
@@ -70,7 +72,7 @@ const PantallaFinal = (props) => {
             </div>
             <div className={comunClass.displayDeskInline}>
               <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="excelente" src="static/excelent.svg" />
+                <img alt="excelente" src={excelent} />
               </Grid>
             </div>
           </div>

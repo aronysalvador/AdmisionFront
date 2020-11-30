@@ -8,6 +8,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoAfiliateCard from './NoAfiliateCard';
 import Header from "../../components/header/index";
+import image from './../../img/error-siniestro.svg'
 
 const SucursalesNoVigentes = (props) => {
 
@@ -36,7 +37,7 @@ const SucursalesNoVigentes = (props) => {
       {/* style={{height: "40em"}}  */}
         <img
           alt="load"
-          src="./static/error-siniestro.svg"
+          src={image}
           className={blackStyle.imgNoAfiliate}
         />
         <div className={spaceStyle.space1} />

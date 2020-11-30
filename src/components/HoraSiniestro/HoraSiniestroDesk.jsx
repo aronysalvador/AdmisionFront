@@ -5,6 +5,7 @@ import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/picker
 import MomentUtils from '@date-io/moment';
 import { ThemeProvider } from '@material-ui/core/styles';
 import {defaultMaterialThemeKeyboardTimePicker} from "../../css/styleTimePicker";
+import image from './../../img/iconClock.svg'
 
 const HoraSiniestroDesk = ({
   onChange,
@@ -57,7 +58,7 @@ const HoraSiniestroDesk = ({
             ampm={false}
             fullWidth
             invalidDateMessage="Formato invalido"
-            keyboardIcon={<img alt="clock" src="static/iconClock.svg"/>}
+            keyboardIcon={<img alt="clock" src={image} />}
   
           />
           </ThemeProvider>

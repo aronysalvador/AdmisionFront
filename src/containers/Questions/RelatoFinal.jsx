@@ -10,6 +10,8 @@ import { Button, Typography, withStyles } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import Checkbox from '@material-ui/core/Checkbox';
+import relato from './../../img/relato.svg'
+import editaRelato from './../../img/editar-relato.svg'
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -98,7 +100,7 @@ const RelatoFinal = (props) => {
             </Grid>
             <div className={comunClass.displayDeskImg}>
               <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth}/>
+                <img alt="identify" src={relato} className={comunClass.imgPrimaryWidth}/>
               </Grid>
             </div>
           </div>
@@ -147,7 +149,7 @@ const RelatoFinal = (props) => {
                         className={comunClass.buttonEditRelato}
                         onClick={() => setEditable(true)}
                       >
-                        <img alt="editar relato" src="static/editar-relato.svg" />
+                        <img alt="editar relato" src={editaRelato} />
                         &nbsp;Editar
                       </div>
                     </div>

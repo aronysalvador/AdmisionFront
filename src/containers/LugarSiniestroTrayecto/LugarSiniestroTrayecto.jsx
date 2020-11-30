@@ -9,6 +9,7 @@ import DireccionGeo from '../../components/share/DireccionGeo'
 import { validarDireccion } from '../../helpers/utils'
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const LugarSiniestroTrayecto = () => {
   const {
@@ -71,7 +72,7 @@ const LugarSiniestroTrayecto = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth}/>
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth}/>
           </Grid>
         </div>
       </div>

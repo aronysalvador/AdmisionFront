@@ -6,6 +6,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
 import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
+import image from './../../img/iconCalendar.svg'
 
 const FechaSiniestroDesk = ({
   onChange,
@@ -60,7 +61,7 @@ const FechaSiniestroDesk = ({
             InputAdornmentProps={{ position: 'start', paddingLeft: '6px'}}
             fullWidth
             invalidDateMessage="Formato invalido"
-            keyboardIcon={<img alt="calendar" src="static/iconCalendar.svg"/>}
+            keyboardIcon={<img alt="calendar" src={image} />}
       />
       </ThemeProvider>
       </MuiPickersUtilsProvider>          

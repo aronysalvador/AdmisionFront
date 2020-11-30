@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getMediosTransporteTrayecto } from "../../redux/actions/TrayectoAction";
+import image from './../../img/relato.svg'
 
 const MedioTransporteTrayecto = () => {
   let {
@@ -69,7 +70,7 @@ console.log(sugerenciasMedios);
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

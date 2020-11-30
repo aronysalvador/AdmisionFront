@@ -19,6 +19,7 @@ import { Format } from "../../helpers/strings";
 import InputMasked from "../../containers/EditarTelefono/InputMasked";
 import Mask from "../../containers/EditarTelefono/phone";
 import { Pipes } from "../../containers/EditarTelefono/phone";
+import image from './../../img/relato.svg'
 
 const DataWitness = () => {
   const {
@@ -76,7 +77,7 @@ const DataWitness = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
