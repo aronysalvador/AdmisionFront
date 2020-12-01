@@ -89,6 +89,7 @@ import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
 import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
+import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -409,6 +410,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <TrabajoHabitual />
+            </Paper>
+          </div>
+        );
+      case 9.01:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <ParteCuerpoAfectada />
             </Paper>
           </div>
         );
