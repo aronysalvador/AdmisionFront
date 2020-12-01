@@ -14,7 +14,7 @@ import relato from './../../img/relato.svg';
 
 const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { percentage,  CamposDocumentos  },
+    addmissionForm: { percentage, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [medioTransporte, setMedioTransporte] = useState(() => {
@@ -80,11 +80,9 @@ console.log(sugerenciasMedios);
             inputValue={medioTransporte}
             onInputChange={(event, value) => {
               event&&setMedioTransporte(value);
-              
             }}
             freeSolo
             options={sugerenciasMedios}
-           
             getOptionLabel={(option) =>  option.nombre }
             renderInput={(params) => (
               <TextField

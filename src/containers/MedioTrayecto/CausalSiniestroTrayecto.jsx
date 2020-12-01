@@ -71,9 +71,7 @@ const CausalSiniestroTrayecto = () => {
           </Typography>
           <TextField
             autoComplete
-            helperText={
-              !mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"
-            }
+            helperText={!mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"}
             error={!mecanismoCausalValid}
             value={mecanismoCausal}
             variant="outlined"
@@ -107,9 +105,7 @@ const CausalSiniestroTrayecto = () => {
           </Typography>
           <TextField
             autoComplete
-            helperText={
-              !posibleCausaValid && "Debes ingresar al menos una posible causa"
-            }
+            helperText={!posibleCausaValid && "Debes ingresar al menos una posible causa"}
             error={!posibleCausaValid}
             value={posibleCausa}
             variant="outlined"
@@ -142,7 +138,7 @@ const CausalSiniestroTrayecto = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos,mecanismoCausal, posibleCausa}));
+              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, mecanismoCausal, posibleCausa}));
               dispatch(handleSetStep(6));
             }}
           >

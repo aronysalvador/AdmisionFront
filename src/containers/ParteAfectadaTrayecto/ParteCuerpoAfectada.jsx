@@ -15,14 +15,17 @@ import relato from './../../img/relato.svg';
 
 const ParteCuerpoAfectada = () => {
   let {
-    addmissionForm: { percentage, otrasCircunstanciasSiniestro, CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
-  const [parteAfectada, setParteAfectada] = useState("");
+  const [parteAfectada, setParteAfectada] = useState(() => {
+    return !CamposDocumentos.parteAfectada ? "" : CamposDocumentos.parteAfectada;
+  });
+
   const [parteAfectadaValid, setParteAfectadaValid] = useState(true);
 
   const [otrasCircunstancias, setOtrasCircunstancias] = useState(() => {
-    return !otrasCircunstanciasSiniestro ? "" : otrasCircunstanciasSiniestro;
+    return !CamposDocumentos.otrasCircunstancias ? "" : CamposDocumentos.otrasCircunstancias;
   });
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -45,9 +48,6 @@ const ParteCuerpoAfectada = () => {
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Ahora, completa la información adicional del accidente 
-          {/* <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;causa del accidente
-          </Grid> */}
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
@@ -63,11 +63,11 @@ const ParteCuerpoAfectada = () => {
           <Typography className={comunClass.tituloTextBox}>
             Ingresa la parte del cuerpo lesionada
           </Typography>
+          {/* Se debe cambiar por autocomplete ( como en state 6.02 validar caracteres especiales) */}
           <TextField
             autoComplete
             helperText={!parteAfectadaValid && "Debes ingresar al menos una parte del cuerpo lesionada"}
             error={!parteAfectadaValid}
-            label={parteAfectada}
             value={parteAfectada}
             variant="outlined"
             size="small"
@@ -89,9 +89,6 @@ const ParteCuerpoAfectada = () => {
               )
             }}
           />
-          {/* <Typography className={mobileCaption}>
-            Ejemplo:  Caída, golpe, atropello, otros.
-          </Typography> */}
 
           <div className={spaceStyle.space2} />
 
@@ -99,9 +96,6 @@ const ParteCuerpoAfectada = () => {
             Ingresa la información adicional al relato
           </Typography>
           <TextField
-            // id="txtRespuesta"
-            // placeholder={placeholder}
-            label=""
             value={otrasCircunstancias}
             margin="dense"
             variant="outlined"
@@ -115,45 +109,15 @@ const ParteCuerpoAfectada = () => {
             }}
           />
         <label className={comunClass.pullRight}>{otrasCircunstancias.length}/200</label>
-          {/* <TextField
-            autoComplete
-            helperText={
-              !otrasCircunstanciasValid && "Debes ingresar al menos una posible causa"
-            }
-            error={!otrasCircunstanciasValid}
-            value={otrasCircunstancias}
-            variant="outlined"
-            size="small"
-            margin="dense"
-            required
-            fullWidth
-            onChange={(e) => {
-              let texto = Format.caracteresInvalidos(e.target.value);
-              setOtrasCircunstanciasValid(texto.length > 0);
-              setOtrasCircunstancias(texto);
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={() => { setOtrasCircunstancias("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          />
-          <Typography className={mobileCaption}>
-            Ejemplo: Desnivel en el piso, poca visibilidad.
-          </Typography> */}
+          
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={(parteAfectada.length <= 3 || !parteAfectadaValid)}
+            disabled={(parteAfectada?.length < 3 || !parteAfectadaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              let respParteAfecta = [...CamposDocumentos, {tag:"ParteAfecta", valor: parteAfectada}, {tag:"Otras", valor: otrasCircunstancias}];
-              dispatch(updateForm("CamposDocumentos", respParteAfecta));
+              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, parteAfectada, otrasCircunstancias}));
               dispatch(handleSetStep(10));
             }}
           >
