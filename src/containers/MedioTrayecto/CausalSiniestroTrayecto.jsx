@@ -16,16 +16,16 @@ import relato from './../../img/relato.svg';
 
 const CausalSiniestroTrayecto = () => {
   let {
-    addmissionForm: { percentage, mecanismoCausalSiniestro, posibleCausaSiniestro, CamposDocumentos },
+    addmissionForm: { percentage,  CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [mecanismoCausal, setMecanismoCausal] = useState(() => {
-    return !mecanismoCausalSiniestro ? "" : mecanismoCausalSiniestro;
+    return !CamposDocumentos.mecanismoCausal ? "" : CamposDocumentos.mecanismoCausal;
   });
   const [mecanismoCausalValid, setMecanismoCausalValid] = useState(true);
 
   const [posibleCausa, setPosibleCausa] = useState(() => {
-    return !posibleCausaSiniestro ? "" : posibleCausaSiniestro;
+    return !CamposDocumentos.posibleCausa ? "" : CamposDocumentos.posibleCausa;
   });
   const [posibleCausaValid, setPosibleCausaValid] = useState(true);
   
@@ -138,14 +138,11 @@ const CausalSiniestroTrayecto = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={(mecanismoCausal.length <= 3 || !mecanismoCausalValid) || (posibleCausa.length <= 3 || !posibleCausaValid)}
+            disabled={(mecanismoCausal?.length <= 3 || !mecanismoCausalValid) || (posibleCausa?.length <= 3 || !posibleCausaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              let respMecanismoCausa = [...CamposDocumentos, {tag:"Mecanismo", valor: mecanismoCausal}, {tag:"posibleCausa", valor: posibleCausa}];
-              dispatch(updateForm("CamposDocumentos", respMecanismoCausa));
-              // dispatch(updateForm("mecanismoCausalSiniestro", mecanismoCausal));
-              // dispatch(updateForm("posibleCausaSiniestro", posibleCausa));
+              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos,mecanismoCausal, posibleCausa}));
               dispatch(handleSetStep(6));
             }}
           >
