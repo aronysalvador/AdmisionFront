@@ -10,16 +10,18 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getMediosTransporteTrayecto } from "../../redux/actions/TrayectoAction";
+import relato from './../../img/relato.svg';
 
 const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { percentage, medioTransporteSiniestro },
+    addmissionForm: { percentage, medioTransporteSiniestro, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [medioTransporte, setMedioTransporte] = useState(() => {
     return !medioTransporteSiniestro ? "" : medioTransporteSiniestro;
   });
 
+console.log(CamposDocumentos);
   // const [medioTransporteValid, setMedioTransporteValid] = useState(true);
   
   // const [transporteSeleccionado, setTransporteSeleccionado] = useState( () => {
@@ -69,7 +71,7 @@ console.log(sugerenciasMedios);
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -121,7 +123,9 @@ console.log(sugerenciasMedios);
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("medioTransporteSiniestro", medioTransporte));
+              // dispatch(updateForm("medioTransporteSiniestro", medioTransporte)); 
+              let respMedioTransp = [{tag:"MedioTransp", valor: medioTransporte}];
+              dispatch(updateForm("CamposDocumentos", respMedioTransp));
               dispatch(handleSetStep(6.03));
             }}
           >

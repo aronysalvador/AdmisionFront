@@ -12,10 +12,11 @@ import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import relato from './../../img/relato.svg';
 
 const CausalSiniestroTrayecto = () => {
   let {
-    addmissionForm: { percentage, mecanismoCausalSiniestro, posibleCausaSiniestro },
+    addmissionForm: { percentage, mecanismoCausalSiniestro, posibleCausaSiniestro, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [mecanismoCausal, setMecanismoCausal] = useState(() => {
@@ -56,7 +57,7 @@ const CausalSiniestroTrayecto = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -141,8 +142,10 @@ const CausalSiniestroTrayecto = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("mecanismoCausalSiniestro", mecanismoCausal));
-              dispatch(updateForm("posibleCausaSiniestro", posibleCausa));
+              let respMecanismoCausa = [...CamposDocumentos, {tag:"Mecanismo", valor: mecanismoCausal}, {tag:"posibleCausa", valor: posibleCausa}];
+              dispatch(updateForm("CamposDocumentos", respMecanismoCausa));
+              // dispatch(updateForm("mecanismoCausalSiniestro", mecanismoCausal));
+              // dispatch(updateForm("posibleCausaSiniestro", posibleCausa));
               dispatch(handleSetStep(6));
             }}
           >

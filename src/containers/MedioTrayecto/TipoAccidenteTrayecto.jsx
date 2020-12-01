@@ -9,6 +9,7 @@ import BotonSeleccionarCustomItemTipoAccidenteTrayecto from "../../components/Bo
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import relato from './../../img/relato.svg';
 
 const TipoAccidenteTrayecto = () => {
   const {
@@ -53,6 +54,11 @@ const TipoAccidenteTrayecto = () => {
             &nbsp;describa la ruta del accidente de trayecto
           </Grid>          
         </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
       </div>
       <div className={spaceStyle.space2} />
       <div className={comunClass.boxDeskCardBtn}>

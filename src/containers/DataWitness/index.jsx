@@ -22,7 +22,7 @@ import { Pipes } from "../../containers/EditarTelefono/phone";
 
 const DataWitness = () => {
   const {
-    addmissionForm: { testigos, percentage, tipoSiniestro, step },
+    addmissionForm: { testigos, percentage, tipoSiniestro, step, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -42,7 +42,9 @@ const DataWitness = () => {
   const clickSendTestigo = () => {
     dispatch(sendCargo(nombre, cargos));
     dispatch(updateForm("testigoForm", nombre + "-" + cargos));
-    dispatch(updateForm("telefonoTestigo", telefono)) //¿se debe incluir en sendCargo?
+    // dispatch(updateForm("telefonoTestigo", telefono));
+    let respDatosTestig = [...CamposDocumentos, {tag:"DatosTestig", valor: telefono}];
+    dispatch(updateForm("CamposDocumentos", respDatosTestig));
     dispatch(handleSetStep(14.1));
   };
 
