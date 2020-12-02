@@ -28,4 +28,4 @@ window.REACT_APP_MICROSOFT_AUTH_CLIENTID = "2cc60262-0026-48a5-ac2a-a088e9704f30
 window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL = "https://desa.salud.achs.cl/web-admision/"
 window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getTipoAccidente/"
 window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getMediosTransporte/"
-window.REACT_APP_PARTES_DEL_CUERPO = "http://localhost:81/orquestador/api/trayecto/getPartesCuerpo/"
+window.REACT_APP_PARTES_DEL_CUERPO = "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getPartesCuerpo/"
