@@ -30,33 +30,6 @@ const CausaEnfermedadProfesional = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  //State
-  const [nombre, saveNombre] = useState(() => {
-    return !testigos ? "" : testigos.nombre;
-  });
-
-  const [cargos, saveCargos] = useState(() => {
-    return !testigos ? "" : testigos.cargo;
-  });
-
-  const clickSendTestigo = () => {
-    dispatch(sendCargo(nombre, cargos));
-    dispatch(updateForm("testigoForm", nombre + "-" + cargos));
-    // dispatch(updateForm("telefonoTestigo", telefono));
-    let respDatosTestig = [...CamposDocumentos, {tag:"DatosTestig", valor: telefono}];
-    dispatch(updateForm("CamposDocumentos", respDatosTestig));
-    dispatch(handleSetStep(14.1));
-  };
-
-  const [telefono, setTelefono] = useState("+56 9");
-
-  const handleOnChange = (e) => {
-    const value = e.target.value;
-    if (value !== telefono) {
-      const result = Pipes.advanced(value);
-      setTelefono(result);
-    }
-  };
 
   return (
     <div className={comunClass.root}>
@@ -71,9 +44,9 @@ const CausaEnfermedadProfesional = () => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Solicita una 
+          Indícanos la causa de la
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-          &nbsp;referencia del testigo
+          &nbsp;enfermedad profesional
           </Grid>                    
         </Grid>
         <div className={comunClass.displayDeskImg}>
@@ -89,14 +62,14 @@ const CausaEnfermedadProfesional = () => {
         <div className={comunClass.containerTextBox}>
           <div>
             <Typography className={comunClass.tituloTextBox}>
-              Nombre
+              Describe las molestias y síntomas
             </Typography>
           </div>
           <div>
             <TextField
               id="nombre"
               value={nombre}
-              onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
+              onChange={(e) => saveMolestia(Format.caracteresInvalidos(e.target.value))}
               helperText="Ejemplo: Luis Morales"
               margin="dense"
               variant="outlined"
@@ -117,45 +90,9 @@ const CausaEnfermedadProfesional = () => {
           <div className={spaceStyle.space1} />
           <div>
             <Typography className={comunClass.tituloTextBox}>
-              Cargo o Relación
+              Parte del cuerpo afectada
             </Typography>
           </div>
-          <div>
-            <TextField
-              id="cargos"
-              value={cargos}
-              onChange={(e) => saveCargos(Format.caracteresInvalidos(e.target.value))}
-              helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
-              margin="dense"
-              variant="outlined"
-              autoComplete="off"
-              type="text"
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={() => { saveCargos("") }}>
-                      <ClearIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div className={spaceStyle.space1} />
-          {tipoSiniestro.Id === 2 &&
-          <div>
-            <Typography className={comunClass.tituloTextBox}>
-              Teléfono (Opcional)
-            </Typography>
-            <InputMasked
-              mask={Mask.advanced}
-              setTelefono={setTelefono}
-              handleOnChange={handleOnChange}
-              telefono={telefono}
-              step={step}
-            />
-          </div>}
         </div>
         <div className={comunClass.bottomElement}>
           <Button
@@ -163,9 +100,9 @@ const CausaEnfermedadProfesional = () => {
             variant="contained"
             type="submit"
             disabled={!nombre || !cargos}
-            onClick={() => clickSendTestigo()}
+            onClick={() => clickNext()}
           >
-            Agregar
+            Continuar
           </Button>
         </div>
       </div>
