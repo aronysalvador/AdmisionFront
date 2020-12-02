@@ -115,7 +115,7 @@ const FechaHoraSiniestro = () => {
     }
   };
 
-  let stepBack = tipoSiniestro.Id === 1 ? 9 : 8.1;
+  let stepBack = tipoSiniestro.Id === 1 ? 9 : 9.01;
 
   return (
     <div className={comunClass.root}>

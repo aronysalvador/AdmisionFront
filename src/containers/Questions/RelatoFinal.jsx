@@ -56,7 +56,7 @@ const RelatoFinal = (props) => {
     dispatch(updateForm("relatoAccidente", value));
     dispatch(updateForm("coberturaSoap", respSoap));
     if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-    dispatch(handleSetStep(10))
+    dispatch(handleSetStep(9.01))
     dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
     else dispatch(handleSetStep(9)) //Accidente de Trabajo

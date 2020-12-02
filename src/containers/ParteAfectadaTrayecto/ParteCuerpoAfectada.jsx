@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -6,35 +6,45 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { siniestroStyle } from "../../css/siniestroStyle";
 import { IconButton } from "material-ui";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
+import {getPartesCuerpo} from "../../redux/actions/ParteCuerpoAction";
 
-const CausalSiniestroTrayecto = () => {
+const ParteCuerpoAfectada = () => {
   let {
-    addmissionForm: { percentage,  CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
-  const [mecanismoCausal, setMecanismoCausal] = useState(() => {
-    return !CamposDocumentos.mecanismoCausal ? "" : CamposDocumentos.mecanismoCausal;
+  const [parteAfectada, setParteAfectada] = useState(() => {
+    return !CamposDocumentos.parteAfectada ? "" : CamposDocumentos.parteAfectada;
   });
-  const [mecanismoCausalValid, setMecanismoCausalValid] = useState(true);
 
-  const [posibleCausa, setPosibleCausa] = useState(() => {
-    return !CamposDocumentos.posibleCausa ? "" : CamposDocumentos.posibleCausa;
+  const [parteAfectadaValid, setParteAfectadaValid] = useState(true);
+
+  const [otrasCircunstancias, setOtrasCircunstancias] = useState(() => {
+    return !CamposDocumentos.otrasCircunstancias ? "" : CamposDocumentos.otrasCircunstancias;
   });
-  const [posibleCausaValid, setPosibleCausaValid] = useState(true);
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
+  const initFn = useCallback(() => {
+    dispatch(getPartesCuerpo());
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
+  // const { data: sugerenciasParteCuerpo } = useSelector(
+  //   (state) => state.parteCuerpoAfectadaForm, shallowEqual );
+
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const { mobileCaption } = siniestroStyle();
 
   return (
     <div className={comunClass.root}>
@@ -43,17 +53,13 @@ const CausalSiniestroTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(6.02))}
+          dispatch={() => dispatch(handleSetStep(8.1))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-        ¿Cuál fue la 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;causa del accidente
-          </Grid>        
-          &nbsp;?
+          Ahora, completa la información adicional del accidente 
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
@@ -67,13 +73,14 @@ const CausalSiniestroTrayecto = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <Typography className={comunClass.tituloTextBox}>
-            Mecanismo Causal
+            Ingresa la parte del cuerpo lesionada
           </Typography>
+          {/* Se debe cambiar por autocomplete ( como en state 6.02 ) */}
           <TextField
             autoComplete
-            helperText={!mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"}
-            error={!mecanismoCausalValid}
-            value={mecanismoCausal}
+            helperText={!parteAfectadaValid && "Debes ingresar al menos una parte del cuerpo lesionada"}
+            error={!parteAfectadaValid}
+            value={parteAfectada}
             variant="outlined"
             size="small"
             margin="dense"
@@ -81,65 +88,73 @@ const CausalSiniestroTrayecto = () => {
             fullWidth
             onChange={(e) => {
               let texto = Format.caracteresInvalidos(e.target.value);
-              setMecanismoCausalValid(texto.length > 0);
-              setMecanismoCausal(texto);
+              setParteAfectadaValid(texto.length > 0);
+              setParteAfectada(texto);
             }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => { setMecanismoCausal("") }}>
+                  <IconButton onClick={() => { setParteAfectada("") }}>
                     <ClearIcon />
                   </IconButton>
                 </InputAdornment>
               )
             }}
           />
-          <Typography className={mobileCaption}>
-            Ejemplo:  Caída, golpe, atropello, otros.
-          </Typography>
+           {/* <AutoComplete
+            inputValue={parteAfectada}
+            onInputChange={(event, value) => {
+              event&&setParteAfectada(value);
+            }}
+            freeSolo
+             options={[]}
+            getOptionLabel={(option) =>  option.nombre }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
+                }}
+              />
+            )}
+          />  */}
 
           <div className={spaceStyle.space2} />
 
           <Typography className={comunClass.tituloTextBox}>
-            Posible Causa
+            Ingresa la información adicional al relato
           </Typography>
           <TextField
-            autoComplete
-            helperText={!posibleCausaValid && "Debes ingresar al menos una posible causa"}
-            error={!posibleCausaValid}
-            value={posibleCausa}
-            variant="outlined"
-            size="small"
+            value={otrasCircunstancias}
             margin="dense"
-            required
+            variant="outlined"
             fullWidth
+            rows={5}
+            multiline
+            inputProps={{ maxLength: 200 }}
             onChange={(e) => {
               let texto = Format.caracteresInvalidos(e.target.value);
-              setPosibleCausaValid(texto.length > 0);
-              setPosibleCausa(texto);
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={() => { setPosibleCausa("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              )
+              setOtrasCircunstancias(texto);
             }}
           />
-          <Typography className={mobileCaption}>
-            Ejemplo: Desnivel en el piso, poca visibilidad.
-          </Typography>
+        <label className={comunClass.pullRight}>{otrasCircunstancias.length}/200</label>
+          
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={(mecanismoCausal?.length <= 3 || !mecanismoCausalValid) || (posibleCausa?.length <= 3 || !posibleCausaValid)}
+            disabled={(parteAfectada?.length < 3 || !parteAfectadaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, mecanismoCausal, posibleCausa}));
-              dispatch(handleSetStep(6));
+              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, parteAfectada, otrasCircunstancias}));
+              dispatch(handleSetStep(10));
             }}
           >
             Continuar
@@ -153,4 +168,4 @@ const CausalSiniestroTrayecto = () => {
   );
 };
 
-export default CausalSiniestroTrayecto;
+export default ParteCuerpoAfectada;

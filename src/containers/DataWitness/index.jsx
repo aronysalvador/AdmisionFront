@@ -23,7 +23,7 @@ import image from './../../img/relato.svg'
 
 const DataWitness = () => {
   const {
-    addmissionForm: { testigos, percentage, tipoSiniestro, step },
+    addmissionForm: { testigos, percentage, tipoSiniestro, step, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -43,17 +43,17 @@ const DataWitness = () => {
   const clickSendTestigo = () => {
     dispatch(sendCargo(nombre, cargos));
     dispatch(updateForm("testigoForm", nombre + "-" + cargos));
-    dispatch(updateForm("telefonoTestigo", telefono)) //¿se debe incluir en sendCargo?
+    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, datosTestig}));
     dispatch(handleSetStep(14.1));
   };
 
-  const [telefono, setTelefono] = useState("+56 9");
+  const [datosTestig, setDatosTestig] = useState("+56 9");
 
   const handleOnChange = (e) => {
     const value = e.target.value;
-    if (value !== telefono) {
+    if (value !== datosTestig) {
       const result = Pipes.advanced(value);
-      setTelefono(result);
+      setDatosTestig(result);
     }
   };
 
@@ -149,9 +149,9 @@ const DataWitness = () => {
             </Typography>
             <InputMasked
               mask={Mask.advanced}
-              setTelefono={setTelefono}
+              setTelefono={setDatosTestig}
               handleOnChange={handleOnChange}
-              telefono={telefono}
+              telefono={datosTestig}
               step={step}
             />
           </div>}

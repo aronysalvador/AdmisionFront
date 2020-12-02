@@ -10,22 +10,16 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getMediosTransporteTrayecto } from "../../redux/actions/TrayectoAction";
-import image from './../../img/relato.svg'
+import relato from './../../img/relato.svg';
 
 const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { percentage, medioTransporteSiniestro },
+    addmissionForm: { percentage, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [medioTransporte, setMedioTransporte] = useState(() => {
-    return !medioTransporteSiniestro ? "" : medioTransporteSiniestro;
+    return !CamposDocumentos.medioTransporte ? "" : CamposDocumentos.medioTransporte;
   });
-
-  // const [medioTransporteValid, setMedioTransporteValid] = useState(true);
-  
-  // const [transporteSeleccionado, setTransporteSeleccionado] = useState( () => {
-  //   return !transporteForm ? {id: 0, nombre: ""} : transporteForm;
-  // });
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -70,7 +64,7 @@ console.log(sugerenciasMedios);
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -83,21 +77,12 @@ console.log(sugerenciasMedios);
             Medio de transporte
           </Typography>
           <AutoComplete
-            //inputValue={!medioTransporteSiniestro ? medioTransporte :medioTransporteSiniestro}
             inputValue={medioTransporte}
             onInputChange={(event, value) => {
               event&&setMedioTransporte(value);
-              
             }}
-            // onInputChange={(event, value) => {
-            //   debugger
-            //   //setMedioTransporte(value);
-              
-            // }}
             freeSolo
-            // style={{ width: 300 }}
             options={sugerenciasMedios}
-           
             getOptionLabel={(option) =>  option.nombre }
             renderInput={(params) => (
               <TextField
@@ -122,7 +107,7 @@ console.log(sugerenciasMedios);
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("medioTransporteSiniestro", medioTransporte));
+              dispatch(updateForm("CamposDocumentos", {medioTransporte}));
               dispatch(handleSetStep(6.03));
             }}
           >
