@@ -63,7 +63,7 @@ const CausaEnfermedadProfesional = () => {
           <div>
             <Typography className={comunClass.tituloTextBox}>
               Describe las molestias y síntomas
-            </Typography>
+            </Typography>  
           </div>
           <div>
             <TextField
