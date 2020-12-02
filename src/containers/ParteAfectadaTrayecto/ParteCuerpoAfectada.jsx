@@ -76,7 +76,7 @@ const ParteCuerpoAfectada = () => {
             Ingresa la parte del cuerpo lesionada
           </Typography>
           {/* Se debe cambiar por autocomplete ( como en state 6.02 ) */}
-          {/* <TextField
+          <TextField
             autoComplete
             helperText={!parteAfectadaValid && "Debes ingresar al menos una parte del cuerpo lesionada"}
             error={!parteAfectadaValid}
@@ -100,8 +100,8 @@ const ParteCuerpoAfectada = () => {
                 </InputAdornment>
               )
             }}
-          /> */}
-           <AutoComplete
+          />
+           {/* <AutoComplete
             inputValue={parteAfectada}
             onInputChange={(event, value) => {
               event&&setParteAfectada(value);
@@ -124,7 +124,7 @@ const ParteCuerpoAfectada = () => {
                 }}
               />
             )}
-          /> 
+          />  */}
 
           <div className={spaceStyle.space2} />
 
