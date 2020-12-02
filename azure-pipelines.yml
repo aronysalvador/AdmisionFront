@@ -49,6 +49,26 @@ stages:
       - job: Build
         displayName: "Deploy_DESA"
         steps:
+
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=desarrollo
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
@@ -98,6 +118,26 @@ stages:
       - job: Build
         displayName: "Deploy QA"
         steps:
+
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=qa
+                sh reemplaza-envs.sh
+                echo ls
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
           - task: CmdLine@2
             displayName: Get secrets
             inputs:
@@ -130,6 +170,23 @@ stages:
       - job: Build
         displayName: "Deploy QA Hotfix"
         steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=qa
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
@@ -181,6 +238,24 @@ stages:
         displayName: "Deploy STG"
         steps:
           - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=staging
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: CmdLine@2
             displayName: Get secrets
             inputs:
               script: |
@@ -215,6 +290,24 @@ stages:
         displayName: "Deploy PROD"
         steps:
           - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=produccion
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: CmdLine@2
             displayName: Get secrets
             inputs:
               script: |
@@ -245,6 +338,24 @@ stages:
       - job: Build
         displayName: "Deploy PROD Hotfix"
         steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=produccion
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
