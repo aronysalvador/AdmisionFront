@@ -125,6 +125,7 @@ stages:
               script: |
                 export ENTORNO=qa
                 sh reemplaza-envs.sh
+                ls
 
           - task: Npm@1
             displayName: Npm Install
