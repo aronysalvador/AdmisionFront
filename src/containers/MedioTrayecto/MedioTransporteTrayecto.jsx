@@ -14,19 +14,12 @@ import relato from './../../img/relato.svg';
 
 const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { percentage, medioTransporteSiniestro, CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
 
   const [medioTransporte, setMedioTransporte] = useState(() => {
-    return !medioTransporteSiniestro ? "" : medioTransporteSiniestro;
+    return !CamposDocumentos.medioTransporte ? "" : CamposDocumentos.medioTransporte;
   });
-
-console.log(CamposDocumentos);
-  // const [medioTransporteValid, setMedioTransporteValid] = useState(true);
-  
-  // const [transporteSeleccionado, setTransporteSeleccionado] = useState( () => {
-  //   return !transporteForm ? {id: 0, nombre: ""} : transporteForm;
-  // });
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -84,21 +77,12 @@ console.log(sugerenciasMedios);
             Medio de transporte
           </Typography>
           <AutoComplete
-            //inputValue={!medioTransporteSiniestro ? medioTransporte :medioTransporteSiniestro}
             inputValue={medioTransporte}
             onInputChange={(event, value) => {
               event&&setMedioTransporte(value);
-              
             }}
-            // onInputChange={(event, value) => {
-            //   debugger
-            //   //setMedioTransporte(value);
-              
-            // }}
             freeSolo
-            // style={{ width: 300 }}
             options={sugerenciasMedios}
-           
             getOptionLabel={(option) =>  option.nombre }
             renderInput={(params) => (
               <TextField
@@ -123,9 +107,7 @@ console.log(sugerenciasMedios);
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              // dispatch(updateForm("medioTransporteSiniestro", medioTransporte)); 
-              let respMedioTransp = [{tag:"MedioTransp", valor: medioTransporte}];
-              dispatch(updateForm("CamposDocumentos", respMedioTransp));
+              dispatch(updateForm("CamposDocumentos", {medioTransporte}));
               dispatch(handleSetStep(6.03));
             }}
           >

@@ -59,10 +59,10 @@ export const AdmissionForm = {
     BP: "",
     mensajeErrorSAP: "",
 
-    TrabajadorIndependiente: "",
+    TrabajadorIndependiente: "", // va al doumento de trayecto debe incluirse en CamposDocumentos
     tab: 0,
 
-    coberturaSoap: "",
+    coberturaSoap: "", // se debe pasar a SAP
 
-    CamposDocumentos: { tag: "", valor: "" }
+    CamposDocumentos: { parteAfectada:"" } // data para llenar docuemntos de trayecto
 };

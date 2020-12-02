@@ -42,19 +42,17 @@ const DataWitness = () => {
   const clickSendTestigo = () => {
     dispatch(sendCargo(nombre, cargos));
     dispatch(updateForm("testigoForm", nombre + "-" + cargos));
-    // dispatch(updateForm("telefonoTestigo", telefono));
-    let respDatosTestig = [...CamposDocumentos, {tag:"DatosTestig", valor: telefono}];
-    dispatch(updateForm("CamposDocumentos", respDatosTestig));
+    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, datosTestig}));
     dispatch(handleSetStep(14.1));
   };
 
-  const [telefono, setTelefono] = useState("+56 9");
+  const [datosTestig, setDatosTestig] = useState("+56 9");
 
   const handleOnChange = (e) => {
     const value = e.target.value;
-    if (value !== telefono) {
+    if (value !== datosTestig) {
       const result = Pipes.advanced(value);
-      setTelefono(result);
+      setDatosTestig(result);
     }
   };
 
@@ -150,9 +148,9 @@ const DataWitness = () => {
             </Typography>
             <InputMasked
               mask={Mask.advanced}
-              setTelefono={setTelefono}
+              setTelefono={setDatosTestig}
               handleOnChange={handleOnChange}
-              telefono={telefono}
+              telefono={datosTestig}
               step={step}
             />
           </div>}

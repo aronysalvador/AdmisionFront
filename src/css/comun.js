@@ -351,9 +351,6 @@ export const getComunStyle = makeStyles((theme) => ({
             float: "none",
             clear: "both",
         },
-        pullRight: {
-            float: "right",
-        },
         borderBox: {
             border: "yellow",
             "&:hover": {
@@ -397,7 +394,6 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flow-root',
             overflow: 'auto',
             height: '24.5em',
-
             '&::-webkit-scrollbar': {
                 width: 8,
             },
@@ -448,7 +444,7 @@ export const getComunStyle = makeStyles((theme) => ({
         buttonEditRelato: {
             cursor: "pointer",
             // textDecoration: "underline",
-            color: "#373737", //"#DEDEDE",
+            color: "#373737",
         },
         imgAchs: {
             width: '60px', //"4.28125em",
@@ -641,7 +637,6 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex',
             justifyContent: 'space-around',
         },
-
         buttonAchs: {
             width: "50%",
             background: "#007A33",
@@ -1261,6 +1256,7 @@ export const getComunStyle = makeStyles((theme) => ({
             left: "240px"
         },
     },
+
     '@media (min-width: 1440px)': {
         botonSeleccionado: {
             // marginTop: "10px",
@@ -1443,5 +1439,12 @@ export const getComunStyle = makeStyles((theme) => ({
         cursor: "pointer",
         // textDecoration: "underline",
         color: "#373737",
+    },
+    pullRight: {
+        float: "right",
+        fontFamily: "Helvetica",
+        fontSize: "1em",
+        lineHeight: "1.572em",
+        color: "#787878",
     },
 }));
