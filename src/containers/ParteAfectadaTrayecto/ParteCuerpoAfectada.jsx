@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
+import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { IconButton } from "material-ui";
-import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import { Format } from "../../helpers/strings";
+// import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
+import AutoComplete from "@material-ui/lab/Autocomplete";
 import {getPartesCuerpo} from "../../redux/actions/ParteCuerpoAction";
 
 const ParteCuerpoAfectada = () => {
@@ -23,7 +22,7 @@ const ParteCuerpoAfectada = () => {
     return !CamposDocumentos.parteAfectada ? "" : CamposDocumentos.parteAfectada;
   });
 
-  const [parteAfectadaValid, setParteAfectadaValid] = useState(true);
+  // const [parteAfectadaValid, setParteAfectadaValid] = useState(true);
 
   const [otrasCircunstancias, setOtrasCircunstancias] = useState(() => {
     return !CamposDocumentos.otrasCircunstancias ? "" : CamposDocumentos.otrasCircunstancias;
@@ -40,12 +39,12 @@ const ParteCuerpoAfectada = () => {
     initFn();
   }, [initFn]);
 
-  // const { data: sugerenciasParteCuerpo } = useSelector(
-  //   (state) => state.parteCuerpoAfectadaForm, shallowEqual );
+  const { data: sugerenciasParteCuerpo } = useSelector(
+    (state) => state.parteCuerpoAfectadaForm, shallowEqual );
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-
+// console.log(parteAfectada.length);
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -75,39 +74,14 @@ const ParteCuerpoAfectada = () => {
           <Typography className={comunClass.tituloTextBox}>
             Ingresa la parte del cuerpo lesionada
           </Typography>
-          {/* Se debe cambiar por autocomplete ( como en state 6.02 ) */}
-          <TextField
-            autoComplete
-            helperText={!parteAfectadaValid && "Debes ingresar al menos una parte del cuerpo lesionada"}
-            error={!parteAfectadaValid}
-            value={parteAfectada}
-            variant="outlined"
-            size="small"
-            margin="dense"
-            required
-            fullWidth
-            onChange={(e) => {
-              let texto = Format.caracteresInvalidos(e.target.value);
-              setParteAfectadaValid(texto.length > 0);
-              setParteAfectada(texto);
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={() => { setParteAfectada("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          />
-           {/* <AutoComplete
+          
+          <AutoComplete
             inputValue={parteAfectada}
             onInputChange={(event, value) => {
               event&&setParteAfectada(value);
             }}
             freeSolo
-             options={[]}
+            options={sugerenciasParteCuerpo}
             getOptionLabel={(option) =>  option.nombre }
             renderInput={(params) => (
               <TextField
@@ -124,7 +98,7 @@ const ParteCuerpoAfectada = () => {
                 }}
               />
             )}
-          />  */}
+          /> 
 
           <div className={spaceStyle.space2} />
 
@@ -139,9 +113,9 @@ const ParteCuerpoAfectada = () => {
             rows={5}
             multiline
             inputProps={{ maxLength: 200 }}
-            onChange={(e) => {
-              let texto = Format.caracteresInvalidos(e.target.value);
-              setOtrasCircunstancias(texto);
+            onChange={(e) => { setOtrasCircunstancias(e.target.value);
+              // let texto = Format.caracteresInvalidos(e.target.value);
+              // setOtrasCircunstancias(texto);
             }}
           />
         <label className={comunClass.pullRight}>{otrasCircunstancias.length}/200</label>
@@ -149,7 +123,7 @@ const ParteCuerpoAfectada = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={(parteAfectada?.length < 3 || !parteAfectadaValid)}
+            disabled={(parteAfectada?.length < 3)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
