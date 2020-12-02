@@ -87,6 +87,8 @@ import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
 import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
 import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
+import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
+
 import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
 import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
@@ -373,6 +375,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+        case 6.04:
+          return (
+            <div className={layout}>
+              <Paper className={paper}>
+                <CausaEnfermedadProfesional />
+              </Paper>
+            </div>
+          );
       case 6:
         return (
           <div className={layout}>
