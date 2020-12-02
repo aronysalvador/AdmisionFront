@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
+import {getPartesCuerpo} from "../../redux/actions/ParteCuerpoAction";
 
 const ParteCuerpoAfectada = () => {
   let {
@@ -31,16 +32,16 @@ const ParteCuerpoAfectada = () => {
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
-  // const initFn = useCallback(() => {
-  //   dispatch(getMediosTransporteTrayecto());
-  // }, [dispatch]);
+  const initFn = useCallback(() => {
+    dispatch(getPartesCuerpo());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   initFn();
-  // }, [initFn]);
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
 
-  // const { data: sugerenciasParteCuerpo } = useSelector(
-  //   (state) => state.mediosTransporteForm, shallowEqual );
+  const { data: sugerenciasParteCuerpo } = useSelector(
+    (state) => state.parteCuerpoAfectadaForm, shallowEqual );
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -100,13 +101,13 @@ const ParteCuerpoAfectada = () => {
               )
             }}
           />
-          {/* <AutoComplete
+           {/* <AutoComplete
             inputValue={parteAfectada}
             onInputChange={(event, value) => {
               event&&setParteAfectada(value);
             }}
             freeSolo
-            options={sugerenciasParteCuerpo}
+             options={[]}
             getOptionLabel={(option) =>  option.nombre }
             renderInput={(params) => (
               <TextField
@@ -123,7 +124,7 @@ const ParteCuerpoAfectada = () => {
                 }}
               />
             )}
-          /> */}
+          />  */}
 
           <div className={spaceStyle.space2} />
 
