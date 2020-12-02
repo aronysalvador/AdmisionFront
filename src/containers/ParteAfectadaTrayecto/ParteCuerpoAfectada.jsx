@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
+import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { IconButton } from "material-ui";
-import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 // import { Format } from "../../helpers/strings";
@@ -44,11 +42,9 @@ const ParteCuerpoAfectada = () => {
   const { data: sugerenciasParteCuerpo } = useSelector(
     (state) => state.parteCuerpoAfectadaForm, shallowEqual );
 
-    console.log(sugerenciasParteCuerpo);
-
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-
+// console.log(parteAfectada.length);
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -78,32 +74,7 @@ const ParteCuerpoAfectada = () => {
           <Typography className={comunClass.tituloTextBox}>
             Ingresa la parte del cuerpo lesionada
           </Typography>
-          {/* Se debe cambiar por autocomplete ( como en state 6.02 ) */}
-          {/* <TextField
-            autoComplete
-            helperText={!parteAfectada && "Debes ingresar al menos una parte del cuerpo lesionada"}
-            error={!parteAfectada}
-            value={parteAfectada}
-            variant="outlined"
-            size="small"
-            margin="dense"
-            required
-            fullWidth
-            onChange={(e) => { setParteAfectada(e.target.value);
-              // let texto = Format.caracteresInvalidos(e.target.value);
-              // setParteAfectadaValid(texto.length > 0);
-              // setParteAfectada(texto);
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={() => { setParteAfectada("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          /> */}
+          
           <AutoComplete
             inputValue={parteAfectada}
             onInputChange={(event, value) => {
