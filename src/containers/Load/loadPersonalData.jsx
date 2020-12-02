@@ -5,6 +5,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { saveRut } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
+import image from './../../img/validandoDatos.svg'
+import loader from './../../img/Loader_2.gif'
 
 const LoadPersonalData = (props) => {
   const { addmissionForm, dispatch, microsoftReducer } = props;
@@ -31,7 +33,7 @@ const LoadPersonalData = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/validandoDatos.svg"
+            src={image}
             className={comunClass.imgLoadData}
           />
         </div>
@@ -48,7 +50,7 @@ const LoadPersonalData = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_2.gif"
+            src={loader}
             className={comunClass.imgLoadData2}
           />
         </div>

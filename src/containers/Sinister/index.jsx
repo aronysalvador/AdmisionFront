@@ -8,6 +8,15 @@ import {getComunStyle} from '../../css/comun'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import Cabecera from '../../components/cabecera/index'
 import Header from "../../components/header/index";
+import identify from './../../img/identify.svg'
+import trabajoimg from './../../img/trabajo.svg'
+import trabajoActive from './../../img/trabajo-active.svg'
+import checks from './../../img/check.svg'
+import trayectoimg from './../../img/trayecto.svg'
+import trayectoActive from './../../img/trayecto-active.svg'
+import enfermedad from './../../img/enfermedad-profesional.svg'
+import enfermedadActive from './../../img/enfermedad-profesional-active.svg'
+import licenciaCard from './../../img/licenciaCard.png'
 
 const Identification = (props) => {
 
@@ -33,7 +42,7 @@ const Identification = (props) => {
           Empecemos completando algunos datos 
         </Grid>
         <Grid component="span" className={comunClass.imgPrimaryDesk}>
-          <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+          <img alt="identify" src={identify} className={comunClass.imgPrimaryWidth} />
         </Grid>
       </div>
     </div>
@@ -57,11 +66,11 @@ const Identification = (props) => {
             onMouseOver={() =>{ setButtonOverTrabajo(true) }}
             onMouseOut={() =>{ setButtonOverTrabajo(false) }}
           >
-            <img alt="Accidente de Trabajo" src={!buttonOverTrabajo ? "./static/trabajo.svg" : "./static/trabajo-active.svg"} className={classes.imgButton} />
+            <img alt="Accidente de Trabajo" src={!buttonOverTrabajo ? trabajoimg : trabajoActive} className={classes.imgButton} />
             <div>Accidente de trabajo <br/>
               <span className={classes.textButton}>En su lugar de trabajo</span>
             </div>
-            {buttonOverTrabajo && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+            {buttonOverTrabajo && <img src={checks} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
         </div>
         <div  className={spaceStyle.space1} />
@@ -74,11 +83,11 @@ const Identification = (props) => {
             onMouseOver={() =>{ setButtonOverTrayecto(true) }}
             onMouseOut={() =>{ setButtonOverTrayecto(false) }}
           >
-            <img alt="Accidente de Trayecto" src={!buttonOverTrayecto ? "./static/trayecto.svg" : "./static/trayecto-active.svg"} className={classes.imgButton} />
+            <img alt="Accidente de Trayecto" src={!buttonOverTrayecto ? trayectoimg : trayectoActive } className={classes.imgButton} />
             <div>Accidente de Trayecto <br/>
               <span className={classes.textButton}>Entre el trabajo y su hogar</span>
             </div>
-            {buttonOverTrayecto && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+            {buttonOverTrayecto && <img src={checks} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
         </div>
         <div className={spaceStyle.space1} />
@@ -93,17 +102,17 @@ const Identification = (props) => {
             onMouseOver={() =>{ setButtonOverEP(true) }}
             onMouseOut={() =>{ setButtonOverEP(false) }}
           >
-            <img alt="Enfermedad Profesional" src={!buttonOverEP ? "./static/enfermedad-profesional.svg" : "./static/enfermedad-profesional-active.svg"} className={classes.imgButton} style={{marginRight: '10px'}} />
+            <img alt="Enfermedad Profesional" src={!buttonOverEP ? enfermedad : enfermedadActive} className={classes.imgButton} style={{marginRight: '10px'}} />
             <div>Enfermedad Profesional <br/>
               <span className={classes.textButton}>A causa del ejercicio profesional</span>
             </div>
-            {buttonOverEP && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+            {buttonOverEP && <img src={checks} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
         </div>  
         <div  className={spaceStyle.space1} />
         <div className={comunClass.alignBtnSiniesterRight}>
           <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
-            <div><img alt="Licencia Rechazada" src="./static/licenciaCard.png" className={classes.imgButton} /></div>
+            <div><img alt="Licencia Rechazada" src={licenciaCard} className={classes.imgButton} /></div>
             <div>Licencia Rechazada <br/>
               <span className={classes.textButton}>Por Isapre o Fonasa</span>
             </div>

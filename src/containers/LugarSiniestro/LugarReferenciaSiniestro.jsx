@@ -12,6 +12,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import image from './../../img/relato.svg'
 
 const LugarReferenciaSiniestro = () => {
   let {
@@ -50,7 +51,7 @@ const LugarReferenciaSiniestro = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

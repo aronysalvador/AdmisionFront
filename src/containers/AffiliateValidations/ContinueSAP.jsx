@@ -5,6 +5,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
+import image from './../../img/exito.svg'
+import loader from './../../img/Loader_2.gif'
 
 const ContinueSAP = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -26,7 +28,7 @@ const ContinueSAP = (props) => {
       <div className={spaceStyle.space5} />
       <center>
         <div>
-          <img alt="load" src="./static/exito.svg" className={comunClass.imgLoadData} />
+          <img alt="load" src={image} className={comunClass.imgLoadData} />
         </div>
         <div className={spaceStyle.space3} />
         <Grid className={comunClass.txtLoadData}>
@@ -41,7 +43,7 @@ const ContinueSAP = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_2.gif"
+            src={loader}
             className={comunClass.imgLoadData2}
           />
         </div>

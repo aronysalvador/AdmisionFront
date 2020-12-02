@@ -5,6 +5,7 @@ import { Button } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import image from './../../img/exito.svg'
 
 const PasaportePaciente = () => {
 
@@ -19,7 +20,7 @@ const PasaportePaciente = () => {
       <center>
         <img
           alt="pasaporte"
-          src="./static/exito.svg" //validandoAlerta.png"
+          src={image} //validandoAlerta.png"
           className={comunClass.imgPass}
         />
       </center>

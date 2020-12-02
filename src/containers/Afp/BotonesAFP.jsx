@@ -9,6 +9,8 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
+import check from './../../img/check.svg'
 
 const BotonesAFP = () => {
   const {
@@ -56,7 +58,7 @@ const BotonesAFP = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -88,7 +90,7 @@ const BotonesAFP = () => {
           }}
         >
           Otra AFP
-          {buttonOver && <img src="./static/check.svg"alt="check" className={comunClass.cardsButtonOtherCheck} /> }
+          {buttonOver && <img src={check} alt="check" className={comunClass.cardsButtonOtherCheck} /> }
         </div> : null }
       </div>
       <div className={comunClass.displayDesk}>

@@ -11,6 +11,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const FechaHoraResponsable = () => {
   const { percentage, fechaHoraResponsable } = useSelector(
@@ -64,7 +65,7 @@ const FechaHoraResponsable = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

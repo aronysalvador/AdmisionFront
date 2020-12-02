@@ -387,8 +387,12 @@ export const validarAfiliacion = (data) => (dispatch) => {
     });
 };
 
-export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
-  try {
+export const sendingCaso = async(objeto) => {
+  return await Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto)
+}
+
+export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
+
     const { addmissionForm } = getState();
     const { LogForm: {ID} } = getState();
     const { microsoftReducer: { userMsal } } = getState();
@@ -415,27 +419,30 @@ export const crearAdmisionSiniestroSAP = () => (dispatch, getState) => {
     //console.log(JSON.stringify(objeto))
     //console.log("*********************************************")
 
-    Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto)
-      .then(({ data }) => {
-        if (data.status === 200) {
+    const result = await sendingCaso(objeto);
+
+     if(Object.keys(result).length > 0){
+      const data = result.data
+        if (data.status === 200 && data.content[0].siniestroID.match("[\\D]+") === null) {
           const siniestroID = data.content[0].siniestroID;
           dispatch(updateForm("siniestroID", siniestroID));
           dispatch(handleSetStep(1001));
+        }
+        else if(data.status === 200){
+          dispatch(updateForm("mensajeErrorSAP", data.content[0].siniestroID));
+          dispatch(handleSetStep(1002));
         }
         else{
           const mensajeErrorSAP = data.mensaje;
           dispatch(updateForm("mensajeErrorSAP", mensajeErrorSAP));
           dispatch(handleSetStep(1002));
         }
-
         const {siniestroID,EpisodioID} = data.content[0]        
         dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: data.status  })) 
+      }
+      else {
+          console.log(result)
+          dispatch(handleSetStep(1002)); dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500}));
+      }    
 
-      })
-      .catch((err) =>{ dispatch(handleSetStep(1002)); dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500}));  } );
-  } catch (error) {
-    const { LogForm: {ID} } = getState();
-    dispatch(handlEndLog({Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500})); 
-    dispatch(handleSetStep(1002));
-  }
 };

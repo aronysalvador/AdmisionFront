@@ -13,6 +13,8 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/Star';
 import Header from "../../components/header/index";
+import hospital from './../../img/hospital.png'
+import check from './../../img/hospital.png'
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -97,7 +99,7 @@ const SessionAchs = (props) => {
               onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
                 <img
                   alt="Centro ACHS"
-                  src="./static/hospital.png"
+                  src={hospital}
                   style={{ color: "#007A33" }}
                 />
                 <div className={comunStyle.textCenter}> { contenidoCentroAchs } </div>
@@ -106,7 +108,7 @@ const SessionAchs = (props) => {
               <div className={welcomeStyle.boxCentroAchs}>
                 <img
                   alt="Tiempo Admisión Promedio"
-                  src="./static/check.png"
+                  src={check}
                   style={{ width:"20px", height:"20px" }}
                 />
                 8 minutos
