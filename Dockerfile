@@ -24,6 +24,7 @@ RUN npm run build
 FROM nginx:1.13.12-alpine
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 COPY docker-entrypoint.sh reemplaza-envs.sh /
+COPY *.config.js /
 RUN chmod +x docker-entrypoint.sh reemplaza-envs.sh
 EXPOSE 80
 ENTRYPOINT ["/docker-entrypoint.sh"]

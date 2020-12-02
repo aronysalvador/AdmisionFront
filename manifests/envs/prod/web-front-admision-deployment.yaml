@@ -17,7 +17,9 @@ spec:
         imagePullPolicy: Always
         env:
           - name: PUBLIC_URL
-            value: /web-admision     
+            value: /web-admision
+          - name: "ENTORNO"
+            value: "produccion"
           
         ports:
         - containerPort: 80
