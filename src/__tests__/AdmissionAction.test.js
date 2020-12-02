@@ -1,4 +1,4 @@
-import { obtenerData } from  './../redux/actions/AdmissionAction';
+import { obtenerData } from  '../redux/actions/AdmissionAction';
 
 describe("Load",()=>{
   
