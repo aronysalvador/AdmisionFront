@@ -125,7 +125,7 @@ stages:
               script: |
                 export ENTORNO=qa
                 sh reemplaza-envs.sh
-                ls
+                echo ls
 
           - task: Npm@1
             displayName: Npm Install
@@ -136,7 +136,7 @@ stages:
             displayName: Npm Test
             inputs:
               command: 'custom'
-              workingDir: '$(Build.SourcesDirectory)/src/__tests__'
+              workingDir: 'src/__tests__'
               customCommand: 'test'  
           - task: CmdLine@2
             displayName: Get secrets
