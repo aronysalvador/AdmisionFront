@@ -18,8 +18,8 @@ spec:
         env:
           - name: PUBLIC_URL
             value: /web-admision     
-          - name: "ENTORNO"
-            value: "desarrollo"
+          - name: ENTORNO
+            value: desarrollo
 
         ports:
         - containerPort: 80
