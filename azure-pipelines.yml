@@ -54,7 +54,7 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=desarrollo
+                export ENTORNO=desarrolloTest
                 sh reemplaza-envs.sh
 
           - task: Npm@1
@@ -123,7 +123,7 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=qa
+                export ENTORNO=qaTest
                 sh reemplaza-envs.sh
                 echo ls
 
@@ -174,7 +174,7 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=qa
+                export ENTORNO=qaTest
                 sh reemplaza-envs.sh
 
           - task: Npm@1
@@ -241,7 +241,7 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=staging
+                export ENTORNO=stagingTest
                 sh reemplaza-envs.sh
 
           - task: Npm@1
@@ -293,7 +293,7 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=produccion
+                export ENTORNO=produccionTest
                 sh reemplaza-envs.sh
 
           - task: Npm@1
@@ -342,7 +342,7 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=produccion
+                export ENTORNO=produccionTest
                 sh reemplaza-envs.sh
 
           - task: Npm@1

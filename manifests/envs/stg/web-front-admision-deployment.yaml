@@ -18,7 +18,8 @@ spec:
         env:
           - name: PUBLIC_URL
             value: /web-admision     
-          
+          - name: "ENTORNO"
+            value: "staging"          
         ports:
         - containerPort: 80
         resources:
