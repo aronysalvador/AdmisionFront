@@ -9,6 +9,7 @@ import { getRemuneracion } from "../../redux/actions/TipoRemuneracionAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const Remuneracion = () => {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const Remuneracion = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

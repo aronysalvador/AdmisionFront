@@ -6,6 +6,7 @@ import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
+import image from './../../img/error-siniestro.svg'
 
 const HasBP = (props) => {
 
@@ -25,7 +26,7 @@ const HasBP = (props) => {
       <div className={spaceStyle.space2} />
       <img
         alt="load"
-        src="./static/error-siniestro.svg"
+        src={image}
         className={blackStyle.img}
       />
       <div className={spaceStyle.space3} />

@@ -11,6 +11,8 @@ import { Grid } from '@material-ui/core';
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import check from './../../img/icon-check.png'
+import excelent from './../../img/excelent.svg'
 
 const RelatoSuccess = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -52,7 +54,7 @@ const RelatoSuccess = (props) => {
               <div className={comunStyle.displayMobile}>
                 <img
                   alt="Excelente"
-                  src="static/icon-check.png"
+                  src={check}
                   className={welcomeStyle.iconCircular}
                 />
               </div> 
@@ -64,13 +66,13 @@ const RelatoSuccess = (props) => {
                   Relato capturado&nbsp;
                 </Typography>
                 <div className={comunStyle.displayDeskInline}>
-                  <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
                 </div>
               </div>
             </div>
             <div className={comunStyle.displayDeskInline}>
               <Grid component="span" className={comunStyle.imgPrimaryDesk}>
-                <img alt="excelente" src="static/excelent.svg" />
+                <img alt="excelente" src={excelent} />
               </Grid>
             </div>
           </div>

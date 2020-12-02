@@ -34,8 +34,6 @@ stages:
               echo "TargetBranch" $(System.PullRequest.TargetBranch)
               echo "sourceBranch " $(System.pullRequest.sourceBranch)
 
-  # STAGES
-
   # DESA #
   - stage: Deploy_DESA
     displayName: "Building Desploy DESA"
@@ -116,9 +114,7 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
               containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)          
-  # QA #
-
-  # QAHOTFIX #
+   # HOTFIX #
   - stage: Deploy_QA_Hotfix
     displayName: "Building Desploy Qa Hotfix"
     condition: |
@@ -165,10 +161,44 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
               containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
-  # QAHOTFIX #
+  # HOTFIX #
+  # QA #
 
+  # STG #
+  - stage: Deploy_STG
+    displayName: "Building Deploy STG"
+    condition: |
+       and(
+          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchStg']),
+          startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchStg']),
+          eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy STG"
+        environment: "Deploy_STG"
+      - job: Build
+        displayName: "Deploy STG"
+        steps:
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)?" /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdStg)?" /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-STG-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)   
+  # STG #
 
-# PROD #
+  # PROD #
   - stage: Deploy_PROD
     displayName: "Building Deploy PROD"
     condition: |
@@ -199,10 +229,8 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
                 /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-ingress.yaml
-              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)          
-# PROD #
-
-# PRODHOTFIX #
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)   
+  # HOTFIX #
   - stage: Deploy_PROD_Hotfix
     displayName: "Building Desploy PROD Hotfix"
     condition: |
@@ -248,4 +276,5 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-ingress.yaml
               containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
-  # PRODHOTFIX #
+  # HOTFIX #       
+  # PROD #
