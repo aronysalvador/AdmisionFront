@@ -243,7 +243,7 @@ import {
       payload: true,
     });
 
-    console.log(datos)
+    // console.log(datos)
     handleStepLogPage(datos)
       .then((response) => {
           if(response.status === 200){  

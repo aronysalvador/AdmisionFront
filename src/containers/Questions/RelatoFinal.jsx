@@ -12,6 +12,7 @@ import Header from "../../components/header/index";
 import Checkbox from '@material-ui/core/Checkbox';
 import relato from './../../img/relato.svg'
 import editaRelato from './../../img/editar-relato.svg'
+import { Format } from "../../helpers/strings";
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -62,7 +63,7 @@ const RelatoFinal = (props) => {
   };
 
   const onChangeHandler = (event) => {
-    setLocalValue(event.target.value);
+    setLocalValue(Format.caracteresInvalidos(event.target.value));
   };
 
   const isDisabled = () => {
