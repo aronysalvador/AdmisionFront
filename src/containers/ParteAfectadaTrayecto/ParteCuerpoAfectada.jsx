@@ -6,7 +6,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { AutoComplete, IconButton } from "material-ui";
+import { IconButton } from "material-ui";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
@@ -40,8 +40,8 @@ const ParteCuerpoAfectada = () => {
     initFn();
   }, [initFn]);
 
-  const { data: sugerenciasParteCuerpo } = useSelector(
-    (state) => state.parteCuerpoAfectadaForm, shallowEqual );
+  // const { data: sugerenciasParteCuerpo } = useSelector(
+  //   (state) => state.parteCuerpoAfectadaForm, shallowEqual );
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
