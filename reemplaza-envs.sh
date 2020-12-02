@@ -1,5 +1,5 @@
 #!/bin/sh
-case "$ENTORNO" in
+case $ENTORNO in
     desarrolloTest) cat env.desarrollo.config.js > src/setupTests.js && echo "Cambiando variables de entorno a $ENTORNO" ;;
     qaTest) cat env.qa.config.js > src/setupTests.js && echo "Cambiando variables de entorno a $ENTORNO" ;;
     stagingTest) cat env.stg.config.js > src/setupTests.js && echo "Cambiando variables de entorno a $ENTORNO";;
