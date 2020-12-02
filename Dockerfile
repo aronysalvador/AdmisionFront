@@ -23,5 +23,7 @@ RUN npm run build
 ### STAGE 2: Production Environment ###
 FROM nginx:1.13.12-alpine
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
+COPY docker-entrypoint.sh reemplaza-envs.sh /
+RUN chmod +x docker-entrypoint.sh reemplaza-envs.sh
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
