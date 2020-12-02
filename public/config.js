@@ -26,3 +26,4 @@ window.REACT_APP_GEO_LATLNG="https://desa.salud.achs.cl/orquestador/api/geo/getL
 window.REACT_APP_GEO_DIRECTION="https://desa.salud.achs.cl/orquestador/api/geo/getDireccion"
 window.REACT_APP_MICROSOFT_AUTH_CLIENTID="2cc60262-0026-48a5-ac2a-a088e9704f30"
 window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL="https://desa.salud.achs.cl/web-admision/"
+console.log("archivo no reemplazado")
