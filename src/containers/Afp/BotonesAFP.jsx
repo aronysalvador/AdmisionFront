@@ -35,7 +35,7 @@ const BotonesAFP = () => {
   
   const [buttonOver, setButtonOver] = useState(false);
 
-  let back = responsable?.nombre.length > 0 ?  17.1 : 15
+  let back = responsable?.nombre?.length > 0 ?  17.1 : 15
 
   return (
     <div className={comunClass.root}>

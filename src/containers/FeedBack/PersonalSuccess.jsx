@@ -23,9 +23,21 @@ const PersonalSuccess = (props) =>{
     const spaceStyle = getSpaceStyle();
 
     const handleStep = () => {
-      if(tipoSiniestro.Id === 2) //Accidente de Trayecto
-        dispatch(handleSetStep(6.01))
-      else dispatch(handleSetStep(6)) //Accidente de Trabajo
+      switch(tipoSiniestro.Id){
+        //Caso Acciddente de Trabajo
+        case 1:
+          dispatch(handleSetStep(6));
+          break;
+        //Caso Accidente de Trayecto  
+        case 2:
+          dispatch(handleSetStep(6.01));
+          break;
+        //Caso Enfermedad Profesional
+        case 3:
+          dispatch(handleSetStep(6.04));
+          break;
+        default:
+      }
     }
 
     return(
