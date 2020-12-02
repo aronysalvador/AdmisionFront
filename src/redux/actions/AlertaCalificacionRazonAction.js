@@ -21,12 +21,23 @@ export const getRazonAlertaPrincipal = () => async (dispatch , getState) => {
   getData()
     .then((response) => {
       let data = response.data.content.response[0].opciones
-       if(tipoSiniestro.Id === 1){
-        dispatch(successCallRazonAlerta(data));
-       }else{
-         data.splice(0,1)
-         dispatch(successCallRazonAlerta(data));
-       }
+        switch(tipoSiniestro.Id){
+          //Caso Acciddente de Trabajo
+          case 1:
+            dispatch(successCallRazonAlerta(data));
+            break;
+          //Caso Accidente de Trayecto  
+          case 2:
+            data.splice(0,1)
+            dispatch(successCallRazonAlerta(data));
+            break;
+          //Caso Enfermedad Profesional
+          case 3:
+            dispatch(successCallRazonAlerta(data.slice(1,3)));
+            break;
+          default:
+            //
+        }
     })
     .catch((error) => {
       dispatch(errorCallRazonAlerta());
