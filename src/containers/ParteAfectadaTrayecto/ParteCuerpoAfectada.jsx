@@ -6,7 +6,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { IconButton } from "material-ui";
+import { AutoComplete, IconButton } from "material-ui";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
@@ -30,6 +30,17 @@ const ParteCuerpoAfectada = () => {
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
+
+  // const initFn = useCallback(() => {
+  //   dispatch(getMediosTransporteTrayecto());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   initFn();
+  // }, [initFn]);
+
+  // const { data: sugerenciasParteCuerpo } = useSelector(
+  //   (state) => state.mediosTransporteForm, shallowEqual );
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -63,7 +74,7 @@ const ParteCuerpoAfectada = () => {
           <Typography className={comunClass.tituloTextBox}>
             Ingresa la parte del cuerpo lesionada
           </Typography>
-          {/* Se debe cambiar por autocomplete ( como en state 6.02 validar caracteres especiales) */}
+          {/* Se debe cambiar por autocomplete ( como en state 6.02 ) */}
           <TextField
             autoComplete
             helperText={!parteAfectadaValid && "Debes ingresar al menos una parte del cuerpo lesionada"}
@@ -89,6 +100,30 @@ const ParteCuerpoAfectada = () => {
               )
             }}
           />
+          {/* <AutoComplete
+            inputValue={parteAfectada}
+            onInputChange={(event, value) => {
+              event&&setParteAfectada(value);
+            }}
+            freeSolo
+            options={sugerenciasParteCuerpo}
+            getOptionLabel={(option) =>  option.nombre }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
+                }}
+              />
+            )}
+          /> */}
 
           <div className={spaceStyle.space2} />
 
