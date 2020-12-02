@@ -135,7 +135,6 @@ stages:
             displayName: Npm Test
             inputs:
               command: 'custom'
-              workingDir: '__tests__'
               customCommand: 'test'  
           - task: CmdLine@2
             displayName: Get secrets
