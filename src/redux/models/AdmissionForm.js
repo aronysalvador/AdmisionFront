@@ -64,5 +64,5 @@ export const AdmissionForm = {
 
     coberturaSoap: "", // se debe pasar a SAP
 
-    CamposDocumentos: { tag: "", valor: "" } // data para llenar docuemntos de trayecto
+    CamposDocumentos: { parteAfectada:"" } // data para llenar docuemntos de trayecto
 };
