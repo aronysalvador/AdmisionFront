@@ -21,11 +21,7 @@ RUN npm run build
 
 ### STAGE 2: Production Environment ###
 FROM nginx:1.13.12-alpine
-RUN apk add -U dos2unix
-RUN apk add --no-cache -U jq
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
-COPY docker-entrypoint.sh reemplazar_envs.sh /
-RUN dos2unix reemplazar_envs.sh
 RUN chmod +x docker-entrypoint.sh reemplazar_envs.sh
 EXPOSE 80
-ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
