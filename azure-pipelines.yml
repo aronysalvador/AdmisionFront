@@ -56,9 +56,6 @@ stages:
               script: |
                 export ENTORNO=desarrollo
                 sh reemplaza-envs.sh
-          - task: CmdLine@2
-            inputs:
-              script: 'echo ls'
 
           - task: Npm@1
             displayName: Npm Install
@@ -184,12 +181,11 @@ stages:
             displayName: Npm Install
             inputs:
               command: 'install'
-
           - task: Npm@1
             displayName: Npm Test
             inputs:
               command: 'custom'
-              workingDir: '__tests__'
+              workingDir: 'src/__tests__'
               customCommand: 'test'  
           - task: Docker@2
             displayName: Build Docker Image
@@ -257,7 +253,7 @@ stages:
             displayName: Npm Test
             inputs:
               command: 'custom'
-              workingDir: '__tests__'
+              workingDir: 'src/__tests__'
               customCommand: 'test'  
           - task: CmdLine@2
             displayName: Get secrets
@@ -309,7 +305,7 @@ stages:
             displayName: Npm Test
             inputs:
               command: 'custom'
-              workingDir: '__tests__'
+              workingDir: 'src/__tests__'
               customCommand: 'test'  
           - task: CmdLine@2
             displayName: Get secrets
@@ -358,7 +354,7 @@ stages:
             displayName: Npm Test
             inputs:
               command: 'custom'
-              workingDir: '__tests__'
+              workingDir: 'src/__tests__'
               customCommand: 'test'  
           - task: Docker@2
             displayName: Build Docker Image
