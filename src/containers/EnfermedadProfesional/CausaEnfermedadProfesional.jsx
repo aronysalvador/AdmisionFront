@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import { Button, Typography, withStyles, Checkbox } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
@@ -18,7 +18,7 @@ import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
 
 const CausaEnfermedadProfesional = () => {
   const {
-    addmissionForm: { molestiaEP, parteAfectadaEP, FechaSintomasEP, percentage },
+    addmissionForm: { molestiaEP, parteAfectadaEP, FechaSintomasEP, molestiasAnterioresEP, percentage },
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -32,7 +32,7 @@ const CausaEnfermedadProfesional = () => {
   const [parteAfectada, setParteAfectada] = useState(() => {
     return !parteAfectadaEP ? "" : parteAfectadaEP;
   });
-  const { days, month, year } = FechaSintomasEP ? FechaSintomasEP : new Date();//FechaSintomasEP;
+  const { days, month, year } = FechaSintomasEP ? FechaSintomasEP : new Date();
   const [fechaSiniestro, setFechaSiniestro] = useState(() => {
     return !FechaSintomasEP ? {} : FechaSintomasEP
   });
@@ -46,7 +46,7 @@ const CausaEnfermedadProfesional = () => {
     let current = new Date();
     //========= Fecha =======
     if(fechaSiniestro.year <= 1900 || 
-      !(fechaSiniestro.year <= current.getFullYear() && fechaSiniestro.month <= current.getMonth()+1 && fechaSiniestro.days <= current.getDate())
+      !(fechaSiniestro.year <= current.getFullYear() && fechaSiniestro.month <= current.getMonth()+1 )//&& fechaSiniestro.days <= current.getDate()
       )
       setInvalidFecha(true)
     else
@@ -56,7 +56,27 @@ const CausaEnfermedadProfesional = () => {
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-console.log(parteAfectada.length);
+  const welcomeStyle = getWelcomeStyle();
+
+  const [stateCheckbox, setStateCheckbox] = useState(() => {
+    return !molestiasAnterioresEP ? false : (molestiasAnterioresEP === "si" ? true : false)
+  });
+
+  const handleCheckBoxChange = (event) => {
+    setStateCheckbox( event.target.checked );
+  };
+
+  var respMosteias = stateCheckbox ? "si" : "no" ;
+
+  const BlueCheckbox = withStyles({
+    root: {
+      '&$checked': {
+        color: '#00B2A9',
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox color="default" {...props} />);
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -72,7 +92,7 @@ console.log(parteAfectada.length);
         <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
           Indícanos la causa de la
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-          &nbsp;enfermedad profesional
+            &nbsp;enfermedad profesional
           </Grid>                    
         </Grid>
         <div className={comunClass.displayDeskImg}>
@@ -137,13 +157,21 @@ console.log(parteAfectada.length);
           </div>
           <div className={spaceStyle.space1} />
           <FechaSintomas
-              onChange={setFechaValueSiniestro}
-              daysFromState={days}
-              monthFromState={month}
-              yearFromState={year}
-            />
+            onChange={setFechaValueSiniestro}
+            daysFromState={days}
+            monthFromState={month}
+            yearFromState={year}
+          />
+          <div className={spaceStyle.space1} />
+          <Typography className={welcomeStyle.switchText} style={{}}>
+            <Grid component="span">
+              <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+            </Grid>
+              Existen molestias anteriores a la fecha indicada
+          </Typography>
         </div>
-        <div className={comunClass.bottomElement}>
+
+        <div className={comunClass.bottomElement} style={{padding: "10px 0"}}>
           <Button
             className={comunClass.buttonAchs}
             variant="contained"
@@ -152,6 +180,7 @@ console.log(parteAfectada.length);
               dispatch(updateForm("molestiaEP", molestia));
               dispatch(updateForm("parteAfectadaEP", parteAfectada));
               dispatch(updateForm("FechaSintomasEP", { ...fechaSiniestro }));
+              dispatch(updateForm("molestiasAnterioresEP", respMosteias));
               dispatch(handleSetStep(18.1)); // DEBE DIRIGIR A LA SGTE DE EP - ARREGLAR BACK AFP 18.1
             }}
           >

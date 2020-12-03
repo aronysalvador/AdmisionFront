@@ -161,7 +161,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: '1.075em',
-        lineHeight: '1.786em',
+        // lineHeight: '1.786em',
         color: '#787878',
         display: 'flex',
         alignItems: 'center',
