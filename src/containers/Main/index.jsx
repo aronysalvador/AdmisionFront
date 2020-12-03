@@ -47,6 +47,7 @@ import Cargo from "../Cargo/index";
 
 import PersonalSuccess from "../FeedBack/PersonalSuccess";
 import RelatoSuccess from "../FeedBack/RelatoSuccess";
+import SolicitarDocumentos from "../FeedBack/SolicitarDocumentos";
 
 import DireccionParticular from "../DireccionParticular/index";
 import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
@@ -580,6 +581,14 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <RelatoSuccess />
+            </Paper>
+          </div>
+        );
+      case 19.22:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <SolicitarDocumentos/>
             </Paper>
           </div>
         );
