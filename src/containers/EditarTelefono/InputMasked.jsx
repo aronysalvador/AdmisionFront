@@ -28,7 +28,7 @@ export default function InputMasked({
         inputMode: 'numeric',
          endAdornment: (
           <InputAdornment position="end">
-            <IconButton >
+            <IconButton onClick={() => { setTelefono("") }}>
               <ClearIcon />
             </IconButton>
           </InputAdornment>

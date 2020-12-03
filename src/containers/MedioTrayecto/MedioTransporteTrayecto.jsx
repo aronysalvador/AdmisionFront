@@ -103,7 +103,7 @@ console.log(sugerenciasMedios);
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={!medioTransporte}
+            disabled={medioTransporte?.length < 3}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
