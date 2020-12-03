@@ -32,9 +32,11 @@ const CausaEnfermedadProfesional = () => {
   const [parteAfectada, setParteAfectada] = useState(() => {
     return !parteAfectadaEP ? "" : parteAfectadaEP;
   });
-  const { days, month, year } = new Date();//FechaSintomasEP;
-  const [fechaSiniestro, setFechaSiniestro] = useState({});
-  const [invalidFecha, setInvalidFecha] = useState(true);
+  const { days, month, year } = FechaSintomasEP ? FechaSintomasEP : new Date();//FechaSintomasEP;
+  const [fechaSiniestro, setFechaSiniestro] = useState(() => {
+    return !FechaSintomasEP ? {} : FechaSintomasEP
+  });
+  const [invalidFecha, setInvalidFecha] = useState(false);
 
   function setFechaValueSiniestro(value) {
     setFechaSiniestro({ ...value });
@@ -54,7 +56,7 @@ const CausaEnfermedadProfesional = () => {
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-
+console.log(parteAfectada.length);
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -93,22 +95,16 @@ const CausaEnfermedadProfesional = () => {
             <TextField
               id="nombre"
               value={molestia}
+              placeholder={"Ejemplo: Dolor de garganta, dolor de espalda, fiebre, tos, dolor de estomago"}
               onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
               margin="dense"
               variant="outlined"
               autoComplete="off"
               type="text"
               fullWidth
-              InputProps={{
-                maxLength: 400,
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={() => { setMolestia("") }}>
-                      <ClearIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
+              rows={2}
+              multiline
+              inputProps={{ maxLength: 400 }}
             />
             <label className={comunClass.pullRight}>{molestia.length}/400</label>
           </div>
@@ -119,8 +115,6 @@ const CausaEnfermedadProfesional = () => {
             </Typography>
             <TextField
               autoComplete
-              // helperText={!parteAfectada && "Debes ingresar al menos una parte del cuerpo afectada"}
-              // error={!parteAfectada}
               value={parteAfectada}
               variant="outlined"
               size="small"
@@ -129,7 +123,6 @@ const CausaEnfermedadProfesional = () => {
               fullWidth
               onChange={(e) => setParteAfectada (Format.caracteresInvalidos(e.target.value)) }
               InputProps={{
-                maxLength: 200,
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={() => { setParteAfectada("") }}>
@@ -138,7 +131,9 @@ const CausaEnfermedadProfesional = () => {
                   </InputAdornment>
                 )
               }}
+              inputProps={{ maxLength: 200 }}
             />
+            
           </div>
           <div className={spaceStyle.space1} />
           <FechaSintomas
@@ -152,7 +147,7 @@ const CausaEnfermedadProfesional = () => {
           <Button
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={molestia?.length <= 3 || parteAfectada?.length <= 3 || invalidFecha}
+            disabled={molestia?.length <= 4 || parteAfectada?.length <= 4 || invalidFecha}
             onClick={() => {
               dispatch(updateForm("molestiaEP", molestia));
               dispatch(updateForm("parteAfectadaEP", parteAfectada));

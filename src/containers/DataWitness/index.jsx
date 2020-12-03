@@ -47,13 +47,20 @@ const DataWitness = () => {
     dispatch(handleSetStep(14.1));
   };
 
-  const [datosTestig, setDatosTestig] = useState("+56 9");
+  const [datosTestig, setDatosTestig] = useState(() => {
+    return !CamposDocumentos.datosTestig ? "" : CamposDocumentos.datosTestig; //"+56 9"
+  });
+  const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
+    return CamposDocumentos.datosTestig ? true : false;
+  });
 
   const handleOnChange = (e) => {
     const value = e.target.value;
     if (value !== datosTestig) {
       const result = Pipes.advanced(value);
+      const isValid = /^\+?56\d{9}$/.test(result.replace(/\s/g, ""));
       setDatosTestig(result);
+      setTelefonoIsValid(isValid);
     }
   };
 
@@ -161,7 +168,7 @@ const DataWitness = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"
-            disabled={!nombre || !cargos}
+            disabled={!cargos || !nombre || (datosTestig && !telefonoIsValid)}
             onClick={() => clickSendTestigo()}
           >
             Agregar

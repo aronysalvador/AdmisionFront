@@ -44,7 +44,7 @@ const ParteCuerpoAfectada = () => {
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-// console.log(parteAfectada.length);
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -74,7 +74,6 @@ const ParteCuerpoAfectada = () => {
           <Typography className={comunClass.tituloTextBox}>
             Ingresa la parte del cuerpo lesionada
           </Typography>
-          
           <AutoComplete
             inputValue={parteAfectada}
             onInputChange={(event, value) => {
@@ -90,12 +89,14 @@ const ParteCuerpoAfectada = () => {
                 InputProps={{
                   ...params.InputProps,
                   style: {
-                    paddingTop: "3px",
-                    paddingBottom: "3px",
+                    paddingTop: 0,
+                    paddingBottom: "1px",
                     paddingLeft: "5xp",
                     marginTop: "7px",
+                    height: "50px"
                   },
                 }}
+                inputProps={{ maxLength: 100 }}
               />
             )}
           /> 
@@ -110,7 +111,7 @@ const ParteCuerpoAfectada = () => {
             margin="dense"
             variant="outlined"
             fullWidth
-            rows={5}
+            rows={4}
             multiline
             inputProps={{ maxLength: 200 }}
             onChange={(e) => { setOtrasCircunstancias(e.target.value);

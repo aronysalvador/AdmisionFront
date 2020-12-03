@@ -8,7 +8,6 @@ import moment from "moment";
 import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
 import image from './../../img/iconCalendar.svg'
 
-
 const FechaSintomas = ({
   onChange,
   daysFromState,
@@ -37,7 +36,6 @@ const FechaSintomas = ({
     }
     else
       onChange({days:0,month:0, year:0})
-    
   };
 
   return (
@@ -62,7 +60,6 @@ const FechaSintomas = ({
             invalidDateMessage="Formato invalido"
             maxDateMessage="La fecha no puede exceder al día de hoy"
             minDateMessage="La fecha es invalida"
-
             keyboardIcon={<img alt="calendar" src={image}/>}
       />
       </ThemeProvider>
