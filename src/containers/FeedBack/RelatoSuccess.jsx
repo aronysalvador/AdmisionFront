@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, shallowEqual, useSelector } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -16,6 +16,7 @@ import excelent from './../../img/excelent.svg'
 
 const RelatoSuccess = (props) => {
   const { dispatch, microsoftReducer } = props;
+  const { addmissionForm: { tipoSiniestro } } = useSelector((state) => state, shallowEqual);
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -120,6 +121,25 @@ const RelatoSuccess = (props) => {
               >
                 Revisar información laboral
               </Button>
+              <div className={spaceStyle.spaceMin1} />
+              {tipoSiniestro.Id === 2 &&
+                <div>
+                  <Button
+                    className={comunStyle.buttonAchs2}
+                    variant="contained"
+                    onClick={() => dispatch(handleSetStep(19.3))}
+                  >
+                    Registrar atención médica en otro centro
+                  </Button>
+                  <div className={spaceStyle.spaceMin1} />
+                  <Button
+                    className={comunStyle.buttonAchs2}
+                    variant="contained"
+                    onClick={() => dispatch(handleSetStep(19.3))}
+                  >
+                    Ingresar pruebas complementarias
+                  </Button>
+                </div>}
             </div>
           </div>
         </div>

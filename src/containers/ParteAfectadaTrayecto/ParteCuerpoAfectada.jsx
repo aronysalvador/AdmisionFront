@@ -124,7 +124,7 @@ const ParteCuerpoAfectada = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={(parteAfectada?.length < 3)}
+            disabled={parteAfectada?.length < 3}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
