@@ -16,7 +16,7 @@ import { Format } from "../../helpers/strings";
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar, tipoSiniestro } = addmissionForm;
+  const { relatoAccidente, volverAConcatenar, tipoSiniestro, coberturaSoap } = addmissionForm;
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -43,8 +43,11 @@ const RelatoFinal = (props) => {
     }
   });
 
-  const [stateCheckbox, setStateCheckbox] = useState(false);
-
+  const [stateCheckbox, setStateCheckbox] = useState(() => {
+    return coberturaSoap === "si" ? true : false 
+  });
+console.log(stateCheckbox);
+console.log(coberturaSoap);
   const handleCheckBoxChange = (event) => {
     setStateCheckbox( event.target.checked );
   };
