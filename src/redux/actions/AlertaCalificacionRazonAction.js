@@ -18,6 +18,7 @@ export const getRazonAlertaPrincipal = () => async (dispatch , getState) => {
   const { addmissionForm: { tipoSiniestro } } = getState();
   //getData()
 
+  // Mostrar alertas segun tipo de siniestro 
   getData()
     .then((response) => {
       let data = response.data.content.response[0].opciones

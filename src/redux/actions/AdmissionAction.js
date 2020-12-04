@@ -81,7 +81,7 @@ export const handleSetStep = (step, actual=null) => {
           break;
 
           //2
-          case 6: //AccidentPlaceForm -- por verificar
+          case 6: //AccidentPlaceForm
               switch (TIPO) {
                 case 1:
                     PASO=5.7
@@ -99,7 +99,7 @@ export const handleSetStep = (step, actual=null) => {
           break;
 
           //3
-          case 8.1: //RelatoFinal -- por verificar
+          case 8.1: //RelatoFinal
               switch (TIPO) {
                 case 1:
                     PASO=9
@@ -117,7 +117,7 @@ export const handleSetStep = (step, actual=null) => {
           break;
 
           //4
-          case 10: //FechaHoraSiniestro --- por verificar
+          case 10: //FechaHoraSiniestro 
               switch (TIPO) {
                 case 1:
                     PASO=9
@@ -135,7 +135,7 @@ export const handleSetStep = (step, actual=null) => {
           break;
 
           //5
-          case 12: //LugarReferenciaSiniestro -- por verificar
+          case 12: //LugarReferenciaSiniestro
               switch (TIPO) {
                 case 1:
                     PASO=12.1
@@ -153,7 +153,7 @@ export const handleSetStep = (step, actual=null) => {
           break;
 
           //6
-          case 13: //QuestionWitness -- por verificar
+          case 13: //QuestionWitness
               switch (TIPO) {
                 case 1:
                     PASO=12.1
@@ -170,17 +170,15 @@ export const handleSetStep = (step, actual=null) => {
               }          
           break;
 
-          //7
-          case 26.2: //AlertaCalificacionRazon -- por verificar
+          //18
+          case 18.1: //BotonesAFP
               switch (TIPO) {
                 case 1:
-                    PASO=500
-                break;
                 case 2:
-                    PASO=500
+                    PASO=step
                 break;
                 case 3:
-                    PASO=500
+                    PASO=6.04
                 break;
                 default:
                     PASO = 500
