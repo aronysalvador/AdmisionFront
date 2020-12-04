@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const getSpaceStyle = makeStyles((theme) => ({
+    spaceMin05: {
+        height: '0.45em',
+    },
     spaceMin1: {
         height: '0.875em',
     },
