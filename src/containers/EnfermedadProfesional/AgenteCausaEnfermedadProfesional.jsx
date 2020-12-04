@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Button, Typography, withStyles, Checkbox } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -8,33 +8,44 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Grid from '@material-ui/core/Grid';
-import { InputAdornment } from "@material-ui/core";
-import { IconButton } from "material-ui";
-import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
 import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
+import AutoComplete from "@material-ui/lab/Autocomplete";
+import {getPartesCuerpo} from "../../redux/actions/ParteCuerpoAction";
 
-const CausaEnfermedadProfesional = () => {
+const AgenteCausaEnfermedadProfesional = () => {
   const {
-    addmissionForm: { molestiaEP, parteAfectadaEP, FechaSintomasEP, molestiasAnterioresEP, percentage },
+    addmissionForm: { AgenteCausaEP, TrabajoMolestiasEP, FechaExposicionAgenteEP, mismasMolestiasCompañerosEP, percentage },
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   
   const dispatch = useDispatch();
 
-  const [molestia, setMolestia] = useState(() => {
-    return !molestiaEP ? "" : molestiaEP;
+  const [agenteCausa, setAgenteCausa] = useState(() => {
+    return !AgenteCausaEP ? "" : AgenteCausaEP;
   });
 
-  const [parteAfectada, setParteAfectada] = useState(() => {
-    return !parteAfectadaEP ? "" : parteAfectadaEP;
+  const initFn = useCallback(() => {
+    dispatch(getPartesCuerpo());//CAMBIAR POR DATA AGENTES CAUSA
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFn();
+  }, [initFn]);
+
+  const { data: sugerenciasParteCuerpo } = useSelector( //CAMBIAR POR DATA AGENTES CAUSA
+    (state) => state.parteCuerpoAfectadaForm, shallowEqual );
+
+  const [molestia, setMolestia] = useState(() => {
+    return !TrabajoMolestiasEP ? "" : TrabajoMolestiasEP;
   });
-  const { days, month, year } = FechaSintomasEP ? FechaSintomasEP : new Date();
+
+  const { days, month, year } = FechaExposicionAgenteEP ? FechaExposicionAgenteEP : new Date();
   const [fechaSiniestro, setFechaSiniestro] = useState(() => {
-    return !FechaSintomasEP ? {} : FechaSintomasEP
+    return !FechaExposicionAgenteEP ? {} : FechaExposicionAgenteEP
   });
   const [invalidFecha, setInvalidFecha] = useState(false);
 
@@ -59,7 +70,7 @@ const CausaEnfermedadProfesional = () => {
   const welcomeStyle = getWelcomeStyle();
 
   const [stateCheckbox, setStateCheckbox] = useState(() => {
-    return !molestiasAnterioresEP ? false : (molestiasAnterioresEP === "si" ? true : false)
+    return !mismasMolestiasCompañerosEP ? false : (mismasMolestiasCompañerosEP === "si" ? true : false)
   });
 
   const handleCheckBoxChange = (event) => {
@@ -84,16 +95,17 @@ const CausaEnfermedadProfesional = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.7))}
+          dispatch={() => dispatch(handleSetStep(6.04))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Indícanos la causa de la
+        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]} style={{margin: '-3px'}}>
+          ¿Qué cosas o agentes del trabajo cree Ud. 
           <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;enfermedad profesional
-          </Grid>                    
+            &nbsp;que le causan estas molestias
+          </Grid> 
+          ?                   
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
@@ -108,12 +120,38 @@ const CausaEnfermedadProfesional = () => {
         <div className={comunClass.containerTextBox}>
           <div>
             <Typography className={comunClass.tituloTextBox}>
-              Describe las molestias y síntomas
+              Ingrese agente que causa la molestia
+            </Typography>
+            <AutoComplete
+              inputValue={agenteCausa}
+              onInputChange={(event, value) => {
+                event&&setAgenteCausa(value);
+              }}
+              freeSolo
+              options={sugerenciasParteCuerpo}
+              getOptionLabel={(option) =>  option.nombre }
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"  
+                  size="small"              
+                  InputProps={{
+                    ...params.InputProps,
+                    style: { marginTop: "7px" },
+                  }}
+                />
+              )}
+            /> 
+          </div>
+          <div className={spaceStyle.space1} />
+          <div>
+            <Typography className={comunClass.tituloTextBox}>
+              Trabajo que realizaba al momento de las molestias
             </Typography>
             <TextField
               id="nombre"
               value={molestia}
-              placeholder={"Ejemplo: Dolor de garganta, dolor de espalda, fiebre, tos, dolor de estomago"}
+              placeholder={"Ejemplo: aire acondicionado, silla de escritorio"}
               onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
               margin="dense"
               variant="outlined"
@@ -122,36 +160,9 @@ const CausaEnfermedadProfesional = () => {
               fullWidth
               rows={2}
               multiline
-              inputProps={{ maxLength: 400 }}
-            />
-            <label className={comunClass.pullRight}>{molestia.length}/400</label>
-          </div>
-          <div className={spaceStyle.space1} />
-          <div>
-            <Typography className={comunClass.tituloTextBox}>
-              Ingresa la parte del cuerpo afectada
-            </Typography>
-            <TextField
-              autoComplete
-              value={parteAfectada}
-              variant="outlined"
-              size="small"
-              margin="dense"
-              required
-              fullWidth
-              onChange={(e) => setParteAfectada (Format.caracteresInvalidos(e.target.value)) }
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={() => { setParteAfectada("") }}>
-                      <ClearIcon />
-                    </IconButton>
-                  </InputAdornment>
-                )
-              }}
               inputProps={{ maxLength: 200 }}
             />
-            
+            <label className={comunClass.pullRight}>{molestia.length}/200</label>
           </div>
           <div className={spaceStyle.space1} />
           <FechaSintomas
@@ -159,14 +170,14 @@ const CausaEnfermedadProfesional = () => {
             daysFromState={days}
             monthFromState={month}
             yearFromState={year}
-            textoPrimario="Ingresa la fecha de inicio de sintomas"
+            textoPrimario="Ingresa la fecha de exposición al agente"
           />
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
             <Grid component="span">
               <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>
-              Existen molestias anteriores a la fecha indicada
+            Existen compañeros de trabajo con las mismas molestias
           </Typography>
         </div>
 
@@ -174,13 +185,13 @@ const CausaEnfermedadProfesional = () => {
           <Button
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={molestia?.length <= 4 || parteAfectada?.length <= 4 || invalidFecha}
+            disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || invalidFecha}
             onClick={() => {
-              dispatch(updateForm("molestiaEP", molestia));
-              dispatch(updateForm("parteAfectadaEP", parteAfectada));
-              dispatch(updateForm("FechaSintomasEP", { ...fechaSiniestro }));
-              dispatch(updateForm("molestiasAnterioresEP", respMolestias));
-              dispatch(handleSetStep(6.05)); 
+              dispatch(updateForm("AgenteCausaEP", agenteCausa));
+              dispatch(updateForm("TrabajoMolestiasEP", molestia));
+              dispatch(updateForm("FechaExposicionAgenteEP", { ...fechaSiniestro }));
+              dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
+              dispatch(handleSetStep(18.1)); 
             }}
           >
             Continuar
@@ -194,4 +205,4 @@ const CausaEnfermedadProfesional = () => {
   );
 };
 
-export default CausaEnfermedadProfesional;
+export default AgenteCausaEnfermedadProfesional;
