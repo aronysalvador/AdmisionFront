@@ -85,18 +85,20 @@ const ParteCuerpoAfectada = () => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"                
-                // maxLength="2"
+                variant="outlined"  
+                size="small"              
+                // maxLength="5"
                 // inputProps={{ maxLength: 10 }}
                 InputProps={{
                   ...params.InputProps,
+                  // inputProps: { maxLength: 5 },
                   // maxLength: 100,
                   style: {
-                    paddingTop: 0,
-                    paddingBottom: "1px",
-                    paddingLeft: "5xp",
+                    // paddingTop: 0,
+                    // paddingBottom: "1px",
+                    // paddingLeft: "5xp",
                     marginTop: "7px",
-                    height: "50px"
+                    // height: "50px"
                   },
                 }}
               />

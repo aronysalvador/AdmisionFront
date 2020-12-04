@@ -811,7 +811,7 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         displayDeskFlexFinal: {
             display: 'flex',
-            justifyContent: 'space-around'
+            // justifyContent: 'space-around'
         },
         containerHeader: {
             alignSelf: 'center',

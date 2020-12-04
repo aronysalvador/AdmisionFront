@@ -48,7 +48,7 @@ const RelatoSuccess = (props) => {
                 {microsoftReducer.userMsal.iniciales}
               </Avatar>
             </div>
-            <div className={spaceStyle.space6} />
+            <div className={spaceStyle.space3} />
           </div>
           <div className={comunStyle.titleDesk}>
             <div className={welcomeStyle.TextContainer}>
@@ -79,18 +79,18 @@ const RelatoSuccess = (props) => {
           </div>
         </div>
       </div>  
-      <div className={welcomeStyle.beginContainer}>
+      <div className={welcomeStyle.beginContainer} style={{paddingTop: '10px'}}>
         <div className={comunStyle.displayDesk}> 
           <div className={spaceStyle.space1} />   
         </div>
         <div className={comunStyle.textCenterDesk}>
-          <Typography className={welcomeStyle.subTitleBegin}>
+          <Typography className={welcomeStyle.subTitleBegin} style={{marginBottom: 0}}>
             Ahora revisarás su información laboral:
           </Typography>
           <div className={comunStyle.displayDesk}>
             <div className={spaceStyle.space1} />
           </div>
-          <div className={comunStyle.boxDesk}>
+          <div className={comunStyle.boxDesk} style={{padding: '0 0 20px'}}>
             <Indiciaciones
               indicaciones={[
                 {
@@ -104,6 +104,7 @@ const RelatoSuccess = (props) => {
                   textoPrimario: "Revisa su lenguaje no verbal",
                   textoSecundario: "y evalúa la coherencia con su relato",
                   clase: welcomeStyle.divRowBottom,
+                  style: {marginRight: '10px'}
                 },
                 {
                   icono: "work.svg",
@@ -111,7 +112,7 @@ const RelatoSuccess = (props) => {
                   textoSecundario: "y sonríe con amabilidad",
                   clase: welcomeStyle.divRow,
                 },
-              ]}
+              ]} 
             />
             <div className={welcomeStyle.bottomBegin}>
               <Button
@@ -121,21 +122,22 @@ const RelatoSuccess = (props) => {
               >
                 Revisar información laboral
               </Button>
-              <div className={spaceStyle.spaceMin1} />
+              <div className={spaceStyle.spaceMin05} />
               {tipoSiniestro.Id === 2 &&
                 <div>
                   <Button
                     className={comunStyle.buttonAchs2}
+                    style={{minWidth: '320px'}}
                     variant="contained"
-                    onClick={() => dispatch(handleSetStep(19.3))}
+                    // onClick={() => dispatch(handleSetStep(19.3))}
                   >
                     Registrar atención médica en otro centro
                   </Button>
-                  <div className={spaceStyle.spaceMin1} />
+                  <div className={spaceStyle.spaceMin05} />
                   <Button
                     className={comunStyle.buttonAchs2}
                     variant="contained"
-                    onClick={() => dispatch(handleSetStep(19.3))}
+                    // onClick={() => dispatch(handleSetStep(19.3))}
                   >
                     Ingresar pruebas complementarias
                   </Button>
@@ -145,7 +147,7 @@ const RelatoSuccess = (props) => {
         </div>
       </div>
       <div className={comunStyle.displayDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={spaceStyle.space1} />
       </div>  
     </div>
   );

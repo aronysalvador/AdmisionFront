@@ -181,7 +181,7 @@ const CausaEnfermedadProfesional = () => {
               dispatch(updateForm("parteAfectadaEP", parteAfectada));
               dispatch(updateForm("FechaSintomasEP", { ...fechaSiniestro }));
               dispatch(updateForm("molestiasAnterioresEP", respMosteias));
-              dispatch(handleSetStep(18.1)); // DEBE DIRIGIR A LA SGTE DE EP - ARREGLAR BACK AFP 18.1
+              dispatch(handleSetStep(18.1)); // DEBE DIRIGIR A LA SGTE DE EP (BACK AFP 18.1)
             }}
           >
             Continuar

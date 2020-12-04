@@ -125,7 +125,7 @@ const PersonalSuccess = (props) =>{
           </div>
         </div> 
         <div className={comunStyle.displayDesk}>
-          <div className={spaceStyle.space2} />
+          <div className={spaceStyle.space1} />
         </div>           
       </div>
     )
