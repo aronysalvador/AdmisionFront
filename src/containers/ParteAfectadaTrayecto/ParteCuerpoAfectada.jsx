@@ -85,9 +85,12 @@ const ParteCuerpoAfectada = () => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"
+                variant="outlined"                
+                // maxLength="2"
+                // inputProps={{ maxLength: 10 }}
                 InputProps={{
                   ...params.InputProps,
+                  // maxLength: 100,
                   style: {
                     paddingTop: 0,
                     paddingBottom: "1px",
@@ -96,7 +99,6 @@ const ParteCuerpoAfectada = () => {
                     height: "50px"
                   },
                 }}
-                inputProps={{ maxLength: 100 }}
               />
             )}
           /> 
@@ -124,7 +126,7 @@ const ParteCuerpoAfectada = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            disabled={(parteAfectada?.length < 3)}
+            disabled={parteAfectada?.length < 3}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {

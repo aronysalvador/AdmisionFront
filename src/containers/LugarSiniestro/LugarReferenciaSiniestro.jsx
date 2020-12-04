@@ -103,12 +103,11 @@ const LugarReferenciaSiniestro = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-              if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-                dispatch(handleSetStep(12.2)) //13
-                dispatch(updateForm("AccidenteEnSucursal", "no"))
-                }
-                else dispatch(handleSetStep(12.1)) //Accidente de Trabajo
+                dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+                if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
+                  dispatch(updateForm("AccidenteEnSucursal", "no"))
+                }                
+                dispatch(handleSetStep("x",12))
             }}
           >
             Continuar

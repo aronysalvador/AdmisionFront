@@ -20,13 +20,13 @@ import licenciaCard from './../../img/licenciaCard.png'
 
 const Identification = (props) => {
 
-  const { dispatch, addmissionForm, microsoftReducer } = props
+  const { dispatch, addmissionForm, addmissionForm: { tipoSiniestro }, microsoftReducer } = props
   const classes = siniestroStyle()
   const comunClass = getComunStyle()
   const spaceStyle = getSpaceStyle()
-  const [buttonOverTrabajo, setButtonOverTrabajo] = useState(false)
-  const [buttonOverTrayecto, setButtonOverTrayecto] = useState(false)
-  const [buttonOverEP, setButtonOverEP] = useState(false)
+  const [buttonOverTrabajo, setButtonOverTrabajo] = useState(tipoSiniestro.Id===1 ? true : false)
+  const [buttonOverTrayecto, setButtonOverTrayecto] = useState(tipoSiniestro.Id===2 ? true : false)
+  const [buttonOverEP, setButtonOverEP] = useState(tipoSiniestro.Id===3 ? true : false)
 
   return (<div className={comunClass.root}>
     <div className={comunClass.displayDesk}> 

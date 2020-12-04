@@ -35,7 +35,6 @@ const BotonesAFP = () => {
   
   const [buttonOver, setButtonOver] = useState(false);
 
-  let back = responsable?.nombre?.length > 0 ?  17.1 : 15
 
   return (
     <div className={comunClass.root}>
@@ -44,7 +43,7 @@ const BotonesAFP = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(back))}
+          dispatch={() => dispatch(handleSetStep(responsable?.nombre?.length > 0 ?  17.1 : 15 ,18.1))}
           percentage={percentage}
         />
       </div>
