@@ -56,10 +56,9 @@ const RelatoFinal = (props) => {
     dispatch(updateForm("relatoAccidente", value));
     dispatch(updateForm("coberturaSoap", respSoap));
     if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-    dispatch(handleSetStep(9.01))
-    dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
+       dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
-    else dispatch(handleSetStep(9)) //Accidente de Trabajo
+    dispatch(handleSetStep("x",8.1))
   };
 
   const onChangeHandler = (event) => {
