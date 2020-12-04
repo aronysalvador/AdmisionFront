@@ -17,7 +17,7 @@ const FechaHoraSiniestro = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const { step, percentage, fechaHoraSiniestro, siniestros,tipoSiniestro } = useSelector(
+  const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -115,8 +115,6 @@ const FechaHoraSiniestro = () => {
     }
   };
 
-  let stepBack = tipoSiniestro.Id === 1 ? 9 : 9.01;
-
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -124,7 +122,7 @@ const FechaHoraSiniestro = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(stepBack))}
+          dispatch={() => dispatch(handleSetStep("x",10))}
           percentage={percentage}
         />
       </div>

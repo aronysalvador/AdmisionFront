@@ -45,14 +45,155 @@ export const updateForm = (stateType, value) => {
   };
 };
 
-export const handleSetStep = (step) => {
+export const handleSetStep = (step, actual=null) => {
   return (dispatch , getState) => {
+    
+    //Mapear logs de pantallas
     const { LogForm: {ID} } = getState();
     if( step !== -1 && step !== 0 && step !== 1 && step !== 1.1  && step !== 2 && step !== 3 && step !== 26.4){     
       ID !== 0 && dispatch(stepLogPage({Id: ID, fecha: FechaHora(), opcion: 7, id_campo: step}))
     }
 
-    dispatch(setStep(step, getPercentage(step)));
+    var PASO=step
+
+    if(actual!==null){  // PANTALLAS QUE EVALUAN SEGUN EL TIPO DE SINIESTRO A DONDE DEBEN DIRIGIRSE
+      console.log("decidiendo....")
+      const { addmissionForm: { tipoSiniestro } } = getState();
+      const TIPO = tipoSiniestro.Id
+
+        switch (actual) {
+          //1
+          case 5.7: //PersonalSuccess
+              switch (TIPO) {
+                case 1:
+                    PASO=6
+                break;
+                case 2:
+                    PASO=6.01
+                break;
+                case 3:
+                    PASO=6.04
+                break;
+                default:
+                    PASO = 500
+                break;
+              }          
+          break;
+
+          //2
+          case 6: //AccidentPlaceForm
+              switch (TIPO) {
+                case 1:
+                    PASO=5.7
+                break;
+                case 2:
+                    PASO=6.03
+                break;
+                case 3:
+                    PASO=500
+                break;
+                default:
+                    PASO = 500
+                break;
+              }          
+          break;
+
+          //3
+          case 8.1: //RelatoFinal
+              switch (TIPO) {
+                case 1:
+                    PASO=9
+                break;
+                case 2:
+                    PASO=9.01
+                break;
+                case 3:
+                    PASO=500
+                break;
+                default:
+                    PASO = 500
+                break;
+              }          
+          break;
+
+          //4
+          case 10: //FechaHoraSiniestro 
+              switch (TIPO) {
+                case 1:
+                    PASO=9
+                break;
+                case 2:
+                    PASO=9.01
+                break;
+                case 3:
+                    PASO=500
+                break;
+                default:
+                    PASO = 500
+                break;
+              }          
+          break;
+
+          //5
+          case 12: //LugarReferenciaSiniestro
+              switch (TIPO) {
+                case 1:
+                    PASO=12.1
+                break;
+                case 2:
+                    PASO=12.2
+                break;
+                case 3:
+                    PASO=500
+                break;
+                default:
+                    PASO = 500
+                break;
+              }          
+          break;
+
+          //6
+          case 13: //QuestionWitness
+              switch (TIPO) {
+                case 1:
+                    PASO=12.1
+                break;
+                case 2:
+                    PASO=12.2
+                break;
+                case 3:
+                    PASO=500
+                break;
+                default:
+                    PASO = 500
+                break;
+              }          
+          break;
+
+          //18
+          case 18.1: //BotonesAFP
+              switch (TIPO) {
+                case 1:
+                case 2:
+                    PASO=step
+                break;
+                case 3:
+                    PASO=6.04
+                break;
+                default:
+                    PASO = 500
+                break;
+              }          
+          break;
+        
+          default:
+              PASO = 500
+            break;
+        }      
+        console.log("PASO: "+PASO)
+    }
+    
+    dispatch(setStep(PASO, getPercentage(PASO)));
   };
 };
 const getPercentage = (step) => {

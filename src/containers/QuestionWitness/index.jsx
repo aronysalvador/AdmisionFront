@@ -8,11 +8,9 @@ import Header from "../../components/header/index";
 
 const QuestionWitness = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { tipoSiniestro } = addmissionForm;
 
   const comunClass = getComunStyle();
 
-  let step = tipoSiniestro.Id === 1 ? 12.1 : 12.2
 
   return (
     <div className={comunClass.root}>
@@ -21,7 +19,7 @@ const QuestionWitness = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(step))}
+          dispatch={() => dispatch(handleSetStep("x",13))}
           percentage={addmissionForm.percentage}
         />
       </div>

@@ -149,7 +149,7 @@ const DataWitness = () => {
             />
           </div>
           <div className={spaceStyle.space1} />
-          {tipoSiniestro.Id === 2 &&
+          {tipoSiniestro.Id === 2 && // solo se muestra de ser trayecto
           <div>
             <Typography className={comunClass.tituloTextBox}>
               Teléfono (Opcional)
