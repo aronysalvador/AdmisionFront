@@ -15,7 +15,6 @@ import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
-import { Format } from "../../helpers/strings";
 
 const SinBPInfoPersonal1 = () => {
   const bpForm = useSelector(

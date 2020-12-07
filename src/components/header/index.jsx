@@ -18,7 +18,7 @@ const Header = (props) => {
 
   return (
     <div className={comunClass.header}>
-      <div class="container" style={{display:"flex", width: "100%"}}>
+      <div className="container" style={{display:"flex", width: "100%"}}>
         <img 
           alt="logo" 
           src={"static/letterACHS.svg"}
