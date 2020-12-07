@@ -234,7 +234,7 @@ import {
   // };
 
   export const handleStepLogPage = async (params) => {
-    return await Axios.post(process.env.REACT_APP_LOG, params);
+    return await Axios.post(window.REACT_APP_LOG, params);
   };
 
   export const stepLogPage = (datos) => (dispatch) => {
