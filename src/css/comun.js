@@ -545,15 +545,13 @@ export const getComunStyle = makeStyles((theme) => ({
             width: '60%', //'416px',
             maxWidth: '860px',
             minWidth: '700px',
-            // height: '354px',
             border: '0',
             background: 'white !important',
             boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
             borderRadius: '8px',
             alignItems: 'center',
             margin: 'auto',
-            // marginTop: '50px',
-            padding: '33px',
+            padding: '30px 20px 20px', //'33px',
             textAlign: 'center',
         },
         boxDeskCardBtn: {
@@ -811,7 +809,7 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         displayDeskFlexFinal: {
             display: 'flex',
-            // justifyContent: 'space-around'
+            justifyContent: 'space-around'
         },
         containerHeader: {
             alignSelf: 'center',

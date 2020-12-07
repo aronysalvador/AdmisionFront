@@ -88,11 +88,12 @@ import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
 import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
 import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
-import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
-
 import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
 import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
+
+import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
+import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -381,6 +382,14 @@ const Main = (props) => {
             <div className={layout}>
               <Paper className={paper}>
                 <CausaEnfermedadProfesional />
+              </Paper>
+            </div>
+          );
+        case 6.05:
+          return (
+            <div className={layout}>
+              <Paper className={paper}>
+                <AgenteCausaEnfermedadProfesional />
               </Paper>
             </div>
           );

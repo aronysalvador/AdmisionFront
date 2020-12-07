@@ -13,6 +13,7 @@ const FechaSintomas = ({
   daysFromState,
   monthFromState,
   yearFromState,
+  textoPrimario
 }) => {
 
   if(daysFromState?.toString().length === 1){
@@ -41,28 +42,29 @@ const FechaSintomas = ({
   return (
     <>
       <div>
-        <Grid className={comunClass.tituloTextBox}>
-          Ingresa la fecha de inicio de sintomas
+        <Grid className={comunClass.tituloTextBox} style={{marginBottom: "7px"}}>
+          {textoPrimario}
         </Grid>
       </div>
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
             inputVariant="outlined"
+            size="small"
             disableFuture
             format="DD-MM-YYYY"
             inputValue={inputValue}
             onChange={onDateChange}
             animateYearScrolling            
             disableToolbar  // seleccionar año
-            InputAdornmentProps={{ position: 'start', paddingLeft: '6px'}}
+            InputAdornmentProps={{position: 'start', paddingLeft: '6px'}}
             fullWidth
             invalidDateMessage="Formato invalido"
             maxDateMessage="La fecha no puede exceder al día de hoy"
             minDateMessage="La fecha es invalida"
             keyboardIcon={<img alt="calendar" src={image}/>}
-      />
-      </ThemeProvider>
+          />
+        </ThemeProvider>
       </MuiPickersUtilsProvider>          
     </>    
   );

@@ -8,6 +8,9 @@ import {
     GET_TRAYECTO_PARTECUERPOAFECTADA_INIT,
     GET_TRAYECTO_PARTECUERPOAFECTADA_SUCCESS,
     GET_TRAYECTO_PARTECUERPOAFECTADA_FAILURE,
+    GET_TRAYECTO_AGENTECAUSAENFERMEDAD_INIT,
+    GET_TRAYECTO_AGENTECAUSAENFERMEDAD_SUCCESS,
+    GET_TRAYECTO_AGENTECAUSAENFERMEDAD_FAILURE,
 } from "../types/trayectoType";
 
 const INITIAL_STATE = {
@@ -69,6 +72,26 @@ export function parteCuerpoAfectadaForm(state = INITIAL_STATE, action) {
             };
 
         case GET_TRAYECTO_PARTECUERPOAFECTADA_FAILURE:
+            return {...state, error: action.payload, loading: false };
+
+        default:
+            return {...state };
+    }
+}
+
+export function agenteCausaEnfermedadForm(state = INITIAL_STATE, action) {
+    switch (action.type) {
+        case GET_TRAYECTO_AGENTECAUSAENFERMEDAD_INIT:
+            return {...state, loading: true };
+
+        case GET_TRAYECTO_AGENTECAUSAENFERMEDAD_SUCCESS:
+            return {
+                ...state,
+                data: action.payload,
+                loading: false,
+            };
+
+        case GET_TRAYECTO_AGENTECAUSAENFERMEDAD_FAILURE:
             return {...state, error: action.payload, loading: false };
 
         default:
