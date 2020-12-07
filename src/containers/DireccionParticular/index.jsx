@@ -12,7 +12,7 @@ import Header from "../../components/header/index";
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj, creacionBP },
+    addmissionForm: { percentage, urlMapaDireccionParticular,direccionParticularObj, creacionBP, telefonoParticular },
   } = useSelector((state) => state, shallowEqual)
 
   const {
@@ -117,7 +117,15 @@ const DireccionParticular = () => {
               dispatch(updateForm("direccionParticular", direccion.description))
               dispatch(updateForm("direccionParticularObj", direccion))
               dispatch(updateForm("comunaDireccionParticular", nombreComuna))
-              creacionBP ? dispatch(handleSetStep(5.3)) : dispatch(handleSetStep(5.1));
+              if(creacionBP){
+                if(telefonoParticular)
+                  dispatch(handleSetStep(5.1))
+                else
+                  dispatch(handleSetStep(5.3))
+              }
+              else
+                dispatch(handleSetStep(5.1))
+
             }}
           >
             Guardar dirección
