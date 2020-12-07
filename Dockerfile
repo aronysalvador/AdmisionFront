@@ -3,10 +3,8 @@ FROM node:9.11.1 as build
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
-
 ### VARIABLES DE ENTORNO ###
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
-
 
 ### VARIABLES DE ENTORNO ###
 
@@ -15,9 +13,7 @@ COPY package*.json /usr/src/app/
 # COPY . .
 COPY . /usr/src/app
 
-
 ###RUN npm test || exit 1
-
 RUN npm run build
 
 ### STAGE 2: Production Environment ###
