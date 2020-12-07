@@ -20,7 +20,7 @@ const HoraSiniestroDesk = ({
   const [inputValue2,setInputValue2]= useState(() =>{
     if(!horasFromState){
       let time = new Date(new Date().setHours(new Date().getHours()-1))
-      return `${(time.getHours() < 10)?"0"+time.getHours():time.getHours()}:${time.getMinutes()}`;
+      return `${(time.getHours() < 10)?"0"+time.getHours():time.getHours()}:${(time.getMinutes() < 10)?"0"+time.getMinutes():time.getMinutes()}`;
     }else
       return `${horasFromState}:${indiceMinutosFromState}0`;
   })
