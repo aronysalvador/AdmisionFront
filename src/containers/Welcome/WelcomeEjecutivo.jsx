@@ -31,7 +31,7 @@ const Session = (props) => {
       <div className={spaceStyle.space1} />
       <div className={welcomeStyle.bienvenidoContainer}>
         <Typography
-          variant="p"
+          variant="inherit"
           component="p"
           className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
         >
@@ -43,7 +43,7 @@ const Session = (props) => {
       <div className={spaceStyle.space1} />
       <div>
         <Typography
-          variant="p"
+          variant="inherit"
           component="p"
           className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
         >

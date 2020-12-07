@@ -16,7 +16,7 @@ import Header from "../../components/header/index";
 
 const EditarTelefono = () => {
   const {
-    addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto },
+    addmissionForm: { percentage, telefonoParticular: TelefonoEmpleado, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto, direccionParticular },
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -81,9 +81,9 @@ const EditarTelefono = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={`${comunClass.titleBlack} ${comunClass.titleBlack2} ${comunClass.textPrimaryDesk}`}>
           Ingresa el 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component="span"  className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
             &nbsp;teléfono personal
           </Grid>          
         </Grid>
@@ -115,7 +115,7 @@ const EditarTelefono = () => {
             <div  className={welcomeStyle.divRowBottomEmail}>
                 <ErrorOutline />
                 <Typography
-                  variant="p"
+                  variant="inherit"
                   component="p"
                   className={welcomeStyle.itemText2}
                 >
@@ -145,7 +145,10 @@ const EditarTelefono = () => {
               dispatch(updateForm("telefonoParticular", telefono));
               if(creacionBP)
               {
-                if(rut && rutEmpresa && SucursalEmpresaObjeto){
+                if(!direccionParticular){
+                  dispatch(handleSetStep(5.2))
+                }
+                else if(rut && rutEmpresa && SucursalEmpresaObjeto){
                   dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
                 }else{
                   dispatch(handleSetStep(500));
