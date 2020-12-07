@@ -174,7 +174,7 @@ const CausaEnfermedadProfesional = () => {
           <Button
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={molestia?.length <= 4 || parteAfectada?.length <= 4 || invalidFecha}
+            disabled={molestia?.length <= 4 || parteAfectada?.length <= 3 || invalidFecha}
             onClick={() => {
               dispatch(updateForm("molestiaEP", molestia));
               dispatch(updateForm("parteAfectadaEP", parteAfectada));

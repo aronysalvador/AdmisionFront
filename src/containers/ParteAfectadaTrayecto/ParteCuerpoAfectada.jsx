@@ -76,30 +76,21 @@ const ParteCuerpoAfectada = () => {
           </Typography>
           <AutoComplete
             inputValue={parteAfectada}
+            freeSolo
+            options={sugerenciasParteCuerpo}
             onInputChange={(event, value) => {
               event&&setParteAfectada(value);
             }}
-            freeSolo
-            options={sugerenciasParteCuerpo}
             getOptionLabel={(option) =>  option.nombre }
             renderInput={(params) => (
               <TextField
                 {...params}
                 variant="outlined"  
                 size="small"              
-                // maxLength="5"
-                // inputProps={{ maxLength: 10 }}
-                InputProps={{
-                  ...params.InputProps,
-                  // inputProps: { maxLength: 5 },
-                  // maxLength: 100,
-                  style: {
-                    // paddingTop: 0,
-                    // paddingBottom: "1px",
-                    // paddingLeft: "5xp",
-                    marginTop: "7px",
-                    // height: "50px"
-                  },
+                inputProps={{
+                  ...params.inputProps,
+                  maxLength: 100,
+                  style: { marginTop: "7px" },
                 }}
               />
             )}

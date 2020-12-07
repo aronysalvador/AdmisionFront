@@ -13,7 +13,7 @@ import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
 import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import {getPartesCuerpo} from "../../redux/actions/ParteCuerpoAction";
+import { getAgenteCausa } from "../../redux/actions/AgenteCausaAction";
 
 const AgenteCausaEnfermedadProfesional = () => {
   const {
@@ -29,15 +29,15 @@ const AgenteCausaEnfermedadProfesional = () => {
   });
 
   const initFn = useCallback(() => {
-    dispatch(getPartesCuerpo());//CAMBIAR POR DATA AGENTES CAUSA
+    dispatch(getAgenteCausa());
   }, [dispatch]);
 
   useEffect(() => {
     initFn();
   }, [initFn]);
 
-  const { data: sugerenciasParteCuerpo } = useSelector( //CAMBIAR POR DATA AGENTES CAUSA
-    (state) => state.parteCuerpoAfectadaForm, shallowEqual );
+  const { data: sugerenciasAgenteCausa } = useSelector( //CAMBIAR POR DATA AGENTES CAUSA
+    (state) => state.parteCuerpoAfectadaForm, shallowEqual ); //agenteCausaEnfermedadForm
 
   const [molestia, setMolestia] = useState(() => {
     return !TrabajoMolestiasEP ? "" : TrabajoMolestiasEP;
@@ -125,10 +125,10 @@ const AgenteCausaEnfermedadProfesional = () => {
             <AutoComplete
               inputValue={agenteCausa}
               onInputChange={(event, value) => {
-                event&&setAgenteCausa(value);
+                event&&setAgenteCausa(Format.caracteresInvalidos(value));
               }}
               freeSolo
-              options={sugerenciasParteCuerpo}
+              options={sugerenciasAgenteCausa} 
               getOptionLabel={(option) =>  option.nombre }
               renderInput={(params) => (
                 <TextField
