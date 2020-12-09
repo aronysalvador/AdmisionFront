@@ -4,10 +4,12 @@ import {
     GET_TRAYECTO_AGENTECAUSAENFERMEDAD_FAILURE,
 } from "../types/trayectoType";
 
-import Axios from "axios";
+// import Axios from "axios";
+import { agenteCausa } from "../../util/fakeApi";
 
 export const getData = async() => {
-    return Axios.get(window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD);
+    // return Axios.get(window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD);
+    return agenteCausa();
 };
 
 export const getAgenteCausa = () => async(dispatch) => {
@@ -18,7 +20,7 @@ export const getAgenteCausa = () => async(dispatch) => {
 
     getData()
         .then((response) => {
-            dispatch(successCallAgenteCausa(response.data.content[0]));
+            dispatch(successCallAgenteCausa(response));
         })
         .catch((error) => {
             dispatch(errorCallAgenteCausa());
@@ -26,7 +28,7 @@ export const getAgenteCausa = () => async(dispatch) => {
 
     const successCallAgenteCausa = (partes) => ({
         type: GET_TRAYECTO_AGENTECAUSAENFERMEDAD_SUCCESS,
-        payload: partes, //CAMBIAR
+        payload: partes, //CAMBIAR DE PARTES_CUERPO A AGENTE_CAUSA
     });
 
     const errorCallAgenteCausa = () => ({
