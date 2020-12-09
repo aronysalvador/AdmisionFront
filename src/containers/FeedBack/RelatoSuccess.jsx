@@ -137,7 +137,7 @@ const RelatoSuccess = (props) => {
                   <Button
                     className={comunStyle.buttonAchs2}
                     variant="contained"
-                    // onClick={() => dispatch(handleSetStep(19.3))}
+                    onClick={() => dispatch(handleSetStep(19.23))}
                   >
                     Ingresar pruebas complementarias
                   </Button>

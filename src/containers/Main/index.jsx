@@ -91,6 +91,7 @@ import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
 import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
+import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
 
 import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
 import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
@@ -598,6 +599,14 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <SolicitarDocumentos/>
+            </Paper>
+          </div>
+        );
+      case 19.23:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <DocComplementariosTrayecto />
             </Paper>
           </div>
         );
