@@ -62,7 +62,7 @@ export const handleSetStep = (step, actual = null) => {
             const TIPO = tipoSiniestro.Id
 
             switch (actual) {
-                //1
+                
                 case 5.7: //PersonalSuccess
                     switch (TIPO) {
                         case 1:
@@ -80,7 +80,6 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //2
                 case 6: //AccidentPlaceForm
                     switch (TIPO) {
                         case 1:
@@ -98,7 +97,6 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //3
                 case 8.1: //RelatoFinal
                     switch (TIPO) {
                         case 1:
@@ -116,7 +114,6 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //4
                 case 10: //FechaHoraSiniestro 
                     switch (TIPO) {
                         case 1:
@@ -134,7 +131,6 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //5
                 case 12: //LugarReferenciaSiniestro
                     switch (TIPO) {
                         case 1:
@@ -152,7 +148,6 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //6
                 case 13: //QuestionWitness
                     switch (TIPO) {
                         case 1:
@@ -170,7 +165,40 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //18
+                case 17: //FechaHoraResponsable
+                    switch (TIPO) {
+                        case 1:
+                            PASO = 17.1
+                            break;
+                        case 2:
+                            PASO = 17.2
+                            break;
+                        case 3:
+                            PASO = 17.1
+                            break;
+                        default:
+                            PASO = 500
+                            break;
+                    }
+                    break;
+
+                case 17.1: //BoxQuestionResponsable
+                    switch (TIPO) {
+                        case 1:
+                            PASO = 17
+                            break;
+                        case 2:
+                            PASO = 17.2
+                            break;
+                        case 3:
+                            PASO = 17
+                            break;
+                        default:
+                            PASO = 500
+                            break;
+                    }
+                    break;
+
                 case 18.1: //BotonesAFP
                     switch (TIPO) {
                         case 1:
