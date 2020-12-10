@@ -96,6 +96,7 @@ import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplem
 import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
 import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
 
+import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
 import AtencionPrevia from "../AtencionPrevia/index";
 
 const Main = (props) => {
@@ -553,6 +554,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <BoxQuestionResponsable />
+            </Paper>
+          </div>
+        );
+      case 17.2: // Tipo de aviso Responsable
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TipoAvisoResponsable />
             </Paper>
           </div>
         );

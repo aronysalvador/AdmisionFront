@@ -1445,4 +1445,31 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: "1.572em",
         color: "#787878",
     },
+    roundedBlue: {
+        color: "#373737",
+        border: "2px solid #00B2A9 !important",   
+        borderRadius: "10px",    
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#DFF3F2 !important"
+    },
+    roundedNormal: {
+        color: "#373737",
+        border: "2px solid #787878 !important",   
+        borderRadius: "10px",    
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    txtRadios: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "16px",
+        lineHeight: "18px",
+        color: "#373737"
+    },
+    containerOpction: {
+        display: "flex",
+        marginLeft: "40px"
+    }
 }));

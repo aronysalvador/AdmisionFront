@@ -118,7 +118,7 @@ const FechaHoraResponsable = () => {
                   ...horaSiniestro,
                 })
               );
-              dispatch(handleSetStep(17.1));
+              dispatch(handleSetStep("x",17)) 
             }}
           >
             Continuar
