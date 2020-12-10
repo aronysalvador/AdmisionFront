@@ -16,41 +16,44 @@ import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
 
 const AtencionPrevia = () => {
-  const { microsoftReducer , addmissionForm: {percentage,fechaHoraAtencion, CamposDocumentos } } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer , addmissionForm: {percentage, fechaHoraAtencion, CamposDocumentos } } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const { days, month, year, horas, minutos } = fechaHoraAtencion;
-  const [nombreAtencion, saveNombreAtencion] = useState(() => {
-    return !CamposDocumentos.nombreAtencion ? "" : CamposDocumentos.nombreAtencion;
+  const [OtroRecinto, saveOtroRecinto] = useState(() => {
+    return !CamposDocumentos.OtroRecinto ? "" : CamposDocumentos.OtroRecinto;
   });;
 
-  const [tipoDocumento, saveTipoDocumento] = useState(() => {
-    return !CamposDocumentos.tipoDocumento ? "" : CamposDocumentos.tipoDocumento;
+  const [CuentaCual, saveCuentaCual] = useState(() => {
+    return !CamposDocumentos.CuentaCual ? "" : CamposDocumentos.CuentaCual;
   });;
 
-  const [fechaAtencion, setFechaAtencion] = useState({});
-  const [horaAtencion, setHoraAtencion] = useState({});
+  const [FechaOtroRe, setFechaOtroRe] = useState({});
+  const [HoraOtroRec, setHoraOtroRec] = useState({});
   const [invalidFecha, setInvalidFecha] = useState(true);
   const [invalidHora, setInvalidHora] = useState(true);
+
+  console.log(invalidFecha)
+  console.log(invalidHora)
 
   const minutosArray = [0, 10, 20, 30, 40, 50]
 
   function setFechaValueSiniestro(value) {
-    setFechaAtencion({ ...value });
+    setFechaOtroRe({ ...value });
   }
   function setHoraValueSiniestro(value) {
     value.minutos = minutosArray[value.indiceMinutos];  
-    setHoraAtencion({ ...value });
+    setHoraOtroRec({ ...value });
   }
 
   React.useEffect(() => {
     let current = new Date();
     //========= Fecha =======
-    if(fechaAtencion.year <= 1900 || 
-      !(fechaAtencion.year <= current.getFullYear() && fechaAtencion.month <= current.getMonth()+1 && fechaAtencion.days <= current.getDate())
+    if(FechaOtroRe.year <= 1900 || 
+      !(FechaOtroRe.year <= current.getFullYear() && FechaOtroRe.month <= current.getMonth()+1 && FechaOtroRe.days <= current.getDate())
       )
       setInvalidFecha(true)
     else
@@ -59,24 +62,42 @@ const AtencionPrevia = () => {
     //====== Fin Fecha ======
     //====== Hora =======
     if(
-      (horaAtencion.horas === -1 || horaAtencion.minutos === -1 || horaAtencion.minutos === undefined)
+      (HoraOtroRec.horas === -1 || HoraOtroRec.minutos === -1 || HoraOtroRec.minutos === undefined)
       ||
-      ((fechaAtencion.year === current.getFullYear() && fechaAtencion.month === current.getMonth()+1 && fechaAtencion.days === current.getDate()) &&
+      ((FechaOtroRe.year === current.getFullYear() && FechaOtroRe.month === current.getMonth()+1 && FechaOtroRe.days === current.getDate()) &&
       (
-        (horaAtencion.horas > current.getHours()) ||
-        (horaAtencion.horas === current.getHours() && horaAtencion.minutos > current.getMinutes())
+        (HoraOtroRec.horas > current.getHours()) ||
+        (HoraOtroRec.horas === current.getHours() && HoraOtroRec.minutos > current.getMinutes())
       ))
     )
     setInvalidHora(true)
   else
     setInvalidHora(false)
   //====== Fin Hora =======
-  }, [horaAtencion.horas, horaAtencion.minutos, fechaAtencion])
+  }, [HoraOtroRec.horas, HoraOtroRec.minutos, FechaOtroRe])
 
   const clickConfirmar = () => {
-    dispatch(updateForm("fechaHoraAtencion", {...fechaAtencion,...horaAtencion}))
-    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, nombreAtencion , fechaAtencion, horaAtencion, tipoDocumento}));
-    dispatch(handleSetStep(19.22));
+    dispatch(updateForm("fechaHoraAtencion", {...FechaOtroRe,...HoraOtroRec}))
+
+    CamposDocumentos.OtroRecinto = OtroRecinto
+    CamposDocumentos.OtroRecintoSi="x"
+    CamposDocumentos.OtroRecintoNo=""
+    CamposDocumentos.FechaOtroRe=FechaOtroRe
+    CamposDocumentos.HoraOtroRec=HoraOtroRec
+
+    if(CuentaCual){
+      CamposDocumentos.CuentaCual=CuentaCual
+      CamposDocumentos.CuentaConSi="x"
+      CamposDocumentos.CuentaConNo=""
+    }else{
+      CamposDocumentos.CuentaCual=""
+      CamposDocumentos.CuentaConSi=""
+      CamposDocumentos.CuentaConNo="x"
+    }
+
+    dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+    dispatch(handleSetStep(19.22));    
+
   };
 
   return (
@@ -114,20 +135,20 @@ const AtencionPrevia = () => {
             </Grid>
             <TextField
                 id="nombre"
-                value={nombreAtencion}
-                onChange={(e) => saveNombreAtencion(e.target.value)}
+                value={OtroRecinto}
+                onChange={(e) => saveOtroRecinto(e.target.value)}
                 margin="dense"
                 variant="outlined"
                 autoComplete="off"
                 type="text"
-                helperText={(nombreAtencion.length > 0 && nombreAtencion.length < 5) && "Se necesita al menos 5 caracteres"}
-                error={(nombreAtencion.length > 0 && nombreAtencion.length < 5)}   
+                helperText={(OtroRecinto.length > 0 && OtroRecinto.length < 5) && "Se necesita al menos 5 caracteres"}
+                error={(OtroRecinto.length > 0 && OtroRecinto.length < 5)}   
                 inputProps={{ maxLength: 100 }}
                 fullWidth
                 InputProps={{
                     endAdornment: (
                     <InputAdornment  position="end">
-                      <IconButton onClick={() => {saveNombreAtencion("");}}>
+                      <IconButton onClick={() => {saveOtroRecinto("");}}>
                         <ClearIcon />
                       </IconButton>
                     </InputAdornment>
@@ -163,21 +184,21 @@ const AtencionPrevia = () => {
                 Tipo de documentos
             </Grid>
             <TextField
-                id="tipoDocumento"
-                value={tipoDocumento}
-                onChange={(e) => saveTipoDocumento(e.target.value)}
+                id="CuentaCual"
+                value={CuentaCual}
+                onChange={(e) => saveCuentaCual(e.target.value)}
                 margin="dense"
                 variant="outlined"
                 autoComplete="off"
                 type="text"
                 inputProps={{ maxLength: 100 }}
                 fullWidth
-                helperText={(tipoDocumento.length > 0 && tipoDocumento.length < 5) && "Se necesita al menos 5 caracteres"}
-                error={(tipoDocumento.length > 0 && tipoDocumento.length < 5)}   
+                helperText={(CuentaCual.length > 0 && CuentaCual.length < 5) && "Se necesita al menos 5 caracteres"}
+                error={(CuentaCual.length > 0 && CuentaCual.length < 5)}   
                 InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={() => {saveTipoDocumento("");}}>
+                      <IconButton onClick={() => {saveCuentaCual("");}}>
                           <ClearIcon />
                       </IconButton>
                     </InputAdornment>
@@ -190,7 +211,7 @@ const AtencionPrevia = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"
-            disabled={!nombreAtencion ||invalidFecha ||invalidHora}
+            disabled={!OtroRecinto}
             onClick={() => clickConfirmar()}
           >
             Confirmar

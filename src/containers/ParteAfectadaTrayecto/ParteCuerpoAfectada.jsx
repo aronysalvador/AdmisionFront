@@ -19,13 +19,13 @@ const ParteCuerpoAfectada = () => {
   } = useSelector((state) => state, shallowEqual);
 
   const [parteAfectada, setParteAfectada] = useState(() => {
-    return !CamposDocumentos.parteAfectada ? "" : CamposDocumentos.parteAfectada;
+    return !CamposDocumentos.ParteAfecta ? "" : CamposDocumentos.ParteAfecta;
   });
 
   // const [parteAfectadaValid, setParteAfectadaValid] = useState(true);
 
   const [otrasCircunstancias, setOtrasCircunstancias] = useState(() => {
-    return !CamposDocumentos.otrasCircunstancias ? "" : CamposDocumentos.otrasCircunstancias;
+    return !CamposDocumentos.Otras ? "" : CamposDocumentos.Otras;
   });
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -123,7 +123,7 @@ const ParteCuerpoAfectada = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, parteAfectada, otrasCircunstancias}));
+              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, ParteAfecta: parteAfectada, Otras: otrasCircunstancias}));
               dispatch(handleSetStep(10));
             }}
           >

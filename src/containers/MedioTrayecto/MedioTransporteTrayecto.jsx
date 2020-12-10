@@ -18,7 +18,7 @@ const MedioTransporteTrayecto = () => {
   } = useSelector((state) => state, shallowEqual);
 
   const [medioTransporte, setMedioTransporte] = useState(() => {
-    return !CamposDocumentos.medioTransporte ? "" : CamposDocumentos.medioTransporte;
+    return !CamposDocumentos.MedioTransp ? "" : CamposDocumentos.MedioTransp;
   });
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -107,7 +107,7 @@ console.log(sugerenciasMedios);
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("CamposDocumentos", {medioTransporte}));
+              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, MedioTransp: medioTransporte}));
               dispatch(handleSetStep(6.03));
             }}
           >
