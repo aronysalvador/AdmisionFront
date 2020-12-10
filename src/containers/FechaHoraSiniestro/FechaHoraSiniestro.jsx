@@ -28,8 +28,6 @@ const FechaHoraSiniestro = () => {
   const [invalidFecha, setInvalidFecha] = useState(true);
   const [invalidHora, setInvalidHora] = useState(true);
 
-
-
   const minutosArray = [0, 10, 20, 30, 40, 50]
 
   const dispatch = useDispatch();
@@ -161,6 +159,7 @@ const FechaHoraSiniestro = () => {
               daysFromState={days}
               monthFromState={month}
               yearFromState={year}
+              textLabel={"Fecha de accidente"}
             />
           </div>
           
@@ -171,6 +170,7 @@ const FechaHoraSiniestro = () => {
               horasFromState={horas}
               indiceMinutosFromState={minutosArray.indexOf(minutos)}
               minutos={minutosArray}
+              
             />
           </div>
           <div className={comunClass.displayDesk}>
@@ -179,6 +179,7 @@ const FechaHoraSiniestro = () => {
                 horasFromState={horas}
                 indiceMinutosFromState={minutosArray.indexOf(minutos)}
                 minutos={minutosArray}
+                textLabel={"Hora de accidente"}
               />
           </div>
         </div>

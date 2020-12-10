@@ -14,6 +14,7 @@ const FechaSiniestroDesk = ({
   daysFromState,
   monthFromState,
   yearFromState,
+  textLabel
 }) => {
 
   if(daysFromState?.toString().length === 1){
@@ -46,7 +47,7 @@ const FechaSiniestroDesk = ({
         <Grid
           className={comunClass.tituloTextBox}
         >
-          Fecha de accidente
+          {textLabel}
         </Grid>
       </div>
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
