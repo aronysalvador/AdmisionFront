@@ -95,6 +95,8 @@ import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
 import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
 import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
 
+import AtencionPrevia from "../AtencionPrevia/index";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, microsoftReducer } = props;
@@ -590,6 +592,14 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <RelatoSuccess />
+            </Paper>
+          </div>
+        );
+      case 19.21:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AtencionPrevia/>
             </Paper>
           </div>
         );
