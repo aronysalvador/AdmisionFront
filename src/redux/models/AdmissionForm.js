@@ -17,6 +17,7 @@ export const AdmissionForm = {
     responsable: [],
     fechaHoraResponsable: {},
     fechaHoraSiniestro: {},
+    fechaHoraAtencion: {},
 
     SucursalEmpresa: "",
     DireccionEmpresa: "",

@@ -36,8 +36,8 @@ const AgenteCausaEnfermedadProfesional = () => {
     initFn();
   }, [initFn]);
 
-  const { data: sugerenciasAgenteCausa } = useSelector( //CAMBIAR POR DATA AGENTES CAUSA
-    (state) => state.parteCuerpoAfectadaForm, shallowEqual ); //agenteCausaEnfermedadForm
+  const { data: sugerenciasAgenteCausa } = useSelector( //CAMBIAR POR DATA BD AGENTES CAUSA
+    (state) => state.agenteCausaEnfermedadForm, shallowEqual ); 
 
   const [molestia, setMolestia] = useState(() => {
     return !TrabajoMolestiasEP ? "" : TrabajoMolestiasEP;
@@ -122,6 +122,7 @@ const AgenteCausaEnfermedadProfesional = () => {
             <Typography className={comunClass.tituloTextBox}>
               Ingrese agente que causa la molestia
             </Typography>
+
             <AutoComplete
               inputValue={agenteCausa}
               onInputChange={(event, value) => {
@@ -130,6 +131,7 @@ const AgenteCausaEnfermedadProfesional = () => {
               freeSolo
               options={sugerenciasAgenteCausa} 
               getOptionLabel={(option) =>  option.nombre }
+
               renderInput={(params) => (
                 <TextField
                   {...params}

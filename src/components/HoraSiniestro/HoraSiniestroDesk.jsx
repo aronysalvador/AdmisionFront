@@ -12,6 +12,7 @@ const HoraSiniestroDesk = ({
   horasFromState,
   indiceMinutosFromState,
   minutos,
+  textLabel
 }) => {
 
   if(horasFromState?.toString().length === 1){
@@ -64,7 +65,7 @@ const HoraSiniestroDesk = ({
         <Grid
           className={comunClass.tituloTextBox}
         >
-          Hora de accidente
+          {textLabel}
         </Grid>
       </div>
       <div>
