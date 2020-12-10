@@ -20,7 +20,7 @@ const TipoAvisoResponsable = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm,  microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const {  addmissionForm, addmissionForm:{ CamposDocumentos },  microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [check,setCheck] = useState(addmissionForm.TipoAvisoResponsable? addmissionForm.TipoAvisoResponsable : { id:1,description:"Presencial" })
 
@@ -190,7 +190,49 @@ const TipoAvisoResponsable = () => {
                                     className={comunClass.buttonAchs}
                                     disabled={(!check.id || (check.id===5 && !check.especificacion))}
                                     onClick={() => {
-                                        dispatch(updateForm("TipoAvisoResponsable", check));
+
+                                        switch (check.id) {
+                                            case 1:
+                                                CamposDocumentos.avisoPresen="x"  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro=""  
+                                                CamposDocumentos.avisoCual=""  
+                                                break;
+                                            case 2:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail="x"  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro=""  
+                                                CamposDocumentos.avisoCual=""  
+                                                break;
+                                            case 3:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono="x"  
+                                                CamposDocumentos.avisoOtro=""  
+                                                CamposDocumentos.avisoCual=""  
+                                                break;
+                                            case 4:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro="x"  
+                                                CamposDocumentos.avisoCual=check.description  
+                                                break;
+                                            case 5:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro="x"  
+                                                CamposDocumentos.avisoCual=check.especificacion  
+                                                break;
+                                        
+                                            default:
+                                                break;
+                                        }
+
+                                        dispatch(updateForm("TipoAvisoResponsable", CamposDocumentos));
                                         dispatch(handleSetStep(17.1));
                                     }}
                                 >

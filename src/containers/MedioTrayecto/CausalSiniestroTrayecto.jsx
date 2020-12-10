@@ -20,12 +20,12 @@ const CausalSiniestroTrayecto = () => {
   } = useSelector((state) => state, shallowEqual);
 
   const [mecanismoCausal, setMecanismoCausal] = useState(() => {
-    return !CamposDocumentos.mecanismoCausal ? "" : CamposDocumentos.mecanismoCausal;
+    return !CamposDocumentos.Mecanismo ? "" : CamposDocumentos.Mecanismo;
   });
   const [mecanismoCausalValid, setMecanismoCausalValid] = useState(true);
 
   const [posibleCausa, setPosibleCausa] = useState(() => {
-    return !CamposDocumentos.posibleCausa ? "" : CamposDocumentos.posibleCausa;
+    return !CamposDocumentos.PosibleCaus ? "" : CamposDocumentos.PosibleCaus;
   });
   const [posibleCausaValid, setPosibleCausaValid] = useState(true);
   
@@ -138,7 +138,7 @@ const CausalSiniestroTrayecto = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, mecanismoCausal, posibleCausa}));
+              dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, Mecanismo: mecanismoCausal, PosibleCaus: posibleCausa}));
               dispatch(handleSetStep(6));
             }}
           >
