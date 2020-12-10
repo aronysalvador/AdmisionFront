@@ -65,36 +65,42 @@ export const AdmissionForm = {
 
     coberturaSoap: "", // se debe pasar a SAP
 
-    CamposDocumentos: { 
+    CamposDocumentos: {
         /* TRAYECTO */
-            //Atencion Previa
-                FechaOtroRe:"", 
-                HoraOtroRec:"", 
-                OtroRecinto:"", 
-                OtroRecintoSi:"", 
-                OtroRecintoNo: "x", 
-                CuentaConSi: "", 
-                CuentaConNo: "x", 
-                CuentaCual: "",
-            //Testigo
-                DatosTesting:"",
-            //Mecanismo Causal
-                Mecanismo: "",
-                PosibleCaus: "",
-            //MedioTransporte
-                MedioTransp: "",
-            //ParteAfectada
-                ParteAfecta: "",
-                Otras: "",
-            //TipoAvisoResponsable
-                avisoPresen:"",
-                avisoMail: "",
-                avisoFono: "",
-                avisoOtro: "",
-                avisoCual: ""
-
+        //Atencion Previa
+        FechaOtroRe: "",
+        HoraOtroRec: "",
+        OtroRecinto: "",
+        OtroRecintoSi: "",
+        OtroRecintoNo: "x",
+        CuentaConSi: "",
+        CuentaConNo: "x",
+        CuentaCual: "",
+        //Testigo
+        DatosTesting: "",
+        //Mecanismo Causal
+        Mecanismo: "",
+        PosibleCaus: "",
+        //MedioTransporte
+        MedioTransp: "",
+        //ParteAfectada
+        ParteAfecta: "",
+        Otras: "",
+        //TipoAvisoResponsable
+        avisoPresen: "",
+        avisoMail: "",
+        avisoFono: "",
+        avisoOtro: "",
+        avisoCual: "",
+        //Docuentación Complementaria
+        antecePartP: "",
+        anteceConst: "",
+        anteceVideS: "",
+        anteceComSe: "",
+        anteceOtro: "",
+        anteceOtroC: "",
         /* TRAYECTO */
-     }, 
+    },
 
     FechaSintomasEP: {},
 

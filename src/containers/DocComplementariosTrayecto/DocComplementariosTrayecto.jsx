@@ -21,7 +21,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const DocComplementariosTrayecto = () => {
   let {
-    addmissionForm: { percentage, CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos}, //  addmissionForm:{ CamposDocumentos }  
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -37,11 +37,11 @@ const DocComplementariosTrayecto = () => {
   const spaceStyle = getSpaceStyle();
 
   const [state, setState] = React.useState({
-    antecePartP: false,
-    anteceConst: false,
-    anteceVideS: false,
-    anteceComSe: false,
-    anteceOtro: false,
+    antecePartP: !CamposDocumentos.antecePartP ? false : CamposDocumentos.antecePartP,
+    anteceConst: !CamposDocumentos.anteceConst ? false : CamposDocumentos.anteceConst,
+    anteceVideS: !CamposDocumentos.anteceVideS ? false : CamposDocumentos.anteceVideS,
+    anteceComSe: !CamposDocumentos.anteceComSe ? false : CamposDocumentos.anteceComSe,
+    anteceOtro: !CamposDocumentos.anteceOtro ? false : CamposDocumentos.anteceOtro,
   });
 
   const handleChange = (event) => {
@@ -180,8 +180,14 @@ const DocComplementariosTrayecto = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-                dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, anteceOtroC}));              
-                dispatch(handleSetStep(19.22))
+              CamposDocumentos.anteceOtroC = ""
+              if ( state.antecePartP ) { CamposDocumentos.antecePartP = "x" } else { CamposDocumentos.antecePartP = "" }
+              if ( state.anteceConst ) { CamposDocumentos.anteceConst = "x" } else { CamposDocumentos.anteceConst = "" }
+              if ( state.anteceVideS ) { CamposDocumentos.anteceVideS = "x" } else { CamposDocumentos.anteceVideS = "" }
+              if ( state.anteceComSe ) { CamposDocumentos.anteceComSe = "x" } else { CamposDocumentos.anteceComSe = "" }
+              if ( state.anteceOtro ) { CamposDocumentos.anteceOtro = "x"; CamposDocumentos.anteceOtroC = anteceOtroC } else { CamposDocumentos.anteceOtro = "" }
+              dispatch(updateForm("CamposDocumentos", CamposDocumentos));              
+              dispatch(handleSetStep(19.22))
             }}
           >
             Continuar

@@ -1187,9 +1187,15 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         roundedBlue: {
             display: 'flex',
+            minWidth: '315px',
+            width: '100%',
+            margin: '0 2.5%'
         },
         roundedNormal: {
             display: 'flex',
+            minWidth: '315px',
+            width: '100%',
+            margin: '0 5%'
         },
     },
 
@@ -1461,7 +1467,7 @@ export const getComunStyle = makeStyles((theme) => ({
         color: "#373737",
         border: "2px solid #00B2A9 !important",
         borderRadius: "10px",
-        // alignItems: "center",
+        alignItems: "center",
         // justifyContent: "center",
         backgroundColor: "#DFF3F2 !important"
     },
@@ -1469,7 +1475,7 @@ export const getComunStyle = makeStyles((theme) => ({
         color: "#373737",
         border: "2px solid #787878 !important",
         borderRadius: "10px",
-        // alignItems: "center",
+        alignItems: "center",
         // justifyContent: "center",
         background: "#FFFFFF"
     },
