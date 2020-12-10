@@ -95,11 +95,8 @@ import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
 import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
 import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
 
-<<<<<<< HEAD
 import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
-=======
 import AtencionPrevia from "../AtencionPrevia/index";
->>>>>>> 91a6e77f0192b1023b38b8b12863fa6b80e4249a
 
 const Main = (props) => {
   const classes = useStyles();
