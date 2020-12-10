@@ -95,6 +95,8 @@ import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
 import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
 import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
 
+import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, microsoftReducer } = props;
@@ -550,6 +552,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <BoxQuestionResponsable />
+            </Paper>
+          </div>
+        );
+      case 17.2: // Tipo de aviso Responsable
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TipoAvisoResponsable />
             </Paper>
           </div>
         );

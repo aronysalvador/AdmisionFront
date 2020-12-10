@@ -67,4 +67,6 @@ export const AdmissionForm = {
     CamposDocumentos: { parteAfectada: "" }, // data para llenar docuemntos de trayecto
 
     FechaSintomasEP: {},
+
+    TipoAvisoResponsable: {}
 };
