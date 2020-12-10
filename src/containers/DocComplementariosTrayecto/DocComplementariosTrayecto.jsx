@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, TextField, InputAdornment, withStyles } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -56,6 +56,10 @@ const DocComplementariosTrayecto = () => {
     },
     checked: {},
   })((props) => <Checkbox color="default" {...props} />);
+  
+  useEffect(()=>{
+    console.log(state)
+  },[state])
 
   return (
     <div className={comunClass.root}>
@@ -86,69 +90,93 @@ const DocComplementariosTrayecto = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          {/* 
-          <Typography className={mobileCaption}>
-            Ejemplo: Piso 21, Área 453, Puesto 12A
-          </Typography> */}
           <FormGroup row>
-            <FormControlLabel
-              control={<BlueCheckbox checked={state.antecePartP} onChange={handleChange} name="antecePartP" />}
-              label="Parte policial"
-            />
-            <FormControlLabel
-              control={<BlueCheckbox checked={state.anteceConst} onChange={handleChange} name="anteceConst" />}
-              label="Constancia ante carabineros"
-            />
-            <FormControlLabel 
-              control={<BlueCheckbox checked={state.anteceVideS} onChange={handleChange} name="anteceVideS" />} 
-              label="Video de cámaras de seguridad" 
-            />
-            <FormControlLabel
-              control={<BlueCheckbox checked={state.anteceComSe} onChange={handleChange} name="anteceComSe" />}
-              label="Denuncia en compañía de seguros"
-            />
-            <FormControlLabel
-              control={<BlueCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />}
-              label="Otro"
-              renderInput={(params) => (
-                <TextField
-                  helperText={
-                    !anteceOtroValid && "Debes ingresar al menos 5 caracteres"
-                  }
-                  error={!anteceOtroValid}
-                  value={anteceOtroC}
-                  variant="outlined"
-                  size="small"
-                  margin="dense"
-                  required
-                  fullWidth
-                  onChange={(e) => {
-                    let texto = Format.caracteresInvalidos(e.target.value);
-                    setAnteceOtroValid(texto.length > 0);
-                    setAnteceOtroC(texto);
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                          <IconButton
-                            onClick={() => {
-                              setAnteceOtroC("");
-                            }}
-                          >
-                            <ClearIcon />
-                          </IconButton>
-                        </InputAdornment>
-                    ),
-                  }}
+          <div className={comunClass.deskFlex}>
+            <div className={state.antecePartP === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
+              <div className={comunClass.containerOpctionCompl}>
+                <FormControlLabel
+                  control={<BlueCheckbox checked={state.antecePartP} onChange={handleChange} name="antecePartP" />}
+                  label="Parte policial"
                 />
-              )}
-            />
+              </div>
+            </div>
+            <div className={spaceStyle.spaceMin1} />
+            <div className={state.anteceConst === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
+              <div className={comunClass.containerOpctionCompl}>
+                <FormControlLabel
+                  control={<BlueCheckbox checked={state.anteceConst} onChange={handleChange} name="anteceConst" />}
+                  label="Constancia ante carabineros"
+                />
+              </div>
+            </div>
+          </div>
+          <div className={spaceStyle.spaceMin1} />
+          <div className={comunClass.deskFlex}>
+            <div className={state.anteceVideS === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
+              <div className={comunClass.containerOpctionCompl}>
+                <FormControlLabel 
+                  control={<BlueCheckbox checked={state.anteceVideS} onChange={handleChange} name="anteceVideS" />} 
+                  label="Video de cámaras de seguridad" 
+                />
+              </div>
+            </div>
+            <div className={spaceStyle.spaceMin1} />
+            <div className={state.anteceComSe === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
+              <div className={comunClass.containerOpctionCompl}>
+                <FormControlLabel
+                  control={<BlueCheckbox checked={state.anteceComSe} onChange={handleChange} name="anteceComSe" />}
+                  label="Denuncia en compañía de seguros"
+                />
+              </div>
+            </div>
+          </div>
+          <div className={spaceStyle.spaceMin1} />
+          <div className={state.anteceOtro === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
+            <div className={comunClass.containerOpctionCompl}>
+              <FormControlLabel
+                control={<BlueCheckbox checked={state.anteceOtro} onChange={handleChange} name="anteceOtro" className={comunClass.txtRadios} />}
+                label="Otro"
+              />
+            </div>
+            <div style={{ padding: "0 10px 10px 10px" }}>
+              <TextField
+                disabled={state.anteceOtro === false}
+                helperText={
+                  !anteceOtroValid && "Debes ingresar al menos 5 caracteres"
+                }
+                error={!anteceOtroValid}
+                value={anteceOtroC}
+                variant="outlined"
+                size="small"
+                margin="dense"
+                required
+                fullWidth
+                onChange={(e) => {
+                  let texto = Format.caracteresInvalidos(e.target.value);
+                  setAnteceOtroValid(texto.length > 0);
+                  setAnteceOtroC(texto);
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                        <IconButton
+                          onClick={() => {
+                            setAnteceOtroC("");
+                          }}
+                        >
+                          <ClearIcon />
+                        </IconButton>
+                      </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+          </div>
           </FormGroup>
 
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            // disabled={anteceOtroC.length === 0 || !anteceOtroValid}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {

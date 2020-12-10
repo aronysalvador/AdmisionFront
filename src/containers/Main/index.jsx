@@ -623,8 +623,8 @@ const Main = (props) => {
         );
       case 19.23:
         return (
-          <div className={layoutFix}>
-            <Paper className={paperFix}>
+          <div className={layout}>
+            <Paper className={paper}>
               <DocComplementariosTrayecto />
             </Paper>
           </div>

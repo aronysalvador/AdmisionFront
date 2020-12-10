@@ -1179,6 +1179,18 @@ export const getComunStyle = makeStyles((theme) => ({
                 border: "2px solid #00B2A9",
             },
         },
+        deskFlex: {
+            display: 'flex',
+            justifyContent: 'space-around',
+            width: '100%',
+            margin: '10px 0'
+        },
+        roundedBlue: {
+            display: 'flex',
+        },
+        roundedNormal: {
+            display: 'flex',
+        },
     },
 
     '@media (min-width: 860px)': {
@@ -1447,18 +1459,19 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     roundedBlue: {
         color: "#373737",
-        border: "2px solid #00B2A9 !important",   
-        borderRadius: "10px",    
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#DFF3F2 !important"
     },
     roundedNormal: {
         color: "#373737",
-        border: "2px solid #787878 !important",   
-        borderRadius: "10px",    
+        border: "2px solid #787878 !important",
+        borderRadius: "10px",
         alignItems: "center",
         justifyContent: "center",
+        background: "#FFFFFF"
     },
     txtRadios: {
         fontFamily: "Catamaran",
@@ -1471,5 +1484,9 @@ export const getComunStyle = makeStyles((theme) => ({
     containerOpction: {
         display: "flex",
         marginLeft: "40px"
+    },
+    containerOpctionCompl: {
+        display: "flex",
+        marginLeft: "10px"
     }
 }));
