@@ -86,7 +86,7 @@ const AtencionPrevia = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(3))}
+          dispatch={() => dispatch(handleSetStep(19.2))}
           percentage={percentage}
         />
       </div>

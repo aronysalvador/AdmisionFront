@@ -129,7 +129,7 @@ const RelatoSuccess = (props) => {
                     className={comunStyle.buttonAchs2}
                     style={{minWidth: '320px'}}
                     variant="contained"
-                    // onClick={() => dispatch(handleSetStep(19.3))}
+                    onClick={() => dispatch(handleSetStep(19.21))}
                   >
                     Registrar atención médica en otro centro
                   </Button>
