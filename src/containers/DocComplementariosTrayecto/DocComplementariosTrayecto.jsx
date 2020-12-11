@@ -89,7 +89,7 @@ const DocComplementariosTrayecto = () => {
         <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
-        <div className={comunClass.containerTextBox}>
+        <div className={comunClass.containerTextBox} style={{width:'100%'}}>
           <FormGroup row>
           <div className={comunClass.deskFlex}>
             <div className={state.antecePartP === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
@@ -138,8 +138,9 @@ const DocComplementariosTrayecto = () => {
                 label="Otro"
               />
             </div>
-            <div style={{ padding: "0 10px 10px 10px" }}>
+            <div className={comunClass.widthOtro} style={{ padding: '0 10px 5px' }}>
               <TextField
+                style={{ background: '#ffff', border: '2px solid #787878', borderRadius: '8px'}}
                 disabled={state.anteceOtro === false}
                 helperText={
                   !anteceOtroValid && "Debes ingresar al menos 5 caracteres"

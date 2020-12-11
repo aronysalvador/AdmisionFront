@@ -1189,14 +1189,17 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex',
             minWidth: '315px',
             width: '100%',
-            margin: '0 2.5%'
+            margin: '0 5px'
         },
         roundedNormal: {
             display: 'flex',
             minWidth: '315px',
             width: '100%',
-            margin: '0 5%'
+            margin: '0 5px'
         },
+        widthOtro: {
+            width: '90%'
+        }
     },
 
     '@media (min-width: 860px)': {
