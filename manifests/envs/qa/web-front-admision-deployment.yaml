@@ -78,6 +78,8 @@ spec:
             value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getTipoAccidente/"
           - name: "REACT_APP_MEDIO_TRANSPORTE_TRAYECTO"
             value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getMediosTransporte"
+          - name: "REACT_APP_PARTES_DEL_CUERPO"
+            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getPartesCuerpo/"
         ports:
         - containerPort: 80
         resources:
