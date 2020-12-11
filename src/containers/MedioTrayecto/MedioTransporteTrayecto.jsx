@@ -36,12 +36,10 @@ const MedioTransporteTrayecto = () => {
     (state) => state.mediosTransporteForm,
     shallowEqual
   );
-console.log(sugerenciasMedios);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  console.log(sugerenciasMedios)
 
   return (
     <div className={comunClass.root}>

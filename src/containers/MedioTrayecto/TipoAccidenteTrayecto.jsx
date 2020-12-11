@@ -13,7 +13,7 @@ import relato from './../../img/relato.svg';
 
 const TipoAccidenteTrayecto = () => {
   const {
-    addmissionForm: { percentage, tipoAccidenteTrayectoForm },
+    addmissionForm: { percentage, tipoAccidenteTrayectoForm, CamposDocumentos },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
   
@@ -70,6 +70,7 @@ const TipoAccidenteTrayecto = () => {
               data={tipo}
               itemForm={"tipoAccidenteTrayectoForm"}
               selected={tipo.key === tipoAccidente.key}
+              CamposDocumentos={CamposDocumentos}
             >
               <BotonSeleccionarCustomItemTipoAccidenteTrayecto {...tipo} />
             </BotonSeleccionarCustomSingle>
