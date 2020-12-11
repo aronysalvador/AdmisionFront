@@ -36,6 +36,7 @@ const ParteCuerpoAfectada = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log("itshere")
     initFn();
   }, [initFn]);
 
