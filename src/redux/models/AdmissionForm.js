@@ -103,7 +103,15 @@ export const AdmissionForm = {
         //TipoAccidenteTrayecto
         HabitacionT: "",
         TrabajoHabitacion:"", 
-        EntreTrabaj:""
+        EntreTrabaj:"",
+        //Antece "" Documento Testigo
+        anteceRespA: "",
+        anteceRespO: "",
+        anteceRegsA: "",
+        anteceCertH: "",
+        //Testigo
+        TestigoS: "",
+        TestigoN: "x"
         /* TRAYECTO */
    
     },

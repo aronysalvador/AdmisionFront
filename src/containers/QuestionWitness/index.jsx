@@ -28,8 +28,16 @@ const QuestionWitness = (props) => {
           titulo={"¿Alguien fue"}
           titulo2={"testigo "}
           titulo3={"de lo que sucedió?"}
-          accionButoonA={() => dispatch(handleSetStep(14))}
+          accionButoonA={() => {
+            addmissionForm.CamposDocumentos.TestigoS = "x"
+            addmissionForm.CamposDocumentos.TestigoN = ""
+            dispatch(updateForm("CamposDocumentos", addmissionForm.CamposDocumentos));
+            dispatch(handleSetStep(14))
+          }}
           accionButoonB={() => {
+            addmissionForm.CamposDocumentos.TestigoS = ""
+            addmissionForm.CamposDocumentos.TestigoN = "x"
+            dispatch(updateForm("CamposDocumentos", addmissionForm.CamposDocumentos));
             dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
             dispatch(handleSetStep(15))     
           }}
