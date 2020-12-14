@@ -77,7 +77,7 @@ export const AdmissionForm = {
         CuentaConNo: "x",
         CuentaCual: "",
         //Testigo
-        DatosTesting: "",
+        DatosTestig: "",
         //Mecanismo Causal
         Mecanismo: "",
         PosibleCaus: "",
@@ -99,6 +99,7 @@ export const AdmissionForm = {
         anteceComSe: "",
         anteceOtro: "",
         anteceOtroC: "",
+        anteceNocuenta: "x",
         //TipoAccidenteTrayecto
         HabitacionT: "",
         TrabajoHabitacion:"", 

@@ -181,12 +181,19 @@ const DocComplementariosTrayecto = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
+              CamposDocumentos.anteceNocuenta = ""
               CamposDocumentos.anteceOtroC = ""
+              
               if ( state.antecePartP ) { CamposDocumentos.antecePartP = "x" } else { CamposDocumentos.antecePartP = "" }
               if ( state.anteceConst ) { CamposDocumentos.anteceConst = "x" } else { CamposDocumentos.anteceConst = "" }
               if ( state.anteceVideS ) { CamposDocumentos.anteceVideS = "x" } else { CamposDocumentos.anteceVideS = "" }
               if ( state.anteceComSe ) { CamposDocumentos.anteceComSe = "x" } else { CamposDocumentos.anteceComSe = "" }
               if ( state.anteceOtro ) { CamposDocumentos.anteceOtro = "x"; CamposDocumentos.anteceOtroC = anteceOtroC } else { CamposDocumentos.anteceOtro = "" }
+
+              if(!state.antecePartP || !state.anteceConst || !state.anteceVideS || !state.anteceComSe  || !state.anteceOtro){
+                CamposDocumentos.anteceNocuenta = "x"
+              }
+
               dispatch(updateForm("CamposDocumentos", CamposDocumentos));              
               dispatch(handleSetStep(19.22))
             }}
