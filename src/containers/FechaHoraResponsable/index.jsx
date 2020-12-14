@@ -88,6 +88,7 @@ const FechaHoraResponsable = () => {
               daysFromState={days}
               monthFromState={month}
               yearFromState={year}
+              textLabel={"Fecha de accidente"}
             />
           </div>
           <div className={spaceStyle.space1} />
@@ -97,6 +98,7 @@ const FechaHoraResponsable = () => {
                 horasFromState={horas}
                 indiceMinutosFromState={minutosArray.indexOf(minutos)}
                 minutos={minutosArray}
+                
               />
             </div>
             <div className={comunClass.displayDesk}>
@@ -105,6 +107,7 @@ const FechaHoraResponsable = () => {
                   horasFromState={horas}
                   indiceMinutosFromState={minutosArray.indexOf(minutos)}
                   minutos={minutosArray}
+                  textLabel={"Hora de accidente"}
                 />
             </div>
         </div>
