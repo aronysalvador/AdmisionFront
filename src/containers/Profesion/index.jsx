@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getProfesion } from "./../../redux/actions/ProfesionAction";
+
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -25,14 +25,6 @@ const Profesion = () => {
   });
 
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getProfesion(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: profesionList } = useSelector(
     (state) => state.profesionForm,

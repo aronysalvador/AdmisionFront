@@ -5,6 +5,19 @@ import { useDispatch } from "react-redux";
 import { loadStateFromSessionStorage } from "./redux/actions/AdmissionAction";
 import { loadLogStateFromSessionStorage } from "./redux/actions/Log";
 import { getSessionStorageState } from "./util/sessionStorage";
+//ReduxActions
+import { getAFP } from "./redux/actions/AfpAction";
+import { getRazonAlertaPrincipal } from "././redux/actions/AlertaCalificacionRazonAction";
+import { getCentros } from "././redux/actions/CentrosAchsAction";
+import { getComuna } from "./redux/actions/ComunaAction";
+import { getIdiomas } from "././redux/actions/IdiomasAction";
+import { getNacionalidades } from "././redux/actions/NacionalidadesAction";
+import { getPaises } from "././redux/actions/PaisesAction";
+import { searchIsapres } from "./redux/actions/PrevisionAction";
+import { getProfesion } from "././redux/actions/ProfesionAction";
+import { getContrato } from "./redux/actions/TipoContratoAction";
+import { getJornadaLaboralPrincipal } from "././redux/actions/TipoJornadaLaboralAction";
+import { getRemuneracion } from "./redux/actions/TipoRemuneracionAction";  
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +28,6 @@ function App() {
       ? result["addmissionForm"]
       : result;
     dispatch(loadStateFromSessionStorage(result2));
-
     const result3 = result["LogForm"]
       ? result["LogForm"]
       : {
@@ -23,14 +35,31 @@ function App() {
         loading: false,
         error: null,
       };
-   dispatch(loadLogStateFromSessionStorage(result3));
-    
-
+   dispatch(loadLogStateFromSessionStorage(result3));    
   }, [dispatch]);
 
   useEffect(() => {
     initFn();
   }, [initFn]);
+
+  const initFuncTion = useCallback(() => {
+    dispatch(getAFP(""));
+    dispatch(getRazonAlertaPrincipal(""));
+    dispatch(getCentros(""));
+    dispatch(getComuna(""));
+    dispatch(getNacionalidades());
+    dispatch(getIdiomas());
+    dispatch(getPaises());
+    dispatch(searchIsapres());
+    dispatch(getProfesion(""));
+    dispatch(getContrato(""));
+    dispatch(getJornadaLaboralPrincipal(""));
+    dispatch(getRemuneracion(""));    
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFuncTion()
+  }, [initFuncTion]);
 
   return (
     <BrowserRouter>

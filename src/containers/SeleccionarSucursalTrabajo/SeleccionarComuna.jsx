@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -7,7 +7,6 @@ import { getComunStyle } from "../../css/comun";
 import { Typography, TextField, Button } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import CardSucursal from "../../components/CardSucursal/CardSucursal";
-import { getComuna } from "../../redux/actions/ComunaAction";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
@@ -34,13 +33,6 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
   const [listaComunas, setListaComunas] = useState([]);
   const dispatch = useDispatch();
 
-  const initFn = useCallback(() => {
-    dispatch(getComuna(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
