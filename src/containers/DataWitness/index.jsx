@@ -43,15 +43,15 @@ const DataWitness = () => {
   const clickSendTestigo = () => {
     dispatch(sendCargo(nombre, cargos));
     dispatch(updateForm("testigoForm", nombre + "-" + cargos));
-    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, DatosTesting: datosTestig}));
+    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, DatosTestig: datosTestig}));
     dispatch(handleSetStep(14.1));
   };
 
   const [datosTestig, setDatosTestig] = useState(() => {
-    return !CamposDocumentos.DatosTesting ? "" : CamposDocumentos.DatosTesting; //"+56 9"
+    return !CamposDocumentos.DatosTestig ? "" : CamposDocumentos.DatosTestig; //"+56 9"
   });
   const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
-    return CamposDocumentos.DatosTesting ? true : false;
+    return CamposDocumentos.DatosTestig ? true : false;
   });
 
   const handleOnChange = (e) => {
