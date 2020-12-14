@@ -7,7 +7,9 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
+import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
+import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import HoraSiniestroDesk from "./../../components/HoraSiniestro/HoraSiniestroDesk";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
@@ -33,11 +35,6 @@ const AtencionPrevia = () => {
 
   const [FechaOtroRe, setFechaOtroRe] = useState({});
   const [HoraOtroRec, setHoraOtroRec] = useState({});
-  const [invalidFecha, setInvalidFecha] = useState(true);
-  const [invalidHora, setInvalidHora] = useState(true);
-
-  console.log(invalidFecha)
-  console.log(invalidHora)
 
   const minutosArray = [0, 10, 20, 30, 40, 50]
 
@@ -49,32 +46,6 @@ const AtencionPrevia = () => {
     setHoraOtroRec({ ...value });
   }
 
-  React.useEffect(() => {
-    let current = new Date();
-    //========= Fecha =======
-    if(FechaOtroRe.year <= 1900 || 
-      !(FechaOtroRe.year <= current.getFullYear() && FechaOtroRe.month <= current.getMonth()+1 && FechaOtroRe.days <= current.getDate())
-      )
-      setInvalidFecha(true)
-    else
-      setInvalidFecha(false)
-
-    //====== Fin Fecha ======
-    //====== Hora =======
-    if(
-      (HoraOtroRec.horas === -1 || HoraOtroRec.minutos === -1 || HoraOtroRec.minutos === undefined)
-      ||
-      ((FechaOtroRe.year === current.getFullYear() && FechaOtroRe.month === current.getMonth()+1 && FechaOtroRe.days === current.getDate()) &&
-      (
-        (HoraOtroRec.horas > current.getHours()) ||
-        (HoraOtroRec.horas === current.getHours() && HoraOtroRec.minutos > current.getMinutes())
-      ))
-    )
-    setInvalidHora(true)
-  else
-    setInvalidHora(false)
-  //====== Fin Hora =======
-  }, [HoraOtroRec.horas, HoraOtroRec.minutos, FechaOtroRe])
 
   const clickConfirmar = () => {
     dispatch(updateForm("fechaHoraAtencion", {...FechaOtroRe,...HoraOtroRec}))
@@ -82,8 +53,8 @@ const AtencionPrevia = () => {
     CamposDocumentos.OtroRecinto = OtroRecinto
     CamposDocumentos.OtroRecintoSi="x"
     CamposDocumentos.OtroRecintoNo=""
-    CamposDocumentos.FechaOtroRe=FechaOtroRe
-    CamposDocumentos.HoraOtroRec=HoraOtroRec
+    CamposDocumentos.FechaOtroRe=`${FechaOtroRe.year}-${FechaOtroRe.month}-${FechaOtroRe.days}`
+    CamposDocumentos.HoraOtroRec=`${HoraOtroRec.horas}:${HoraOtroRec.minutos}`
 
     if(CuentaCual){
       CamposDocumentos.CuentaCual=CuentaCual
@@ -158,6 +129,14 @@ const AtencionPrevia = () => {
           
             <div className={spaceStyle.space1} />
                 <div className={comunClass.paddingElement}>
+                    <div style={{display:'none'}}>
+                      <FechaSiniestro
+                        onChange={setFechaValueSiniestro}
+                        daysFromState={days}
+                        monthFromState={month}
+                        yearFromState={year}
+                      />
+                    </div>
                     <div className={[comunClass.widthDateSex]}>
                       <FechaSiniestroDesk
                         onChange={setFechaValueSiniestro}
@@ -168,6 +147,15 @@ const AtencionPrevia = () => {
                       />
                     </div>
                     <div className={spaceStyle.space1} />
+                    <div style={{display: 'none'}}>
+                      <HoraSiniestro
+                        onChange={setHoraValueSiniestro}
+                        horasFromState={horas}
+                        indiceMinutosFromState={minutosArray.indexOf(minutos)}
+                        minutos={minutosArray}
+                        
+                      />
+                    </div>
                     <div className={[comunClass.widthDateSex]}>
                       <HoraSiniestroDesk
                           onChange={setHoraValueSiniestro}
@@ -211,7 +199,7 @@ const AtencionPrevia = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"
-            disabled={!OtroRecinto}
+            disabled={!OtroRecinto || !FechaOtroRe || !HoraOtroRec}
             onClick={() => clickConfirmar()}
           >
             Confirmar
