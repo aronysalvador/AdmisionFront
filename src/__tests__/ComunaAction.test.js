@@ -14,3 +14,4 @@ describe("SeleccionarComuna ", () => {
     expect(resultado.status).toEqual(200);
   });
 });
+

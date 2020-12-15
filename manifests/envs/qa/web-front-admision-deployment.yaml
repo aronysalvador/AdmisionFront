@@ -1,85 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-qa-front-admision-sprint10
+  name: web-qa-front-admision
 spec:
   selector:
     matchLabels:
-      app: web-qa-front-admision-sprint10
+      app: web-qa-front-admision
   template:
     metadata:
       labels:
-        app: web-qa-front-admision-sprint10
+        app: web-qa-front-admision
     spec:
       containers:
-      - name: web-qa-front-admision-sprint10
+      - name: web-qa-front-admision
         image: imagen         
         imagePullPolicy: Always
         env:
           - name: PUBLIC_URL
             value: /web-admision     
-          - name: "REACT_APP_ISAPRES"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/isapres/"
-          - name: "REACT_APP_AFP"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/afp/"
-          - name: "REACT_APP_NACIONALIDADES"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/datosPaciente/nacionalidades/"
-          - name: "REACT_APP_IDIOMAS"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/datosPaciente/idiomas/"
-          - name: "REACT_APP_PAISES"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/datosPaciente/paises/"
-          - name: "REACT_APP_CATEGORIA_OCUPACIONAL"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/categoriaOcupacional/"
-          - name: "REACT_APP_TIPO_CONTRATO"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/tipoContrato/"
-          - name: "REACT_APP_JORNADA_TRABAJO"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/jornadaTrabajo/"
-          - name: "REACT_APP_TIPO_REMUNERACIONES"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/tipoRemuneracion/"
-          - name: "REACT_APP_COMUNA"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/comunas"
-          - name: "REACT_APP_SUCURSALES"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/sucursales"
-          - name: "REACT_APP_CENTROSACHS"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/centros"
-          - name: "REACT_APP_PROFESION"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/profesiones"
-          - name: "REACT_APP_ALERTAS"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/alertas"
-          - name: "REACT_APP_RAZONSOCIAL"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/razonSocialByName?companyName="
-          - name: "REACT_APP_CENTER_USER"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/centrosUser"
-          - name: "REACT_APP_LOG"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/logs/"
-          - name: "REACT_APP_RAZON_SOCIAL_RUT"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/razonSocialByRut?rut="
-          - name: "REACT_APP_VALIDAR_DATA_EMPRESA"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/paciente/"
-          - name: "REACT_APP_VALIDAR_DATA_PACIENTE"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/paciente/getPaciente"
-          - name: "REACT_APP_INTEGRACION_SAP"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/sap/integracionsap"
-          - name: "REACT_APP_HOMOLOGACION"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/admisionista/getAliasSapByEmail"
-          - name: "REACT_APP_GEO_AUTOCOMPLETE"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/geo/autocompletarDirecciones"
-          - name: "REACT_APP_GEO_STATICMAP"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/geo/getMapaEstatico"
-          - name: "REACT_APP_GEO_LATLNG"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/geo/getLatLng"
-          - name: "REACT_APP_GEO_DIRECTION"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/geo/getDireccion"
-          - name: "REACT_APP_MICROSOFT_AUTH_CLIENTID"
-            value: azureID
-          - name: "REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/web-admision/"
-          - name: "REACT_APP_TIPO_ACCIDENTE_TRAYECTO"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getTipoAccidente/"
-          - name: "REACT_APP_MEDIO_TRANSPORTE_TRAYECTO"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getMediosTransporte"
-          - name: "REACT_APP_PARTES_DEL_CUERPO"
-            value: "https://qa.sprint10.52.149.214.89.nip.io/orquestador/api/trayecto/getPartesCuerpo/"
+          - name: ENTORNO
+            value: qa
         ports:
         - containerPort: 80
         resources:

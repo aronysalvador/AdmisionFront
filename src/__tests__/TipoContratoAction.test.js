@@ -14,3 +14,4 @@ describe("TipoDeContrato",()=>{
         expect(resultado.status).toEqual(200)
     })
 })
+

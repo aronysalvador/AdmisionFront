@@ -31,7 +31,7 @@ const form = (props) => {
       <div className={comunClass.displayDesk}>
         <div className={comunClass.titlePrimaryDesk}>
           <Grid component="span" className={comunClass.textPrimaryDesk}>
-            <Typography variant="p" component="p" className={comunClass.titleBlack2}>
+            <Typography variant="inherit" component="p" className={comunClass.titleBlack2}>
               Empecemos completando <br /> algunos datos 
             </Typography>
           </Grid>

@@ -16,14 +16,14 @@ const IndiciacionesPacientes = ({ indicaciones }) => {
           </div>
           <div className={welcomeStyle.itemBegin}>
             <Typography
-              variant="p"
+              variant="inherit"
               component="p"
               className={welcomeStyle.itemText}
             >
               {textoPrimario}
             </Typography>
             <Typography
-              variant="p"
+              variant="inherit"
               component="p"
               className={welcomeStyle.pBegin}
             >
