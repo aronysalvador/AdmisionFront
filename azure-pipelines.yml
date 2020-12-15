@@ -7,7 +7,7 @@ trigger:
       - release/*
       - develop
       - hotfix/*
-      - parallelDevelop
+      - paralleldevelopment
 
 variables:
   - group: VARIABLE-ENTORNO-ADMISIONDIGITAL
@@ -46,7 +46,7 @@ stages:
           eq(variables['Build.Reason'], 'PullRequest')
         ),
         and(
-          startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/parallelDevelop'),
+          startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/paralleldevelopment'),
           startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/develop'),
           eq(variables['Build.Reason'], 'PullRequest')
         )
@@ -95,7 +95,7 @@ stages:
     condition: |
        and(
          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
-         startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/parallelDevelop'),
+         startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/paralleldevelopment'),
          eq(variables['Build.Reason'], 'PullRequest')
        )
     jobs:
