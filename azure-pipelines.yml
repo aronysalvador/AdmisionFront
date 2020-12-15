@@ -124,7 +124,7 @@ stages:
             displayName: Get secrets
             inputs:
               script: |
-                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
                 sed -i "s?azureID?$(azureAdDesarrollo)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
                 sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
                 sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-service.yaml
