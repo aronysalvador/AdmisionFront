@@ -134,7 +134,13 @@ stages:
           - task: Npm@1
             displayName: Npm Install
             inputs:
-              command: 'install'        
+              command: 'install'    
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'                    
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
