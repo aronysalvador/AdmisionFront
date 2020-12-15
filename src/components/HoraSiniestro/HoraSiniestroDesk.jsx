@@ -28,7 +28,8 @@ const HoraSiniestroDesk = ({
   const comunClass = getComunStyle();
 
   const onDateChange = (date, value) => {
-    setInputValue2(value)
+    console.log(value)
+    setInputValue2(value?value:"")
     if(value?.length){
       let horas = -1;
       let indiceMinutos = -1;
