@@ -11,8 +11,11 @@ import IndiciacionesPacientes from "../../components/Indicaciones";
 import CajaRutSiniestro from "./CajaRutSiniestro";
 import Header from "../../components/header/index";
 import { Grid } from '@material-ui/core';
+
 import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
+import espera from './../../img/espera.svg'
+import work from './../../img/work.svg'
 
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
@@ -94,7 +97,7 @@ const PantallaFinal = (props) => {
             <IndiciacionesPacientes
               indicaciones={[
                 {
-                  icono: "espera.svg",
+                  icono: espera,
                   textoPrimario: "Esperar en sala",
                   textoSecundario: "al llamado del doctor",
                   clase: welcomeStyle.divRowPantallaFinal,
@@ -106,7 +109,7 @@ const PantallaFinal = (props) => {
                 //   clase: welcomeStyle.divRowBottom,
                 // },
                 {
-                  icono: "work.svg",
+                  icono: work,
                   textoPrimario: "Si el paciente presenta dolor",
                   textoSecundario: "avisa a la ECS",
                   clase: welcomeStyle.divRowPantallaFinal,
