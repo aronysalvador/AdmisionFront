@@ -19,7 +19,9 @@ spec:
           - name: PUBLIC_URL
             value: /web-admision     
           - name: ENTORNO
-            value: desarrollo
+            value: ParallelDesarrollo
+          - name: nombreSprint
+            value: sprintName
 
         ports:
         - containerPort: 80
