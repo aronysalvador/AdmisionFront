@@ -63,7 +63,7 @@ const TipoAccidenteTrayecto = () => {
       <div className={spaceStyle.space2} />
       <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.cardBtn}>
-          {tipoAccidenteTrayectoList.length>0( 
+          {tipoAccidenteTrayectoList.length>0 && ( 
             <>
               {tipoAccidenteTrayectoList && tipoAccidenteTrayectoList.map((tipo) => (
               
