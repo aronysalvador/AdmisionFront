@@ -21,7 +21,7 @@ const TipoAccidenteTrayecto = () => {
   const dispatch = useDispatch();
 
   const initFn = useCallback(() => {
-
+  console.log("buscando tipos...")
     dispatch(getTiposAccidenteTrayecto());
   }, [dispatch]);
 
@@ -63,18 +63,22 @@ const TipoAccidenteTrayecto = () => {
       <div className={spaceStyle.space2} />
       <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.cardBtn}>
-          {tipoAccidenteTrayectoList && tipoAccidenteTrayectoList.map((tipo) => (
-          
-            <BotonSeleccionarCustomSingle
-              key={tipo.key}
-              data={tipo}
-              itemForm={"tipoAccidenteTrayectoForm"}
-              selected={tipo.key === tipoAccidente.key}
-              CamposDocumentos={CamposDocumentos}
-            >
-              <BotonSeleccionarCustomItemTipoAccidenteTrayecto {...tipo} />
-            </BotonSeleccionarCustomSingle>
-          ))}
+          {tipoAccidenteTrayectoList.length>0( 
+            <>
+              {tipoAccidenteTrayectoList && tipoAccidenteTrayectoList.map((tipo) => (
+              
+                <BotonSeleccionarCustomSingle
+                  key={tipo.key}
+                  data={tipo}
+                  itemForm={"tipoAccidenteTrayectoForm"}
+                  selected={tipo.key === tipoAccidente.key}
+                  CamposDocumentos={CamposDocumentos}
+                >
+                  <BotonSeleccionarCustomItemTipoAccidenteTrayecto {...tipo} />
+                </BotonSeleccionarCustomSingle>
+              ))}
+            </>
+          )}
         </div>
       </div>
       <div className={comunClass.displayDesk}>
