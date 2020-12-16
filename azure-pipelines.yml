@@ -129,7 +129,8 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=desarrolloTest
+                export ENTORNO=ParallelDesarrolloTest
+                export sprintName=$(sprintName)
                 sh reemplaza-envs.sh        
           - task: Npm@1
             displayName: Npm Install
@@ -147,7 +148,7 @@ stages:
               containerRegistry: $(ContainerRegistryName)
               repository: $(Repositorio)
               command: build
-              Dockerfile: ./manifests/envs/desaparallel/Dockerfile
+              Dockerfile: ./Dockerfile
               tags: $(ImageTag)
           - task: Docker@2
             displayName: Push Docker Image
