@@ -13,7 +13,7 @@ const EditarDireccionSucursal = () => {
   const {
     addmissionForm: { percentage, sucursales, SucursalEmpresaObjeto },
   } = useSelector((state) => state, shallowEqual);
-  const microsoftReducer = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const [sucursalEmpresa, setSucursalEmpresa] = useState(SucursalEmpresaObjeto);
   
