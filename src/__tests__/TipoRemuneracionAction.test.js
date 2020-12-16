@@ -14,3 +14,4 @@ describe("Remuneracion",()=>{
         expect(resultado.status).toEqual(200)
     })
 })
+

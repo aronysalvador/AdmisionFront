@@ -15,7 +15,7 @@ const Cabecera = (props) => {
     return (
         <div>
         {/* <div>
-            <Typography variant="p" component="p" className={comunClass.tituloACHS}>
+            <Typography variant="inherit" component="p" className={comunClass.tituloACHS}>
             </Typography>
         </div>   */}
                 

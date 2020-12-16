@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-prod-front-admision
+  name: web-front-admision-sprintName
 spec:
   selector:
     matchLabels:
-      app: web-prod-front-admision
+      app: web-front-admision-sprintName
   template:
     metadata:
       labels:
-        app: web-prod-front-admision
+        app: web-front-admision-sprintName
     spec:
       containers:
-      - name: web-prod-front-admision
-        image: imagen         
+      - name: web-front-admision-sprintName
+        image: imagen          
         imagePullPolicy: Always
         env:
           - name: PUBLIC_URL
-            value: /web-admision
+            value: /web-admision     
           - name: ENTORNO
-            value: produccion
-          
+            value: desarrollo
+
         ports:
         - containerPort: 80
         resources:

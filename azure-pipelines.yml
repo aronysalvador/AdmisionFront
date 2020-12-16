@@ -7,6 +7,7 @@ trigger:
       - release/*
       - develop
       - hotfix/*
+      - paralleldevelopment
 
 variables:
   - group: VARIABLE-ENTORNO-ADMISIONDIGITAL
@@ -38,9 +39,17 @@ stages:
   - stage: Deploy_DESA
     displayName: "Building Desploy DESA"
     condition: |
-      and(
-        startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
-        eq(variables['Build.Reason'], 'PullRequest')
+      or(
+        and(
+          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
+          startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/develop'),
+          eq(variables['Build.Reason'], 'PullRequest')
+        ),
+        and(
+          startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/paralleldevelopment'),
+          startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/develop'),
+          eq(variables['Build.Reason'], 'PullRequest')
+        )
       )
     jobs:
       - deployment: Deploy
@@ -49,6 +58,26 @@ stages:
       - job: Build
         displayName: "Deploy_DESA"
         steps:
+
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=desarrolloTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
@@ -80,6 +109,73 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-ingress.yaml
               containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+
+  - stage: Deploy_DESA_Parallel
+    displayName: "Building Desploy DESA Parallel"
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
+         startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/paralleldevelopment'),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy DESA Parallel"
+        environment: "Deploy_DESA"
+      - job: Build
+        displayName: "Deploy_DESA_Parallel"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=ParallelDesarrolloTest
+                export nombreSprint=$(sprintName)
+                sh reemplaza-envs.sh        
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'    
+          # - task: Npm@1
+          #   displayName: Npm Test
+          #   inputs:
+          #     command: 'custom'
+          #     workingDir: 'src/__tests__'
+          #     customCommand: 'test'                    
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: push
+              tags: $(ImageTag)
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdDesarrollo)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-service.yaml
+                sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-ingress.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-DESA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)              
   # DESA #
 
   # QA #
@@ -98,6 +194,26 @@ stages:
       - job: Build
         displayName: "Deploy QA"
         steps:
+
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=qaTest
+                sh reemplaza-envs.sh
+                echo ls
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
           - task: CmdLine@2
             displayName: Get secrets
             inputs:
@@ -130,6 +246,23 @@ stages:
       - job: Build
         displayName: "Deploy QA Hotfix"
         steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=qaTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
@@ -181,6 +314,24 @@ stages:
         displayName: "Deploy STG"
         steps:
           - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=stagingTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: CmdLine@2
             displayName: Get secrets
             inputs:
               script: |
@@ -215,6 +366,24 @@ stages:
         displayName: "Deploy PROD"
         steps:
           - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=produccionTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: CmdLine@2
             displayName: Get secrets
             inputs:
               script: |
@@ -245,6 +414,24 @@ stages:
       - job: Build
         displayName: "Deploy PROD Hotfix"
         steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=produccionTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
           - task: Docker@2
             displayName: Build Docker Image
             inputs:
