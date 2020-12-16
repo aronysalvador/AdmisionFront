@@ -130,7 +130,7 @@ stages:
             inputs:
               script: |
                 export ENTORNO=ParallelDesarrolloTest
-                export sprintName=$(sprintName)
+                export nombreSprint=$(sprintName)
                 sh reemplaza-envs.sh        
           - task: Npm@1
             displayName: Npm Install
