@@ -41,17 +41,19 @@ const PersonalData = (props) => {
     const {
       razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,
       rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
-
     if ( !razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa ) {
       // si falta info de la empresa
       dispatch(handleSetStep(5.4)); //form empresa
-    } else if (!direccionParticular) {
+    }
+    else if (!direccionParticular) {
       // si no tiene direccion
       dispatch(handleSetStep(5.2));//form direccion
-    } else if ( !telefonoParticular || telefonoParticular === "0") {
+    } 
+    else if ( !telefonoParticular || telefonoParticular === "0") {
       // si no tiene telefono
       dispatch(handleSetStep(5.3)); //form telefono
-    } else {
+    } 
+    if(direccionParticular && telefonoParticular && razonSocial) {
       // si todos los datos relevantes están llenos
       if(rut && rutEmpresa && SucursalEmpresaObjeto){
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
@@ -73,9 +75,9 @@ const PersonalData = (props) => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={`${comunClass.titleBlack} ${comunClass.titleBlack2} ${comunClass.textPrimaryDesk}`}>
           Empieza
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component="span"  className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
             &nbsp;verificando los datos de&nbsp;<br className={comunClass.displayMobile}/>
           </Grid>  
           <Grid component="span"  className={comunClass.titleGray}>
@@ -117,7 +119,8 @@ const PersonalData = (props) => {
             disabled={loading}
             onClick={() => handleNext()}
           >
-            Sí, es correcta
+            {(addmissionForm.direccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial)?"Sí, es correcta":"Rellenar información"}
+            
           </Button>
         </div>
       </div>

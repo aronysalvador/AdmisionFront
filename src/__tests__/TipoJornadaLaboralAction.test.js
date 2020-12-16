@@ -14,3 +14,5 @@ describe("TipoJornadaLaboral",()=>{
         expect(resultado.status).toEqual(200)
     })
 })
+
+

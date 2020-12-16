@@ -35,7 +35,7 @@ const DireccionGeo = (props) => {
     const setearDirection = async(direccion) => {
       setLoading(true)
 
-      const test = await fetch(`${process.env.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${direccion}`)
+      const test = await fetch(`${window.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${direccion}`)
       const json = await test.json()    
       var predictions = (Array.isArray(json.content[0].predictions)) ? json.content[0].predictions : []  
       predictions[predictions.length]=DinamycOption  

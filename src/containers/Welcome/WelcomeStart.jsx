@@ -108,7 +108,7 @@ const Start = (props) =>{
           </div>
         </div>
         {/* <div style={{padding: "10px 16px 0 16px"}} className={comunStyle.displayMobile}>
-            <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent, welcomeStyle.terminos]} >
+            <Typography variant="inherit" component="p" display="block" className={[comunStyle.textAchsContent, welcomeStyle.terminos]} >
                 Al hacer click en empezar,  
                 <Link className={[comunStyle.textAchsContent, welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
                     aceptas nuestros  <span style={{textDecoration: 'underline'}}>Términos y condiciones</span>

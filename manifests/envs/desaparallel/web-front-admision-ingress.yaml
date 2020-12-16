@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: web-front-admision-ingress-sprintName
+  annotations:
+       kubernetes.io/ingress.class: nginx
+       cert-manager.io/cluster-issuer: letsencrypt
+       nginx.ingress.kubernetes.io/rewrite-target: /$1
+
+spec:
+  tls:
+    - hosts:
+      - desa.sprintName.40.121.134.234.nip.io
+      secretName: admision-web-cert
+  rules:
+  - host: desa.sprintName.40.121.134.234.nip.io 
+    http:
+      paths:
+      - path: /web-admision(/?.*)
+        backend:
+          serviceName: web-front-admision-service-sprintName
+          servicePort: 80
+      - path: /web-firmadigital(/?.*)
+        backend:
+          serviceName: web-front-firmadigital-service-sprintName
+          servicePort: 80   
+      - path: /web-digitalizador-documentos(/?.*)
+        backend:
+          serviceName: web-front-digitalizaciondocumentos-service-sprintName
+          servicePort: 80   
+      - path: /orquestador/(.*)
+        backend:
+          serviceName: api-orquestador-service-sprintName
+          servicePort: 80       
