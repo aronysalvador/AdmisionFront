@@ -13,6 +13,9 @@ import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
+import espera from './../../img/espera.svg'
+import sms from './../../img/sms.svg'
+import work from './../../img/work.svg'
 
 const PersonalSuccess = (props) =>{
     const { dispatch, microsoftReducer } = props;
@@ -90,19 +93,19 @@ const PersonalSuccess = (props) =>{
               <Indiciaciones
                 indicaciones={[
                   {
-                    icono: "espera.svg",
+                    icono: espera,
                     textoPrimario: "Completa las frases",
                     textoSecundario: "mientras escuchas con atención",
                     clase: welcomeStyle.divRowBottom,
                   },
                   {
-                    icono: "sms.svg",
+                    icono: sms,
                     textoPrimario: "Transcribe con fidelidad",
                     textoSecundario: "usando los tiempos verbales sugeridos",
                     clase: welcomeStyle.divRowBottom,
                   },
                   {
-                    icono: "work.svg",
+                    icono: work,
                     textoPrimario: "Mantén la autenticidad",
                     textoSecundario: "sin alterar los sucesos",
                     clase: welcomeStyle.divRow2,

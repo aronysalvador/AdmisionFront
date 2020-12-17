@@ -11,8 +11,12 @@ import { Grid } from '@material-ui/core';
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+
 import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
+import espera from './../../img/espera.svg'
+import sms from './../../img/sms.svg'
+import work from './../../img/work.svg'
 
 const RelatoSuccess = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -94,20 +98,20 @@ const RelatoSuccess = (props) => {
             <Indiciaciones
               indicaciones={[
                 {
-                  icono: "espera.svg",
+                  icono: espera,
                   textoPrimario: "Sin entrar en detalles",
                   textoSecundario: "no te demores en estas preguntas",
                   clase: welcomeStyle.divRowBottom,
                 },
                 {
-                  icono: "sms.svg",
+                  icono: sms,
                   textoPrimario: "Revisa su lenguaje no verbal",
                   textoSecundario: "y evalúa la coherencia con su relato",
                   clase: welcomeStyle.divRowBottom,
                   style: {marginRight: '10px'}
                 },
                 {
-                  icono: "work.svg",
+                  icono: work,
                   textoPrimario: "Mantén una actitud positiva",
                   textoSecundario: "y sonríe con amabilidad",
                   clase: welcomeStyle.divRow,
