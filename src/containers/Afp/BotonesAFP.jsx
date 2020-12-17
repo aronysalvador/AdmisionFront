@@ -1,6 +1,5 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { getAFP } from "../../redux/actions/AfpAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
@@ -24,14 +23,6 @@ const BotonesAFP = () => {
 
   const tipoAFP = !afpForm ? "" : afpForm;
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
-  
-  const initFn = useCallback(() => {
-    dispatch(getAFP(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn()
-  }, [initFn]);
   
   const [buttonOver, setButtonOver] = useState(false);
 

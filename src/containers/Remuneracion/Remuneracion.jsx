@@ -1,11 +1,10 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { getRemuneracion } from "../../redux/actions/TipoRemuneracionAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
@@ -19,14 +18,6 @@ const Remuneracion = () => {
   const { step, percentage, tipoRemuneracion } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
-
-  const initFn = useCallback(() => {
-    dispatch(getRemuneracion(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: tipoRemuneracionList } = useSelector(
     (state) => state.tipoRemuneracionForm, shallowEqual);

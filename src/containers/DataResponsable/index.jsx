@@ -8,10 +8,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-
 //Action de Redux
 import { sendResponsable } from "../../redux/actions/AdmissionAction";
-// import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -36,16 +34,6 @@ const DataResponsable = () => {
   const [cargos, saveCargos] = useState(() => {
     return !responsable ? "" : responsable.cargo;
   });
-
-  // const initFn = useCallback(() => {
-  //   const consultaCargos = () => dispatch(searchCargos()); // eslint-disable-line no-use-before-define
-  //   consultaCargos();
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   //Call Action
-  //   initFn()
-  // }, [initFn]);
 
   const clickSendResponsable = () => {
     dispatch(sendResponsable(nombre, cargos));
