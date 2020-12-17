@@ -29,3 +29,4 @@ window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL="https://qa.salud.achs.cl/
 window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://qa.salud.achs.cl/orquestador/api/trayecto/getTipoAccidente/"
 window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://qa.salud.achs.cl/orquestador/api/trayecto/getMediosTransporte/"
 window.REACT_APP_PARTES_DEL_CUERPO = "https://qa.salud.achs.cl/orquestador/api/trayecto/getPartesCuerpo/"
+window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://qa.salud.achs.cl/orquestador/api/trayecto/causalMolestias"
