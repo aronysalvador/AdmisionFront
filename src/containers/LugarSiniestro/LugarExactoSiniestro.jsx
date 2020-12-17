@@ -6,7 +6,7 @@ import Cabecera from "../../components/cabecera/index"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
-import { validarDireccionSN } from './../../helpers/utils'
+import { validarDireccionSN,validarDireccionCorrecta } from './../../helpers/utils'
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 
@@ -51,6 +51,14 @@ const LugarExactoSiniestro = () => {
     setValido(resultado.valida)
   }
 
+  React.useEffect(()=>{
+        if(DireccionEmpresa){
+          const result = validarDireccionCorrecta(DireccionEmpresa)
+          console.log("validacion: "+result)
+        }
+     // eslint-disable-next-line
+  },[])
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -80,23 +88,26 @@ const LugarExactoSiniestro = () => {
           <Typography className={comunClass.tituloTextBox}>
             Dirección accidente
           </Typography>
-          <DireccionGeo
-            comunStyle={getComunStyle()}
-            direccion={sucursal} 
-            setMapa={setMapaUrl} 
-            setDireccion={setSucursal} 
-            clearData={clearData}
-            showDinamicMap={()=> {
-              setSucursal({description: ''}); 
-              dispatch(handleSetStep(11.1))
-            }}
-            direccionTemporal={(tipoSiniestro.Id===1 && !sucursalEmpresaSiniestro)?DireccionEmpresa:""}
-          />
-          <center>
-            {(mapaUrl)?
-            <img alt="MapaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
-            :null}
-          </center>
+
+        
+            <DireccionGeo
+              comunStyle={getComunStyle()}
+              direccion={sucursal} 
+              setMapa={setMapaUrl} 
+              setDireccion={setSucursal} 
+              clearData={clearData}
+              showDinamicMap={()=> {
+                setSucursal({description: ''}); 
+                dispatch(handleSetStep(11.1))
+              }}
+              direccionTemporal={(tipoSiniestro.Id===1 && !sucursalEmpresaSiniestro && validarDireccionCorrecta(DireccionEmpresa))?DireccionEmpresa:""}
+            />
+            <center>
+              {(mapaUrl)?
+              <img alt="MapaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
+              :null}
+            </center>
+          
         </div> 
         {/* <div className={comunClass.displayDesk}>
           <div className={spaceStyle.space1} />
