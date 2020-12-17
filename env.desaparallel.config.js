@@ -29,3 +29,4 @@ window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL="https://desa.sprintName.4
 window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getTipoAccidente/"
 window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getMediosTransporte/"
 window.REACT_APP_PARTES_DEL_CUERPO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getPartesCuerpo/"
+window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/causalMolestias"
