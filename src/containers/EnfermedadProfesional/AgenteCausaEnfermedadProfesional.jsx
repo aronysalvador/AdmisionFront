@@ -14,6 +14,7 @@ import relato from './../../img/relato.svg';
 import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getAgenteCausa } from "../../redux/actions/AgenteCausaAction";
+import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 
 const AgenteCausaEnfermedadProfesional = () => {
   const {
@@ -174,6 +175,14 @@ const AgenteCausaEnfermedadProfesional = () => {
             yearFromState={year}
             textoPrimario="Ingresa la fecha de exposición al agente"
           />
+          <div style={{display:'none'}}>
+            <FechaSiniestroCalendar
+              onChange={setFechaValueSiniestro}
+              daysFromState={days}
+              monthFromState={month}
+              yearFromState={year}
+            />
+          </div>
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
             <Grid component="span">
