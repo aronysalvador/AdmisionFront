@@ -129,18 +129,19 @@ stages:
             displayName: Set environment
             inputs:
               script: |
-                export ENTORNO=desarrolloTest
+                export ENTORNO=ParallelDesarrolloTest
+                export nombreSprint=$(sprintName)
                 sh reemplaza-envs.sh        
           - task: Npm@1
             displayName: Npm Install
             inputs:
               command: 'install'    
-          - task: Npm@1
-            displayName: Npm Test
-            inputs:
-              command: 'custom'
-              workingDir: 'src/__tests__'
-              customCommand: 'test'                    
+          # - task: Npm@1
+          #   displayName: Npm Test
+          #   inputs:
+          #     command: 'custom'
+          #     workingDir: 'src/__tests__'
+          #     customCommand: 'test'                    
           - task: Docker@2
             displayName: Build Docker Image
             inputs:

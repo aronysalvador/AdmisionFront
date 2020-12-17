@@ -15,6 +15,7 @@ import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
 import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
+import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 
 const CausaEnfermedadProfesional = () => {
   const {
@@ -161,6 +162,14 @@ const CausaEnfermedadProfesional = () => {
             yearFromState={year}
             textoPrimario="Ingresa la fecha de inicio de sintomas"
           />
+          <div style={{display:'none'}}>
+            <FechaSiniestroCalendar
+              onChange={setFechaValueSiniestro}
+              daysFromState={days}
+              monthFromState={month}
+              yearFromState={year}
+            />
+          </div>
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
             <Grid component="span">
