@@ -102,3 +102,40 @@ const validarComuna = async (comuna) => {
         }else{ resolve(null); }
     });
 };
+
+export const validarDireccionCorrecta=(direccion)=> {
+
+    var string = direccion.toLowerCase();
+    var patron = /[0-9]{2,}/;
+    
+    if(string.includes('calle')){
+        return true
+    }    
+    else if(string.includes('avenida')){
+        return true
+    }
+    else if(string.includes('av')){
+        return true
+    }
+    else if(string.includes('casa')){
+        return true
+    }    
+    else if(string.includes('dpto')){
+        return true
+    }
+    else if(string.includes('departamento')){
+        return true
+    }
+    else if(string.includes('villa')){
+        return true
+    }
+    else if(string.includes('poblacion')){
+        return true
+    }
+    else  if(patron.test(string)){
+        return true
+    }else{
+        return false
+    }
+
+}
