@@ -26,3 +26,6 @@ window.REACT_APP_GEO_LATLNG="https://desa.sprintName.40.121.134.234.nip.io/orque
 window.REACT_APP_GEO_DIRECTION="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/geo/getDireccion"
 window.REACT_APP_MICROSOFT_AUTH_CLIENTID="2cc60262-0026-48a5-ac2a-a088e9704f30"
 window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL="https://desa.sprintName.40.121.134.234.nip.io/web-admision/"
+window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getTipoAccidente/"
+window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getMediosTransporte/"
+window.REACT_APP_PARTES_DEL_CUERPO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getPartesCuerpo/"

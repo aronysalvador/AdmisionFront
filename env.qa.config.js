@@ -26,3 +26,6 @@ window.REACT_APP_GEO_LATLNG="https://qa.salud.achs.cl/orquestador/api/geo/getLat
 window.REACT_APP_GEO_DIRECTION="https://qa.salud.achs.cl/orquestador/api/geo/getDireccion"
 window.REACT_APP_MICROSOFT_AUTH_CLIENTID="d6728f17-33d3-44b4-ae7e-040abb48e1ae"
 window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL="https://qa.salud.achs.cl/web-admision/"
+window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://qa.salud.achs.cl/orquestador/api/trayecto/getTipoAccidente/"
+window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://qa.salud.achs.cl/orquestador/api/trayecto/getMediosTransporte/"
+window.REACT_APP_PARTES_DEL_CUERPO = "https://qa.salud.achs.cl/orquestador/api/trayecto/getPartesCuerpo/"

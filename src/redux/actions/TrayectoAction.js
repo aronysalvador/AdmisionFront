@@ -27,6 +27,8 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
       dispatch(successCall(response.data.content[0]));
     })
     .catch((error) => {
+      console.log("error")
+      console.log(error)
       dispatch(errorCall());
     });
 
