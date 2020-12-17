@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField, } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -9,7 +9,6 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getMediosTransporteTrayecto } from "../../redux/actions/TrayectoAction";
 import relato from './../../img/relato.svg';
 
 const MedioTransporteTrayecto = () => {
@@ -23,14 +22,6 @@ const MedioTransporteTrayecto = () => {
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getMediosTransporteTrayecto());
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: sugerenciasMedios } = useSelector(
     (state) => state.mediosTransporteForm,

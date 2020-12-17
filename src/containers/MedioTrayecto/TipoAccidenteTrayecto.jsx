@@ -1,10 +1,9 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import BotonSeleccionarCustomSingle from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomSingle";
-import { getTiposAccidenteTrayecto } from "../../redux/actions/TrayectoAction";
 import BotonSeleccionarCustomItemTipoAccidenteTrayecto from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemTipoAccidenteTrayecto";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
@@ -19,15 +18,6 @@ const TipoAccidenteTrayecto = () => {
   
   
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-  console.log("buscando tipos...")
-    dispatch(getTiposAccidenteTrayecto());
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: tipoAccidenteTrayectoList } = useSelector((state) => state.tipoAccidenteTrayectoForm, shallowEqual);
 

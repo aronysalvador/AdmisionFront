@@ -18,6 +18,11 @@ import { getProfesion } from "././redux/actions/ProfesionAction";
 import { getContrato } from "./redux/actions/TipoContratoAction";
 import { getJornadaLaboralPrincipal } from "././redux/actions/TipoJornadaLaboralAction";
 import { getRemuneracion } from "./redux/actions/TipoRemuneracionAction";  
+import { getCategoriaOcupacionalPrincipal } from "./redux/actions/CategoriaOcupacionalAction";
+import { getAgenteCausa } from "./redux/actions/AgenteCausaAction";
+import { getMediosTransporteTrayecto } from "./redux/actions/TrayectoAction";
+import { getTiposAccidenteTrayecto } from "./redux/actions/TrayectoAction";
+import { getPartesCuerpo } from "./redux/actions/ParteCuerpoAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +60,11 @@ function App() {
     dispatch(getContrato(""));
     dispatch(getJornadaLaboralPrincipal(""));
     dispatch(getRemuneracion(""));    
+    dispatch(getCategoriaOcupacionalPrincipal(""));
+    dispatch(getAgenteCausa());
+    dispatch(getMediosTransporteTrayecto());
+    dispatch(getTiposAccidenteTrayecto());
+    dispatch(getPartesCuerpo());
   }, [dispatch]);
 
   useEffect(() => {

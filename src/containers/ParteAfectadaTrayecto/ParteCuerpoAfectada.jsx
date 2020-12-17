@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -11,7 +11,6 @@ import Header from "../../components/header/index";
 // import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import {getPartesCuerpo} from "../../redux/actions/ParteCuerpoAction";
 
 const ParteCuerpoAfectada = () => {
   let {
@@ -30,15 +29,6 @@ const ParteCuerpoAfectada = () => {
   
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getPartesCuerpo());
-  }, [dispatch]);
-
-  useEffect(() => {
-    console.log("itshere")
-    initFn();
-  }, [initFn]);
 
   const { data: sugerenciasParteCuerpo } = useSelector(
     (state) => state.parteCuerpoAfectadaForm, shallowEqual );
