@@ -7,7 +7,6 @@ import { loadLogStateFromSessionStorage } from "./redux/actions/Log";
 import { getSessionStorageState } from "./util/sessionStorage";
 //ReduxActions
 import { getAFP } from "./redux/actions/AfpAction";
-import { getRazonAlertaPrincipal } from "././redux/actions/AlertaCalificacionRazonAction";
 import { getCentros } from "././redux/actions/CentrosAchsAction";
 import { getComuna } from "./redux/actions/ComunaAction";
 import { getIdiomas } from "././redux/actions/IdiomasAction";
@@ -49,7 +48,6 @@ function App() {
 
   const initFuncTion = useCallback(() => {
     dispatch(getAFP(""));
-    dispatch(getRazonAlertaPrincipal(""));
     dispatch(getCentros(""));
     dispatch(getComuna(""));
     dispatch(getNacionalidades());
