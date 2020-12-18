@@ -157,6 +157,7 @@ const DocComplementariosTrayecto = () => {
                   setAnteceOtroValid(texto.length > 0);
                   setAnteceOtroC(texto);
                 }}
+                inputProps={{ maxLength: 100, minLength: 5}}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -180,6 +181,7 @@ const DocComplementariosTrayecto = () => {
           <Button
             className={comunClass.buttonAchs}
             variant="contained"
+            disabled={state.anteceOtro && anteceOtroC.length <= 4}
             onClick={() => {
               CamposDocumentos.anteceNocuenta = ""
               CamposDocumentos.anteceOtroC = ""
