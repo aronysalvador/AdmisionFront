@@ -20,6 +20,7 @@ const TipoAvisoResponsable = () => {
     const dispatch = useDispatch();
     const {  addmissionForm, addmissionForm:{ CamposDocumentos },  microsoftReducer } = useSelector((state) => state, shallowEqual);
 
+
     const [check,setCheck] = useState(addmissionForm.TipoAvisoResponsable? addmissionForm.TipoAvisoResponsable : { id:1,description:"Presencial" })
 
     const BlueRadio = withStyles({
@@ -71,7 +72,7 @@ const TipoAvisoResponsable = () => {
                         <div>
 
 
-                        <div style={{ display: "inline-flex"}}>
+                        <div className={comunClass.deskFlex}>
                            <div className={check.id === 1 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                 <div className={comunClass.containerOpction}>
                                     <BlueRadio
@@ -104,7 +105,7 @@ const TipoAvisoResponsable = () => {
  
                         <div className={spaceStyle.spaceMin1} />
 
-                        <div style={{ display: "inline-flex"}}>
+                        <div className={comunClass.deskFlex}>
                             <div className={check.id === 3 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
                                         <BlueRadio
@@ -230,7 +231,8 @@ const TipoAvisoResponsable = () => {
                                                 break;
                                         }
 
-                                        dispatch(updateForm("TipoAvisoResponsable", CamposDocumentos));
+                                        dispatch(updateForm("TipoAvisoResponsable", check));
+                                        dispatch(updateForm("CamposDocumentos", CamposDocumentos));
                                         dispatch(handleSetStep(17.1));
                                     }}
                                 >
