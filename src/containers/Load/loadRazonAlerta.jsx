@@ -5,6 +5,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
+import exito from './../../img/exito.svg'
+import loader from './../../img/Loader_2.gif'
 
 const LoadRazonAlerta = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,8 @@ const LoadRazonAlerta = () => {
     setTimeout(function () {
       dispatch(handleSetStep(26.1));
     }, 2000);
-  });
+    // eslint-disable-next-line
+  },[]);
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
@@ -29,7 +32,7 @@ const LoadRazonAlerta = () => {
         <div>
           <img
             alt="load"
-            src="./static/exito.svg"
+            src={exito}
             className={comunClass.imgLoadData}
           />
         </div>
@@ -51,7 +54,7 @@ const LoadRazonAlerta = () => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_2.gif"
+            src={loader}
             className={comunClass.imgLoadData2}
           />
         </div>

@@ -12,6 +12,7 @@ import { getIdiomas } from "./../../redux/actions/IdiomasAction";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Header from "../../components/header/index";
+import image from './../../img/identify.svg'
 
 //Action de Redux
 //import { sendCargo } from "../../redux/actions/AdmissionAction";
@@ -97,7 +98,7 @@ const SinBPInfoPersonal2 = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from '../../redux/actions/AdmissionAction';
 import Header from "../../components/header/index";
+import image from './../../img/cita-agendada.svg'
 
 const HasSinister = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -29,7 +30,7 @@ const HasSinister = (props) => {
         </div>
         <img
           alt="load"
-          src="./static/cita-agendada.svg" //siniestro.png
+          src={image} //siniestro.png
           className={blackStyle.img}
         />
         <div className={spaceStyle.space3} />

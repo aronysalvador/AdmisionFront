@@ -47,6 +47,7 @@ import Cargo from "../Cargo/index";
 
 import PersonalSuccess from "../FeedBack/PersonalSuccess";
 import RelatoSuccess from "../FeedBack/RelatoSuccess";
+import SolicitarDocumentos from "../FeedBack/SolicitarDocumentos";
 
 import DireccionParticular from "../DireccionParticular/index";
 import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
@@ -83,6 +84,20 @@ import NoVigente from "../AffiliateValidations/NoVigente";
 import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
 
 import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
+import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
+import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
+import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
+
+import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
+import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
+import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
+import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
+
+import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
+import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
+
+import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
+import AtencionPrevia from "../AtencionPrevia/index";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -342,6 +357,46 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 6.01:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TipoAccidenteTrayecto />
+            </Paper>
+          </div>
+        );
+      case 6.02:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <MedioTransporteTrayecto />
+            </Paper>
+          </div>
+        );
+      case 6.03:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CausalSiniestroTrayecto />
+            </Paper>
+          </div>
+        );
+        case 6.04:
+          return (
+            <div className={layout}>
+              <Paper className={paper}>
+                <CausaEnfermedadProfesional />
+              </Paper>
+            </div>
+          );
+        case 6.05:
+          return (
+            <div className={layout}>
+              <Paper className={paper}>
+                <AgenteCausaEnfermedadProfesional />
+              </Paper>
+            </div>
+          );
       case 6:
         return (
           <div className={layout}>
@@ -382,6 +437,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 9.01:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <ParteCuerpoAfectada />
+            </Paper>
+          </div>
+        );
       case 10:
         return (
           <div className={layout}>
@@ -419,6 +482,22 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <AccidenteEnSucursal />
+            </Paper>
+          </div>
+        );
+      case 12.2:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarSiniestroTrayecto />
+            </Paper>
+          </div>
+        );
+      case 12.3:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarSiniestroTrayectoMapa />
             </Paper>
           </div>
         );
@@ -478,6 +557,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 17.2: // Tipo de aviso Responsable
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <TipoAvisoResponsable />
+            </Paper>
+          </div>
+        );
       case 18:
         return (
           <div className={layout}>
@@ -515,6 +602,30 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <RelatoSuccess />
+            </Paper>
+          </div>
+        );
+      case 19.21:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AtencionPrevia/>
+            </Paper>
+          </div>
+        );
+      case 19.22:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <SolicitarDocumentos/>
+            </Paper>
+          </div>
+        );
+      case 19.23:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <DocComplementariosTrayecto />
             </Paper>
           </div>
         );

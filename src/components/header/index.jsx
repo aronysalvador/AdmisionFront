@@ -5,6 +5,7 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
+import image from './../../img/letterACHS.svg'
 
 const Header = (props) => {
   const { userMsal } = props;
@@ -21,7 +22,7 @@ const Header = (props) => {
       <div className="container" style={{display:"flex", width: "100%"}}>
         <img 
           alt="logo" 
-          src={"static/letterACHS.svg"}
+          src={image}
           style={{width: "64px", height: "64px", margin:"auto 10%"}}   //marginLeft:"25%"
         />
         <div className={comunClass.containerHeader}>

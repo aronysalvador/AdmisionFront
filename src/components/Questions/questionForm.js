@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { Format } from "../../helpers/strings";
+import image from './../../img/relato.svg'
 
 const FormQuestion = (props) => {
   const { titulo, titulo2, pregunta, pregunta2, placeholder, accion, valueFromState } = props;
@@ -42,7 +43,7 @@ const FormQuestion = (props) => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

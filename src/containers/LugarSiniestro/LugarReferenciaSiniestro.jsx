@@ -12,10 +12,11 @@ import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import image from './../../img/relato.svg'
 
 const LugarReferenciaSiniestro = () => {
   let {
-    addmissionForm: { step, percentage, lugarReferenciaSiniestro },
+    addmissionForm: { step, percentage, lugarReferenciaSiniestro, tipoSiniestro },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
   const [lugarReferencia, setLugarReferencia] = useState(() => {
@@ -50,7 +51,7 @@ const LugarReferenciaSiniestro = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -102,8 +103,11 @@ const LugarReferenciaSiniestro = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
-              dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-              dispatch(handleSetStep(12.1)); //++stepx
+                dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+                if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
+                  dispatch(updateForm("AccidenteEnSucursal", "no"))
+                }                
+                dispatch(handleSetStep("x",12))
             }}
           >
             Continuar

@@ -37,7 +37,7 @@ const BoxQuestionResponsable = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(17))}
+          dispatch={() => dispatch(handleSetStep("x",17.1))}
           percentage={addmissionForm.percentage}
         />
       </div>

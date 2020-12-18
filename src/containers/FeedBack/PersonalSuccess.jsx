@@ -11,6 +11,11 @@ import { Grid } from '@material-ui/core';
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import check from './../../img/icon-check.png'
+import excelent from './../../img/excelent.svg'
+import espera from './../../img/espera.svg'
+import sms from './../../img/sms.svg'
+import work from './../../img/work.svg'
 
 const PersonalSuccess = (props) =>{
     const { dispatch, microsoftReducer } = props;
@@ -50,7 +55,7 @@ const PersonalSuccess = (props) =>{
             <div className={comunStyle.titleDesk}>
               <div className={welcomeStyle.TextContainer}>
                 <div className={comunStyle.displayMobile}>
-                  <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
                 </div>    
                 <Typography className={welcomeStyle.titleBegin}>
                   ¡Excelente!
@@ -60,14 +65,14 @@ const PersonalSuccess = (props) =>{
                     Usuario Identificado&nbsp;
                   </Typography>
                   <div className={comunStyle.displayDeskInline}>
-                    <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                    <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
                   </div>
                 </div>
               </div>
                 
               <div className={comunStyle.displayDeskInline}>
                 <Grid component="span" className={comunStyle.imgPrimaryDesk}>
-                  <img alt="excelente" src="static/excelent.svg" />
+                  <img alt="excelente" src={excelent} />
                 </Grid>
               </div>
             </div>
@@ -88,19 +93,19 @@ const PersonalSuccess = (props) =>{
               <Indiciaciones
                 indicaciones={[
                   {
-                    icono: "espera.svg",
+                    icono: espera,
                     textoPrimario: "Completa las frases",
                     textoSecundario: "mientras escuchas con atención",
                     clase: welcomeStyle.divRowBottom,
                   },
                   {
-                    icono: "sms.svg",
+                    icono: sms,
                     textoPrimario: "Transcribe con fidelidad",
                     textoSecundario: "usando los tiempos verbales sugeridos",
                     clase: welcomeStyle.divRowBottom,
                   },
                   {
-                    icono: "work.svg",
+                    icono: work,
                     textoPrimario: "Mantén la autenticidad",
                     textoSecundario: "sin alterar los sucesos",
                     clase: welcomeStyle.divRow2,
@@ -114,7 +119,7 @@ const PersonalSuccess = (props) =>{
                 <Button
                   className={comunStyle.buttonAchs}
                   variant="contained"
-                  onClick={() => dispatch(handleSetStep(6))}
+                  onClick={() => dispatch(handleSetStep("x",5.7)) }
                 >
                   Capturar el relato
                 </Button>
@@ -123,7 +128,7 @@ const PersonalSuccess = (props) =>{
           </div>
         </div> 
         <div className={comunStyle.displayDesk}>
-          <div className={spaceStyle.space2} />
+          <div className={spaceStyle.space1} />
         </div>           
       </div>
     )

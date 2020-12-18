@@ -5,6 +5,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { crearAdmisionSiniestroSAP } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
+import image from './../../img/creandoCaso.svg'
+import loader from './../../img/Loader_2.gif'
 
 const CreandoCaso = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -29,7 +31,7 @@ const CreandoCaso = (props) => {
       <center>
         <div>
           <img alt="load" 
-            src="./static/creandoCaso.svg" 
+            src={image}
             className={comunClass.imgLoadData} />
         </div>
         <div className={spaceStyle.space3} />
@@ -49,7 +51,7 @@ const CreandoCaso = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/Loader_2.gif"
+            src={loader}
             className={comunClass.imgLoadData2}
           />
         </div>

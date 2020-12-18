@@ -11,6 +11,7 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const FechaHoraSiniestro = () => {
   const comunClass = getComunStyle();
@@ -26,8 +27,6 @@ const FechaHoraSiniestro = () => {
   const [horaSiniestro, setHoraSiniestro] = useState({});
   const [invalidFecha, setInvalidFecha] = useState(true);
   const [invalidHora, setInvalidHora] = useState(true);
-
-
 
   const minutosArray = [0, 10, 20, 30, 40, 50]
 
@@ -117,14 +116,11 @@ const FechaHoraSiniestro = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(9))}
+          dispatch={() => dispatch(handleSetStep("x",10))}
           percentage={percentage}
         />
       </div>
@@ -140,7 +136,7 @@ const FechaHoraSiniestro = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -163,6 +159,7 @@ const FechaHoraSiniestro = () => {
               daysFromState={days}
               monthFromState={month}
               yearFromState={year}
+              textLabel={"Fecha de accidente"}
             />
           </div>
           
@@ -173,6 +170,7 @@ const FechaHoraSiniestro = () => {
               horasFromState={horas}
               indiceMinutosFromState={minutosArray.indexOf(minutos)}
               minutos={minutosArray}
+              
             />
           </div>
           <div className={comunClass.displayDesk}>
@@ -181,6 +179,7 @@ const FechaHoraSiniestro = () => {
                 horasFromState={horas}
                 indiceMinutosFromState={minutosArray.indexOf(minutos)}
                 minutos={minutosArray}
+                textLabel={"Hora de accidente"}
               />
           </div>
         </div>
