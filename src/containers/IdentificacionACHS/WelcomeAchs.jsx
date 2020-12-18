@@ -52,30 +52,30 @@ const SessionAchs = (props) => {
           <div className={welcomeStyle.marginBoxGreen}>
             <div className={welcomeStyle.contentBlock}>
               <Grid
-                className={[
-                  comunStyle.textAchsContent,
-                  comunStyle.textAchsContentWhite,
-                  comunStyle.textCenter,
-                ]}
+                className={`
+                  ${comunStyle.textAchsContent}
+                  ${comunStyle.textAchsContentWhite}
+                  ${comunStyle.textCenter}
+                  `}
               >
                 Hola,
               </Grid>
               <Grid
-                className={[
-                  comunStyle.textAchsContent,
-                  comunStyle.textAchsContentWhite,
-                  comunStyle.textCenter,
-                  welcomeStyle.bienvenidoAchs,
-                ]}
+                className={`
+                  ${comunStyle.textAchsContent}
+                  ${comunStyle.textAchsContentWhite}
+                  ${comunStyle.textCenter}
+                  ${welcomeStyle.bienvenidoAchs}
+                  `}
               >
                 {microsoftReducer.userMsal.displayName}
               </Grid>
               <Grid
-                className={[
-                  comunStyle.textAchsContent,
-                  comunStyle.textAchsContentWhite,
-                  comunStyle.textCenter,
-                ]}
+                className={`
+                  ${comunStyle.textAchsContent}
+                  ${comunStyle.textAchsContentWhite}
+                  ${comunStyle.textCenter}
+                `}
               >
                 Admisionista
               </Grid>
@@ -84,7 +84,7 @@ const SessionAchs = (props) => {
               <Button
                 variant="contained"
                 size="small"
-                className={[classes.button, welcomeStyle.starIcon]}
+                className={`${classes.button} ${welcomeStyle.starIcon}`}
                 startIcon={<StarIcon className={welcomeStyle.star} />}
               >
                 4.9
@@ -126,10 +126,10 @@ const SessionAchs = (props) => {
         <div className={comunStyle.boxDesk}>
           <div className={comunStyle.displayDesk}>
             <Grid
-              className={[
-                comunStyle.subtitleBlack,
-                comunStyle.textCenter,
-              ]}
+              className={`
+                ${comunStyle.subtitleBlack}
+                ${comunStyle.textCenter}
+              `}
             >
               Comienza creando una nueva admisión
             </Grid>

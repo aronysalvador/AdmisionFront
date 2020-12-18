@@ -58,9 +58,7 @@ const SinBPInfoPersonal1 = () => {
   const [sexo, saveSexo] = useState(() => {
     return bpForm.masculino
       ? "Masculino"
-      : bpForm.femenino
-        ? "Femenino"
-        : "Otro";
+      : "Femenino";
   });
 
   const { percentage } = useSelector(
@@ -68,7 +66,7 @@ const SinBPInfoPersonal1 = () => {
     shallowEqual
   );
 
-  const sexos = ["Masculino", "Femenino", "Otro"];
+  const sexos = ["Masculino", "Femenino"];
 
   const clickConfirmar = () => {
     dispatch(updateForm("bpForm", { nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo }));

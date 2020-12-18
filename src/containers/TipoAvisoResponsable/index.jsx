@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
@@ -10,8 +10,6 @@ import Radio from '@material-ui/core/Radio';
 import { withStyles } from '@material-ui/core/styles';
 import specialBlue from "./../../util/color/specialBlue";
 import { Format } from "../../helpers/strings";
-import { InputAdornment } from "@material-ui/core";
-import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
@@ -35,9 +33,9 @@ const TipoAvisoResponsable = () => {
       })((props) => <Radio color="default" {...props} />);
 
  
-      useEffect(()=>{
-        console.log(check)
-      },[check])
+    //   useEffect(()=>{
+    //     console.log(check)
+    //   },[check])
       
 
     return (
@@ -70,8 +68,10 @@ const TipoAvisoResponsable = () => {
                     </div>
 
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                        <div style={{width: "400px"}}>
+                        <div>
 
+
+                        <div style={{ display: "inline-flex"}}>
                            <div className={check.id === 1 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                 <div className={comunClass.containerOpction}>
                                     <BlueRadio
@@ -100,9 +100,11 @@ const TipoAvisoResponsable = () => {
                                         <p className={comunClass.txtRadios}>E-mail</p>
                                     </div>
                             </div>
+                        </div>    
  
-                            <div className={spaceStyle.spaceMin1} />
+                        <div className={spaceStyle.spaceMin1} />
 
+                        <div style={{ display: "inline-flex"}}>
                             <div className={check.id === 3 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
                                         <BlueRadio
@@ -130,11 +132,12 @@ const TipoAvisoResponsable = () => {
                                         <p className={comunClass.txtRadios}>Whatsapp</p>
                                     </div>
                             </div>
+                        </div>
 
                             <div className={spaceStyle.spaceMin1} />
 
-                            <div className={check.id === 5 ? comunClass.roundedBlue : comunClass.roundedNormal}>
-                                    <div>
+                            <div className={check.id === 5 ? comunClass.roundedBlueNoMargin : comunClass.roundedNormalNoMargin}>
+                                    <div style={{width: "100%"}}>
                                         <div className={comunClass.containerOpction}>
                                             <BlueRadio
                                                 checked={check.id === 5}
@@ -165,19 +168,14 @@ const TipoAvisoResponsable = () => {
                                                 autoComplete="off"
                                                 type="text"
                                                 style={{ background: "#ffff"}}
-                                                inputProps={{ maxLength: 200, minLength: 5 }}
+                                                inputProps={{ maxLength: 200 }}
                                                 InputProps={{
                                                     endAdornment: (
-                                                    <InputAdornment position="end">
-                                                        <IconButton
-                                                        onClick={() => {
-                                                            setCheck({ id:5, description: "Otro", especificacion: "" })
-                                                        }}
-                                                        >
-                                                        <ClearIcon />
-                                                        </IconButton>
-                                                    </InputAdornment>
-                                                    ),
+                                                        <ClearIcon style={{cursor:'pointer'}} onClick={() => {
+                                                                         setCheck({ id:5, description: "Otro", especificacion: "" })
+                                                                     }} 
+                                                        />
+                                                    )
                                                 }}
                                             />
                                         </div>
@@ -188,7 +186,7 @@ const TipoAvisoResponsable = () => {
                                 <Button
                                     variant="contained"
                                     className={comunClass.buttonAchs}
-                                    disabled={(!check.id || (check.id===5 && !check.especificacion))}
+                                    disabled={(!check.id || (check.id===5 && check.especificacion.length<5))}
                                     onClick={() => {
 
                                         switch (check.id) {
