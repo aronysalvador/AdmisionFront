@@ -199,7 +199,7 @@ const AtencionPrevia = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"
-            disabled={!OtroRecinto || !FechaOtroRe || !HoraOtroRec}
+            disabled={OtroRecinto.length<5 || !FechaOtroRe || !HoraOtroRec}
             onClick={() => clickConfirmar()}
           >
             Confirmar
