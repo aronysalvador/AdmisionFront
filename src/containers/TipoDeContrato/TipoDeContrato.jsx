@@ -1,14 +1,14 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { getContrato } from "../../redux/actions/TipoContratoAction";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const TipoDeContrato = () => {
   const dispatch = useDispatch();
@@ -17,14 +17,6 @@ const TipoDeContrato = () => {
   const { step, percentage, tipoDeContrato } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
-
-  const initFn = useCallback(() => {
-    dispatch(getContrato(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: contratoList } = useSelector(
     (state) => state.tipoContratoForm, shallowEqual);
@@ -50,7 +42,7 @@ const TipoDeContrato = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

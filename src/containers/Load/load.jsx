@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
+import image from './../../img/Loader_1.gif'
 
 const getUseStyles = makeStyles({
   center2: {
@@ -25,7 +26,7 @@ const Load = (props) => {
       <div className={useStyles.center2}>
         <img
           alt="load"
-          src="./static/Loader_1.gif"
+          src={image}
           className={useStyles.img2}
         />
       </div>

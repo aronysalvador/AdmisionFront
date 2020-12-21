@@ -1,14 +1,14 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
-import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const TipoJornadaLaboral = () => {
   const {
@@ -19,13 +19,6 @@ const TipoJornadaLaboral = () => {
 
   const dispatch = useDispatch();
 
-  const initFn = useCallback(() => {
-    dispatch(getJornadaLaboralPrincipal(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: tipoJornadaList } = useSelector(
     (state) => state.tipoJornadaLaboralForm, shallowEqual);
@@ -53,7 +46,7 @@ const TipoJornadaLaboral = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

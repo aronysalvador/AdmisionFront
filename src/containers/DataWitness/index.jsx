@@ -16,10 +16,14 @@ import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import InputMasked from "../../containers/EditarTelefono/InputMasked";
+import Mask from "../../containers/EditarTelefono/phone";
+import { Pipes } from "../../containers/EditarTelefono/phone";
+import image from './../../img/relato.svg'
 
 const DataWitness = () => {
   const {
-    addmissionForm: { testigos, percentage },
+    addmissionForm: { testigos, percentage, tipoSiniestro, step, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -39,7 +43,25 @@ const DataWitness = () => {
   const clickSendTestigo = () => {
     dispatch(sendCargo(nombre, cargos));
     dispatch(updateForm("testigoForm", nombre + "-" + cargos));
+    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, DatosTestig: datosTestig}));
     dispatch(handleSetStep(14.1));
+  };
+
+  const [datosTestig, setDatosTestig] = useState(() => {
+    return !CamposDocumentos.DatosTestig ? "" : CamposDocumentos.DatosTestig; //"+56 9"
+  });
+  const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
+    return CamposDocumentos.DatosTestig ? true : false;
+  });
+
+  const handleOnChange = (e) => {
+    const value = e.target.value;
+    if (value !== datosTestig) {
+      const result = Pipes.advanced(value);
+      const isValid = /^\+?56\d{9}$/.test(result.replace(/\s/g, ""));
+      setDatosTestig(result);
+      setTelefonoIsValid(isValid);
+    }
   };
 
   return (
@@ -62,7 +84,7 @@ const DataWitness = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -90,11 +112,7 @@ const DataWitness = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => {
-                        saveNombre("");
-                      }}
-                    >
+                    <IconButton onClick={() => { saveNombre("") }}>
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
@@ -104,9 +122,7 @@ const DataWitness = () => {
           </div>
           <div className={spaceStyle.space1} />
           <div>
-            <Typography
-              className={comunClass.tituloTextBox}
-            >
+            <Typography className={comunClass.tituloTextBox}>
               Cargo o Relación
             </Typography>
           </div>
@@ -124,11 +140,7 @@ const DataWitness = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => {
-                        saveCargos("");
-                      }}
-                    >
+                    <IconButton onClick={() => { saveCargos("") }}>
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
@@ -136,13 +148,27 @@ const DataWitness = () => {
               }}
             />
           </div>
+          <div className={spaceStyle.space1} />
+          {tipoSiniestro.Id === 2 && // solo se muestra de ser trayecto
+          <div>
+            <Typography className={comunClass.tituloTextBox}>
+              Teléfono (Opcional)
+            </Typography>
+            <InputMasked
+              mask={Mask.advanced}
+              setTelefono={setDatosTestig}
+              handleOnChange={handleOnChange}
+              telefono={datosTestig}
+              step={step}
+            />
+          </div>}
         </div>
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"
-            disabled={!nombre || !cargos}
+            disabled={!cargos || !nombre || (datosTestig && !telefonoIsValid)}
             onClick={() => clickSendTestigo()}
           >
             Agregar

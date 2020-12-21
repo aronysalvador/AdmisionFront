@@ -13,7 +13,7 @@ spec:
       - qa.salud.achs.cl
       secretName: admision-web-cert
   rules:
-  - host: qa.salud.achs.cl 
+  - host: qa.salud.achs.cl
     http:
       paths:
       - path: /web-admision(/?.*)

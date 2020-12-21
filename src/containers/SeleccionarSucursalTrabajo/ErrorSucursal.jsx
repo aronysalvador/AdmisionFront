@@ -7,6 +7,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import Header from "../../components/header/index";
+import image from './../../img/WarningErrorCaso.png'
 
 const getUseStyles = makeStyles({
   center: {
@@ -67,7 +68,7 @@ const ErrorSucursal = (props) => {
       <div className={useStyles.center}>
         <img
           alt="load"
-          src="./static/WarningErrorCaso.png"
+          src={image}
           className={useStyles.img}
         />
       </div>

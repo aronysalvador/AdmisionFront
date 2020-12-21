@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React, {useState, useCallback,useEffect} from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import RutPaciente from "./rutPaciente";
@@ -8,11 +8,11 @@ import { getComunStyle } from "../../css/comun";
 import { makeStyles } from "@material-ui/core/styles";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
-import { useEffect } from "react";
 import { CLEAR_STATE } from "../../redux/types/addmissionFormType";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Header from "../../components/header/index";
+import image from './../../img/identify.svg'
 
 const useStyles = makeStyles({
   root: {
@@ -139,7 +139,7 @@ const Identification = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

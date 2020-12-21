@@ -21,6 +21,7 @@ import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import image from './../../img/relato.svg'
 
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
@@ -77,10 +78,7 @@ const ValidarCorreoElectronico = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -97,7 +95,7 @@ const ValidarCorreoElectronico = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -143,27 +141,21 @@ const ValidarCorreoElectronico = () => {
           <div className={welcomeStyle.titleContainerCardsEmail}>
             <div  className={welcomeStyle.divRowBottomEmail}>
               <ErrorOutline />
-              <Typography
-                className={welcomeStyle.itemText2}
-              >
+              <Typography className={welcomeStyle.itemText2}>
                 Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin e-mail</span>
               </Typography>
             </div>
             <div  className={welcomeStyle.divRowBottomEmail}>
-              <Typography
-                className={welcomeStyle.pBegin}
-              >
+              <Typography className={welcomeStyle.pBegin}>
                 ¿Está seguro de continuar sin e-mail?
               </Typography>
             </div>
-            <div  className={welcomeStyle.divRowBottomEmail}>
-              <Typography
-                className={welcomeStyle.pBegin}
-              >
+            <div className={welcomeStyle.divRowBottomEmail}>
+              <Typography className={welcomeStyle.pBegin}>
                 No podremos enviar una copia de los documentos al paciente.
               </Typography>
             </div>
-            <div  className={welcomeStyle.divRowBottomEmail}>
+            <div className={welcomeStyle.divRowBottomEmail}>
               <CustomSwitch
                 checked={stateCheck}
                 onChange={handleChange}
@@ -180,9 +172,7 @@ const ValidarCorreoElectronico = () => {
             disabled={
               (!stateCheck && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck)
             }
-            onClick={() =>
-              handleEnd()
-            }
+            onClick={() => handleEnd() }
           >
             Crear Caso
           </Button>
