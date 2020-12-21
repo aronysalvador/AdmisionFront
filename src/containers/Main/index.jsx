@@ -98,6 +98,7 @@ import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCau
 
 import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
 import AtencionPrevia from "../AtencionPrevia/index";
+import Forecasts from "../Forecasts";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -562,6 +563,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <TipoAvisoResponsable />
+            </Paper>
+          </div>
+        );
+      case 18.01:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <Forecasts />
             </Paper>
           </div>
         );
