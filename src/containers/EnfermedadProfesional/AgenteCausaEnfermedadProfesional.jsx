@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Button, Typography, withStyles, Checkbox } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -13,7 +13,6 @@ import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
 import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getAgenteCausa } from "../../redux/actions/AgenteCausaAction";
 import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 
 const AgenteCausaEnfermedadProfesional = () => {
@@ -28,14 +27,6 @@ const AgenteCausaEnfermedadProfesional = () => {
   const [agenteCausa, setAgenteCausa] = useState(() => {
     return !AgenteCausaEP ? "" : AgenteCausaEP;
   });
-
-  const initFn = useCallback(() => {
-    dispatch(getAgenteCausa());
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: sugerenciasAgenteCausa } = useSelector( //CAMBIAR POR DATA BD AGENTES CAUSA
     (state) => state.agenteCausaEnfermedadForm, shallowEqual ); 

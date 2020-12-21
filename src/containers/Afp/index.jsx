@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getAFP } from "./../../redux/actions/AfpAction";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -11,12 +10,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import image from './../../img/relato.svg'
-/*
-REVISARE EL 
-  const {
-    addmissionForm: { percentage, afpForm },
-  } = useSelector((state) => state, shallowEqual);
-*/
+
 const Afp = () => {
   const {
     addmissionForm: { percentage, afpForm }, microsoftReducer
@@ -30,14 +24,6 @@ const Afp = () => {
   });
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getAFP(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn()
-  }, [initFn]);
 
   return (
     <div className={comunClass.root}>

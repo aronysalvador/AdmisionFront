@@ -1,10 +1,9 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
-import { getJornadaLaboralPrincipal } from "./../../redux/actions/TipoJornadaLaboralAction";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -20,13 +19,6 @@ const TipoJornadaLaboral = () => {
 
   const dispatch = useDispatch();
 
-  const initFn = useCallback(() => {
-    dispatch(getJornadaLaboralPrincipal(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: tipoJornadaList } = useSelector(
     (state) => state.tipoJornadaLaboralForm, shallowEqual);

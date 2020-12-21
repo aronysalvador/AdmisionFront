@@ -1,3 +1,4 @@
+// tuve que apuntar performance a trayecto para no tener que desplegar los otros repos
 window.REACT_APP_ISAPRES="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/sap/isapres/"
 window.REACT_APP_AFP="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/sap/afp/"
 window.REACT_APP_NACIONALIDADES="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/datosPaciente/nacionalidades/"

@@ -1,10 +1,10 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { getRazonAlertaPrincipal } from "./../../redux/actions/AlertaCalificacionRazonAction";
+
 import BotonSeleccionarCustomItemAlerta from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemAlerta";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
@@ -20,14 +20,6 @@ const AlertaCalificacionRazon = () => {
   const razon =  !razonAlertaForm ? "" : razonAlertaForm 
 
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getRazonAlertaPrincipal(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const { data: razonAlertaList } = useSelector(
     (state) => state.razonAlertaForm,

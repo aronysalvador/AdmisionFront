@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { getComunStyle } from "../../css/comun";
@@ -9,7 +9,6 @@ import Divider from "@material-ui/core/Divider";
 
 //Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
-import { searchIsapres } from "../../redux/actions/PrevisionAction";
 import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
 import {siniestroStyle} from '../../css/siniestroStyle';
@@ -27,15 +26,6 @@ const HealthForecast = (props) => {
   const [buttonOver4, setButtonOver4] = useState(false);
   const [buttonOver5, setButtonOver5] = useState(false);
   const [buttonOver6, setButtonOver6] = useState(false);
-
-  const initFn = useCallback(() => {
-    const consultaIsapres = () => dispatch1(searchIsapres());
-    consultaIsapres();
-  }, [dispatch1]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const getIsapres = useSelector((state) => state.previsionForm.isapres);
 
