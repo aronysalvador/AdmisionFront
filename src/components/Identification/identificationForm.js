@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import image from './../../img/identify.svg'
 
 const form = (props) => {
 
@@ -35,7 +36,7 @@ const form = (props) => {
             </Typography>
           </Grid>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

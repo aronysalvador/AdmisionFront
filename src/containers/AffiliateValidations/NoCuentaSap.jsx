@@ -7,6 +7,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { getBlackTheme } from "../../css/blackTheme";
 import Header from "../../components/header/index";
+import image from './../../img/error-siniestro.svg'
 
 const NoCuentaSap = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -28,7 +29,7 @@ const NoCuentaSap = (props) => {
         <div>
         <img
             alt="load"
-            src="./static/error-siniestro.svg"
+            src={image}
             className={blackStyle.img}
           />
         </div>

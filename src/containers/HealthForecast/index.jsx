@@ -14,6 +14,8 @@ import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
 import {siniestroStyle} from '../../css/siniestroStyle';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
+import check from './../../img/check.svg'
 
 const HealthForecast = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -66,7 +68,7 @@ const HealthForecast = (props) => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -89,7 +91,7 @@ const HealthForecast = (props) => {
                 onMouseOut={() =>{ setButtonOver1(false) }}
               >
                 {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[0].nombre)}</p> : null}
-                {buttonOver1 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                {buttonOver1 && <img src={check} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
             </div>
             <div className={comunClass.displayMobile}> 
@@ -114,7 +116,7 @@ const HealthForecast = (props) => {
                 onMouseOut={() =>{ setButtonOver2(false) }}
               >
                 {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[12].nombre)}</p> : null}
-                {buttonOver2 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                {buttonOver2 && <img src={check} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
               <Button
                 className={comunClass.buttonAchsLeft}
@@ -128,7 +130,7 @@ const HealthForecast = (props) => {
                 onMouseOut={() =>{ setButtonOver3(false) }}
               >
                 {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[25].nombre)}</p> : null}
-                {buttonOver3 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                {buttonOver3 && <img src={check} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
             </div>
 
@@ -146,7 +148,7 @@ const HealthForecast = (props) => {
                 onMouseOut={() =>{ setButtonOver4(false) }}
               >
                 {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[9].nombre)}</p> : null}
-                {buttonOver4 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                {buttonOver4 && <img src={check} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
               <Button
                 className={comunClass.buttonAchsLeft}
@@ -159,7 +161,7 @@ const HealthForecast = (props) => {
                 onMouseOut={() =>{ setButtonOver5(false) }}
               >
                 {getIsapres.length !== 0 ? <p>{Format.formatizar(getIsapres[11].nombre)}</p> : null}
-                {buttonOver5 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+                {buttonOver5 && <img src={check} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
               </Button>
             </div>
           </>
@@ -176,7 +178,7 @@ const HealthForecast = (props) => {
             onMouseOut={() =>{ setButtonOver6(false) }}
           >
             Otra Isapre
-            {buttonOver6 && <img src="./static/check.svg"alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
+            {buttonOver6 && <img src={check} alt="check" style={{position: "absolute", top: "3px", right: "3px"}} /> }
           </Button>
         </div>
       </div>

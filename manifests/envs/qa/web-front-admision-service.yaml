@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-qa-front-admision-service
+  name: web-qa-front-admision-service-sprint10
 spec:
   selector:
-    app: web-qa-front-admision
+    app: web-qa-front-admision-sprint10
   ports:
   - protocol: TCP
     port: 80

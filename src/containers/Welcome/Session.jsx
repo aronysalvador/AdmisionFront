@@ -8,6 +8,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import { login } from "../../redux/actions/microsoft.action";
+import logo from './../../img/Achs.svg'
+import profile from './../../img/Profile.svg'
 
 
 const Session = (props) => {
@@ -21,7 +23,7 @@ const Session = (props) => {
       <div style={ {padding: '1.5em'} } className={ comunStyle.headerSesion } >
         <img
             alt="logo"
-            src="./static/Achs.svg"
+            src={logo}
             className={comunStyle.imgAchs}
           />
         <div className={spaceStyle.space10} />
@@ -30,7 +32,7 @@ const Session = (props) => {
           <center style={{padding: "26px"}}>
             <img 
               alt="zoomMas" 
-              src={"static/Profile.svg"}
+              src={profile}
               className={ comunStyle.imgProfile }
               />
           </center>

@@ -26,3 +26,7 @@ window.REACT_APP_GEO_LATLNG="https://prod.salud.achs.cl/orquestador/api/geo/getL
 window.REACT_APP_GEO_DIRECTION="https://prod.salud.achs.cl/orquestador/api/geo/getDireccion"
 window.REACT_APP_MICROSOFT_AUTH_CLIENTID="45526c71-9b8a-4b80-be76-9520e1e67eb3"
 window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL="https://prod.salud.achs.cl/web-admision/"
+window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://prod.salud.achs.cl/orquestador/api/trayecto/getTipoAccidente/"
+window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://prod.salud.achs.cl/orquestador/api/trayecto/getMediosTransporte/"
+window.REACT_APP_PARTES_DEL_CUERPO = "https://prod.salud.achs.cl/orquestador/api/trayecto/getPartesCuerpo/"
+window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://prod.salud.achs.cl/orquestador/api/trayecto/causalMolestias"

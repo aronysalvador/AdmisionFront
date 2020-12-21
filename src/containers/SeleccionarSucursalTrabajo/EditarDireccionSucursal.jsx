@@ -8,6 +8,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/identify.svg'
 
 const EditarDireccionSucursal = () => {
   const {
@@ -45,7 +46,7 @@ const EditarDireccionSucursal = () => {
         </Grid>
         <div className={comunClass.displayDeskInline}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" />
+            <img alt="identify" src={image} />
           </Grid>
         </div>
       </div>

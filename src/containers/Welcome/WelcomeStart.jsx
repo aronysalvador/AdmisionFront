@@ -14,6 +14,9 @@ import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 
+import espera from './../../img/espera.svg'
+import sms from './../../img/sms.svg'
+import work from './../../img/work.svg'
 
 const Start = (props) =>{
   const { dispatch, microsoftReducer } = props;
@@ -71,19 +74,19 @@ const Start = (props) =>{
             <Indiciaciones
               indicaciones={[
                 {
-                  icono: "espera.svg",
+                  icono: espera,
                   textoPrimario: "Identifica al paciente",
                   textoSecundario: "",
                   clase: welcomeStyle.divRowBottom,
                 },
                 {
-                  icono: "sms.svg",
+                  icono: sms,
                   textoPrimario: "Toma el relato",
                   textoSecundario: "",
                   clase: welcomeStyle.divRowBottom,
                 },
                 {
-                  icono: "work.svg",
+                  icono: work,
                   textoPrimario: "Solicita los datos",
                   textoSecundario: "",
                   clase: welcomeStyle.divRow2,
@@ -114,7 +117,7 @@ const Start = (props) =>{
         </div> */}
       </div>   
       <div className={comunStyle.displayDesk}>
-        <div className={spaceStyle.space2} />
+        <div className={spaceStyle.space1} />
       </div>         
     </div>
   )
