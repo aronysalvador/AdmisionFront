@@ -20,18 +20,16 @@ const AccidentPlaceForm = (props) => {
       dispatch(updateForm("volverAConcatenar", true));
     }
   };
+ 
 
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.7))}
+          dispatch={() => dispatch(handleSetStep("x",6))}
           percentage={addmissionForm.percentage}
         />
       </div>

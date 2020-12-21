@@ -12,6 +12,11 @@ import CajaRutSiniestro from "./CajaRutSiniestro";
 import Header from "../../components/header/index";
 import { Grid } from '@material-ui/core';
 
+import check from './../../img/icon-check.png'
+import excelent from './../../img/excelent.svg'
+import espera from './../../img/espera.svg'
+import work from './../../img/work.svg'
+
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
   const { siniestroID, rut } = addmissionForm;
@@ -39,7 +44,7 @@ const PantallaFinal = (props) => {
                 <div className={comunClass.displayMobile}>
                   <img
                     alt="Excelente"
-                    src="static/icon-check.png"
+                    src={check}
                     className={welcomeStyle.iconCircular}
                   />
                 </div>
@@ -50,7 +55,7 @@ const PantallaFinal = (props) => {
                   </Typography>
                 </div>
                 <div className={comunClass.displayDeskInline} style={{verticalAlign: 'bottom'}}>
-                  <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
                 </div>
               </div>
               <div className={spaceStyle.space1} />  
@@ -70,7 +75,7 @@ const PantallaFinal = (props) => {
             </div>
             <div className={comunClass.displayDeskInline}>
               <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="excelente" src="static/excelent.svg" />
+                <img alt="excelente" src={excelent} />
               </Grid>
             </div>
           </div>
@@ -92,7 +97,7 @@ const PantallaFinal = (props) => {
             <IndiciacionesPacientes
               indicaciones={[
                 {
-                  icono: "espera.svg",
+                  icono: espera,
                   textoPrimario: "Esperar en sala",
                   textoSecundario: "al llamado del doctor",
                   clase: welcomeStyle.divRowPantallaFinal,
@@ -104,7 +109,7 @@ const PantallaFinal = (props) => {
                 //   clase: welcomeStyle.divRowBottom,
                 // },
                 {
-                  icono: "work.svg",
+                  icono: work,
                   textoPrimario: "Si el paciente presenta dolor",
                   textoSecundario: "avisa a la ECS",
                   clase: welcomeStyle.divRowPantallaFinal,

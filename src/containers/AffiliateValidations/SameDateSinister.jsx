@@ -7,6 +7,7 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import Header from "../../components/header/index";
+import image from './../../img/notificacion.svg'
 
 const SameDateSinister = (props) => {
   const { dispatch, microsoftReducer } = props;
@@ -26,7 +27,7 @@ const SameDateSinister = (props) => {
       <div className={spaceStyle.space2} />
       <center>
         <div>
-          <img alt="load" src="./static/notificacion.svg" />
+          <img alt="load" src={image} />
         </div>
         <div className={comunClass.displayMobile}> 
           <div className={spaceStyle.space2} />

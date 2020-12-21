@@ -6,6 +6,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
 import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
+import image from './../../img/iconCalendar.svg'
 
 
 const FechaSiniestroDesk = ({
@@ -13,6 +14,7 @@ const FechaSiniestroDesk = ({
   daysFromState,
   monthFromState,
   yearFromState,
+  textLabel
 }) => {
 
   if(daysFromState?.toString().length === 1){
@@ -45,7 +47,7 @@ const FechaSiniestroDesk = ({
         <Grid
           className={comunClass.tituloTextBox}
         >
-          Fecha de accidente
+          {textLabel}
         </Grid>
       </div>
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
@@ -64,7 +66,7 @@ const FechaSiniestroDesk = ({
             maxDateMessage="La fecha no puede exceder al día de hoy"
             minDateMessage="La fecha es invalida"
 
-            keyboardIcon={<img alt="calendar" src="static/iconCalendar.svg"/>}
+            keyboardIcon={<img alt="calendar" src={image}/>}
       />
       </ThemeProvider>
       </MuiPickersUtilsProvider>          

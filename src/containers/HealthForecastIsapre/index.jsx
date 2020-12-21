@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { connect, useDispatch, useSelector, shallowEqual } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -14,7 +14,7 @@ import Header from "../../components/header/index";
 
 //Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
-import { searchIsapres } from "../../redux/actions/PrevisionAction";
+import image from './../../img/relato.svg'
 
 const HealthForecastIsapre = (props) => {
   const { isapreSeleccionado } = useSelector(
@@ -31,15 +31,6 @@ const HealthForecastIsapre = (props) => {
   const [isIsapresValid, setIsIsapresValid] = useState(true);
 
   const dispatch1 = useDispatch();
-
-  const initFn = useCallback(() => {
-    const consultaIsapres = () => dispatch1(searchIsapres());
-    consultaIsapres();
-  }, [dispatch1]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
 
   const getIsapres = useSelector((state) => state.previsionForm.isapres);
 
@@ -80,7 +71,7 @@ const HealthForecastIsapre = (props) => {
           </Grid>
           <div className={comunClass.displayDeskImg}>
             <Grid component="span" className={comunClass.imgPrimaryDesk}>
-              <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+              <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
             </Grid>
           </div>
         </div>

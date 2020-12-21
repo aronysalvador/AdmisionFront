@@ -181,6 +181,29 @@ export const getComunStyle = makeStyles((theme) => ({
             paddingTop: "15px",
             paddingBottom: "10px",
         },
+        // cardBtn: {
+        //     display: "flex",
+        //     justifyContent: "space-between",
+        //     // flexDirection: "row",
+        //     flexFlow: "column"
+        // },
+        cardsButtonTipoAccidenteTrayecto: {
+            marginTop: "10px",
+            marginBottom: "10px",
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "100%%",
+            height: "90px",
+            background: "#FFF",
+            border: "2px solid #787878",
+            borderSpacing: "2px",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px",
+            paddingBottom: "10px",
+        },
         botonSeleccionado: {
             // marginTop: "10px",
             marginBottom: "10px",
@@ -198,6 +221,25 @@ export const getComunStyle = makeStyles((theme) => ({
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check2.svg")})`,
+            backgroundRepeat: "no-repeat",
+        },
+        botonSeleccionadoSingle: {
+            // marginTop: "10px",
+            marginBottom: "10px",
+            display: "flex",
+            justifyContent: "center", //"space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "100%",
+            height: "90px",
+            backgroundColor: "#DFF3F2 !important",
+            border: "2px solid #00B2A9 !important",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px", //"35px",
+            paddingBottom: "10px",
+            color: "#373737",
+            backgroundImage: `url(${require("./../img/check5.svg")})`,
             backgroundRepeat: "no-repeat",
         },
         cardsButtonOther: {
@@ -309,9 +351,6 @@ export const getComunStyle = makeStyles((theme) => ({
             float: "none",
             clear: "both",
         },
-        pullRight: {
-            float: "right",
-        },
         borderBox: {
             border: "yellow",
             "&:hover": {
@@ -355,7 +394,6 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flow-root',
             overflow: 'auto',
             height: '24.5em',
-
             '&::-webkit-scrollbar': {
                 width: 8,
             },
@@ -389,7 +427,7 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: "10px",
             overflowWrap: "break-word",
             overflow: "auto",
-            height: "24em",
+            height: "23em",
             '&::-webkit-scrollbar': {
                 width: 8,
             },
@@ -406,7 +444,7 @@ export const getComunStyle = makeStyles((theme) => ({
         buttonEditRelato: {
             cursor: "pointer",
             // textDecoration: "underline",
-            color: "#373737", //"#DEDEDE",
+            color: "#373737",
         },
         imgAchs: {
             width: '60px', //"4.28125em",
@@ -507,15 +545,13 @@ export const getComunStyle = makeStyles((theme) => ({
             width: '60%', //'416px',
             maxWidth: '860px',
             minWidth: '700px',
-            // height: '354px',
             border: '0',
             background: 'white !important',
             boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
             borderRadius: '8px',
             alignItems: 'center',
             margin: 'auto',
-            // marginTop: '50px',
-            padding: '33px',
+            padding: '30px 20px 20px', //'33px',
             textAlign: 'center',
         },
         boxDeskCardBtn: {
@@ -599,7 +635,6 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex',
             justifyContent: 'space-around',
         },
-
         buttonAchs: {
             width: "50%",
             background: "#007A33",
@@ -737,7 +772,7 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         titleCenterDesk: {
             textAlign: "center !important",
-            position: "relative",
+            // position: "relative",
             marginTop: "0px"
         },
         titleDesk: {
@@ -1012,6 +1047,27 @@ export const getComunStyle = makeStyles((theme) => ({
             paddingTop: "15px",
             paddingBottom: "10px",
         },
+        cardBtn: {
+            // flexFlow: "wrap"
+        },
+        cardsButtonTipoAccidenteTrayecto: {
+            // marginTop: "10px",
+            // marginBottom: "10px",
+            display: "inline-flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "30%", //"45%",
+            height: "6em",
+            background: "#FFF",
+            border: "2px solid #787878",
+            borderSpacing: "2px",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px",
+            paddingBottom: "10px",
+            margin: "0 5px"
+        },
         botonSeleccionado: {
             // marginTop: "10px",
             marginBottom: "10px",
@@ -1030,6 +1086,26 @@ export const getComunStyle = makeStyles((theme) => ({
             color: "#373737",
             backgroundImage: `url(${require("./../img/check3.svg")})`,
             backgroundRepeat: "no-repeat",
+        },
+        botonSeleccionadoSingle: {
+            // marginTop: "10px",
+            // marginBottom: "10px",
+            display: "inline-flex",
+            justifyContent: "center", //"space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "30%",
+            height: "6em", //"90px",
+            backgroundColor: "#DFF3F2 !important",
+            border: "2px solid #00B2A9 !important",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px", //"35px",
+            paddingBottom: "10px",
+            color: "#373737",
+            backgroundImage: `url(${require("./../img/check2.svg")})`,
+            backgroundRepeat: "no-repeat",
+            margin: "0 5px"
         },
         cardsButtonOther: {
             marginTop: "10px",
@@ -1103,6 +1179,37 @@ export const getComunStyle = makeStyles((theme) => ({
                 border: "2px solid #00B2A9",
             },
         },
+        deskFlex: {
+            display: 'flex',
+            justifyContent: 'space-around',
+            width: '100%',
+            margin: '10px 0'
+        },
+        roundedBlueNoMargin: {
+            display: 'flex',
+            minWidth: '315px',
+            width: '100%',
+        }, 
+        roundedNormalNoMargin: {
+            display: 'flex',
+            minWidth: '315px',
+            width: '100%'
+        },       
+        roundedBlue: {
+            display: 'flex',
+            minWidth: '315px',
+            width: '100%',
+            margin: '0 5px'
+        },
+        roundedNormal: {
+            display: 'flex',
+            minWidth: '315px',
+            width: '100%',
+            margin: '0 5px'
+        },
+        widthOtro: {
+            width: '90%'
+        }
     },
 
     '@media (min-width: 860px)': {
@@ -1153,12 +1260,32 @@ export const getComunStyle = makeStyles((theme) => ({
             backgroundImage: `url(${require("./../img/check4.svg")})`,
             backgroundRepeat: "no-repeat",
         },
+        botonSeleccionadoSingle: {
+            // marginTop: "10px",
+            // marginBottom: "10px",
+            display: "inline-flex",
+            justifyContent: "center", //"space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "30%",
+            height: "6em", //"90px",
+            backgroundColor: "#DFF3F2 !important",
+            border: "2px solid #00B2A9 !important",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px", //"35px",
+            paddingBottom: "10px",
+            color: "#373737",
+            backgroundImage: `url(${require("./../img/check6.svg")})`,
+            backgroundRepeat: "no-repeat",
+        },
         cardsButtonOtherCheck: {
             position: "relative",
             bottom: "25px",
             left: "240px"
         },
     },
+
     '@media (min-width: 1440px)': {
         botonSeleccionado: {
             // marginTop: "10px",
@@ -1177,6 +1304,25 @@ export const getComunStyle = makeStyles((theme) => ({
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check5.svg")})`,
+            backgroundRepeat: "no-repeat",
+        },
+        botonSeleccionadoSingle: {
+            // marginTop: "10px",
+            // marginBottom: "10px",
+            display: "inline-flex",
+            justifyContent: "center", //"space-around",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "30%",
+            height: "6em", //"90px",
+            backgroundColor: "#DFF3F2 !important",
+            border: "2px solid #00B2A9 !important",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            paddingTop: "15px", //"35px",
+            paddingBottom: "10px",
+            color: "#373737",
+            backgroundImage: `url(${require("./../img/check7.svg")})`,
             backgroundRepeat: "no-repeat",
         },
         cardsButtonOtherCheck: {
@@ -1317,10 +1463,65 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '1em',
         // lineHeight: '1em',
         letterSpacing: '0.03em'
-    },  
+    },
     buttonEditRelato: {
         cursor: "pointer",
-        textDecoration: "underline",
+        // textDecoration: "underline",
         color: "#373737",
     },
+    pullRight: {
+        float: "right",
+        fontFamily: "Helvetica",
+        fontSize: "1em",
+        lineHeight: "1.572em",
+        color: "#787878",
+    },
+    roundedBlue: {
+        color: "#373737",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        backgroundColor: "#DFF3F2 !important"
+    },
+    roundedNormal: {
+        color: "#373737",
+        border: "2px solid #787878 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        background: "#FFFFFF"
+    },
+    roundedBlueNoMargin: {
+        color: "#373737",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        backgroundColor: "#DFF3F2 !important"
+    },    
+    roundedNormalNoMargin: {
+        color: "#373737",
+        border: "2px solid #787878 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        background: "#FFFFFF"
+    },
+    txtRadios: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "16px",
+        lineHeight: "18px",
+        color: "#373737"
+    },
+    containerOpction: {
+        display: "flex",
+        marginLeft: "40px"
+    },
+    containerOpctionCompl: {
+        display: "flex",
+        marginLeft: "10px"
+    }
 }));

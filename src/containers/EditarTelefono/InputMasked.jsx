@@ -1,5 +1,8 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
+import { InputAdornment } from "@material-ui/core";
+import { IconButton } from "material-ui";
+import ClearIcon from "@material-ui/icons/Clear";
 
 export default function InputMasked({
   mask,
@@ -8,6 +11,7 @@ export default function InputMasked({
   handleOnChange,
   telefono,
   disabled,
+  step,
   ...props
 }) {
   return (
@@ -20,7 +24,17 @@ export default function InputMasked({
       fullWidth
       helperText={disabled ? "" : "Ingresa 9 dígitos"}
       onChange={(e) => handleOnChange(e)}
-      inputProps={{ inputMode: 'numeric'}}
+      InputProps={  step ===14 ?  { 
+        inputMode: 'numeric',
+         endAdornment: (
+          <InputAdornment position="end">
+            <IconButton onClick={() => { setTelefono("") }}>
+              <ClearIcon />
+            </IconButton>
+          </InputAdornment>
+        )
+      } : {inputMode: 'numeric'}
+    }
       disabled={disabled}
     />
   );

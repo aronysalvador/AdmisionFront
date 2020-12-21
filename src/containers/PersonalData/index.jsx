@@ -11,6 +11,7 @@ import { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
 import Header from "../../components/header/index";
+import image from './../../img/identify.svg'
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -86,7 +87,7 @@ const PersonalData = (props) => {
       
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

@@ -11,17 +11,15 @@ const QuestionWitness = (props) => {
 
   const comunClass = getComunStyle();
 
+
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(12.1))}
+          dispatch={() => dispatch(handleSetStep("x",13))}
           percentage={addmissionForm.percentage}
         />
       </div>
@@ -30,8 +28,16 @@ const QuestionWitness = (props) => {
           titulo={"¿Alguien fue"}
           titulo2={"testigo "}
           titulo3={"de lo que sucedió?"}
-          accionButoonA={() => dispatch(handleSetStep(14))}
+          accionButoonA={() => {
+            addmissionForm.CamposDocumentos.TestigoS = "x"
+            addmissionForm.CamposDocumentos.TestigoN = ""
+            dispatch(updateForm("CamposDocumentos", addmissionForm.CamposDocumentos));
+            dispatch(handleSetStep(14))
+          }}
           accionButoonB={() => {
+            addmissionForm.CamposDocumentos.TestigoS = ""
+            addmissionForm.CamposDocumentos.TestigoN = "x"
+            dispatch(updateForm("CamposDocumentos", addmissionForm.CamposDocumentos));
             dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
             dispatch(handleSetStep(15))     
           }}

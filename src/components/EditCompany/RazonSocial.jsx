@@ -4,7 +4,6 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { getSucursales } from "../../redux/actions/SucursalesAction";
 import Autocomplete from '@material-ui/lab/Autocomplete';
-//import CircularProgress from '@material-ui/core/CircularProgress';
 
 const RazonSocial = () => {
   const {

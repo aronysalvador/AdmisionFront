@@ -4,7 +4,7 @@ import {getComunStyle} from '../../css/comun'
 import { handleSetStep } from '../../redux/actions/AdmissionAction'
 import { Alert,AlertTitle } from '@material-ui/lab'
 import Cabecera from '../../components/cabecera/index'
-
+import image from './../../img/segurito.gif'
 
 const PacienteNoAfiliadoError = (props) => {
     const { dispatch } = props
@@ -16,7 +16,7 @@ const PacienteNoAfiliadoError = (props) => {
                     <AlertTitle>En construcción</AlertTitle>
                 </Alert>
                 <div>
-                    <img alt="segurito" src="./static/segurito.gif" style={{width:'22.5em'}} />
+                    <img alt="segurito" src={image} style={{width:'22.5em'}} />
                 </div>
             </div>
     );

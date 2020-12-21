@@ -7,6 +7,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Header from "../../components/header/index";
+import warning from './../../img/WarningErrorCaso.png'
 
 const ErrorCaso = (props) => {
   const spaceStyle = getSpaceStyle();
@@ -29,7 +30,7 @@ const ErrorCaso = (props) => {
         <div>
           <img
             alt="load"
-            src="./static/WarningErrorCaso.png"
+            src={warning}
           />
         </div>
         <div className={spaceStyle.space1} />

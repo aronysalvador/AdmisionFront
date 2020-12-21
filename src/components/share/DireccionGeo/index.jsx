@@ -4,6 +4,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import { getComunStyle } from "./../../../css/comun"
 import { useDispatch } from "react-redux"
 import { updateForm } from "../../../redux/actions/AdmissionAction"
+import image from './../../../img/location.png'
+
 
 function sleep(delay = 0) {
     return new Promise((resolve) => {
@@ -137,7 +139,7 @@ const DireccionGeo = (props) => {
                     if(option.description==='Fijar en el mapa'){                   
                       return(
                         <Typography className={comunStyle.txtGreen}>
-                          <img alt="Location" src="static/location.png" className={comunStyle.iconLocation} />
+                          <img alt="Location" src={image} className={comunStyle.iconLocation} />
                           <span style={{marginLeft:"5px"}}>{option.description}</span>
                         </Typography>
                       )

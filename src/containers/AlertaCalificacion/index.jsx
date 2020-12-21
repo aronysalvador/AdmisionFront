@@ -14,6 +14,8 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { ErrorOutline } from "@material-ui/icons";
 import Header from "../../components/header/index";
 import { Grid } from '@material-ui/core';
+import check from './../../img/icon-check.png'
+import excelent from './../../img/excelent.svg'
 
 const AlertaCalificacion = () => {
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -59,7 +61,7 @@ const AlertaCalificacion = () => {
               <div className={comunClass.displayMobile}>
                 <img
                   alt="Excelente"
-                  src="static/icon-check.png"
+                  src={check}
                   className={welcomeStyle.iconCircular}
                 />
               </div>
@@ -71,13 +73,13 @@ const AlertaCalificacion = () => {
                   Eso fue rápido&nbsp;
                 </Typography>
                 <div className={comunClass.displayDeskInline}>
-                  <img alt="Excelente" src="static/icon-check.png" className={welcomeStyle.iconCircular} />
+                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
                 </div>
               </div>
             </div>
             <div className={comunClass.displayDeskInline}>
               <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="excelente" src="static/excelent.svg" />
+                <img alt="excelente" src={excelent} />
               </Grid>
             </div>
           </div>

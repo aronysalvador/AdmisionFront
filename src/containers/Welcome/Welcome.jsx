@@ -9,6 +9,7 @@ import {getComunStyle} from '../../css/comun'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import '../../css/catamaranFont.css'
 import '../../css/sfUiDisplayCufonfonts.css'
+import admisionista from './../../img/relato.svg'
 
 const Welcome = (props) => {
 
@@ -22,7 +23,7 @@ const Welcome = (props) => {
             <div className={comunStyle.root}>
                 <div className={spaceStyle.space4} />
                 <div   className={welcomeStyle.avatarContainer}>
-                    <img alt="Ejecutivo de admisión" src="static/admisionista.jpg" className={welcomeStyle.avatar} />
+                    <img alt="Ejecutivo de admisión" src={admisionista} className={welcomeStyle.avatar} />
                 </div>
                 <div className={spaceStyle.space4} />
                 <div   className={welcomeStyle.bienvenidoContainer}>

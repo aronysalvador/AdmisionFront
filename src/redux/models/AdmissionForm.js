@@ -17,6 +17,7 @@ export const AdmissionForm = {
     responsable: [],
     fechaHoraResponsable: {},
     fechaHoraSiniestro: {},
+    fechaHoraAtencion: {},
 
     SucursalEmpresa: "",
     DireccionEmpresa: "",
@@ -59,6 +60,63 @@ export const AdmissionForm = {
     BP: "",
     mensajeErrorSAP: "",
 
-    TrabajadorIndependiente: "",
-    tab: 0
+    TrabajadorIndependiente: "", // va al doumento de trayecto debe incluirse en CamposDocumentos
+    tab: 0,
+
+    coberturaSoap: "", // se debe pasar a SAP
+
+    CamposDocumentos: {
+        /* TRAYECTO */
+        //Atencion Previa
+        FechaOtroRe: "",
+        HoraOtroRec: "",
+        OtroRecinto: "",
+        OtroRecintoSi: "",
+        OtroRecintoNo: "x",
+        CuentaConSi: "",
+        CuentaConNo: "x",
+        CuentaCual: "",
+        //Testigo
+        DatosTestig: "",
+        //Mecanismo Causal
+        Mecanismo: "",
+        PosibleCaus: "",
+        //MedioTransporte
+        MedioTransp: "",
+        //ParteAfectada
+        ParteAfecta: "",
+        Otras: "",
+        //TipoAvisoResponsable
+        avisoPresen: "",
+        avisoMail: "",
+        avisoFono: "",
+        avisoOtro: "",
+        avisoCual: "",
+        //Docuentación Complementaria
+        antecePartP: "",
+        anteceConst: "",
+        anteceVideS: "",
+        anteceComSe: "",
+        anteceOtro: "",
+        anteceOtroC: "",
+        anteceNocuenta: "x",
+        //TipoAccidenteTrayecto
+        HabitacionT: "",
+        TrabajoHabitacion:"", 
+        EntreTrabaj:"",
+        //Antece "" Documento Testigo
+        anteceRespA: "",
+        anteceRespO: "",
+        anteceRegsA: "",
+        anteceCertH: "",
+        //Testigo
+        TestigoS: "",
+        TestigoN: "x"
+        /* TRAYECTO */
+   
+    },
+
+    FechaSintomasEP: {},
+
+    TipoAvisoResponsable: {}
 };

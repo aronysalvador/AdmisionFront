@@ -9,6 +9,7 @@ import DireccionGeo from '../../components/share/DireccionGeo'
 import { validarDireccionSN,validarDireccionCorrecta } from './../../helpers/utils'
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const LugarExactoSiniestro = () => {
   const {
@@ -17,10 +18,10 @@ const LugarExactoSiniestro = () => {
   } = useSelector((state) => state, shallowEqual);
 
   const [sucursal, setSucursal] = useState(() => {
-    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : ""
+    return sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : "";
   });
   const [mapaUrl, setMapaUrl] = useState(() => {
-    return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : ""
+    return urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : "";
   });
   const [nombreComuna,setNombreComuna]=useState("");
 
@@ -79,7 +80,7 @@ const LugarExactoSiniestro = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth}/>
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth}/>
           </Grid>
         </div>
       </div>

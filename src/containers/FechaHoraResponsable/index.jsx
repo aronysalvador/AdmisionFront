@@ -11,6 +11,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const FechaHoraResponsable = () => {
   const { percentage, fechaHoraResponsable } = useSelector(
@@ -64,7 +65,7 @@ const FechaHoraResponsable = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -87,6 +88,7 @@ const FechaHoraResponsable = () => {
               daysFromState={days}
               monthFromState={month}
               yearFromState={year}
+              textLabel={"Fecha de accidente"}
             />
           </div>
           <div className={spaceStyle.space1} />
@@ -96,6 +98,7 @@ const FechaHoraResponsable = () => {
                 horasFromState={horas}
                 indiceMinutosFromState={minutosArray.indexOf(minutos)}
                 minutos={minutosArray}
+                
               />
             </div>
             <div className={comunClass.displayDesk}>
@@ -104,6 +107,7 @@ const FechaHoraResponsable = () => {
                   horasFromState={horas}
                   indiceMinutosFromState={minutosArray.indexOf(minutos)}
                   minutos={minutosArray}
+                  textLabel={"Hora de accidente"}
                 />
             </div>
         </div>
@@ -117,7 +121,7 @@ const FechaHoraResponsable = () => {
                   ...horaSiniestro,
                 })
               );
-              dispatch(handleSetStep(17.1));
+              dispatch(handleSetStep("x",17)) 
             }}
           >
             Continuar

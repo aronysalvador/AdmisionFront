@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -6,18 +6,10 @@ import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getNacionalidades } from "./../../redux/actions/NacionalidadesAction";
-import { getPaises } from "./../../redux/actions/PaisesAction";
-import { getIdiomas } from "./../../redux/actions/IdiomasAction";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Header from "../../components/header/index";
-
-//Action de Redux
-//import { sendCargo } from "../../redux/actions/AdmissionAction";
-//import { InputAdornment } from "@material-ui/core";
-//import { IconButton } from "material-ui";
-//import ClearIcon from "@material-ui/icons/Clear";
+import image from './../../img/identify.svg'
 
 const SinBPInfoPersonal2 = () => {
   const {
@@ -25,20 +17,7 @@ const SinBPInfoPersonal2 = () => {
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
-
-
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getNacionalidades());
-    dispatch(getIdiomas());
-    dispatch(getPaises());
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn()
-  }, [initFn]);
-
     
   const { data: nacionalidadList } = useSelector((state) => state.nacionalidadForm, shallowEqual);
   const { data: paisesList } = useSelector((state) => state.paisForm, shallowEqual);
@@ -97,7 +76,7 @@ const SinBPInfoPersonal2 = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src="static/identify.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

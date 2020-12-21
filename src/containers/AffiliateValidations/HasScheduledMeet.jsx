@@ -6,6 +6,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { getBlackTheme } from "../../css/blackTheme";
 import Header from "../../components/header/index";
+import image from './../../img/cita-agendada.svg'
 
 const HasScheduledMeet = (props) => {
   const { addmissionForm, dispatch, microsoftReducer } = props;
@@ -31,7 +32,7 @@ const HasScheduledMeet = (props) => {
         </div>
         <img
           alt="load"
-          src="./static/cita-agendada.svg"
+          src={image}
           className={blackStyle.img}
         />
         <div className={spaceStyle.space1} />

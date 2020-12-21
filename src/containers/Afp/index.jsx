@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import { getAFP } from "./../../redux/actions/AfpAction";
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -10,12 +9,8 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-/*
-REVISARE EL 
-  const {
-    addmissionForm: { percentage, afpForm },
-  } = useSelector((state) => state, shallowEqual);
-*/
+import image from './../../img/relato.svg'
+
 const Afp = () => {
   const {
     addmissionForm: { percentage, afpForm }, microsoftReducer
@@ -29,14 +24,6 @@ const Afp = () => {
   });
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
   const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getAFP(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn()
-  }, [initFn]);
 
   return (
     <div className={comunClass.root}>
@@ -58,7 +45,7 @@ const Afp = () => {
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src="static/relato.svg" className={comunClass.imgPrimaryWidth} />
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
