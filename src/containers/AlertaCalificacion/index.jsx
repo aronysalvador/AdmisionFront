@@ -35,7 +35,7 @@ const AlertaCalificacion = () => {
         <div className={welcomeStyle.beginContainer}>
           <div className={comunClass.displayMobile}>
             <Cabecera
-              dispatch={() => dispatch(handleSetStep(26))}
+              dispatch={() => dispatch(handleSetStep(19.4))}
               color="#373737"
               percentage={-1}
               noSpace={true}
@@ -43,7 +43,7 @@ const AlertaCalificacion = () => {
           </div>
           <div className={comunClass.displayDesk}>
             <Cabecera 
-              dispatch={() => dispatch(handleSetStep(26))} 
+              dispatch={() => dispatch(handleSetStep(19.4))} 
               color={"#fff" } 
               percentage={-1} 
               noSpace={true} />
