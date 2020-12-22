@@ -97,10 +97,6 @@ export default () =>{
         dispatch(updateForm("inicioJornadaLaboral", entrada));
         dispatch(updateForm("finJornadaLaboral", salida));
         setValid(true)  
-
-        // setTimeout(() => {
-        //     dispatch(handleSetStep((categoriaOcup.nombre==="Empleadores" || categoriaOcup.nombre==="Cuenta Propia") ? 25.1 : 26.1))
-        // }, 1000);
     }
 
     return(
