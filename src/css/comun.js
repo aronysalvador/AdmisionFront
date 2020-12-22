@@ -567,6 +567,19 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: '30px 100px',
             textAlign: 'center',
         },
+        boxCardBtn: {
+            width: '100%',
+            // maxWidth: '860px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '30px',
+            textAlign: 'center',
+        },
         boxDeskMap: {
             width: '60%',
             maxWidth: '860px',
@@ -1189,12 +1202,12 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex',
             minWidth: '315px',
             width: '100%',
-        }, 
+        },
         roundedNormalNoMargin: {
             display: 'flex',
             minWidth: '315px',
             width: '100%'
-        },       
+        },
         roundedBlue: {
             display: 'flex',
             minWidth: '315px',
@@ -1499,7 +1512,7 @@ export const getComunStyle = makeStyles((theme) => ({
         alignItems: "center",
         // justifyContent: "center",
         backgroundColor: "#DFF3F2 !important"
-    },    
+    },
     roundedNormalNoMargin: {
         color: "#373737",
         border: "2px solid #787878 !important",

@@ -8,7 +8,9 @@ import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/Boto
 import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import image from './../../img/relato.svg'
+
+import AfpList from "../../components/AfpList/AfpList";
+import AfpButtons from "../../components/AfpList/AfpButtons";
 
 const Forecasts = () => {
   const {
@@ -23,7 +25,7 @@ const Forecasts = () => {
   const tipoAFP = !afpForm ? "" : afpForm;
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
   // const [buttonOver, setButtonOver] = useState(false);
-
+  console.log(afpList)
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
@@ -36,10 +38,61 @@ const Forecasts = () => {
         />
       </div>
       <div className="container">
-        <div className={comunClass.boxDeskCardBtn}>
+        <div className={comunClass.boxCardBtn}>
           <div className="row">
-            <div className="col-md-6">AFP</div>
-            <div className="col-md-6">Isapre</div>
+            <div className="col-md-6" style={{backgroundColor: "#F4F4F4"}}>
+              <div className="">
+                <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+                  Selecciona la
+                  <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                    &nbsp;AFP
+                  </Grid>      
+                  &nbsp;o 
+                  <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                    &nbsp;Previsión Social
+                  </Grid>      
+                </Grid>
+              </div>
+              <div className="row" style={{backgroundColor: "white"}}>
+                <div className={comunClass.cardsButtonAlign}>
+                {afpList.slice(0,6).map((afp) => (
+                <BotonSeleccionarCustom
+                  key={afp.codigo}
+                  data={afp}
+                  itemForm={"afpForm"}
+                  selected={afp.codigo === tipoAFP.codigo}
+                  step={19}
+                >
+                  <BotonSeleccionarCustomItem {...afp} />
+                </BotonSeleccionarCustom>
+                ))}
+                </div>
+                {/* <AfpButtons /> */}
+              </div>
+              <div className={spaceStyle.space1} />
+              <div className="row">
+                <AfpList  />
+              </div>
+              <div className={spaceStyle.spaceMin1} />
+            </div>
+
+            <div className="col-md-6" style={{backgroundColor: "#F4F4F4"}}>
+              <div className="">
+                <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+                  Selecciona la
+                  <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                    &nbsp;Previsión de Salud
+                  </Grid>      
+                </Grid>
+              </div>
+              <div className="row">
+                Botones Isapres
+              </div>
+              <div className={spaceStyle.space1} />
+              <div className="row">
+                Lista Isapres
+              </div>
+            </div>
           </div>
         </div>
       </div>
