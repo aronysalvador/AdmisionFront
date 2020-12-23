@@ -102,7 +102,7 @@ const RelatoCompleto = () => {
             <div className="row">
                 <div className="col-md-12">
                 <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
-                    <div className={['row', comunClass.backgroundGrey2].join(' ')}>
+                    <div className={['row', comunClass.backgroundGrey].join(' ')}>
 
                     <Grid className={`${comunClass.textPrimaryRelato}`} >
                             ¿Qué estaba haciendo 
@@ -174,7 +174,7 @@ const RelatoCompleto = () => {
 
                     {tipoSiniestro.Id === 1 && 
                         <>
-                        <div className={['row', comunClass.backgroundGrey2].join(' ')}>
+                        <div className={['row', comunClass.backgroundGrey].join(' ')}>
                         <div className="col-md-10" style={{textAlign:"left"}}>
                         <Grid className={`${comunClass.textPrimaryRelato}`} >
                             Al momento del accidente, ¿desarrollaba su

@@ -122,7 +122,7 @@ const RelatoSuccess = (props) => {
               <Button
                 className={comunStyle.buttonAchs}
                 variant="contained"
-                onClick={() => dispatch(handleSetStep(19.3))}
+                onClick={() => dispatch(handleSetStep(19.4))}
               >
                 Revisar información laboral
               </Button>

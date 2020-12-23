@@ -82,7 +82,7 @@ const FechaHoraResponsable = () => {
               yearFromState={year}
             />
           </div>
-          <div className={comunClass.displayDesk}>
+          <div className={comunClass.displayDesk} style={{marginBottom:'10px'}}>
             <FechaSiniestroDesk
               onChange={setFechaValueSiniestro}
               daysFromState={days}

@@ -554,6 +554,17 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: '30px 20px 20px', //'33px',
             textAlign: 'center',
         },
+        boxDesk2: {
+            width: '60%', //'416px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            textAlign: 'center',
+        },
         boxDeskCardBtn: {
             width: '60%',
             maxWidth: '860px',
@@ -617,6 +628,10 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         bottomElement: {
             padding: "30px 0",
+            textAlign: "center",
+        },
+        bottomElement2: {
+            padding: "15px",
             textAlign: "center",
         },
         bottomElementMap: {
@@ -1548,9 +1563,33 @@ export const getComunStyle = makeStyles((theme) => ({
         color: '#00b2a9', 
         display: "contents",
     },
-    backgroundGrey2: {
+    backgroundGrey: {
         background: '#f4f4f4',
         padding: '1em',
         borderRadius: '8px'
     },
+    titleBlueDataCont: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '18px', 
+        lineHeight: '34px',
+        color: '#00b2a9',
+    },
+    titleBlackDataCont: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '18px', 
+        color: '#373737',
+    },
+    textPrimaryDeskDataCont: {
+        display: "inline-block",
+        width: "86%", 
+        textAlign: "left",
+        verticalAlign: "top",
+    },
+    containerTextBoxDataCont: {
+        textAlign: 'left',
+    }
 }));

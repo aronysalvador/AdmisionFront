@@ -77,6 +77,7 @@ import Achs from "../IdentificacionACHS/index";
 import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
 
 import Profesion from "../Profesion/index";
+import DatosContractuales from "../DatosContractuales";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
 import NoAfiliate from "../AffiliateValidations/NoAfiliate";
@@ -643,6 +644,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <Profesion />
+            </Paper>
+          </div>
+        );
+      case 19.4:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <DatosContractuales />
             </Paper>
           </div>
         );
