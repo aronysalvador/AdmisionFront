@@ -118,8 +118,8 @@ const RelatoCompleto = () => {
                         fullWidth
                         rows={5}
                         inputProps={{ maxLength: 200 }}
-                        helperText={text1.length - 32 < 5 &&"Se necesita al menos 5 caracteres"}
-                        error={text1.length - 32 < 5} 
+                        helperText={(text1.length - 32 < 5 && text1.length - 32 > 0) &&"Se necesita al menos 5 caracteres"}
+                        error={text1.length - 32 < 5 && text1.length - 32 > 0} 
                         onChange={text1.length >= 32 ? onChangeValue1 : setText1("Al momento del accidente estaba ")}
                         defaultValue="Al momento del accidente estaba "
                     />
@@ -140,8 +140,8 @@ const RelatoCompleto = () => {
                         fullWidth
                         rows={5}
                         inputProps={{ maxLength: 200 }}
-                        helperText={text2.length - 23 < 5 &&"Se necesita al menos 5 caracteres"}
-                        error={text2.length - 23 < 5} 
+                        helperText={(text2.length - 23 < 5 && text2.length - 23 > 0)&&"Se necesita al menos 5 caracteres"}
+                        error={text2.length - 23 < 5 && text2.length - 23 > 0} 
                         onChange={text2.length >= 23 ? onChangeValue2 : setText2("Lo que ocurrió fue que ")}
                         defaultValue={"Lo que ocurrió fue que me "}
                     />
@@ -162,8 +162,8 @@ const RelatoCompleto = () => {
                         fullWidth
                         rows={5}
                         inputProps={{ maxLength: 200 }}
-                        helperText={text3.length - 25 < 5 &&"Se necesita al menos 5 caracteres"}
-                        error={text3.length - 25 < 5} 
+                        helperText={(text3.length - 25 < 5 && text3.length - 25 > 0) &&"Se necesita al menos 5 caracteres"}
+                        error={text3.length - 25 < 5 && text3.length - 25 > 0} 
                         onChange={text3.length >= 25 ? onChangeValue3 : setText3("El accidente ocurrió con ")}
                         defaultValue={"El accidente ocurrió con "}
                     />
