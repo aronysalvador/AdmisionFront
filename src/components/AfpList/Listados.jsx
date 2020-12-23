@@ -11,7 +11,7 @@ const AfpList = (props) => {
   
 
   const { checkedAfp: check, setCheckedAfp: setCheck, title, identificador, description, listado } = props
-  const [checkInt, setCheckInt] = useState("")
+  const [checkInt, setCheckInt] = useState(check?check:"")
 
   useEffect(()=>{
     if(check.otro===false){
@@ -58,7 +58,7 @@ const AfpList = (props) => {
                   inputProps={{ 'aria-label': 'C' }}
               />
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3" style={{alignSelf: "center"}}>
               <span className={comunClass.txtRadios}>{title}</span>
           </div>
           

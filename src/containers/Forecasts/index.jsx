@@ -40,12 +40,28 @@ const Forecasts = () => {
 
 
   useEffect(()=>{
-    if(checkedAfp.codigo && checkedIsapre.id){      
-      dispatch(updateForm("afpForm", checkedAfp));
-      dispatch(updateForm("isapreSeleccionado", checkedIsapre));
-      dispatch(handleSetStep(19.2))
+    if(!afpForm && !isapreSeleccionado){      
+      if(checkedAfp.codigo && checkedIsapre.id){      
+        dispatch(updateForm("afpForm", checkedAfp));
+        dispatch(updateForm("isapreSeleccionado", checkedIsapre));
+        dispatch(handleSetStep(19.2))
+      }
+    }else{
+      if(afpForm.codigo!=checkedAfp.codigo || isapreSeleccionado.id!=checkedIsapre.id){      
+        dispatch(updateForm("afpForm", checkedAfp));
+        dispatch(updateForm("isapreSeleccionado", checkedIsapre));
+        dispatch(handleSetStep(19.2))
+      }
     }
   },[checkedAfp, checkedIsapre])
+
+  // const handeleNext = () => {
+  //   if(checkedAfp.codigo && checkedIsapre.id){  
+  //     dispatch(updateForm("afpForm", checkedAfp));
+  //     dispatch(updateForm("isapreSeleccionado", checkedIsapre));
+  //     dispatch(handleSetStep(19.2))
+  //   }
+  // }
 
   return (
     <div className={comunClass.root}>
