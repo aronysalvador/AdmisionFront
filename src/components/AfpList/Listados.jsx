@@ -52,7 +52,7 @@ const AfpList = (props) => {
               <BlueRadio
                   checked={check.otro }
                   onChange={()=>{ var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
-                  console.log("temp: ");   console.log(temp); setCheck(temp)}}
+                  setCheck(temp)}}
                   value={check}
                   name="radio-button-demo"
                   inputProps={{ 'aria-label': 'C' }}
@@ -64,6 +64,9 @@ const AfpList = (props) => {
           
             <div className="col-md-8">
               <NoPaddingAutocomplete
+                // onOpen={()=>{ console.log("aca"); var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
+                // setCheck(temp) }}
+                // openOnFocus
                 value={checkInt}
                 onChange={(event, value) => {
                   if(value){

@@ -39,29 +39,63 @@ const Forecasts = () => {
   })((props) => <Radio color="default" {...props} />);
 
 
-  useEffect(()=>{
-    if(!afpForm && !isapreSeleccionado){      
-      if(checkedAfp.codigo && checkedIsapre.id){      
-        dispatch(updateForm("afpForm", checkedAfp));
+
+  const handeleNextAfp = (txt) => {
+    console.log("in afp")
+    setTimeout(() => {    
+      console.log(checkedAfp)
+      console.log(checkedIsapre)
+      if(checkedAfp.codigo && checkedIsapre.id){  
+        console.log("next")
+        dispatch(updateForm("afpForm", txt));
         dispatch(updateForm("isapreSeleccionado", checkedIsapre));
         dispatch(handleSetStep(19.2))
       }
-    }else{
-      if(afpForm.codigo!=checkedAfp.codigo || isapreSeleccionado.id!=checkedIsapre.id){      
+    }, 500);
+  }
+
+  const handeleNextIsapre = (txt) => {
+    console.log("in isapre")
+    setTimeout(() => {    
+      console.log(checkedAfp)
+      console.log(checkedIsapre)
+      if(checkedAfp.codigo && checkedIsapre.id){  
+        console.log("next")
         dispatch(updateForm("afpForm", checkedAfp));
-        dispatch(updateForm("isapreSeleccionado", checkedIsapre));
+        dispatch(updateForm("isapreSeleccionado", txt));
         dispatch(handleSetStep(19.2))
+      }
+    }, 500);
+  }
+
+  useEffect(()=>{
+    if(!isapreSeleccionado){
+      console.log("checkedIsapre1")
+      console.log(checkedIsapre)
+      handeleNextIsapre(checkedIsapre)
+    }else{
+      if(isapreSeleccionado!==checkedIsapre){
+        console.log("checkedIsapre2")
+        console.log(checkedIsapre)
+        handeleNextIsapre(checkedIsapre)
       }
     }
-  },[checkedAfp, checkedIsapre])
+   
+  },[checkedIsapre])
 
-  // const handeleNext = () => {
-  //   if(checkedAfp.codigo && checkedIsapre.id){  
-  //     dispatch(updateForm("afpForm", checkedAfp));
-  //     dispatch(updateForm("isapreSeleccionado", checkedIsapre));
-  //     dispatch(handleSetStep(19.2))
-  //   }
-  // }
+  useEffect(()=>{
+    if(!afpForm){
+      console.log("checkedAfp1")
+      console.log(checkedAfp)
+      handeleNextAfp(checkedAfp)
+    }else{
+      if(afpForm!==checkedAfp){
+        console.log("checkedAfp2")
+        console.log(checkedAfp)
+        handeleNextAfp(checkedAfp)
+      }
+    }
+  },[checkedAfp])
 
   return (
     <div className={comunClass.root}>
@@ -102,8 +136,12 @@ const Forecasts = () => {
                       <div className={checkedAfp.codigo === afp.codigo && checkedAfp.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-3">
                               <BlueRadio
+                                  // onClick={()=>handeleNext()}
                                   checked={checkedAfp.codigo === afp.codigo && checkedAfp.otro === false}
-                                  onChange={()=>{ afp.otro=false; setCheckedAfp(afp); } }
+                                  onChange={()=>{ 
+                                    afp.otro=false; 
+                                    setCheckedAfp(afp);;                                                                         
+                                  } }
                                   value={checkedAfp}
                                   name="radio-button-demo"
                                   inputProps={{ 'aria-label': 'C' }}
@@ -122,7 +160,7 @@ const Forecasts = () => {
                 <div className={spaceStyle.space1} />
 
                 <div className="row">
-                  <Listados title="Otra AFP" checkedAfp ={ checkedAfp } setCheckedAfp = {setCheckedAfp}  identificador="codigo" description="nombre" listado={afpList} />
+                  <Listados title="Otra AFP" checkedAfp ={ checkedAfp } setCheckedAfp = {setCheckedAfp}  identificador="codigo" description="nombre" listado={afpList}   />
                 </div>
                 <div className={spaceStyle.spaceMin1} />
               </div>
@@ -150,7 +188,11 @@ const Forecasts = () => {
                         <div className="col-md-2">
                               <BlueRadio
                                   checked={checkedIsapre.id === isapreList[0].id && checkedIsapre.otro === false}
-                                  onChange={()=>{ isapreList[0].otro=false; setcheckedIsapre(isapreList[0]); } }
+                                  onChange={()=>{ 
+                                    isapreList[0].otro=false; 
+                                    setcheckedIsapre(isapreList[0]);
+                                  } }
+                                  // onClick={()=>handeleNext()}
                                   value={checkedIsapre}
                                   name="radio-button-demo"
                                   inputProps={{ 'aria-label': 'C' }}
@@ -169,7 +211,11 @@ const Forecasts = () => {
                         <div className="col-md-3">
                               <BlueRadio
                                   checked={checkedIsapre.id === isapreList[25].id && checkedIsapre.otro === false}
-                                  onChange={()=>{ isapreList[25].otro=false; setcheckedIsapre(isapreList[25]); } }
+                                  onChange={()=>{
+                                     isapreList[25].otro=false; 
+                                     setcheckedIsapre(isapreList[25]);
+                                     } }
+                                  // onClick={()=>handeleNext()}
                                   value={checkedIsapre}
                                   name="radio-button-demo"
                                   inputProps={{ 'aria-label': 'C' }}
@@ -187,7 +233,11 @@ const Forecasts = () => {
                         <div className="col-md-3">
                               <BlueRadio
                                   checked={checkedIsapre.id === isapreList[12].id && checkedIsapre.otro === false}
-                                  onChange={()=>{ isapreList[12].otro=false; setcheckedIsapre(isapreList[12]); } }
+                                  onChange={()=>{
+                                     isapreList[12].otro=false; 
+                                     setcheckedIsapre(isapreList[12]); 
+                                    } }
+                                    // onClick={()=>handeleNext()}
                                   value={checkedIsapre}
                                   name="radio-button-demo"
                                   inputProps={{ 'aria-label': 'C' }}
@@ -205,7 +255,11 @@ const Forecasts = () => {
                         <div className="col-md-3">
                               <BlueRadio
                                   checked={checkedIsapre.id === isapreList[11].id && checkedIsapre.otro === false}
-                                  onChange={()=>{ isapreList[11].otro=false; setcheckedIsapre(isapreList[11]); } }
+                                  onChange={()=>{ 
+                                    isapreList[11].otro=false; 
+                                    setcheckedIsapre(isapreList[11]);
+                                  } }
+                                  // onClick={()=>handeleNext()}
                                   value={checkedIsapre}
                                   name="radio-button-demo"
                                   inputProps={{ 'aria-label': 'C' }}
@@ -223,7 +277,11 @@ const Forecasts = () => {
                         <div className="col-md-3">
                               <BlueRadio
                                   checked={checkedIsapre.id === isapreList[9].id && checkedIsapre.otro === false}
-                                  onChange={()=>{ isapreList[9].otro=false; setcheckedIsapre(isapreList[9]); } }
+                                  onChange={()=>{ 
+                                    isapreList[9].otro=false; 
+                                    setcheckedIsapre(isapreList[9]); 
+                                  } }
+                                  // onClick={()=>handeleNext()}
                                   value={checkedIsapre}
                                   name="radio-button-demo"
                                   inputProps={{ 'aria-label': 'C' }}
@@ -242,7 +300,7 @@ const Forecasts = () => {
                 <div className={spaceStyle.space1} />
 
                 <div className="row">
-                  <Listados title="Otra Isapre" checkedAfp ={ checkedIsapre } setCheckedAfp = {setcheckedIsapre} identificador="id" description="nombre" listado={isapreList} />
+                  <Listados title="Otra Isapre" checkedAfp ={ checkedIsapre } setCheckedAfp = {setcheckedIsapre} identificador="id" description="nombre" listado={isapreList}  />
                 </div>
                 <div className={spaceStyle.spaceMin1} />
               </div>
