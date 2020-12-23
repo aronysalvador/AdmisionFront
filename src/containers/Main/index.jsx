@@ -20,6 +20,7 @@ import Start from "../Welcome/WelcomeStart";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
+import RelatoCompleto from "../Questions/RelatoCompleto"
 import AccidentPlaceForm from "../Questions/LugarAccidente";
 import AccidentDescription from "../Questions/DescripcionAccidente";
 import AccidentObjectForm from "../Questions/ObjetoAccidente";
@@ -403,6 +404,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <AccidentPlaceForm />
+            </Paper>
+          </div>
+        );
+      case 6.06:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <RelatoCompleto />
             </Paper>
           </div>
         );
