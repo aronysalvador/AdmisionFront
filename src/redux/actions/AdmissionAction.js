@@ -66,7 +66,8 @@ export const handleSetStep = (step, actual = null) => {
                 case 5.7: //PersonalSuccess
                     switch (TIPO) {
                         case 1:
-                            PASO = 6
+                            //RelatoUnido
+                            PASO = 6.06
                             break;
                         case 2:
                             PASO = 6.01
@@ -97,10 +98,29 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
+                //Relato Unido    
+                case 6.06: //AccidentPlaceForm
+                switch (TIPO) {
+                    case 1:
+                        PASO = 5.7
+                        break;
+                    case 2:
+                        PASO = 6.03
+                        break;
+                    case 3:
+                        PASO = 500
+                        break;
+                    default:
+                        PASO = 500
+                        break;
+                }
+                break;
+
                 case 8.1: //RelatoFinal
                     switch (TIPO) {
                         case 1:
-                            PASO = 9
+                            //Nuevo Flujo
+                            PASO = 10
                             break;
                         case 2:
                             PASO = 9.01
@@ -117,7 +137,8 @@ export const handleSetStep = (step, actual = null) => {
                 case 10: //FechaHoraSiniestro 
                     switch (TIPO) {
                         case 1:
-                            PASO = 9
+                            //Nuevo Flujo
+                            PASO = 8.1
                             break;
                         case 2:
                             PASO = 9.01
