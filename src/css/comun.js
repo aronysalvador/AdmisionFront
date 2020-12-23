@@ -1523,5 +1523,29 @@ export const getComunStyle = makeStyles((theme) => ({
     containerOpctionCompl: {
         display: "flex",
         marginLeft: "10px"
+    },
+    textPrimaryRelato: {
+        display: "inline-block",
+        width: "86%", 
+        textAlign: "left",
+        verticalAlign: "top",  
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        lineHeight: '25px',
+        color: '#373737', 
+    },
+    textPrimaryRelatoBlue: {
+        width: "86%", 
+        textAlign: "left",
+        verticalAlign: "top",  
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        lineHeight: '25px',
+        color: '#00b2a9', 
+        display: "contents",
     }
 }));

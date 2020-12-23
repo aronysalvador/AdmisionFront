@@ -46,18 +46,17 @@ const RelatoFinal = (props) => {
   const [stateCheckbox, setStateCheckbox] = useState(() => {
     return coberturaSoap === "si" ? true : false 
   });
-console.log(stateCheckbox);
-console.log(coberturaSoap);
-  const handleCheckBoxChange = (event) => {
-    setStateCheckbox( event.target.checked );
-  };
 
-  var respSoap = stateCheckbox ? "si" : "no" ;
+  // const handleCheckBoxChange = (event) => {
+  //   setStateCheckbox( event.target.checked );
+  // };
+
+  // var respSoap = stateCheckbox ? "si" : "no" ;
 
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
-    dispatch(updateForm("coberturaSoap", respSoap));
+    // dispatch(updateForm("coberturaSoap", respSoap));
     if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
        dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
@@ -88,7 +87,7 @@ console.log(coberturaSoap);
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(8))}
+          dispatch={() => dispatch(handleSetStep(6.06))}
           percentage={addmissionForm.percentage}
         />
       </div>
@@ -163,12 +162,12 @@ console.log(coberturaSoap);
                 </div>
               )}
 
-              <Typography className={welcomeStyle.switchText}>
+              {/* <Typography className={welcomeStyle.switchText}>
                 <Grid component="span">
                   <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
                 </Grid>
                 Corresponde a cobertura &nbsp;<b>SOAP</b>
-              </Typography>
+              </Typography> */}
             </div>
 
             <div className={comunClass.displayMobile}>
