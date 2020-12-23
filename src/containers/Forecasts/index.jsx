@@ -1,24 +1,19 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import BotonSeleccionarCustomItem from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItem";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-
-import AfpList from "../../components/AfpList/AfpList";
-import AfpButtons from "../../components/AfpList/AfpButtons";
-
+import Listados from "../../components/AfpList/Listados";
 import Radio from '@material-ui/core/Radio';
 import { withStyles } from '@material-ui/core/styles';
 import specialBlue from "../../util/color/specialBlue";
 
 const Forecasts = () => {
   const {
-    addmissionForm: { percentage, afpForm, responsable }, microsoftReducer
+    addmissionForm: { percentage, responsable }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
@@ -26,9 +21,11 @@ const Forecasts = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const tipoAFP = !afpForm ? "" : afpForm;
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
-  // const [buttonOver, setButtonOver] = useState(false);
+  const [checkedAfp, setCheckedAfp] = useState("");
+
+  const { isapres: isapreList } = useSelector((state) => state.previsionForm, shallowEqual);
+  const [checkedIsapre, setcheckedIsapre] = useState("");
 
   const BlueRadio = withStyles({
     root: {
@@ -39,6 +36,11 @@ const Forecasts = () => {
     },
     checked: {},
   })((props) => <Radio color="default" {...props} />);
+
+
+  useEffect(()=>{
+    console.log(checkedAfp)
+  },[checkedAfp, checkedIsapre])
 
   return (
     <div className={comunClass.root}>
@@ -51,71 +53,110 @@ const Forecasts = () => {
           percentage={percentage}
         />
       </div>
+      
       <div className="container">
         <div className={comunClass.boxCardBtn}>
           <div className="row">
+            {afpList.length>0 && (
             <div className="col-md-6">
-              <div style={{backgroundColor: "#F4F4F4"}}>
+              <div className={comunClass.backgroundGrey}>
                 <div className="">
-                  <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+                  <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk].join(' ')}>
                     Selecciona la
-                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2].join(' ')}>
                       &nbsp;AFP
                     </Grid>      
                     &nbsp;o 
-                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2].join(' ')}>
                       &nbsp;Previsión Social
                     </Grid>      
                   </Grid>
                 </div>
-                <div className="container" style={{backgroundColor: "white"}}>
+                <div className={['container', comunClass.backgroundWhite].join(' ')}>
                   <div className="row">
-                  {afpList.slice(0,6).map((afp) => (
-                    // <div className={check.id === 1 ? comunClass.roundedBlue : comunClass.roundedNormal}>
-                    <div className="col-md-6">
-                      <div className={comunClass.roundedBlue}>
-                          <div className={comunClass.containerOpction}>
+                  {afpList.length>0 && afpList.slice(0,6).map((afp,i) => (
+                   <div key={i} className="col-md-6" style={{marginBottom: '10px'}}> 
+                      <div className={checkedAfp.codigo === afp.codigo && checkedAfp.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
+                        <div className="col-md-3">
                               <BlueRadio
-                                  checked={true}
-                                  onChange={()=> console.log("radio afp")}
-                                  value={1}
+                                  checked={checkedAfp.codigo === afp.codigo && checkedAfp.otro === false}
+                                  onChange={()=>{ afp.otro=false; setCheckedAfp(afp); } }
+                                  value={checkedAfp}
                                   name="radio-button-demo"
                                   inputProps={{ 'aria-label': 'C' }}
                               />
-                              <p className={comunClass.txtRadios}>{afp.nombre}</p>
-                          </div>
+                        </div>
+                        <div className="col-md-9" style={{textAlign:"left"}}>
+                              <span className={comunClass.txtRadios}>{afp.nombre}</span>                          
+                        </div>
+                          
                       </div>
                     </div>
                     ))}
                     </div>
                   </div>
 
-                  {/* <div className={comunClass.cardsButtonAlign}>
-                  {afpList.slice(0,6).map((afp) => (
-                  <AfpButtons
-                    key={afp.codigo}
-                    data={afp}
-                    itemForm={"afpForm"}
-                    selected={afp.codigo === tipoAFP.codigo}
-                    step={19}
-                  >
-                    <BotonSeleccionarCustomItem {...afp} />
-                  </AfpButtons>
-                  ))}
-                  </div> */}
                 <div className={spaceStyle.space1} />
+
                 <div className="row">
-                  <AfpList  />
+                  <Listados checkedAfp ={ checkedAfp } setCheckedAfp = {setCheckedAfp}   />
                 </div>
                 <div className={spaceStyle.spaceMin1} />
               </div>
             </div>
+            )}
 
-            <div className="col-md-6" style={{backgroundColor: "#F4F4F4"}}>
+            {isapreList.length>0 && (
+            <div className="col-md-6">
+              <div className={comunClass.backgroundGrey}>
+                <div className="">
+                  <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk].join(' ')}>
+                    Selecciona la
+                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2].join(' ')}>
+                      &nbsp;Previsión de Salud
+                    </Grid>      
+                  </Grid>
+                </div>
+                <div className={['container', comunClass.backgroundWhite].join(' ')}>
+                  <div className="row">
+                  {isapreList.length>0 && isapreList.slice(0,6).map((isapre,i) => (
+                 
+                   <div key={i} className="col-md-6" style={{marginBottom: '10px'}}> 
+                      <div className={checkedIsapre.id === isapre.id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
+                        <div className="col-md-3">
+                              <BlueRadio
+                                  checked={checkedIsapre.id === isapre.id && checkedIsapre.otro === false}
+                                  onChange={()=>{ isapre.otro=false; setcheckedIsapre(isapre); } }
+                                  value={checkedIsapre}
+                                  name="radio-button-demo"
+                                  inputProps={{ 'aria-label': 'C' }}
+                              />
+                        </div>
+                        <div className="col-md-9" style={{textAlign:"left"}}>
+                              <span className={comunClass.txtRadios}>{isapre.nombre}</span>                          
+                        </div>
+                          
+                      </div>
+                    </div>
+                    ))}
+                    </div>
+                  </div>
+
+                <div className={spaceStyle.space1} />
+
+                <div className="row">
+                  <Listados checkedAfp ={ checkedAfp } setCheckedAfp = {setCheckedAfp} />
+                </div>
+                <div className={spaceStyle.spaceMin1} />
+              </div>
+            </div>
+            )}
+
+            {/* <div className="col-md-6" style={{backgroundColor: "#F4F4F4"}}>
               <div className="">
-                <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+                <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk].join(' ')}>
                   Selecciona la
-                  <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                  <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2].join(' ')}>
                     &nbsp;Previsión de Salud
                   </Grid>      
                 </Grid>
@@ -127,7 +168,8 @@ const Forecasts = () => {
               <div className="row">
                 Lista Isapres
               </div>
-            </div>
+            </div> */}
+
           </div>
         </div>
       </div>
