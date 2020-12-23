@@ -27,7 +27,7 @@ const BlueCheckbox = withStyles({
   })((props) => <Checkbox color="default" {...props} />);
 
 const RelatoCompleto = () => {
-    const { addmissionForm: { percentage, step,lugarAccidente, descripcionAccidente, objetoAccidente, coberturaSoap, desarrollarTrabajoHabitual, tipoSiniestro }, microsoftReducer:{userMsal} } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, lugarAccidente, descripcionAccidente, objetoAccidente, coberturaSoap, desarrollarTrabajoHabitual, tipoSiniestro }, microsoftReducer:{userMsal} } = useSelector((state) => state, shallowEqual);
     const dispatch = useDispatch();
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
@@ -102,15 +102,14 @@ const RelatoCompleto = () => {
             <div className="row">
                 <div className="col-md-12">
                 <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
-                    <div className="row">
-                        <Grid className={`${comunClass.textPrimaryRelato}`} >
+                    <div className={['row', comunClass.backgroundGrey2].join(' ')}>
+
+                    <Grid className={`${comunClass.textPrimaryRelato}`} >
                             ¿Qué estaba haciendo 
                             <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
                                 &nbsp; justo antes del accidente?
                             </Grid> 
-                        </Grid>
-                    </div>
-
+                        </Grid>                   
                     <TextField
                         id="txtRespuesta1"
                         value={text1}
@@ -125,16 +124,14 @@ const RelatoCompleto = () => {
                         defaultValue="Al momento del accidente estaba "
                     />
                     <label className={comunClass.pullRight}>{text1.length }/200</label>
-                    <div className={spaceStyle.space1} />
-                    <div className="row">
-                        <Grid className={`${comunClass.textPrimaryRelato}`} >
+
+                    <Grid className={`${comunClass.textPrimaryRelato}`} >
                             ¿Qué 
                             <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
                                 &nbsp; ocurrió y qué lesión &nbsp;
                             </Grid> 
                             presenta?
-                        </Grid>
-                    </div>
+                    </Grid>                   
                     <TextField
                         id="txtRespuesta"
                         value={text2}
@@ -149,16 +146,14 @@ const RelatoCompleto = () => {
                         defaultValue={"Lo que ocurrió fue que me "}
                     />
                     <label className={comunClass.pullRight}>{text2.length}/200</label>
-                    <div className={spaceStyle.space1} />
-                    <div className="row">
-                        <Grid className={`${comunClass.textPrimaryRelato}`} >
-                            ¿Con
-                            <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
-                                &nbsp; qué ocurrió el acciendente
-                            </Grid> 
-                            ?
-                        </Grid>
-                    </div>
+
+                    <Grid className={`${comunClass.textPrimaryRelato}`} >
+                        ¿Con
+                        <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                            &nbsp; qué ocurrió el acciendente
+                        </Grid> 
+                        ?
+                    </Grid>                   
                     <TextField
                         id="txtRespuesta"
                         value={text3}
@@ -173,11 +168,13 @@ const RelatoCompleto = () => {
                         defaultValue={"El accidente ocurrió con "}
                     />
                     <label className={comunClass.pullRight}>{text3.length}/200</label>
+
+                    </div>
                     <div className={spaceStyle.space1} />
 
                     {tipoSiniestro.Id === 1 && 
                         <>
-                        <div className="row">
+                        <div className={['row', comunClass.backgroundGrey2].join(' ')}>
                         <div className="col-md-10" style={{textAlign:"left"}}>
                         <Grid className={`${comunClass.textPrimaryRelato}`} >
                             Al momento del accidente, ¿desarrollaba su
@@ -215,7 +212,7 @@ const RelatoCompleto = () => {
                             Corresponde a cobertura &nbsp;<b>SOAP</b>
                         </Typography>
                     </div>
-                    <div className={comunClass.bottomElement}>
+                    <div class="mx-auto">
                     <Button
                         className={comunClass.buttonAchs}
                         variant="contained"

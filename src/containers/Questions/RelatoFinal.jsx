@@ -3,24 +3,24 @@ import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
+// import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
-import { Button, Typography, withStyles } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import Checkbox from '@material-ui/core/Checkbox';
+// import Checkbox from '@material-ui/core/Checkbox';
 import relato from './../../img/relato.svg'
 import editaRelato from './../../img/editar-relato.svg'
 import { Format } from "../../helpers/strings";
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar, tipoSiniestro, coberturaSoap } = addmissionForm;
+  const { relatoAccidente, volverAConcatenar, tipoSiniestro } = addmissionForm;
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const welcomeStyle = getWelcomeStyle();
+  // const welcomeStyle = getWelcomeStyle();
 
   const getRelato = () => {
     return (
@@ -43,9 +43,9 @@ const RelatoFinal = (props) => {
     }
   });
 
-  const [stateCheckbox, setStateCheckbox] = useState(() => {
-    return coberturaSoap === "si" ? true : false 
-  });
+  // const [stateCheckbox, setStateCheckbox] = useState(() => {
+  //   return coberturaSoap === "si" ? true : false 
+  // });
 
   // const handleCheckBoxChange = (event) => {
   //   setStateCheckbox( event.target.checked );
@@ -71,14 +71,14 @@ const RelatoFinal = (props) => {
     return localValue.length < 15;
   };
 
-  const BlueCheckbox = withStyles({
-    root: {
-      '&$checked': {
-        color: '#00B2A9',
-      },
-    },
-    checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
+  // const BlueCheckbox = withStyles({
+  //   root: {
+  //     '&$checked': {
+  //       color: '#00B2A9',
+  //     },
+  //   },
+  //   checked: {},
+  // })((props) => <Checkbox color="default" {...props} />);
 
   return (
     <div className={comunClass.root}>

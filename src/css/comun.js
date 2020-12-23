@@ -1547,5 +1547,10 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: '25px',
         color: '#00b2a9', 
         display: "contents",
-    }
+    },
+    backgroundGrey2: {
+        background: '#f4f4f4',
+        padding: '1em',
+        borderRadius: '8px'
+    },
 }));
