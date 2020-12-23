@@ -139,7 +139,7 @@ const CausalSiniestroTrayecto = () => {
             variant="contained"
             onClick={() => {
               dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, Mecanismo: mecanismoCausal, PosibleCaus: posibleCausa}));
-              dispatch(handleSetStep(6));
+              dispatch(handleSetStep(6.06));
             }}
           >
             Continuar
