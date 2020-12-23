@@ -215,7 +215,8 @@ const RelatoCompleto = () => {
                     <Button
                         className={comunClass.buttonAchs}
                         variant="contained"
-                        disabled={!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual)}
+                        //disabled={!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual)}
+                        disabled={tipoSiniestro.Id === 1 ? !(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual) : (!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) )}
                         onClick={() => saveAnswer()}
                     >
                         Continuar
