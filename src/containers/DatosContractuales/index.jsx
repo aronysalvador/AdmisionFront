@@ -46,7 +46,7 @@ export default () =>{
         
     const dispatch = useDispatch();
     const { 
-        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActual, inicioJornadaLaboral, finJornadaLaboral },  
+        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActualVisual, inicioJornadaLaboral, finJornadaLaboral },  
         microsoftReducer, 
         profesionForm: profesionList, 
         categoriaOcupacionalForm: categoriaList,
@@ -63,7 +63,7 @@ export default () =>{
     const [jornada, setJornada] = useState(tipoJornadaForm?tipoJornadaForm:"");
     const [entrada, setEntrada] = useState(inicioJornadaLaboral?inicioJornadaLaboral:"09:30");
     const [salida, setSalida] = useState(finJornadaLaboral?finJornadaLaboral:"18:30");
-    const [ingreso, setIngreso] = useState(ingresoTrabajoActual?ingresoTrabajoActual:moment().format("MM-YYYY"));
+    const [ingreso, setIngreso] = useState(ingresoTrabajoActualVisual?ingresoTrabajoActualVisual:moment().format("MM-YYYY"));
     const [errorCargo, setErrorCargo] = useState(false);
     const [valid, setValid] = useState(false);
 
@@ -76,12 +76,12 @@ export default () =>{
         }        
     }
 
-    useEffect(()=>{
-        setValid(false)
+    useEffect(()=>{       
         if(profesion!=="" && categoriaOcup!=="" && contrato!=="" && cargo!=="" && remuneracion!=="" && jornada!=="" && entrada!=="" && salida!=="" && ingreso!==""){
-           handleNext()
+            setValid(true)  
+        }else{
+            setValid(false)
         }
-
         // eslint-disable-next-line
     },[profesion,categoriaOcup,contrato,cargo,remuneracion,jornada,entrada,salida,ingreso])
 
@@ -93,10 +93,12 @@ export default () =>{
         dispatch(updateForm("tipoJornadaForm", jornada));
         dispatch(updateForm("tipoRemuneracion", remuneracion));
         dispatch(updateForm("categoriaOcupacionalForm", categoriaOcup));
-        dispatch(updateForm("ingresoTrabajoActual", ingreso));
+        dispatch(updateForm("ingresoTrabajoActualVisual", ingreso));
+        let x = ingreso.split("-")
+        dispatch(updateForm("ingresoTrabajoActual", `${x[1]}-${x[0]}-01T00:00:00.000Z`)); //formato anterior
         dispatch(updateForm("inicioJornadaLaboral", entrada));
-        dispatch(updateForm("finJornadaLaboral", salida));
-        setValid(true)  
+        dispatch(updateForm("finJornadaLaboral", salida));       
+        dispatch(handleSetStep((categoriaOcup.nombre==="Empleadores" || categoriaOcup.nombre==="Cuenta Propia") ? 25.1 : 26.1))
     }
 
     return(
@@ -379,7 +381,7 @@ export default () =>{
                                     variant="contained"
                                     className={comunClass.buttonAchs}
                                     disabled={!valid}
-                                    onClick={() => dispatch(handleSetStep((categoriaOcup.nombre==="Empleadores" || categoriaOcup.nombre==="Cuenta Propia") ? 25.1 : 26.1)) }
+                                    onClick={() => handleNext() }
                                 >
                                     Continuar
                                 </Button>
