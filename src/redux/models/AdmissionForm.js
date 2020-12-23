@@ -33,9 +33,10 @@ export const AdmissionForm = {
     tipoJornadaForm: "",
     tipoRemuneracion: "",
     categoriaOcupacionalForm: "",
+    ingresoTrabajoActualVisual: "",
     ingresoTrabajoActual: "",
     inicioJornadaLaboral: "",
-    finJornadaLabora: "",
+    finJornadaLaboral: "",
 
     //State de Cargo
     //Lugar Exacto Sinietsro
