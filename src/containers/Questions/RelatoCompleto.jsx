@@ -200,8 +200,7 @@ const RelatoCompleto = () => {
                             onClick={() => handleOnClick("No")}                       
                             />
                         </div>
-                    </div>
-                    <div className={spaceStyle.space1} />
+                    </div>                   
                     </>
                     }
                     <div className="row">
@@ -212,7 +211,7 @@ const RelatoCompleto = () => {
                             Corresponde a cobertura &nbsp;<b>SOAP</b>
                         </Typography>
                     </div>
-                    <div class="mx-auto">
+                    <div style={{ position: "relative", textAlign:"center" }}>
                     <Button
                         className={comunClass.buttonAchs}
                         variant="contained"
