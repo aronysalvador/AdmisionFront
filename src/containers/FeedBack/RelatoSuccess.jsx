@@ -34,14 +34,14 @@ const RelatoSuccess = (props) => {
         <div className={welcomeStyle.beginContainer}>
           <div className={comunStyle.displayMobile}>
             <Cabecera 
-              dispatch={() => dispatch(handleSetStep(19))} 
+              dispatch={() => dispatch(handleSetStep(18.01))} 
               color={"#373737" }  
               percentage={-1} 
               noSpace={true} />
           </div>
           <div className={comunStyle.displayDesk}>
             <Cabecera 
-              dispatch={() => dispatch(handleSetStep(19))} 
+              dispatch={() => dispatch(handleSetStep(18.01))} 
               color={"#fff" } 
               percentage={-1} 
               noSpace={true} />

@@ -10,7 +10,7 @@ import specialBlue from "./../../util/color/specialBlue";
 const AfpList = (props) => {
   
 
-  const { checkedAfp: check, setCheckedAfp: setCheck } = props
+  const { checkedAfp: check, setCheckedAfp: setCheck, title, identificador, description, listado } = props
   const [checkInt, setCheckInt] = useState("")
 
   useEffect(()=>{
@@ -21,8 +21,6 @@ const AfpList = (props) => {
   },[check])
 
   const comunClass = getComunStyle();
-
-  const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
 
   
   const BlueRadio = withStyles({
@@ -49,17 +47,19 @@ const AfpList = (props) => {
         <div className={['container', comunClass.backgroundWhite].join(' ')} >
           <div className={check.otro ? comunClass.roundedBlue : comunClass.roundedNormal} style={{padding: "5px"}}>
            
+          <div className="row" style={{padding:0,margin:0,width:"100%"}}>
           <div className="col-md-1">
               <BlueRadio
                   checked={check.otro }
-                  onChange={()=>{setCheck({ codigo:"", nombre: "Otro", otro: true  })}}
+                  onChange={()=>{ var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
+                  console.log("temp: ");   console.log(temp); setCheck(temp)}}
                   value={check}
                   name="radio-button-demo"
                   inputProps={{ 'aria-label': 'C' }}
               />
           </div>
           <div className="col-md-3">
-              <span className={comunClass.txtRadios}>Otra AFP</span>
+              <span className={comunClass.txtRadios}>{title}</span>
           </div>
           
             <div className="col-md-8">
@@ -76,7 +76,7 @@ const AfpList = (props) => {
                   option,
                   value,
                ) => value.value === option.value}
-                options={afpList}
+                options={listado}
                 getOptionLabel={(option) => option ? (option.nombre === "Otro" ? "" : option.nombre) : "" }
                 renderInput={(params) => (
                   <TextField
@@ -95,6 +95,7 @@ const AfpList = (props) => {
                   />
                 )}
               />
+            </div>
             </div>
 
           </div>
