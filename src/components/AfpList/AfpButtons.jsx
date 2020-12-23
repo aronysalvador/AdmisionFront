@@ -25,18 +25,18 @@ const AfpButtons = (props) => {
       onClick={() => {
         setIsSelected((selected) => !selected);
         if (!isSelected) {
-          if (itemForm === "SucursalEmpresa") {
-            handlerGuardarData(itemForm, data, step);
-            dispatch(
-              updateForm(
-                "SucursalEmpresaObjeto",
-                !isSelected ? { ...data, selected: !isSelected } : {}
-              )
-            );
-            setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
-            //dispatch(handleSetStep(step));
-          } 
-          else {
+          // if (itemForm === "SucursalEmpresa") {
+          //   handlerGuardarData(itemForm, data, step);
+          //   dispatch(
+          //     updateForm(
+          //       "SucursalEmpresaObjeto",
+          //       !isSelected ? { ...data, selected: !isSelected } : {}
+          //     )
+          //   );
+          //   setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
+          //   //dispatch(handleSetStep(step));
+          // } 
+          // else {
             dispatch(
               updateForm(
                 itemForm,
@@ -45,7 +45,7 @@ const AfpButtons = (props) => {
             );
             setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
             //dispatch(handleSetStep(step));
-          }
+          // }
           //dispatch(handleSetStep(step));
         }
       }}
