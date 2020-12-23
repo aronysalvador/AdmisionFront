@@ -46,6 +46,7 @@ const FechaSiniestroDesk = ({
       <div>
         <Grid
           className={comunClass.tituloTextBox}
+          style={{marginBottom:'15px'}}
         >
           {textLabel}
         </Grid>

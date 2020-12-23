@@ -25,16 +25,20 @@ export const AdmissionForm = {
     direccionParticular: "",
     telefonoParticular: "",
 
+    desarrollarTrabajoHabitual: "",
+
+    profesionForm: "",
+    cargoForm: "",
+    tipoDeContrato: "",
+    tipoJornadaForm: "",
+    tipoRemuneracion: "",
+    categoriaOcupacionalForm: "",
+    ingresoTrabajoActualVisual: "",
+    ingresoTrabajoActual: "",
     inicioJornadaLaboral: "",
     finJornadaLaboral: "",
-    ingresoTrabajoActual: "",
-    desarrollarTrabajoHabitual: "",
-    tipoRemuneracion: {},
-
-    tipoDeContrato: {},
 
     //State de Cargo
-    cargoForm: "",
     //Lugar Exacto Sinietsro
     sucursalEmpresaSiniestro: "",
     urlMapasucursalEmpresaSiniestro: "",

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Typography,TextField} from "@material-ui/core"
+import {TextField} from "@material-ui/core"
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { getComunStyle } from "./../../../css/comun"
 import { useDispatch } from "react-redux"
@@ -138,16 +138,17 @@ const DireccionGeo = (props) => {
                   renderOption={(option) => {   
                     if(option.description==='Fijar en el mapa'){                   
                       return(
-                        <Typography className={comunStyle.txtGreen}>
+                        <div className={comunStyle.txtGreen}  >
                           <img alt="Location" src={image} className={comunStyle.iconLocation} />
-                          <span style={{marginLeft:"5px"}}>{option.description}</span>
-                        </Typography>
+                          <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                        </div>
                       )
                     }else{
                       return(
-                        <Typography>
-                          {option.description}
-                        </Typography>
+                        <div>
+                          <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                        </div>
+                        
                       )
                     }                    
                   }}

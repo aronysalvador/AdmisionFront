@@ -21,7 +21,7 @@ const TrabajadorIndependiente = () => {
 
   const handleOnClick = (respuesta) => {
     dispatch(updateForm("TrabajadorIndependiente", respuesta));
-    dispatch(handleSetStep(26)); //++stepx
+    dispatch(handleSetStep(26.1)); //++stepx
   };
 
   return (
@@ -31,7 +31,7 @@ const TrabajadorIndependiente = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(25))}
+          dispatch={() => dispatch(handleSetStep(19.4))}
           percentage={percentage}
         />
       </div>

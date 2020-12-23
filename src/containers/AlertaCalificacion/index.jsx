@@ -18,7 +18,7 @@ import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
 
 const AlertaCalificacion = () => {
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer,addmissionForm: { categoriaOcupacionalForm } } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
   const welcomeStyle = getWelcomeStyle();
@@ -35,7 +35,7 @@ const AlertaCalificacion = () => {
         <div className={welcomeStyle.beginContainer}>
           <div className={comunClass.displayMobile}>
             <Cabecera
-              dispatch={() => dispatch(handleSetStep(26))}
+              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) }
               color="#373737"
               percentage={-1}
               noSpace={true}
@@ -43,7 +43,7 @@ const AlertaCalificacion = () => {
           </div>
           <div className={comunClass.displayDesk}>
             <Cabecera 
-              dispatch={() => dispatch(handleSetStep(26))} 
+              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) } 
               color={"#fff" } 
               percentage={-1} 
               noSpace={true} />
