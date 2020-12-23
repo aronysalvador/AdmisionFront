@@ -578,6 +578,19 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: '30px 100px',
             textAlign: 'center',
         },
+        boxCardBtn: {
+            width: '100%',
+            // maxWidth: '860px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '30px',
+            textAlign: 'center',
+        },
         boxDeskMap: {
             width: '60%',
             maxWidth: '860px',
@@ -1204,21 +1217,31 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex',
             minWidth: '315px',
             width: '100%',
-        }, 
+        },
         roundedNormalNoMargin: {
             display: 'flex',
             minWidth: '315px',
             width: '100%'
-        },       
+        },
         roundedBlue: {
             display: 'flex',
             minWidth: '315px',
             width: '100%',
             margin: '0 5px'
         },
+        roundedRadioBlue: {
+            display: 'flex',
+            width: '100%',
+            margin: '0 5px'
+        },
         roundedNormal: {
             display: 'flex',
             minWidth: '315px',
+            width: '100%',
+            margin: '0 5px'
+        },
+        roundedRadioNormal: {
+            display: 'flex',
             width: '100%',
             margin: '0 5px'
         },
@@ -1499,7 +1522,23 @@ export const getComunStyle = makeStyles((theme) => ({
         // justifyContent: "center",
         backgroundColor: "#DFF3F2 !important"
     },
+    roundedRadioBlue: {
+        color: "#373737",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        backgroundColor: "#DFF3F2 !important"
+    },
     roundedNormal: {
+        color: "#373737",
+        border: "2px solid #787878 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        background: "#FFFFFF"
+    },
+    roundedRadioNormal: {
         color: "#373737",
         border: "2px solid #787878 !important",
         borderRadius: "10px",
@@ -1514,7 +1553,7 @@ export const getComunStyle = makeStyles((theme) => ({
         alignItems: "center",
         // justifyContent: "center",
         backgroundColor: "#DFF3F2 !important"
-    },    
+    },
     roundedNormalNoMargin: {
         color: "#373737",
         border: "2px solid #787878 !important",
@@ -1568,11 +1607,16 @@ export const getComunStyle = makeStyles((theme) => ({
         padding: '1em',
         borderRadius: '8px'
     },
+    backgroundWhite: {
+        background: '#fff',
+        padding: '1em',
+        borderRadius: '8px'
+    },
     titleBlueDataCont: {
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: '18px', 
+        fontSize: '18px',
         lineHeight: '34px',
         color: '#00b2a9',
     },
@@ -1580,12 +1624,12 @@ export const getComunStyle = makeStyles((theme) => ({
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: '18px', 
+        fontSize: '18px',
         color: '#373737',
     },
     textPrimaryDeskDataCont: {
         display: "inline-block",
-        width: "86%", 
+        width: "86%",
         textAlign: "left",
         verticalAlign: "top",
     },
