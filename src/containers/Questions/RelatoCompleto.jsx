@@ -38,31 +38,40 @@ const RelatoCompleto = () => {
     });
 
     const [text2, setText2] = useState(() => {
-        return !descripcionAccidente ? "Lo que ocurrió fue que " : descripcionAccidente;
+        return !descripcionAccidente ? "Lo que ocurrio fue que " : descripcionAccidente;
     });
 
     const [text3, setText3] = useState(() => {
-        return !objetoAccidente ? "El accidente ocurrió con " : objetoAccidente;
+        return !objetoAccidente ? "El accidente ocurrio con " : objetoAccidente;
     });
 
     const [stateCheckbox, setStateCheckbox] = useState(() => {
         return coberturaSoap === "si" ? true : false 
       });
 
-    // const [activo, setActivo] = useState(() => {
-    //     return desarrollarTrabajoHabitual === "si" ? true : false 
-    // });
-
     const onChangeValue1 = (e) => {
-        setText1(Format.caracteresInvalidos(e.target.value));
+        if(e.target.value.search("Al momento del accidente estaba") >= 0 ){
+            setText1(Format.caracteresInvalidos(e.target.value));
+        }else{
+            setText1(Format.caracteresInvalidos(`Al momento del accidente estaba ${e.target.value.slice(0,167)}`));
+        }
+        
     };
 
     const onChangeValue2 = (e) => {
-        setText2(Format.caracteresInvalidos(e.target.value));
+         if(e.target.value.search("Lo que ocurrio fue que") >= 0 ){
+            setText2(Format.caracteresInvalidos(e.target.value));
+        }else{
+            setText2(Format.caracteresInvalidos(`Lo que ocurrio fue que ${e.target.value.slice(0,176)}`));
+        }
     };
 
     const onChangeValue3 = (e) => {
-        setText3(Format.caracteresInvalidos(e.target.value));
+        if(e.target.value.search("El accidente ocurrio con") >= 0 ){
+            setText3(Format.caracteresInvalidos(e.target.value));
+        }else{
+            setText3(Format.caracteresInvalidos(`El accidente ocurrio con ${e.target.value.slice(0,174)}`));
+        }
     };
 
     const handleCheckBoxChange = (event) => {
@@ -142,8 +151,8 @@ const RelatoCompleto = () => {
                         inputProps={{ maxLength: 200 }}
                         helperText={(text2.length - 23 < 5 && text2.length - 23 > 0)&&"Se necesita al menos 5 caracteres"}
                         error={text2.length - 23 < 5 && text2.length - 23 > 0} 
-                        onChange={text2.length >= 23 ? onChangeValue2 : setText2("Lo que ocurrió fue que ")}
-                        defaultValue={"Lo que ocurrió fue que me "}
+                        onChange={text2.length >= 23 ? onChangeValue2 : setText2("Lo que ocurrio fue que ")}
+                        defaultValue={"Lo que ocurrio fue que "}
                     />
                     <label className={comunClass.pullRight}>{text2.length}/200</label>
 
@@ -164,8 +173,8 @@ const RelatoCompleto = () => {
                         inputProps={{ maxLength: 200 }}
                         helperText={(text3.length - 25 < 5 && text3.length - 25 > 0) &&"Se necesita al menos 5 caracteres"}
                         error={text3.length - 25 < 5 && text3.length - 25 > 0} 
-                        onChange={text3.length >= 25 ? onChangeValue3 : setText3("El accidente ocurrió con ")}
-                        defaultValue={"El accidente ocurrió con "}
+                        onChange={text3.length >= 25 ? onChangeValue3 : setText3("El accidente ocurrio con ")}
+                        defaultValue={"El accidente ocurrio con "}
                     />
                     <label className={comunClass.pullRight}>{text3.length}/200</label>
 
@@ -215,7 +224,6 @@ const RelatoCompleto = () => {
                     <Button
                         className={comunClass.buttonAchs}
                         variant="contained"
-                        //disabled={!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual)}
                         disabled={tipoSiniestro.Id === 1 ? !(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual) : (!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) )}
                         onClick={() => saveAnswer()}
                     >
