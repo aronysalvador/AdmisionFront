@@ -183,8 +183,8 @@ const Forecasts = () => {
                 </div>
                 <div className={['container', comunClass.backgroundWhite].join(' ')}>
                   <div className="row">
-                 
-                   <div className="col-md-12" style={{marginBottom: '10px'}}> 
+
+                    <div className="col-md-12" style={{marginBottom: '10px'}}> 
                       <div className={checkedIsapre.id === isapreList[0].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-2">
                               <BlueRadio
