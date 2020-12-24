@@ -104,7 +104,7 @@ const Forecasts = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(responsable?.nombre?.length > 0 ?  17.1 : 15 ))}
+          dispatch={() => dispatch(handleSetStep(responsable?.nombre?.length > 0 ?  17.1 : 15, 18.01 ))}
           percentage={percentage}
         />
       </div>
@@ -118,13 +118,13 @@ const Forecasts = () => {
             <div className="col-md-12">
               <div className={comunClass.backgroundGrey}>
                 <div className="">
-                  <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk].join(' ')}>
+                  <Grid className={[comunClass.subtitleBlack, comunClass.textPrimaryDesk].join(' ')}>
                     Selecciona la
-                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2].join(' ')}>
+                    <Grid component="span"  className={comunClass.titleBlue}>
                       &nbsp;AFP
                     </Grid>      
                     &nbsp;o 
-                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2].join(' ')}>
+                    <Grid component="span"  className={comunClass.titleBlue}>
                       &nbsp;Previsión Social
                     </Grid>      
                   </Grid>
@@ -173,9 +173,9 @@ const Forecasts = () => {
             <div className="col-md-12">
               <div className={comunClass.backgroundGrey}>
                 <div className="">
-                  <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk].join(' ')}>
+                  <Grid className={[comunClass.subtitleBlack, comunClass.textPrimaryDesk].join(' ')}>
                     Selecciona la
-                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2].join(' ')}>
+                    <Grid component="span"  className={comunClass.titleBlue}>
                       &nbsp;Previsión de Salud
                     </Grid>      
                   </Grid>

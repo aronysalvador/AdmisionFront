@@ -120,7 +120,7 @@ const AgenteCausaEnfermedadProfesional = () => {
               onInputChange={(event, value) => {
                 event&&setAgenteCausa(Format.caracteresInvalidos(value));
               }}
-              freeSolo
+              // freeSolo
               options={sugerenciasAgenteCausa} 
               getOptionLabel={(option) =>  option.nombre }
 
@@ -193,7 +193,7 @@ const AgenteCausaEnfermedadProfesional = () => {
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
               dispatch(updateForm("FechaExposicionAgenteEP", { ...fechaSiniestro }));
               dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
-              dispatch(handleSetStep(18.1)); 
+              dispatch(handleSetStep(18.01)); //18.1 
             }}
           >
             Continuar
