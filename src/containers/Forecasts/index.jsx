@@ -80,7 +80,7 @@ const Forecasts = () => {
         handeleNextIsapre(checkedIsapre)
       }
     }
-   
+   // eslint-disable-next-line
   },[checkedIsapre])
 
   useEffect(()=>{
@@ -95,6 +95,7 @@ const Forecasts = () => {
         handeleNextAfp(checkedAfp)
       }
     }
+    // eslint-disable-next-line
   },[checkedAfp])
 
   return (
