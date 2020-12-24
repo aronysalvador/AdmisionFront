@@ -61,11 +61,44 @@ export default () =>{
     const [cargo, setCargo] = useState(cargoForm?cargoForm:"");
     const [remuneracion, setRemuneracion] = useState(tipoRemuneracion?tipoRemuneracion:"");
     const [jornada, setJornada] = useState(tipoJornadaForm?tipoJornadaForm:"");
-    const [entrada, setEntrada] = useState(inicioJornadaLaboral?inicioJornadaLaboral:"09:30");
-    const [salida, setSalida] = useState(finJornadaLaboral?finJornadaLaboral:"18:30");
-    const [ingreso, setIngreso] = useState(ingresoTrabajoActualVisual?ingresoTrabajoActualVisual:moment().format("MM-YYYY"));
     const [errorCargo, setErrorCargo] = useState(false);
     const [valid, setValid] = useState(false);
+
+    const stringToHours = (str) => {
+        return moment(str, "HH:mm").format("HH:mm")
+    }
+    
+    const stringToDate = (str) => {
+        return moment(str, "MM-YYYY").format("MM-YYYY")
+    }    
+
+    const dateFormatter = str => {
+        return str;
+    };    
+    
+    const inputRefEntrada = React.useRef();
+    const [selectedDate, setDate] = useState(moment());
+    const [entrada, setEntrada] = useState(inicioJornadaLaboral ? stringToHours(inicioJornadaLaboral) : stringToHours("09:30"));    
+    const onDateChange = (date, value) => {
+        setDate(date);
+        setEntrada(value);
+    };
+
+    const inputRefSalida = React.useRef();
+    const [selectedDateSalida, setDateSalida] = useState(moment());
+    const [salida, setSalida] = useState(finJornadaLaboral?stringToHours(finJornadaLaboral):stringToHours("18:30"));  
+    const onDateChangeSalida = (date, value) => {
+        setDateSalida(date);
+        setSalida(value);
+    };
+
+    const inputRefIngreso = React.useRef();
+    const [selectedDateIngreso, setDateIngreso] = useState(moment());
+    const [ingreso, setIngreso] = useState(ingresoTrabajoActualVisual?stringToDate(ingresoTrabajoActualVisual):moment().format("MM-YYYY"));  
+    const onDateChangeIngreso = (date, value) => {
+        setDateIngreso(date);
+        setIngreso(value);
+    };
 
 
     const handleCargoChange = (texto) => {        
@@ -268,22 +301,26 @@ export default () =>{
                                                     </Grid>
                                                 </div>
                                                 <div  style={{ zIndex: 9}} >
-                                                    <MuiPickersUtilsProvider utils={MomentUtils}  >
+                                                    <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
                                                             <NoPaddingPicker
-                                                            inputVariant="outlined"
-                                                            value={entrada}
-                                                            inputValue={entrada}
-                                                            onChange={(e)=>setEntrada(e.format("HH:mm"))}
-                                                            InputAdornmentProps={{ position: 'start'}}
-                                                            ampm={false}
-                                                            fullWidth
-                                                            invalidDateMessage="Formato invalido"
-                                                            keyboardIcon={<img alt="clock" src={image} />}
-                                                            style={{
-                                                                paddingTop: "3px",
-                                                                background: "#ffff"
-                                                            }}
+                                                                inputRef={inputRefEntrada}                                                             
+                                                                value={selectedDate}
+                                                                format="HH:mm"
+                                                                inputValue={entrada}
+                                                                onChange={onDateChange}
+                                                                rifmFormatter={dateFormatter}
+                                                                onError={(e)=>{if(e){inputRefEntrada.current.focus();}}}                                                             
+                                                                inputVariant="outlined"                                                            
+                                                                InputAdornmentProps={{ position: 'start'}}
+                                                                ampm={false}
+                                                                fullWidth
+                                                                invalidDateMessage="Formato invalido"
+                                                                keyboardIcon={<img alt="clock" src={image} />}
+                                                                style={{
+                                                                    paddingTop: "3px",
+                                                                    background: "#ffff"
+                                                                }}
                                                         />
                                                         </ThemeProvider>
                                                     </MuiPickersUtilsProvider>  
@@ -302,21 +339,26 @@ export default () =>{
                                                     </Grid>
                                                 </div>
                                                 <div  style={{ zIndex: 9}} >
-                                                    <MuiPickersUtilsProvider utils={MomentUtils} >
+                                                    <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
                                                             <NoPaddingPicker
-                                                            inputVariant="outlined"
-                                                            value={salida}
-                                                            inputValue={salida}
-                                                            onChange={(e)=>setSalida(e.format("HH:mm"))}
-                                                            InputAdornmentProps={{ position: 'start'}}
-                                                            ampm={false}
-                                                            invalidDateMessage="Formato invalido"
-                                                            keyboardIcon={<img alt="clock" src={image} />}
-                                                            style={{
-                                                                paddingTop: "3px",
-                                                                background: "#ffff"
-                                                            }}
+                                                                inputRef={inputRefSalida}                                                             
+                                                                value={selectedDateSalida}
+                                                                format="HH:mm"
+                                                                inputValue={salida}
+                                                                onChange={onDateChangeSalida}
+                                                                rifmFormatter={dateFormatter}
+                                                                onError={(e)=>{if(e){inputRefSalida.current.focus();}}}                                                             
+                                                                inputVariant="outlined"                                                            
+                                                                InputAdornmentProps={{ position: 'start'}}
+                                                                ampm={false}
+                                                                fullWidth
+                                                                invalidDateMessage="Formato invalido"
+                                                                keyboardIcon={<img alt="clock" src={image} />}
+                                                                style={{
+                                                                    paddingTop: "3px",
+                                                                    background: "#ffff"
+                                                                }}
                                                         />
                                                         </ThemeProvider>
                                                     </MuiPickersUtilsProvider>  
@@ -346,9 +388,15 @@ export default () =>{
                                                     inputVariant="outlined"
                                                     views={["year", "month"]}
                                                     disableFuture
+
+                                                    inputRef={inputRefIngreso}                                                             
+                                                    value={selectedDateIngreso}
                                                     format="MM-YYYY"
                                                     inputValue={ingreso}
-                                                    onChange={(e)=>setIngreso(e.format("MM-YYYY"))}
+                                                    onChange={onDateChangeIngreso}
+                                                    rifmFormatter={dateFormatter}
+                                                    onError={(e)=>{if(e){inputRefIngreso.current.focus();}}}                                 
+
                                                     animateYearScrolling       
                                                     InputAdornmentProps={{ position: 'start'}}
                                                     fullWidth
