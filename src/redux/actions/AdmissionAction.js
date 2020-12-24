@@ -62,7 +62,7 @@ export const handleSetStep = (step, actual = null) => {
             const TIPO = tipoSiniestro.Id
 
             switch (actual) {
-                
+
                 case 5.7: //PersonalSuccess
                     switch (TIPO) {
                         case 1:
@@ -98,23 +98,23 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                //Relato Unido    
+                    //Relato Unido    
                 case 6.06: //AccidentPlaceForm
-                switch (TIPO) {
-                    case 1:
-                        PASO = 5.7
-                        break;
-                    case 2:
-                        PASO = 6.03
-                        break;
-                    case 3:
-                        PASO = 500
-                        break;
-                    default:
-                        PASO = 500
-                        break;
-                }
-                break;
+                    switch (TIPO) {
+                        case 1:
+                            PASO = 5.7
+                            break;
+                        case 2:
+                            PASO = 6.03
+                            break;
+                        case 3:
+                            PASO = 500
+                            break;
+                        default:
+                            PASO = 500
+                            break;
+                    }
+                    break;
 
                 case 8.1: //RelatoFinal
                     switch (TIPO) {
@@ -221,6 +221,21 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 18.1: //BotonesAFP
+                    switch (TIPO) {
+                        case 1:
+                        case 2:
+                            PASO = step
+                            break;
+                        case 3:
+                            PASO = 6.05
+                            break;
+                        default:
+                            PASO = 500
+                            break;
+                    }
+                    break;
+
+                case 18.01: //Previsiones (AFP-Isapre) unificadas
                     switch (TIPO) {
                         case 1:
                         case 2:
