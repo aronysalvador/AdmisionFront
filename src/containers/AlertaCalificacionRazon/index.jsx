@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -11,21 +11,52 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import image from './../../img/relato.svg'
 
+
 const AlertaCalificacionRazon = () => {
   const {
-    addmissionForm: { percentage, razonAlertaForm },
+    addmissionForm: { percentage, razonAlertaForm, tipoSiniestro },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
-
-  const razon =  !razonAlertaForm ? "" : razonAlertaForm 
-
-  const dispatch = useDispatch();
 
   const { data: razonAlertaList } = useSelector(
     (state) => state.razonAlertaForm,
     shallowEqual
   );
 
+  const razon =  !razonAlertaForm ? "" : razonAlertaForm 
+  const dispatch = useDispatch();
+
+  const [listado, setListado] = useState([])
+
+  useEffect(() => {
+    if(razonAlertaList.length>0){
+      FilterbySinister()
+    }
+    // eslint-disable-next-line
+  }, [razonAlertaList]);
+
+
+  const FilterbySinister = () => {
+    var response = []  
+    switch(tipoSiniestro.Id){
+      //Caso Acciddente de Trabajo
+      case 1:
+        response =  razonAlertaList
+        break;
+      //Caso Accidente de Trayecto  
+      case 2:
+        response =  razonAlertaList.slice(1,razonAlertaList.length)
+        break;
+      //Caso Enfermedad Profesional
+      case 3:
+        response =  razonAlertaList.slice(1,3)
+        break;
+      default:
+        response =  razonAlertaList
+        break;
+    }
+    setListado(response)
+  }
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -63,7 +94,7 @@ const AlertaCalificacionRazon = () => {
             flexWrap: "wrap",
           }}
         >
-          {razonAlertaList && razonAlertaList.map((razonAlerta) => (
+          {listado && listado.map((razonAlerta) => (
             <BotonSeleccionarCustom
               key={razonAlerta.glosa}
               data={razonAlerta}
