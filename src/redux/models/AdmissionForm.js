@@ -66,6 +66,7 @@ export const AdmissionForm = {
     coberturaSoap: "", // se debe pasar a SAP
 
     CamposDocumentos: {
+        anteceContr: "x", // siempre debe enviarse este campo
         /* TRAYECTO */
         //Atencion Previa
         FechaOtroRe: "",
