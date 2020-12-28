@@ -116,6 +116,7 @@ const ParteCuerpoAfectada = () => {
             onClick={() => {
               dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, ParteAfecta: parteAfectada, Otras: otrasCircunstancias}));
               dispatch(handleSetStep(10));
+              // dispatch(handleSetStep(10.1));
             }}
           >
             Continuar

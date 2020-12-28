@@ -152,6 +152,24 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
+                case 10.1: //InfoAccidente 
+                    switch (TIPO) {
+                        case 1:
+                            //Nuevo Flujo
+                            PASO = 0
+                            break;
+                        case 2:
+                            PASO = 9.01
+                            break;
+                        case 3:
+                            PASO = 0
+                            break;
+                        default:
+                            PASO = 500
+                            break;
+                    }
+                    break;
+
                 case 12: //LugarReferenciaSiniestro
                     switch (TIPO) {
                         case 1:

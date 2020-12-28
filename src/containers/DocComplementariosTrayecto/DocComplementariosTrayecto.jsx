@@ -183,7 +183,6 @@ const DocComplementariosTrayecto = () => {
             variant="contained"
             disabled={state.anteceOtro && anteceOtroC.length <= 4}
             onClick={() => {
-              CamposDocumentos.anteceNocuenta = ""
               CamposDocumentos.anteceOtroC = ""
               
               if ( state.antecePartP ) { CamposDocumentos.antecePartP = "x" } else { CamposDocumentos.antecePartP = "" }
@@ -192,9 +191,10 @@ const DocComplementariosTrayecto = () => {
               if ( state.anteceComSe ) { CamposDocumentos.anteceComSe = "x" } else { CamposDocumentos.anteceComSe = "" }
               if ( state.anteceOtro ) { CamposDocumentos.anteceOtro = "x"; CamposDocumentos.anteceOtroC = anteceOtroC } else { CamposDocumentos.anteceOtro = "" }
 
-              if(!state.antecePartP || !state.anteceConst || !state.anteceVideS || !state.anteceComSe  || !state.anteceOtro){
+              if(!state.antecePartP && !state.anteceConst && !state.anteceVideS && !state.anteceComSe  && !state.anteceOtro){
                 CamposDocumentos.anteceNocuenta = "x"
               }
+              else {CamposDocumentos.anteceNocuenta = ""}
 
               dispatch(updateForm("CamposDocumentos", CamposDocumentos));              
               dispatch(handleSetStep(19.22))

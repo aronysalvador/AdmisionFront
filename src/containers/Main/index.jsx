@@ -102,6 +102,8 @@ import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
 import AtencionPrevia from "../AtencionPrevia/index";
 import Forecasts from "../Forecasts";
 
+import InfoAccidente from "./../InfoAccidente";
+
 const Main = (props) => {
   const classes = useStyles();
   const { addmissionForm, microsoftReducer } = props;
@@ -461,6 +463,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <FechaHoraSiniestro />
+            </Paper>
+          </div>
+        );
+      case 10.1:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <InfoAccidente />
             </Paper>
           </div>
         );
