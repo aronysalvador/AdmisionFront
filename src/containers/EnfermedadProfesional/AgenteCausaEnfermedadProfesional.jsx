@@ -120,7 +120,7 @@ const AgenteCausaEnfermedadProfesional = () => {
               onInputChange={(event, value) => {
                 event&&setAgenteCausa(Format.caracteresInvalidos(value));
               }}
-              freeSolo
+              // freeSolo
               options={sugerenciasAgenteCausa} 
               getOptionLabel={(option) =>  option.nombre }
 
