@@ -74,7 +74,7 @@ const TipoAvisoResponsable = () => {
 
                         <div className={comunClass.deskFlex}>
                            <div className={check.id === 1 ? comunClass.roundedBlue : comunClass.roundedNormal}>
-                                <div className={comunClass.containerOpction}>
+                                <div className={comunClass.containerOpction} style={{alignItems:"flex-end"}}>
                                     <BlueRadio
                                         checked={check.id === 1}
                                          onChange={()=>setCheck({ id:1, description: "Presencial" })}
@@ -82,7 +82,7 @@ const TipoAvisoResponsable = () => {
                                         name="radio-button-demo"
                                         inputProps={{ 'aria-label': 'C' }}
                                     />
-                                    <p className={comunClass.txtRadios}>Presencial</p>
+                                    <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Presencial</p>
                                 </div>
                             </div>
 
@@ -98,7 +98,7 @@ const TipoAvisoResponsable = () => {
                                             name="radio-button-demo"
                                             inputProps={{ 'aria-label': 'C' }}
                                         />
-                                        <p className={comunClass.txtRadios}>E-mail</p>
+                                        <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>E-mail</p>
                                     </div>
                             </div>
                         </div>    
@@ -115,7 +115,7 @@ const TipoAvisoResponsable = () => {
                                             name="radio-button-demo"
                                             inputProps={{ 'aria-label': 'C' }}
                                         />
-                                        <p className={comunClass.txtRadios}>Llamada telefónica</p>
+                                        <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Llamada telefónica</p>
                                     </div>
                             </div>
                             
@@ -130,7 +130,7 @@ const TipoAvisoResponsable = () => {
                                             name="radio-button-demo"
                                             inputProps={{ 'aria-label': 'C' }}
                                         />
-                                        <p className={comunClass.txtRadios}>Whatsapp</p>
+                                        <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Whatsapp</p>
                                     </div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@ const TipoAvisoResponsable = () => {
                                                 name="radio-button-demo"
                                                 inputProps={{ 'aria-label': 'C' }}
                                             />
-                                            <p className={comunClass.txtRadios}>Otro</p>
+                                            <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Otro</p>
                                         </div>
 
                                         <div 

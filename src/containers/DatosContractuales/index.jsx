@@ -178,20 +178,6 @@ export default () =>{
                                     </div>
 
                                     <SelectsAutocomplete
-                                        first="blue"
-                                        txt1="Profesión u oficio"
-                                        txt2="del paciente" 
-                                        data={profesion}
-                                        setData={setProfesion}
-                                        listado={profesionList}
-                                        options={['codigo','nombre']}
-                                    />
-
-                                    <div className={comunClass.displayDesk}>
-                                        <div className={spaceStyle.space1} />
-                                    </div>
-
-                                    <SelectsAutocomplete
                                         first="dark"
                                         txt1="Tipo de"
                                         txt2="contrato" 
@@ -199,6 +185,20 @@ export default () =>{
                                         setData={setContrato}
                                         listado={tipoContratoList}
                                         options={['id','nombre']}
+                                    />
+
+                                    <div className={comunClass.displayDesk}>
+                                        <div className={spaceStyle.space1} />
+                                    </div>
+
+                                    <SelectsAutocomplete
+                                        first="blue"
+                                        txt1="Profesión u oficio"
+                                        txt2="del paciente" 
+                                        data={profesion}
+                                        setData={setProfesion}
+                                        listado={profesionList}
+                                        options={['codigo','nombre']}
                                     />
 
                                     <div className={comunClass.displayDesk}>
@@ -282,10 +282,10 @@ export default () =>{
 
                                     <div className={comunClass.containerTextBoxDataCont}>
                                         <Grid className={[comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont]}>
+                                            Seleccionar
                                             <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlueDataCont]}>
-                                                Seleccionar
-                                            </Grid>          
-                                            &nbsp; horario
+                                                &nbsp; horario
+                                            </Grid>                                                      
                                         </Grid> 
 
                                         <div className="row">
@@ -375,11 +375,11 @@ export default () =>{
                                     </div>
 
                                     <div className={comunClass.containerTextBoxDataCont}>
-                                        <Grid className={[comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont]}>                                                     
-                                            Fecha de ingreso
+                                        <Grid className={[comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont]}>                    
                                             <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlueDataCont]}>
-                                            &nbsp;a su trabajo
+                                            Fecha de ingreso
                                             </Grid> 
+                                                &nbsp;a su trabajo   
                                         </Grid> 
                                         <div  style={{ zIndex: 9}} >
                                             <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
