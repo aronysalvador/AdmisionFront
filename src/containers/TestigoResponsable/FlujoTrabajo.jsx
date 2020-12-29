@@ -1,0 +1,234 @@
+import React, { useState} from "react";
+import Header from "../../components/header/index";
+import Cabecera from "../../components/cabecera/index";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { getComunStyle } from "../../css/comun";
+import { getSpaceStyle } from "../../css/spaceStyle";
+import Button from "@material-ui/core/Button";
+import Grid from '@material-ui/core/Grid';
+import yesDisabled from './../../img/yesWork.svg'
+import notDisabled from './../../img/notWork.svg'
+import yesActive from './../../img/yesActive.svg'
+import notActive from './../../img/notActive.svg'
+//import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestroCalendar";
+import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
+//import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
+import HoraSiniestroDesk from "./../../components/HoraSiniestro/HoraSiniestroDesk";
+
+
+
+const FlujoTrabajo = () => {
+    const { addmissionForm: { percentage, CamposDocumentos ,  responsableForm, fechaHoraResponsable }, microsoftReducer:{userMsal} } = useSelector((state) => state, shallowEqual);
+    const dispatch = useDispatch();
+
+    const comunClass = getComunStyle();
+    const spaceStyle = getSpaceStyle();
+
+    const { days, month, year, horas, minutos } = fechaHoraResponsable;
+
+    const [fechaSiniestro, setFechaSiniestro] = useState({});
+    const [horaSiniestro, setHoraSiniestro] = useState({});
+
+    function setFechaValueSiniestro(value) {
+        setFechaSiniestro({ ...value });
+    }
+    function setHoraValueSiniestro(value) {
+        value.minutos = minutosArray[value.indiceMinutos];
+        setHoraSiniestro({ ...value });
+      }
+    
+    const minutosArray = [0, 10, 20, 30, 40, 50]
+
+    const handleOnClick = (respuesta) => {
+        if(respuesta === "Si"){
+            CamposDocumentos.TestigoS = "x"
+            CamposDocumentos.TestigoN = ""
+            dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+        }else{
+            CamposDocumentos.TestigoS = ""
+            CamposDocumentos.TestigoN = "x"
+            dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+            dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
+        }
+
+        if((CamposDocumentos.TestigoS === "x" || CamposDocumentos.TestigoN === "x") && responsableForm){
+            dispatch(handleSetStep(18.01))
+        }
+        
+    };
+
+    const handleOnClickResponsable = (respuesta) => {
+        //dispatch(updateForm("desarrollarTrabajoHabitual", respuesta));
+        if(respuesta === "Si"){
+            dispatch(updateForm("responsableForm", respuesta));
+        }else{
+            dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
+            dispatch(updateForm("responsableForm", respuesta));
+            //if(CamposDocumentos.TestigoS || CamposDocumentos.TestigoN && responsableForm){
+                dispatch(handleSetStep(18.01))
+            //}
+            
+        }
+        // setcheckedResponsable(respuesta)
+    };
+
+    // useEffect(()=>{
+    //     // if(!CamposDocumentos.TestigoS && !CamposDocumentos.TestigoN){
+    //     //   console.log("checkedIsapre1")
+    //     //   console.log(checkedTestigo)
+    //     //  // handleOnClick(checkedTestigo)
+    //     // }else{
+    //     //   if(CamposDocumentos.TestigoS !==checkedTestigo || CamposDocumentos.TestigoN !==checkedTestigo){
+    //     //     console.log("checkedIsapre2")
+    //     //     console.log(checkedTestigo)
+    //     //   //  handleOnClick(checkedTestigo)
+    //     //   }
+    //     // }
+    
+        
+    //    // eslint-disable-next-line
+    //   },[checkedTestigo])
+    
+    //   useEffect(()=>{
+    //     if(!afpForm){
+    //       console.log("checkedAfp1")
+    //       console.log(checkedAfp)
+    //       handeleNextAfp(checkedAfp)
+    //     }else{
+    //       if(afpForm!==checkedAfp){
+    //         console.log("checkedAfp2")
+    //         console.log(checkedAfp)
+    //         handeleNextAfp(checkedAfp)
+    //       }
+    //     }
+    //     // eslint-disable-next-line
+    //   },[checkedAfp])
+
+    return (
+        <div className={comunClass.root}>
+        <div className={comunClass.displayDesk}> 
+            <Header userMsal={ userMsal }/>
+        </div>
+        <div className={comunClass.beginContainerDesk}>
+            <Cabecera
+            dispatch={() => dispatch(handleSetStep("x",17.3))}
+            percentage={percentage}
+            />
+        </div>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
+
+                    <div className={['row', comunClass.backgroundGrey].join(' ')}>
+                        <div className="col-md-10" style={{textAlign:"left"}}>
+                        <Grid className={`${comunClass.textPrimaryRelato}`} >
+                            ¿Alguien fue
+                            <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                                &nbsp;testigo&nbsp;
+                            </Grid> 
+                            de lo que sucedió?
+                        </Grid>
+                        </div>
+                        <div className="col-md-2" style={{ display: "contents" }}>
+                            <img
+                            alt="siTrabajo"
+                            src={CamposDocumentos.TestigoS ==="x" ? yesActive : yesDisabled}
+                            type="button"
+                            style={{ marginRight: "5px" }}
+                            onClick={() => handleOnClick("Si")}
+                            />
+
+                            <img
+                            alt="noTrabajo"
+                            src={CamposDocumentos.TestigoN ==="x" ? notActive :notDisabled}
+                            type="button"
+                            onClick={() => handleOnClick("No")}                       
+                            />
+                        </div>
+                    </div>    
+
+                    <div className={spaceStyle.space1} />
+
+                    <div className={['row', comunClass.backgroundGrey].join(' ')}>
+                        <div className="col-md-10" style={{textAlign:"left"}}>
+                        <Grid className={`${comunClass.textPrimaryRelato}`} >
+                            ¿Se le 
+                            <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                                &nbsp;reportó el accidente a un responsable&nbsp;
+                            </Grid> 
+                            en la empresa?
+                        </Grid>
+                        </div>
+                        <div className="col-md-2" style={{ display: "contents" }}>
+                            <img
+                            alt="siTrabajo"
+                            src={responsableForm === "Si" ? yesActive : yesDisabled}
+                            type="button"
+                            style={{ marginRight: "5px" }}
+                            onClick={() => handleOnClickResponsable("Si")}
+                            />
+
+                            <img
+                            alt="noTrabajo"
+                            src={responsableForm === "No" ? notActive :notDisabled}
+                            type="button"
+                            onClick={() => handleOnClickResponsable("No")}                       
+                            />
+                        </div>
+                    </div> 
+
+                    <div className={spaceStyle.space1} />
+                    
+                    {responsableForm ==="Si" &&
+                    <>
+                    <div className="row justify-content-center">
+                        <div className="col-md-5 " style={{textAlign:"left"}}>
+                            <FechaSiniestroDesk
+                                onChange={setFechaValueSiniestro}
+                                daysFromState={days}
+                                monthFromState={month}
+                                yearFromState={year}
+                                textLabel={"Fecha de aviso"}
+                            />
+                        </div>
+                        <div className="col-md-5 " style={{textAlign:"left"}}>
+                            <HoraSiniestroDesk
+                                onChange={setHoraValueSiniestro}
+                                horasFromState={horas}
+                                indiceMinutosFromState={minutosArray.indexOf(minutos)}
+                                minutos={minutosArray}
+                                textLabel={"Hora de aviso"}
+                            />
+                        </div>
+                    </div>   
+
+                    <div className={spaceStyle.space1} />           
+
+                    <div style={{ position: "relative", textAlign:"center" }}>
+                        <Button
+                            className={comunClass.buttonAchs}
+                            variant="contained"
+                            //disabled={true}
+                            onClick={() => {
+                                dispatch( updateForm("fechaHoraResponsable", {...fechaSiniestro, ...horaSiniestro,}));
+                                dispatch(handleSetStep(18.01))
+                            }}
+                        >
+                            Continuar
+                        </Button>
+                    </div>
+                    </>
+                    }
+
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    );
+};
+
+export default FlujoTrabajo;

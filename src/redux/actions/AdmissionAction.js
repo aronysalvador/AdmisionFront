@@ -170,6 +170,7 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 13: //QuestionWitness
+                case 17.3: //TestigoResponsable
                     switch (TIPO) {
                         case 1:
                             PASO = 12.1
@@ -238,8 +239,10 @@ export const handleSetStep = (step, actual = null) => {
                 case 18.01: //Previsiones (AFP-Isapre) unificadas
                     switch (TIPO) {
                         case 1:
+                            PASO = 17.3
+                            break;
                         case 2:
-                            PASO = step
+                            PASO = 500
                             break;
                         case 3:
                             PASO = 6.05

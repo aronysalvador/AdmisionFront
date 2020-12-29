@@ -14,7 +14,7 @@ import { Format } from "../../helpers/strings";
 
 const Forecasts = () => {
   const {
-    addmissionForm: { percentage, responsable, afpForm, isapreSeleccionado }, microsoftReducer
+    addmissionForm: { percentage, afpForm, isapreSeleccionado }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
@@ -41,12 +41,10 @@ const Forecasts = () => {
 
 
   const handeleNextAfp = (txt) => {
-    console.log("in afp")
     setTimeout(() => {    
-      console.log(checkedAfp)
-      console.log(checkedIsapre)
+
       if(checkedAfp.codigo && checkedIsapre.id){  
-        console.log("next")
+
         dispatch(updateForm("afpForm", txt));
         dispatch(updateForm("isapreSeleccionado", checkedIsapre));
         dispatch(handleSetStep(19.2))
@@ -55,12 +53,8 @@ const Forecasts = () => {
   }
 
   const handeleNextIsapre = (txt) => {
-    console.log("in isapre")
     setTimeout(() => {    
-      console.log(checkedAfp)
-      console.log(checkedIsapre)
       if(checkedAfp.codigo && checkedIsapre.id){  
-        console.log("next")
         dispatch(updateForm("afpForm", checkedAfp));
         dispatch(updateForm("isapreSeleccionado", txt));
         dispatch(handleSetStep(19.2))
@@ -70,13 +64,9 @@ const Forecasts = () => {
 
   useEffect(()=>{
     if(!isapreSeleccionado){
-      console.log("checkedIsapre1")
-      console.log(checkedIsapre)
       handeleNextIsapre(checkedIsapre)
     }else{
       if(isapreSeleccionado!==checkedIsapre){
-        console.log("checkedIsapre2")
-        console.log(checkedIsapre)
         handeleNextIsapre(checkedIsapre)
       }
     }
@@ -85,13 +75,9 @@ const Forecasts = () => {
 
   useEffect(()=>{
     if(!afpForm){
-      console.log("checkedAfp1")
-      console.log(checkedAfp)
       handeleNextAfp(checkedAfp)
     }else{
       if(afpForm!==checkedAfp){
-        console.log("checkedAfp2")
-        console.log(checkedAfp)
         handeleNextAfp(checkedAfp)
       }
     }
@@ -105,7 +91,7 @@ const Forecasts = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(responsable?.nombre?.length > 0 ?  17.1 : 15, 18.01 ))}
+          dispatch={() => dispatch(handleSetStep("x", 18.01 ))}
           percentage={percentage}
         />
       </div>
