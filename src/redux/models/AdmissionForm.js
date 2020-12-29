@@ -66,7 +66,7 @@ export const AdmissionForm = {
     coberturaSoap: "", // se debe pasar a SAP
 
     CamposDocumentos: {
-        anteceContr: "", 
+        anteceContr: "",
         /* TRAYECTO */
         //Atencion Previa
         FechaOtroRe: "",
@@ -108,11 +108,11 @@ export const AdmissionForm = {
         //Testigo
         TestigoS: "",
         TestigoN: "x"
-        /* TRAYECTO */
-   
+            /* TRAYECTO */
+
     },
 
     FechaSintomasEP: {},
-
+    AgenteCausaEP: {},
     TipoAvisoResponsable: {}
 };
