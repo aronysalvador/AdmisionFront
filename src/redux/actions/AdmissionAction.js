@@ -120,7 +120,7 @@ export const handleSetStep = (step, actual = null) => {
                     switch (TIPO) {
                         case 1:
                             //Nuevo Flujo
-                            PASO = 10
+                            PASO = 10.1
                             break;
                         case 2:
                             PASO = 9.01
@@ -156,13 +156,13 @@ export const handleSetStep = (step, actual = null) => {
                     switch (TIPO) {
                         case 1:
                             //Nuevo Flujo
-                            PASO = 0
+                            PASO = 8.1
                             break;
                         case 2:
                             PASO = 9.01
                             break;
                         case 3:
-                            PASO = 0
+                            PASO = 500
                             break;
                         default:
                             PASO = 500

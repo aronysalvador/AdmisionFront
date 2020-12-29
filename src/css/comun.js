@@ -565,6 +565,18 @@ export const getComunStyle = makeStyles((theme) => ({
             margin: 'auto',
             textAlign: 'center',
         },
+        boxDesk3: {
+            width: '80%', 
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '0 20px 0 20px', 
+            textAlign: 'center',
+        },        
         boxDeskCardBtn: {
             width: '60%',
             maxWidth: '860px',
@@ -876,6 +888,13 @@ export const getComunStyle = makeStyles((theme) => ({
             minWidth: '300px',
             textAlign: 'left',
             margin: 'auto',
+        },
+        containerTextBox2: {
+            width: '50%', 
+            minWidth: '300px',
+            textAlign: 'left',
+            margin: 'auto',
+            padding: "0 0 6em 0"
         },
         beginContainerDesk: {
             width: '90%',
@@ -1635,5 +1654,30 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     containerTextBoxDataCont: {
         textAlign: 'left',
-    }
+    },    
+    subtitleBlack2: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: '#373737',
+        display: "inline-block",
+        textAlign: "center",
+        verticalAlign: "top",
+        padding: "30px 0 40px 0"
+    },
+    rootNew: {
+        position: "relative",
+        backgroundColor: "#F8F9FA",
+    },
+    mobileCaption: {
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "13px",
+        lineHeight: "16px",
+        color: "#787878",
+        textAlign: "left"
+    },
 }));

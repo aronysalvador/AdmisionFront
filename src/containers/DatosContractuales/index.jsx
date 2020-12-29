@@ -23,26 +23,33 @@ import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 
+const NoPaddingPicker = withStyles({
+    root: {
+      '&& .MuiOutlinedInput-input': {
+        padding: "8.5px 14px"
+      }
+    }
+})(KeyboardTimePicker);
+
+const NoPaddingDatePicker = withStyles({
+    root: {
+      '&& .MuiOutlinedInput-input': {
+        padding: "8.5px 14px"
+      }
+    }
+})(KeyboardDatePicker);
+
+const NoTopTextField = withStyles({
+    root: {
+        '&& .MuiOutlinedInput-notchedOutline': {
+            top: "-2px"
+        }
+    }
+})(TextField);
+
 export default () =>{ 
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
-
-    const NoPaddingPicker = withStyles({
-        root: {
-          '&& .MuiOutlinedInput-input': {
-            padding: "8.5px 14px"
-          }
-        }
-    })(KeyboardTimePicker);
-
-    const NoPaddingDatePicker = withStyles({
-        root: {
-          '&& .MuiOutlinedInput-input': {
-            padding: "8.5px 14px"
-          }
-        }
-    })(KeyboardDatePicker);
-
         
     const dispatch = useDispatch();
     const { 
@@ -76,7 +83,6 @@ export default () =>{
         return str;
     };    
     
-    const inputRefEntrada = React.useRef();
     const [selectedDate, setDate] = useState(moment());
     const [entrada, setEntrada] = useState(inicioJornadaLaboral ? stringToHours(inicioJornadaLaboral) : stringToHours("09:30"));    
     const onDateChange = (date, value) => {
@@ -84,7 +90,6 @@ export default () =>{
         setEntrada(value);
     };
 
-    const inputRefSalida = React.useRef();
     const [selectedDateSalida, setDateSalida] = useState(moment());
     const [salida, setSalida] = useState(finJornadaLaboral?stringToHours(finJornadaLaboral):stringToHours("18:30"));  
     const onDateChangeSalida = (date, value) => {
@@ -92,7 +97,6 @@ export default () =>{
         setSalida(value);
     };
 
-    const inputRefIngreso = React.useRef();
     const [selectedDateIngreso, setDateIngreso] = useState(moment());
     const [ingreso, setIngreso] = useState(ingresoTrabajoActualVisual?stringToDate(ingresoTrabajoActualVisual):moment().format("MM-YYYY"));  
     const onDateChangeIngreso = (date, value) => {
@@ -212,7 +216,7 @@ export default () =>{
                                             </Grid>          
                                             &nbsp; del paciente en la empresa
                                         </Grid> 
-                                        <TextField
+                                        <NoTopTextField
                                             id="cargo"
                                             value={cargo}
                                             onFocus={()=>setErrorCargo(false)}
@@ -303,14 +307,12 @@ export default () =>{
                                                 <div  style={{ zIndex: 9}} >
                                                     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker
-                                                                inputRef={inputRefEntrada}                                                             
+                                                            <NoPaddingPicker                                                            
                                                                 value={selectedDate}
                                                                 format="HH:mm"
                                                                 inputValue={entrada}
                                                                 onChange={onDateChange}
-                                                                rifmFormatter={dateFormatter}
-                                                                onError={(e)=>{if(e){inputRefEntrada.current.focus();}}}                                                             
+                                                                rifmFormatter={dateFormatter}                                                           
                                                                 inputVariant="outlined"                                                            
                                                                 InputAdornmentProps={{ position: 'start'}}
                                                                 ampm={false}
@@ -341,14 +343,12 @@ export default () =>{
                                                 <div  style={{ zIndex: 9}} >
                                                     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker
-                                                                inputRef={inputRefSalida}                                                             
+                                                            <NoPaddingPicker                                                          
                                                                 value={selectedDateSalida}
                                                                 format="HH:mm"
                                                                 inputValue={salida}
                                                                 onChange={onDateChangeSalida}
-                                                                rifmFormatter={dateFormatter}
-                                                                onError={(e)=>{if(e){inputRefSalida.current.focus();}}}                                                             
+                                                                rifmFormatter={dateFormatter}                                                           
                                                                 inputVariant="outlined"                                                            
                                                                 InputAdornmentProps={{ position: 'start'}}
                                                                 ampm={false}
@@ -387,16 +387,12 @@ export default () =>{
                                                 <NoPaddingDatePicker
                                                     inputVariant="outlined"
                                                     views={["year", "month"]}
-                                                    disableFuture
-
-                                                    inputRef={inputRefIngreso}                                                             
+                                                    disableFuture                                                          
                                                     value={selectedDateIngreso}
                                                     format="MM-YYYY"
                                                     inputValue={ingreso}
                                                     onChange={onDateChangeIngreso}
-                                                    rifmFormatter={dateFormatter}
-                                                    onError={(e)=>{if(e){inputRefIngreso.current.focus();}}}                                 
-
+                                                    rifmFormatter={dateFormatter}                              
                                                     animateYearScrolling       
                                                     InputAdornmentProps={{ position: 'start'}}
                                                     fullWidth
