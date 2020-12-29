@@ -99,10 +99,7 @@ export const AdmissionForm = {
         anteceOtro: "",
         anteceOtroC: "",
         anteceNocuenta: "x",
-        //TipoAccidenteTrayecto
-        HabitacionT: "",
-        TrabajoHabitacion:"", 
-        EntreTrabaj:"",
+
         //Antece "" Documento Testigo
         anteceRespA: "",
         anteceRespO: "",
