@@ -122,6 +122,10 @@ const AgenteCausaEnfermedadProfesional = () => {
               }}
               options={sugerenciasAgenteCausa} 
               getOptionLabel={(option) =>  option.nombre }
+              getOptionSelected= {(
+                option,
+                value,
+             ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
