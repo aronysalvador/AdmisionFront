@@ -11,12 +11,8 @@ import yesDisabled from './../../img/yesWork.svg'
 import notDisabled from './../../img/notWork.svg'
 import yesActive from './../../img/yesActive.svg'
 import notActive from './../../img/notActive.svg'
-//import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
-//import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import HoraSiniestroDesk from "./../../components/HoraSiniestro/HoraSiniestroDesk";
-
-
 
 const FlujoTrabajo = () => {
     const { addmissionForm: { percentage, CamposDocumentos ,  responsableForm, fechaHoraResponsable }, microsoftReducer:{userMsal} } = useSelector((state) => state, shallowEqual);
@@ -36,7 +32,7 @@ const FlujoTrabajo = () => {
     function setHoraValueSiniestro(value) {
         value.minutos = minutosArray[value.indiceMinutos];
         setHoraSiniestro({ ...value });
-      }
+    }
     
     const minutosArray = [0, 10, 20, 30, 40, 50]
 
@@ -51,7 +47,6 @@ const FlujoTrabajo = () => {
             dispatch(updateForm("CamposDocumentos", CamposDocumentos));
             dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
         }
-
         if((CamposDocumentos.TestigoS === "x" || CamposDocumentos.TestigoN === "x") && responsableForm){
             dispatch(handleSetStep(18.01))
         }
@@ -59,52 +54,14 @@ const FlujoTrabajo = () => {
     };
 
     const handleOnClickResponsable = (respuesta) => {
-        //dispatch(updateForm("desarrollarTrabajoHabitual", respuesta));
         if(respuesta === "Si"){
             dispatch(updateForm("responsableForm", respuesta));
         }else{
             dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
             dispatch(updateForm("responsableForm", respuesta));
-            //if(CamposDocumentos.TestigoS || CamposDocumentos.TestigoN && responsableForm){
-                dispatch(handleSetStep(18.01))
-            //}
-            
+            dispatch(handleSetStep(18.01))         
         }
-        // setcheckedResponsable(respuesta)
     };
-
-    // useEffect(()=>{
-    //     // if(!CamposDocumentos.TestigoS && !CamposDocumentos.TestigoN){
-    //     //   console.log("checkedIsapre1")
-    //     //   console.log(checkedTestigo)
-    //     //  // handleOnClick(checkedTestigo)
-    //     // }else{
-    //     //   if(CamposDocumentos.TestigoS !==checkedTestigo || CamposDocumentos.TestigoN !==checkedTestigo){
-    //     //     console.log("checkedIsapre2")
-    //     //     console.log(checkedTestigo)
-    //     //   //  handleOnClick(checkedTestigo)
-    //     //   }
-    //     // }
-    
-        
-    //    // eslint-disable-next-line
-    //   },[checkedTestigo])
-    
-    //   useEffect(()=>{
-    //     if(!afpForm){
-    //       console.log("checkedAfp1")
-    //       console.log(checkedAfp)
-    //       handeleNextAfp(checkedAfp)
-    //     }else{
-    //       if(afpForm!==checkedAfp){
-    //         console.log("checkedAfp2")
-    //         console.log(checkedAfp)
-    //         handeleNextAfp(checkedAfp)
-    //       }
-    //     }
-    //     // eslint-disable-next-line
-    //   },[checkedAfp])
-
     return (
         <div className={comunClass.root}>
         <div className={comunClass.displayDesk}> 

@@ -1635,5 +1635,32 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     containerTextBoxDataCont: {
         textAlign: 'left',
-    }
+    },
+    boxDeskTestigo: {
+        width: '100%', //'416px',
+        border: '0',
+        background: 'white !important',
+        boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+        borderRadius: '8px',
+        alignItems: 'center',
+        margin: 'auto',
+        padding: '30px 20px 20px', //'33px',
+        textAlign: 'center',
+    },
+    roundedBlue2: {
+        color: "#373737",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        backgroundColor: "#DFF3F2 !important"
+    },
+    roundedNormal2: {
+        color: "#373737",
+        border: "2px solid #787878 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        background: "#FFFFFF"
+    },
 }));

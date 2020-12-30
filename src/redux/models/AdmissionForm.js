@@ -14,7 +14,7 @@ export const AdmissionForm = {
     volverAConcatenar: false,
 
     testigos: { nombre: "", cargo: "" },
-    responsable: [],
+    responsable: {nombre: "", cargo: ""},
     fechaHoraResponsable: {},
     fechaHoraSiniestro: {},
     fechaHoraAtencion: {},
