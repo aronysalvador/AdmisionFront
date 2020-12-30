@@ -30,6 +30,9 @@ const Identification = (props) => {
 
   const handlenext = (data) => {
     dispatch(updateForm("tipoSiniestro", data));  
+    if(data.Id === 2) {//Accidente de Trayecto
+      dispatch(updateForm("AccidenteEnSucursal", "no"))
+    }  
     dispatch(handleSetStep(3));   
   }
 
