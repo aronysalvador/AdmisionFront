@@ -119,8 +119,7 @@ export const handleSetStep = (step, actual = null) => {
                 case 8.1: //RelatoFinal
                     switch (TIPO) {
                         case 1:
-                            //Nuevo Flujo
-                            PASO = 10
+                            PASO = 10.1
                             break;
                         case 2:
                             PASO = 9.01
@@ -137,7 +136,6 @@ export const handleSetStep = (step, actual = null) => {
                 case 10: //FechaHoraSiniestro 
                     switch (TIPO) {
                         case 1:
-                            //Nuevo Flujo
                             PASO = 8.1
                             break;
                         case 2:
@@ -153,20 +151,36 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 10.1: //InfoAccidente 
-                    switch (TIPO) {
-                        case 1:
-                            //Nuevo Flujo
-                            PASO = 0
-                            break;
-                        case 2:
-                            PASO = 9.01
-                            break;
-                        case 3:
-                            PASO = 0
-                            break;
-                        default:
-                            PASO = 500
-                            break;
+                    if(step==="x_back"){//hacia atras
+                        switch (TIPO) {
+                            case 1:
+                                PASO = 8.1
+                                break;
+                            case 2:
+                                PASO = 9.01
+                                break;
+                            case 3:
+                                PASO = 500
+                                break;
+                            default:
+                                PASO = 500
+                                break;
+                        }
+                    }else{ //hacia adelante
+                        switch (TIPO) {
+                            case 1:
+                                PASO = 17.3
+                                break;
+                            case 2:
+                                PASO = 17.4
+                                break;
+                            case 3:
+                                PASO = 500
+                                break;
+                            default:
+                                PASO = 500
+                                break;
+                        }
                     }
                     break;
 

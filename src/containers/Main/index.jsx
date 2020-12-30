@@ -91,6 +91,7 @@ import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
 import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
 import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
+import LugarSiniestroTrayectoMapaNew from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapaNew";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
 import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
 import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
@@ -126,6 +127,7 @@ const Main = (props) => {
     paperFix,
     blackLayout,
     paperNoColor,
+    paperAutoHeight
   } = classes;
 
   const renderForm = (step) => {
@@ -469,7 +471,7 @@ const Main = (props) => {
       case 10.1:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperAutoHeight}>
               <InfoAccidente />
             </Paper>
           </div>
@@ -519,6 +521,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <LugarSiniestroTrayectoMapa />
+            </Paper>
+          </div>
+        );
+      case 12.4:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarSiniestroTrayectoMapaNew />
             </Paper>
           </div>
         );
@@ -581,7 +591,7 @@ const Main = (props) => {
       case 17.2: // Tipo de aviso Responsable
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperAutoHeight}>
               <TipoAvisoResponsable />
             </Paper>
           </div>
@@ -669,7 +679,7 @@ const Main = (props) => {
       case 19.4:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperAutoHeight}>
               <DatosContractuales />
             </Paper>
           </div>

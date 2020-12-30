@@ -15,6 +15,9 @@ export default (props) => {
         inputRoot: {
           '&&[class*="MuiOutlinedInput-root"] $input': {
             padding: "5.5px 2px"
+          },
+          '&& .MuiOutlinedInput-notchedOutline': {
+            top: "-2px"
           }
         },
         input: {}

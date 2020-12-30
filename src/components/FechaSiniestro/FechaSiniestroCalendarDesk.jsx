@@ -61,7 +61,7 @@ const FechaSiniestroDesk = ({
             onChange={onDateChange}
             animateYearScrolling            
             disableToolbar  // seleccionar año
-            InputAdornmentProps={{ position: 'start', paddingLeft: '6px'}}
+            InputAdornmentProps={{ position: 'start', padding: '0 0 0 6px'}}
             fullWidth
             invalidDateMessage="Formato invalido"
             maxDateMessage="La fecha no puede exceder al día de hoy"
