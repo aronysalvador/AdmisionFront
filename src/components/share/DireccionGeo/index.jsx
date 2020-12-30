@@ -34,7 +34,7 @@ const DireccionGeo = (props) => {
 
     const dispatch = useDispatch()
     const comunStyle = getComunStyle();
-    const { direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal, background, small } = props
+    const { direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal, background, small, noFijarOption } = props
 
     const [open, setOpen] = React.useState(false)
 
@@ -155,13 +155,15 @@ const DireccionGeo = (props) => {
                       <TextField {...params} style={{color:'red'}} variant="outlined" />
                   )}}
                   renderOption={(option) => {   
-                    if(option.description==='Fijar en el mapa'){                   
-                      return(
-                        <div className={comunStyle.txtGreen}  >
-                          <img alt="Location" src={image} className={comunStyle.iconLocation} />
-                          <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
-                        </div>
-                      )
+                    if(option.description==='Fijar en el mapa'){  
+                      if(!noFijarOption){                   
+                        return(
+                          <div className={comunStyle.txtGreen}  >
+                            <img alt="Location" src={image} className={comunStyle.iconLocation} />
+                            <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                          </div>
+                        )
+                      }
                     }else{
                       return(
                         <div>
@@ -217,22 +219,24 @@ const DireccionGeo = (props) => {
                     return(
                       <TextField {...params} style={{color:'red'}} variant="outlined" />
                   )}}
-                  renderOption={(option) => {   
-                    if(option.description==='Fijar en el mapa'){                   
-                      return(
-                        <div className={comunStyle.txtGreen}  >
-                          <img alt="Location" src={image} className={comunStyle.iconLocation} />
-                          <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
-                        </div>
-                      )
-                    }else{
-                      return(
-                        <div>
-                          <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
-                        </div>
-                        
-                      )
-                    }                    
+                  renderOption={(option) => {  
+                      if(option.description==='Fijar en el mapa'){                        
+                        if(!noFijarOption){                   
+                            return(
+                              <div className={comunStyle.txtGreen}  >
+                                <img alt="Location" src={image} className={comunStyle.iconLocation} />
+                                <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                              </div>
+                            )
+                        }
+                      }else{
+                        return(
+                          <div>
+                            <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                          </div>
+                          
+                        )
+                      }                
                   }}
                 />
                 )}

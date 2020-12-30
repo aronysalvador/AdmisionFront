@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from "react";
 import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
 import { Typography } from "@material-ui/core"
-import { useSelector, shallowEqual } from "react-redux"
 import Lugar from "../../../containers/LugarSiniestroTrayecto/Lugar"
 
 const mapStyles = {
@@ -11,17 +10,14 @@ const mapStyles = {
 
 const Mapa = (props) => {
 
-    const lat = props.LatTemporal ? props.LatTemporal :  (props.lat !== 'notset' ? props.lat : -33.436868834634076) ;
-    const lng = props.LongTemporal ? props.LongTemporal : (props.lng !== 'notset' ? props.lng : -70.63447665106504);
+    const lat =  (props.lat !== 'notset' ? props.lat : -33.436868834634076) ;
+    const lng =  (props.lng !== 'notset' ? props.lng : -70.63447665106504);
     const { direccion, setDireccion, setPlaceId } = props
-    const { LatTemporal, LongTemporal, DireccionTemporal, disabledDirection, showInput, setCoords } = props
-
-    const {  addmissionForm: { sucursalEmpresaDiaSiniestroTrayecto, urlMapaSucursalDiaSiniestroTrayecto, comunaDiaSiniestroTrayecto, DireccionEmpresa } } = useSelector((state) => state, shallowEqual);
+    const { LatTemporal, LongTemporal, DireccionTemporal, disabledDirection, showInput, setCoords, direccionValida, setDireccionValida, DireccionEmpresa, sucursalEmpresaSiniestro } = props
     
-    const [sucursal, setSucursal] = useState(sucursalEmpresaDiaSiniestroTrayecto ? sucursalEmpresaDiaSiniestroTrayecto : "");
-    const [mapaUrl, setMapaUrl] = useState(urlMapaSucursalDiaSiniestroTrayecto ? urlMapaSucursalDiaSiniestroTrayecto : "");
-    const [nombreComuna,setNombreComuna]=useState(comunaDiaSiniestroTrayecto?comunaDiaSiniestroTrayecto:"");
-    const [direccionValida, setDireccionValida] = useState(false)
+    const [sucursal, setSucursal] = useState("");
+    const [mapaUrl, setMapaUrl] = useState("");
+    const [nombreComuna,setNombreComuna]=useState("");
         
     const clearData = () => {
         setSucursal("")
@@ -30,20 +26,18 @@ const Mapa = (props) => {
 
     const lookForDirection = async(lat,lng) => {
         if(lat && lng){
-            // const test = await fetch(`http://localhost:8080/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
             const test = await fetch(`${window.REACT_APP_GEO_DIRECTION}?lat=${lat}&lng=${lng}`)
             const json = await test.json()      
             if(json){
-                setDireccion(json.content[0].results[0].formatted_address)
-                setPlaceId(json.content[0].results[0].place_id)
+                json.content[0].results[0].description = json.content[0].results[0].formatted_address
+                setSucursal(json.content[0].results[0])
             }
         }
     }
 
     useEffect(()=>{
         if(LatTemporal && LongTemporal){
-            setDireccion(DireccionTemporal.description)
-            setPlaceId(DireccionTemporal.place_id)
+            setSucursal(DireccionTemporal)
         }else{
             lookForDirection(lat,lng)
         }      
@@ -55,29 +49,20 @@ const Mapa = (props) => {
         }
         // eslint-disable-next-line 
     },[sucursal])
-    useEffect(()=>{
-        if(lat){
-            console.log("lat: "+lat)  
-        }
-        // eslint-disable-next-line 
-    },[lat])
+
+
 
     const handleDinamic = async(direccion) => {
         if(direccion){
-            console.log(direccion)
-            console.log(direccion.description)
-            console.log(direccion.place_id)
           const test = await fetch(`${window.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
           const json = await test.json()      
           if(Array.isArray(json.content)){
-              console.log(json.content[0].result.geometry.location)
                 setDireccion(direccion.description)
                 setPlaceId(direccion.place_id)
                 setCoords({
                     latitude:json.content[0].result.geometry.location.lat,
                     longitude:json.content[0].result.geometry.location.lng
                 })
-                // props.google.maps.LatLng(json.content[0].result.geometry.location.lat,json.content[0].result.geometry.location.lng)
           }
         }
       }
@@ -155,8 +140,9 @@ const Mapa = (props) => {
                                         valido={direccionValida}
                                         setValido={setDireccionValida}
                                         DireccionEmpresa={DireccionEmpresa}
-                                        sucursalEmpresaDiaSiniestroTrayecto={sucursalEmpresaDiaSiniestroTrayecto}
+                                        sucursalEmpresaSiniestro={sucursalEmpresaSiniestro}
                                         clearData={clearData}
+                                        noFijarOption={true}
                                     />
                                 </div>
                             </div>

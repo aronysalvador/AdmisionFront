@@ -3,12 +3,12 @@ import { getComunStyle } from "../../css/comun"
 import { useDispatch } from "react-redux"
 import { handleSetStep } from "../../redux/actions/AdmissionAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
-import { validarDireccion } from '../../helpers/utils'
+import { validarDireccionSN } from '../../helpers/utils'
 import Grid from '@material-ui/core/Grid';
 
 export default (props) => {
 
-    const { sucursal, setSucursal,setMapaUrl, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaDiaSiniestroTrayecto, clearData } = props 
+    const { sucursal, setSucursal,setMapaUrl, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption } = props 
 
   const dispatch = useDispatch();
   const comunClass = getComunStyle();
@@ -24,7 +24,7 @@ export default (props) => {
   },[sucursal])
   
   const validaDireccion = async()=>{
-    const resultado = await validarDireccion(sucursal)
+    const resultado = await validarDireccionSN(sucursal)
     setNombreComuna(resultado.comuna)
     setValido(resultado.valida)
   }
@@ -47,9 +47,10 @@ export default (props) => {
                   setSucursal({description: ''}); 
                   dispatch(handleSetStep(12.4))
                 }}
-                direccionTemporal={!sucursalEmpresaDiaSiniestroTrayecto?DireccionEmpresa:""}
+                direccionTemporal={!sucursalEmpresaSiniestro?DireccionEmpresa:""}
                 small
                 background={"#fff"}
+                noFijarOption={noFijarOption}
             />
         </div> 
   )

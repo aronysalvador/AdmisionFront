@@ -11,11 +11,12 @@ import Header from "../../components/header/index";
 const LugarSiniestroTrayectoMapa = () => {
 
   const [direccion, setDireccion]=useState(null);
+  const [direccionValida, setDireccionValida] = useState(false)
   const [placeId, setPlaceId]=useState(null);
   const [coords, setCoords]= useState(null);
   const dispatch = useDispatch();
   const {
-    addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal },
+    addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal, sucursalEmpresaSiniestro, DireccionEmpresa },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
@@ -54,7 +55,7 @@ const LugarSiniestroTrayectoMapa = () => {
 
   const handleSelect = async() => {
     googleMapsGetMap(placeId)
-    dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", 
+    dispatch(updateForm("sucursalEmpresaSiniestro", 
     {
       description: direccion,
       place_id: placeId, 
@@ -75,7 +76,7 @@ const LugarSiniestroTrayectoMapa = () => {
   const googleMapsGetMap = async(placeId) => {
     if(placeId){
       let urlMapa =  `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
-      dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", urlMapa))
+      dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
     }else{
       console.log("no place")
     }
@@ -111,6 +112,10 @@ const LugarSiniestroTrayectoMapa = () => {
                     DireccionTemporal={DireccionTemporal}
                     LatTemporal={LatTemporal}     
                     LongTemporal={LongTemporal}   
+                    direccionValida={direccionValida}
+                    setDireccionValida={setDireccionValida}
+                    sucursalEmpresaSiniestro={sucursalEmpresaSiniestro} 
+                    DireccionEmpresa={DireccionEmpresa}
                     disabledDirection
                     showInput
                 />
@@ -122,7 +127,7 @@ const LugarSiniestroTrayectoMapa = () => {
           <Button
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={direccion ? false : true}
+            disabled={!direccionValida}
             onClick={() => {
               handleSelect()
             }}

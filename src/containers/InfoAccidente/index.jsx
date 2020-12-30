@@ -59,17 +59,26 @@ const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm: { percentage, sucursalEmpresaDiaSiniestroTrayecto, urlMapaSucursalDiaSiniestroTrayecto, comunaDiaSiniestroTrayecto, DireccionEmpresa }, microsoftReducer, lugarReferenciaSiniestro } = useSelector((state) => state, shallowEqual);
+    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+
+    const stringTodate = (fecha) => {
+        let date = fecha.split(" ")[0]
+        let x = date.split("-")
+        let formatDate = x[2]+"-"+x[1]+"-"+x[0]
+        return moment(formatDate, "DD-MM-YYYY").format("DD-MM-YYYY")
+    }
 
     const [selectedDate, setSelectedDate] = useState(moment());
-    const [date, setDate] = useState(moment().format("DD-MM-YYYY"));  
+    const [date, setDate] = useState(fechaHoraSiniestro ? stringTodate(fechaHoraSiniestro) : moment().format("DD-MM-YYYY"));  
+    const [validDate, setValidDate] = useState(true);  
     const onDateChange = (date, value) => {
         setSelectedDate(date);
         setDate(value);
     };
 
     const [selectedHour, setSelectedHour] = useState(moment());
-    const [hour, setHour] = useState(moment().format("HH:mm"));    
+    const [hour, setHour] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[1], "HH:mm").format("HH:mm") : moment().format("HH:mm"));    
+    const [validHour, setValidHour] = useState(true);  
     const onHourChange = (date, value) => {
         setSelectedHour(date);
         setHour(value);
@@ -79,18 +88,28 @@ const InfoAccidente = () => {
         return str;
     };   
 
-    const [sucursal, setSucursal] = useState(sucursalEmpresaDiaSiniestroTrayecto ? sucursalEmpresaDiaSiniestroTrayecto : "");
-    const [mapaUrl, setMapaUrl] = useState(urlMapaSucursalDiaSiniestroTrayecto ? urlMapaSucursalDiaSiniestroTrayecto : "");
-    const [nombreComuna,setNombreComuna]=useState(comunaDiaSiniestroTrayecto?comunaDiaSiniestroTrayecto:"");
+    const [sucursal, setSucursal] = useState(sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : "");
+    const [mapaUrl, setMapaUrl] = useState(urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : "");
+    const [nombreComuna,setNombreComuna]=useState(comunaSiniestro?comunaSiniestro:"");
     const [direccionValida, setDireccionValida] = useState(false)
         
     const clearData = () => {
-        dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", ""))
-        dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", ""))
+        dispatch(updateForm("sucursalEmpresaSiniestro", ""))
+        dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
     }
 
     const [lugarReferencia, setLugarReferencia] = useState(!lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro);
-    const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(true);
+    const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(lugarReferenciaSiniestro?lugarReferenciaSiniestro:false);
+
+    const handleNext = () => {
+        let x = date.split("-")
+        dispatch(updateForm("fechaHoraSiniestro", `${x[2]}-${x[1]}-${x[0]} ${hour}`))
+        dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
+        dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
+        dispatch(updateForm("comunaSiniestro", nombreComuna))
+        dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+        dispatch(handleSetStep("x_next",10.1))
+    }
 
 
     return (
@@ -102,7 +121,7 @@ const InfoAccidente = () => {
             </div>
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
-                    dispatch={() => dispatch(handleSetStep("x",10.1))}
+                    dispatch={() => dispatch(handleSetStep("x_back",10.1))}
                     percentage={percentage}
                 />
             </div>                           
@@ -156,6 +175,7 @@ const InfoAccidente = () => {
                                                             animateYearScrolling       
                                                             InputAdornmentProps={{ position: 'start'}}
                                                             fullWidth
+                                                            onError={(e)=>{if(e){ setValidDate(false) }else{ setValidDate(true) } }}
                                                             invalidDateMessage="Formato invalido"
                                                             maxDateMessage="La fecha no puede exceder al día de hoy"
                                                             minDateMessage="La fecha es invalida"
@@ -195,6 +215,7 @@ const InfoAccidente = () => {
                                                                 InputAdornmentProps={{ position: 'start'}}
                                                                 ampm={false}
                                                                 fullWidth
+                                                                onError={(e)=>{if(e){ setValidHour(false) }else{ setValidHour(true) } }}
                                                                 invalidDateMessage="Formato invalido"
                                                                 keyboardIcon={<img alt="clock" src={image} />}
                                                                 style={{
@@ -247,7 +268,7 @@ const InfoAccidente = () => {
                                                         valido={direccionValida}
                                                         setValido={setDireccionValida}
                                                         DireccionEmpresa={DireccionEmpresa}
-                                                        sucursalEmpresaDiaSiniestroTrayecto={sucursalEmpresaDiaSiniestroTrayecto}
+                                                        sucursalEmpresaSiniestro={sucursalEmpresaSiniestro}
                                                         clearData={clearData}
                                                     />
                                                 </div>
@@ -272,12 +293,12 @@ const InfoAccidente = () => {
                                                                 fullWidth
                                                                 onChange={(e) => {
                                                                     let texto = Format.caracteresInvalidos(e.target.value);
-                                                                    setIsLugarReferenciaValid(texto.length > 0);
                                                                     setLugarReferencia(texto);
+                                                                    if(texto.length > 0){ setIsLugarReferenciaValid(true); }else{ setIsLugarReferenciaValid(false); }
                                                                 }}
                                                                 InputProps={{
                                                                     endAdornment: (
-                                                                        <ClearIcon onClick={()=>setLugarReferencia("")} style={{cursor:'pointer'}}  />
+                                                                        <ClearIcon onClick={()=>{setLugarReferencia(""); setIsLugarReferenciaValid(false);} } style={{cursor:'pointer'}}  />
                                                                     ),
                                                                 }}
                                                                 style={{
@@ -302,8 +323,8 @@ const InfoAccidente = () => {
                                 <Button
                                     variant="contained"
                                     className={comunClass.buttonAchs}
-                                    disabled
-                                    onClick={() => console.log("next") }
+                                    disabled={!validDate || !validHour || !isLugarReferenciaValid || !direccionValida}
+                                    onClick={() => handleNext() }
                                 >
                                     Continuar
                                 </Button>
