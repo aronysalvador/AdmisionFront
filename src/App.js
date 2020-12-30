@@ -22,6 +22,7 @@ import { getAgenteCausa } from "./redux/actions/AgenteCausaAction";
 import { getMediosTransporteTrayecto } from "./redux/actions/TrayectoAction";
 import { getTiposAccidenteTrayecto } from "./redux/actions/TrayectoAction";
 import { getPartesCuerpo } from "./redux/actions/ParteCuerpoAction";
+import { getRazonAlertaPrincipal } from "./redux/actions/AlertaCalificacionRazonAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ function App() {
     dispatch(getMediosTransporteTrayecto());
     dispatch(getTiposAccidenteTrayecto());
     dispatch(getPartesCuerpo());
+    dispatch(getRazonAlertaPrincipal());
   }, [dispatch]);
 
   useEffect(() => {

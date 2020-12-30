@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
-import { getRazonAlertaPrincipal } from "../../redux/actions/AlertaCalificacionRazonAction";
 import Grid from '@material-ui/core/Grid';
 import {siniestroStyle} from '../../css/siniestroStyle'
 import Button from "@material-ui/core/Button"
@@ -29,12 +28,11 @@ const Identification = (props) => {
   const [buttonOverTrayecto, setButtonOverTrayecto] = useState(tipoSiniestro.Id===2 ? true : false)
   const [buttonOverEP, setButtonOverEP] = useState(tipoSiniestro.Id===3 ? true : false)
 
-  const handlenext = (num) => {
-    var tipo = { Id:num, Descripcion: "Accidente Trabajo" }
-    dispatch(updateForm("tipoSiniestro", tipo));
-    setTimeout(() => {      
-      dispatch(getRazonAlertaPrincipal(""));
-    }, 1000);
+  const handlenext = (data) => {
+    dispatch(updateForm("tipoSiniestro", data));  
+    if(data.Id === 2) {//Accidente de Trayecto
+      dispatch(updateForm("AccidenteEnSucursal", "no"))
+    }  
     dispatch(handleSetStep(3));   
   }
 
@@ -69,7 +67,7 @@ const Identification = (props) => {
       <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
           <Button className={classes.button} variant="contained" onClick={()=>{ 
-              handlenext(1)
+              handlenext({ Id:1, Descripcion: "Accidente Trabajo" })
             }}
             onMouseOver={() =>{ setButtonOverTrabajo(true) }}
             onMouseOut={() =>{ setButtonOverTrabajo(false) }}
@@ -84,7 +82,7 @@ const Identification = (props) => {
         <div  className={spaceStyle.space1} />
         <div className={comunClass.alignBtnSiniesterRight}>
           <Button className={classes.button} variant="contained" onClick={()=>{ 
-             handlenext(2)
+             handlenext({ Id:2, Descripcion: "Accidente Trayecto" })
             }}
             onMouseOver={() =>{ setButtonOverTrayecto(true) }}
             onMouseOut={() =>{ setButtonOverTrayecto(false) }}
@@ -101,7 +99,7 @@ const Identification = (props) => {
       <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
           <Button className={classes.button} variant="contained" onClick={()=>{ 
-              handlenext(3)
+              handlenext({ Id:3, Descripcion: "Enfermedad Profesional" })
             }}
             onMouseOver={() =>{ setButtonOverEP(true) }}
             onMouseOut={() =>{ setButtonOverEP(false) }}

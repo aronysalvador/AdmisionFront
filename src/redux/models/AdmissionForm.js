@@ -16,7 +16,7 @@ export const AdmissionForm = {
     testigos: { nombre: "", cargo: "" },
     responsable: {nombre: "", cargo: ""},
     fechaHoraResponsable: {},
-    fechaHoraSiniestro: {},
+    fechaHoraSiniestro: "", 
     fechaHoraAtencion: {},
 
     SucursalEmpresa: "",
@@ -55,7 +55,7 @@ export const AdmissionForm = {
     DireccionTemporal: {}, // direccion temporal que es enviada al mapa dinámico
     LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
     LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
-    AccidenteEnSucursal: "",
+    AccidenteEnSucursal: "no",
     sucursalCargo: "", //Codigo de la sucursal
 
     comunaSiniestro: "",
@@ -72,6 +72,7 @@ export const AdmissionForm = {
     responsableForm:"",//Si hay responsable
 
     CamposDocumentos: {
+        anteceContr: "", 
         /* TRAYECTO */
         //Atencion Previa
         FechaOtroRe: "",
@@ -89,8 +90,6 @@ export const AdmissionForm = {
         PosibleCaus: "",
         //MedioTransporte
         MedioTransp: "",
-        //ParteAfectada
-        ParteAfecta: "",
         Otras: "",
         //TipoAvisoResponsable
         avisoPresen: "",

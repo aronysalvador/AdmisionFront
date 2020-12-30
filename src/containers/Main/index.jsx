@@ -93,6 +93,7 @@ import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
 import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
 import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
+import LugarSiniestroTrayectoMapaNew from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapaNew";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
 import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
 import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
@@ -103,6 +104,8 @@ import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCau
 import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
 import AtencionPrevia from "../AtencionPrevia/index";
 import Forecasts from "../Forecasts";
+
+import InfoAccidente from "./../InfoAccidente";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -126,6 +129,7 @@ const Main = (props) => {
     paperFix,
     blackLayout,
     paperNoColor,
+    paperAutoHeight
   } = classes;
 
   const renderForm = (step) => {
@@ -466,6 +470,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 10.1:
+        return (
+          <div className={layout}>
+            <Paper className={paperAutoHeight}>
+              <InfoAccidente />
+            </Paper>
+          </div>
+        );
       case 11:
         return (
           <div className={layout}>
@@ -511,6 +523,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <LugarSiniestroTrayectoMapa />
+            </Paper>
+          </div>
+        );
+      case 12.4:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarSiniestroTrayectoMapaNew />
             </Paper>
           </div>
         );
@@ -573,7 +593,7 @@ const Main = (props) => {
       case 17.2: // Tipo de aviso Responsable
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperAutoHeight}>
               <TipoAvisoResponsable />
             </Paper>
           </div>
@@ -677,7 +697,7 @@ const Main = (props) => {
       case 19.4:
         return (
           <div className={layout}>
-            <Paper className={paper}>
+            <Paper className={paperAutoHeight}>
               <DatosContractuales />
             </Paper>
           </div>
