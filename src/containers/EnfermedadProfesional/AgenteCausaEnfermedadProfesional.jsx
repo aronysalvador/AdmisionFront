@@ -187,7 +187,8 @@ const AgenteCausaEnfermedadProfesional = () => {
             variant="contained"
             disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || invalidFecha}
             onClick={() => {
-              dispatch(updateForm("AgenteCausaEP", agenteCausa));
+              console.log(agenteCausa.id)
+              dispatch(updateForm("AgenteCausaEP", agenteCausa.id));
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
               dispatch(updateForm("FechaExposicionAgenteEP", { ...fechaSiniestro }));
               dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
