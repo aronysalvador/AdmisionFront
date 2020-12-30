@@ -61,15 +61,15 @@ const InfoAccidente = () => {
     const dispatch = useDispatch();
     const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-    const stringTodate = (fecha) => {
-        let date = fecha.split(" ")[0]
-        let x = date.split("-")
-        let formatDate = x[2]+"-"+x[1]+"-"+x[0]
-        return moment(formatDate, "DD-MM-YYYY").format("DD-MM-YYYY")
-    }
+    // const stringTodate = (fecha) => {
+    //     let date = fecha.split(" ")[0]
+    //     let x = date.split("-")
+    //     let formatDate = x[2]+"-"+x[1]+"-"+x[0]
+    //     return moment(formatDate, "DD-MM-YYYY").format("DD-MM-YYYY")
+    // }
 
     const [selectedDate, setSelectedDate] = useState(moment());
-    const [date, setDate] = useState(fechaHoraSiniestro ? stringTodate(fechaHoraSiniestro) : moment().format("DD-MM-YYYY"));  
+    const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
     const [validDate, setValidDate] = useState(true);  
     const onDateChange = (date, value) => {
         setSelectedDate(date);
@@ -102,8 +102,7 @@ const InfoAccidente = () => {
     const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(lugarReferenciaSiniestro?lugarReferenciaSiniestro:false);
 
     const handleNext = () => {
-        let x = date.split("-")
-        dispatch(updateForm("fechaHoraSiniestro", `${x[2]}-${x[1]}-${x[0]} ${hour}`))
+        dispatch(updateForm("fechaHoraSiniestro", `${date} ${hour}`))
         dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
         dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
         dispatch(updateForm("comunaSiniestro", nombreComuna))
