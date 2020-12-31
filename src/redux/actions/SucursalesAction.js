@@ -6,17 +6,22 @@ import {
 import Axios from "axios";
 import { updateForm } from "./AdmissionAction";
 
-export const obtenerData = async (rut) => {
-  return Axios.get(`${window.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`);
+export const obtenerData = async (rut, token) => {
+  return Axios.get(`${window.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`, {
+    headers: {
+      "x-access-token": token
+    }
+  }
+);
 };
 
-export const getSucursales = (rut) => async (dispatch) => {
+export const getSucursales = (rut) => async (dispatch, getState) => {
   dispatch({
     type: GET_SUCURSALES_INIT,
     payload: true,
   });
 
-  obtenerData(rut)
+  obtenerData(rut, getState().microsoftReducer.token)
     .then((response) => {
       dispatch(successCallSucursales(response.data));
     })
@@ -35,12 +40,17 @@ export const getSucursales = (rut) => async (dispatch) => {
 };
 
 
-export const obtenerValidacion = async (rut) => {
-  return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT+rut);
+export const obtenerValidacion = async (rut, token) => {
+  return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT+rut, {
+    headers: {
+      "x-access-token": token
+    }
+  }
+);
 };
 
 
-export const getValidar = (isValid, rut) => async (dispatch) => {
+export const getValidar = (isValid, rut) => async (dispatch, getState) => {
   if(rut.length <= 7)
     return;
   dispatch({
@@ -49,7 +59,7 @@ export const getValidar = (isValid, rut) => async (dispatch) => {
   });
   if (isValid) {
     dispatch(updateForm("rutEmpresa", rut));
-   await obtenerValidacion(rut)
+   await obtenerValidacion(rut, getState().microsoftReducer.token)
       .then(async(response) => {
            
         const json = response.data      

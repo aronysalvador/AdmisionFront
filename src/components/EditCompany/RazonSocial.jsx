@@ -8,6 +8,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 const RazonSocial = () => {
   const {
     addmissionForm: { razonSocial },
+    microsoftReducer: {token}
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
@@ -22,7 +23,12 @@ const RazonSocial = () => {
       setSearch(newInputValue)
       if(newInputValue){
         if(newInputValue.length % 4 === 0 && newInputValue !== search)  {
-          const test = await fetch(window.REACT_APP_RAZONSOCIAL+ newInputValue)
+          const test = await fetch(window.REACT_APP_RAZONSOCIAL+ newInputValue, {
+            headers: {
+              "x-access-token": token
+            }
+          }
+        )
           const json = await test.json()
           var predictions = (Array.isArray(json.content?.response)) ? json.content.response : []           
           setOptions(predictions)
