@@ -532,19 +532,21 @@ const FlujoTrayecto = () => {
                             variant="contained"
                             disabled={btnValido}
                             onClick={() => {
+
+                                let json = { ...CamposDocumentos }
+
                                 if(nombreTestigo || cargoTestigo){
-                                    CamposDocumentos.TestigoS = "x"
-                                    CamposDocumentos.TestigoN = ""
-                                    dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+                                    json.TestigoS = "x"
+                                    json.TestigoN = ""
+                                    json.DatosTestig=datosTestig
 
                                     dispatch(sendCargo(nombreTestigo, cargoTestigo));
-                                    dispatch(updateForm("testigoForm", nombreTestigo + "-" + cargoTestigo));
-                                    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, DatosTestig: datosTestig}));
+                                    dispatch(updateForm("testigoForm", nombreTestigo + "-" + cargoTestigo));                                   
                                     console.log("SI Testigo")
                                 }else{
-                                    CamposDocumentos.TestigoS = ""
-                                    CamposDocumentos.TestigoN = "x"
-                                    dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+                                    json.TestigoS = ""
+                                    json.TestigoN = "x"
+                                    json.DatosTestig=""
                                     dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
                                     console.log("NO Testigo")
                                 }
@@ -555,39 +557,39 @@ const FlujoTrayecto = () => {
                                     dispatch(updateForm("fechaHoraResponsable", `${date} ${hour}`))
                                         switch (check.id) {
                                             case 1:
-                                                CamposDocumentos.avisoPresen="x"  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro=""  
-                                                CamposDocumentos.avisoCual=""  
+                                                json.avisoPresen="x"  
+                                                json.avisoMail=""  
+                                                json.avisoFono=""  
+                                                json.avisoOtro=""  
+                                                json.avisoCual=""  
                                                 break;
                                             case 2:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail="x"  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro=""  
-                                                CamposDocumentos.avisoCual=""  
+                                                json.avisoPresen=""  
+                                                json.avisoMail="x"  
+                                                json.avisoFono=""  
+                                                json.avisoOtro=""  
+                                                json.avisoCual=""  
                                                 break;
                                             case 3:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono="x"  
-                                                CamposDocumentos.avisoOtro=""  
-                                                CamposDocumentos.avisoCual=""  
+                                                json.avisoPresen=""  
+                                                json.avisoMail=""  
+                                                json.avisoFono="x"  
+                                                json.avisoOtro=""  
+                                                json.avisoCual=""  
                                                 break;
                                             case 4:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro="x"  
-                                                CamposDocumentos.avisoCual=check.description  
+                                                json.avisoPresen=""  
+                                                json.avisoMail=""  
+                                                json.avisoFono=""  
+                                                json.avisoOtro="x"  
+                                                json.avisoCual=check.description  
                                                 break;
                                             case 5:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro="x"  
-                                                CamposDocumentos.avisoCual=check.especificacion  
+                                                json.avisoPresen=""  
+                                                json.avisoMail=""  
+                                                json.avisoFono=""  
+                                                json.avisoOtro="x"  
+                                                json.avisoCual=check.especificacion  
                                                 break;
                                         
                                             default:
@@ -595,13 +597,21 @@ const FlujoTrayecto = () => {
                                         }
 
                                         dispatch(updateForm("TipoAvisoResponsable", check));
-                                        dispatch(updateForm("CamposDocumentos", CamposDocumentos));
-                                    console.log("SI Resposanble")
-                                }else{
-                                    dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
-                                    dispatch(updateForm("fechaHoraResponsable",  {}));
-                                    console.log("NO Resposanble")
-                                }                                
+                                        console.log("SI Resposanble")
+                                    }else{
+                                        json.avisoPresen=""  
+                                        json.avisoMail=""  
+                                        json.avisoFono=""  
+                                        json.avisoOtro=""  
+                                        json.avisoCual=""
+
+                                        dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
+                                        dispatch(updateForm("fechaHoraResponsable",  {}));
+                                        console.log("NO Resposanble")
+                                    }        
+                                    
+
+                                dispatch(updateForm("CamposDocumentos", json));                        
                                 dispatch(handleSetStep(18.01))
                                 console.log("next")
                             }}

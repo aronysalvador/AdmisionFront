@@ -202,7 +202,7 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 13: //QuestionWitness
-                case 17.3: //TestigoResponsable
+                // case 17.3: //TestigoResponsable
                     switch (TIPO) {
                         case 1:
                             PASO = 12.1
