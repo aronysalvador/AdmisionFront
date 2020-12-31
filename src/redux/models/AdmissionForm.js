@@ -14,8 +14,8 @@ export const AdmissionForm = {
     volverAConcatenar: false,
 
     testigos: { nombre: "", cargo: "" },
-    responsable: [],
-    fechaHoraResponsable: {},
+    responsable: {nombre: "", cargo: ""},
+    fechaHoraResponsable: "",
     fechaHoraSiniestro: "", 
     fechaHoraAtencion: {},
 
@@ -69,6 +69,8 @@ export const AdmissionForm = {
 
     coberturaSoap: "", // se debe pasar a SAP
 
+    responsableForm:"",//Si hay responsable
+
     CamposDocumentos: {
         anteceContr: "", 
         /* TRAYECTO */
@@ -103,10 +105,7 @@ export const AdmissionForm = {
         anteceOtro: "",
         anteceOtroC: "",
         anteceNocuenta: "x",
-        //TipoAccidenteTrayecto
-        HabitacionT: "",
-        TrabajoHabitacion:"", 
-        EntreTrabaj:"",
+
         //Antece "" Documento Testigo
         anteceRespA: "",
         anteceRespO: "",
@@ -114,12 +113,12 @@ export const AdmissionForm = {
         anteceCertH: "",
         //Testigo
         TestigoS: "",
-        TestigoN: "x"
-        /* TRAYECTO */
-   
+        TestigoN: ""
+            /* TRAYECTO */
+
     },
 
     FechaSintomasEP: {},
-
+    AgenteCausaEP: {},
     TipoAvisoResponsable: {}
 };

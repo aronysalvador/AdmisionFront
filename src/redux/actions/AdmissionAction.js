@@ -50,7 +50,7 @@ export const handleSetStep = (step, actual = null) => {
 
         //Mapear logs de pantallas
         const { LogForm: { ID } } = getState();
-        if (step !== -1 && step !== 0 && step !== 1 && step !== 1.1 && step !== 2 && step !== 3 && step !== 26.4) {
+        if ((step !== -1 && step !== 0 && step !== 1 && step !== 1.1 && step !== 2 && step !== 3 && step !== 26.4) && !actual) {
             ID !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: step }))
         }
 
@@ -202,6 +202,7 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 13: //QuestionWitness
+                // case 17.3: //TestigoResponsable
                     switch (TIPO) {
                         case 1:
                             PASO = 12.1
@@ -270,8 +271,10 @@ export const handleSetStep = (step, actual = null) => {
                 case 18.01: //Previsiones (AFP-Isapre) unificadas
                     switch (TIPO) {
                         case 1:
+                            PASO = 17.3
+                            break;
                         case 2:
-                            PASO = step
+                            PASO = 17.4
                             break;
                         case 3:
                             PASO = 6.05
@@ -287,6 +290,7 @@ export const handleSetStep = (step, actual = null) => {
                     break;
             }
             console.log("PASO: " + PASO)
+            PASO !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: PASO }))
         }
 
         dispatch(setStep(PASO, getPercentage(PASO)));

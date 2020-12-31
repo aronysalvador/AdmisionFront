@@ -184,7 +184,7 @@ const DocComplementariosTrayecto = () => {
             disabled={state.anteceOtro && anteceOtroC.length <= 4}
             onClick={() => {
               CamposDocumentos.anteceOtroC = ""
-              
+
               if ( state.antecePartP ) { CamposDocumentos.antecePartP = "x" } else { CamposDocumentos.antecePartP = "" }
               if ( state.anteceConst ) { CamposDocumentos.anteceConst = "x" } else { CamposDocumentos.anteceConst = "" }
               if ( state.anteceVideS ) { CamposDocumentos.anteceVideS = "x" } else { CamposDocumentos.anteceVideS = "" }

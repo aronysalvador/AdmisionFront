@@ -28,6 +28,8 @@ import QuestionWitness from "../QuestionWitness/index";
 import DataWitness from "../DataWitness/index";
 import QuestionResponsable from "../QuestionResponsable/index";
 import DataResponsable from "../DataResponsable/index";
+import FlujoTrabajo from "../TestigoResponsable/FlujoTrabajo";
+import FlujoTrayecto from "../TestigoResponsable/FlujoTrayecto";
 import FechaHoraResponsable from "../FechaHoraResponsable/index";
 import BoxQuestionWitness from "../QuestionWitness/BoxQuestionWitness";
 import BoxQuestionResponsable from "../QuestionResponsable/BoxQuestionResponsable";
@@ -593,6 +595,22 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paperAutoHeight}>
               <TipoAvisoResponsable />
+            </Paper>
+          </div>
+        );
+      case 17.3: //Pantalla Testigo-Responsable Flujo Trabajo
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <FlujoTrabajo />
+            </Paper>
+          </div>
+        );
+      case 17.4: //Pantalla Testio-Responsable Flujo Trayecto
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <FlujoTrayecto />
             </Paper>
           </div>
         );
