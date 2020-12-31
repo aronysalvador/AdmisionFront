@@ -606,7 +606,7 @@ const FlujoTrayecto = () => {
                                         json.avisoCual=""
 
                                         dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
-                                        dispatch(updateForm("fechaHoraResponsable",  {}));
+                                        dispatch(updateForm("fechaHoraResponsable",  ""));
                                         console.log("NO Resposanble")
                                     }        
                                     
