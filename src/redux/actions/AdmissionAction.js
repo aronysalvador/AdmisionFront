@@ -303,8 +303,12 @@ export const formatRut = (rut) => {
     };
 };
 
-export const obtenerData = async(rut) => {
-    return Axios.get(window.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`);
+export const obtenerData = async(rut, token) => {
+    return Axios.get(window.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`, {
+        headers: {
+            "x-access-token": token
+        }
+    });
 };
 
 export const obtenerDataRazon = async(rutEmpresa) => {
@@ -313,7 +317,7 @@ export const obtenerDataRazon = async(rutEmpresa) => {
 
 export const saveRut = (rut) => {
     return (dispatch, getState) => {
-        obtenerData(rut)
+        obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
                 let BpCreado = result.data.content.response.BpCreado;
                 if (BpCreado) {
