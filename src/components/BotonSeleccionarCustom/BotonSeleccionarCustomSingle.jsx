@@ -5,7 +5,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 
 const BotonSeleccionarCustomSingle = (props) => {
-  const { data, itemForm, selected, step, CamposDocumentos } = props;
+  const { data, itemForm, selected, step } = props;
 
   const dispatch = useDispatch();
 
@@ -29,28 +29,7 @@ const BotonSeleccionarCustomSingle = (props) => {
               )
             );
 
-            switch (data.key) {
-              case "1":
-                  CamposDocumentos.HabitacionT="x"  
-                  CamposDocumentos.TrabajoHabitacion=""  
-                  CamposDocumentos.EntreTrabaj=""   
-                  break;
-              case "2":
-                  CamposDocumentos.HabitacionT=""  
-                  CamposDocumentos.TrabajoHabitacion=""  
-                  CamposDocumentos.EntreTrabaj="x"   
-                  break;
-              case "3":
-                  CamposDocumentos.HabitacionT=""  
-                  CamposDocumentos.TrabajoHabitacion="x"  
-                  CamposDocumentos.EntreTrabaj=""  
-                  break;
-
-              default:
-                  break;
-          }
-
-             dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+             dispatch(updateForm("tipoAccTrayecto", data.key));
              setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 1000);
           }
           else {
