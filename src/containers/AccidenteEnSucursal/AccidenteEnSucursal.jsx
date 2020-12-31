@@ -21,7 +21,7 @@ const AccidenteEnSucursal = () => {
 
   const handleOnClick = (respuesta) => {
     dispatch(updateForm("AccidenteEnSucursal", respuesta));
-    dispatch(handleSetStep(13)); //++stepx
+    dispatch(handleSetStep(17.3)); //++stepx
   };
 
   return (

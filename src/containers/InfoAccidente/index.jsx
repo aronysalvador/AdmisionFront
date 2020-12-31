@@ -74,6 +74,11 @@ const InfoAccidente = () => {
     const onDateChange = (date, value) => {
         setSelectedDate(date);
         setDate(value);
+        if(date){
+            setValidDate(true)
+        }else{
+            setValidDate(false)
+        }
     };
 
     const [selectedHour, setSelectedHour] = useState(moment());
@@ -82,6 +87,11 @@ const InfoAccidente = () => {
     const onHourChange = (date, value) => {
         setSelectedHour(date);
         setHour(value);
+        if(date){
+            setValidHour(true)
+        }else{
+            setValidHour(false)
+        }
     };
 
     const dateFormatter = str => {
@@ -174,7 +184,7 @@ const InfoAccidente = () => {
                                                             animateYearScrolling       
                                                             InputAdornmentProps={{ position: 'start'}}
                                                             fullWidth
-                                                            onError={(e)=>{if(e){ setValidDate(false) }else{ setValidDate(true) } }}
+                                                            onError={(e)=>{if(e){ setValidDate(false); }}}
                                                             invalidDateMessage="Formato invalido"
                                                             maxDateMessage="La fecha no puede exceder al día de hoy"
                                                             minDateMessage="La fecha es invalida"
@@ -214,7 +224,7 @@ const InfoAccidente = () => {
                                                                 InputAdornmentProps={{ position: 'start'}}
                                                                 ampm={false}
                                                                 fullWidth
-                                                                onError={(e)=>{if(e){ setValidHour(false) }else{ setValidHour(true) } }}
+                                                                onError={(e)=>{if(e){ setValidHour(false) } }}
                                                                 invalidDateMessage="Formato invalido"
                                                                 keyboardIcon={<img alt="clock" src={image} />}
                                                                 style={{

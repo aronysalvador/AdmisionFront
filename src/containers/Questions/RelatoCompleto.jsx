@@ -183,7 +183,7 @@ const RelatoCompleto = () => {
 
                     {tipoSiniestro.Id === 1 && 
                         <>
-                        <div className={['row', comunClass.backgroundGrey].join(' ')}>
+                    <div className={['row', comunClass.backgroundGrey].join(' ')}>
                         <div className="col-md-10" style={{textAlign:"left"}}>
                         <Grid className={`${comunClass.textPrimaryRelato}`} >
                             Al momento del accidente, ¿desarrollaba su
