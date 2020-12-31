@@ -15,7 +15,7 @@ export const AdmissionForm = {
 
     testigos: { nombre: "", cargo: "" },
     responsable: {nombre: "", cargo: ""},
-    fechaHoraResponsable: {},
+    fechaHoraResponsable: "",
     fechaHoraSiniestro: "", 
     fechaHoraAtencion: {},
 

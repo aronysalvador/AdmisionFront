@@ -32,7 +32,10 @@ export default function InputMasked({
               <ClearIcon />
             </IconButton>
           </InputAdornment>
-        )
+        ),
+        style: {
+            background: "#ffff"
+        },
       } : {inputMode: 'numeric'}
     }
       disabled={disabled}

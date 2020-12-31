@@ -2,7 +2,7 @@ import React, { useState , useEffect} from "react";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm, sendResponsable,sendCargo } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
@@ -14,35 +14,75 @@ import ClearIcon from "@material-ui/icons/Clear";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from '@material-ui/core/styles';
 import specialBlue from "./../../util/color/specialBlue";
-import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
-import HoraSiniestroDesk from "../../components/HoraSiniestro/HoraSiniestroDesk";
 import { Format } from "../../helpers/strings";
 import InputMasked from "../../containers/EditarTelefono/InputMasked";
 import Mask from "../../containers/EditarTelefono/phone";
 import { Pipes } from "../../containers/EditarTelefono/phone";
-import { FormatListNumberedSharp } from "@material-ui/icons";
+import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers'
+import { ThemeProvider } from "@material-ui/styles";
+import {defaultMaterialThemeKeyboardTimePicker} from "../../css/styleTimePicker"; 
+import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
+import image from './../../img/iconClock.svg'
+import imageDate from './../../img/iconCalendar.svg'
+import MomentUtils from '@date-io/moment';
+import moment from "moment";
+import "moment/locale/es";
+
+
+const NoPaddingDatePicker = withStyles({
+    root: {
+      '&& .MuiOutlinedInput-input': {
+        padding: "8.5px 14px"
+      },
+      '&& .MuiOutlinedInput-notchedOutline': {
+        borderRadius: "0.7em"
+      }
+    }
+})(KeyboardDatePicker);
+
+const NoPaddingPicker = withStyles({
+    root: {
+      '&& .MuiOutlinedInput-input': {
+        padding: "8.5px 14px"
+      },
+      '&& .MuiOutlinedInput-notchedOutline': {
+        borderRadius: "0.7em"
+      }
+    }
+})(KeyboardTimePicker);
 
 const FlujoTrayecto = () => {
-    const { addmissionForm: { percentage, step,CamposDocumentos ,  responsableForm, fechaHoraResponsable, responsable ,testigos, TipoAvisoResponsable }, microsoftReducer:{userMsal} } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, CamposDocumentos ,  fechaHoraResponsable, responsable ,testigos, TipoAvisoResponsable }, microsoftReducer:{userMsal} } = useSelector((state) => state, shallowEqual);
     const dispatch = useDispatch();
 
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
+    const dateFormatter = str => {
+        return str;
+    };   
 
-    const { days, month, year, horas, minutos } = fechaHoraResponsable;
+    const [selectedDate, setSelectedDate] = useState(fechaHoraResponsable ? moment() : null);
+    const [date, setDate] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);  
+    const [validDate, setValidDate] = useState(true);  
+    const onDateChange = (date, value) => {
+        if(date){
+        setSelectedDate(date);
+        setDate(value);
+        setValidDate(true)
+        }else{
+            setSelectedDate(date);
+            setDate(value);
+            setValidDate(false)
+        }
+    };
 
-    const [fechaSiniestro, setFechaSiniestro] = useState({});
-    const [horaSiniestro, setHoraSiniestro] = useState({});
-
-    function setFechaValueSiniestro(value) {
-        setFechaSiniestro({ ...value });
-    }
-    function setHoraValueSiniestro(value) {
-        value.minutos = minutosArray[value.indiceMinutos];
-        setHoraSiniestro({ ...value });
-      }
-    
-    const minutosArray = [0, 10, 20, 30, 40, 50]
+    const [selectedHour, setSelectedHour] = useState(fechaHoraResponsable ? moment() : null);
+    const [hour, setHour] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);    
+    const [validHour, setValidHour] = useState(true);  
+    const onHourChange = (date, value) => {
+        setSelectedHour(date);
+        setHour(value);
+    };
 
     const [nombreResponsable, saveNombreResponsable] = useState(() => {
         return !responsable ? "" : responsable.nombre;
@@ -66,19 +106,14 @@ const FlujoTrayecto = () => {
         return !CamposDocumentos.DatosTestig ? "" : CamposDocumentos.DatosTestig; //"+56 9"
       });
 
-    const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
-    return CamposDocumentos.DatosTestig ? true : false;
-    });
-
     const [btnValido, setBtnValido] = useState(false)
 
     const handleOnChange = (e) => {
         const value = e.target.value;
         if (value !== datosTestig) {
           const result = Pipes.advanced(value);
-          const isValid = /^\+?56\d{9}$/.test(result.replace(/\s/g, ""));
+          //const isValid = /^\+?56\d{9}$/.test(result.replace(/\s/g, ""));
           setDatosTestig(result);
-          setTelefonoIsValid(isValid);
         }
       };
 
@@ -97,16 +132,15 @@ const FlujoTrayecto = () => {
 
       useEffect(() =>{
           let valida = false;
-
-          if(nombreResponsable.length>0 || cargoResponsable.length>0 || Object.keys(check).length !==0 || Object.keys(fechaSiniestro).length !==0 || Object.keys(horaSiniestro).length !==0){
-              if(!nombreResponsable || !cargoResponsable || !check.id || (check.id===5 && !check.especificacion) || !fechaSiniestro.days>0 || !fechaSiniestro.month>0 || fechaSiniestro.year.length<4 || !horaSiniestro.horas>0 || !horaSiniestro.minutos>0){
+          if(nombreResponsable.length>0 || cargoResponsable.length>0 || Object.keys(check).length !==0 || date?.length>0 || hour?.length>0 ){
+              if(!nombreResponsable || !cargoResponsable || !check.id || (check.id===5 && !check.especificacion) || !validDate || !validHour){
                   valida=true
               }
           }
 
           setBtnValido(valida)
 
-      }, [nombreResponsable, cargoResponsable, check, fechaSiniestro, horaSiniestro])
+      }, [nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour])
 
     const BlueRadio = withStyles({
         root: {
@@ -125,7 +159,7 @@ const FlujoTrayecto = () => {
         </div>
         <div className={comunClass.beginContainerDesk}>
             <Cabecera
-            dispatch={() => dispatch(handleSetStep("x",17.3))}
+            dispatch={() => dispatch(handleSetStep(10.1))}
             percentage={percentage}
             />
         </div>
@@ -135,7 +169,8 @@ const FlujoTrayecto = () => {
                 <div className={comunClass.boxDeskTestigo} style={{textAlign: 'right'}}>
   
                     <div className="row justify-content-center">
-                        <div className={['col-md-7', comunClass.backgroundGrey].join(' ')} style={{textAlign:"left"}}>
+                        <div className="col-md-7" style={{textAlign:"left"}}>
+                        <div  className={['col-md-12', comunClass.backgroundGrey].join(' ')}>
                                 <Grid className={`${comunClass.textPrimaryRelato}`} >
                                     ¿Se le 
                                     <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
@@ -166,18 +201,54 @@ const FlujoTrayecto = () => {
                                                 </IconButton>
                                             </InputAdornment>
                                         ),
+                                        style: {
+                                            background: "#ffff"
+                                        },
                                     }}
                                     />
          
                                 </div>
-                                <div className="col-md-6">
-                                    <FechaSiniestroDesk
-                                    onChange={setFechaValueSiniestro}
-                                    daysFromState={days}
-                                    monthFromState={month}
-                                    yearFromState={year}
-                                    textLabel={"Fecha de aviso"}
-                                />
+                                <div className="col-md-6" style={{marginTop: "10px"}}>
+                                <Grid
+                                    className={comunClass.tituloTextBox}
+                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                    >
+                                        Fecha de aviso
+                                </Grid> 
+                                <div  style={{ zIndex: 9 }} >
+                                    <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
+                                        <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
+                                        <NoPaddingDatePicker
+                                            inputVariant="outlined"
+                                            disableFuture   
+                                            value={selectedDate}
+                                            format="DD-MM-YYYY"
+                                            inputValue={date}
+                                            onChange={onDateChange}
+                                            rifmFormatter={dateFormatter}                                
+                                            animateYearScrolling       
+                                            InputAdornmentProps={{ position: 'start'}}
+                                            fullWidth
+                                            onError={(e)=>{if(e){ setValidDate(false) } }}
+                                            invalidDateMessage="Formato invalido"
+                                            maxDateMessage="La fecha no puede exceder al día de hoy"
+                                            minDateMessage="La fecha es invalida"
+                                            keyboardIcon={<img alt="calendar" src={imageDate}/>}
+                                            style={{
+                                                paddingTop: "3px",
+                                                background: "#ffff",
+                                                borderRadius: "0.7em"
+                                            }}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <ClearIcon onClick={()=>{onDateChange(null,null)}} style={{cursor:'pointer'}} />
+                                                )
+                                                
+                                            }}
+                                    />
+                                    </ThemeProvider>
+                                    </MuiPickersUtilsProvider>    
+                                </div>
                                 </div>
                             </div>
                             <div className="row">
@@ -203,18 +274,51 @@ const FlujoTrayecto = () => {
                                                 </IconButton>
                                             </InputAdornment>
                                         ),
+                                        style: {
+                                            background: "#ffff"
+                                        },
                                     }}
                                     />
          
                                 </div>
-                                <div className="col-md-6">
-                                <HoraSiniestroDesk
-                                    onChange={setHoraValueSiniestro}
-                                    horasFromState={horas}
-                                    indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                                    minutos={minutosArray}
-                                    textLabel={"Hora de aviso"}
-                                />
+                                <div className="col-md-6" style={{marginTop: "10px"}}>
+                                <Grid
+                                    className={comunClass.tituloTextBox}
+                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                    >
+                                        Hora de aviso
+                                </Grid> 
+
+                                <div  style={{ zIndex: 9 }} >
+                                    <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
+                                    <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
+                                        <NoPaddingPicker                              
+                                            value={selectedHour}
+                                            format="HH:mm"
+                                            inputValue={hour}
+                                            onChange={onHourChange}
+                                            rifmFormatter={dateFormatter}    
+                                            inputVariant="outlined"                            
+                                            InputAdornmentProps={{ position: 'start'}}
+                                            ampm={false}
+                                            fullWidth
+                                            helperText={validHour ? "Formato de 24 hrs Ejemplo: 18:30" : "Formato invalido" } 
+                                            onError={(e)=>{if(e){ setValidHour(false) }else{ setValidHour(true) } }}
+                                            keyboardIcon={<img alt="clock" src={image} />}
+                                            style={{
+                                                paddingTop: "3px",
+                                                background: "#ffff",
+                                                borderRadius: "0.7em"
+                                            }}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <ClearIcon onClick={()=>onHourChange(null,null)} style={{cursor:'pointer'}} />
+                                                )
+                                            }}
+                                    />
+                                    </ThemeProvider>
+                                </MuiPickersUtilsProvider>     
+                            </div>
                                 </div>
                             </div>
                             <Grid className={`${comunClass.textPrimaryRelato}`} >
@@ -225,9 +329,9 @@ const FlujoTrayecto = () => {
                                     ?
                             </Grid>
                             <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-6" style={{ marginBottom: "10px"}}>
                                     <div className={check.id === 1 ? comunClass.roundedBlue2 : comunClass.roundedNormal2}>
-                                        <div className={comunClass.containerOpction} style={{alignItems:"flex-end"}}>
+                                        <div className={comunClass.containerOpction} style={{alignItems:"flex-end "}}>
                                             <BlueRadio
                                                 checked={check.id === 1}
                                                 onChange={()=>setCheck({ id:1, description: "Presencial" })}
@@ -255,7 +359,7 @@ const FlujoTrayecto = () => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-6" style={{ marginBottom: "10px"}}>
                                     <div className={check.id === 3 ? comunClass.roundedBlue2 : comunClass.roundedNormal2}>
                                         <div className={comunClass.containerOpction}>
                                             <BlueRadio
@@ -285,6 +389,7 @@ const FlujoTrayecto = () => {
                                 </div>
                             </div>
                             <div className="row">
+                                <div className="col-md-12">
                             <div className={check.id === 5 ? comunClass.roundedBlueNoMargin : comunClass.roundedNormalNoMargin}>
                                     <div style={{width: "100%"}}>
                                         
@@ -296,7 +401,7 @@ const FlujoTrayecto = () => {
                                                 name="radio-button-demo"
                                                 inputProps={{ 'aria-label': 'C' }}
                                             />
-                                            <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Otro</p>
+                                            <p className={comunClass.txtRadios} style={{ marginTop: "22px" }}>Otro</p>
                                             
                                             <TextField
                                                 onClick={()=>{setCheck({ id:5, description: "Otro", especificacion: "" })}}
@@ -317,24 +422,23 @@ const FlujoTrayecto = () => {
                                                                          setCheck({ id:5, description: "Otro", especificacion: "" })
                                                                      }} 
                                                         />
-                                                    )
+                                                    ),
+                                                    style: {
+                                                        width: "90%",
+                                                        marginLeft:"20px",
+                                                        marginTop:"-5px"
+                                                    }
                                                 }}
-                                            />
-                                        
+                                            />                                       
                                         </div>
-                                        
-                                        
-                                        
-                                        
-                                        
-
-                                        
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
-                        <div className={['col-md-5', comunClass.backgroundGrey].join(' ')} style={{textAlign:"left"}}>
-                     
+                        </div>
+                        <div className="col-md-5" style={{textAlign:"left"}}>                     
+                        <div  className={['col-md-12', comunClass.backgroundGrey].join(' ')}>
                                 <Grid className={`${comunClass.textPrimaryRelato}`} >
                                     ¿Alguien fue 
                                     <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
@@ -364,6 +468,9 @@ const FlujoTrayecto = () => {
                                                 </IconButton>
                                             </InputAdornment>
                                         ),
+                                        style: {
+                                            background: "#ffff"
+                                        },
                                     }}
                                     />
                                  </div>   
@@ -391,6 +498,9 @@ const FlujoTrayecto = () => {
                                                 </IconButton>
                                             </InputAdornment>
                                         ),
+                                        style: {
+                                            background: "#ffff"
+                                        },
                                     }}
                                     />
                                  </div>   
@@ -406,16 +516,13 @@ const FlujoTrayecto = () => {
                                     setTelefono={setDatosTestig}
                                     handleOnChange={handleOnChange}
                                     telefono={datosTestig}
-                                    step={step}
+                                    step={14}
                                     />
                                  </div>   
                                 </div>
                         </div>
+                        </div>
                     </div> 
-
-                    <div className={spaceStyle.space1} />
-
-                   
 
                     <div className={spaceStyle.space1} />           
 
@@ -425,8 +532,78 @@ const FlujoTrayecto = () => {
                             variant="contained"
                             disabled={btnValido}
                             onClick={() => {
-                                dispatch( updateForm("fechaHoraResponsable", {...fechaSiniestro, ...horaSiniestro,}));
-                                //dispatch(handleSetStep(18.01))
+                                if(nombreTestigo || cargoTestigo){
+                                    CamposDocumentos.TestigoS = "x"
+                                    CamposDocumentos.TestigoN = ""
+                                    dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+
+                                    dispatch(sendCargo(nombreTestigo, cargoTestigo));
+                                    dispatch(updateForm("testigoForm", nombreTestigo + "-" + cargoTestigo));
+                                    dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, DatosTestig: datosTestig}));
+                                    console.log("SI Testigo")
+                                }else{
+                                    CamposDocumentos.TestigoS = ""
+                                    CamposDocumentos.TestigoN = "x"
+                                    dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+                                    dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
+                                    console.log("NO Testigo")
+                                }
+
+                                if(nombreResponsable && cargoResponsable){
+                                    dispatch(sendResponsable(nombreResponsable, cargoResponsable));
+                                    dispatch(updateForm("responsableForm", nombreResponsable + "-" + cargoResponsable));
+                                    dispatch(updateForm("fechaHoraResponsable", `${date} ${hour}`))
+                                        switch (check.id) {
+                                            case 1:
+                                                CamposDocumentos.avisoPresen="x"  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro=""  
+                                                CamposDocumentos.avisoCual=""  
+                                                break;
+                                            case 2:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail="x"  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro=""  
+                                                CamposDocumentos.avisoCual=""  
+                                                break;
+                                            case 3:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono="x"  
+                                                CamposDocumentos.avisoOtro=""  
+                                                CamposDocumentos.avisoCual=""  
+                                                break;
+                                            case 4:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro="x"  
+                                                CamposDocumentos.avisoCual=check.description  
+                                                break;
+                                            case 5:
+                                                CamposDocumentos.avisoPresen=""  
+                                                CamposDocumentos.avisoMail=""  
+                                                CamposDocumentos.avisoFono=""  
+                                                CamposDocumentos.avisoOtro="x"  
+                                                CamposDocumentos.avisoCual=check.especificacion  
+                                                break;
+                                        
+                                            default:
+                                                break;
+                                        }
+
+                                        dispatch(updateForm("TipoAvisoResponsable", check));
+                                        dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+                                    console.log("SI Resposanble")
+                                }else{
+                                    dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
+                                    dispatch(updateForm("fechaHoraResponsable",  {}));
+                                    console.log("NO Resposanble")
+                                }                                
+                                dispatch(handleSetStep(18.01))
+                                console.log("next")
                             }}
                         >
                             Continuar
