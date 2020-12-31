@@ -105,10 +105,7 @@ export const AdmissionForm = {
         anteceOtro: "",
         anteceOtroC: "",
         anteceNocuenta: "x",
-        //TipoAccidenteTrayecto
-        HabitacionT: "",
-        TrabajoHabitacion:"", 
-        EntreTrabaj:"",
+
         //Antece "" Documento Testigo
         anteceRespA: "",
         anteceRespO: "",
@@ -116,12 +113,12 @@ export const AdmissionForm = {
         anteceCertH: "",
         //Testigo
         TestigoS: "",
-        TestigoN: ""
-        /* TRAYECTO */
-   
+        TestigoN: "x"
+            /* TRAYECTO */
+
     },
 
     FechaSintomasEP: {},
-
+    AgenteCausaEP: {},
     TipoAvisoResponsable: {}
 };

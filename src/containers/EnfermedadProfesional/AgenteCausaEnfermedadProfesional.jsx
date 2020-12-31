@@ -25,10 +25,10 @@ const AgenteCausaEnfermedadProfesional = () => {
   const dispatch = useDispatch();
 
   const [agenteCausa, setAgenteCausa] = useState(() => {
-    return !AgenteCausaEP ? "" : AgenteCausaEP;
+    return !AgenteCausaEP ? {} : AgenteCausaEP;
   });
 
-  const { data: sugerenciasAgenteCausa } = useSelector( //CAMBIAR POR DATA BD AGENTES CAUSA
+  const { data: sugerenciasAgenteCausa } = useSelector( 
     (state) => state.agenteCausaEnfermedadForm, shallowEqual ); 
 
   const [molestia, setMolestia] = useState(() => {
@@ -116,14 +116,16 @@ const AgenteCausaEnfermedadProfesional = () => {
             </Typography>
 
             <AutoComplete
-              inputValue={agenteCausa}
-              onInputChange={(event, value) => {
-                event&&setAgenteCausa(Format.caracteresInvalidos(value));
+              value={agenteCausa}
+              onChange={(event, value) => {
+                setAgenteCausa(value);
               }}
-              // freeSolo
               options={sugerenciasAgenteCausa} 
               getOptionLabel={(option) =>  option.nombre }
-
+              getOptionSelected= {(
+                option,
+                value,
+             ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -189,7 +191,8 @@ const AgenteCausaEnfermedadProfesional = () => {
             variant="contained"
             disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || invalidFecha}
             onClick={() => {
-              dispatch(updateForm("AgenteCausaEP", agenteCausa));
+              console.log(agenteCausa.id)
+              dispatch(updateForm("AgenteCausaEP", agenteCausa.id));
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
               dispatch(updateForm("FechaExposicionAgenteEP", { ...fechaSiniestro }));
               dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
