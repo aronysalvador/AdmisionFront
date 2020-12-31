@@ -10,7 +10,6 @@ import image from './../../img/iconClock.svg'
 const HoraSiniestroDesk = ({
   onChange,
   horasFromState,
-  indiceMinutosFromState,
   minutos,
   textLabel
 }) => {
@@ -24,7 +23,7 @@ const HoraSiniestroDesk = ({
       let time = new Date(new Date().setHours(new Date().getHours()-1))
       return `${(time.getHours() < 10)?"0"+time.getHours():time.getHours()}:${(time.getMinutes() < 10)?"0"+time.getMinutes():time.getMinutes()}`;
     }else
-      return `${horasFromState}:${indiceMinutosFromState}0`;
+      return `${horasFromState}:${minutos}`;
   })
 
   const comunClass = getComunStyle();
@@ -34,7 +33,6 @@ const HoraSiniestroDesk = ({
     setInputValue2(value?value:"")
     if(value?.length){
       let horas = -1;
-      let indiceMinutos = -1;
       let minutos = -1;
 
       let horasDetails = value.split(':')
@@ -47,15 +45,13 @@ const HoraSiniestroDesk = ({
         horas = parseInt(horasDetails[0])
 
       if(horasDetails[1].includes("_")){
-        indiceMinutos = -1
         minutos = -1
       }
       else if(parseInt(horasDetails[1]) >= 0 && parseInt(horasDetails[1]) <= 59){
-        indiceMinutos = parseInt(horasDetails[1].substr(0,1)) 
         minutos = parseInt(horasDetails[1])
       }
   
-      onChange({ horas, indiceMinutos, minutos});
+      onChange({ horas, minutos});
 
     }
   };

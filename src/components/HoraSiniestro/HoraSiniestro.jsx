@@ -4,7 +4,9 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 //import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
-const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos }) => {
+const HoraSiniestro = ({ onChange, horasFromState, minutos }) => {
+  const minutosArray = [0, 10, 20, 30, 40, 50]
+  let indiceMinutosFromState;
   const [horas, setHoras] = useState(() => {
     return !horasFromState ? new Date().getHours() - 1 : horasFromState;
   });
@@ -24,7 +26,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   };
 
   const [indiceMinutos, setIndiceMinutos] = useState(() => {
-    return indiceMinutosFromState === -1 ? getMin() : indiceMinutosFromState;
+    return minutos === undefined ? getMin() : indiceMinutosFromState;
   });
 
   const [t, setT] = useState(0);
@@ -39,7 +41,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
     if (horas < 0) setHoras(23);
     if (indiceMinutos === minutos.length) setIndiceMinutos(0);
     if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
-    onChange({ horas, indiceMinutos });
+    onChange({ horas, minutos });
     // eslint-disable-next-line
   }, [horas, minutos[indiceMinutos]]);
 

@@ -28,7 +28,6 @@ const FechaHoraSiniestro = () => {
   const [invalidFecha, setInvalidFecha] = useState(true);
   const [invalidHora, setInvalidHora] = useState(true);
 
-  const minutosArray = [0, 10, 20, 30, 40, 50]
 
   const dispatch = useDispatch();
 
@@ -37,7 +36,6 @@ const FechaHoraSiniestro = () => {
   }
 
   function setHoraValueSiniestro(value) {
-    value.minutos = minutosArray[value.indiceMinutos];  
     setHoraSiniestro({ ...value });
   }
 
@@ -56,6 +54,7 @@ const FechaHoraSiniestro = () => {
 
 
     //====== Hora =======
+    console.log(horaSiniestro)
     if(
       (horaSiniestro.horas === -1 || horaSiniestro.minutos === -1 || horaSiniestro.minutos === undefined)
       ||
@@ -168,8 +167,7 @@ const FechaHoraSiniestro = () => {
             <HoraSiniestro
               onChange={setHoraValueSiniestro}
               horasFromState={horas}
-              indiceMinutosFromState={minutosArray.indexOf(minutos)}
-              minutos={minutosArray}
+              minutos={minutos}
               
             />
           </div>
@@ -177,8 +175,7 @@ const FechaHoraSiniestro = () => {
             <HoraSiniestroDesk
                 onChange={setHoraValueSiniestro}
                 horasFromState={horas}
-                indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                minutos={minutosArray}
+                minutos={minutos}
                 textLabel={"Hora de accidente"}
               />
           </div>
