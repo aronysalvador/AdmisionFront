@@ -113,7 +113,7 @@ export const AdmissionForm = {
         anteceCertH: "",
         //Testigo
         TestigoS: "",
-        TestigoN: "x"
+        TestigoN: ""
             /* TRAYECTO */
 
     },
