@@ -36,10 +36,7 @@ const SessionAchs = (props) => {
   return (
     <div className={[comunStyle.rootWhite, comunStyle.headerSesion]}>
       <div className={comunStyle.displayDesk}> 
-      <Header
-        userMsal={ microsoftReducer.userMsal }
-        // step={1}
-      />
+      <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={welcomeStyle.backgroundBoxAchs}>
         <div className={comunStyle.displayDeskFlex}>
@@ -94,9 +91,10 @@ const SessionAchs = (props) => {
           <div className={spaceStyle.space1} />
           <div className={welcomeStyle.boxCentroAlignDesk}>
             <div className={welcomeStyle.boxCentroAlign} >
-              <div className={welcomeStyle.boxCentroAchs} 
-              style={{ cursor: 'pointer'}}
-              onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
+              <div className={welcomeStyle.boxCentroAchs}
+                id={"SessionAchs-Btn1"} 
+                style={{ cursor: 'pointer'}}
+                onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
                 <img
                   alt="Centro ACHS"
                   src={hospital}
@@ -138,6 +136,7 @@ const SessionAchs = (props) => {
             <div className={spaceStyle.space1} />
           </div>
           <Button
+            id={"SessionAchs-Btn2"} 
             className={comunStyle.buttonAchs}
             variant="contained"
             onClick={() => dispatch(handleSetStep(1.1))}

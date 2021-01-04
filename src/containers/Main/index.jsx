@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import Identification from "../Identification/index";
-import Sinister from "../Sinister/index";
+import Siniester from "../Siniester/index";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -170,7 +170,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Sinister />
+              <Siniester />
             </Paper>
           </div>
         );

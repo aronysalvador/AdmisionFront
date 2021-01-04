@@ -64,10 +64,11 @@ const Achs = () => {
           </div>
         </center>
         <div className={comunStyle.containerTextBox}>
-          <Grid className={comunStyle.tituloTextBox}>
+          <Grid className={comunStyle.tituloTextBox} for={"Achs-Lbl1"}>
             Centro
           </Grid>
           <AutoComplete
+            id={"Achs-Lbl1"} 
             value={centros}
             onChange={(event, value) => {
               setCENTROS(value);
@@ -105,6 +106,7 @@ const Achs = () => {
         </div>
         <div className={[comunStyle.bottomElement]}>
           <Button
+            id={"Achs-Btn1"} 
             variant="contained"
             className={[comunStyle.buttonAchs, comunStyle.bottomMargin]}  
             type="submit"

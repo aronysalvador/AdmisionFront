@@ -108,11 +108,11 @@ const CausaEnfermedadProfesional = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <div>
-            <Typography className={comunClass.tituloTextBox}>
+            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl1"}>
               Describe las molestias y síntomas
             </Typography>
             <TextField
-              id="nombre"
+              id={"CausaEP-Lbl1"}
               value={molestia}
               placeholder={"Ejemplo: Dolor de garganta, dolor de espalda, fiebre, tos, dolor de estomago"}
               onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
@@ -129,10 +129,11 @@ const CausaEnfermedadProfesional = () => {
           </div>
           <div className={spaceStyle.space1} />
           <div>
-            <Typography className={comunClass.tituloTextBox}>
+            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl2"}>
               Ingresa la parte del cuerpo afectada
             </Typography>
             <TextField
+              id={"CausaEP-Lbl2"}
               autoComplete
               value={parteAfectada}
               variant="outlined"
@@ -156,6 +157,7 @@ const CausaEnfermedadProfesional = () => {
           </div>
           <div className={spaceStyle.space1} />
           <FechaSintomas
+            id={"CausaEP-Lbl3"}
             onChange={setFechaValueSiniestro}
             daysFromState={days}
             monthFromState={month}
@@ -164,6 +166,7 @@ const CausaEnfermedadProfesional = () => {
           />
           <div style={{display:'none'}}>
             <FechaSiniestroCalendar
+              // id={"CausaEP-Label3"}
               onChange={setFechaValueSiniestro}
               daysFromState={days}
               monthFromState={month}
@@ -171,9 +174,9 @@ const CausaEnfermedadProfesional = () => {
             />
           </div>
           <div className={spaceStyle.space1} />
-          <Typography className={welcomeStyle.switchText} style={{}}>
+          <Typography className={welcomeStyle.switchText} style={{}} for={"CausaEP-Chk1"}>
             <Grid component="span">
-              <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+              <BlueCheckbox id={"CausaEP-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>
               Existen molestias anteriores a la fecha indicada
           </Typography>
@@ -181,6 +184,7 @@ const CausaEnfermedadProfesional = () => {
 
         <div className={comunClass.bottomElement} style={{padding: "10px 0"}}>
           <Button
+            id={"CausaEP-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={molestia?.length <= 4 || parteAfectada?.length <= 3 || invalidFecha}
