@@ -112,13 +112,9 @@ export const guardar_token = (token) => {
 const homologacionSap = async(dispatch, email) => {
   const result = await obtenerUsuarioSap(email);
 
-  if(result.data.content[0].length > 0) { 
-    if(result.data.token){
+  if(result.data.content[0].length > 0 && result.data.token) { 
       dispatch(guardar_token(result.data.token));
       dispatch(updateForm("usuarioSAP", result.data.content[0]));
-    }
-    
-    
     return true
   }else {   
     return false

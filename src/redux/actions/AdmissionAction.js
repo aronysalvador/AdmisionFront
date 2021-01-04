@@ -498,6 +498,7 @@ export const saveRut = (rut) => {
             })
             .catch((error) => {
                 console.log("error: " + String(error));
+                // dispatch(setStep())
             });
     };
 };
