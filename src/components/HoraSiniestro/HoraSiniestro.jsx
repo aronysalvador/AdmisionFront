@@ -4,15 +4,17 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 //import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
-const HoraSiniestro = ({ onChange, horasFromState, minutos }) => {
+const HoraSiniestro = ({ onChange, horasFromState }) => {
   const minutosArray = [0, 10, 20, 30, 40, 50]
   let indiceMinutosFromState;
+
+
   const [horas, setHoras] = useState(() => {
     return !horasFromState ? new Date().getHours() - 1 : horasFromState;
   });
-  // const [minutos, setMinutos] = useState(() => {
-  //   return !minutosFromState ? new Date().getMinutes() : minutosFromState;
-  // });
+  const [minutos, setMinutos] = useState(() => {
+    return new Date().getMinutes();
+  });
 
   const getMin = () => {
     let minutosActuales = new Date().getMinutes();
@@ -37,13 +39,25 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos }) => {
   const comunStyle = getComunStyle();
   
   useEffect(() => {
+    if(indiceMinutos === undefined){
+      setIndiceMinutos(0)
+      return
+    } 
+    if (indiceMinutos === 6){
+      setIndiceMinutos(0);
+      return
+    }
+    if (indiceMinutos < 0){
+      setIndiceMinutos(5);
+      return
+    } 
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
-    if (indiceMinutos === minutos.length) setIndiceMinutos(0);
-    if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
-    onChange({ horas, minutos });
+
+    setMinutos(parseInt(`${indiceMinutos}0`))
+    onChange({ horas, minutos: parseInt(`${indiceMinutos}0`) });
     // eslint-disable-next-line
-  }, [horas, minutos[indiceMinutos]]);
+  }, [horas, indiceMinutos]);
 
   const TRef = useRef(t);
   TRef.current = t;
@@ -215,10 +229,10 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos }) => {
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {minutos[obtenPosicion(indiceMinutos-2)]}
+            {minutosArray[obtenPosicion(indiceMinutos-2)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {minutos[obtenPosicion(indiceMinutos-1)]}
+            {minutosArray[obtenPosicion(indiceMinutos-1)]}
             {/* {minutos === 0
               ? 59
               : minutos - 1 < 10
@@ -228,14 +242,14 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos }) => {
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemPrincipal}>
             {/* {minutos < 10 ? "0" + minutos : minutos} */}
-            {minutos[indiceMinutos]}
+            {minutosArray[indiceMinutos]}
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {minutos[obtenPosicion(indiceMinutos+1)]}
+            {minutosArray[obtenPosicion(indiceMinutos+1)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {minutos[obtenPosicion(indiceMinutos+2)]}
+            {minutosArray[obtenPosicion(indiceMinutos+2)]}
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div>

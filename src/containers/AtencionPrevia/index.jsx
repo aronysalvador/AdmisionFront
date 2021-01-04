@@ -152,8 +152,7 @@ const AtencionPrevia = () => {
                         onChange={setHoraValueSiniestro}
                         horasFromState={horas}
                         indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                        minutos={minutosArray}
-                        
+                                                
                       />
                     </div>
                     <div className={[comunClass.widthDateSex]}>
