@@ -9,9 +9,8 @@ import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import { TextField, InputAdornment } from "@material-ui/core";
-import { IconButton } from "material-ui";
+import {  IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from '@material-ui/core/styles';
 import specialBlue from "./../../util/color/specialBlue";
 import { Format } from "../../helpers/strings";
@@ -63,7 +62,7 @@ const FlujoTrayecto = () => {
 
     const [selectedDate, setSelectedDate] = useState(fechaHoraResponsable ? moment() : null);
     const [date, setDate] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);  
-    const [validDate, setValidDate] = useState(true);  
+    const [validDate, setValidDate] = useState(false);  
     const onDateChange = (date, value) => {
         if(date){
         setSelectedDate(date);
@@ -74,14 +73,20 @@ const FlujoTrayecto = () => {
             setDate(value);
             setValidDate(false)
         }
+        
     };
 
     const [selectedHour, setSelectedHour] = useState(fechaHoraResponsable ? moment() : null);
     const [hour, setHour] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);    
-    const [validHour, setValidHour] = useState(true);  
+    const [validHour, setValidHour] = useState(false);  
     const onHourChange = (date, value) => {
         setSelectedHour(date);
         setHour(value);
+        if(date){
+            setValidHour(true)
+        }else{
+            setValidHour(false)
+        }      
     };
 
     const [nombreResponsable, saveNombreResponsable] = useState(() => {
@@ -137,7 +142,7 @@ const FlujoTrayecto = () => {
                   valida=true
               }
           }
-
+          
           setBtnValido(valida)
 
       }, [nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour])
@@ -180,9 +185,9 @@ const FlujoTrayecto = () => {
                                 </Grid>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <Typography className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
+                                    <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
                                     Nombre responsable
-                                    </Typography>
+                                    </Grid>
                                     <TextField
                                     id="nombreResponsable"
                                     value={nombreResponsable}
@@ -211,7 +216,7 @@ const FlujoTrayecto = () => {
                                 <div className="col-md-6" style={{marginTop: "10px"}}>
                                 <Grid
                                     className={comunClass.tituloTextBox}
-                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                    style={{marginBottom:'5px'}}
                                     >
                                         Fecha de aviso
                                 </Grid> 
@@ -253,9 +258,9 @@ const FlujoTrayecto = () => {
                             </div>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <Typography className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
+                                    <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
                                     Cargo o relación responsable
-                                    </Typography>
+                                    </Grid>
                                     <TextField
                                     id="cargoResponsable"
                                     value={cargoResponsable}
@@ -284,7 +289,7 @@ const FlujoTrayecto = () => {
                                 <div className="col-md-6" style={{marginTop: "10px"}}>
                                 <Grid
                                     className={comunClass.tituloTextBox}
-                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                    style={{marginBottom:'5px'}}
                                     >
                                         Hora de aviso
                                 </Grid> 
@@ -303,7 +308,7 @@ const FlujoTrayecto = () => {
                                             ampm={false}
                                             fullWidth
                                             helperText={validHour ? "Formato de 24 hrs Ejemplo: 18:30" : "Formato invalido" } 
-                                            onError={(e)=>{if(e){ setValidHour(false) }else{ setValidHour(true) } }}
+                                            onError={(e)=>{if(e){ setValidHour(false) }}}
                                             keyboardIcon={<img alt="clock" src={image} />}
                                             style={{
                                                 paddingTop: "3px",
@@ -448,9 +453,9 @@ const FlujoTrayecto = () => {
                                 </Grid>
                                 <div className="row">
                                 <div className="col-md-10">
-                                    <Typography className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
+                                    <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
                                     Nombre testigo
-                                    </Typography>
+                                    </Grid>
                                     <TextField
                                     id="nombreTestigo"
                                     value={nombreTestigo}
@@ -477,9 +482,9 @@ const FlujoTrayecto = () => {
                                 </div>
                                 <div className="row">
                                 <div className="col-md-10">
-                                    <Typography className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
+                                    <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
                                     Cargo o relación testigo
-                                    </Typography>
+                                    </Grid>
                                     <TextField
                                     id="cargoTestigo"
                                     value={cargoTestigo}
@@ -508,9 +513,9 @@ const FlujoTrayecto = () => {
 
                                 <div className="row">
                                 <div className="col-md-10">
-                                    <Typography className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
+                                    <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
                                     Teléfono (Opcional)
-                                    </Typography>
+                                    </Grid>
                                     <InputMasked
                                     mask={Mask.advanced}
                                     setTelefono={setDatosTestig}

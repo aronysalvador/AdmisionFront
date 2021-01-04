@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField } from "@material-ui/core";
+import { Button,  TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -62,9 +62,9 @@ const ParteCuerpoAfectada = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox}>
+          <Grid className={comunClass.tituloTextBox} style={{marginBottom: '10px'}}>
             Ingresa la parte del cuerpo lesionada
-          </Typography>
+          </Grid>
           <AutoComplete
             inputValue={parteAfectada}
             freeSolo
@@ -89,9 +89,9 @@ const ParteCuerpoAfectada = () => {
 
           <div className={spaceStyle.space2} />
 
-          <Typography className={comunClass.tituloTextBox}>
+          <Grid className={comunClass.tituloTextBox}>
             Ingresa la información adicional al relato
-          </Typography>
+          </Grid>
           <TextField
             value={otrasCircunstancias}
             margin="dense"
