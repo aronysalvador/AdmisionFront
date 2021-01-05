@@ -3,8 +3,8 @@ import {
     GET_TRAYECTO_AGENTECAUSAENFERMEDAD_SUCCESS,
     GET_TRAYECTO_AGENTECAUSAENFERMEDAD_FAILURE,
 } from "../types/trayectoType";
-
 import Axios from "axios";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 // import { agenteCausa } from "../../util/fakeApi";
 
 export const getData = async() => {
@@ -20,10 +20,17 @@ export const getAgenteCausa = () => async(dispatch) => {
 
     getData()
         .then((response) => {
-            dispatch(successCallAgenteCausa(response.data.content[0]));
+            if(response.data.status === 200){
+                dispatch(successCallAgenteCausa(response.data.content[0]));
+            }else{
+              dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD));
+              dispatch(handleSetStep(1004));
+            }          
         })
         .catch((error) => {
             dispatch(errorCallAgenteCausa());
+            dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD));
+            dispatch(handleSetStep(1004));
         });
 
     const successCallAgenteCausa = (partes) => ({

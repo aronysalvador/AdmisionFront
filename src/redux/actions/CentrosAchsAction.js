@@ -4,6 +4,7 @@ import {
   GET_CENTROS_FAILURE,
 } from "../types/centrosAchsType";
 import Axios from "axios";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
 export const getData = async () => {
   return Axios.get(window.REACT_APP_CENTROSACHS);
@@ -17,10 +18,17 @@ export const getCentros = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallCENTROS(response.data.content.response));
+      if(response.data.status === 200){
+        dispatch(successCallCENTROS(response.data.content.response));
+      }else{
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CENTROSACHS));
+        dispatch(handleSetStep(1004));
+      }     
     })
     .catch((error) => {
       dispatch(errorCallCENTROS());
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CENTROSACHS));
+      dispatch(handleSetStep(1004));
     });
 
   const successCallCENTROS = (centros) => ({

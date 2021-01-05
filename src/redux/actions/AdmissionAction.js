@@ -662,24 +662,57 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
 
     if (Object.keys(result).length > 0) {
         const data = result.data
-        if (data.status === 200 && data.content[0].siniestroID.match("[\\D]+") === null) {
-            const siniestroID = data.content[0].siniestroID;
-            dispatch(updateForm("siniestroID", siniestroID));
-            dispatch(handleSetStep(1001));
-        } else if (data.status === 200) {
-            dispatch(updateForm("mensajeErrorSAP", data.content[0].siniestroID));
-            dispatch(handleSetStep(1002));
-        } else {
-            const mensajeErrorSAP = data.mensaje;
-            dispatch(updateForm("mensajeErrorSAP", mensajeErrorSAP));
-            dispatch(handleSetStep(1002));
-        }
-        const { siniestroID, EpisodioID } = data.content[0]
-        dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: data.status }))
-    } else {
-        console.log(result)
-        dispatch(handleSetStep(1002));
-        dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500 }));
-    }
+        const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
 
+        if (data.status === 200){
+
+            if(IdEstadoAdmision !== 3 ){  // error en episodio
+                dispatch(updateForm("mensajeErrorSAP", "Error al crear episodio"));
+                dispatch(handleSetStep(1002.1));
+
+            }
+            else if(IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7){ // error en siniestro
+                dispatch(updateForm("mensajeErrorSAP", "Error al crear siniestro"));
+                dispatch(handleSetStep(1002.2));
+
+            }
+            else if(IdEstadoSiniestro === 7){ // error en documento
+                dispatch(handleSetStep(1001.2));
+
+            }
+            else if(IdEstadoSiniestro === 8){ // error en status
+                dispatch(handleSetStep(1001.3));
+                
+            }else{
+
+                if(siniestroID.match("[\\D]+") === null) {
+
+                    dispatch(updateForm("siniestroID", siniestroID));
+                    dispatch(handleSetStep(1001));
+                    
+
+                }else{
+                    dispatch(updateForm("mensajeErrorSAP", siniestroID));
+                    dispatch(handleSetStep(1002));
+                    
+                }
+
+            }
+
+        }else{
+            dispatch(updateForm("mensajeErrorSAP", data.mensaje));
+            dispatch(handleSetStep(1002));
+            
+        }
+
+        EndLog( ID, siniestroID, EpisodioID, data.status, dispatch )
+    } else {
+        dispatch(handleSetStep(1002)); 
+        EndLog( ID,"","",500 )
+    }
+    
 };
+
+const EndLog = (ID, siniestroID, EpisodioID, status, dispatch) => {
+    dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: status }))
+}

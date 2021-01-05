@@ -72,6 +72,12 @@ import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
 import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
+import ErrorCrearCaso from "../PantallaFinal/ErrorCrearCaso";
+import ErrorCrearCasoSiniestro from "../PantallaFinal/ErrorCrearCasoSiniestro";
+import CasoCreado from "../PantallaFinal/CasoCreado";
+import CasoCreadoErrorDoc from "../PantallaFinal/CasoCreadoErrorDoc";
+import CasoCreadoErrorStatus from "../PantallaFinal/CasoCreadoErrorStatus";
+import ErrorApi from "../PantallaFinal/ErrorApi";
 import SameDateSinister from "../AffiliateValidations/SameDateSinister";
 import NoCuentaSap from "../AffiliateValidations/NoCuentaSap";
 
@@ -822,6 +828,30 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 1001.1:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <CasoCreado />
+            </Paper>
+          </div>
+        );
+      case 1001.2:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <CasoCreadoErrorDoc />
+            </Paper>
+          </div>
+        );
+      case 1001.3:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <CasoCreadoErrorStatus />
+            </Paper>
+          </div>
+        );
       case 1002:
         return (
           <div className={layout}>
@@ -830,11 +860,35 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 1002.1:
+        return (
+          <div className={layout}>
+            <Paper className={paperFix}>
+              <ErrorCrearCaso />
+            </Paper>
+          </div>
+        );
+      case 1002.2:
+        return (
+          <div className={layout}>
+            <Paper className={paperFix}>
+              <ErrorCrearCasoSiniestro />
+            </Paper>
+          </div>
+        );
       case 1003:
         return (
           <div className={blackLayout}>
             <Paper className={paperNoColor}>
               <NoCuentaSap />
+            </Paper>
+          </div>
+        );
+      case 1004:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <ErrorApi />
             </Paper>
           </div>
         );
