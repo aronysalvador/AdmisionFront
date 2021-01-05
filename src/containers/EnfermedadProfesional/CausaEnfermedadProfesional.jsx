@@ -45,9 +45,12 @@ const CausaEnfermedadProfesional = () => {
 
   React.useEffect(() => {
     let current = new Date();
+    console.log(fechaSiniestro)
     //========= Fecha =======
     if(fechaSiniestro.year <= 1900 || 
-      !(fechaSiniestro.year <= current.getFullYear() && fechaSiniestro.month <= current.getMonth()+1 )//&& fechaSiniestro.days <= current.getDate()
+      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month > current.getMonth()+1 ) ||//&& fechaSiniestro.days <= current.getDate()
+      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days > current.getDate()) ||
+      (fechaSiniestro.year > current.getFullYear())
       ) 
       setInvalidFecha(true)
     else
