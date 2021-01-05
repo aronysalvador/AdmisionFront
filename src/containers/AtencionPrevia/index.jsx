@@ -42,7 +42,6 @@ const AtencionPrevia = () => {
     setFechaOtroRe({ ...value });
   }
   function setHoraValueSiniestro(value) {
-    value.minutos = minutosArray[value.indiceMinutos];  
     setHoraOtroRec({ ...value });
   }
 
@@ -147,20 +146,11 @@ const AtencionPrevia = () => {
                       />
                     </div>
                     <div className={spaceStyle.space1} />
-                    <div style={{display: 'none'}}>
-                      <HoraSiniestro
-                        onChange={setHoraValueSiniestro}
-                        horasFromState={horas}
-                        indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                                                
-                      />
-                    </div>
-                    <div className={[comunClass.widthDateSex]}>
+                    <div className={comunClass.widthDateSex}>
                       <HoraSiniestroDesk
                           onChange={setHoraValueSiniestro}
                           horasFromState={horas}
-                          indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                          minutos={minutosArray}
+                          minutos={minutos}
                           textLabel={"Hora de atención"}
                       />
                     </div>
