@@ -7,6 +7,7 @@ import {
   GET_TRAYECTO_MEDIOTRANSPORTE_FAILURE,
 } from "../types/trayectoType";
 import Axios from "axios";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
 export const getDataTipoAccidente = async () => {
   return Axios.get(window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO);
@@ -24,12 +25,17 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
 
   getDataTipoAccidente()
     .then((response) => {
-      dispatch(successCall(response.data.content[0]));
+      if(response.data.status === 200){
+        dispatch(successCall(response.data.content[0]));
+      }else{
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO));
+        dispatch(handleSetStep(1004));
+      } 
     })
     .catch((error) => {
-      console.log("error")
-      console.log(error)
       dispatch(errorCall());
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO));
+      dispatch(handleSetStep(1004));
     });
 
   const successCall = (dato) => ({
@@ -51,10 +57,17 @@ export const getMediosTransporteTrayecto = () => async (dispatch) => {
 
   getDataMediosTransporte()
     .then((response) => {
-      dispatch(successCall(response.data.content[0]));
+      if(response.data.status === 200){
+        dispatch(successCall(response.data.content[0]));
+      }else{
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO));
+        dispatch(handleSetStep(1004));
+      }
     })
     .catch((error) => {
       dispatch(errorCall());
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO));
+      dispatch(handleSetStep(1004));
     });
 
   const successCall = (dato) => ({

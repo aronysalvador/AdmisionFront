@@ -4,6 +4,7 @@ import {
   GET_IDIOMA_FAILURE,
 } from "../types/idiomaType";
 import Axios from "axios";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
 export const getData = async () => {
   return Axios.get(window.REACT_APP_IDIOMAS);
@@ -17,10 +18,17 @@ export const getIdiomas = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCall(response.data.content[0]));
+      if(response.data.status === 200){
+        dispatch(successCall(response.data.content[0]));
+      }else{
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_IDIOMAS));
+        dispatch(handleSetStep(1004));
+      }     
     })
     .catch((error) => {
       dispatch(errorCall());
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_IDIOMAS));
+      dispatch(handleSetStep(1004));
     });
 
   const successCall = (dato) => ({
