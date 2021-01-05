@@ -445,7 +445,7 @@ export const saveAnswer = (answerType, answerValue, step) => {
 export function sendIsapres(id) {
     return (dispatch) => {
         dispatch(sendCallIsapres(id));
-        dispatch(handleSetStep(6));
+        // dispatch(handleSetStep(6));
     };
 }
 
