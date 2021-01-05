@@ -4,7 +4,7 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 //import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
-const HoraSiniestro = ({ onChange, horasFromState }) => {
+const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
   const minutosArray = [0, 10, 20, 30, 40, 50]
   let indiceMinutosFromState;
 
@@ -40,7 +40,7 @@ const HoraSiniestro = ({ onChange, horasFromState }) => {
   
   useEffect(() => {
     if(indiceMinutos === undefined){
-      setIndiceMinutos(0)
+      setIndiceMinutos(minuts)
       return
     } 
     if (indiceMinutos === 6){

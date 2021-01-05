@@ -14,26 +14,35 @@ const HoraSiniestroDesk = ({
   textLabel
 }) => {
 
-  if(horasFromState?.toString().length === 1){
-    horasFromState = ("0" + horasFromState).slice(-2)
-  }
+
 
   const [inputValue2,setInputValue2]= useState(() =>{
+    if(horasFromState?.toString().length === 1){
+      horasFromState = ("0" + horasFromState).slice(-2)
+    }
     if(!horasFromState){
       let time = new Date(new Date().setHours(new Date().getHours()-1))
       return `${(time.getHours() < 10)?"0"+time.getHours():time.getHours()}:${(time.getMinutes() < 10)?"0"+time.getMinutes():time.getMinutes()}`;
     }else
-      return `${horasFromState}:${minutos}`;
+      return `${horasFromState}:${(minutos < 10)?"0"+minutos:minutos}`;
   })
+
+
+  React.useEffect(() => {
+    if(horasFromState === undefined || isNaN(horasFromState)){
+      let time = new Date(new Date().setHours(new Date().getHours()-1))
+      onChange({horas: time.getHours(), minutos: time.getMinutes()})
+    }
+  }, [horasFromState, minutos])
+
 
   const comunClass = getComunStyle();
 
   const onDateChange = (date, value) => {
-    console.log(value)
     setInputValue2(value?value:"")
     if(value?.length){
       let horas = -1;
-      let minutos = -1;
+      let minuts = -1;
 
       let horasDetails = value.split(':')
       console.log(horasDetails[0])
@@ -45,13 +54,14 @@ const HoraSiniestroDesk = ({
         horas = parseInt(horasDetails[0])
 
       if(horasDetails[1].includes("_")){
-        minutos = -1
+        minuts = -1
       }
       else if(parseInt(horasDetails[1]) >= 0 && parseInt(horasDetails[1]) <= 59){
-        minutos = parseInt(horasDetails[1])
+        minuts = parseInt(horasDetails[1])
       }
+      
   
-      onChange({ horas, minutos});
+      onChange({ horas, minutos: minuts });
 
     }
   };
