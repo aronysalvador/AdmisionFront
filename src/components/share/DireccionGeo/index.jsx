@@ -206,7 +206,7 @@ const DireccionGeo = (props) => {
                     if(option.description==='Fijar en el mapa'){                        
                       if(!noFijarOption){                   
                         return(
-                          <div className={comunStyle.txtGreen}  >
+                          <div className={comunStyle.txtGreen} id={id+"-Fijar"} >
                             <img alt="Location" src={image} className={comunStyle.iconLocation} />
                             <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
                           </div>
