@@ -77,6 +77,7 @@ const EditarTelefono = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"EditarTelefono-BtnBack"}
           dispatch={() => (creacionBP ? dispatch(handleSetStep(5.2)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
@@ -99,10 +100,11 @@ const EditarTelefono = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox}>
+          <Typography className={comunClass.tituloTextBox} for={"EditarTelefono-Lbl1"}>
             Teléfono
           </Typography>
           <InputMasked
+            id={"EditarTelefono-Lbl1"}
             mask={Mask.advanced}
             setTelefonoIsValid={setTelefonoIsValid}
             setTelefono={setTelefono}
@@ -115,14 +117,15 @@ const EditarTelefono = () => {
 
           <div className={welcomeStyle.titleContainerCardsEmail}>
             <div  className={welcomeStyle.divRowBottomEmail}>
-                <ErrorOutline />
-                <Typography
-                  variant="inherit"
-                  component="p"
-                  className={welcomeStyle.itemText2}
-                >
-                  Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
-                </Typography>
+              <ErrorOutline />
+              <Typography
+                variant="inherit"
+                component="p"
+                className={welcomeStyle.itemText2}
+                for={"EditarTelefono-Chk1"}
+              >
+                Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
+              </Typography>
             </div>
             <div className={welcomeStyle.divRowBottomEmail}>
               <Typography className={welcomeStyle.pBegin}>
@@ -131,6 +134,7 @@ const EditarTelefono = () => {
             </div>
             <div  className={welcomeStyle.divRowBottomEmail}>
               <CustomSwitch
+                id={"EditarTelefono-Chk1"}
                 checked={stateCheck}
                 onChange={handleChange}
                 color="default"
@@ -140,6 +144,7 @@ const EditarTelefono = () => {
         </div> 
         <div className={comunClass.bottomElement}>
           <Button
+            id={"EditarTelefono-Btn1"}
             variant="contained"
             className={comunClass.buttonAchs}
             disabled={!telefonoIsValid}
@@ -162,7 +167,6 @@ const EditarTelefono = () => {
               }
             }
           }
-
           >
             Actualizar
           </Button>
