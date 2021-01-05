@@ -56,6 +56,9 @@ export const getSpaceStyle = makeStyles((theme) => ({
     space5: {
         height: '6.25em',
     },
+    space6: {
+        height: '8.25em',
+    },
 
     '@media (max-width: 767px)': {
         space6: {
