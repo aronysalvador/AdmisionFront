@@ -36,7 +36,6 @@ const FechaHoraResponsable = () => {
   // }
 
   function setHoraValueSiniestro(value) {
-    value.minutos = minutosArray[value.indiceMinutos];
     setHoraSiniestro({ ...value });
   }
 
@@ -92,24 +91,14 @@ const FechaHoraResponsable = () => {
             />
           </div>
           <div className={spaceStyle.space1} />
-            <div className={comunClass.displayMobile}>
-              <HoraSiniestro
-                onChange={setHoraValueSiniestro}
-                horasFromState={horas}
-                indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                minutos={minutosArray}
-                
-              />
-            </div>
-            <div className={comunClass.displayDesk}>
+
               <HoraSiniestroDesk
                   onChange={setHoraValueSiniestro}
                   horasFromState={horas}
-                  indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                  minutos={minutosArray}
-                  textLabel={"Hora de accidente"}
+                  minutos={minutos}
+                  textLabel={"Hora de aviso"}
                 />
-            </div>
+
         </div>
         <div className={comunClass.bottomElement}>
           <Button
