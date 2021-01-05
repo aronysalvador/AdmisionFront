@@ -72,6 +72,7 @@ import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
 import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
 import ErrorCaso from "../PantallaFinal/ErrorCaso";
+import ErrorApi from "../PantallaFinal/ErrorApi";
 import SameDateSinister from "../AffiliateValidations/SameDateSinister";
 import NoCuentaSap from "../AffiliateValidations/NoCuentaSap";
 
@@ -835,6 +836,14 @@ const Main = (props) => {
           <div className={blackLayout}>
             <Paper className={paperNoColor}>
               <NoCuentaSap />
+            </Paper>
+          </div>
+        );
+      case 1004:
+        return (
+          <div className={blackLayout}>
+            <Paper className={paperNoColor}>
+              <ErrorApi />
             </Paper>
           </div>
         );

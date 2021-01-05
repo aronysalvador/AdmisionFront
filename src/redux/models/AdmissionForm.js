@@ -63,6 +63,7 @@ export const AdmissionForm = {
 
     BP: "",
     mensajeErrorSAP: "",
+    mensajeErrorApi: "",
 
     TrabajadorIndependiente: "", // va al doumento de trayecto debe incluirse en CamposDocumentos
     tab: 0,
