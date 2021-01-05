@@ -29,6 +29,7 @@ const NoAfiliate = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
+          id={"NoAfiliate-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.1))} // 5.1
           color="#FFFFFF"
         />
@@ -56,6 +57,7 @@ const NoAfiliate = (props) => {
         
         <div className={comunClass.bottomElement}>
           <Button
+            id={"NoAfiliate-Btn1"}
             className={blackStyle.buttonFooter}
             onClick={() => { dispatch(handleSetStep(1.1)) }}
           >
