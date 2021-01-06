@@ -500,13 +500,7 @@ const saveRazonSocial = (rut) => {
         if (rut) {
             obtenerDataRazon(rut)
                 .then((result) => {
-                    if(result.data.status === 200){
-                        dispatch(updateForm("razonSocial", result.data.content.response[0]));
-                    }else{
-                        dispatch(updateForm("errorStep", 3));
-                        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
-                        dispatch(handleSetStep(1004));
-                    }  
+                        dispatch(updateForm("razonSocial", result.data.content.response[0]));     
                 })
                 .catch((error) => {
                     console.log("error: " + String(error));
