@@ -18,13 +18,7 @@ export const getSucursales = (rut) => async (dispatch) => {
 
   obtenerData(rut)
     .then((response) => {
-      if(response.data.status === 200){
-        dispatch(successCallSucursales(response.data));
-      }else{
-          dispatch(updateForm("errorStep", 3));
-          dispatch(updateForm("mensajeErrorApi", window.REACT_APP_SUCURSALES));
-          dispatch(handleSetStep(1004));
-      }      
+        dispatch(successCallSucursales(response.data));    
     })
     .catch((error) => {
       dispatch(errorCallSucursales());
