@@ -14,9 +14,11 @@ const FechaSiniestroDesk = ({
   daysFromState,
   monthFromState,
   yearFromState,
-  textLabel
+  textLabel,
+  UpComponent
 }) => {
 
+  const IdComponent = UpComponent ? UpComponent : "";
   if(daysFromState?.toString().length === 1){
     daysFromState = ("0" + daysFromState).slice(-2)
   }
@@ -54,6 +56,7 @@ const FechaSiniestroDesk = ({
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
+            id={IdComponent+"-Desk-DatePicker1"} 
             inputVariant="outlined"
             disableFuture
             format="DD-MM-YYYY"

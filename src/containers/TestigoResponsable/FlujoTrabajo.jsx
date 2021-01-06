@@ -119,6 +119,7 @@ const FlujoTrabajo = () => {
         </div>
         <div className={comunClass.beginContainerDesk}>
             <Cabecera
+            id="FlujoTrabajo-BtnBack"
             dispatch={() => dispatch(handleSetStep(10.1))}
             percentage={percentage}
             />
@@ -140,6 +141,7 @@ const FlujoTrabajo = () => {
                         </div>
                         <div className="col-md-2" style={{ display: "contents" }}>
                             <img
+                            id="FlujoTrabajo-Img1"
                             alt="siTrabajo"
                             src={CamposDocumentos.TestigoS ==="x" ? yesActive : yesDisabled}
                             type="button"
@@ -148,6 +150,7 @@ const FlujoTrabajo = () => {
                             />
 
                             <img
+                            id="FlujoTrabajo-Img2"
                             alt="noTrabajo"
                             src={CamposDocumentos.TestigoN ==="x" ? notActive :notDisabled}
                             type="button"
@@ -169,7 +172,8 @@ const FlujoTrabajo = () => {
                         </Grid>
                         </div>
                         <div className="col-md-2" style={{ display: "contents" }}>
-                            <img
+                            <img                            
+                            id="FlujoTrabajo-Img3"
                             alt="siTrabajo"
                             src={responsableForm === "Si" ? yesActive : yesDisabled}
                             type="button"
@@ -177,7 +181,8 @@ const FlujoTrabajo = () => {
                             onClick={() => handleOnClickResponsable("Si")}
                             />
 
-                            <img
+                            <img         
+                            id="FlujoTrabajo-Img4"
                             alt="noTrabajo"
                             src={responsableForm === "No" ? notActive :notDisabled}
                             type="button"
@@ -201,7 +206,8 @@ const FlujoTrabajo = () => {
                                 <div  style={{ zIndex: 9 }} >
                                     <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
                                         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
-                                        <NoPaddingDatePicker
+                                        <NoPaddingDatePicker         
+                                            id="FlujoTrabajo-Datepicker1"
                                             inputVariant="outlined"
                                             disableFuture   
                                             value={selectedDate}
@@ -244,7 +250,8 @@ const FlujoTrabajo = () => {
                                 <div  style={{ zIndex: 9 }} >
                                     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                                     <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                        <NoPaddingPicker                              
+                                        <NoPaddingPicker     
+                                            id="FlujoTrabajo-Timepicker1"                         
                                             value={selectedHour}
                                             format="HH:mm"
                                             inputValue={hour}
@@ -278,6 +285,7 @@ const FlujoTrabajo = () => {
 
                     <div style={{ position: "relative", textAlign:"center" }}>
                         <Button
+                            id="FlujoTrabajo-Btn1"
                             className={comunClass.buttonAchs}
                             variant="contained"
                             disabled={!validDate || !validHour}

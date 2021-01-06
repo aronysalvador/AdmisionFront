@@ -9,7 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 export default (props) => {
     const comunClass = getComunStyle();
 
-    const { first, txt1, txt2, data, setData, listado, options } = props 
+    const { first, txt1, txt2, data, setData, listado, options, id } = props 
 
     const NoPaddingAutocomplete = withStyles({
         inputRoot: {
@@ -43,6 +43,7 @@ export default (props) => {
                 )}
                                                  
                 <NoPaddingAutocomplete
+                    id={id}
                     value={data}
                     onChange={(event, value) => {
                     setData(value);

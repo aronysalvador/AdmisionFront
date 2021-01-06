@@ -32,56 +32,56 @@ const RazonSocial = () => {
 
   return (
     <div style={{padding:"0"}}>
-                <Autocomplete
-                  value={razonSocial}
-                  style={{ width: '100%' }}
-                  size="small"
-                  fullWidth
-                  onOpen={() => {
-                    setOpen(true);
-                  }}
-                  onClose={() => {
-                    setOpen(false);
-                  }}
-                  getOptionLabel={(option) => option ? option.name : ""}
-                  options={options}
-                  loading={loading}
-                  getOptionSelected= {(
-                    option,
-                    value,
-                 ) => value.value === option.value}
-                  onInputChange={(event,newInputValue) => {
-                    getData(newInputValue)
-                    
-                  }}
-                  onChange={(event,value) => {
-                    dispatch(getSucursales(value?.rut.replace(/\./g,'').toUpperCase()))
-                    dispatch(updateForm("razonSocial", value)) 
-                    dispatch(updateForm("razonSocialForm", value?.name)) 
-                    dispatch(updateForm("rutEmpresa", value?.rut));        
-                  }
-                  }
-                  
-                  loadingText='cargando'
-                  renderInput={(params) => {
-                    return(
-                      <TextField 
-                      {...params} 
-                      style={{color:'red'}} 
-                      variant="outlined" 
-                      // InputProps={{
-                      //   ...params.InputProps,
-                      //   endAdornment: (
-                      //     <>
-                      //       {loading ? <CircularProgress color="inherit" size={20} /> : null}           
-                      //     </>
-                      //   ),
-                      // }}
-                      />
-                  )}}
-                  
-                />
-            </div>
+        <Autocomplete
+          id={"RazonSocial-Lbl1"}
+          value={razonSocial}
+          style={{ width: '100%' }}
+          size="small"
+          fullWidth
+          onOpen={() => {
+            setOpen(true);
+          }}
+          onClose={() => {
+            setOpen(false);
+          }}
+          getOptionLabel={(option) => option ? option.name : ""}
+          options={options}
+          loading={loading}
+          getOptionSelected= {(
+            option,
+            value,
+          ) => value.value === option.value}
+          onInputChange={(event,newInputValue) => {
+            getData(newInputValue)
+            
+          }}
+          onChange={(event,value) => {
+            dispatch(getSucursales(value?.rut.replace(/\./g,'').toUpperCase()))
+            dispatch(updateForm("razonSocial", value)) 
+            dispatch(updateForm("razonSocialForm", value?.name)) 
+            dispatch(updateForm("rutEmpresa", value?.rut));        
+          }
+          }
+          loadingText='cargando'
+          renderInput={(params) => {
+            return(
+              <TextField 
+              {...params} 
+              style={{color:'red'}} 
+              variant="outlined" 
+              // InputProps={{
+              //   ...params.InputProps,
+              //   endAdornment: (
+              //     <>
+              //       {loading ? <CircularProgress color="inherit" size={20} /> : null}           
+              //     </>
+              //   ),
+              // }}
+              />
+          )}}
+          
+        />
+    </div>
   );
 };
 

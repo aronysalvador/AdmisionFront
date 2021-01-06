@@ -56,7 +56,6 @@ const MapaSelection = () => {
   const spaceStyle = getSpaceStyle();
 
   const handleSelect = async() => {
-
     googleMapsGetMap(placeId)
     dispatch(updateForm("direccionParticular", direccion))
     dispatch(updateForm("direccionParticularObj", 
@@ -74,7 +73,6 @@ const MapaSelection = () => {
       ]
     }
     ))
-
     dispatch(handleSetStep(5.2))
   }
 
@@ -95,6 +93,7 @@ const MapaSelection = () => {
       <div className={comunClass.beginContainerDesk}>
         <div style={{padding: '0.5em'}}> 
           <Cabecera
+            id={"MapaSelection-BtnBack"}
             dispatch={() => dispatch(handleSetStep(5.2))}
             percentage={percentage}
             noSpace={true}
@@ -123,6 +122,7 @@ const MapaSelection = () => {
         </div>
         <div className={[comunClass.bottomElementMap]} style={{padding: '0 20px 20px 20px'}}>
           <Button
+            id={"MapaSelection-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={direccion ? false : true}

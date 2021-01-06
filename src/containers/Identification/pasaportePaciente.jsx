@@ -34,6 +34,7 @@ const PasaportePaciente = () => {
       </Grid>
       <div className={comunClass.bottomElement}>
         <Button
+          id={"PasaportePaciente-Btn1"}
           className={comunClass.buttonAchs2}
           variant="contained"
           onClick={() => dispatch(handleSetStep(5.9))}

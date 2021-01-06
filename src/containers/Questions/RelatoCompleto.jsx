@@ -92,7 +92,7 @@ const RelatoCompleto = () => {
         dispatch(updateForm("coberturaSoap", respSoap));
         dispatch(handleSetStep(8.1));
         if(respuestaOriginal !== text3) {
-          dispatch(updateForm("volverAConcatenar", true));
+            dispatch(updateForm("volverAConcatenar", true));
         }
     };
 
@@ -103,6 +103,7 @@ const RelatoCompleto = () => {
         </div>
         <div className={comunClass.beginContainerDesk}>
             <Cabecera
+            id={"RelatoCompleto-BtnBack"}
             dispatch={() => dispatch(handleSetStep("x",6))}
             percentage={percentage}
             />
@@ -113,14 +114,14 @@ const RelatoCompleto = () => {
                 <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
                     <div className={['row', comunClass.backgroundGrey].join(' ')}>
 
-                    <Grid className={`${comunClass.textPrimaryRelato}`} >
-                            ¿Qué estaba haciendo 
-                            <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
-                                &nbsp; justo antes del accidente?
-                            </Grid> 
-                        </Grid>                   
+                    <Grid className={`${comunClass.textPrimaryRelato}`} for={"RelatoCompleto-Lbl1"}>
+                        ¿Qué estaba haciendo 
+                        <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                            &nbsp; justo antes del accidente?
+                        </Grid> 
+                    </Grid>                   
                     <TextField
-                        id="txtRespuesta1"
+                        id={"RelatoCompleto-Lbl1"}
                         value={text1}
                         margin="dense"
                         variant="outlined"
@@ -134,15 +135,15 @@ const RelatoCompleto = () => {
                     />
                     <label className={comunClass.pullRight}>{text1.length }/200</label>
 
-                    <Grid className={`${comunClass.textPrimaryRelato}`} >
-                            ¿Qué 
-                            <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
-                                &nbsp; ocurrió y qué lesión &nbsp;
-                            </Grid> 
-                            presenta?
+                    <Grid className={`${comunClass.textPrimaryRelato}`} for={"RelatoCompleto-Lbl2"}>
+                        ¿Qué 
+                        <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                            &nbsp; ocurrió y qué lesión &nbsp;
+                        </Grid> 
+                        presenta?
                     </Grid>                   
                     <TextField
-                        id="txtRespuesta"
+                        id={"RelatoCompleto-Lbl2"}
                         value={text2}
                         margin="dense"
                         variant="outlined"
@@ -156,7 +157,7 @@ const RelatoCompleto = () => {
                     />
                     <label className={comunClass.pullRight}>{text2.length}/200</label>
 
-                    <Grid className={`${comunClass.textPrimaryRelato}`} >
+                    <Grid className={`${comunClass.textPrimaryRelato}`} for={"RelatoCompleto-Lbl3"}>
                         ¿Con
                         <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
                             &nbsp; qué ocurrió el acciendente
@@ -164,7 +165,7 @@ const RelatoCompleto = () => {
                         ?
                     </Grid>                   
                     <TextField
-                        id="txtRespuesta"
+                        id={"RelatoCompleto-Lbl3"}
                         value={text3}
                         margin="dense"
                         variant="outlined"
@@ -195,18 +196,20 @@ const RelatoCompleto = () => {
                         </div>
                         <div className="col-md-2" style={{ display: "contents" }}>
                             <img
-                            alt="siTrabajo"
-                            src={desarrollarTrabajoHabitual ==="Si" ? yesActive : yesDisabled}
-                            type="button"
-                            style={{ marginRight: "5px" }}
-                            onClick={() => handleOnClick("Si")}
+                                id={"RelatoCompleto-BtnSi"}
+                                alt="siTrabajo"
+                                src={desarrollarTrabajoHabitual ==="Si" ? yesActive : yesDisabled}
+                                type="button"
+                                style={{ marginRight: "5px" }}
+                                onClick={() => handleOnClick("Si")}
                             />
 
                             <img
-                            alt="noTrabajo"
-                            src={desarrollarTrabajoHabitual ==="No" ? notActive :notDisabled}
-                            type="button"
-                            onClick={() => handleOnClick("No")}                       
+                                id={"RelatoCompleto-BtnNo"}
+                                alt="noTrabajo"
+                                src={desarrollarTrabajoHabitual ==="No" ? notActive :notDisabled}
+                                type="button"
+                                onClick={() => handleOnClick("No")}                       
                             />
                         </div>
                     </div>                   
@@ -215,13 +218,14 @@ const RelatoCompleto = () => {
                     <div className="row">
                         <Typography className={welcomeStyle.switchText}>
                             <Grid component="span">
-                            <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+                                <BlueCheckbox id={"RelatoCompleto-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
                             </Grid>
                             Corresponde a cobertura &nbsp;<b>SOAP</b>
                         </Typography>
                     </div>
                     <div style={{ position: "relative", textAlign:"center" }}>
                     <Button
+                        id={"RelatoCompleto-Btn1"}
                         className={comunClass.buttonAchs}
                         variant="contained"
                         disabled={tipoSiniestro.Id === 1 ? !(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual) : (!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import Identification from "../Identification/index";
-import Sinister from "../Sinister/index";
+import Siniester from "../Siniester/index";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -176,7 +176,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <Sinister />
+              <Siniester />
             </Paper>
           </div>
         );
@@ -188,7 +188,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 4:
+      case 4: // Términos y condiciones, No se usa.
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -196,7 +196,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 5:
+      case 5: // loading
         return (
           <div className={layout}>
             <Paper className={paperFix}>
@@ -364,7 +364,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 5.9:
+      case 5.9: // loading
         return (
           <div className={layout}>
             <Paper className={paperFix}>
@@ -396,27 +396,19 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-        case 6.04:
-          return (
-            <div className={layout}>
-              <Paper className={paper}>
-                <CausaEnfermedadProfesional />
-              </Paper>
-            </div>
-          );
-        case 6.05:
-          return (
-            <div className={layout}>
-              <Paper className={paper}>
-                <AgenteCausaEnfermedadProfesional />
-              </Paper>
-            </div>
-          );
-      case 6:
+      case 6.04:
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <AccidentPlaceForm />
+              <CausaEnfermedadProfesional />
+            </Paper>
+          </div>
+        );
+      case 6.05:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AgenteCausaEnfermedadProfesional />
             </Paper>
           </div>
         );
@@ -428,7 +420,15 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 7:
+      case 6: //notsure
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AccidentPlaceForm />
+            </Paper>
+          </div>
+        );
+      case 7: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -436,7 +436,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 8:
+      case 8: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -452,7 +452,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 9:
+      case 9: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -468,7 +468,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 10:
+      case 10: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -484,7 +484,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 11:
+      case 11: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -492,7 +492,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 11.1:
+      case 11.1: //notsure
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>
@@ -500,7 +500,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12:
+      case 12: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -508,7 +508,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12.1:
+      case 12.1: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -516,7 +516,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12.2:
+      case 12.2: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -524,7 +524,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12.3:
+      case 12.3: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -540,7 +540,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 13:
+      case 13: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -548,7 +548,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 14:
+      case 14: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -556,7 +556,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 14.1:
+      case 14.1: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -564,7 +564,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 15:
+      case 15: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -572,7 +572,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 16:
+      case 16: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -580,7 +580,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 17:
+      case 17:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -588,7 +588,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 17.1:
+      case 17.1:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -620,7 +620,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 18.01:
+      case 18.01: 
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -628,7 +628,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 18:
+      case 18: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -636,7 +636,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 18.1:
+      case 18.1: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -644,7 +644,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19:
+      case 19: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -652,7 +652,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19.1:
+      case 19.1: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -692,7 +692,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19.3:
+      case 19.3: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -708,7 +708,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 20:
+      case 20:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -716,7 +716,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 21:
+      case 21:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -724,7 +724,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 22:
+      case 22:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -732,7 +732,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 23:
+      case 23:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -740,7 +740,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 24:
+      case 24:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -748,7 +748,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 25:
+      case 25:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -764,7 +764,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 26:
+      case 26:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -796,7 +796,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 26.4:
+      case 26.4: 
         return (
           <div className={layout}>
             <Paper className={paperFix}>
@@ -828,7 +828,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 1001.1:
+      case 1001.1: // no se usa, luego de maquetar la vista, se decidió no utilizarla 
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>

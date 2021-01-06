@@ -80,6 +80,7 @@ const SinBPInfoPersonal1 = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"InfoPersonal1-BtnBack"}
           dispatch={() => dispatch(handleSetStep(3))}
           percentage={percentage}
         />
@@ -103,182 +104,166 @@ const SinBPInfoPersonal1 = () => {
           <div className={spaceStyle.space1} />
         </div>
         <div className={comunClass.containerTextBox}>
-           
-              <Grid className={[comunClass.tituloTextBox]}>
-                Nombres
+
+          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl1"}>
+            Nombres
+          </Grid>
+          <TextField
+            id={"InfoPersonal1-Lbl1"}
+            value={nombre}
+            onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value, false))}
+            margin="dense"
+            variant="outlined"
+            autoComplete="off"
+            type="text"
+            fullWidth
+            InputProps={{
+              style: {
+                textTransform: "capitalize !important",
+                paddingRight: "0",
+              },
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  style={{ textTransform: "capitalize !important" }}
+                >
+                  <IconButton onClick={() => { saveNombre("") }}>
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <div className={spaceStyle.space1} />
+
+          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl2"}>
+            Apellido Paterno
+          </Grid>
+          <TextField
+            id={"InfoPersonal1-Lbl2"}
+            value={apellidoPaterno}
+            onChange={(e) => saveApellidoPaterno(Format.caracteresInvalidos(e.target.value, false))}
+            margin="dense"
+            variant="outlined"
+            autoComplete="off"
+            type="text"
+            fullWidth
+            InputProps={{
+              style: {
+                textTransform: "capitalize !important",
+                paddingRight: "0",
+              },
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => { saveApellidoPaterno("") }}
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <div className={spaceStyle.space1} />
+
+          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl3"}>
+            Apellido Materno
+          </Grid>
+          <TextField
+            id={"InfoPersonal1-Lbl3"}
+            value={apellidoMaterno}
+            onChange={(e) => saveApellidoMaterno(Format.caracteresInvalidos(e.target.value, false))}
+            margin="dense"
+            variant="outlined"
+            autoComplete="off"
+            type="text"
+            fullWidth
+            InputProps={{
+              style: {
+                textTransform: "capitalize !important",
+                paddingRight: "0",
+              },
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => { saveApellidoMaterno("") }}>
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <div className={spaceStyle.space1} />
+          <div className={comunClass.paddingElement}>
+            <div className={[comunClass.widthDateSex]}>
+              <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl4"}>
+                Fecha de Nacimiento
               </Grid>
               <TextField
-                id="nombre"
-                value={nombre}
-                onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value, false))}
+                id={"InfoPersonal1-Lbl4"}
+                value={fechaNacimiento}
+                onChange={(e) => saveFechaNacimiento(e.target.value)}
                 margin="dense"
                 variant="outlined"
                 autoComplete="off"
                 type="text"
-                fullWidth
+                fullWidth           
                 InputProps={{
+                  inputComponent:DateMasked,
                   style: {
-                    textTransform: "capitalize !important",
-                    paddingRight: "0",
-                  },
-                  endAdornment: (
-                    <InputAdornment
-                      position="end"
-                      style={{
-                        textTransform: "capitalize !important",
-                      }}
-                    >
-                      <IconButton
-                        onClick={() => {
-                          saveNombre("");
-                        }}
-                      >
-                        <ClearIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-          
-
-            <div className={spaceStyle.space1} />
-
-              <Grid className={[comunClass.tituloTextBox]}>
-                Apellido Paterno
-              </Grid>
-              <TextField
-                id="apellidoPaterno"
-                value={apellidoPaterno}
-                onChange={(e) => saveApellidoPaterno(Format.caracteresInvalidos(e.target.value, false))}
-                margin="dense"
-                variant="outlined"
-                autoComplete="off"
-                type="text"
-                fullWidth
-                InputProps={{
-                  style: {
-                    textTransform: "capitalize !important",
+                    marginRight: "10px",
                     paddingRight: "0",
                   },
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => {
-                          saveApellidoPaterno("");
-                        }}
-                      >
+                      <IconButton onClick={() => { saveFechaNacimiento("") }}>
                         <ClearIcon />
                       </IconButton>
                     </InputAdornment>
                   ),
                 }}
               />
-         
-
-            <div className={spaceStyle.space1} />
-
-              <Grid className={[comunClass.tituloTextBox]}>
-                Apellido Materno
-              </Grid>
-              <TextField
-                id="apellidoMaterno"
-                value={apellidoMaterno}
-                onChange={(e) => saveApellidoMaterno(Format.caracteresInvalidos(e.target.value, false))}
-                margin="dense"
-                variant="outlined"
-                autoComplete="off"
-                type="text"
-                fullWidth
-                InputProps={{
-                  style: {
-                    textTransform: "capitalize !important",
-                    paddingRight: "0",
-                  },
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => {
-                          saveApellidoMaterno("");
-                        }}
-                      >
-                        <ClearIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-
-            <div className={spaceStyle.space1} />
-            <div className={comunClass.paddingElement}>
-              <div className={[comunClass.widthDateSex]}>
-                <Grid className={[comunClass.tituloTextBox]}>
-                  Fecha de Nacimiento
-                </Grid>
-                <TextField
-                  id="fechaNacimiento"
-                  value={fechaNacimiento}
-                  onChange={(e) => saveFechaNacimiento(e.target.value)}
-                  margin="dense"
-                  variant="outlined"
-                  autoComplete="off"
-                  type="text"
-                  fullWidth           
-                  InputProps={{
-                    inputComponent:DateMasked,
-                    style: {
-                      marginRight: "10px",
-                      paddingRight: "0",
-                    },
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          onClick={() => {
-                            saveFechaNacimiento("");
-                          }}
-                        >
-                          <ClearIcon />
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
-
-              <div className={spaceStyle.space1} />
-
-              <div className={[comunClass.widthDateSex]}>
-                <Grid className={[comunClass.tituloTextBox]}>
-                  Sexo
-                </Grid>
-                <AutoComplete
-                  value={sexo}
-                  onChange={(event, value) => {
-                    saveSexo(value);
-                  }}
-                  options={sexos}
-                  getOptionLabel={(option) => option}                  
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="outlined"
-                      InputProps={{
-                        ...params.InputProps,
-                        style: {
-                          paddingTop: "3px",
-                          paddingBottom: "3px",
-                          paddingLeft: "5xp",
-                          paddingRight: "0",
-                          marginTop: "6px",
-                        },
-                      }}
-                    />
-                  )}
-                />
-              </div>
             </div>
+
+            <div className={spaceStyle.space1} />
+
+            <div className={[comunClass.widthDateSex]}>
+              <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl5"}>
+                Sexo
+              </Grid>
+              <AutoComplete
+                id={"InfoPersonal1-Lbl5"}
+                value={sexo}
+                onChange={(event, value) => {
+                  saveSexo(value);
+                }}
+                options={sexos}
+                getOptionLabel={(option) => option}                  
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    InputProps={{
+                      ...params.InputProps,
+                      style: {
+                        paddingTop: "3px",
+                        paddingBottom: "3px",
+                        paddingLeft: "5xp",
+                        paddingRight: "0",
+                        marginTop: "6px",
+                      },
+                    }}
+                  />
+                )}
+              />
+            </div>
+          </div>
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"InfoPersonal1-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"

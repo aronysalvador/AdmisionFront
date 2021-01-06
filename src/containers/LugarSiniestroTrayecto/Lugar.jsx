@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 export default (props) => {
 
-    const { sucursal, setSucursal,setMapaUrl, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption } = props 
+  const { sucursal, setSucursal, setMapaUrl, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption } = props 
 
   const dispatch = useDispatch();
   const comunClass = getComunStyle();
@@ -30,28 +30,30 @@ export default (props) => {
   }
 
   return (
-        <div>
-            <Grid
-                className={comunClass.tituloTextBox}
-                style={{marginBottom:'15px', textAlign: "left"}}
-            >
-                 Dirección de trabajo
-            </Grid> 
-            <DireccionGeo
-                comunStyle={getComunStyle()}
-                direccion={sucursal} 
-                setMapa={setMapaUrl} 
-                setDireccion={setSucursal} 
-                clearData={clearData}
-                showDinamicMap={()=> {
-                  setSucursal({description: ''}); 
-                  dispatch(handleSetStep(12.4))
-                }}
-                direccionTemporal={!sucursalEmpresaSiniestro?DireccionEmpresa:""}
-                small
-                background={"#fff"}
-                noFijarOption={noFijarOption}
-            />
-        </div> 
+    <div>
+      <Grid
+        className={comunClass.tituloTextBox}
+        style={{marginBottom:'15px', textAlign: "left"}}
+        for={"InfoAccidente-LblLugar"}
+      >
+        Dirección de trabajo
+      </Grid> 
+      <DireccionGeo
+        id={"InfoAccidente-LblLugar"}
+        comunStyle={getComunStyle()}
+        direccion={sucursal} 
+        setMapa={setMapaUrl} 
+        setDireccion={setSucursal} 
+        clearData={clearData}
+        showDinamicMap={()=> {
+          setSucursal({description: ''}); 
+          dispatch(handleSetStep(12.4))
+        }}
+        direccionTemporal={!sucursalEmpresaSiniestro?DireccionEmpresa:""}
+        small
+        background={"#fff"}
+        noFijarOption={noFijarOption}
+      />
+    </div> 
   )
 }

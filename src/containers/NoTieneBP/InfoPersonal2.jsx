@@ -63,6 +63,7 @@ const SinBPInfoPersonal2 = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"InfoPersonal2-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.812))}
           percentage={percentage}
         />
@@ -86,11 +87,12 @@ const SinBPInfoPersonal2 = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <div>
-            <Grid className={[comunClass.tituloTextBox]}>
+            <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal2-Lbl1"}>
               Nacionalidad
             </Grid>
           
             <AutoComplete
+              id={"InfoPersonal2-Lbl1"}
               value={nacionalidad}
               onChange={(event, value) => {
                 setNacionalidad(value);
@@ -116,10 +118,11 @@ const SinBPInfoPersonal2 = () => {
           </div>
           <div className={spaceStyle.space2} />
           <div>
-            <Grid className={[comunClass.tituloTextBox]}>
+            <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal2-Lbl2"}>
               País de nacimiento
             </Grid>
             <AutoComplete
+              id={"InfoPersonal2-Lbl2"}
               value={pais}
               onChange={(event, value) => {
                 setPais(value);
@@ -145,10 +148,11 @@ const SinBPInfoPersonal2 = () => {
           </div>
           <div className={spaceStyle.space2} />
           <div>
-            <Grid className={[comunClass.tituloTextBox]}>
+            <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal2-Lbl3"}>
               Idioma
             </Grid>
             <AutoComplete
+              id={"InfoPersonal2-Lbl3"}
               value={idioma}
               onChange={(event, value) => {
                 setIdioma(value);
@@ -175,6 +179,7 @@ const SinBPInfoPersonal2 = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"InfoPersonal2-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"

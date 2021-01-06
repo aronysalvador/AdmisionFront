@@ -14,9 +14,9 @@ export const AdmissionForm = {
     volverAConcatenar: false,
 
     testigos: { nombre: "", cargo: "" },
-    responsable: {nombre: "", cargo: ""},
+    responsable: { nombre: "", cargo: "" },
     fechaHoraResponsable: "",
-    fechaHoraSiniestro: "", 
+    fechaHoraSiniestro: "",
     fechaHoraAtencion: {},
 
     SucursalEmpresa: "",
@@ -71,10 +71,10 @@ export const AdmissionForm = {
 
     coberturaSoap: "", // se debe pasar a SAP
 
-    responsableForm:"",//Si hay responsable
+    responsableForm: "", //Si hay responsable
 
     CamposDocumentos: {
-        anteceContr: "", 
+        anteceContr: "",
         /* TRAYECTO */
         //Atencion Previa
         FechaOtroRe: "",
@@ -121,6 +121,6 @@ export const AdmissionForm = {
     },
 
     FechaSintomasEP: {},
-    AgenteCausaEP: {},
+    AgenteCausaEP: "",
     TipoAvisoResponsable: {}
 };

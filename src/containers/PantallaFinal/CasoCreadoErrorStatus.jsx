@@ -117,6 +117,7 @@ const CasoCreadoErrorStatus = (props) => {
                 <div className={spaceStyle.spaceMin1} />
               </div>
               <Button
+                id="CasoCreadoErrorDoc-Btn1"
                 className={[comunClass.buttonAchs, comunClass.pantallaFinalBotones]}
                 variant="contained"
                 onClick={() => dispatch(handleSetStep(1.1))}

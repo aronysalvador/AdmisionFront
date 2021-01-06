@@ -70,6 +70,7 @@ const PersonalData = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"PersonalData-BtnBack"}
           dispatch={() => dispatch(handleSetStep(3))}
           percentage={addmissionForm.percentage}
         />
@@ -94,6 +95,7 @@ const PersonalData = (props) => {
       <div className={comunClass.boxDesk}>
         {/* <div className={spaceStyle.space1} /> */}
         <BoxEmpresa
+          id={"PersonalData-Box1"}
           contenidoDireccionEmpresa={contenidoDireccionEmpresa}
           contenidoRazonSocialForm={contenidoRazonSocialForm}
           contenidoRutEmpresa={contenidoRutEmpresa}
@@ -101,12 +103,14 @@ const PersonalData = (props) => {
           step={5.4} />
         {/* <div className={spaceStyle.spaceMin1} /> */}
         <BoxACHS
+          id={"PersonalData-Box2"}
           titulo={tituloTelefono}
           contenido={contenidoTelefono}
           step={5.3}
         />
         {/* <div className={spaceStyle.spaceMin1} /> */}
         <BoxACHS
+          id={"PersonalData-Box3"}
           titulo={tituloDireccion}
           contenido={contenidoDireccion}
           step={5.2}
@@ -115,6 +119,7 @@ const PersonalData = (props) => {
 
         <div className={comunClass.bottomElement}>
           <Button
+            id={"PersonalData-Btn1"}
             className={comunClass.buttonAchs}
             disabled={loading}
             onClick={() => handleNext()}

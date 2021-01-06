@@ -31,6 +31,7 @@ const TrabajadorIndependiente = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="TrabajadorIndependiente-BtnBack"
           dispatch={() => dispatch(handleSetStep(19.4))}
           percentage={percentage}
         />
@@ -54,6 +55,7 @@ const TrabajadorIndependiente = () => {
             <div className={spaceStyle.spaceMin1} />
           </div>
           <Button
+            id="TrabajadorIndependiente-Btn1"
             variant="contained"
             className={comunClass.buttonAchs}
             onClick={() => handleOnClick("Si")}
@@ -62,6 +64,7 @@ const TrabajadorIndependiente = () => {
           </Button>
           <div className={spaceStyle.spaceMin1}></div>
           <Button
+            id="TrabajadorIndependiente-Btn2"
             className={comunClass.buttonAchs2}
             onClick={() => handleOnClick("No")}
           >

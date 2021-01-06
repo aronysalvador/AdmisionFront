@@ -27,6 +27,7 @@ const HasSinisterDetail = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
+          id={"HasSinisterDetail-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.831))}
           color="#FFFFFF"
         />

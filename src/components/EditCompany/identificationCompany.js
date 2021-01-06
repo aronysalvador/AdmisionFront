@@ -24,6 +24,7 @@ const IdentificationCompany = () => {
   return (
     <div>
       <TextField
+        id={"RUTCompany-Lbl1"}
         type="text"
         value={rut}
         variant="outlined"

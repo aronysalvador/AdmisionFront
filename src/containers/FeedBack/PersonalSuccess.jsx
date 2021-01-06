@@ -32,6 +32,7 @@ const PersonalSuccess = (props) =>{
           <div className={welcomeStyle.beginContainer}>
             <div className={comunStyle.displayMobile}>
               <Cabecera 
+                id={"PersonalSuccess-BtnBack"}
                 dispatch={() => dispatch(handleSetStep(5.1))} 
                 color={"#373737" }  
                 percentage={-1} 
@@ -39,6 +40,7 @@ const PersonalSuccess = (props) =>{
             </div>
             <div className={comunStyle.displayDesk}>
               <Cabecera 
+                id={"PersonalSuccess-BtnBack"}
                 dispatch={() => dispatch(handleSetStep(5.1))} 
                 color={"#fff" } 
                 percentage={-1} 
@@ -117,6 +119,7 @@ const PersonalSuccess = (props) =>{
               </div>
               <div className={welcomeStyle.bottomBegin}>
                 <Button
+                  id={"PersonalSuccess-Btn1"}
                   className={comunStyle.buttonAchs}
                   variant="contained"
                   onClick={() => dispatch(handleSetStep("x",5.7)) }
