@@ -48,6 +48,7 @@ const TipoAvisoResponsable = () => {
             </div>
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
+                    id="TipoAvisoResponsable-BtnBack"
                     dispatch={() => dispatch(handleSetStep(17))}
                     percentage={addmissionForm.percentage}
                 />
@@ -76,6 +77,7 @@ const TipoAvisoResponsable = () => {
                            <div className={check.id === 1 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                 <div className={comunClass.containerOpction} style={{alignItems:"flex-end"}}>
                                     <BlueRadio
+                                        id="TipoAvisoResponsable-Check1"
                                         checked={check.id === 1}
                                          onChange={()=>setCheck({ id:1, description: "Presencial" })}
                                         value={check.id}
@@ -92,6 +94,7 @@ const TipoAvisoResponsable = () => {
                             <div className={check.id === 2 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
                                         <BlueRadio
+                                            id="TipoAvisoResponsable-Check2"
                                             checked={check.id === 2}
                                             onChange={()=>{setCheck({ id:2, description: "E-mail" })}}
                                             value={check.id}
@@ -108,7 +111,8 @@ const TipoAvisoResponsable = () => {
                         <div className={comunClass.deskFlex}>
                             <div className={check.id === 3 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
-                                        <BlueRadio
+                                        <BlueRadio                                            
+                                            id="TipoAvisoResponsable-Check3"
                                             checked={check.id === 3}
                                             onChange={()=>{setCheck({ id:3, description: "Llamada telefónica" })}}
                                             value={check.id}
@@ -123,7 +127,8 @@ const TipoAvisoResponsable = () => {
 
                             <div className={check.id === 4 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
-                                        <BlueRadio
+                                        <BlueRadio                                            
+                                            id="TipoAvisoResponsable-Check4"
                                             checked={check.id === 4}
                                             onChange={()=>{setCheck({ id:4, description: "Whatsapp" })}}
                                             value={check.id}
@@ -140,7 +145,8 @@ const TipoAvisoResponsable = () => {
                             <div className={check.id === 5 ? comunClass.roundedBlueNoMargin : comunClass.roundedNormalNoMargin}>
                                     <div style={{width: "100%"}}>
                                         <div className={comunClass.containerOpction}>
-                                            <BlueRadio
+                                            <BlueRadio                                                
+                                                id="TipoAvisoResponsable-Check5"
                                                 checked={check.id === 5}
                                                 onChange={()=>{setCheck({ id:5, description: "Otro", especificacion: "" })}}
                                                 value={check.id}
@@ -157,10 +163,10 @@ const TipoAvisoResponsable = () => {
                                                 paddingBottom: "30px"                                            
                                             }}
                                         >
-                                            <TextField
+                                            <TextField                                                
+                                                id="TipoAvisoResponsable-Input1"
                                                 onClick={()=>{setCheck({ id:5, description: "Otro", especificacion: "" })}}
                                                 focused={check.id === 5?true:false}
-                                                id="especificacion"
                                                 value={check.especificacion?check.especificacion:""}
                                                 onChange={(e) =>  setCheck({ id:5, description: "Otro", especificacion: Format.caracteresInvalidos(e.target.value) }) }
                                                 margin="dense"
@@ -184,7 +190,8 @@ const TipoAvisoResponsable = () => {
                             </div>
 
                             <div className={comunClass.bottomElement}>
-                                <Button
+                                <Button                   
+                                    id="TipoAvisoResponsable-Btn1"
                                     variant="contained"
                                     className={comunClass.buttonAchs}
                                     disabled={(!check.id || (check.id===5 && check.especificacion.length<5))}

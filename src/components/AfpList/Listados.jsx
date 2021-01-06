@@ -9,7 +9,7 @@ import specialBlue from "./../../util/color/specialBlue";
 const AfpList = (props) => {
   
 
-  const { checkedAfp: check, setCheckedAfp: setCheck, title, identificador, description, listado } = props
+  const { checkedAfp: check, setCheckedAfp: setCheck, title, identificador, description, listado, id } = props
   const [checkInt, setCheckInt] = useState(check?check:"")
 
   useEffect(()=>{
@@ -49,6 +49,7 @@ const AfpList = (props) => {
           <div className="row" style={{padding:0,margin:0,width:"100%"}}>
           <div className="col-md-1">
               <BlueRadio
+                  id={id+"-Check-Another"}
                   checked={check.otro }
                   onChange={()=>{ var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
                   setCheck(temp)}}
@@ -63,6 +64,7 @@ const AfpList = (props) => {
           
             <div className="col-md-8">
               <NoPaddingAutocomplete
+                id={id+"Autocomplete"}
                 // onOpen={()=>{ console.log("aca"); var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
                 // setCheck(temp) }}
                 // openOnFocus
@@ -82,6 +84,7 @@ const AfpList = (props) => {
                 getOptionLabel={(option) => option ? (option.nombre === "Otro" ? "" : option.nombre) : "" }
                 renderInput={(params) => (
                   <TextField
+                   id={id+"Input"}
                     {...params}
                     variant="outlined"
                     InputProps={{
