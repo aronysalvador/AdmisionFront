@@ -95,7 +95,7 @@ const FlujoTrabajo = () => {
             dispatch(updateForm("CamposDocumentos", CamposDocumentos));
             dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
         }
-        if((CamposDocumentos.TestigoS === "x" || CamposDocumentos.TestigoN === "x") && responsableForm){
+        if((CamposDocumentos.TestigoS === "x" || CamposDocumentos.TestigoN === "x") && responsableForm === "No" ){
             dispatch(handleSetStep(18.01))
         }
         
@@ -111,6 +111,7 @@ const FlujoTrabajo = () => {
             dispatch(handleSetStep(18.01))         
         }
     };
+
     return (
         <div className={comunClass.root}>
         <div className={comunClass.displayDesk}> 
