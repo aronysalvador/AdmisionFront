@@ -124,12 +124,11 @@ const InfoAccidente = () => {
     return (
         <div className={comunClass.rootNew}>
             <div className={comunClass.displayDesk}> 
-                <Header
-                    userMsal={ microsoftReducer.userMsal }
-                />
+                <Header userMsal={ microsoftReducer.userMsal }/>
             </div>
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
+                    id={"InfoAccidente-BtnBack"}
                     dispatch={() => dispatch(handleSetStep("x_back",10.1))}
                     percentage={percentage}
                 />
@@ -156,7 +155,6 @@ const InfoAccidente = () => {
                                                 Cuando y a qué hora
                                                 </Grid>      
                                                 &nbsp;sucedió el accidente?
-                                        
                                             </Grid>
                                         </div>
 
@@ -165,8 +163,9 @@ const InfoAccidente = () => {
                                         <div className="row">
                                             <div className="col-md-12">
                                                 <Grid
-                                                className={comunClass.tituloTextBox}
-                                                style={{marginBottom:'15px', textAlign: "left"}}
+                                                    className={comunClass.tituloTextBox}
+                                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                                    for={"InfoAccidente-Lbl1"}
                                                 >
                                                     Fecha de accidente
                                                 </Grid> 
@@ -174,6 +173,7 @@ const InfoAccidente = () => {
                                                     <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
                                                         <NoPaddingDatePicker
+                                                            id={"InfoAccidente-Lbl1"}
                                                             inputVariant="outlined"
                                                             disableFuture   
                                                             value={selectedDate}
@@ -199,22 +199,24 @@ const InfoAccidente = () => {
                                                                     <ClearIcon onClick={()=>onDateChange(null,null)} style={{cursor:'pointer'}} />
                                                                 )
                                                             }}
-                                                    />
-                                                    </ThemeProvider>
+                                                        />
+                                                        </ThemeProvider>
                                                     </MuiPickersUtilsProvider>    
                                                 </div>
                                             </div>
                                             <div className="col-md-12" style={{ paddingTop: '2em' }}>
                                                 <Grid
-                                                className={comunClass.tituloTextBox}
-                                                style={{marginBottom:'15px', textAlign: "left"}}
+                                                    className={comunClass.tituloTextBox}
+                                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                                    for={"InfoAccidente-Lbl2"}
                                                 >
                                                     Hora de accidente
                                                 </Grid> 
                                                 <div  style={{ zIndex: 9}} >
                                                      <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker                              
+                                                            <NoPaddingPicker 
+                                                                id={"InfoAccidente-Lbl2"}                             
                                                                 value={selectedHour}
                                                                 format="HH:mm"
                                                                 inputValue={hour}
@@ -256,18 +258,17 @@ const InfoAccidente = () => {
 
                                         <div>
                                             <Grid className={comunClass.subtitleBlack2}>
-                                            Indica la dirección 
+                                                Indica la dirección 
                                                 <Grid component="span"  className={comunClass.titleBlue}>
                                                 &nbsp;en donde ocurrió el accidente
                                                 </Grid>      
-
                                             </Grid>
                                         </div>
                                         
                                         <div className="container" style={{maxWidth: "30em", minHeight: "250px"}}>
                                             <div className="row">
                                                 <div className="col-md-12">
-                                                    <Lugar                                                    
+                                                    <Lugar                                                   
                                                         sucursal={sucursal}
                                                         setSucursal={setSucursal}
                                                         mapaUrl={mapaUrl} 
@@ -285,39 +286,41 @@ const InfoAccidente = () => {
                                                     <Grid
                                                     className={comunClass.tituloTextBox}
                                                     style={{ marginBottom:'8px', textAlign: "left"}}
+                                                    for={"InfoAccidente-Lbl4"}
                                                     >
                                                         Referencia
                                                     </Grid> 
                                                     <div>
                                                         <NoPaddingTextField
-                                                                helperText={
-                                                                !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
-                                                                }
-                                                                error={!isLugarReferenciaValid}
-                                                                value={lugarReferencia}
-                                                                variant="outlined"
-                                                                size="small"
-                                                                margin="dense"
-                                                                required
-                                                                fullWidth
-                                                                onChange={(e) => {
-                                                                    let texto = Format.caracteresInvalidos(e.target.value);
-                                                                    setLugarReferencia(texto);
-                                                                    if(texto.length > 0){ setIsLugarReferenciaValid(true); }else{ setIsLugarReferenciaValid(false); }
-                                                                }}
-                                                                InputProps={{
-                                                                    endAdornment: (
-                                                                        <ClearIcon onClick={()=>{setLugarReferencia(""); setIsLugarReferenciaValid(false);} } style={{cursor:'pointer'}}  />
-                                                                    ),
-                                                                }}
-                                                                style={{
-                                                                    background: "#ffff",
-                                                                    borderRadius: "0.7em"
-                                                                }}
-                                                            />
-                                                            <Typography className={comunClass.mobileCaption}>
-                                                                Ejemplo: Piso 21, Área 453, Puesto 12A
-                                                            </Typography>
+                                                            id={"InfoAccidente-Lbl4"}
+                                                            helperText={
+                                                            !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
+                                                            }
+                                                            error={!isLugarReferenciaValid}
+                                                            value={lugarReferencia}
+                                                            variant="outlined"
+                                                            size="small"
+                                                            margin="dense"
+                                                            required
+                                                            fullWidth
+                                                            onChange={(e) => {
+                                                                let texto = Format.caracteresInvalidos(e.target.value);
+                                                                setLugarReferencia(texto);
+                                                                if(texto.length > 0){ setIsLugarReferenciaValid(true); }else{ setIsLugarReferenciaValid(false); }
+                                                            }}
+                                                            InputProps={{
+                                                                endAdornment: (
+                                                                    <ClearIcon onClick={()=>{setLugarReferencia(""); setIsLugarReferenciaValid(false);} } style={{cursor:'pointer'}}  />
+                                                                ),
+                                                            }}
+                                                            style={{
+                                                                background: "#ffff",
+                                                                borderRadius: "0.7em"
+                                                            }}
+                                                        />
+                                                        <Typography className={comunClass.mobileCaption}>
+                                                            Ejemplo: Piso 21, Área 453, Puesto 12A
+                                                        </Typography>
                                                     </div>
                                                 </div>
                                             </div>
@@ -328,8 +331,9 @@ const InfoAccidente = () => {
                             </div>
 
                             <div className="col-md-12">
-                                <div className={spaceStyle.space5} />
+                                <div className={spaceStyle.space2} />
                                 <Button
+                                    id={"InfoAccidente-Btn1"}
                                     variant="contained"
                                     className={comunClass.buttonAchs}
                                     disabled={!validDate || !validHour || !isLugarReferenciaValid || !direccionValida}

@@ -24,7 +24,6 @@ const RelatoFinal = (props) => {
 
   const getRelato = () => {
     return (
-
       addmissionForm.lugarAccidente +
       ". " +
       addmissionForm.descripcionAccidente +
@@ -87,6 +86,7 @@ const RelatoFinal = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"RelatoFinal-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.06))}
           percentage={addmissionForm.percentage}
         />
@@ -117,7 +117,7 @@ const RelatoFinal = (props) => {
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
                     </div>
                     <TextField
-                      id="txtRespuesta"
+                      id={"RelatoFinal-Lbl1"}
                       label=""
                       value={localValue}
                       margin="dense"
@@ -148,6 +148,7 @@ const RelatoFinal = (props) => {
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
                     <div>
                       <div
+                        id={"RelatoFinal-Btn1"}
                         className={comunClass.buttonEditRelato}
                         onClick={() => setEditable(true)}
                       >
@@ -175,6 +176,7 @@ const RelatoFinal = (props) => {
           </div>
             <div className={comunClass.bottomElement}>
               <Button
+                id={"RelatoFinal-Btn2"}
                 className={comunClass.buttonAchs}
                 variant="contained"
                 type="submit"

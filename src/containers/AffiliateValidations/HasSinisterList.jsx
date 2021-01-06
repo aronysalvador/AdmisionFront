@@ -11,7 +11,7 @@ import { Format } from "../../helpers/strings";
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
 
-const PersonalData = (props) => {
+const HasSinisterList = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -80,7 +80,7 @@ const PersonalData = (props) => {
       </div>
       <div>
         <div className={comunClass.beginContainerDesk}>
-          <CabeceraSinBarra dispatch={() => dispatch(handleSetStep(5.83))} color="#373737" />
+          <CabeceraSinBarra id={"HasSinisterList-BtnBack"} dispatch={() => dispatch(handleSetStep(5.83))} color="#373737" />
         </div>
         <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
@@ -119,6 +119,7 @@ const PersonalData = (props) => {
           <div className={comunClass.bottomElement}>
             <div className={comunClass.paddingElement}>
               <Button
+                id={"HasSinisterList-Btn1"}
                 className={[comunClass.buttonAchs, comunClass.buttonAchsSiniester]}
                 onClick={() => dispatch(handleSetStep(5.9))}
               >
@@ -128,6 +129,7 @@ const PersonalData = (props) => {
                 <div className={spaceStyle.space1} />
               </div>
               <Button
+                id={"HasSinisterList-Btn2"}
                 className={[comunClass.buttonAchs2, comunClass.buttonAchsSiniester2]}
                 onClick={() => handleNext()}
               >
@@ -151,4 +153,4 @@ function mapStateToProps({ addmissionForm, microsoftReducer }) {
   };
 }
 
-export default connect(mapStateToProps)(PersonalData);
+export default connect(mapStateToProps)(HasSinisterList);

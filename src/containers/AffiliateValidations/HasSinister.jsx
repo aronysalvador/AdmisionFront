@@ -43,6 +43,7 @@ const HasSinister = (props) => {
         </Typography>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"HasSinister-Btn1"}
             className={blackStyle.buttonFooter}
             onClick={() => { dispatch(handleSetStep(5.831)) }}
           >{siniestroOpciones.mensajeBoton}

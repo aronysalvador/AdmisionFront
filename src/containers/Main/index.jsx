@@ -396,27 +396,19 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-        case 6.04:
-          return (
-            <div className={layout}>
-              <Paper className={paper}>
-                <CausaEnfermedadProfesional />
-              </Paper>
-            </div>
-          );
-        case 6.05:
-          return (
-            <div className={layout}>
-              <Paper className={paper}>
-                <AgenteCausaEnfermedadProfesional />
-              </Paper>
-            </div>
-          );
-      case 6:
+      case 6.04:
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <AccidentPlaceForm />
+              <CausaEnfermedadProfesional />
+            </Paper>
+          </div>
+        );
+      case 6.05:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AgenteCausaEnfermedadProfesional />
             </Paper>
           </div>
         );
@@ -425,6 +417,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <RelatoCompleto />
+            </Paper>
+          </div>
+        );
+      case 6:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <AccidentPlaceForm />
             </Paper>
           </div>
         );
