@@ -683,10 +683,12 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
 
             }
             else if(IdEstadoSiniestro === 7){ // error en documento
+                dispatch(updateForm("siniestroID", siniestroID));
                 dispatch(handleSetStep(1001.2));
 
             }
             else if(IdEstadoSiniestro === 8){ // error en status
+                dispatch(updateForm("siniestroID", siniestroID));
                 dispatch(handleSetStep(1001.3));
                 
             }else{
@@ -713,6 +715,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
 
         EndLog( ID, siniestroID, EpisodioID, data.status, dispatch )
     } else {
+        dispatch(updateForm("mensajeErrorSAP", "Error de data"));
         dispatch(handleSetStep(1002)); 
         EndLog( ID,"","",500 )
     }
