@@ -199,7 +199,7 @@ export default () =>{
                                     </div>
 
                                     <SelectsAutocomplete
-                                        id="DatosContractuales-AutocompleteCategorias"
+                                        id="DatosContractuales-AutocompleteProfesiones"
                                         first="blue"
                                         txt1="Profesión u oficio"
                                         txt2="del paciente" 
@@ -431,6 +431,7 @@ export default () =>{
                             <div className="col-md-12">
                             <div className={spaceStyle.spaceMin05} />
                                 <Button
+                                    id="DatosContractuales-Btn1"  
                                     variant="contained"
                                     className={comunClass.buttonAchs}
                                     disabled={!valid}
