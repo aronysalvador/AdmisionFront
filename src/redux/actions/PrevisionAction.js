@@ -21,12 +21,14 @@ export const searchIsapres = () => async (dispatch) => {
       if(response.data.status === 200){
         dispatch(successCallIsapres(response.data.content[0]));
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ISAPRES));
         dispatch(handleSetStep(1004));
       } 
     })
     .catch((error) => {
       dispatch(errorCallIsapres());
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ISAPRES));
       dispatch(handleSetStep(1004));
     });

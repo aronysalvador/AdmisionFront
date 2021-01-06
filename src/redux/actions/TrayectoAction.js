@@ -28,12 +28,14 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
       if(response.data.status === 200){
         dispatch(successCall(response.data.content[0]));
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO));
         dispatch(handleSetStep(1004));
       } 
     })
     .catch((error) => {
       dispatch(errorCall());
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO));
       dispatch(handleSetStep(1004));
     });
@@ -60,12 +62,14 @@ export const getMediosTransporteTrayecto = () => async (dispatch) => {
       if(response.data.status === 200){
         dispatch(successCall(response.data.content[0]));
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO));
         dispatch(handleSetStep(1004));
       }
     })
     .catch((error) => {
       dispatch(errorCall());
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO));
       dispatch(handleSetStep(1004));
     });
