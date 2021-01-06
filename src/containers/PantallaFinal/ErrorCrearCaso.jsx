@@ -49,6 +49,7 @@ const ErrorCrearCaso = () => {
                     <div className="col-md-3"></div>
                     <div className="col-md-6">
                         <Button
+                            id="ErrorCrearCaso-Btn1"
                             className={[comunClass.buttonAchs]} 
                             variant="contained"
                             onClick={() => dispatch(handleSetStep(27))}

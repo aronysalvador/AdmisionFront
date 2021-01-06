@@ -56,6 +56,7 @@ const NoCuentaSap = (props) => {
 
         <div className={comunClass.bottomElement}>
           <Button
+            id="NoCuentaSap-Btn1"
             className={blackStyle.buttonFooter}
               onClick={() => dispatch(handleSetStep(0)) }
           >

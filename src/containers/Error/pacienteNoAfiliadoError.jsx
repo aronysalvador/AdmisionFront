@@ -11,7 +11,7 @@ const PacienteNoAfiliadoError = (props) => {
     const comunClass = getComunStyle()
 
     return (<div className={comunClass.root}>
-                <Cabecera dispatch={() => dispatch(handleSetStep(2))} percentage={-1} />
+                <Cabecera id="PacienteNoAfiliadoError-BtnBack" dispatch={() => dispatch(handleSetStep(2))} percentage={-1} />
                 <Alert severity="warning">
                     <AlertTitle>En construcción</AlertTitle>
                 </Alert>

@@ -56,6 +56,7 @@ const ErrorApi = (props) => {
 
         <div className={comunClass.bottomElement}>
           <Button
+            id="ErrorApi-Btn1"
             className={blackStyle.buttonFooter}
               onClick={() => dispatch(handleSetStep(0)) }
           >

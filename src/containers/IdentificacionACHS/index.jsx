@@ -41,7 +41,7 @@ const Achs = () => {
         <Header userMsal={userMsal}/>
       </div>
       <div className={ welcomeStyle.backPosicion }> 
-        <Cabecera dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
+        <Cabecera id="Achs-BtnBack" dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
       </div>
       <div className={spaceStyle.space1} />
       <div className={comunStyle.displayDesk}>

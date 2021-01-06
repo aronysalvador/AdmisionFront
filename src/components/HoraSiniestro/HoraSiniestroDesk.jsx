@@ -12,9 +12,12 @@ const HoraSiniestroDesk = ({
   horasFromState,
   indiceMinutosFromState,
   minutos,
-  textLabel
+  textLabel,
+  UpComponent
 }) => {
 
+  const IdComponent = UpComponent ? UpComponent : "";
+  
   if(horasFromState?.toString().length === 1){
     horasFromState = ("0" + horasFromState).slice(-2)
   }
@@ -74,6 +77,7 @@ const HoraSiniestroDesk = ({
         <MuiPickersUtilsProvider utils={MomentUtils}  >
           <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
             <KeyboardTimePicker
+            id={IdComponent+"-TimePicker1"} 
             inputVariant="outlined"
             value={new Date(inputValue2)}
             inputValue={inputValue2}
