@@ -34,6 +34,7 @@ const RelatoSuccess = (props) => {
         <div className={welcomeStyle.beginContainer}>
           <div className={comunStyle.displayMobile}>
             <Cabecera 
+              id="RelatoSuccess-BtnBack1"
               dispatch={() => dispatch(handleSetStep(18.01))} 
               color={"#373737" }  
               percentage={-1} 
@@ -41,6 +42,7 @@ const RelatoSuccess = (props) => {
           </div>
           <div className={comunStyle.displayDesk}>
             <Cabecera 
+              id="RelatoSuccess-BtnBack2"
               dispatch={() => dispatch(handleSetStep(18.01))} 
               color={"#fff" } 
               percentage={-1} 
@@ -120,6 +122,7 @@ const RelatoSuccess = (props) => {
             />
             <div className={welcomeStyle.bottomBegin}>
               <Button
+                id="RelatoSuccess-Btn1"
                 className={comunStyle.buttonAchs}
                 variant="contained"
                 onClick={() => dispatch(handleSetStep(19.4))}
@@ -130,6 +133,7 @@ const RelatoSuccess = (props) => {
               {tipoSiniestro.Id === 2 &&
                 <div>
                   <Button
+                    id="RelatoSuccess-Btn2"
                     className={comunStyle.buttonAchs2}
                     style={{minWidth: '320px'}}
                     variant="contained"
@@ -139,6 +143,7 @@ const RelatoSuccess = (props) => {
                   </Button>
                   <div className={spaceStyle.spaceMin05} />
                   <Button
+                    id="RelatoSuccess-Btn3"
                     className={comunStyle.buttonAchs2}
                     variant="contained"
                     onClick={() => dispatch(handleSetStep(19.23))}

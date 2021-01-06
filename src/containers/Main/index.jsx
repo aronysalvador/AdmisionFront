@@ -692,7 +692,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19.3:
+      case 19.3: //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -708,7 +708,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 20:
+      case 20:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -716,7 +716,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 21:
+      case 21:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -724,7 +724,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 22:
+      case 22:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -732,7 +732,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 23:
+      case 23:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -740,7 +740,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 24:
+      case 24:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -748,7 +748,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 25:
+      case 25:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -764,7 +764,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 26:
+      case 26:  //notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -796,7 +796,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 26.4:
+      case 26.4: 
         return (
           <div className={layout}>
             <Paper className={paperFix}>
@@ -828,7 +828,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 1001.1:
+      case 1001.1: // no se usa, luego de maquetar la vista, se decidió no utilizarla 
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>

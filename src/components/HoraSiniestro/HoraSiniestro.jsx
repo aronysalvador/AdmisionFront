@@ -4,13 +4,15 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 //import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
-const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos }) => {
+const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos, UpComponent }) => {
   const [horas, setHoras] = useState(() => {
     return !horasFromState ? new Date().getHours() - 1 : horasFromState;
   });
   // const [minutos, setMinutos] = useState(() => {
   //   return !minutosFromState ? new Date().getMinutes() : minutosFromState;
   // });
+
+  const IdComponent = UpComponent ? UpComponent : "";
 
   const getMin = () => {
     let minutosActuales = new Date().getMinutes();
@@ -134,7 +136,8 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
         </Grid>
         <Grid item className={comunStyle.boxHoras}>
           <div>
-            <Button
+            <Button 
+              id={IdComponent+"-Btn1"} 
               variant="text"
               // onClick={() => { setHoras((h) => --h) }}
               onMouseDown={() => {
@@ -169,6 +172,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           {/* <div className={spaceStyle.spaceMin1} /> */}
           <div>
             <Button
+              id={IdComponent+"-Btn2"} 
               variant="text"
               // disabled={ horas === new Date().getHours()}
               // onClick={() => { setHoras((h) => ++h) }}
@@ -199,6 +203,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
         >
           <div>
             <Button
+              id={IdComponent+"-Btn3"} 
               variant="text"
               // onClick={() => { setIndiceMinutos((m) => --m)}}
               onMouseDown={() => {
@@ -238,6 +243,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           {/* <div className={spaceStyle.space1} /> */}
           <div>
             <Button
+              id={IdComponent+"-Btn4"} 
               variant="text"
              // disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
              // onClick={() => { setIndiceMinutos((m) => ++m) }}

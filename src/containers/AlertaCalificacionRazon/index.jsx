@@ -67,6 +67,7 @@ const AlertaCalificacionRazon = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="AlertaCalificacionRazon-BtnBack"
           dispatch={() => dispatch(handleSetStep(26.1))}
           percentage={percentage}
         />
@@ -94,9 +95,10 @@ const AlertaCalificacionRazon = () => {
             flexWrap: "wrap",
           }}
         >
-          {listado && listado.map((razonAlerta) => (
-            <BotonSeleccionarCustom
-              key={razonAlerta.glosa}
+          {listado && listado.map((razonAlerta,i) => (
+            <BotonSeleccionarCustom              
+              id={"AlertaCalificacionRazon"+i}
+              key={"key"+i}
               data={razonAlerta}
               itemForm={"razonAlertaForm"}
               selected={razonAlerta.glosa === razon.glosa}

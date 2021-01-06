@@ -21,12 +21,14 @@ export const getAFP = () => async (dispatch) => {
       if(response.data.status === 200){
         dispatch(successCallAFP(response.data.content[0]));
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AFP));
         dispatch(handleSetStep(1004));
       }
     })
     .catch((error) => {
       dispatch(errorCallAFP());
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AFP));
       dispatch(handleSetStep(1004));
     });

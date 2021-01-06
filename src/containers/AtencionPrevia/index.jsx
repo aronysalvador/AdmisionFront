@@ -78,6 +78,7 @@ const AtencionPrevia = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="AtencionPrevia-BtnBack"
           dispatch={() => dispatch(handleSetStep(19.2))}
           percentage={percentage}
         />
@@ -105,7 +106,7 @@ const AtencionPrevia = () => {
             Nombre del recinto o profesional
             </Grid>
             <TextField
-                id="nombre"
+                id="AtencionPrevia-nombre"
                 value={OtroRecinto}
                 onChange={(e) => saveOtroRecinto(e.target.value)}
                 margin="dense"
@@ -119,7 +120,7 @@ const AtencionPrevia = () => {
                 InputProps={{
                     endAdornment: (
                     <InputAdornment  position="end">
-                      <IconButton onClick={() => {saveOtroRecinto("");}}>
+                      <IconButton id="AtencionPrevia-ClearIcon1" onClick={() => {saveOtroRecinto("");}}>
                         <ClearIcon />
                       </IconButton>
                     </InputAdornment>
@@ -131,6 +132,7 @@ const AtencionPrevia = () => {
                 <div className={comunClass.paddingElement}>
                     <div style={{display:'none'}}>
                       <FechaSiniestro
+                        UpComponent="AtencionPrevia"
                         onChange={setFechaValueSiniestro}
                         daysFromState={days}
                         monthFromState={month}
@@ -139,6 +141,7 @@ const AtencionPrevia = () => {
                     </div>
                     <div className={[comunClass.widthDateSex]}>
                       <FechaSiniestroDesk
+                        UpComponent="AtencionPrevia"
                         onChange={setFechaValueSiniestro}
                         daysFromState={days}
                         monthFromState={month}
@@ -149,6 +152,7 @@ const AtencionPrevia = () => {
                     <div className={spaceStyle.space1} />
                     <div style={{display: 'none'}}>
                       <HoraSiniestro
+                        UpComponent="AtencionPrevia"
                         onChange={setHoraValueSiniestro}
                         horasFromState={horas}
                         indiceMinutosFromState={minutosArray.indexOf(minutos)}
@@ -158,6 +162,7 @@ const AtencionPrevia = () => {
                     </div>
                     <div className={[comunClass.widthDateSex]}>
                       <HoraSiniestroDesk
+                          UpComponent="AtencionPrevia"
                           onChange={setHoraValueSiniestro}
                           horasFromState={horas}
                           indiceMinutosFromState={minutosArray.indexOf(minutos)}
@@ -172,7 +177,7 @@ const AtencionPrevia = () => {
                 Tipo de documentos
             </Grid>
             <TextField
-                id="CuentaCual"
+                id="AtencionPrevia-CuentaCual"
                 value={CuentaCual}
                 onChange={(e) => saveCuentaCual(e.target.value)}
                 margin="dense"
@@ -186,7 +191,7 @@ const AtencionPrevia = () => {
                 InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={() => {saveCuentaCual("");}}>
+                      <IconButton  id="AtencionPrevia-ClearIcon2" onClick={() => {saveCuentaCual("");}}>
                           <ClearIcon />
                       </IconButton>
                     </InputAdornment>
@@ -196,6 +201,7 @@ const AtencionPrevia = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id="AtencionPrevia-Btn1"
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"

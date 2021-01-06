@@ -10,7 +10,7 @@ import Header from "../../components/header/index";
 import image from './../../img/error-siniestro.svg'
 
 const ErrorApi = (props) => {
-  const { dispatch, microsoftReducer, addmissionForm: {mensajeErrorApi} } = props;
+  const { dispatch, microsoftReducer, addmissionForm: {mensajeErrorApi, errorStep} } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
@@ -56,8 +56,10 @@ const ErrorApi = (props) => {
 
         <div className={comunClass.bottomElement}>
           <Button
+            id="ErrorApi-Btn1"
             className={blackStyle.buttonFooter}
-              onClick={() => dispatch(handleSetStep(0)) }
+            onClick={() => dispatch(handleSetStep(errorStep)) }
+            
           >
             Entendido
           </Button>

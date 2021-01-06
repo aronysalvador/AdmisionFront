@@ -147,6 +147,7 @@ export default () =>{
             </div>
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
+                    id="DatosContractuales-BtnBack"
                     dispatch={() => dispatch(handleSetStep(19.2))}
                     percentage={percentage}
                 />
@@ -168,6 +169,7 @@ export default () =>{
                                 <div  className={['col-md-12', comunClass.backgroundGrey].join(' ')}>
 
                                     <SelectsAutocomplete
+                                        id="DatosContractuales-AutocompleteCategorias"
                                         first="dark"
                                         txt1="Ingresar la"
                                         txt2="categoría ocupacional" 
@@ -182,6 +184,7 @@ export default () =>{
                                     </div>
 
                                     <SelectsAutocomplete
+                                        id="DatosContractuales-AutocompleteContratos"
                                         first="dark"
                                         txt1="Tipo de"
                                         txt2="contrato" 
@@ -196,6 +199,7 @@ export default () =>{
                                     </div>
 
                                     <SelectsAutocomplete
+                                        id="DatosContractuales-AutocompleteCategorias"
                                         first="blue"
                                         txt1="Profesión u oficio"
                                         txt2="del paciente" 
@@ -217,7 +221,7 @@ export default () =>{
                                             &nbsp; del paciente en la empresa
                                         </Grid> 
                                         <NoTopTextField
-                                            id="cargo"
+                                            id="DatosContractuales-Input1"
                                             value={cargo}
                                             onFocus={()=>setErrorCargo(false)}
                                             onChange={(e) => setCargo(Format.caracteresInvalidos(e.target.value))}
@@ -257,6 +261,7 @@ export default () =>{
                                 <div className={['col-md-12', comunClass.backgroundGrey].join(' ')}>
                                     
                                     <SelectsAutocomplete
+                                        id="DatosContractuales-AutocompleteRemuneración"
                                         first="dark"
                                         txt1="Tipo de"
                                         txt2="remuneración" 
@@ -271,6 +276,7 @@ export default () =>{
                                     </div>
                                     
                                     <SelectsAutocomplete
+                                        id="DatosContractuales-AutocompleteJornada"
                                         first="dark"
                                         txt1="Tipo de"
                                         txt2="jornada" 
@@ -307,7 +313,8 @@ export default () =>{
                                                 <div  style={{ zIndex: 9}} >
                                                     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker                                                            
+                                                            <NoPaddingPicker       
+                                                                id="DatosContractuales-TimePicker1"                                                     
                                                                 value={selectedDate}
                                                                 format="HH:mm"
                                                                 inputValue={entrada}
@@ -343,7 +350,8 @@ export default () =>{
                                                 <div  style={{ zIndex: 9}} >
                                                     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} >
                                                         <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker                                                          
+                                                            <NoPaddingPicker        
+                                                                id="DatosContractuales-TimePicker2"                                                     
                                                                 value={selectedDateSalida}
                                                                 format="HH:mm"
                                                                 inputValue={salida}
@@ -385,6 +393,7 @@ export default () =>{
                                             <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
                                                 <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
                                                 <NoPaddingDatePicker
+                                                    id="DatosContractuales-DatePicker1"   
                                                     inputVariant="outlined"
                                                     views={["year", "month"]}
                                                     disableFuture                                                          
