@@ -21,12 +21,14 @@ export const getProfesion = () => async (dispatch) => {
       if(response.data.status === 200){
         dispatch(successCallProfesion(response.data.content.response));
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_PROFESION));
         dispatch(handleSetStep(1004));
       }     
     })
     .catch((error) => {
       dispatch(errorCallProfesion());
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_PROFESION));
       dispatch(handleSetStep(1004));
     });

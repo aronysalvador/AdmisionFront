@@ -21,12 +21,14 @@ export const getComuna = () => async (dispatch) => {
       if(response.data.status === 200){
         dispatch(successCallComuna(response.data.content[0]));
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_COMUNA));
         dispatch(handleSetStep(1004));
       }
     })
     .catch((error) => {
       dispatch(errorCallComuna());
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_COMUNA));
       dispatch(handleSetStep(1004));
     });

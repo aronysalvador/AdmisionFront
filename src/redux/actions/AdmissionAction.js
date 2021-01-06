@@ -488,6 +488,9 @@ export const saveRut = (rut) => {
             })
             .catch((error) => {
                 console.log("error: " + String(error));
+                dispatch(updateForm("errorStep", 3));
+                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                dispatch(handleSetStep(1004));
             });
     };
 };
@@ -497,10 +500,19 @@ const saveRazonSocial = (rut) => {
         if (rut) {
             obtenerDataRazon(rut)
                 .then((result) => {
-                    dispatch(updateForm("razonSocial", result.data.content.response[0]));
+                    if(result.data.status === 200){
+                        dispatch(updateForm("razonSocial", result.data.content.response[0]));
+                    }else{
+                        dispatch(updateForm("errorStep", 3));
+                        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                        dispatch(handleSetStep(1004));
+                    }  
                 })
                 .catch((error) => {
                     console.log("error: " + String(error));
+                    dispatch(updateForm("errorStep", 3));
+                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                    dispatch(handleSetStep(1004));
                 });
         }
     };
