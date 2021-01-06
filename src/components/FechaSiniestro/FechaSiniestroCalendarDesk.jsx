@@ -56,7 +56,7 @@ const FechaSiniestroDesk = ({
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
-            id={IdComponent+"-DatePicker1"} 
+            id={IdComponent+"-Desk-DatePicker1"} 
             inputVariant="outlined"
             disableFuture
             format="DD-MM-YYYY"

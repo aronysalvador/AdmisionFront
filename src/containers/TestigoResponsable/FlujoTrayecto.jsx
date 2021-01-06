@@ -164,6 +164,7 @@ const FlujoTrayecto = () => {
         </div>
         <div className={comunClass.beginContainerDesk}>
             <Cabecera
+            id="FlujoTrayecto-BtnBack"                
             dispatch={() => dispatch(handleSetStep(10.1))}
             percentage={percentage}
             />
@@ -189,7 +190,7 @@ const FlujoTrayecto = () => {
                                     Nombre responsable
                                     </Grid>
                                     <TextField
-                                    id="nombreResponsable"
+                                    id="FlujoTrayecto-Input1"
                                     value={nombreResponsable}
                                     onChange={(e) => saveNombreResponsable(Format.caracteresInvalidos(e.target.value))}
                                     //helperText="Ejemplo: Luis Morales"
@@ -201,7 +202,7 @@ const FlujoTrayecto = () => {
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <IconButton onClick={() => { saveNombreResponsable("") }}>
+                                                <IconButton id="FlujoTrayecto-ClearIcon1" onClick={() => { saveNombreResponsable("") }}>
                                                     <ClearIcon />
                                                 </IconButton>
                                             </InputAdornment>
@@ -224,6 +225,7 @@ const FlujoTrayecto = () => {
                                     <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
                                         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
                                         <NoPaddingDatePicker
+                                            id="FlujoTrayecto-Datepicker1"
                                             inputVariant="outlined"
                                             disableFuture   
                                             value={selectedDate}
@@ -262,7 +264,7 @@ const FlujoTrayecto = () => {
                                     Cargo o relación responsable
                                     </Grid>
                                     <TextField
-                                    id="cargoResponsable"
+                                    id="FlujoTrayecto-Input2"
                                     value={cargoResponsable}
                                     onChange={(e) => saveCargoResponsable(Format.caracteresInvalidos(e.target.value))}
                                     helperText="Ejemplo:Jefe de area, Prevensionista"        
@@ -274,7 +276,7 @@ const FlujoTrayecto = () => {
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <IconButton onClick={() => { saveCargoResponsable("") }}>
+                                                <IconButton id="FlujoTrayecto-ClearIcon2" onClick={() => { saveCargoResponsable("") }}>
                                                     <ClearIcon />
                                                 </IconButton>
                                             </InputAdornment>
@@ -297,7 +299,8 @@ const FlujoTrayecto = () => {
                                 <div  style={{ zIndex: 9 }} >
                                     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                                     <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                        <NoPaddingPicker                              
+                                        <NoPaddingPicker      
+                                            id="FlujoTrayecto-Timepicker1"                        
                                             value={selectedHour}
                                             format="HH:mm"
                                             inputValue={hour}
@@ -338,6 +341,7 @@ const FlujoTrayecto = () => {
                                     <div className={check.id === 1 ? comunClass.roundedBlue2 : comunClass.roundedNormal2}>
                                         <div className={comunClass.containerOpction} style={{alignItems:"flex-end "}}>
                                             <BlueRadio
+                                                id="FlujoTrayecto-Check1"
                                                 checked={check.id === 1}
                                                 onChange={()=>setCheck({ id:1, description: "Presencial" })}
                                                 value={check.id}
@@ -352,6 +356,7 @@ const FlujoTrayecto = () => {
                                     <div className={check.id === 2 ? comunClass.roundedBlue2 : comunClass.roundedNormal2}>
                                         <div className={comunClass.containerOpction}>
                                             <BlueRadio
+                                                id="FlujoTrayecto-Check2"
                                                 checked={check.id === 2}
                                                 onChange={()=>{setCheck({ id:2, description: "E-mail" })}}
                                                 value={check.id}
@@ -368,6 +373,7 @@ const FlujoTrayecto = () => {
                                     <div className={check.id === 3 ? comunClass.roundedBlue2 : comunClass.roundedNormal2}>
                                         <div className={comunClass.containerOpction}>
                                             <BlueRadio
+                                                id="FlujoTrayecto-Check3"
                                                 checked={check.id === 3}
                                                 onChange={()=>{setCheck({ id:3, description: "Llamada telefónica" })}}
                                                 value={check.id}
@@ -382,6 +388,7 @@ const FlujoTrayecto = () => {
                                     <div className={check.id === 4 ? comunClass.roundedBlue2 : comunClass.roundedNormal2}>
                                         <div className={comunClass.containerOpction}>
                                             <BlueRadio
+                                                id="FlujoTrayecto-Check4"
                                                 checked={check.id === 4}
                                                 onChange={()=>{setCheck({ id:4, description: "Whatsapp" })}}
                                                 value={check.id}
@@ -400,6 +407,7 @@ const FlujoTrayecto = () => {
                                         
                                         <div className={comunClass.containerOpction}>
                                             <BlueRadio
+                                                id="FlujoTrayecto-Check5"
                                                 checked={check.id === 5}
                                                 onChange={()=>{setCheck({ id:5, description: "Otro", especificacion: "" })}}
                                                 value={check.id}
@@ -409,9 +417,9 @@ const FlujoTrayecto = () => {
                                             <p className={comunClass.txtRadios} style={{ marginTop: "22px" }}>Otro</p>
                                             
                                             <TextField
+                                                id="FlujoTrayecto-Input3"
                                                 onClick={()=>{setCheck({ id:5, description: "Otro", especificacion: "" })}}
                                                 focused={check.id === 5?true:false}
-                                                id="especificacion"
                                                 value={check.especificacion?check.especificacion:""}
                                                 onChange={(e) =>  setCheck({ id:5, description: "Otro", especificacion: Format.caracteresInvalidos(e.target.value) }) }
                                                 margin="dense"
@@ -423,7 +431,7 @@ const FlujoTrayecto = () => {
                                                 inputProps={{ maxLength: 200 }}
                                                 InputProps={{
                                                     endAdornment: (
-                                                        <ClearIcon style={{cursor:'pointer'}} onClick={() => {
+                                                        <ClearIcon id="FlujoTrayecto-ClearIcon3" style={{cursor:'pointer'}} onClick={() => {
                                                                          setCheck({ id:5, description: "Otro", especificacion: "" })
                                                                      }} 
                                                         />
@@ -457,7 +465,7 @@ const FlujoTrayecto = () => {
                                     Nombre testigo
                                     </Grid>
                                     <TextField
-                                    id="nombreTestigo"
+                                    id="FlujoTrayecto-Input4"
                                     value={nombreTestigo}
                                     onChange={(e) => saveNombreTestigo(Format.caracteresInvalidos(e.target.value))}
                                     margin="dense"
@@ -468,7 +476,7 @@ const FlujoTrayecto = () => {
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <IconButton onClick={() => { saveNombreTestigo("") }}>
+                                                <IconButton id="FlujoTrayecto-ClearIcon4" onClick={() => { saveNombreTestigo("") }}>
                                                     <ClearIcon />
                                                 </IconButton>
                                             </InputAdornment>
@@ -486,7 +494,7 @@ const FlujoTrayecto = () => {
                                     Cargo o relación testigo
                                     </Grid>
                                     <TextField
-                                    id="cargoTestigo"
+                                    id="FlujoTrayecto-Input5"
                                     value={cargoTestigo}
                                     onChange={(e) => saveCargoTestigo(Format.caracteresInvalidos(e.target.value))}
                                     helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
@@ -498,7 +506,7 @@ const FlujoTrayecto = () => {
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <IconButton onClick={() => { saveCargoTestigo("") }}>
+                                                <IconButton id="FlujoTrayecto-ClearIcon5" onClick={() => { saveCargoTestigo("") }}>
                                                     <ClearIcon />
                                                 </IconButton>
                                             </InputAdornment>
@@ -517,6 +525,7 @@ const FlujoTrayecto = () => {
                                     Teléfono (Opcional)
                                     </Grid>
                                     <InputMasked
+                                    id="FlujoTrayecto-InputPhone1"
                                     mask={Mask.advanced}
                                     setTelefono={setDatosTestig}
                                     handleOnChange={handleOnChange}
@@ -533,6 +542,7 @@ const FlujoTrayecto = () => {
 
                     <div style={{ position: "relative", textAlign:"center" }}>
                         <Button
+                            id="FlujoTrayecto-Btn1"
                             className={comunClass.buttonAchs}
                             variant="contained"
                             disabled={btnValido}

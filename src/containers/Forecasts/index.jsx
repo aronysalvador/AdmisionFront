@@ -91,6 +91,7 @@ const Forecasts = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="Forecasts-BtnBack"
           dispatch={() => dispatch(handleSetStep("x", 18.01 ))}
           percentage={percentage}
         />
@@ -123,6 +124,7 @@ const Forecasts = () => {
                       <div className={checkedAfp.codigo === afp.codigo && checkedAfp.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-3">
                               <BlueRadio
+                                  id={"Forecasts-Check"+i}
                                   // onClick={()=>handeleNext()}
                                   checked={checkedAfp.codigo === afp.codigo && checkedAfp.otro === false}
                                   onChange={()=>{ 
@@ -147,7 +149,7 @@ const Forecasts = () => {
                 <div className={spaceStyle.space1} />
 
                 <div className="row">
-                  <Listados title="Otra AFP" checkedAfp ={ checkedAfp } setCheckedAfp = {setCheckedAfp}  identificador="codigo" description="nombre" listado={afpList}   />
+                  <Listados id="Forecasts-AFP" title="Otra AFP" checkedAfp ={ checkedAfp } setCheckedAfp = {setCheckedAfp}  identificador="codigo" description="nombre" listado={afpList}   />
                 </div>
                 <div className={spaceStyle.spaceMin1} />
               </div>
@@ -173,7 +175,8 @@ const Forecasts = () => {
                     <div className="col-md-12" style={{marginBottom: '10px'}}> 
                       <div className={checkedIsapre.id === isapreList[0].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-2">
-                              <BlueRadio
+                              <BlueRadio                              
+                                  id="Forecasts-Check-Isapre1"
                                   checked={checkedIsapre.id === isapreList[0].id && checkedIsapre.otro === false}
                                   onChange={()=>{ 
                                     isapreList[0].otro=false; 
@@ -196,7 +199,8 @@ const Forecasts = () => {
                    <div className="col-md-6" style={{marginBottom: '10px'}}> 
                       <div className={checkedIsapre.id === isapreList[25].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-3">
-                              <BlueRadio
+                              <BlueRadio      
+                                  id="Forecasts-Check-Isapre2"
                                   checked={checkedIsapre.id === isapreList[25].id && checkedIsapre.otro === false}
                                   onChange={()=>{
                                      isapreList[25].otro=false; 
@@ -218,7 +222,8 @@ const Forecasts = () => {
                    <div className="col-md-6" style={{marginBottom: '10px'}}> 
                       <div className={checkedIsapre.id === isapreList[12].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-3">
-                              <BlueRadio
+                              <BlueRadio      
+                                  id="Forecasts-Check-Isapre3"
                                   checked={checkedIsapre.id === isapreList[12].id && checkedIsapre.otro === false}
                                   onChange={()=>{
                                      isapreList[12].otro=false; 
@@ -240,7 +245,8 @@ const Forecasts = () => {
                    <div className="col-md-6" style={{marginBottom: '10px'}}> 
                       <div className={checkedIsapre.id === isapreList[11].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-3">
-                              <BlueRadio
+                              <BlueRadio      
+                                  id="Forecasts-Check-Isapre4"
                                   checked={checkedIsapre.id === isapreList[11].id && checkedIsapre.otro === false}
                                   onChange={()=>{ 
                                     isapreList[11].otro=false; 
@@ -262,7 +268,8 @@ const Forecasts = () => {
                    <div className="col-md-6" style={{marginBottom: '10px'}}> 
                       <div className={checkedIsapre.id === isapreList[9].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-3">
-                              <BlueRadio
+                              <BlueRadio      
+                                  id="Forecasts-Check-Isapre5"
                                   checked={checkedIsapre.id === isapreList[9].id && checkedIsapre.otro === false}
                                   onChange={()=>{ 
                                     isapreList[9].otro=false; 
@@ -287,7 +294,7 @@ const Forecasts = () => {
                 <div className={spaceStyle.space1} />
 
                 <div className="row">
-                  <Listados title="Otra Isapre" checkedAfp ={ checkedIsapre } setCheckedAfp = {setcheckedIsapre} identificador="id" description="nombre" listado={isapreList}  />
+                  <Listados id="Forecasts-Isapre"  title="Otra Isapre" checkedAfp ={ checkedIsapre } setCheckedAfp = {setcheckedIsapre} identificador="id" description="nombre" listado={isapreList}  />
                 </div>
                 <div className={spaceStyle.spaceMin1} />
               </div>
@@ -320,21 +327,6 @@ const Forecasts = () => {
 
     </div>
     
-    
-
-
-    // <div className={comunClass.root}>
-    //   <div className={comunClass.displayDesk}> 
-    //     <Header userMsal={ microsoftReducer.userMsal }/>
-    //   </div>
-    //   <div className={comunClass.beginContainerDesk}>
-    //     <Cabecera
-    //       dispatch={() => dispatch(handleSetStep(responsable?.nombre?.length > 0 ?  17.1 : 15 ,18.01))}
-    //       percentage={percentage}
-    //     />
-    //   </div>
-      
-    // </div>
   );
 };
 

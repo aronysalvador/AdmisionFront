@@ -52,6 +52,7 @@ const FechaHoraResponsable = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="FechaHoraResponsable-Btnback"
           dispatch={() => dispatch(handleSetStep(16))}
           percentage={percentage}
         />
@@ -76,6 +77,7 @@ const FechaHoraResponsable = () => {
         <div className={comunClass.containerTextBox}>
           <div className={comunClass.displayMobile}>
             <FechaSiniestro
+              UpComponent="FechaHoraResponsable"
               onChange={setFechaValueSiniestro}
               daysFromState={days}
               monthFromState={month}
@@ -84,6 +86,7 @@ const FechaHoraResponsable = () => {
           </div>
           <div className={comunClass.displayDesk} style={{marginBottom:'10px'}}>
             <FechaSiniestroDesk
+              UpComponent="FechaHoraResponsable"
               onChange={setFechaValueSiniestro}
               daysFromState={days}
               monthFromState={month}
@@ -94,6 +97,7 @@ const FechaHoraResponsable = () => {
           <div className={spaceStyle.space1} />
             <div className={comunClass.displayMobile}>
               <HoraSiniestro
+                UpComponent="FechaHoraResponsable"
                 onChange={setHoraValueSiniestro}
                 horasFromState={horas}
                 indiceMinutosFromState={minutosArray.indexOf(minutos)}
@@ -103,6 +107,7 @@ const FechaHoraResponsable = () => {
             </div>
             <div className={comunClass.displayDesk}>
               <HoraSiniestroDesk
+                  UpComponent="FechaHoraResponsable"
                   onChange={setHoraValueSiniestro}
                   horasFromState={horas}
                   indiceMinutosFromState={minutosArray.indexOf(minutos)}
@@ -113,6 +118,7 @@ const FechaHoraResponsable = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id="FechaHoraResponsable-Btn1"
             className={comunClass.buttonAchs}
             onClick={() => {
               dispatch(
