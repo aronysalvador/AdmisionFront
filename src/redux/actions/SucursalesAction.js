@@ -4,7 +4,7 @@ import {
   GET_SUCURSALES_FAILURE,
 } from "../types/sucursalesType";
 import Axios from "axios";
-import { updateForm } from "./AdmissionAction";
+import { updateForm, handleSetStep } from "./AdmissionAction";
 
 export const obtenerData = async (rut) => {
   return Axios.get(`${window.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`);
@@ -18,10 +18,13 @@ export const getSucursales = (rut) => async (dispatch) => {
 
   obtenerData(rut)
     .then((response) => {
-      dispatch(successCallSucursales(response.data));
+        dispatch(successCallSucursales(response.data));    
     })
     .catch((error) => {
       dispatch(errorCallSucursales());
+      dispatch(updateForm("errorStep", 3));
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_SUCURSALES));
+      dispatch(handleSetStep(1004));
     });
 
   const successCallSucursales = (sucursales) => ({

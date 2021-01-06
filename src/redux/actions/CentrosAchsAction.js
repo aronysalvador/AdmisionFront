@@ -21,12 +21,14 @@ export const getCentros = () => async (dispatch) => {
       if(response.data.status === 200){
         dispatch(successCallCENTROS(response.data.content.response));
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CENTROSACHS));
         dispatch(handleSetStep(1004));
       }     
     })
     .catch((error) => {
       dispatch(errorCallCENTROS());
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CENTROSACHS));
       dispatch(handleSetStep(1004));
     });

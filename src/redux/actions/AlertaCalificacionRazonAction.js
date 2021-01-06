@@ -23,6 +23,7 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
         let data = response.data.content.response[0].opciones
         dispatch(successCallRazonAlerta(data));  
       }else{
+        dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ALERTAS));
         dispatch(handleSetStep(1004));
       }
@@ -30,6 +31,7 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
     })
     .catch((error) => {
       dispatch(errorCallRazonAlerta(error));
+      dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ALERTAS));
       dispatch(handleSetStep(1004));
     });
