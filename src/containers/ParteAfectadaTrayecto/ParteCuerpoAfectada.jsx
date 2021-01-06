@@ -43,6 +43,7 @@ const ParteCuerpoAfectada = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"ParteCuerpoAfectada-BtnBack"}
           dispatch={() => dispatch(handleSetStep(8.1))}
           percentage={percentage}
         />
@@ -62,10 +63,11 @@ const ParteCuerpoAfectada = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Grid className={comunClass.tituloTextBox} style={{marginBottom: '10px'}}>
+          <Grid className={comunClass.tituloTextBox} style={{marginBottom: '10px'}} for={"ParteCuerpoAfectada-Lbl1"}>
             Ingresa la parte del cuerpo lesionada
           </Grid>
           <AutoComplete
+            id={"ParteCuerpoAfectada-Lbl1"}
             inputValue={parteAfectada}
             freeSolo
             options={sugerenciasParteCuerpo}
@@ -89,10 +91,11 @@ const ParteCuerpoAfectada = () => {
 
           <div className={spaceStyle.space2} />
 
-          <Grid className={comunClass.tituloTextBox}>
+          <Grid className={comunClass.tituloTextBox} for={"ParteCuerpoAfectada-Lbl2"}>
             Ingresa la información adicional al relato
           </Grid>
           <TextField
+            id={"ParteCuerpoAfectada-Lbl2"}
             value={otrasCircunstancias}
             margin="dense"
             variant="outlined"
@@ -110,6 +113,7 @@ const ParteCuerpoAfectada = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"ParteCuerpoAfectada-Btn1"}
             disabled={parteAfectada?.length < 3}
             className={comunClass.buttonAchs}
             variant="contained"

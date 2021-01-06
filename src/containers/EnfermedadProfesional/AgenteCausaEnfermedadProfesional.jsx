@@ -87,6 +87,7 @@ const AgenteCausaEnfermedadProfesional = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"AgenteCausaEP-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.04))}
           percentage={percentage}
         />
@@ -111,11 +112,12 @@ const AgenteCausaEnfermedadProfesional = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <div>
-            <Typography className={comunClass.tituloTextBox}>
+            <Typography className={comunClass.tituloTextBox} for={"AgenteCausaEP-Lbl1"}>
               Ingrese agente que causa la molestia
             </Typography>
 
             <AutoComplete
+              id={"AgenteCausaEP-Lbl1"}
               value={agenteCausa}
               onChange={(event, value) => {
                 setAgenteCausa(value);
@@ -141,11 +143,11 @@ const AgenteCausaEnfermedadProfesional = () => {
           </div>
           <div className={spaceStyle.space1} />
           <div>
-            <Typography className={comunClass.tituloTextBox}>
+            <Typography className={comunClass.tituloTextBox} for={"AgenteCausaEP-Lbl2"}>
               Trabajo que realizaba al momento de las molestias
             </Typography>
             <TextField
-              id="nombre"
+              id={"AgenteCausaEP-Lbl2"}
               value={molestia}
               placeholder={"Ejemplo: aire acondicionado, silla de escritorio"}
               onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
@@ -162,6 +164,7 @@ const AgenteCausaEnfermedadProfesional = () => {
           </div>
           <div className={spaceStyle.space1} />
           <FechaSintomas
+            id={"AgenteCausaEP-Lbl3"}
             onChange={setFechaValueSiniestro}
             daysFromState={days}
             monthFromState={month}
@@ -179,7 +182,7 @@ const AgenteCausaEnfermedadProfesional = () => {
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
             <Grid component="span">
-              <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+              <BlueCheckbox id={"AgenteCausaEP-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>
             Existen compañeros de trabajo con las mismas molestias
           </Typography>
@@ -187,6 +190,7 @@ const AgenteCausaEnfermedadProfesional = () => {
 
         <div className={comunClass.bottomElement} style={{padding: "10px 0"}}>
           <Button
+            id={"AgenteCausaEP-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || invalidFecha}

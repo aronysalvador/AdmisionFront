@@ -34,12 +34,12 @@ export default (props) => {
       <Grid
         className={comunClass.tituloTextBox}
         style={{marginBottom:'15px', textAlign: "left"}}
-        id={"InfoAccidente-Lbl3"}
+        for={"InfoAccidente-LblLugar"}
       >
         Dirección de trabajo
       </Grid> 
       <DireccionGeo
-        id={"InfoAccidente-Lbl3"}
+        id={"InfoAccidente-LblLugar"}
         comunStyle={getComunStyle()}
         direccion={sucursal} 
         setMapa={setMapaUrl} 

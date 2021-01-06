@@ -90,6 +90,7 @@ const LugarSiniestroTrayectoMapa = () => {
       <div className={comunClass.beginContainerDesk}>
         <div style={{padding: '0.5em'}}>
           <Cabecera
+            id={"LugarSiniestroTrayectoMapa-BtnBack"}
             dispatch={() => dispatch(handleSetStep(10.1))}
             percentage={percentage}
             noSpace={true}
@@ -125,6 +126,7 @@ const LugarSiniestroTrayectoMapa = () => {
         </div>
         <div className={comunClass.bottomElementMap} style={{padding: '0 20px 20px 20px'}}>
           <Button
+            id={"LugarSiniestroTrayectoMapa-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={!direccionValida}

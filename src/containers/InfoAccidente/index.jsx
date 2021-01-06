@@ -286,13 +286,13 @@ const InfoAccidente = () => {
                                                     <Grid
                                                     className={comunClass.tituloTextBox}
                                                     style={{ marginBottom:'8px', textAlign: "left"}}
-                                                    for={"InfoAccidente-Lbl4"}
+                                                    for={"InfoAccidente-Lbl3"}
                                                     >
                                                         Referencia
                                                     </Grid> 
                                                     <div>
                                                         <NoPaddingTextField
-                                                            id={"InfoAccidente-Lbl4"}
+                                                            id={"InfoAccidente-Lbl3"}
                                                             helperText={
                                                             !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
                                                             }

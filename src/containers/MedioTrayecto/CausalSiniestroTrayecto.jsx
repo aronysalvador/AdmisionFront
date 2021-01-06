@@ -43,6 +43,7 @@ const CausalSiniestroTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"CausalSiniestroTrayecto-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.02))}
           percentage={percentage}
         />
@@ -66,10 +67,11 @@ const CausalSiniestroTrayecto = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox}>
+          <Typography className={comunClass.tituloTextBox} for={"CausalSiniestroTrayecto-Lbl1"}>
             Mecanismo Causal
           </Typography>
           <TextField
+            id={"CausalSiniestroTrayecto-Lbl1"}
             autoComplete
             helperText={!mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"}
             error={!mecanismoCausalValid}
@@ -100,10 +102,11 @@ const CausalSiniestroTrayecto = () => {
 
           <div className={spaceStyle.space2} />
 
-          <Typography className={comunClass.tituloTextBox}>
+          <Typography className={comunClass.tituloTextBox} for={"CausalSiniestroTrayecto-Lbl2"}>
             Posible Causa
           </Typography>
           <TextField
+            id={"CausalSiniestroTrayecto-Lbl2"}
             autoComplete
             helperText={!posibleCausaValid && "Debes ingresar al menos una posible causa"}
             error={!posibleCausaValid}
@@ -134,6 +137,7 @@ const CausalSiniestroTrayecto = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"CausalSiniestroTrayecto-Btn1"}
             disabled={(mecanismoCausal?.length <= 3 || !mecanismoCausalValid) || (posibleCausa?.length <= 3 || !posibleCausaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
