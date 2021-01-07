@@ -401,7 +401,7 @@ export const saveRut = (rut) => {
 
                         dispatch(handleSetStep(STEP));
 
-                        // dispatch(saveRazonSocial(result.data.content.response.RutPagador));
+                        dispatch(saveRazonSocial(result.data.content.response.RutPagador));
                         dispatch(getSucursales(result.data.content.response.RutPagador))
 
                         dispatch(updateForm("cita", result.data.content.response.cita));
@@ -700,7 +700,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
 
     try {
 
-        const result = await sendingCaso(objeto);
+        const result = await sendingCaso(objeto, getState().microsoftReducer.token);
         const data = result.data
 
         if (data.status === 200){
