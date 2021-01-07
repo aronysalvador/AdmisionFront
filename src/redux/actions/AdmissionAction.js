@@ -702,11 +702,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
     //console.log(JSON.stringify(objeto))
     //console.log("*********************************************")
 
-<<<<<<< HEAD
     try {
-=======
-    const result = await sendingCaso(objeto, getState().microsoftReducer.token);
->>>>>>> e8991fae75a346fb999fa86dc3aa27fce36f3f1d
 
         const result = await sendingCaso(objeto);
         const data = result.data
