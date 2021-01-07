@@ -7,7 +7,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { getBlackTheme } from "../../css/blackTheme";
 import Header from "../../components/header/index";
-import image from './../../img/error-siniestro.svg'
+import image from './../../img/imagen-error-desconeccion.svg'
 
 const ErrorApi = (props) => {
   const { dispatch, microsoftReducer, addmissionForm: {mensajeErrorApi, errorStep} } = props;

@@ -18,7 +18,7 @@ export const searchIsapres = () => async (dispatch) => {
 
   fetchData()
     .then((response) => {
-      if(response.data.status === 200){
+      if(response.data.status === 200 || response.data.status === 304){
         dispatch(successCallIsapres(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));

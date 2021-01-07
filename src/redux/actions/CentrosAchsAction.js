@@ -18,7 +18,7 @@ export const getCentros = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      if(response.data.status === 200){
+      if(response.data.status === 200 || response.data.status === 304){
         dispatch(successCallCENTROS(response.data.content.response));
       }else{
         dispatch(updateForm("errorStep", 0));

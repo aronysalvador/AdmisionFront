@@ -19,7 +19,7 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
   // Mostrar alertas segun tipo de siniestro 
   getData()
     .then((response) => {
-      if(response.data.status === 200){
+      if(response.data.status === 200 || response.data.status === 304){
         let data = response.data.content.response[0].opciones
         dispatch(successCallRazonAlerta(data));  
       }else{

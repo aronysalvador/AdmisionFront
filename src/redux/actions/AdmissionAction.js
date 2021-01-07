@@ -319,7 +319,8 @@ export const saveRut = (rut) => {
     return (dispatch, getState) => {
         obtenerData(rut)
             .then((result) => {
-                let BpCreado = result.data.content.response.BpCreado;
+                if(result.data.status === 200 || result.data.status === 304){
+                    let BpCreado = result.data.content.response.BpCreado;
                 if (BpCreado) {
                     //Guardar datos adicionales paciente requeridos por SAP
                     const {
@@ -459,9 +460,14 @@ export const saveRut = (rut) => {
                     const { microsoftReducer: { userMsal } } = getState();
                     const { email } = userMsal;
                     const { addmissionForm: { centrosForm, tipoSiniestro, BP } } = getState();
-
                     dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: BP }))
 
+                }else{
+                    dispatch(updateForm("errorStep", 3));
+                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                    dispatch(handleSetStep(1004));
+                }
+                
                 } else {
                     // NO TIENE BP
                     //dispatch(setStep(500, 0));
@@ -500,7 +506,14 @@ const saveRazonSocial = (rut) => {
         if (rut) {
             obtenerDataRazon(rut)
                 .then((result) => {
-                        dispatch(updateForm("razonSocial", result.data.content.response[0]));     
+                    if(result.data.status === 200 || result.data.status === 304){
+                        dispatch(updateForm("razonSocial", result.data.content.response[0])); 
+                    }else{
+                        dispatch(updateForm("errorStep", 3));
+                        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                        dispatch(handleSetStep(1004));
+                    }
+                           
                 })
                 .catch((error) => {
                     console.log("error: " + String(error));
@@ -594,34 +607,39 @@ export const validarData = async(data) => {
 export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
-            // dispatch({
+            if(response.data.status === 200 || response.data.status === 304){
+                // dispatch({
             //   type: DATE_EMPRESA_SUCCESS,
             //   payload: response
             // });
             // console.log( response.data.content.response )
-
-            if (Object.entries(response.data.content).length === 0) {
-                //respuesta vacia
-                dispatch(handleSetStep(500));
-            } else {
-                if (response.data.content.response.length === 0) {
+                if (Object.entries(response.data.content).length === 0) {
+                    //respuesta vacia
                     dispatch(handleSetStep(500));
                 } else {
-                    const {
-                        Empresa,
-                        Sucursal,
-                        CotizacionesPaciente,
-                    } = response.data.content.response;
-                    if (Empresa !== "Afiliada") {
-                        dispatch(handleSetStep(5.11));
-                    } else if (Sucursal !== "Vigente") {
-                        dispatch(handleSetStep(5.13));
-                    } else if (!CotizacionesPaciente) {
-                        dispatch(handleSetStep(5.12));
+                    if (response.data.content.response.length === 0) {
+                        dispatch(handleSetStep(500));
                     } else {
-                        dispatch(handleSetStep(5.7));
+                        const {
+                            Empresa,
+                            Sucursal,
+                            CotizacionesPaciente,
+                        } = response.data.content.response;
+                        if (Empresa !== "Afiliada") {
+                            dispatch(handleSetStep(5.11));
+                        } else if (Sucursal !== "Vigente") {
+                            dispatch(handleSetStep(5.13));
+                        } else if (!CotizacionesPaciente) {
+                            dispatch(handleSetStep(5.12));
+                        } else {
+                            dispatch(handleSetStep(5.7));
+                        }
                     }
                 }
+            }else{
+                dispatch(updateForm("errorStep", 0));
+                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_EMPRESA));
+                dispatch(handleSetStep(1004));
             }
         })
         .catch((error) => {
@@ -629,6 +647,9 @@ export const validarAfiliacion = (data) => (dispatch) => {
                 type: DATE_EMPRESA_FAILURE,
                 payload: error,
             });
+            dispatch(updateForm("errorStep", 0));
+            dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_EMPRESA));
+            dispatch(handleSetStep(1004));
         });
 };
 

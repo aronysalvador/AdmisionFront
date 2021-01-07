@@ -25,7 +25,7 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
 
   getDataTipoAccidente()
     .then((response) => {
-      if(response.data.status === 200){
+      if(response.data.status === 200 || response.data.status === 304){
         dispatch(successCall(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));
@@ -59,7 +59,7 @@ export const getMediosTransporteTrayecto = () => async (dispatch) => {
 
   getDataMediosTransporte()
     .then((response) => {
-      if(response.data.status === 200){
+      if(response.data.status === 200 || response.data.status === 304){
         dispatch(successCall(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));
