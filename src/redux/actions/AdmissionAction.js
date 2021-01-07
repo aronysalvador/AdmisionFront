@@ -702,62 +702,72 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
     //console.log(JSON.stringify(objeto))
     //console.log("*********************************************")
 
-    const result = await sendingCaso(objeto, getState().microsoftReducer.token);
+    try {
 
-    if (Object.keys(result).length > 0) {
+        const result = await sendingCaso(objeto);
         const data = result.data
-        const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
 
         if (data.status === 200){
 
-            if(IdEstadoAdmision !== 3 ){  // error en episodio
-                dispatch(updateForm("mensajeErrorSAP", "Error al crear episodio"));
-                dispatch(handleSetStep(1002.1));
+            if (Object.keys(result).length > 0) {
+            
+                const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
 
-            }
-            else if(IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7){ // error en siniestro
-                dispatch(updateForm("mensajeErrorSAP", "Error al crear siniestro"));
-                dispatch(handleSetStep(1002.2));
+                if(IdEstadoAdmision !== 3 ){  // error en episodio
+                    dispatch(updateForm("mensajeErrorSAP", "Error al crear episodio"));
+                    dispatch(handleSetStep(1002.1));
 
-            }
-            else if(IdEstadoSiniestro === 7){ // error en documento
-                dispatch(updateForm("siniestroID", siniestroID));
-                dispatch(handleSetStep(1001.2));
+                }
+                else if(IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7){ // error en siniestro
+                    dispatch(updateForm("mensajeErrorSAP", "Error al crear siniestro"));
+                    dispatch(handleSetStep(1002.2));
 
-            }
-            else if(IdEstadoSiniestro === 8){ // error en status
-                dispatch(updateForm("siniestroID", siniestroID));
-                dispatch(handleSetStep(1001.3));
-                
-            }else{
-
-                if(siniestroID.match("[\\D]+") === null) {
-
+                }
+                else if(IdEstadoSiniestro === 7){ // error en documento
                     dispatch(updateForm("siniestroID", siniestroID));
-                    dispatch(handleSetStep(1001));
-                    
+                    dispatch(handleSetStep(1001.2));
 
-                }else{
-                    dispatch(updateForm("mensajeErrorSAP", siniestroID));
-                    dispatch(handleSetStep(1002));
+                }
+                else if(IdEstadoSiniestro === 8){ // error en status
+                    dispatch(updateForm("siniestroID", siniestroID));
+                    dispatch(handleSetStep(1001.3));
                     
+                }else{
+
+                    if(siniestroID.match("[\\D]+") === null) {
+
+                        dispatch(updateForm("siniestroID", siniestroID));
+                        dispatch(handleSetStep(1001));
+                        
+
+                    }else{
+                        dispatch(updateForm("mensajeErrorSAP", siniestroID));
+                        dispatch(handleSetStep(1002));
+                        
+                    }
+
                 }
 
+                EndLog( ID, siniestroID, EpisodioID, data.status, dispatch )
+
+            } else {
+                dispatch(updateForm("mensajeErrorSAP", "Error de data"));
+                dispatch(handleSetStep(1002)); 
+                EndLog( ID,"","",500, dispatch )
             }
 
         }else{
             dispatch(updateForm("mensajeErrorSAP", data.mensaje));
             dispatch(handleSetStep(1002));
-            
-        }
-
-        EndLog( ID, siniestroID, EpisodioID, data.status, dispatch )
-    } else {
-        dispatch(updateForm("mensajeErrorSAP", "Error de data"));
-        dispatch(handleSetStep(1002)); 
-        EndLog( ID,"","",500 )
+            EndLog( ID,"","",500, dispatch )
+        }    
+                
+    } catch (error) {
+        dispatch(updateForm("mensajeErrorSAP", String(error)));
+        dispatch(handleSetStep(1002));
+        EndLog( ID,"","",500, dispatch )
     }
-    
+
 };
 
 const EndLog = (ID, siniestroID, EpisodioID, status, dispatch) => {
