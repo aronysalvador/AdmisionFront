@@ -307,17 +307,27 @@ export const formatRut = (rut) => {
     };
 };
 
-export const obtenerData = async(rut) => {
-    return Axios.get(window.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`);
+export const obtenerData = async(rut, token) => {
+    return Axios.get(window.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`, {
+        headers: {
+            "x-access-token": token
+        }
+    });
 };
 
-export const obtenerDataRazon = async(rutEmpresa) => {
-    return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa);
+export const obtenerDataRazon = async(rutEmpresa, token) => {
+    console.log("token",token)
+    return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa, {
+        headers: {
+          "x-access-token": token
+        }
+      }
+    );
 };
 
 export const saveRut = (rut) => {
     return (dispatch, getState) => {
-        obtenerData(rut)
+        obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
                 if(result.data.status === 200 || result.data.status === 304){
                     let BpCreado = result.data.content.response.BpCreado;
@@ -494,17 +504,19 @@ export const saveRut = (rut) => {
             })
             .catch((error) => {
                 console.log("error: " + String(error));
+
                 dispatch(updateForm("errorStep", 3));
                 dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                 dispatch(handleSetStep(1004));
+
             });
     };
 };
 
 const saveRazonSocial = (rut) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         if (rut) {
-            obtenerDataRazon(rut)
+            obtenerDataRazon(rut, getState().microsoftReducer.token)
                 .then((result) => {
                     if(result.data.status === 200 || result.data.status === 304){
                         dispatch(updateForm("razonSocial", result.data.content.response[0])); 
@@ -653,8 +665,13 @@ export const validarAfiliacion = (data) => (dispatch) => {
         });
 };
 
-export const sendingCaso = async(objeto) => {
-    return await Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto)
+export const sendingCaso = async(objeto, token) => {
+    return await Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto, {
+        headers: {
+          "x-access-token": token
+        }
+      }
+    )
 }
 
 export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
@@ -685,7 +702,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
     //console.log(JSON.stringify(objeto))
     //console.log("*********************************************")
 
-    const result = await sendingCaso(objeto);
+    const result = await sendingCaso(objeto, getState().microsoftReducer.token);
 
     if (Object.keys(result).length > 0) {
         const data = result.data
