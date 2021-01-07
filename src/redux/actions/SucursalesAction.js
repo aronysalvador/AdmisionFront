@@ -18,7 +18,7 @@ export const getSucursales = (rut) => async (dispatch) => {
 
   obtenerData(rut)
     .then((response) => {
-      if(response.data.status === 200 || response.data.status === 304){        
+      if(response.status === 200 || response.status === 304){        
         dispatch(successCallSucursales(response.data));  
       }else{
         dispatch(updateForm("errorStep", 3));
