@@ -18,7 +18,14 @@ export const getSucursales = (rut) => async (dispatch) => {
 
   obtenerData(rut)
     .then((response) => {
-        dispatch(successCallSucursales(response.data));    
+      if(response.data.status === 200 || response.data.status === 304){        
+        dispatch(successCallSucursales(response.data));  
+      }else{
+        dispatch(updateForm("errorStep", 3));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_SUCURSALES));
+        dispatch(handleSetStep(1004));
+      }
+  
     })
     .catch((error) => {
       dispatch(errorCallSucursales());
@@ -54,28 +61,37 @@ export const getValidar = (isValid, rut) => async (dispatch) => {
     dispatch(updateForm("rutEmpresa", rut));
    await obtenerValidacion(rut)
       .then(async(response) => {
+        if(response.data.status === 200 || response.data.status === 304){
+          const json = response.data      
+          if(json.content.response[0] !== undefined){
+  
+           await dispatch(updateForm("razonSocial", json.content.response[0])) 
+          await   dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
+            //dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
+          await  dispatch(updateForm("rutEmpresa", rut));
+  
+          
+          await dispatch(getSucursales(rut.replace(/\./g,'').toUpperCase()))
+          }else{
+  
+          // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
+          dispatch(updateForm("rutEmpresa", rut));
+            dispatch(updateForm("razonSocial", "")) 
+            dispatch(updateForm("razonSocialForm", "")) 
            
-        const json = response.data      
-        if(json.content.response[0] !== undefined){
-
-         await dispatch(updateForm("razonSocial", json.content.response[0])) 
-        await   dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
-          //dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
-        await  dispatch(updateForm("rutEmpresa", rut));
-
-        
-        await dispatch(getSucursales(rut.replace(/\./g,'').toUpperCase()))
+          }
         }else{
-
-        // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
-        dispatch(updateForm("rutEmpresa", rut));
-          dispatch(updateForm("razonSocial", "")) 
-          dispatch(updateForm("razonSocialForm", "")) 
-         
+          dispatch(updateForm("errorStep", 3));
+          dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+          dispatch(handleSetStep(1004));
+          
         }
       })
       .catch((error) => {
         console.log(error)
+        dispatch(updateForm("errorStep", 3));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+        dispatch(handleSetStep(1004));
         
       })
   }

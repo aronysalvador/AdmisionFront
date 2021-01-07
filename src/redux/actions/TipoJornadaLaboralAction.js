@@ -19,7 +19,7 @@ export const getJornadaLaboralPrincipal = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      if(response.data.status === 200){
+      if(response.data.status === 200 || response.data.status === 304){
         dispatch(successCallTipoJornada(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));
