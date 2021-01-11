@@ -28,7 +28,6 @@ const CausaEnfermedadProfesional = () => {
 
   const formatDate = (fecha) => {
     let newfecha = fecha.replace(/[.]/g, '-')
-    console.log(newfecha)
     return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
   }
 
