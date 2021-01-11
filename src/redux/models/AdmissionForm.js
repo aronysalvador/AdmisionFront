@@ -17,7 +17,7 @@ export const AdmissionForm = {
     responsable: { nombre: "", cargo: "" },
     fechaHoraResponsable: "",
     fechaHoraSiniestro: "",
-    fechaHoraAtencion: {},
+    fechaHoraAtencion: "",
 
     SucursalEmpresa: "",
     DireccionEmpresa: "",
@@ -120,7 +120,8 @@ export const AdmissionForm = {
 
     },
 
-    FechaSintomasEP: {},
+    FechaSintomasEP: "",
+    FechaExposicionAgenteEP: "",
     AgenteCausaEP: "",
     TipoAvisoResponsable: {}
 };
