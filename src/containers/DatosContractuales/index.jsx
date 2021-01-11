@@ -12,32 +12,12 @@ import { TextField } from "@material-ui/core";
 import { Format } from "../../helpers/strings";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
-import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers'
-import { ThemeProvider } from "@material-ui/styles";
-import {defaultMaterialThemeKeyboardTimePicker} from "../../css/styleTimePicker"; 
-import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
-import image from './../../img/iconClock.svg'
-import imageDate from './../../img/iconCalendar.svg'
-import MomentUtils from '@date-io/moment';
+import Time from './../../components/Pickers/Time'
+import Date from './../../components/Pickers/Date-YM'
 import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 
-const NoPaddingPicker = withStyles({
-    root: {
-      '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
-      }
-    }
-})(KeyboardTimePicker);
-
-const NoPaddingDatePicker = withStyles({
-    root: {
-      '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
-      }
-    }
-})(KeyboardDatePicker);
 
 const NoTopTextField = withStyles({
     root: {
@@ -78,32 +58,12 @@ export default () =>{
     const stringToDate = (str) => {
         return moment(str, "MM-YYYY").format("MM-YYYY")
     }    
-
-    const dateFormatter = str => {
-        return str;
-    };    
-    
-    const [selectedDate, setDate] = useState(moment());
+  
     const [entrada, setEntrada] = useState(inicioJornadaLaboral ? stringToHours(inicioJornadaLaboral) : stringToHours("09:30"));    
-    const onDateChange = (date, value) => {
-        setDate(date);
-        setEntrada(value);
-    };
 
-    const [selectedDateSalida, setDateSalida] = useState(moment());
     const [salida, setSalida] = useState(finJornadaLaboral?stringToHours(finJornadaLaboral):stringToHours("18:30"));  
-    const onDateChangeSalida = (date, value) => {
-        setDateSalida(date);
-        setSalida(value);
-    };
 
-    const [selectedDateIngreso, setDateIngreso] = useState(moment());
     const [ingreso, setIngreso] = useState(ingresoTrabajoActualVisual?stringToDate(ingresoTrabajoActualVisual):moment().format("MM-YYYY"));  
-    const onDateChangeIngreso = (date, value) => {
-        setDateIngreso(date);
-        setIngreso(value);
-    };
-
 
     const handleCargoChange = (texto) => {        
         if (texto.length < 5) {
@@ -310,30 +270,8 @@ export default () =>{
                                                     Entrada
                                                     </Grid>
                                                 </div>
-                                                <div  style={{ zIndex: 9}} >
-                                                    <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
-                                                        <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker       
-                                                                id="DatosContractuales-TimePicker1"                                                     
-                                                                value={selectedDate}
-                                                                format="HH:mm"
-                                                                inputValue={entrada}
-                                                                onChange={onDateChange}
-                                                                rifmFormatter={dateFormatter}                                                           
-                                                                inputVariant="outlined"                                                            
-                                                                InputAdornmentProps={{ position: 'start'}}
-                                                                ampm={false}
-                                                                fullWidth
-                                                                invalidDateMessage="Formato invalido"
-                                                                keyboardIcon={<img alt="clock" src={image} />}
-                                                                style={{
-                                                                    paddingTop: "3px",
-                                                                    background: "#ffff"
-                                                                }}
-                                                        />
-                                                        </ThemeProvider>
-                                                    </MuiPickersUtilsProvider>  
-                                                </div>
+
+                                               <Time id="DatosContractuales-TimePicker1" time={entrada} setTime={setEntrada} />
 
                                             </div>
 
@@ -347,30 +285,8 @@ export default () =>{
                                                     Salida
                                                     </Grid>
                                                 </div>
-                                                <div  style={{ zIndex: 9}} >
-                                                    <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} >
-                                                        <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker        
-                                                                id="DatosContractuales-TimePicker2"                                                     
-                                                                value={selectedDateSalida}
-                                                                format="HH:mm"
-                                                                inputValue={salida}
-                                                                onChange={onDateChangeSalida}
-                                                                rifmFormatter={dateFormatter}                                                           
-                                                                inputVariant="outlined"                                                            
-                                                                InputAdornmentProps={{ position: 'start'}}
-                                                                ampm={false}
-                                                                fullWidth
-                                                                invalidDateMessage="Formato invalido"
-                                                                keyboardIcon={<img alt="clock" src={image} />}
-                                                                style={{
-                                                                    paddingTop: "3px",
-                                                                    background: "#ffff"
-                                                                }}
-                                                        />
-                                                        </ThemeProvider>
-                                                    </MuiPickersUtilsProvider>  
-                                                </div>
+
+                                                <Time id="DatosContractuales-TimePicker2" time={salida} setTime={setSalida} />
 
                                             </div>
 
@@ -389,34 +305,7 @@ export default () =>{
                                             </Grid> 
                                                 &nbsp;a su trabajo   
                                         </Grid> 
-                                        <div  style={{ zIndex: 9}} >
-                                            <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
-                                                <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
-                                                <NoPaddingDatePicker
-                                                    id="DatosContractuales-DatePicker1"   
-                                                    inputVariant="outlined"
-                                                    views={["year", "month"]}
-                                                    disableFuture                                                          
-                                                    value={selectedDateIngreso}
-                                                    format="MM-YYYY"
-                                                    inputValue={ingreso}
-                                                    onChange={onDateChangeIngreso}
-                                                    rifmFormatter={dateFormatter}                              
-                                                    animateYearScrolling       
-                                                    InputAdornmentProps={{ position: 'start'}}
-                                                    fullWidth
-                                                    invalidDateMessage="Formato invalido"
-                                                    maxDateMessage="La fecha no puede exceder al día de hoy"
-                                                    minDateMessage="La fecha es invalida"
-                                                    keyboardIcon={<img alt="calendar" src={imageDate}/>}
-                                                    style={{
-                                                        paddingTop: "3px",
-                                                        background: "#ffff"
-                                                    }}
-                                            />
-                                            </ThemeProvider>
-                                            </MuiPickersUtilsProvider>    
-                                        </div>
+                                        <Date date={ingreso} setDate={setIngreso} id="DatosContractuales-DatePicker1"  />
                                     </div>
 
                                     <div className={comunClass.displayDesk}>
