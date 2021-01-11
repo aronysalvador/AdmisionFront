@@ -22,11 +22,7 @@ export default (props) => {
     
     const { date, setDate, id, setValidDate } = props
 
-    const [selectedDate, setSelectedDate ] = React.useState(date ? moment() : null );
-
-    const dateFormatter = str => {
-        return str;
-    };    
+    const [selectedDate, setSelectedDate ] = React.useState(date ? moment() : null );   
     
     const onDateChange = (date, value) => {
         if(date){
@@ -51,8 +47,7 @@ export default (props) => {
                         value={selectedDate}
                         format="DD-MM-YYYY"
                         inputValue={date}
-                        onChange={onDateChange}
-                        rifmFormatter={dateFormatter}                                
+                        onChange={onDateChange}                              
                         animateYearScrolling       
                         InputAdornmentProps={{ position: 'start'}}
                         fullWidth

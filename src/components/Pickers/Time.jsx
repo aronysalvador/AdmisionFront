@@ -20,11 +20,7 @@ export default (props) => {
     
     const { time, setTime, id } = props
 
-    const [selectedDate, setSelectedDate] = React.useState(time ? moment() : null);
-
-    const dateFormatter = str => {
-        return str;
-    };    
+    const [selectedDate, setSelectedDate] = React.useState(time ? moment() : null);   
     
     const onDateChange = (date, value) => {
         setSelectedDate(date);
@@ -36,13 +32,13 @@ export default (props) => {
         <div  style={{ zIndex: 9}} >
             <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                 <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                    <NoPaddingPicker       
+                    <NoPaddingPicker   
+                    // open={false}    
                         id={id}                                                     
                         value={selectedDate}
                         format="HH:mm"
                         inputValue={time}
-                        onChange={onDateChange}
-                        rifmFormatter={dateFormatter}                                                           
+                        onChange={onDateChange}                                                         
                         inputVariant="outlined"                                                            
                         InputAdornmentProps={{ position: 'start'}}
                         ampm={false}

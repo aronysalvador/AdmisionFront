@@ -22,10 +22,6 @@ export default (props) => {
     const { time, setTime, id, setValidHour } = props
     
     const [selectedDate, setSelectedDate] = React.useState(time ? moment() : null);
-
-    const dateFormatter = str => {
-        return str;
-    };    
     
     const onDateChange = (date, value) => {
         if(date){
@@ -49,8 +45,7 @@ export default (props) => {
                                 value={selectedDate}
                                 format="HH:mm"
                                 inputValue={time}
-                                onChange={onDateChange}
-                                rifmFormatter={dateFormatter}                                               
+                                onChange={onDateChange}                                         
                                 inputVariant="outlined"                            
                                 InputAdornmentProps={{ position: 'start'}}
                                 ampm={false}
