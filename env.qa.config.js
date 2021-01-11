@@ -1,5 +1,6 @@
 window.REACT_APP_ISAPRES="https://qa.salud.achs.cl/orquestador/api/sap/isapres/"
 window.REACT_APP_AFP="https://qa.salud.achs.cl/orquestador/api/sap/afp/"
+window.REACT_APP_GRUPOS=""
 window.REACT_APP_NACIONALIDADES="https://qa.salud.achs.cl/orquestador/api/datosPaciente/nacionalidades/"
 window.REACT_APP_IDIOMAS="https://qa.salud.achs.cl/orquestador/api/datosPaciente/idiomas/"
 window.REACT_APP_PAISES="https://qa.salud.achs.cl/orquestador/api/datosPaciente/paises/"
