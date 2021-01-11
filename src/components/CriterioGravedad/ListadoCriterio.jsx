@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getComunStyle } from "../../css/comun";
@@ -6,8 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const CriterioList = (props) => {
 
-  const { checkedAfp: check, setCheckedAfp: setCheck, title, identificador, description, listado, id } = props
-  const [checkInt, setCheckInt] = useState(check?check:"")
+  const { criterioGravedad: check, setCriterioGravedad: setCheck, title, listado, id } = props
+  const [checkInt, setCheckInt] = useState(check ? check : "")
 
   // useEffect(()=>{
   //   if(check.otro===false){
@@ -41,27 +41,22 @@ const CriterioList = (props) => {
               <div className="col-md-5">
                 <NoPaddingAutocomplete
                   id={id+"Autocomplete"}
-                  // onOpen={()=>{ console.log("aca"); var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
-                  // setCheck(temp) }}
-                  // openOnFocus
                   value={checkInt}
                   onChange={(event, value) => {
-                    if(value){
-                      value.otro = true
                       setCheckInt(value);
                       setCheck(value);
-                    }
                   }}
                   getOptionSelected= {(
                     option,
                     value,
                   ) => value.value === option.value}
                   options={listado}
-                  getOptionLabel={(option) => option ? (option.nombre === "Otro" ? "" : option.nombre) : "" }
+                  getOptionLabel={(option) => option.nombre}
                   renderInput={(params) => (
                     <TextField
                       id={id+"Input"}
                       {...params}
+                      // label="Otros"
                       variant="outlined"
                       InputProps={{
                         ...params.InputProps,
@@ -69,7 +64,7 @@ const CriterioList = (props) => {
                           paddingTop: "3px",
                           paddingBottom: "3px",
                           paddingLeft: "5xp",
-                          marginTop: "7px",
+                          marginTop: "14px",
                           backgroundColor:"white"
                         },
                       }}

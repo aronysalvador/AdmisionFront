@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
@@ -18,7 +18,7 @@ import ListadoCriterio from "../../components/CriterioGravedad/ListadoCriterio";
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar, tipoSiniestro, isapreSeleccionado } = addmissionForm;
+  const { relatoAccidente, volverAConcatenar, tipoSiniestro, criteriosForm } = addmissionForm;
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -45,8 +45,8 @@ const RelatoFinal = (props) => {
   });
   
   // Listado Criterio de Gravedad
-  const { isapres: isapreList } = useSelector((state) => state.previsionForm, shallowEqual);
-  const [checkedIsapre, setcheckedIsapre] = useState(isapreSeleccionado?isapreSeleccionado:"");
+  const { data: criterioList } = useSelector((state) => state.criteriosForm, shallowEqual);
+  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : "");
 
   // const [stateCheckbox, setStateCheckbox] = useState(() => {
   //   return coberturaSoap === "si" ? true : false 
@@ -61,9 +61,10 @@ const RelatoFinal = (props) => {
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
+    dispatch(updateForm("criteriosForm", criterioGravedad));
     // dispatch(updateForm("coberturaSoap", respSoap));
     if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-       dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
+      dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
     dispatch(handleSetStep("x",8.1))
   };
@@ -180,12 +181,10 @@ const RelatoFinal = (props) => {
               <div className={spaceStyle.space1} />
             </div>
 
-            {/* <div className={spaceStyle.space1} /> */}
             <div className="row">
-              <ListadoCriterio id="RelatoFinal-ListCriterio"  title="Criterio de gravedad" checkedAfp ={ checkedIsapre } setCheckedAfp = {setcheckedIsapre} identificador="id" description="nombre" listado={isapreList}  />
+              <ListadoCriterio id="RelatoFinal-ListCriterio"  title="Criterio de gravedad" criterioGravedad={criterioGravedad} setCriterioGravedad={setCriterioGravedad} listado={criterioList}  />
             </div>
-            {/* <div className={spaceStyle.spaceMin1} /> */}
-
+            
             <div className={comunClass.bottomElement}>
               <Button
                 id={"RelatoFinal-Btn2"}
