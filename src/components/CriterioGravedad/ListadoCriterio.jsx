@@ -51,7 +51,7 @@ const CriterioList = (props) => {
                     value,
                   ) => value.value === option.value}
                   options={listado}
-                  getOptionLabel={(option) => option.nombre}
+                  getOptionLabel={(option) => option.value}
                   renderInput={(params) => (
                     <TextField
                       id={id+"Input"}

@@ -46,7 +46,7 @@ const RelatoFinal = (props) => {
   
   // Listado Criterio de Gravedad
   const { data: criterioList } = useSelector((state) => state.criteriosForm, shallowEqual);
-  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : "");
+  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : ""); //criterioList.value[0]
 
   // const [stateCheckbox, setStateCheckbox] = useState(() => {
   //   return coberturaSoap === "si" ? true : false 

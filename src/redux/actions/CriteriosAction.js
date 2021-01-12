@@ -3,17 +3,17 @@ import {
     GET_CRITERIOS_SUCCESS,
     GET_CRITERIOS_FAILURE,
 } from "../types/criteriosType";
-// import Axios from "axios";
-import { CriteriosGravedad } from "../../util/fakeApi";
+import Axios from "axios";
+// import { CriteriosGravedad } from "../../util/fakeApi";
 
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
 export const getData = async() => {
-    // return Axios.get(window.REACT_APP_CRITERIOS);
-    return CriteriosGravedad();
+    return Axios.get(window.REACT_APP_CRITERIOS);
+    // return CriteriosGravedad();
 };
 
-export const getCRITERIOS = () => async(dispatch) => {
+export const getCriteriosGravedad = () => async(dispatch) => {
     dispatch({
         type: GET_CRITERIOS_INIT,
         payload: true,
