@@ -27,8 +27,7 @@ const CausaEnfermedadProfesional = () => {
   const dispatch = useDispatch();
 
   const formatDate = (fecha) => {
-    let x = fecha.split(".")
-    let newfecha = `${x[2]}-${x[1]}-${x[0]}`
+    let newfecha = fecha.replace(/[.]/g, '-')
     return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
   }
 
@@ -168,12 +167,7 @@ const CausaEnfermedadProfesional = () => {
             onClick={() => {
               dispatch(updateForm("molestiaEP", molestia));
               dispatch(updateForm("parteAfectadaEP", parteAfectada));
-              var fecha = ""
-              if(validFecha){
-                let x = fechaSiniestro.split("-")
-                fecha = `${x[2]}.${x[1]}.${x[0]}`
-              }
-              dispatch(updateForm("FechaSintomasEP", fecha));
+              dispatch(updateForm("FechaSintomasEP", validFecha ? fechaSiniestro.replace(/[-]/g, '.') : ""));
               dispatch(updateForm("molestiasAnterioresEP", respMolestias));
               dispatch(handleSetStep(6.05)); 
             }}

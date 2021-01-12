@@ -27,9 +27,7 @@ const AgenteCausaEnfermedadProfesional = () => {
   const dispatch = useDispatch();
 
   const formatDate = (fecha) => {
-    let x = fecha.split(".")
-    let newfecha = `${x[2]}-${x[1]}-${x[0]}`
-    console.log(newfecha)
+    let newfecha = fecha.replace(/[.]/g, '-')
     return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
   }
 
@@ -180,12 +178,7 @@ const AgenteCausaEnfermedadProfesional = () => {
             onClick={() => {
               dispatch(updateForm("AgenteCausaEP", agenteCausa.id));
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
-              var fecha = ""
-              if(validFecha){
-                let x = fechaSiniestro.split("-")
-                fecha = `${x[2]}.${x[1]}.${x[0]}`
-              }
-              dispatch(updateForm("FechaExposicionAgenteEP", fecha));
+              dispatch(updateForm("FechaExposicionAgenteEP", validFecha ? fechaSiniestro.replace(/[-]/g, '.') : ""));
               dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
               dispatch(handleSetStep(18.01)); //18.1 
             }}
