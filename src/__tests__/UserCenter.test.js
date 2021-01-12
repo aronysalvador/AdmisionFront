@@ -15,15 +15,9 @@ const getToken = async() => {
 describe("Obtener centros del usuario microsoft", () => {
   it("Probar Endpoint que obtiene centros", async () => {
     let resultado
-    try{
+ 
       resultado = await getCenters("asalvadorn@ext.achs.cl", await getToken());
-      console.log(resultado)
-    }
-      catch(err){
-        console.log(err)
-        console.log(resultado.data.host)
-      }
-      
+    
       
       const status = resultado ? resultado.status : 0;
 
