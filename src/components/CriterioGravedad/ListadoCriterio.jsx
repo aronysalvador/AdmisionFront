@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { TextField } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getComunStyle } from "../../css/comun";
@@ -6,15 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const CriterioList = (props) => {
 
-  const { criterioGravedad: check, setCriterioGravedad: setCheck, title, listado, id } = props
-  const [checkInt, setCheckInt] = useState(check ? check : "")
-
-  // useEffect(()=>{
-  //   if(check.otro===false){
-  //     console.log("a verrr...")
-  //     setCheckInt("")
-  //   }
-  // },[check])
+  const { data, setData, title, listado, id } = props
 
   const comunClass = getComunStyle();
 
@@ -41,22 +33,20 @@ const CriterioList = (props) => {
               <div className="col-md-5">
                 <NoPaddingAutocomplete
                   id={id+"Autocomplete"}
-                  value={checkInt}
+                  value={data}
                   onChange={(event, value) => {
-                      setCheckInt(value);
-                      setCheck(value);
+                      setData(value);
                   }}
+                  options={listado}
                   getOptionSelected= {(
                     option,
                     value,
                   ) => value.value === option.value}
-                  options={listado}
                   getOptionLabel={(option) => option.value}
                   renderInput={(params) => (
                     <TextField
                       id={id+"Input"}
                       {...params}
-                      // label="Otros"
                       variant="outlined"
                       InputProps={{
                         ...params.InputProps,

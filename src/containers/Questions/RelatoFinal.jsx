@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
@@ -16,9 +16,14 @@ import editaRelato from './../../img/editar-relato.svg'
 import { Format } from "../../helpers/strings";
 import ListadoCriterio from "../../components/CriterioGravedad/ListadoCriterio";
 
-const RelatoFinal = (props) => {
-  const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar, tipoSiniestro, criteriosForm } = addmissionForm;
+const RelatoFinal = () => {
+
+  const {
+    addmissionForm: { lugarAccidente, descripcionAccidente, objetoAccidente, relatoAccidente, volverAConcatenar, tipoSiniestro, criteriosForm, percentage },
+    microsoftReducer
+  } = useSelector((state) => state, shallowEqual);
+
+  const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -26,11 +31,11 @@ const RelatoFinal = (props) => {
 
   const getRelato = () => {
     return (
-      addmissionForm.lugarAccidente +
+      lugarAccidente +
       ". " +
-      addmissionForm.descripcionAccidente +
+      descripcionAccidente +
       ". " +
-      addmissionForm.objetoAccidente + "."
+      objetoAccidente + "."
     );
   };
 
@@ -46,7 +51,7 @@ const RelatoFinal = (props) => {
   
   // Listado Criterio de Gravedad
   const { data: criterioList } = useSelector((state) => state.criteriosForm, shallowEqual);
-  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : ""); //criterioList.value[0]
+  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : {key: 49, value: "Otro"}); //criterioList.value[0]
 
   // const [stateCheckbox, setStateCheckbox] = useState(() => {
   //   return coberturaSoap === "si" ? true : false 
@@ -74,7 +79,7 @@ const RelatoFinal = (props) => {
   };
 
   const isDisabled = () => {
-    return localValue.length < 15;
+    return localValue.length < 15 || !criterioGravedad;
   };
 
   // const BlueCheckbox = withStyles({
@@ -95,7 +100,7 @@ const RelatoFinal = (props) => {
         <Cabecera
           id={"RelatoFinal-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.06))}
-          percentage={addmissionForm.percentage}
+          percentage={percentage}
         />
       </div>
       <div>
@@ -180,10 +185,17 @@ const RelatoFinal = (props) => {
             <div className={comunClass.displayMobile}>
               <div className={spaceStyle.space1} />
             </div>
-
+            {!isEdit &&
             <div className="row">
-              <ListadoCriterio id="RelatoFinal-ListCriterio"  title="Criterio de gravedad" criterioGravedad={criterioGravedad} setCriterioGravedad={setCriterioGravedad} listado={criterioList}  />
-            </div>
+              <ListadoCriterio 
+                id="RelatoFinal-ListCriterio"  
+                title="Criterio de gravedad" 
+                data={criterioGravedad} 
+                setData={setCriterioGravedad} 
+                listado={criterioList}  
+                // options={['id','nombre']}
+              />
+            </div>}
             
             <div className={comunClass.bottomElement}>
               <Button
