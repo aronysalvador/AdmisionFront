@@ -69,7 +69,7 @@ const DocComplementariosTrayecto = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id="DocComplementariosTrayecto-BtnBack"
-          dispatch={() => dispatch(handleSetStep(19.2))}
+          dispatch={() => dispatch(handleSetStep(19.23))}
           percentage={percentage}
         />
       </div>
@@ -201,7 +201,7 @@ const DocComplementariosTrayecto = () => {
               else {CamposDocumentos.anteceNocuenta = ""}
 
               dispatch(updateForm("CamposDocumentos", CamposDocumentos));              
-              dispatch(handleSetStep(19.22))
+              dispatch(handleSetStep(19.25))
             }}
           >
             Continuar

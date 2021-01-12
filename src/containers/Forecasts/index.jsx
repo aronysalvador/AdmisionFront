@@ -42,12 +42,10 @@ const Forecasts = () => {
 
   const handeleNextAfp = (txt) => {
     setTimeout(() => {    
-
       if(checkedAfp.codigo && checkedIsapre.id){  
-
         dispatch(updateForm("afpForm", txt));
         dispatch(updateForm("isapreSeleccionado", checkedIsapre));
-        dispatch(handleSetStep(19.2))
+        dispatch(handleSetStep("x_next", 18.01))
       }
     }, 500);
   }
@@ -57,7 +55,7 @@ const Forecasts = () => {
       if(checkedAfp.codigo && checkedIsapre.id){  
         dispatch(updateForm("afpForm", checkedAfp));
         dispatch(updateForm("isapreSeleccionado", txt));
-        dispatch(handleSetStep(19.2))
+        dispatch(handleSetStep("x_next", 18.01))
       }
     }, 500);
   }
@@ -92,7 +90,7 @@ const Forecasts = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id="Forecasts-BtnBack"
-          dispatch={() => dispatch(handleSetStep("x", 18.01 ))}
+          dispatch={() => dispatch(handleSetStep("x_back", 18.01))}
           percentage={percentage}
         />
       </div>
@@ -149,7 +147,7 @@ const Forecasts = () => {
                 <div className={spaceStyle.space1} />
 
                 <div className="row">
-                  <Listados id="Forecasts-AFP" title="Otra AFP" checkedAfp ={ checkedAfp } setCheckedAfp = {setCheckedAfp}  identificador="codigo" description="nombre" listado={afpList}   />
+                  <Listados id="Forecasts-AFP" title="Otra AFP" checkedAfp={ checkedAfp } setCheckedAfp={setCheckedAfp}  identificador="codigo" description="nombre" listado={afpList}   />
                 </div>
                 <div className={spaceStyle.spaceMin1} />
               </div>

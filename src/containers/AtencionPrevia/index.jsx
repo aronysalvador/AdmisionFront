@@ -79,7 +79,7 @@ const AtencionPrevia = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id="AtencionPrevia-BtnBack"
-          dispatch={() => dispatch(handleSetStep(19.2))}
+          dispatch={() => dispatch(handleSetStep(19.201))}
           percentage={percentage}
         />
       </div>

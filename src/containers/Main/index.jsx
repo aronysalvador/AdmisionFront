@@ -102,13 +102,15 @@ import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestro
 import LugarSiniestroTrayectoMapaNew from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapaNew";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
 import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
-import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
 
 import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
 import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
 
 import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
 import AtencionPrevia from "../AtencionPrevia/index";
+import AtencionMedica from "../AtencionPrevia/AtencionMedica";
+import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
+import PruebasComplementarias from "../DocComplementariosTrayecto/PruebasComplementarias";
 import Forecasts from "../Forecasts";
 
 import InfoAccidente from "./../InfoAccidente";
@@ -668,14 +670,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      // case 19.021: //Atencion Medica
-      //   return (
-      //     <div className={layoutFix}>
-      //       <Paper className={paperFix}>
-      //         <RelatoSuccess />
-      //       </Paper>
-      //     </div>
-      //   );
+      case 19.201: //Atención Médica
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <AtencionMedica />
+            </Paper>
+          </div>
+        );
       case 19.21:
         return (
           <div className={layout}>
@@ -692,7 +694,15 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19.23:
+      case 19.23: //Pruebas Complementarias
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <PruebasComplementarias />
+            </Paper>
+          </div>
+        );
+      case 19.24:
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -700,6 +710,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      case 19.25:
+          return (
+            <div className={layoutFix}>
+              <Paper className={paperFix}>
+                <SolicitarDocumentos/>
+              </Paper>
+            </div>
+          );
       case 19.3: //notsure
         return (
           <div className={layout}>

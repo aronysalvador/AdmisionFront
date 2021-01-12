@@ -33,7 +33,7 @@ export default () =>{
         
     const dispatch = useDispatch();
     const { 
-        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActualVisual, inicioJornadaLaboral, finJornadaLaboral },  
+        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActualVisual, inicioJornadaLaboral, finJornadaLaboral, CamposDocumentos },  
         microsoftReducer, 
         profesionForm: profesionList, 
         categoriaOcupacionalForm: categoriaList,
@@ -108,7 +108,9 @@ export default () =>{
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
                     id="DatosContractuales-BtnBack"
-                    dispatch={() => dispatch(handleSetStep(19.2))}
+                    dispatch={() => { 
+                        dispatch(handleSetStep(CamposDocumentos?.anteceNocuenta === "x" ?  19.23 : 19.24 , 19.4))
+                    }}
                     percentage={percentage}
                 />
             </div>   
