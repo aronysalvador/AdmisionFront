@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
-import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
+// import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
 import HoraSiniestroDesk from "./../../components/HoraSiniestro/HoraSiniestroDesk";
 import { Button } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -12,6 +12,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import image from './../../img/relato.svg'
+
 
 const FechaHoraSiniestro = () => {
   const comunClass = getComunStyle();
@@ -28,16 +29,16 @@ const FechaHoraSiniestro = () => {
   const [invalidFecha, setInvalidFecha] = useState(true);
   const [invalidHora, setInvalidHora] = useState(true);
 
-  const minutosArray = [0, 10, 20, 30, 40, 50]
 
   const dispatch = useDispatch();
 
-  function setFechaValueSiniestro(value) {
-    setFechaSiniestro({ ...value });
-  }
+
+  const setFechaValueSiniestro = useCallback((value) => {
+    setFechaSiniestro({...value})
+  }, [])
+
 
   function setHoraValueSiniestro(value) {
-    value.minutos = minutosArray[value.indiceMinutos];  
     setHoraSiniestro({ ...value });
   }
 
@@ -46,7 +47,9 @@ const FechaHoraSiniestro = () => {
 
     //========= Fecha =======
     if(fechaSiniestro.year <= 1900 || 
-      !(fechaSiniestro.year <= current.getFullYear() && fechaSiniestro.month <= current.getMonth()+1 && fechaSiniestro.days <= current.getDate())
+      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month > current.getMonth()+1 ) ||//&& fechaSiniestro.days <= current.getDate()
+      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days > current.getDate()) ||
+      (fechaSiniestro.year > current.getFullYear())
       )
       setInvalidFecha(true)
     else
@@ -56,6 +59,12 @@ const FechaHoraSiniestro = () => {
 
 
     //====== Hora =======
+    if(horaSiniestro.horas === undefined && horas && minutos){
+      setInvalidHora(false)
+      return;
+    }
+
+
     if(
       (horaSiniestro.horas === -1 || horaSiniestro.minutos === -1 || horaSiniestro.minutos === undefined)
       ||
@@ -69,7 +78,7 @@ const FechaHoraSiniestro = () => {
   else
     setInvalidHora(false)
   //====== Fin Hora =======
-  }, [horaSiniestro.horas, horaSiniestro.minutos, fechaSiniestro])
+  }, [horaSiniestro.horas, horaSiniestro.minutos, fechaSiniestro, horas, minutos])
 
 
   const handleNext = () => {
@@ -87,12 +96,21 @@ const FechaHoraSiniestro = () => {
 
     if(siniestroTemp === undefined) {
       //No hay siniestro para esa fecha
-      dispatch(
-        updateForm("fechaHoraSiniestro", {
-          ...fechaSiniestro,
-          ...horaSiniestro,
-        })
-      );
+      if(horaSiniestro.horas === undefined && horas && minutos)
+        dispatch(
+          updateForm("fechaHoraSiniestro", {
+            ...fechaSiniestro,
+            horas,
+            minutos
+          })
+        )
+      else
+        dispatch(
+          updateForm("fechaHoraSiniestro", {
+            ...fechaSiniestro,
+            ...horaSiniestro,
+          })
+        );
       dispatch(handleSetStep(step + 1));
 
     }
@@ -164,23 +182,14 @@ const FechaHoraSiniestro = () => {
           </div>
           
           <div className={spaceStyle.space1} />
-          <div className={comunClass.displayMobile}>
-            <HoraSiniestro
-              onChange={setHoraValueSiniestro}
-              horasFromState={horas}
-              indiceMinutosFromState={minutosArray.indexOf(minutos)}
-              minutos={minutosArray}
-              
-            />
-          </div>
-          <div className={comunClass.displayDesk}>
-            <HoraSiniestroDesk
-                onChange={setHoraValueSiniestro}
-                horasFromState={horas}
-                indiceMinutosFromState={minutosArray.indexOf(minutos)}
-                minutos={minutosArray}
-                textLabel={"Hora de accidente"}
-              />
+          
+          <div>
+              <HoraSiniestroDesk
+                  onChange={setHoraValueSiniestro}
+                  horasFromState={horas}
+                  minutos={minutos}
+                  textLabel={"Hora de accidente"}
+                />
           </div>
         </div>
         <div className={comunClass.bottomElement}>

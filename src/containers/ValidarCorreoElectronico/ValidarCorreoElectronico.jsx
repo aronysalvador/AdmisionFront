@@ -115,6 +115,7 @@ const ValidarCorreoElectronico = () => {
             size="small"
             margin="dense"
             fullWidth
+            autoComplete="off"  
             helperText={ stateCheck ? null : !isEmailValid && "Escriba un email válido"}
             error={!isEmailValid}
             onChange={(e) => {

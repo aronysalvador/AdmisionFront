@@ -180,6 +180,7 @@ const InfoAccidente = () => {
                                                             }
                                                             error={!isLugarReferenciaValid}
                                                             value={lugarReferencia}
+                                                            autoComplete="off"  
                                                             variant="outlined"
                                                             size="small"
                                                             margin="dense"

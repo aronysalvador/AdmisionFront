@@ -24,6 +24,7 @@ export const login = (scopes) => async (dispatch, getState) => {
   try {
     await msalservice.loginPopup({ scopes, prompt: "select_account" });
     const user = await getUserProfile(scopes);
+    let accessToken = await msalservice.acquireTokenSilent({ scopes })
     const userTempArray = user.displayName.split(",");
     let iniciales = "";
     if (Array.isArray(userTempArray) && userTempArray.length === 2) {
@@ -38,7 +39,7 @@ export const login = (scopes) => async (dispatch, getState) => {
     };
     dispatch({ type: MSAL_SUCCESS, payload: userMsal });
     //PARCHE
-    var userSAP =await  homologacionSap(dispatch, userMsal.email)
+    var userSAP =await  homologacionSap(dispatch, userMsal.email, accessToken)
     if(userSAP){
       var step =await  isNuevaAdmisionista(dispatch, userMsal.email, getState)
       dispatch(handleSetStep(step));
@@ -98,8 +99,8 @@ const isNuevaAdmisionista = async(dispatch, email, getState) => {
     }
 };
 
-export const obtenerUsuarioSap = async (email) => {
-  return Axios.get(window.REACT_APP_HOMOLOGACION+'?email='+email);
+export const obtenerUsuarioSap = async (email, token) => {
+  return Axios.get(`${window.REACT_APP_HOMOLOGACION}?email=${email}&wt=${token.accessToken}`);
 };
 
 export const guardar_token = (token) => {
@@ -109,8 +110,8 @@ export const guardar_token = (token) => {
   }
 }
 
-const homologacionSap = async(dispatch, email) => {
-  const result = await obtenerUsuarioSap(email);
+const homologacionSap = async(dispatch, email, token) => {
+  const result = await obtenerUsuarioSap(email, token);
 
   if(result.data.content[0].length > 0 && result.data.token) { 
       dispatch(guardar_token(result.data.token));

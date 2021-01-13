@@ -31,3 +31,4 @@ window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://qa.salud.achs.cl/orquestad
 window.REACT_APP_PARTES_DEL_CUERPO = "https://qa.salud.achs.cl/orquestador/api/trayecto/getPartesCuerpo/"
 window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://qa.salud.achs.cl/orquestador/api/trayecto/causalMolestias"
 window.REACT_APP_CRITERIOS = "https://qa.salud.achs.cl/orquestador/api/datosPaciente/idiomas/"
+window.REACT_APP_ADMISION = "https://qa.salud.achs.cl/orquestador/api/admision/"
