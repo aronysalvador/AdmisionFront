@@ -1,11 +1,13 @@
 import { obtenerData } from "./../redux/actions/SucursalesAction";
-import { obtenerUsuarioSap } from "../redux/actions/microsoft.action"
+import Axios from "axios";
 
 const getToken = async() => {
-  const result = await obtenerUsuarioSap("sadiazg@achs.cl")
-  return result.data.token
+    const result = await Axios.post(window.REACT_APP_ADMISION+'GenerarTokenTests', {
+          "key": "791c9419-b1d7-4002-80bc-a1eedf461ccd",
+          "secret": "46d14424-69e7-4d9f-88ad-314cb3183816"
+      });
+    return result.data.token
 }
-
 
 describe("Sucursales", () => {
   it("Probar Endpoint que obtiene data de Sucursales", async () => {

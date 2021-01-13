@@ -6,43 +6,17 @@ import { getComunStyle } from "../../css/comun";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import Date from './../../components/Pickers/Date'
+import Time from './../../components/Pickers/Time-ClearIcon'
 import { Button, TextField, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers'
-import { ThemeProvider } from "@material-ui/styles";
-import {defaultMaterialThemeKeyboardTimePicker} from "../../css/styleTimePicker"; 
-import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
-import image from './../../img/iconClock.svg'
-import imageDate from './../../img/iconCalendar.svg'
-import MomentUtils from '@date-io/moment';
-import moment from "moment";
-import "moment/locale/es";
 import ClearIcon from "@material-ui/icons/Clear";
 import Lugar from "../LugarSiniestroTrayecto/Lugar"
 import { Format } from "../../helpers/strings";
+import moment from "moment";
+import "moment/locale/es";
+moment.locale("es");
 
-
-const NoPaddingDatePicker = withStyles({
-    root: {
-      '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
-      },
-      '&& .MuiOutlinedInput-notchedOutline': {
-        borderRadius: "0.7em"
-      }
-    }
-})(KeyboardDatePicker);
-
-const NoPaddingPicker = withStyles({
-    root: {
-      '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
-      },
-      '&& .MuiOutlinedInput-notchedOutline': {
-        borderRadius: "0.7em"
-      }
-    }
-})(KeyboardTimePicker);
 
 const NoPaddingTextField = withStyles({
     root: {
@@ -61,42 +35,11 @@ const InfoAccidente = () => {
     const dispatch = useDispatch();
     const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-    // const stringTodate = (fecha) => {
-    //     let date = fecha.split(" ")[0]
-    //     let x = date.split("-")
-    //     let formatDate = x[2]+"-"+x[1]+"-"+x[0]
-    //     return moment(formatDate, "DD-MM-YYYY").format("DD-MM-YYYY")
-    // }
-
-    const [selectedDate, setSelectedDate] = useState(moment());
     const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
     const [validDate, setValidDate] = useState(true);  
-    const onDateChange = (date, value) => {
-        setSelectedDate(date);
-        setDate(value);
-        if(date){
-            setValidDate(true)
-        }else{
-            setValidDate(false)
-        }
-    };
 
-    const [selectedHour, setSelectedHour] = useState(moment());
     const [hour, setHour] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[1], "HH:mm").format("HH:mm") : moment().format("HH:mm"));    
     const [validHour, setValidHour] = useState(true);  
-    const onHourChange = (date, value) => {
-        setSelectedHour(date);
-        setHour(value);
-        if(date){
-            setValidHour(true)
-        }else{
-            setValidHour(false)
-        }
-    };
-
-    const dateFormatter = str => {
-        return str;
-    };   
 
     const [sucursal, setSucursal] = useState(sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : "");
     const [mapaUrl, setMapaUrl] = useState(urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : "");
@@ -169,40 +112,8 @@ const InfoAccidente = () => {
                                                 >
                                                     Fecha de accidente
                                                 </Grid> 
-                                                <div  style={{ zIndex: 9}} >
-                                                    <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
-                                                        <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
-                                                        <NoPaddingDatePicker
-                                                            id={"InfoAccidente-Lbl1"}
-                                                            inputVariant="outlined"
-                                                            disableFuture   
-                                                            value={selectedDate}
-                                                            format="DD-MM-YYYY"
-                                                            inputValue={date}
-                                                            onChange={onDateChange}
-                                                            rifmFormatter={dateFormatter}                                
-                                                            animateYearScrolling       
-                                                            InputAdornmentProps={{ position: 'start'}}
-                                                            fullWidth
-                                                            onError={(e)=>{if(e){ setValidDate(false); }}}
-                                                            invalidDateMessage="Formato invalido"
-                                                            maxDateMessage="La fecha no puede exceder al día de hoy"
-                                                            minDateMessage="La fecha es invalida"
-                                                            keyboardIcon={<img alt="calendar" src={imageDate}/>}
-                                                            style={{
-                                                                paddingTop: "3px",
-                                                                background: "#ffff",
-                                                                borderRadius: "0.7em"
-                                                            }}
-                                                            InputProps={{
-                                                                endAdornment: (
-                                                                    <ClearIcon onClick={()=>onDateChange(null,null)} style={{cursor:'pointer'}} />
-                                                                )
-                                                            }}
-                                                        />
-                                                        </ThemeProvider>
-                                                    </MuiPickersUtilsProvider>    
-                                                </div>
+
+                                                <Date date={date} setDate={setDate} id="InfoAccidente-Lbl1" setValidDate={setValidDate} />
                                             </div>
                                             <div className="col-md-12" style={{ paddingTop: '2em' }}>
                                                 <Grid
@@ -212,37 +123,8 @@ const InfoAccidente = () => {
                                                 >
                                                     Hora de accidente
                                                 </Grid> 
-                                                <div  style={{ zIndex: 9}} >
-                                                     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
-                                                        <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
-                                                            <NoPaddingPicker 
-                                                                id={"InfoAccidente-Lbl2"}                             
-                                                                value={selectedHour}
-                                                                format="HH:mm"
-                                                                inputValue={hour}
-                                                                onChange={onHourChange}
-                                                                rifmFormatter={dateFormatter}                                               
-                                                                inputVariant="outlined"                            
-                                                                InputAdornmentProps={{ position: 'start'}}
-                                                                ampm={false}
-                                                                fullWidth
-                                                                onError={(e)=>{if(e){ setValidHour(false) } }}
-                                                                invalidDateMessage="Formato invalido"
-                                                                keyboardIcon={<img alt="clock" src={image} />}
-                                                                style={{
-                                                                    paddingTop: "3px",
-                                                                    background: "#ffff",
-                                                                    borderRadius: "0.7em"
-                                                                }}
-                                                                InputProps={{
-                                                                    endAdornment: (
-                                                                        <ClearIcon onClick={()=>onHourChange(null,null)} style={{cursor:'pointer'}} />
-                                                                    )
-                                                                }}
-                                                        />
-                                                        </ThemeProvider>
-                                                    </MuiPickersUtilsProvider>     
-                                                </div>
+
+                                                <Time  id={"InfoAccidente-Lbl2"}  time={hour} setTime={setHour} setValidHour={setValidHour} />
                                             </div>
                                         </div>
                                     </div>
@@ -298,6 +180,7 @@ const InfoAccidente = () => {
                                                             }
                                                             error={!isLugarReferenciaValid}
                                                             value={lugarReferencia}
+                                                            autoComplete="off"  
                                                             variant="outlined"
                                                             size="small"
                                                             margin="dense"
