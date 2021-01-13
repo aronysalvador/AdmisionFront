@@ -18,7 +18,6 @@ import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 
-
 const NoTopTextField = withStyles({
     root: {
         '&& .MuiOutlinedInput-notchedOutline': {
@@ -33,14 +32,14 @@ export default () =>{
         
     const dispatch = useDispatch();
     const { 
-        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActualVisual, inicioJornadaLaboral, finJornadaLaboral },  
+        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActualVisual, inicioJornadaLaboral, finJornadaLaboral, CamposDocumentos },  
         microsoftReducer, 
         profesionForm: profesionList, 
         categoriaOcupacionalForm: categoriaList,
         tipoContratoForm: tipoContratoList,
         tipoRemuneracionForm: tipoRemuneracionList,
         tipoJornadaLaboralForm: tipoJornadaLaboralList
-     } = useSelector((state) => state, shallowEqual);
+    } = useSelector((state) => state, shallowEqual);
 
     const [profesion, setProfesion] = useState(profesionForm?profesionForm:"");
     const [categoriaOcup, setCategoriaOcup] = useState(categoriaOcupacionalForm?categoriaOcupacionalForm:"");
@@ -58,7 +57,7 @@ export default () =>{
     const stringToDate = (str) => {
         return moment(str, "MM-YYYY").format("MM-YYYY")
     }    
-  
+
     const [entrada, setEntrada] = useState(inicioJornadaLaboral ? stringToHours(inicioJornadaLaboral) : stringToHours("09:30"));    
 
     const [salida, setSalida] = useState(finJornadaLaboral?stringToHours(finJornadaLaboral):stringToHours("18:30"));  
@@ -81,7 +80,6 @@ export default () =>{
         }
         // eslint-disable-next-line
     },[profesion,categoriaOcup,contrato,cargo,remuneracion,jornada,entrada,salida,ingreso])
-
 
     const handleNext = () => {
         dispatch(updateForm("profesionForm", profesion));
@@ -108,11 +106,12 @@ export default () =>{
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
                     id="DatosContractuales-BtnBack"
-                    dispatch={() => dispatch(handleSetStep(19.2))}
+                    dispatch={() => { 
+                        dispatch(handleSetStep(CamposDocumentos?.anteceNocuenta === "x" ?  19.23 : 19.24 , 19.4))
+                    }}
                     percentage={percentage}
                 />
             </div>   
-
 
             <div className={comunClass.boxDesk2}>
                 <div className={comunClass.bottomElement2} style={{position:'inherit'}}>
@@ -120,14 +119,12 @@ export default () =>{
                         <div className={spaceStyle.spaceMin1} />
                     </div>
 
-
                     <div className="container">
                         <div className="row">
     
                             <div className='col-md-6'>
 
                                 <div  className={['col-md-12', comunClass.backgroundGrey].join(' ')}>
-
                                     <SelectsAutocomplete
                                         id="DatosContractuales-AutocompleteCategorias"
                                         first="dark"
@@ -199,9 +196,7 @@ export default () =>{
                                             inputProps={{ maxLength: 25 }}
                                             fullWidth
                                             InputProps={{
-                                                style: {
-                                                    background: "#ffff"
-                                                },
+                                                style: {background: "#ffff"},
                                                 endAdornment: (                                                
                                                         <ClearIcon style={{cursor:'pointer'}}  onClick={() => {
                                                             setErrorCargo(false)
@@ -271,7 +266,7 @@ export default () =>{
                                                     </Grid>
                                                 </div>
 
-                                               <Time id="DatosContractuales-TimePicker1" time={entrada} setTime={setEntrada} />
+                                                <Time id="DatosContractuales-TimePicker1" time={entrada} setTime={setEntrada} />
 
                                             </div>
 
@@ -333,8 +328,6 @@ export default () =>{
                         </div>
                         
                     </div>
-
-       
 
                 </div>
             </div>                    

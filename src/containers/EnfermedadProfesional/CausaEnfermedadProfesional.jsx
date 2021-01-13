@@ -123,7 +123,7 @@ const CausaEnfermedadProfesional = () => {
             </Typography>
             <TextField
               id={"CausaEP-Lbl2"}
-              autoComplete
+              autoComplete="off"
               value={parteAfectada}
               variant="outlined"
               size="small"
@@ -143,7 +143,7 @@ const CausaEnfermedadProfesional = () => {
           <div className={spaceStyle.space1} />
 
           <div>
-            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl2"}>
+            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl2"} style={{marginBottom: "5px"}}>
               Ingresa la fecha de inicio de sintomas
             </Typography>
             <Date date={fechaSiniestro} setDate={setFechaSiniestro} id="CausaEP-Datepicker1" setValidDate={setValidFecha} />

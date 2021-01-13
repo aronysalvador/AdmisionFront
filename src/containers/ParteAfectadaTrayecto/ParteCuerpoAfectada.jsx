@@ -70,6 +70,7 @@ const ParteCuerpoAfectada = () => {
             id={"ParteCuerpoAfectada-Lbl1"}
             inputValue={parteAfectada}
             freeSolo
+            size="small"
             options={sugerenciasParteCuerpo}
             onInputChange={(event, value) => {
               event&&setParteAfectada(value);
@@ -83,7 +84,7 @@ const ParteCuerpoAfectada = () => {
                 inputProps={{
                   ...params.inputProps,
                   maxLength: 100,
-                  style: { marginTop: "7px" },
+                  // style: { marginTop: "7px" },
                 }}
               />
             )}

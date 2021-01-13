@@ -12,7 +12,7 @@ moment.locale("es");
 const NoPaddingPicker = withStyles({
     root: {
       '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
+        padding: "8.5px 0px"
       }
     }
 })(KeyboardTimePicker);
@@ -49,6 +49,7 @@ export default (props) => {
                                 inputVariant="outlined"                            
                                 InputAdornmentProps={{ position: 'start'}}
                                 ampm={false}
+                                autoComplete="off" 
                                 fullWidth
                                 onError={(e)=>{if(e){ setValidHour(false) } }}
                                 invalidDateMessage="Formato invalido"

@@ -79,7 +79,7 @@ const AtencionPrevia = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id="AtencionPrevia-BtnBack"
-          dispatch={() => dispatch(handleSetStep(19.2))}
+          dispatch={() => dispatch(handleSetStep(19.201))}
           percentage={percentage}
         />
       </div>
@@ -119,9 +119,7 @@ const AtencionPrevia = () => {
                 fullWidth
                 InputProps={{
                     endAdornment: (
-                      
                         <ClearIcon  id="AtencionPrevia-ClearIcon1" onClick={() => {saveOtroRecinto("");}} />
-                    
                     ),
                 }}
             />
@@ -130,14 +128,14 @@ const AtencionPrevia = () => {
                 <div className={comunClass.paddingElement}>
                     <div>
                       <Grid className={[comunClass.tituloTextBox]}>
-                      Fecha de accidente
+                        Fecha de accidente
                       </Grid>
                       <Date date={FechaOtroRe} setDate={setFechaOtroRe} id="AtencionPrevia-Datepicker1" setValidDate={setValidDate} />
                     </div>
                     
                     <div style={{marginLeft: '0.5em'}}>
                       <Grid className={[comunClass.tituloTextBox]}>
-                      Hora de accidente
+                        Hora de accidente
                       </Grid>
                       <Time  id={"AtencionPrevia-TimePicker2"}  time={HoraOtroRec} setTime={setHoraOtroRec} setValidHour={setValidHour} />
                     </div>

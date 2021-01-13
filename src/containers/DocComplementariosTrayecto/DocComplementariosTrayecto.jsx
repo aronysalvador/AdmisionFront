@@ -69,7 +69,7 @@ const DocComplementariosTrayecto = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id="DocComplementariosTrayecto-BtnBack"
-          dispatch={() => dispatch(handleSetStep(19.2))}
+          dispatch={() => dispatch(handleSetStep(19.23))}
           percentage={percentage}
         />
       </div>
@@ -139,10 +139,10 @@ const DocComplementariosTrayecto = () => {
                 label="Otro"
               />
             </div>
-            <div className={comunClass.widthOtro} style={{ padding: '0 10px 5px' }}>
+            <div className={comunClass.widthOtro} style={{ padding: '5px 10px 5px' }}>
               <TextField
                 id="DocComplementariosTrayecto-Input1" 
-                style={{ background: '#ffff', border: '2px solid #787878', borderRadius: '8px'}}
+                style={{ background: '#ffff', borderRadius: '8px'}}
                 disabled={state.anteceOtro === false}
                 helperText={
                   !anteceOtroValid && "Debes ingresar al menos 5 caracteres"
@@ -153,6 +153,7 @@ const DocComplementariosTrayecto = () => {
                 size="small"
                 margin="dense"
                 required
+                autoComplete="off"
                 fullWidth
                 onChange={(e) => {
                   let texto = Format.caracteresInvalidos(e.target.value);
@@ -165,9 +166,7 @@ const DocComplementariosTrayecto = () => {
                     <InputAdornment position="end">
                         <IconButton
                           id="DocComplementariosTrayecto-ClearIcon1" 
-                          onClick={() => {
-                            setAnteceOtroC("");
-                          }}
+                          onClick={() => { setAnteceOtroC("") }}
                         >
                           <ClearIcon />
                         </IconButton>
@@ -201,7 +200,7 @@ const DocComplementariosTrayecto = () => {
               else {CamposDocumentos.anteceNocuenta = ""}
 
               dispatch(updateForm("CamposDocumentos", CamposDocumentos));              
-              dispatch(handleSetStep(19.22))
+              dispatch(handleSetStep(19.25))
             }}
           >
             Continuar

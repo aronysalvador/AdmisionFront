@@ -14,7 +14,7 @@ const AfpList = (props) => {
 
   useEffect(()=>{
     if(check.otro===false){
-      console.log("a verrr...")
+      // console.log("a verrr...")
       setCheckInt("")
     }
   },[check])
@@ -44,7 +44,7 @@ const AfpList = (props) => {
   return (
       <div className=""> 
         <div className={['container', comunClass.backgroundWhite].join(' ')} >
-          <div className={check.otro ? comunClass.roundedBlue : comunClass.roundedNormal} style={{padding: "5px"}}>
+          <div className={check.otro ? comunClass.roundedBlue : comunClass.roundedNormal} style={{padding: "5px", minWidth: '250px'}}>
            
           <div className="row" style={{padding:0,margin:0,width:"100%"}}>
           <div className="col-md-1">
@@ -62,7 +62,7 @@ const AfpList = (props) => {
               <span className={comunClass.txtRadios}>{title}</span>
           </div>
           
-            <div className="col-md-8">
+            <div className="col-md-8" style={{width:"64%"}}>
               <NoPaddingAutocomplete
                 id={id+"Autocomplete"}
                 // onOpen={()=>{ console.log("aca"); var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;

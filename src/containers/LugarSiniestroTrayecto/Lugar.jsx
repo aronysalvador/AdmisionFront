@@ -33,7 +33,7 @@ export default (props) => {
     <div>
       <Grid
         className={comunClass.tituloTextBox}
-        style={{marginBottom:'15px', textAlign: "left"}}
+        style={{marginBottom:'8px', textAlign: "left"}}
         for={"InfoAccidente-LblLugar"}
       >
         Dirección de trabajo

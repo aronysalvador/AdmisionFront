@@ -107,7 +107,7 @@ const InfoAccidente = () => {
                                             <div className="col-md-12">
                                                 <Grid
                                                     className={comunClass.tituloTextBox}
-                                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                                    style={{marginBottom:'8px', textAlign: "left"}}
                                                     for={"InfoAccidente-Lbl1"}
                                                 >
                                                     Fecha de accidente
@@ -118,7 +118,7 @@ const InfoAccidente = () => {
                                             <div className="col-md-12" style={{ paddingTop: '2em' }}>
                                                 <Grid
                                                     className={comunClass.tituloTextBox}
-                                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                                    style={{marginBottom:'8px', textAlign: "left"}}
                                                     for={"InfoAccidente-Lbl2"}
                                                 >
                                                     Hora de accidente
@@ -167,7 +167,7 @@ const InfoAccidente = () => {
                                                 <div className="col-md-12" style={{ paddingTop: '2em' }}>
                                                     <Grid
                                                     className={comunClass.tituloTextBox}
-                                                    style={{ marginBottom:'8px', textAlign: "left"}}
+                                                    style={{ marginBottom:'0px', textAlign: "left"}}
                                                     for={"InfoAccidente-Lbl3"}
                                                     >
                                                         Referencia
