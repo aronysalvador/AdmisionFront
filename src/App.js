@@ -24,6 +24,7 @@ import { getMediosTransporteTrayecto } from "./redux/actions/TrayectoAction";
 import { getTiposAccidenteTrayecto } from "./redux/actions/TrayectoAction";
 import { getPartesCuerpo } from "./redux/actions/ParteCuerpoAction";
 import { getRazonAlertaPrincipal } from "./redux/actions/AlertaCalificacionRazonAction";
+import { getCriteriosGravedad } from "././redux/actions/CriteriosAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ function App() {
     dispatch(getTiposAccidenteTrayecto());
     dispatch(getPartesCuerpo());
     dispatch(getRazonAlertaPrincipal());
+    dispatch(getCriteriosGravedad());
   }, [dispatch]);
 
   useEffect(() => {

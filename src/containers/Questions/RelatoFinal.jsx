@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
@@ -13,10 +14,16 @@ import Header from "../../components/header/index";
 import relato from './../../img/relato.svg'
 import editaRelato from './../../img/editar-relato.svg'
 import { Format } from "../../helpers/strings";
+import ListadoCriterio from "../../components/CriterioGravedad/ListadoCriterio";
 
-const RelatoFinal = (props) => {
-  const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar, tipoSiniestro } = addmissionForm;
+const RelatoFinal = () => {
+
+  const {
+    addmissionForm: { lugarAccidente, descripcionAccidente, objetoAccidente, relatoAccidente, volverAConcatenar, tipoSiniestro, criteriosForm, percentage },
+    microsoftReducer
+  } = useSelector((state) => state, shallowEqual);
+
+  const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -24,11 +31,11 @@ const RelatoFinal = (props) => {
 
   const getRelato = () => {
     return (
-      addmissionForm.lugarAccidente +
+      lugarAccidente +
       ". " +
-      addmissionForm.descripcionAccidente +
+      descripcionAccidente +
       ". " +
-      addmissionForm.objetoAccidente + "."
+      objetoAccidente + "."
     );
   };
 
@@ -41,6 +48,10 @@ const RelatoFinal = (props) => {
       dispatch(updateForm("relatoAccidenteTemporal", localValue));
     }
   });
+  
+  // Listado Criterio de Gravedad
+  const { data: criterioList } = useSelector((state) => state.criteriosForm, shallowEqual);
+  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : {key: 49, value: "Otro"}); //criterioList.value[0]
 
   // const [stateCheckbox, setStateCheckbox] = useState(() => {
   //   return coberturaSoap === "si" ? true : false 
@@ -55,9 +66,10 @@ const RelatoFinal = (props) => {
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
+    dispatch(updateForm("criteriosForm", criterioGravedad));
     // dispatch(updateForm("coberturaSoap", respSoap));
     if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-       dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
+      dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
     dispatch(handleSetStep("x",8.1))
   };
@@ -67,7 +79,7 @@ const RelatoFinal = (props) => {
   };
 
   const isDisabled = () => {
-    return localValue.length < 15;
+    return localValue.length < 15 || !criterioGravedad;
   };
 
   // const BlueCheckbox = withStyles({
@@ -88,7 +100,7 @@ const RelatoFinal = (props) => {
         <Cabecera
           id={"RelatoFinal-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.06))}
-          percentage={addmissionForm.percentage}
+          percentage={percentage}
         />
       </div>
       <div>
@@ -162,7 +174,6 @@ const RelatoFinal = (props) => {
                   </div>
                 </div>
               )}
-
               {/* <Typography className={welcomeStyle.switchText}>
                 <Grid component="span">
                   <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
@@ -172,8 +183,20 @@ const RelatoFinal = (props) => {
             </div>
 
             <div className={comunClass.displayMobile}>
-            <div className={spaceStyle.space1} />
-          </div>
+              <div className={spaceStyle.space1} />
+            </div>
+            {!isEdit &&
+            <div className="row">
+              <ListadoCriterio 
+                id="RelatoFinal-ListCriterio"  
+                title="Criterio de gravedad" 
+                data={criterioGravedad} 
+                setData={setCriterioGravedad} 
+                listado={criterioList}  
+                // options={['id','nombre']}
+              />
+            </div>}
+            
             <div className={comunClass.bottomElement}>
               <Button
                 id={"RelatoFinal-Btn2"}

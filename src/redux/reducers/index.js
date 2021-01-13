@@ -23,6 +23,7 @@ import userCenterForm from "../reducers/UserCenterReducer";
 import grupoForm from "../reducers/GrupoReducer";
 import LogForm from "../reducers/LogReducer";
 import { tipoAccidenteTrayectoForm, mediosTransporteForm, parteCuerpoAfectadaForm, agenteCausaEnfermedadForm } from "./TipoAccidenteTrayectoReducer";
+import criteriosForm from "../reducers/CriteriosReducer";
 
 export default combineReducers({
     addmissionForm,
@@ -51,5 +52,6 @@ export default combineReducers({
     tipoAccidenteTrayectoForm,
     mediosTransporteForm,
     parteCuerpoAfectadaForm,
-    agenteCausaEnfermedadForm
+    agenteCausaEnfermedadForm,
+    criteriosForm,
 });

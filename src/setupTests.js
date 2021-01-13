@@ -25,10 +25,12 @@ window.REACT_APP_GEO_STATICMAP = "https://desa.salud.achs.cl/orquestador/api/geo
 window.REACT_APP_GEO_LATLNG = "https://desa.salud.achs.cl/orquestador/api/geo/getLatLng"
 window.REACT_APP_GEO_DIRECTION = "https://desa.salud.achs.cl/orquestador/api/geo/getDireccion"
 window.REACT_APP_MICROSOFT_AUTH_CLIENTID = "2cc60262-0026-48a5-ac2a-a088e9704f30"
-window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL = "https://desa.salud.achs.cl/orquestador/web-admision/"
+window.REACT_APP_MICROSOFT_AUTH_POSTLOGOUTREDIRECTURL = "https://desa.salud.achs.cl/web-admision/"
 window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://desa.salud.achs.cl/orquestador/api/trayecto/getTipoAccidente/"
 window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://desa.salud.achs.cl/orquestador/api/trayecto/getMediosTransporte/"
 window.REACT_APP_PARTES_DEL_CUERPO = "https://desa.salud.achs.cl/orquestador/api/trayecto/getPartesCuerpo/"
 window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://desa.salud.achs.cl/orquestador/api/trayecto/causalMolestias"
 window.REACT_APP_ADMISION = "https://desa.salud.achs.cl/orquestador/api/admision/"
 window.REACT_APP_GRUPOS = "https://desa.salud.achs.cl/orquestador/api/datosPaciente/grupo/"
+window.REACT_APP_CRITERIOS = "https://desa.salud.achs.cl/orquestador/api/sap/criteriosGravedad"
+

@@ -677,6 +677,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
+      // case 19.021: //Atencion Medica
+      //   return (
+      //     <div className={layoutFix}>
+      //       <Paper className={paperFix}>
+      //         <RelatoSuccess />
+      //       </Paper>
+      //     </div>
+      //   );
       case 19.21:
         return (
           <div className={layout}>
