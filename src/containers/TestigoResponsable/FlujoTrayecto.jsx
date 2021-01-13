@@ -314,7 +314,7 @@ const FlujoTrayecto = () => {
                                                 fullWidth
                                                 autoComplete="off"
                                                 type="text"
-                                                style={{ background: "#ffff" , marginTop: "17px"}}
+                                                style={{ marginTop: "17px"}}
                                                 inputProps={{ maxLength: 200 }}
                                                 InputProps={{
                                                     endAdornment: (
@@ -326,7 +326,8 @@ const FlujoTrayecto = () => {
                                                     style: {
                                                         width: "90%",
                                                         marginLeft:"20px",
-                                                        marginTop:"-5px"
+                                                        marginTop:"-5px",
+                                                        background: "#ffff"
                                                     }
                                                 }}
                                             />                                       
