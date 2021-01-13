@@ -19,7 +19,7 @@ const NoPaddingPicker = withStyles({
 
 export default (props) => {
     
-    const { time, setTime, id, setValidHour } = props
+    const { time, setTime, id, setValidHour, open } = props
     
     const [selectedDate, setSelectedDate] = React.useState(time ? moment() : null);
     
@@ -35,12 +35,12 @@ export default (props) => {
         }
     };
 
-    return(
-        
-        <div  style={{ zIndex: 9}} >
+    return(        
+        <div style={{ zIndex: 9}} >
             <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment}  >
                     <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
                         <NoPaddingPicker 
+                                open={open?open:false}  
                                 id={id}                            
                                 value={selectedDate}
                                 format="HH:mm"
