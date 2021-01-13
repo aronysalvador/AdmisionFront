@@ -27,7 +27,8 @@ const RutPaciente = () => {
           size="small"
           margin="dense"
           fullWidth
-          helperText={!isValid && "RUT no válido"}              
+          helperText={!isValid && "RUT no válido"}  
+          autoComplete="off"          
           error={!isValid }
           onChange={(e) => {
             var format = formateaRut(e.target.value);
