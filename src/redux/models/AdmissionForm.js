@@ -24,6 +24,7 @@ export const AdmissionForm = {
     comunaEmpresa: "",
     direccionParticular: "",
     telefonoParticular: "",
+    grupoEtnico: "",
 
     desarrollarTrabajoHabitual: "",
 

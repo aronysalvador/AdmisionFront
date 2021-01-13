@@ -12,12 +12,12 @@ import image from './../../img/identify.svg'
 
 const GrupoEtnico = () => {
   const {
-    addmissionForm: { percentage,  creacionBP, grupoForm },microsoftReducer
+    addmissionForm: { percentage,  creacionBP,  grupoEtnico },microsoftReducer
   } = useSelector((state) => state, shallowEqual)
 
 
   const [grupo, setGrupo] = useState(() => {
-    return !grupoForm ? "" : grupoForm;
+    return !grupoEtnico ? "" : grupoEtnico;
   });
   const { data: grupoList } = useSelector((state) => state.grupoForm, shallowEqual);
 
@@ -66,7 +66,7 @@ const GrupoEtnico = () => {
             // style={{ width: 300 }}
             options={grupoList}
   
-            getOptionLabel={(option) => option.nombre}
+            getOptionLabel={(option) => option.value}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -92,20 +92,11 @@ const GrupoEtnico = () => {
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={!grupo}
-            // onClick={() => {
-            //   dispatch(updateForm("direccionParticular", direccion.description))
-            //   dispatch(updateForm("direccionParticularObj", direccion))
-            //   dispatch(updateForm("comunaDireccionParticular", nombreComuna))
-            //   if(creacionBP){
-            //     if(telefonoParticular)
-            //       dispatch(handleSetStep(5.1))
-            //     else
-            //       dispatch(handleSetStep(5.3))
-            //   }
-            //   else
-            //     dispatch(handleSetStep(5.1))
+            onClick={() => {
+              dispatch(updateForm("grupoEtnico", grupo))
+              dispatch(handleSetStep(5.1))
 
-            // }}
+            }}
           >
             Guardar
           </Button>

@@ -1,6 +1,6 @@
 window.REACT_APP_ISAPRES = "https://desa.salud.achs.cl/orquestador/api/sap/isapres/"
 window.REACT_APP_AFP = "https://desa.salud.achs.cl/orquestador/api/sap/afp/"
-window.REACT_APP_GRUPOS="https://desa.salud.achs.cl/orquestador/api/sap/afp/"
+window.REACT_APP_GRUPOS="https://desa.salud.achs.cl/orquestador/api/datosPaciente/grupo/"
 window.REACT_APP_NACIONALIDADES = "https://desa.salud.achs.cl/orquestador/api/datosPaciente/nacionalidades/"
 window.REACT_APP_IDIOMAS = "https://desa.salud.achs.cl/orquestador/api/datosPaciente/idiomas/"
 window.REACT_APP_PAISES = "https://desa.salud.achs.cl/orquestador/api/datosPaciente/paises/"

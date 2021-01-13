@@ -13,7 +13,7 @@ import image from './../../img/identify.svg'
 
 const SinBPInfoPersonal2 = () => {
   const {
-    addmissionForm: { percentage, bpForm, nacionalidadForm, idiomaForm, paisForm, grupoForm },
+    addmissionForm: { percentage, bpForm, nacionalidadForm, idiomaForm, paisForm,  grupoEtnico },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
@@ -35,7 +35,7 @@ const SinBPInfoPersonal2 = () => {
   });
 
   const [grupo, setGrupo] = useState(() => {
-    return !grupoForm ? "" : grupoForm;
+    return !grupoEtnico ? "" : grupoEtnico;
   });
   
 
@@ -57,6 +57,7 @@ const SinBPInfoPersonal2 = () => {
         estadoCivil: "",
       })
     );
+    dispatch(updateForm("grupoEtnico", grupo))
      dispatch(updateForm("bpForm2", {nacionalidad, pais, idioma}));
      dispatch(updateForm("creacionBP", true));
      dispatch(handleSetStep(5.4));
