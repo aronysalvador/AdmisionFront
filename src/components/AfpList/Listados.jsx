@@ -62,7 +62,7 @@ const AfpList = (props) => {
               <span className={comunClass.txtRadios}>{title}</span>
           </div>
           
-            <div className="col-md-8">
+            <div className="col-md-8" style={{width:"64%"}}>
               <NoPaddingAutocomplete
                 id={id+"Autocomplete"}
                 // onOpen={()=>{ console.log("aca"); var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;

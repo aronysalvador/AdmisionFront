@@ -153,6 +153,7 @@ const DocComplementariosTrayecto = () => {
                 size="small"
                 margin="dense"
                 required
+                autoComplete="off"
                 fullWidth
                 onChange={(e) => {
                   let texto = Format.caracteresInvalidos(e.target.value);
@@ -165,9 +166,7 @@ const DocComplementariosTrayecto = () => {
                     <InputAdornment position="end">
                         <IconButton
                           id="DocComplementariosTrayecto-ClearIcon1" 
-                          onClick={() => {
-                            setAnteceOtroC("");
-                          }}
+                          onClick={() => { setAnteceOtroC("") }}
                         >
                           <ClearIcon />
                         </IconButton>

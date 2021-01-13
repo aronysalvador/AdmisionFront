@@ -118,7 +118,7 @@ const Forecasts = () => {
                 <div className={['container', comunClass.backgroundWhite].join(' ')}>
                   <div className="row">
                   {afpList.length>0 && afpList.slice(0,6).map((afp,i) => (
-                   <div key={i} className="col-md-6" style={{marginBottom: '10px'}}> 
+                    <div key={i} className="col-md-6" style={{marginBottom: '10px'}}> 
                       <div className={checkedAfp.codigo === afp.codigo && checkedAfp.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className="col-md-3">
                               <BlueRadio

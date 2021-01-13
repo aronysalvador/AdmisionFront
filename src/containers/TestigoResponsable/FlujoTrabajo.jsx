@@ -147,7 +147,7 @@ const FlujoTrabajo = () => {
                         <div className="col-md-5 " style={{textAlign:"left"}}>
                                 <Grid
                                     className={comunClass.tituloTextBox}
-                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                    style={{marginBottom:'8px', textAlign: "left"}}
                                     >
                                         Fecha de aviso
                                 </Grid> 
@@ -157,7 +157,7 @@ const FlujoTrabajo = () => {
                         <div className="col-md-5 " style={{textAlign:"left"}}>
                                 <Grid
                                     className={comunClass.tituloTextBox}
-                                    style={{marginBottom:'15px', textAlign: "left"}}
+                                    style={{marginBottom:'8px', textAlign: "left"}}
                                     >
                                         Hora de aviso
                                 </Grid> 

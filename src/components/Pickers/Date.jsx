@@ -12,10 +12,15 @@ moment.locale("es");
 
 const NoPaddingDatePicker = withStyles({
     root: {
-      '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
-      }
-    }
+    '&& .MuiOutlinedInput-input': {
+    padding: "8.5px 0px"
+    },
+    '&& .MuiOutlinedInput-adornedEnd': {
+        paddingRight: "6px"
+    },
+    '&& .MuiOutlinedInput-adornedStart': {
+        paddingLeft: "0px"
+    }}
 })(KeyboardDatePicker);
 
 export default (props) => {
@@ -66,7 +71,6 @@ export default (props) => {
                             endAdornment: (
                                 <ClearIcon onClick={()=>{onDateChange(null,null)}} style={{cursor:'pointer'}} />
                             )
-                            
                         }}
                     />
                 </ThemeProvider>
