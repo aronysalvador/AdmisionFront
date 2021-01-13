@@ -32,6 +32,8 @@ const PersonalData = (props) => {
   const contenidoDireccion = [Format.formatizar(addmissionForm.direccionParticular)];
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
+  const tituloGrupo = "Grupo étnico";
+  const contenidoGrupo = [addmissionForm?.grupoEtnico.value];
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
   const [loading, setLoading] = useState(false)
@@ -39,7 +41,7 @@ const PersonalData = (props) => {
   const handleNext = () => {
     setLoading(true)
     const {
-      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,
+      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,grupoEtnico,
       rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
     if ( !razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa ) {
       // si falta info de la empresa
@@ -53,7 +55,11 @@ const PersonalData = (props) => {
       // si no tiene telefono
       dispatch(handleSetStep(5.3)); //form telefono
     } 
-    if(direccionParticular && telefonoParticular && razonSocial) {
+    else if (!grupoEtnico) {
+      // si no tiene Grupo Etnico
+      dispatch(handleSetStep(5.41)); //form Grupo Etnico
+    } 
+    if(direccionParticular && telefonoParticular && razonSocial &&grupoEtnico) {
       // si todos los datos relevantes están llenos
       if(rut && rutEmpresa && SucursalEmpresaObjeto){
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
@@ -94,27 +100,39 @@ const PersonalData = (props) => {
       </div>
       <div className={comunClass.boxDesk}>
         {/* <div className={spaceStyle.space1} /> */}
-        <BoxEmpresa
-          id={"PersonalData-Box1"}
-          contenidoDireccionEmpresa={contenidoDireccionEmpresa}
-          contenidoRazonSocialForm={contenidoRazonSocialForm}
-          contenidoRutEmpresa={contenidoRutEmpresa}
-          titulo={tituloEmpresa}
-          step={5.4} />
+        <div className="col-md-12">
+          <BoxEmpresa
+            id={"PersonalData-Box1"}
+            contenidoDireccionEmpresa={contenidoDireccionEmpresa}
+            contenidoRazonSocialForm={contenidoRazonSocialForm}
+            contenidoRutEmpresa={contenidoRutEmpresa}
+            titulo={tituloEmpresa}
+            step={5.4} />
+          {/* <div className={spaceStyle.spaceMin1} /> */}
+          <BoxACHS
+            id={"PersonalData-Box2"}
+            titulo={tituloTelefono}
+            contenido={contenidoTelefono}
+            step={5.3}
+          />
+        </div>
+        <div className="col-md-12">
+          <BoxACHS
+            id={"PersonalData-Box3"}
+            titulo={tituloDireccion}
+            contenido={contenidoDireccion}
+            step={5.2}
+          />
+
+          <BoxACHS
+            id={"PersonalData-Box4"}
+            titulo={tituloGrupo}
+            contenido={contenidoGrupo}
+            step={5.41}
+          />
+        </div>
         {/* <div className={spaceStyle.spaceMin1} /> */}
-        <BoxACHS
-          id={"PersonalData-Box2"}
-          titulo={tituloTelefono}
-          contenido={contenidoTelefono}
-          step={5.3}
-        />
-        {/* <div className={spaceStyle.spaceMin1} /> */}
-        <BoxACHS
-          id={"PersonalData-Box3"}
-          titulo={tituloDireccion}
-          contenido={contenidoDireccion}
-          step={5.2}
-        />
+       
         {/* <div className={spaceStyle.spaceMin1} /> */}
 
         <div className={comunClass.bottomElement}>

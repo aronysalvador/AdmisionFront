@@ -30,5 +30,6 @@ window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://prod.salud.achs.cl/orquestad
 window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://prod.salud.achs.cl/orquestador/api/trayecto/getMediosTransporte/"
 window.REACT_APP_PARTES_DEL_CUERPO = "https://prod.salud.achs.cl/orquestador/api/trayecto/getPartesCuerpo/"
 window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://prod.salud.achs.cl/orquestador/api/trayecto/causalMolestias"
-window.REACT_APP_CRITERIOS = "https://prod.salud.achs.cl/orquestador/api/sap/criteriosGravedad"
+window.REACT_APP_CRITERIOS = ""
 window.REACT_APP_ADMISION = "https://prod.salud.achs.cl/orquestador/api/admision/"
+window.REACT_APP_GRUPOS=""
