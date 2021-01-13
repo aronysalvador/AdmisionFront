@@ -126,6 +126,7 @@ const RelatoCompleto = () => {
                         margin="dense"
                         variant="outlined"
                         fullWidth
+                        autoComplete="off"  
                         rows={5}
                         inputProps={{ maxLength: 200 }}
                         helperText={(text1.length - 32 < 5 && text1.length - 32 > 0) &&"Se necesita al menos 5 caracteres"}
@@ -147,6 +148,7 @@ const RelatoCompleto = () => {
                         value={text2}
                         margin="dense"
                         variant="outlined"
+                        autoComplete="off"  
                         fullWidth
                         rows={5}
                         inputProps={{ maxLength: 200 }}
@@ -170,6 +172,7 @@ const RelatoCompleto = () => {
                         margin="dense"
                         variant="outlined"
                         fullWidth
+                        autoComplete="off"  
                         rows={5}
                         inputProps={{ maxLength: 200 }}
                         helperText={(text3.length - 25 < 5 && text3.length - 25 > 0) &&"Se necesita al menos 5 caracteres"}
