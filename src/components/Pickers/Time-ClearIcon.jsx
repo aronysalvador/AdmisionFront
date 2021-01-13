@@ -49,6 +49,7 @@ export default (props) => {
                                 inputVariant="outlined"                            
                                 InputAdornmentProps={{ position: 'start'}}
                                 ampm={false}
+                                autoComplete="off" 
                                 fullWidth
                                 onError={(e)=>{if(e){ setValidHour(false) } }}
                                 invalidDateMessage="Formato invalido"

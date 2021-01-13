@@ -139,10 +139,10 @@ const DocComplementariosTrayecto = () => {
                 label="Otro"
               />
             </div>
-            <div className={comunClass.widthOtro} style={{ padding: '0 10px 5px' }}>
+            <div className={comunClass.widthOtro} style={{ padding: '5px 10px 5px' }}>
               <TextField
                 id="DocComplementariosTrayecto-Input1" 
-                style={{ background: '#ffff', border: '2px solid #787878', borderRadius: '8px'}}
+                style={{ background: '#ffff', borderRadius: '8px'}}
                 disabled={state.anteceOtro === false}
                 helperText={
                   !anteceOtroValid && "Debes ingresar al menos 5 caracteres"

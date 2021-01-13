@@ -11,7 +11,7 @@ import image from './../../img/relato.svg'
 
 const PruebasComplementarias = () => {
   const {
-    addmissionForm: { percentage, AtencionMedica },
+    addmissionForm: { percentage, AtencionMedica, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -21,9 +21,19 @@ const PruebasComplementarias = () => {
 
   const handleOnClick = (respuesta) => {
     dispatch(updateForm("PruebasComplementarias", respuesta));
-    {respuesta === "Si" ?
-      dispatch(handleSetStep(19.24)) : dispatch(handleSetStep(19.4))
-    }
+    
+    dispatch(updateForm(respuesta === "No" && (
+      CamposDocumentos.anteceOtroC = "",
+      CamposDocumentos.antecePartP = "",
+      CamposDocumentos.anteceConst = "", 
+      CamposDocumentos.anteceVideS = "", 
+      CamposDocumentos.anteceComSe = "", 
+      CamposDocumentos.anteceOtro = "", 
+      CamposDocumentos.anteceNocuenta = "x",
+      "CamposDocumentos", CamposDocumentos
+    )))
+
+    dispatch(handleSetStep(respuesta === "Si" ? 19.24 : 19.4))
   };
 
   return (
@@ -68,7 +78,15 @@ const PruebasComplementarias = () => {
           <div className={spaceStyle.spaceMin1}></div>
           <Button
             className={comunClass.buttonAchs2}
-            onClick={() => handleOnClick("No")}
+            onClick={() => handleOnClick("No"
+            // CamposDocumentos?.anteceOtroC = "",
+            // CamposDocumentos?.antecePartP = "",
+            // CamposDocumentos?.anteceConst = "",
+            // CamposDocumentos?.anteceVideS = "",
+            // CamposDocumentos?.anteceComSe = "",
+            // CamposDocumentos?.anteceOtro = "",
+            // CamposDocumentos?.anteceNocuenta = "x"
+            )}
           >
             No
           </Button>

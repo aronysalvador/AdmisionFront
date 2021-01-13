@@ -47,7 +47,8 @@ export default (props) => {
                         value={selectedDate}
                         format="DD-MM-YYYY"
                         inputValue={date}
-                        onChange={onDateChange}                              
+                        onChange={onDateChange} 
+                        autoComplete="off"                              
                         animateYearScrolling       
                         InputAdornmentProps={{ position: 'start'}}
                         fullWidth

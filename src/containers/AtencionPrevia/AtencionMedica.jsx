@@ -11,7 +11,7 @@ import image from './../../img/relato.svg'
 
 const AtencionMedica = () => {
   const {
-    addmissionForm: { percentage },
+    addmissionForm: { percentage, CamposDocumentos },
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -21,9 +21,20 @@ const AtencionMedica = () => {
 
   const handleOnClick = (respuesta) => {
     dispatch(updateForm("AtencionMedica", respuesta));
-    {respuesta === "Si" ?
-      dispatch(handleSetStep(19.21)) : dispatch(handleSetStep(19.23))
-    }
+
+    dispatch(updateForm(respuesta === "No" && (
+      CamposDocumentos.OtroRecinto = "",
+      CamposDocumentos.OtroRecintoSi = "",
+      CamposDocumentos.OtroRecintoNo = "x",
+      CamposDocumentos.FechaOtroRe = "",
+      CamposDocumentos.HoraOtroRec = "",
+      CamposDocumentos.CuentaCual = "",
+      CamposDocumentos.CuentaConSi = "",
+      CamposDocumentos.CuentaConNo = "x",
+      "CamposDocumentos", CamposDocumentos
+      )))
+      
+    dispatch(handleSetStep(respuesta === "Si" ? 19.21 : 19.23))
   };
 
   return (

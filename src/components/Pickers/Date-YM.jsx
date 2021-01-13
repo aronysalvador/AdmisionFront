@@ -41,7 +41,8 @@ export default (props) => {
                     format="MM-YYYY"
                     inputValue={date}
                     onChange={onDateChange}                             
-                    animateYearScrolling       
+                    animateYearScrolling    
+                    autoComplete="off"    
                     InputAdornmentProps={{ position: 'start'}}
                     fullWidth
                     invalidDateMessage="Formato invalido"
