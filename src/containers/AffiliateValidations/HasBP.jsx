@@ -50,6 +50,7 @@ const HasBP = (props) => {
       </div>
       <div className={comunClass.bottomElement}>
         <Button
+          id={"HasBP-Btn1"}
           className={blackStyle.buttonFooter}
           onClick={() => {
             dispatch(handleSetStep(5.9));

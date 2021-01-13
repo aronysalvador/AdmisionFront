@@ -3,32 +3,31 @@ import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
+// import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
-import { Button, Typography, withStyles } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import Checkbox from '@material-ui/core/Checkbox';
+// import Checkbox from '@material-ui/core/Checkbox';
 import relato from './../../img/relato.svg'
 import editaRelato from './../../img/editar-relato.svg'
 import { Format } from "../../helpers/strings";
 
 const RelatoFinal = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar, tipoSiniestro, coberturaSoap } = addmissionForm;
+  const { relatoAccidente, volverAConcatenar, tipoSiniestro } = addmissionForm;
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const welcomeStyle = getWelcomeStyle();
+  // const welcomeStyle = getWelcomeStyle();
 
   const getRelato = () => {
     return (
-      "Al momento del accidente estaba " +
       addmissionForm.lugarAccidente +
-      ". Lo que ocurrió fue que " +
+      ". " +
       addmissionForm.descripcionAccidente +
-      ". El accidente ocurrió con " +
+      ". " +
       addmissionForm.objetoAccidente + "."
     );
   };
@@ -43,21 +42,20 @@ const RelatoFinal = (props) => {
     }
   });
 
-  const [stateCheckbox, setStateCheckbox] = useState(() => {
-    return coberturaSoap === "si" ? true : false 
-  });
-console.log(stateCheckbox);
-console.log(coberturaSoap);
-  const handleCheckBoxChange = (event) => {
-    setStateCheckbox( event.target.checked );
-  };
+  // const [stateCheckbox, setStateCheckbox] = useState(() => {
+  //   return coberturaSoap === "si" ? true : false 
+  // });
 
-  var respSoap = stateCheckbox ? "si" : "no" ;
+  // const handleCheckBoxChange = (event) => {
+  //   setStateCheckbox( event.target.checked );
+  // };
+
+  // var respSoap = stateCheckbox ? "si" : "no" ;
 
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
-    dispatch(updateForm("coberturaSoap", respSoap));
+    // dispatch(updateForm("coberturaSoap", respSoap));
     if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
        dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
@@ -72,14 +70,14 @@ console.log(coberturaSoap);
     return localValue.length < 15;
   };
 
-  const BlueCheckbox = withStyles({
-    root: {
-      '&$checked': {
-        color: '#00B2A9',
-      },
-    },
-    checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
+  // const BlueCheckbox = withStyles({
+  //   root: {
+  //     '&$checked': {
+  //       color: '#00B2A9',
+  //     },
+  //   },
+  //   checked: {},
+  // })((props) => <Checkbox color="default" {...props} />);
 
   return (
     <div className={comunClass.root}>
@@ -88,7 +86,8 @@ console.log(coberturaSoap);
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(8))}
+          id={"RelatoFinal-BtnBack"}
+          dispatch={() => dispatch(handleSetStep(6.06))}
           percentage={addmissionForm.percentage}
         />
       </div>
@@ -118,7 +117,7 @@ console.log(coberturaSoap);
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
                     </div>
                     <TextField
-                      id="txtRespuesta"
+                      id={"RelatoFinal-Lbl1"}
                       label=""
                       value={localValue}
                       margin="dense"
@@ -149,6 +148,7 @@ console.log(coberturaSoap);
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
                     <div>
                       <div
+                        id={"RelatoFinal-Btn1"}
                         className={comunClass.buttonEditRelato}
                         onClick={() => setEditable(true)}
                       >
@@ -163,12 +163,12 @@ console.log(coberturaSoap);
                 </div>
               )}
 
-              <Typography className={welcomeStyle.switchText}>
+              {/* <Typography className={welcomeStyle.switchText}>
                 <Grid component="span">
                   <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
                 </Grid>
                 Corresponde a cobertura &nbsp;<b>SOAP</b>
-              </Typography>
+              </Typography> */}
             </div>
 
             <div className={comunClass.displayMobile}>
@@ -176,6 +176,7 @@ console.log(coberturaSoap);
           </div>
             <div className={comunClass.bottomElement}>
               <Button
+                id={"RelatoFinal-Btn2"}
                 className={comunClass.buttonAchs}
                 variant="contained"
                 type="submit"

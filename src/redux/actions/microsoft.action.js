@@ -2,6 +2,7 @@ import {
   MSAL_INIT,
   MSAL_SUCCESS,
   MSAL_FAILURE,
+  SAVE_TOKEN,
 } from "../types/microsoftType.js";
 import msalservice from "../../services/msalservice";
 import graphservice from "../../services/graphservice";
@@ -17,12 +18,13 @@ export async function getUserProfile(scopes) {
   return null;
 }
 
-export const login = (scopes) => async (dispatch) => {
+export const login = (scopes) => async (dispatch, getState) => {
   dispatch({ type: MSAL_INIT });
 
   try {
     await msalservice.loginPopup({ scopes, prompt: "select_account" });
     const user = await getUserProfile(scopes);
+    let accessToken = await msalservice.acquireTokenSilent({ scopes })
     const userTempArray = user.displayName.split(",");
     let iniciales = "";
     if (Array.isArray(userTempArray) && userTempArray.length === 2) {
@@ -37,9 +39,9 @@ export const login = (scopes) => async (dispatch) => {
     };
     dispatch({ type: MSAL_SUCCESS, payload: userMsal });
     //PARCHE
-    var userSAP =await  homologacionSap(dispatch, userMsal.email)
+    var userSAP =await  homologacionSap(dispatch, userMsal.email, accessToken)
     if(userSAP){
-      var step =await  isNuevaAdmisionista(dispatch, userMsal.email)
+      var step =await  isNuevaAdmisionista(dispatch, userMsal.email, getState)
       dispatch(handleSetStep(step));
     }else{
       dispatch(handleSetStep(1003));
@@ -78,12 +80,16 @@ export const getAccount = () => async (dispatch) => {
   return usermsal;
 };
 
-export const getCenters = async(email) => {
-  return  await Axios.get(window.REACT_APP_CENTER_USER+'?email='+email);
+export const getCenters = async(email, token) => {
+  return  await Axios.get(window.REACT_APP_CENTER_USER+'?email='+email, {
+    headers: {
+      "x-access-token": token
+    }
+  });
 }
 
-const isNuevaAdmisionista = async(dispatch, email) => {
-    const result = await getCenters(email);
+const isNuevaAdmisionista = async(dispatch, email, getState) => {
+    const result = await getCenters(email, getState().microsoftReducer.token);
       
     if(result.data.data.length > 0) {
       dispatch(updateForm("centrosForm", result.data.data[0].centrosForm));
@@ -93,16 +99,23 @@ const isNuevaAdmisionista = async(dispatch, email) => {
     }
 };
 
-export const obtenerUsuarioSap = async (email) => {
-  return Axios.get(window.REACT_APP_HOMOLOGACION+'?email='+email);
+export const obtenerUsuarioSap = async (email, token) => {
+  return Axios.get(`${window.REACT_APP_HOMOLOGACION}?email=${email}&wt=${token.accessToken}`);
 };
 
+export const guardar_token = (token) => {
+  return {
+    type: SAVE_TOKEN,
+    payload: token
+  }
+}
 
-const homologacionSap = async(dispatch, email) => {
-  const result = await obtenerUsuarioSap(email);
+const homologacionSap = async(dispatch, email, token) => {
+  const result = await obtenerUsuarioSap(email, token);
 
-  if(result.data.content[0].length > 0) { 
-    dispatch(updateForm("usuarioSAP", result.data.content[0]));
+  if(result.data.content[0].length > 0 && result.data.token) { 
+      dispatch(guardar_token(result.data.token));
+      dispatch(updateForm("usuarioSAP", result.data.content[0]));
     return true
   }else {   
     return false

@@ -16,10 +16,11 @@ const RutPaciente = () => {
 
   return (
     <div>
-        <Grid className={comunClass.tituloTextBox}>
+        <Grid className={comunClass.tituloTextBox} for={"RutPaciente-Lbl1"}>
           RUT
         </Grid>
         <TextField
+          id={"RutPaciente-Lbl1"}
           type="text"
           value={rut}
           variant="outlined"
@@ -37,6 +38,7 @@ const RutPaciente = () => {
         />
         <div className={comunClass.bottomElement}>
           <Button
+            id={"RutPaciente-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={!rut || !isValid}

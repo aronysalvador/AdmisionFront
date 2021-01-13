@@ -1,10 +1,11 @@
 import React from 'react'
-import {Typography,TextField} from "@material-ui/core"
-import Autocomplete from '@material-ui/lab/Autocomplete'
+import {TextField} from "@material-ui/core"
+import AutoComplete from '@material-ui/lab/Autocomplete'
 import { getComunStyle } from "./../../../css/comun"
 import { useDispatch } from "react-redux"
 import { updateForm } from "../../../redux/actions/AdmissionAction"
 import image from './../../../img/location.png'
+import { withStyles } from "@material-ui/core/styles";
 
 
 function sleep(delay = 0) {
@@ -13,11 +14,27 @@ function sleep(delay = 0) {
     })
   }
 
+  const NoPaddingAutocomplete = withStyles(  
+    {
+      inputRoot: {
+        '&&[class*="MuiOutlinedInput-root"] $input': {
+          padding: "3px 3px 3px 10px",
+        },
+        '&& .MuiOutlinedInput-notchedOutline': {
+          top: "-2px",
+          borderRadius: "0.7em"
+        }
+      },
+      input: {}
+    }
+  )(AutoComplete);
+
 const DireccionGeo = (props) => {
-  
+
     const dispatch = useDispatch()
     const comunStyle = getComunStyle();
-    const { direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal } = props
+    const { id, direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal, background, small, noFijarOption } = props
+
     const [open, setOpen] = React.useState(false)
 
     const DinamycOption = { description: 'Fijar en el mapa' }
@@ -25,7 +42,6 @@ const DireccionGeo = (props) => {
     const [options, setOptions] = React.useState([DinamycOption])
 
     React.useEffect(()=>{
-      
       if(direccionTemporal){
         setearDirection(direccionTemporal)
       }
@@ -44,7 +60,6 @@ const DireccionGeo = (props) => {
         setDireccion(predictions[0]);
         googleMapsGetMap(predictions[0])
       }
-
       setLoading(false)
     }
     
@@ -76,82 +91,137 @@ const DireccionGeo = (props) => {
             dispatch(updateForm("LatTemporal", json.content[0].result.geometry.location.lat))
             dispatch(updateForm("LongTemporal", json.content[0].result.geometry.location.lng))
         }
-
       }else{
         dispatch(updateForm("DireccionTemporal", {}))
         dispatch(updateForm("LatTemporal", ""))
         dispatch(updateForm("LongTemporal", ""))
       }
-
       showDinamicMap()
     }
-   
-
 
     return (    
       !loading && (
             <div>
-                <Autocomplete
+              {small ? (
+                <NoPaddingAutocomplete
+                  id={id}
                   value={direccion}
                   filterOptions={(options) => options}
-                  style={{ width: '100%' }}
+                  style={background ? { width: '100%', background, borderRadius: "0.7em" } : { width: '100%', borderRadius: "0.7em"  }}
                   open={open}
-                  onOpen={() => {
-                      setOpen(true)
-                  }}
-                  onClose={() => {
-                      setOpen(false)
-                  }}
+                  onOpen={() => { setOpen(true) }}
+                  onClose={() => { setOpen(false) }}
                   size="small"
                   fullWidth
                   getOptionSelected= {(
                     option,
                     value,
-                 ) => value.value === option.value}
+                  ) => value.value === option.value}
                   getOptionLabel={(option) => option ? option.description : ""}
                   options={options}
                   noOptionsText='Ingresa una dirección'
                   onInputChange={(event,newInputValue) => {
-                      googleMapsAutoComplete(newInputValue)
+                    googleMapsAutoComplete(newInputValue)
                   }}
                   onChange={(event, newValue) => {    
-                      if(!newValue){
-                        setDireccion("")
-                        setMapa("")
-                        clearData()
-                        setOptions([DinamycOption])
+                    if(!newValue){
+                      setDireccion("")
+                      setMapa("")
+                      clearData()
+                      setOptions([DinamycOption])
+                    }else{
+                      if(newValue.description==='Fijar en el mapa'){    
+                        handleDinamic()
                       }else{
-                        if(newValue.description==='Fijar en el mapa'){    
-                                                  
-                          handleDinamic()
-
-                        }else{
-                          setDireccion(newValue);
-                          googleMapsGetMap(newValue)
-                        }     
-                      }                                 
+                        setDireccion(newValue);
+                        googleMapsGetMap(newValue)
+                      }     
+                    }                                 
                   }}
                   renderInput={(params) => {
                     return(
                       <TextField {...params} style={{color:'red'}} variant="outlined" />
                   )}}
                   renderOption={(option) => {   
-                    if(option.description==='Fijar en el mapa'){                   
-                      return(
-                        <Typography className={comunStyle.txtGreen}>
-                          <img alt="Location" src={image} className={comunStyle.iconLocation} />
-                          <span style={{marginLeft:"5px"}}>{option.description}</span>
-                        </Typography>
-                      )
+                    if(option.description==='Fijar en el mapa'){  
+                      if(!noFijarOption){                   
+                        return(
+                          <div className={comunStyle.txtGreen}  >
+                            <img alt="Location" src={image} className={comunStyle.iconLocation} />
+                            <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                          </div>
+                        )
+                      }
                     }else{
                       return(
-                        <Typography>
-                          {option.description}
-                        </Typography>
+                        <div>
+                          <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                        </div>
+                        
                       )
                     }                    
                   }}
                 />
+                ): (
+                  <AutoComplete
+                  id={id}
+                  value={direccion}
+                  filterOptions={(options) => options}
+                  style={background ? { width: '100%', background, borderRadius: "0.7em" } : { width: '100%', borderRadius: "0.7em"  }}
+                  open={open}
+                  onOpen={() => { setOpen(true) }}
+                  onClose={() => { setOpen(false) }}
+                  size="small"
+                  fullWidth
+                  getOptionSelected= {(
+                    option,
+                    value,
+                  ) => value.value === option.value}
+                  getOptionLabel={(option) => option ? option.description : ""}
+                  options={options}
+                  noOptionsText='Ingresa una dirección'
+                  onInputChange={(event,newInputValue) => {
+                    googleMapsAutoComplete(newInputValue)
+                  }}
+                  onChange={(event, newValue) => {    
+                    if(!newValue){
+                      setDireccion("")
+                      setMapa("")
+                      clearData()
+                      setOptions([DinamycOption])
+                    }else{
+                      if(newValue.description==='Fijar en el mapa'){    
+                        handleDinamic()
+                      }else{
+                        setDireccion(newValue);
+                        googleMapsGetMap(newValue)
+                      }     
+                    }                                 
+                  }}
+                  renderInput={(params) => {
+                    return(
+                      <TextField {...params} style={{color:'red'}} variant="outlined" />
+                  )}}
+                  renderOption={(option) => {  
+                    if(option.description==='Fijar en el mapa'){                        
+                      if(!noFijarOption){                   
+                        return(
+                          <div className={comunStyle.txtGreen} id={id+"-Fijar"} >
+                            <img alt="Location" src={image} className={comunStyle.iconLocation} />
+                            <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                          </div>
+                        )
+                      }
+                    }else{
+                      return(
+                        <div>
+                          <span style={{marginLeft:"5px", marginBottom:"0 !important"}}>{option.description}</span>
+                        </div>
+                      )
+                    }                
+                  }}
+                />
+                )}
             </div>
       )
     );

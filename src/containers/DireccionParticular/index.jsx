@@ -65,6 +65,7 @@ const DireccionParticular = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"DireccionParticular-BtnBack"}
           dispatch={() => ( creacionBP ? dispatch(handleSetStep(5.4)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
@@ -87,11 +88,12 @@ const DireccionParticular = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} variant="subtitle2">
+          <Typography className={comunClass.tituloTextBox} variant="subtitle2" for={"DireccionParticular-Lbl1"}>
             Dirección particular
           </Typography>
 
-          <DireccionGeo       
+          <DireccionGeo 
+            id={"DireccionParticular-Lbl1"}      
             comunStyle={getComunStyle()}
             direccion={direccion} 
             setMapa={setMapaUrl} 
@@ -111,6 +113,7 @@ const DireccionParticular = () => {
 
         <div className={comunClass.bottomElement}>
           <Button
+            id={"DireccionParticular-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={!valido}

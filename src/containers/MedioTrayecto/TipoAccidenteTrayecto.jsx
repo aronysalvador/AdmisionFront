@@ -33,6 +33,7 @@ const TipoAccidenteTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"TipoAccidenteTrayecto-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.7))}
           percentage={percentage}
         />
@@ -58,6 +59,7 @@ const TipoAccidenteTrayecto = () => {
               {tipoAccidenteTrayectoList && tipoAccidenteTrayectoList.map((tipo) => (
               
                 <BotonSeleccionarCustomSingle
+                  id={"TipoAccidenteTrayecto-Btn"+tipo.key}
                   key={tipo.key}
                   data={tipo}
                   itemForm={"tipoAccidenteTrayectoForm"}

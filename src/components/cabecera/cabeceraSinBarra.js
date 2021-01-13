@@ -6,7 +6,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const CabeceraSinBarra = (props) => {
-  const { dispatch, color } = props;
+  const { id, dispatch, color } = props;
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
@@ -17,7 +17,7 @@ const CabeceraSinBarra = (props) => {
 
       <div className={comunClass.buttonVolverContainerBarra}>
         <div style={{cursor:'pointer'}} onClick={() => dispatch()}>
-          <ArrowBackIosIcon style={{ color: color }} /> 
+          <ArrowBackIosIcon style={{ color: color }} id={id}/> 
         </div>
       </div>
     </div>

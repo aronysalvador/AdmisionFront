@@ -7,11 +7,11 @@ import { cardSiniestroStyles } from "../../../css/cardSiniestroStyle";
 import { Grid } from '@material-ui/core';
 
 const BoxACHS = (props) => {
-    const { titulo, contenido, step } = props
+    const { id, titulo, contenido, step } = props
     const classes = cardSiniestroStyles();
     const dispatch = useDispatch();
     return (<div className={classes.containerBox}>
-                <Grid container>
+                <Grid container id={id} onClick={() => dispatch(handleSetStep(step))}>
                     <Grid item xs={11} >
                         <div className={classes.cuerpo}>
                             <div>

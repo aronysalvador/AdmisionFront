@@ -9,6 +9,7 @@ import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker"
 import image from './../../img/iconCalendar.svg'
 
 const FechaSintomas = ({
+  id,
   onChange,
   daysFromState,
   monthFromState,
@@ -42,13 +43,14 @@ const FechaSintomas = ({
   return (
     <>
       <div>
-        <Grid className={comunClass.tituloTextBox} style={{marginBottom: "7px"}}>
+        <Grid className={comunClass.tituloTextBox} style={{marginBottom: "7px"}} for={id}>
           {textoPrimario}
         </Grid>
       </div>
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
+            id={id}
             inputVariant="outlined"
             size="small"
             disableFuture

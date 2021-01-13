@@ -5,7 +5,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 
 const BotonSeleccionarCustomSingle = (props) => {
-  const { data, itemForm, selected, step } = props;
+  const { id, data, itemForm, selected, step } = props;
 
   const dispatch = useDispatch();
 
@@ -18,6 +18,7 @@ const BotonSeleccionarCustomSingle = (props) => {
 
   return (
     <div
+      id={id}
       onClick={() => {
         setIsSelected((selected) => !selected);
         if (!isSelected) {

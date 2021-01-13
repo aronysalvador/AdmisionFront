@@ -20,8 +20,10 @@ const FechaSiniestro = ({
   daysFromState,
   monthFromState,
   yearFromState,
+  UpComponent
 }) => {
 
+  const IdComponent = UpComponent ? UpComponent : "";
   const date = new Date();
   const [calendar, setCalendar] = useState(false);
   const defaultMaterialTheme = createMuiTheme({
@@ -149,8 +151,9 @@ const FechaSiniestro = ({
       alignItems="center"
       className={comunClass.boxCalendar}
     >
-      <Grid item onClick={()=>setCalendar(false)}>
+      <Grid id={IdComponent+"-Grid1"} item onClick={()=>setCalendar(false)}>
         <IconButton
+          id={IdComponent+"-IconButton1"}
           aria-label="Ir atrás"
           variant="contained"
           component="span"
@@ -166,11 +169,14 @@ const FechaSiniestro = ({
           <KeyboardArrowLeft />
         </IconButton>
       </Grid>
-      <Grid item   
+      <Grid 
+        id={IdComponent+"-Grid2"} 
+        item   
         style={{cursor: 'pointer'}}   
         onClick={()=>setCalendar(!calendar)}
       >
         <IconButton
+          id={IdComponent+"-IconButton2"}
           aria-label="Selecciona Fecha"
           component="span"
           variant="contained"
@@ -190,8 +196,11 @@ const FechaSiniestro = ({
           {days === actualDay && month === actualMonth ? "Hoy" : ""}
         </span>
       </Grid>
-      <Grid item onClick={()=>setCalendar(false)}>
+      <Grid 
+      id={IdComponent+"-Grid3"} 
+      item onClick={()=>setCalendar(false)}>
         <IconButton
+          id={IdComponent+"-IconButton3"}
           aria-label="Ir adelante"
           component="span"
           variant="contained"
@@ -217,6 +226,7 @@ const FechaSiniestro = ({
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={"es"}>
       <ThemeProvider theme={defaultMaterialTheme}>
       <DatePicker
+        id={IdComponent+"-DatePicker1"} 
         autoOk={true} 
         disableFuture
         variant="static"

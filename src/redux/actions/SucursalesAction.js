@@ -4,24 +4,39 @@ import {
   GET_SUCURSALES_FAILURE,
 } from "../types/sucursalesType";
 import Axios from "axios";
-import { updateForm } from "./AdmissionAction";
+import { updateForm, handleSetStep } from "./AdmissionAction";
 
-export const obtenerData = async (rut) => {
-  return Axios.get(`${window.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`);
+export const obtenerData = async (rut, token) => {
+  return Axios.get(`${window.REACT_APP_SUCURSALES}?rutEmpresa=${rut}`, {
+    headers: {
+      "x-access-token": token
+    }
+  }
+);
 };
 
-export const getSucursales = (rut) => async (dispatch) => {
+export const getSucursales = (rut) => async (dispatch, getState) => {
   dispatch({
     type: GET_SUCURSALES_INIT,
     payload: true,
   });
 
-  obtenerData(rut)
+  obtenerData(rut, getState().microsoftReducer.token)
     .then((response) => {
-      dispatch(successCallSucursales(response.data));
+      if(response.status === 200 || response.status === 304){        
+        dispatch(successCallSucursales(response.data));  
+      }else{
+        dispatch(updateForm("errorStep", 3));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_SUCURSALES));
+        dispatch(handleSetStep(1004));
+      }
+  
     })
     .catch((error) => {
       dispatch(errorCallSucursales());
+      dispatch(updateForm("errorStep", 3));
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_SUCURSALES));
+      dispatch(handleSetStep(1004));
     });
 
   const successCallSucursales = (sucursales) => ({
@@ -35,12 +50,17 @@ export const getSucursales = (rut) => async (dispatch) => {
 };
 
 
-export const obtenerValidacion = async (rut) => {
-  return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT+rut);
+export const obtenerValidacion = async (rut, token) => {
+  return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT+rut, {
+    headers: {
+      "x-access-token": token
+    }
+  }
+);
 };
 
 
-export const getValidar = (isValid, rut) => async (dispatch) => {
+export const getValidar = (isValid, rut) => async (dispatch, getState) => {
   if(rut.length <= 7)
     return;
   dispatch({
@@ -49,30 +69,39 @@ export const getValidar = (isValid, rut) => async (dispatch) => {
   });
   if (isValid) {
     dispatch(updateForm("rutEmpresa", rut));
-   await obtenerValidacion(rut)
+   await obtenerValidacion(rut, getState().microsoftReducer.token)
       .then(async(response) => {
+        if(response.data.status === 200 || response.data.status === 304){
+          const json = response.data      
+          if(json.content.response[0] !== undefined){
+  
+           await dispatch(updateForm("razonSocial", json.content.response[0])) 
+          await   dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
+            //dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
+          await  dispatch(updateForm("rutEmpresa", rut));
+  
+          
+          await dispatch(getSucursales(rut.replace(/\./g,'').toUpperCase()))
+          }else{
+  
+          // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
+          dispatch(updateForm("rutEmpresa", rut));
+            dispatch(updateForm("razonSocial", "")) 
+            dispatch(updateForm("razonSocialForm", "")) 
            
-        const json = response.data      
-        if(json.content.response[0] !== undefined){
-
-         await dispatch(updateForm("razonSocial", json.content.response[0])) 
-        await   dispatch(updateForm("razonSocialForm", json.content.response[0]?.name)) 
-          //dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
-        await  dispatch(updateForm("rutEmpresa", rut));
-
-        
-        await dispatch(getSucursales(rut.replace(/\./g,'').toUpperCase()))
+          }
         }else{
-
-        // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,''))) 
-        dispatch(updateForm("rutEmpresa", rut));
-          dispatch(updateForm("razonSocial", "")) 
-          dispatch(updateForm("razonSocialForm", "")) 
-         
+          dispatch(updateForm("errorStep", 3));
+          dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+          dispatch(handleSetStep(1004));
+          
         }
       })
       .catch((error) => {
         console.log(error)
+        dispatch(updateForm("errorStep", 3));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+        dispatch(handleSetStep(1004));
         
       })
   }

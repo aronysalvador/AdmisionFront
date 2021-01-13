@@ -82,6 +82,7 @@ const ValidarCorreoElectronico = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="ValidarCorreoElectronico-BtnBack"
           dispatch={() => dispatch(handleSetStep(26.1))}
           percentage={percentage}
         />
@@ -108,6 +109,7 @@ const ValidarCorreoElectronico = () => {
             Email
           </Typography>
           <TextField
+            id="ValidarCorreoElectronico-Input1"
             value={!stateCheck ? userEmail : ""}
             variant="outlined"
             size="small"
@@ -124,6 +126,7 @@ const ValidarCorreoElectronico = () => {
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
+                    id="ValidarCorreoElectronico-ClearIcon1"
                     disabled={stateCheck}
                     onClick={() => {
                       setUserEmail("");
@@ -157,6 +160,7 @@ const ValidarCorreoElectronico = () => {
             </div>
             <div className={welcomeStyle.divRowBottomEmail}>
               <CustomSwitch
+                id="ValidarCorreoElectronico-CustomSwitch1"
                 checked={stateCheck}
                 onChange={handleChange}
                 color="default"
@@ -167,6 +171,7 @@ const ValidarCorreoElectronico = () => {
 
         <div className={comunClass.bottomElement}>
           <Button
+            id="ValidarCorreoElectronico-Btn1"
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={

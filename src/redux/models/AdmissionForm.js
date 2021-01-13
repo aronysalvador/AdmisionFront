@@ -14,10 +14,10 @@ export const AdmissionForm = {
     volverAConcatenar: false,
 
     testigos: { nombre: "", cargo: "" },
-    responsable: [],
-    fechaHoraResponsable: {},
-    fechaHoraSiniestro: {},
-    fechaHoraAtencion: {},
+    responsable: { nombre: "", cargo: "" },
+    fechaHoraResponsable: "",
+    fechaHoraSiniestro: "",
+    fechaHoraAtencion: "",
 
     SucursalEmpresa: "",
     DireccionEmpresa: "",
@@ -25,16 +25,20 @@ export const AdmissionForm = {
     direccionParticular: "",
     telefonoParticular: "",
 
+    desarrollarTrabajoHabitual: "",
+
+    profesionForm: "",
+    cargoForm: "",
+    tipoDeContrato: "",
+    tipoJornadaForm: "",
+    tipoRemuneracion: "",
+    categoriaOcupacionalForm: "",
+    ingresoTrabajoActualVisual: "",
+    ingresoTrabajoActual: "",
     inicioJornadaLaboral: "",
     finJornadaLaboral: "",
-    ingresoTrabajoActual: "",
-    desarrollarTrabajoHabitual: "",
-    tipoRemuneracion: {},
-
-    tipoDeContrato: {},
 
     //State de Cargo
-    cargoForm: "",
     //Lugar Exacto Sinietsro
     sucursalEmpresaSiniestro: "",
     urlMapasucursalEmpresaSiniestro: "",
@@ -51,7 +55,7 @@ export const AdmissionForm = {
     DireccionTemporal: {}, // direccion temporal que es enviada al mapa dinámico
     LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
     LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
-    AccidenteEnSucursal: "",
+    AccidenteEnSucursal: "no",
     sucursalCargo: "", //Codigo de la sucursal
 
     comunaSiniestro: "",
@@ -59,11 +63,15 @@ export const AdmissionForm = {
 
     BP: "",
     mensajeErrorSAP: "",
+    mensajeErrorApi: "",
+    errorStep: 0,
 
     TrabajadorIndependiente: "", // va al doumento de trayecto debe incluirse en CamposDocumentos
     tab: 0,
 
     coberturaSoap: "", // se debe pasar a SAP
+
+    responsableForm: "", //Si hay responsable
 
     CamposDocumentos: {
         anteceContr: "",
@@ -107,12 +115,13 @@ export const AdmissionForm = {
         anteceCertH: "",
         //Testigo
         TestigoS: "",
-        TestigoN: "x"
+        TestigoN: ""
             /* TRAYECTO */
 
     },
 
-    FechaSintomasEP: {},
-    AgenteCausaEP: {},
+    FechaSintomasEP: "",
+    FechaExposicionAgenteEP: "",
+    AgenteCausaEP: "",
     TipoAvisoResponsable: {}
 };

@@ -17,9 +17,19 @@ export const searchCargos = () =>async(dispatch) =>{
 
 obtenerData()
 .then((response) => {
-        dispatch( successCallCargos(response.data.content[0]) )
+        if(response.data.status === 200 || response.data.status === 304){
+            dispatch( successCallCargos(response.data.content[0]) )
+        }else{
+            dispatch(updateForm("errorStep", 3));
+            dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CARGOS));
+            dispatch(handleSetStep(1004));
+        }
+  
     }).catch((error) => {
         dispatch( errorCallCargos() )
+        dispatch(updateForm("errorStep", 3));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CARGOS));
+        dispatch(handleSetStep(1004));
     })
     }
 

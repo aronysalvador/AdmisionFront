@@ -5,6 +5,7 @@ import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 
 export default function InputMasked({
+  id,
   mask,
   setTelefonoIsValid,
   setTelefono,
@@ -16,6 +17,7 @@ export default function InputMasked({
 }) {
   return (
     <TextField
+      id={id}
       value={disabled ? "" : telefono}
       variant="outlined"
       size="small"
@@ -32,7 +34,10 @@ export default function InputMasked({
               <ClearIcon />
             </IconButton>
           </InputAdornment>
-        )
+        ),
+        style: {
+            background: "#ffff"
+        },
       } : {inputMode: 'numeric'}
     }
       disabled={disabled}

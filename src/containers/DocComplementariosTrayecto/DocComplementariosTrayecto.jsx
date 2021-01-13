@@ -68,6 +68,7 @@ const DocComplementariosTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="DocComplementariosTrayecto-BtnBack"
           dispatch={() => dispatch(handleSetStep(19.2))}
           percentage={percentage}
         />
@@ -95,7 +96,7 @@ const DocComplementariosTrayecto = () => {
             <div className={state.antecePartP === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
               <div className={comunClass.containerOpctionCompl}>
                 <FormControlLabel
-                  control={<BlueCheckbox checked={state.antecePartP} onChange={handleChange} name="antecePartP" />}
+                  control={<BlueCheckbox id="DocComplementariosTrayecto-Check1" checked={state.antecePartP} onChange={handleChange} name="antecePartP" />}
                   label="Parte policial"
                 />
               </div>
@@ -104,7 +105,7 @@ const DocComplementariosTrayecto = () => {
             <div className={state.anteceConst === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
               <div className={comunClass.containerOpctionCompl}>
                 <FormControlLabel
-                  control={<BlueCheckbox checked={state.anteceConst} onChange={handleChange} name="anteceConst" />}
+                  control={<BlueCheckbox id="DocComplementariosTrayecto-Check2"  checked={state.anteceConst} onChange={handleChange} name="anteceConst" />}
                   label="Constancia ante carabineros"
                 />
               </div>
@@ -115,7 +116,7 @@ const DocComplementariosTrayecto = () => {
             <div className={state.anteceVideS === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
               <div className={comunClass.containerOpctionCompl}>
                 <FormControlLabel 
-                  control={<BlueCheckbox checked={state.anteceVideS} onChange={handleChange} name="anteceVideS" />} 
+                  control={<BlueCheckbox id="DocComplementariosTrayecto-Check3"  checked={state.anteceVideS} onChange={handleChange} name="anteceVideS" />} 
                   label="Video de cámaras de seguridad" 
                 />
               </div>
@@ -124,7 +125,7 @@ const DocComplementariosTrayecto = () => {
             <div className={state.anteceComSe === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
               <div className={comunClass.containerOpctionCompl}>
                 <FormControlLabel
-                  control={<BlueCheckbox checked={state.anteceComSe} onChange={handleChange} name="anteceComSe" />}
+                  control={<BlueCheckbox id="DocComplementariosTrayecto-Check4"  checked={state.anteceComSe} onChange={handleChange} name="anteceComSe" />}
                   label="Denuncia en compañía de seguros"
                 />
               </div>
@@ -134,12 +135,13 @@ const DocComplementariosTrayecto = () => {
           <div className={state.anteceOtro === true ? comunClass.roundedBlue : comunClass.roundedNormal} style={{minWidth: "315px", width:"100%"}}>
             <div className={comunClass.containerOpctionCompl}>
               <FormControlLabel
-                control={<BlueCheckbox checked={state.anteceOtro} onChange={handleChange} name="anteceOtro" className={comunClass.txtRadios} />}
+                control={<BlueCheckbox id="DocComplementariosTrayecto-Check5"  checked={state.anteceOtro} onChange={handleChange} name="anteceOtro" className={comunClass.txtRadios} />}
                 label="Otro"
               />
             </div>
             <div className={comunClass.widthOtro} style={{ padding: '0 10px 5px' }}>
               <TextField
+                id="DocComplementariosTrayecto-Input1" 
                 style={{ background: '#ffff', border: '2px solid #787878', borderRadius: '8px'}}
                 disabled={state.anteceOtro === false}
                 helperText={
@@ -162,6 +164,7 @@ const DocComplementariosTrayecto = () => {
                   endAdornment: (
                     <InputAdornment position="end">
                         <IconButton
+                          id="DocComplementariosTrayecto-ClearIcon1" 
                           onClick={() => {
                             setAnteceOtroC("");
                           }}
@@ -179,6 +182,7 @@ const DocComplementariosTrayecto = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id="DocComplementariosTrayecto-Btn1"
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={state.anteceOtro && anteceOtroC.length <= 4}
@@ -193,7 +197,8 @@ const DocComplementariosTrayecto = () => {
 
               if(!state.antecePartP && !state.anteceConst && !state.anteceVideS && !state.anteceComSe  && !state.anteceOtro){
                 CamposDocumentos.anteceNocuenta = "x"
-              } else {CamposDocumentos.anteceNocuenta = ""}
+              }
+              else {CamposDocumentos.anteceNocuenta = ""}
 
               dispatch(updateForm("CamposDocumentos", CamposDocumentos));              
               dispatch(handleSetStep(19.22))

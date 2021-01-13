@@ -67,6 +67,7 @@ const HasScheduledMeet = (props) => {
           <div className={comunClass.bottomElement}>
             <div className={comunClass.paddingElement}>
             <Button
+              id={"HasScheduledMeet-Btn1"}
               className={[blackStyle.buttonFooter, blackStyle.buttonFooterSpace]}
               onClick={() => {
                 dispatch(handleSetStep(5.9));
@@ -76,6 +77,7 @@ const HasScheduledMeet = (props) => {
             </Button>
             {/* <div className={spaceStyle.space1} /> */}
             <Button
+              id={"HasScheduledMeet-Btn2"}
               className={blackStyle.buttonFooter2}
               onClick={() => {
                 if (addmissionForm.siniestros.length > 0) {

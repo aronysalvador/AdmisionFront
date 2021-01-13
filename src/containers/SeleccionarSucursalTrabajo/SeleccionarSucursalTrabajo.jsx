@@ -34,6 +34,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"SeleccionarSucursal-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.4))}
           percentage={percentage}
         />
@@ -64,6 +65,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
         >
           {sucursalesEmpresa.map((sucursal, index) => (
             <BotonSeleccionarCustom
+              id={`SeleccionarSucursal-Btn${index}`}
               key={index}
               data={sucursal}
               itemForm={"SucursalEmpresa"}

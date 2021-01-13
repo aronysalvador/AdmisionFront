@@ -125,6 +125,7 @@ const Identification = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"Identification-BtnBack"}
           dispatch={() => dispatch(handleSetStep(2))}
           percentage={percentage}
         />
@@ -149,8 +150,8 @@ const Identification = () => {
         </div>
         <div className={comunClass.containerTextBox}>
             <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered>
-              <Tab classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 }} label="RUT"  />
-              <Tab classes={value === 1 ? { root: classes.root3 } : { root: classes.root }} label="Pasaporte"  />
+              <Tab classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 }} label="RUT" id={"Identification-Tab0"} />
+              <Tab classes={value === 1 ? { root: classes.root3 } : { root: classes.root }} label="Pasaporte" id={"Identification-Tab1"} />
             </Tabs>
 
             <TabPanel value={tab} index={0}>

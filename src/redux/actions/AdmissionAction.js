@@ -62,11 +62,12 @@ export const handleSetStep = (step, actual = null) => {
             const TIPO = tipoSiniestro.Id
 
             switch (actual) {
-                
+
                 case 5.7: //PersonalSuccess
                     switch (TIPO) {
                         case 1:
-                            PASO = 6
+                            //RelatoUnido
+                            PASO = 6.06
                             break;
                         case 2:
                             PASO = 6.01
@@ -97,10 +98,28 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
+                    //Relato Unido    
+                case 6.06: //AccidentPlaceForm
+                    switch (TIPO) {
+                        case 1:
+                            PASO = 5.7
+                            break;
+                        case 2:
+                            PASO = 6.03
+                            break;
+                        case 3:
+                            PASO = 500
+                            break;
+                        default:
+                            PASO = 500
+                            break;
+                    }
+                    break;
+
                 case 8.1: //RelatoFinal
                     switch (TIPO) {
                         case 1:
-                            PASO = 9
+                            PASO = 10.1
                             break;
                         case 2:
                             PASO = 9.01
@@ -117,7 +136,7 @@ export const handleSetStep = (step, actual = null) => {
                 case 10: //FechaHoraSiniestro 
                     switch (TIPO) {
                         case 1:
-                            PASO = 9
+                            PASO = 8.1
                             break;
                         case 2:
                             PASO = 9.01
@@ -128,6 +147,40 @@ export const handleSetStep = (step, actual = null) => {
                         default:
                             PASO = 500
                             break;
+                    }
+                    break;
+
+                case 10.1: //InfoAccidente 
+                    if(step==="x_back"){//hacia atras
+                        switch (TIPO) {
+                            case 1:
+                                PASO = 8.1
+                                break;
+                            case 2:
+                                PASO = 9.01
+                                break;
+                            case 3:
+                                PASO = 500
+                                break;
+                            default:
+                                PASO = 500
+                                break;
+                        }
+                    }else{ //hacia adelante
+                        switch (TIPO) {
+                            case 1:
+                                PASO = 17.3
+                                break;
+                            case 2:
+                                PASO = 17.4
+                                break;
+                            case 3:
+                                PASO = 500
+                                break;
+                            default:
+                                PASO = 500
+                                break;
+                        }
                     }
                     break;
 
@@ -149,6 +202,7 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 13: //QuestionWitness
+                // case 17.3: //TestigoResponsable
                     switch (TIPO) {
                         case 1:
                             PASO = 12.1
@@ -214,6 +268,23 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
+                case 18.01: //Previsiones (AFP-Isapre) unificadas
+                    switch (TIPO) {
+                        case 1:
+                            PASO = 17.3
+                            break;
+                        case 2:
+                            PASO = 17.4
+                            break;
+                        case 3:
+                            PASO = 6.05
+                            break;
+                        default:
+                            PASO = 500
+                            break;
+                    }
+                    break;
+
                 default:
                     PASO = 500
                     break;
@@ -236,35 +307,35 @@ export const formatRut = (rut) => {
     };
 };
 
-export const obtenerData = async(rut) => {
-    return Axios.get(window.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`);
+export const obtenerData = async(rut, token) => {
+    return Axios.get(window.REACT_APP_VALIDAR_DATA_PACIENTE + `?rut=${rut}`, {
+        headers: {
+            "x-access-token": token
+        }
+    });
 };
 
-export const obtenerDataRazon = async(rutEmpresa) => {
-    return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa);
+export const obtenerDataRazon = async(rutEmpresa, token) => {
+    console.log("token",token)
+    return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa, {
+        headers: {
+          "x-access-token": token
+        }
+      }
+    );
 };
 
 export const saveRut = (rut) => {
     return (dispatch, getState) => {
-        obtenerData(rut)
+        obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
-                let BpCreado = result.data.content.response.BpCreado;
-                if (BpCreado) {
-                    //Guardar datos adicionales paciente requeridos por SAP
-                    const {
-                        apellidoMaterno,
-                        apellidoPaterno,
-                        nombre,
-                        fechaNacimiento,
-                        masculino,
-                        femenino,
-                        nacionalidad,
-                        lugarNacimiento,
-                        estadoCivil
-                    } = result.data.content.response;
-
-                    dispatch(
-                        updateForm("datosAdicionalesSAP", {
+                
+                if(result.data.status === 200 || result.data.status === 304){
+                    
+                    let BpCreado = result.data.content.response.BpCreado;
+                    if (BpCreado) {
+                        //Guardar datos adicionales paciente requeridos por SAP
+                        const {
                             apellidoMaterno,
                             apellidoPaterno,
                             nombre,
@@ -273,163 +344,190 @@ export const saveRut = (rut) => {
                             femenino,
                             nacionalidad,
                             lugarNacimiento,
-                            estadoCivil,
-                        })
-                    );
+                            estadoCivil
+                        } = result.data.content.response;
 
-                    // determinar siguiente paso
-                    var STEP = "";
-                    if (Object.keys(result.data.content.response.cita).length !== 0) {
-                        STEP = 5.82;
-                    } else if (result.data.content.response.siniestros.length > 0) {
-                        const mensajeAlerta = "Este paciente ya tiene un siniestro";
-                        const mensajeBoton = "Ver su(s) siniestro(s)";
-                        const origen = "getRut";
                         dispatch(
-                            updateForm("siniestroOpciones", {
-                                mensajeAlerta,
-                                mensajeBoton,
-                                origen,
+                            updateForm("datosAdicionalesSAP", {
+                                apellidoMaterno,
+                                apellidoPaterno,
+                                nombre,
+                                fechaNacimiento,
+                                masculino,
+                                femenino,
+                                nacionalidad,
+                                lugarNacimiento,
+                                estadoCivil,
                             })
                         );
-                        STEP = 5.83;
-                    } else {
-                        if (!result.data.content.response.NombreEmpresa ||
-                            !result.data.content.response.SucursalEmpresa ||
-                            !result.data.content.response.DireccionEmpresa ||
-                            !result.data.content.response.RutPagador
-                        ) {
-                            // si falta info de la empresa
-                            STEP = 5.4; //form empresa
-                        } else if (!result.data.content.response.direccionParticular) {
-                            // si no tiene direccion
-                            STEP = 5.2; //form direccion
-                        } else if (!result.data.content.response.telefonoParticular ||
-                            result.data.content.response.telefonoParticular === "0"
-                        ) {
-                            // si no tiene telefono
-                            STEP = 5.3; //form telefono
+
+                        // determinar siguiente paso
+                        var STEP = "";
+                        if (Object.keys(result.data.content.response.cita).length !== 0) {
+                            STEP = 5.82;
+                        } else if (result.data.content.response.siniestros.length > 0) {
+                            const mensajeAlerta = "Este paciente ya tiene un siniestro";
+                            const mensajeBoton = "Ver su(s) siniestro(s)";
+                            const origen = "getRut";
+                            dispatch(
+                                updateForm("siniestroOpciones", {
+                                    mensajeAlerta,
+                                    mensajeBoton,
+                                    origen,
+                                })
+                            );
+                            STEP = 5.83;
                         } else {
-                            // si todos los datos relevantes están llenos
-                            STEP = 5.1; // resumen data
+                            if (!result.data.content.response.NombreEmpresa ||
+                                !result.data.content.response.SucursalEmpresa ||
+                                !result.data.content.response.DireccionEmpresa ||
+                                !result.data.content.response.RutPagador
+                            ) {
+                                // si falta info de la empresa
+                                STEP = 5.4; //form empresa
+                            } else if (!result.data.content.response.direccionParticular) {
+                                // si no tiene direccion
+                                STEP = 5.2; //form direccion
+                            } else if (!result.data.content.response.telefonoParticular ||
+                                result.data.content.response.telefonoParticular === "0"
+                            ) {
+                                // si no tiene telefono
+                                STEP = 5.3; //form telefono
+                            } else {
+                                // si todos los datos relevantes están llenos
+                                STEP = 5.1; // resumen data
+                            }
                         }
+
+                        dispatch(handleSetStep(STEP));
+
+                        dispatch(saveRazonSocial(result.data.content.response.RutPagador));
+                        dispatch(getSucursales(result.data.content.response.RutPagador))
+
+                        dispatch(updateForm("cita", result.data.content.response.cita));
+                        dispatch(
+                            updateForm("siniestros", result.data.content.response.siniestros)
+                        );
+                        dispatch(
+                            updateForm(
+                                "razonSocial",
+                                result.data.content.response.NombreEmpresa
+                            )
+                        );
+                        dispatch(
+                            updateForm("rutEmpresa", result.data.content.response.RutPagador)
+                        );
+                        dispatch(updateForm("isAfiliado", "Si"));
+                        dispatch(
+                            updateForm(
+                                "SucursalEmpresa",
+
+                                result.data.content.response.SucursalEmpresa
+                            )
+                        );
+                        dispatch(
+                            updateForm(
+                                "DireccionEmpresa",
+
+                                result.data.content.response.DireccionEmpresa
+                            )
+                        );
+                        dispatch(
+                            updateForm(
+                                "comunaEmpresa",
+                                result.data.content.response.comunaEmpresa
+                            )
+                        );
+                        dispatch(
+                            updateForm(
+                                "direccionParticular",
+
+                                result.data.content.response.direccionParticular
+                            )
+                        );
+                        dispatch(
+                            updateForm(
+                                "comunaDireccionParticular",
+                                result.data.content.response.direccionParticular.split(",")[1]
+                            )
+                        );
+                        dispatch(
+                            updateForm(
+                                "telefonoParticular",
+
+                                result.data.content.response.telefonoParticular === "0" ?
+                                "" :
+                                Pipes.advanced(result.data.content.response.telefonoParticular)
+                            )
+                        );
+                        dispatch(
+                            updateForm(
+                                "BP",
+
+                                result.data.content.response.BP ?
+                                result.data.content.response.BP :
+                                ""
+                            )
+                        );
+                        const { microsoftReducer: { userMsal } } = getState();
+                        const { email } = userMsal;
+                        const { addmissionForm: { centrosForm, tipoSiniestro, BP } } = getState();
+                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: BP }))
+
+                    }else{
+                        // NO TIENE BP
+                        console.log(getState());
+                        const { microsoftReducer: { userMsal } } = getState();
+                        const { email } = userMsal;
+                        const { addmissionForm: { centrosForm, tipoSiniestro } } = getState();
+                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: "" }))
+
+                        dispatch(updateForm("bpForm", result.data.content.response));
+                        dispatch(setStep(5.812, 0));
                     }
-
-                    dispatch(handleSetStep(STEP));
-
-                    dispatch(saveRazonSocial(result.data.content.response.RutPagador));
-                    dispatch(getSucursales(result.data.content.response.RutPagador))
-
-                    dispatch(updateForm("cita", result.data.content.response.cita));
-                    dispatch(
-                        updateForm("siniestros", result.data.content.response.siniestros)
-                    );
-                    dispatch(
-                        updateForm(
-                            "razonSocial",
-                            result.data.content.response.NombreEmpresa
-                        )
-                    );
-                    dispatch(
-                        updateForm("rutEmpresa", result.data.content.response.RutPagador)
-                    );
-                    dispatch(updateForm("isAfiliado", "Si"));
-                    dispatch(
-                        updateForm(
-                            "SucursalEmpresa",
-
-                            result.data.content.response.SucursalEmpresa
-                        )
-                    );
-                    dispatch(
-                        updateForm(
-                            "DireccionEmpresa",
-
-                            result.data.content.response.DireccionEmpresa
-                        )
-                    );
-                    dispatch(
-                        updateForm(
-                            "comunaEmpresa",
-                            result.data.content.response.comunaEmpresa
-                        )
-                    );
-                    dispatch(
-                        updateForm(
-                            "direccionParticular",
-
-                            result.data.content.response.direccionParticular
-                        )
-                    );
-                    dispatch(
-                        updateForm(
-                            "comunaDireccionParticular",
-                            result.data.content.response.direccionParticular.split(",")[1]
-                        )
-                    );
-                    dispatch(
-                        updateForm(
-                            "telefonoParticular",
-
-                            result.data.content.response.telefonoParticular === "0" ?
-                            "" :
-                            Pipes.advanced(result.data.content.response.telefonoParticular)
-                        )
-                    );
-                    dispatch(
-                        updateForm(
-                            "BP",
-
-                            result.data.content.response.BP ?
-                            result.data.content.response.BP :
-                            ""
-                        )
-                    );
-                    const { microsoftReducer: { userMsal } } = getState();
-                    const { email } = userMsal;
-                    const { addmissionForm: { centrosForm, tipoSiniestro, BP } } = getState();
-
-                    dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: BP }))
-
+                
                 } else {
-                    // NO TIENE BP
-                    //dispatch(setStep(500, 0));
-                    console.log(getState());
-                    const { microsoftReducer: { userMsal } } = getState();
-                    const { email } = userMsal;
-                    const { addmissionForm: { centrosForm, tipoSiniestro } } = getState();
-                    dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: "" }))
 
-                    dispatch(updateForm("bpForm", result.data.content.response));
-                    dispatch(setStep(5.812, 0));
-                    // dispatch(updateForm("rut", ""));
-                    // dispatch(updateForm("razonSocial", ""));
-                    // dispatch(updateForm("rutEmpresa", ""));
-                    // dispatch(updateForm("isAfiliado", "No"));
-                    // dispatch(updateForm("SucursalEmpresa", ""));
-                    // dispatch(updateForm("DireccionEmpresa", ""));
-                    // dispatch(updateForm("comunaEmpresa", ""));
-                    // dispatch(updateForm("direccionParticular", ""));
-                    // dispatch(updateForm("telefonoParticular", ""));
-                    // dispatch(updateForm("BP", ""));
+                    dispatch(updateForm("errorStep", 3));
+                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                    dispatch(handleSetStep(1004));
 
                 }
             })
             .catch((error) => {
                 console.log("error: " + String(error));
+
+                dispatch(updateForm("errorStep", 3));
+                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                dispatch(handleSetStep(1004));
+
             });
     };
 };
 
 const saveRazonSocial = (rut) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         if (rut) {
-            obtenerDataRazon(rut)
+            obtenerDataRazon(rut, getState().microsoftReducer.token)
                 .then((result) => {
-                    dispatch(updateForm("razonSocial", result.data.content.response[0]));
+
+                    console.log("result...")
+                    console.log(result)
+
+                    if(result.data.status === 200 || result.data.status === 304){
+                        dispatch(updateForm("razonSocial", result.data.content.response[0])); 
+                    }else{
+                        dispatch(updateForm("errorStep", 3));
+                        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                        dispatch(handleSetStep(1004));
+                    }
+                           
                 })
                 .catch((error) => {
                     console.log("error: " + String(error));
+                    dispatch(updateForm("errorStep", 3));
+                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                    dispatch(handleSetStep(1004));
                 });
         }
     };
@@ -517,34 +615,39 @@ export const validarData = async(data) => {
 export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
-            // dispatch({
+            if(response.data.status === 200 || response.data.status === 304){
+                // dispatch({
             //   type: DATE_EMPRESA_SUCCESS,
             //   payload: response
             // });
             // console.log( response.data.content.response )
-
-            if (Object.entries(response.data.content).length === 0) {
-                //respuesta vacia
-                dispatch(handleSetStep(500));
-            } else {
-                if (response.data.content.response.length === 0) {
+                if (Object.entries(response.data.content).length === 0) {
+                    //respuesta vacia
                     dispatch(handleSetStep(500));
                 } else {
-                    const {
-                        Empresa,
-                        Sucursal,
-                        CotizacionesPaciente,
-                    } = response.data.content.response;
-                    if (Empresa !== "Afiliada") {
-                        dispatch(handleSetStep(5.11));
-                    } else if (Sucursal !== "Vigente") {
-                        dispatch(handleSetStep(5.13));
-                    } else if (!CotizacionesPaciente) {
-                        dispatch(handleSetStep(5.12));
+                    if (response.data.content.response.length === 0) {
+                        dispatch(handleSetStep(500));
                     } else {
-                        dispatch(handleSetStep(5.7));
+                        const {
+                            Empresa,
+                            Sucursal,
+                            CotizacionesPaciente,
+                        } = response.data.content.response;
+                        if (Empresa !== "Afiliada") {
+                            dispatch(handleSetStep(5.11));
+                        } else if (Sucursal !== "Vigente") {
+                            dispatch(handleSetStep(5.13));
+                        } else if (!CotizacionesPaciente) {
+                            dispatch(handleSetStep(5.12));
+                        } else {
+                            dispatch(handleSetStep(5.7));
+                        }
                     }
                 }
+            }else{
+                dispatch(updateForm("errorStep", 0));
+                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_EMPRESA));
+                dispatch(handleSetStep(1004));
             }
         })
         .catch((error) => {
@@ -552,11 +655,19 @@ export const validarAfiliacion = (data) => (dispatch) => {
                 type: DATE_EMPRESA_FAILURE,
                 payload: error,
             });
+            dispatch(updateForm("errorStep", 0));
+            dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_EMPRESA));
+            dispatch(handleSetStep(1004));
         });
 };
 
-export const sendingCaso = async(objeto) => {
-    return await Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto)
+export const sendingCaso = async(objeto, token) => {
+    return await Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto, {
+        headers: {
+          "x-access-token": token
+        }
+      }
+    )
 }
 
 export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
@@ -587,28 +698,74 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
     //console.log(JSON.stringify(objeto))
     //console.log("*********************************************")
 
-    const result = await sendingCaso(objeto);
+    try {
 
-    if (Object.keys(result).length > 0) {
+        const result = await sendingCaso(objeto, getState().microsoftReducer.token);
         const data = result.data
-        if (data.status === 200 && data.content[0].siniestroID.match("[\\D]+") === null) {
-            const siniestroID = data.content[0].siniestroID;
-            dispatch(updateForm("siniestroID", siniestroID));
-            dispatch(handleSetStep(1001));
-        } else if (data.status === 200) {
-            dispatch(updateForm("mensajeErrorSAP", data.content[0].siniestroID));
+
+        if (data.status === 200){
+
+            if (Object.keys(result).length > 0) {
+            
+                const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
+
+                if(IdEstadoAdmision !== 3 ){  // error en episodio
+                    dispatch(updateForm("mensajeErrorSAP", "Error al crear episodio"));
+                    dispatch(handleSetStep(1002.1));
+
+                }
+                else if(IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7){ // error en siniestro
+                    dispatch(updateForm("mensajeErrorSAP", "Error al crear siniestro"));
+                    dispatch(handleSetStep(1002.2));
+
+                }
+                else if(IdEstadoSiniestro === 7){ // error en documento
+                    dispatch(updateForm("siniestroID", siniestroID));
+                    dispatch(handleSetStep(1001.2));
+
+                }
+                else if(IdEstadoSiniestro === 8){ // error en status
+                    dispatch(updateForm("siniestroID", siniestroID));
+                    dispatch(handleSetStep(1001.3));
+                    
+                }else{
+
+                    if(siniestroID.match("[\\D]+") === null) {
+
+                        dispatch(updateForm("siniestroID", siniestroID));
+                        dispatch(handleSetStep(1001));
+                        
+
+                    }else{
+                        dispatch(updateForm("mensajeErrorSAP", siniestroID));
+                        dispatch(handleSetStep(1002));
+                        
+                    }
+
+                }
+
+                EndLog( ID, siniestroID, EpisodioID, data.status, dispatch )
+
+            } else {
+                dispatch(updateForm("mensajeErrorSAP", "Error de data"));
+                dispatch(handleSetStep(1002)); 
+                EndLog( ID,"","",500, dispatch )
+            }
+
+        }else{
+            dispatch(updateForm("mensajeErrorSAP", data.mensaje));
             dispatch(handleSetStep(1002));
-        } else {
-            const mensajeErrorSAP = data.mensaje;
-            dispatch(updateForm("mensajeErrorSAP", mensajeErrorSAP));
-            dispatch(handleSetStep(1002));
-        }
-        const { siniestroID, EpisodioID } = data.content[0]
-        dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: data.status }))
-    } else {
-        console.log(result)
+            EndLog( ID,"","",500, dispatch )
+        }    
+                
+    } catch (error) {
+        dispatch(updateForm("mensajeErrorSAP", String(error)));
         dispatch(handleSetStep(1002));
-        dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: 0, EpisodioID: 0, responseSap: 500 }));
+        EndLog( ID,"","",500, dispatch )
     }
 
 };
+
+const EndLog = (ID, siniestroID, EpisodioID, status, dispatch) => {
+    dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: status }))
+}
