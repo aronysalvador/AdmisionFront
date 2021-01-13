@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 
 const BotonSeleccionarCustom = (props) => {
   const { data, itemForm, selected, step, handlerGuardarData } = props;
+
+  const {
+    addmissionForm: { razonAlertaForm }
+  } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
 
@@ -14,7 +18,20 @@ const BotonSeleccionarCustom = (props) => {
 
   useEffect(() => {
     setIsSelected(selected);
+
   }, [selected]);
+
+  useEffect(() => {
+    if(itemForm === "razonAlertaForm"){
+      if(isSelected !== undefined){
+        if(!isSelected && data?.id=== razonAlertaForm?.id){
+          dispatch(updateForm("razonAlertaForm", { id: 7 , glosa: ""}));
+          setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 500);
+        }
+      }
+    }
+    // eslint-disable-next-line
+  }, [isSelected]);
 
   return (
     <div
@@ -37,14 +54,14 @@ const BotonSeleccionarCustom = (props) => {
               setTimeout(function(){ dispatch(handleSetStep(26.3)); }, 1000);
               //dispatch(handleSetStep(26.3));
             } else {
-              dispatch(
-                updateForm(
-                  itemForm,
-                  !isSelected ? { ...data, selected: !isSelected } : {}
-                )
-              );
+              
+                dispatch(
+                  updateForm(
+                    itemForm,
+                    !isSelected ? { ...data, selected: !isSelected } : {}
+                  )
+                );
               setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 1000);
-              //dispatch(handleSetStep(26.4));
             }
           } 
           
@@ -68,14 +85,15 @@ const BotonSeleccionarCustom = (props) => {
               //dispatch(handleSetStep(26.4));
             }
           }
-          
-          
-          
-          
-          
-          
-          
-          
+          else if (itemForm === "tipoAccidenteTrayectoForm") {
+            dispatch(
+              updateForm(
+                itemForm,
+                !isSelected ? { ...data, selected: !isSelected } : {}
+              )
+            );
+            setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 1000);
+          }
           else {
             dispatch(
               updateForm(

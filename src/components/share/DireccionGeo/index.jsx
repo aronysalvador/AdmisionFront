@@ -4,6 +4,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import { getComunStyle } from "./../../../css/comun"
 import { useDispatch } from "react-redux"
 import { updateForm } from "../../../redux/actions/AdmissionAction"
+import image from './../../../img/location.png'
+
 
 function sleep(delay = 0) {
     return new Promise((resolve) => {
@@ -12,18 +14,44 @@ function sleep(delay = 0) {
   }
 
 const DireccionGeo = (props) => {
+  
     const dispatch = useDispatch()
     const comunStyle = getComunStyle();
-    const { direccion, setMapa, setDireccion, clearData, showDinamicMap } = props
+    const { direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal } = props
     const [open, setOpen] = React.useState(false)
 
     const DinamycOption = { description: 'Fijar en el mapa' }
+    const [loading, setLoading] = React.useState(false)
     const [options, setOptions] = React.useState([DinamycOption])
+
+    React.useEffect(()=>{
+      
+      if(direccionTemporal){
+        setearDirection(direccionTemporal)
+      }
+     // eslint-disable-next-line
+    },[])
+
+    const setearDirection = async(direccion) => {
+      setLoading(true)
+
+      const test = await fetch(`${window.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${direccion}`)
+      const json = await test.json()    
+      var predictions = (Array.isArray(json.content[0].predictions)) ? json.content[0].predictions : []  
+      predictions[predictions.length]=DinamycOption  
+
+      if(predictions.length>1){
+        setDireccion(predictions[0]);
+        googleMapsGetMap(predictions[0])
+      }
+
+      setLoading(false)
+    }
     
     const googleMapsAutoComplete = async(newInputValue) =>{
       sleep(5)  
       if(newInputValue){
-          const test = await fetch(`${process.env.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${newInputValue}`)
+          const test = await fetch(`${window.REACT_APP_GEO_AUTOCOMPLETE}?direccion=${newInputValue}`)
           const json = await test.json()      
           var predictions = (Array.isArray(json.content[0].predictions)) ? json.content[0].predictions : []  
           predictions[predictions.length]=DinamycOption        
@@ -34,7 +62,7 @@ const DireccionGeo = (props) => {
     }
     const googleMapsGetMap = async(newValue) => {
       if(newValue){
-        let urlMapa = `${process.env.REACT_APP_GEO_STATICMAP}?id=${newValue?.place_id}&size=300x280`
+        let urlMapa = `${window.REACT_APP_GEO_STATICMAP}?id=${newValue?.place_id}&size=300x280`
         setMapa(urlMapa)
       }
     }
@@ -42,10 +70,9 @@ const DireccionGeo = (props) => {
     const handleDinamic = async() => {
       if(direccion){
         dispatch(updateForm("DireccionTemporal", direccion))
-        const test = await fetch(`${process.env.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
+        const test = await fetch(`${window.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
         const json = await test.json()      
         if(Array.isArray(json.content)){
-            console.log(json.content[0].result.geometry.location)
             dispatch(updateForm("LatTemporal", json.content[0].result.geometry.location.lat))
             dispatch(updateForm("LongTemporal", json.content[0].result.geometry.location.lng))
         }
@@ -61,7 +88,9 @@ const DireccionGeo = (props) => {
    
 
 
-    return (<div>
+    return (    
+      !loading && (
+            <div>
                 <Autocomplete
                   value={direccion}
                   filterOptions={(options) => options}
@@ -109,14 +138,14 @@ const DireccionGeo = (props) => {
                   renderOption={(option) => {   
                     if(option.description==='Fijar en el mapa'){                   
                       return(
-                        <Typography className={comunStyle.txtGreen} variant="subtitle2">
-                          <img alt="Location" src="static/location.png" className={comunStyle.iconLocation} />
-                          {option.description}
+                        <Typography className={comunStyle.txtGreen}>
+                          <img alt="Location" src={image} className={comunStyle.iconLocation} />
+                          <span style={{marginLeft:"5px"}}>{option.description}</span>
                         </Typography>
                       )
                     }else{
                       return(
-                        <Typography variant="subtitle2">
+                        <Typography>
                           {option.description}
                         </Typography>
                       )
@@ -124,6 +153,7 @@ const DireccionGeo = (props) => {
                   }}
                 />
             </div>
+      )
     );
 }
 export default DireccionGeo;

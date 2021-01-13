@@ -9,6 +9,7 @@ import {getComunStyle} from '../../css/comun'
 import {getSpaceStyle} from '../../css/spaceStyle'
 import '../../css/catamaranFont.css'
 import '../../css/sfUiDisplayCufonfonts.css'
+import admisionista from './../../img/relato.svg'
 
 const Welcome = (props) => {
 
@@ -22,16 +23,16 @@ const Welcome = (props) => {
             <div className={comunStyle.root}>
                 <div className={spaceStyle.space4} />
                 <div   className={welcomeStyle.avatarContainer}>
-                    <img alt="Ejecutivo de admisión" src="static/admisionista.jpg" className={welcomeStyle.avatar} />
+                    <img alt="Ejecutivo de admisión" src={admisionista} className={welcomeStyle.avatar} />
                 </div>
                 <div className={spaceStyle.space4} />
                 <div   className={welcomeStyle.bienvenidoContainer}>
-                    <Typography variant="p" component="p" className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}>
+                    <Typography variant="inherit" component="p" className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}>
                         Bienvenido/a
                     </Typography>
                 </div>
                 <div>
-                    <Typography variant="p" component="p" className={[comunStyle.textAchsContent,welcomeStyle.admisionText]}>
+                    <Typography variant="inherit" component="p" className={[comunStyle.textAchsContent,welcomeStyle.admisionText]}>
                             Vamos a hacer una admisión:
                             <br />
                             <br />
@@ -53,10 +54,10 @@ const Welcome = (props) => {
                 </div>
                 <div className={spaceStyle.spaceMin1} />
                 <div>
-                    <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
+                    <Typography variant="inherit" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
                         Al hacer click en Empecemos,
                     </Typography>
-                    <Typography variant="p" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
+                    <Typography variant="inherit" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
                         aceptas nuestros  
                         <Link className={[comunStyle.textAchsContent,welcomeStyle.terminos,welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
                         Términos y condiciones

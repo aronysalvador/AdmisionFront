@@ -17,16 +17,14 @@ const Mapa = (props) => {
     const lookForDirection = async(lat,lng) => {
         if(lat && lng){
             // const test = await fetch(`http://localhost:8080/api/googleMaps/getDireccion?lat=${lat}&lng=${lng}`)
-            const test = await fetch(`${process.env.REACT_APP_GEO_DIRECTION}?lat=${lat}&lng=${lng}`)
+            const test = await fetch(`${window.REACT_APP_GEO_DIRECTION}?lat=${lat}&lng=${lng}`)
             const json = await test.json()      
             if(json){
-                console.log(json.content[0].results[0].formatted_address)
                 setDireccion(json.content[0].results[0].formatted_address)
                 setPlaceId(json.content[0].results[0].place_id)
             }
         }
     }
-     
 
     // useEffect((lat,lng, lookForDirection, LatTemporal, LongTemporal, DireccionTemporal, setDireccion, setPlaceId)=>{
     useEffect(()=>{
@@ -43,14 +41,10 @@ const Mapa = (props) => {
         const { latLng } = coord;
         const lat = latLng.lat();
         const lng = latLng.lng();
-        console.log(lat)
-        console.log(lng)
         if(lat && lng){
             lookForDirection(lat,lng)  
         }
     };
-
-
 
     return(
         <div>     
@@ -74,7 +68,7 @@ const Mapa = (props) => {
                     position: "absolute",
                     right: "0",
                     left: "0",
-                    bottom: "6.5em",
+                    bottom: "8.5em",
             }}>
                 <Typography style={{
                     fontFamily: 'Catamaran',

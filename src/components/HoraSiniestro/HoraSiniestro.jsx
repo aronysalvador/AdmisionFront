@@ -4,13 +4,17 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 //import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
-const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos }) => {
+const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
+  const minutosArray = [0, 10, 20, 30, 40, 50]
+  let indiceMinutosFromState;
+
+
   const [horas, setHoras] = useState(() => {
     return !horasFromState ? new Date().getHours() - 1 : horasFromState;
   });
-  // const [minutos, setMinutos] = useState(() => {
-  //   return !minutosFromState ? new Date().getMinutes() : minutosFromState;
-  // });
+  const [minutos, setMinutos] = useState(() => {
+    return new Date().getMinutes();
+  });
 
   const getMin = () => {
     let minutosActuales = new Date().getMinutes();
@@ -24,7 +28,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   };
 
   const [indiceMinutos, setIndiceMinutos] = useState(() => {
-    return indiceMinutosFromState === -1 ? getMin() : indiceMinutosFromState;
+    return minutos === undefined ? getMin() : indiceMinutosFromState;
   });
 
   const [t, setT] = useState(0);
@@ -33,16 +37,27 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
 
  // const spaceStyle = getSpaceStyle();
   const comunStyle = getComunStyle();
-
   
   useEffect(() => {
+    if(indiceMinutos === undefined){
+      setIndiceMinutos(minuts)
+      return
+    } 
+    if (indiceMinutos === 6){
+      setIndiceMinutos(0);
+      return
+    }
+    if (indiceMinutos < 0){
+      setIndiceMinutos(5);
+      return
+    } 
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
-    if (indiceMinutos === minutos.length) setIndiceMinutos(0);
-    if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
-    onChange({ horas, indiceMinutos });
+
+    setMinutos(parseInt(`${indiceMinutos}0`))
+    onChange({ horas, minutos: parseInt(`${indiceMinutos}0`) });
     // eslint-disable-next-line
-  }, [horas, minutos[indiceMinutos]]);
+  }, [horas, indiceMinutos]);
 
   const TRef = useRef(t);
   TRef.current = t;
@@ -63,7 +78,6 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
   let start2 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
   let start3 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
 
-  
   const longPressDownHora = () => {
       setHoras((h) => --h);
       setT(setTimeout(longPressDownHora, start));
@@ -114,7 +128,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
       if(intended > 5)
           return (intended-6)
       return intended
-  }
+  };
 
   const obtenHora= (intended) => {
     if(intended < 0)
@@ -123,32 +137,22 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
       return "0"+intended
     if(intended > 23)
       return "0"+Math.abs((24-intended))
-
     return intended
-}
+  };
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       <Grid item direction="column">
-        <Grid
-          item
-          className={comunStyle.boxTitleHoras}
-        >
+        <Grid item className={comunStyle.boxTitleHoras}>
           <div className={comunStyle.tituloSelectorFecha}>
             Hora
           </div>
         </Grid>
-
-        <Grid
-          item
-          className={comunStyle.boxHoras}
-        >
+        <Grid item className={comunStyle.boxHoras}>
           <div>
             <Button
               variant="text"
-              // onClick={() => {
-              //   setHoras((h) => --h);
-              // }}
+              // onClick={() => { setHoras((h) => --h) }}
               onMouseDown={() => {
                 longPressDownHora();
               }}
@@ -164,7 +168,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             {obtenHora(horas-2)}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-          {obtenHora(horas-1)}
+            {obtenHora(horas-1)}
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemPrincipal}>
@@ -175,34 +179,29 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             {obtenHora(horas+1)}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-          {obtenHora(horas+2)}
+            {obtenHora(horas+2)}
           </div>
-          
           
           {/* <div className={spaceStyle.spaceMin1} /> */}
           <div>
             <Button
               variant="text"
-             // disabled={ horas === new Date().getHours()}
-              // onClick={() => {
-              //   setHoras((h) => ++h);
-              // }}
+              // disabled={ horas === new Date().getHours()}
+              // onClick={() => { setHoras((h) => ++h) }}
               onMouseDown={() => {
                 longPressUPHora();
               }}
               onMouseUp={() => {
                 onMouseUp2();
               }}
-              
             >
-              <KeyboardArrowDown/>
+              <KeyboardArrowDown />
             </Button>
           </div>
         </Grid>
       </Grid>
       <Grid item direction="column">
-        <Grid
-          item
+        <Grid item
           className={comunStyle.boxTitleHoras}
           style={{ marginLeft: "25px" }}
         >
@@ -210,34 +209,30 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
             Minutos
           </div>
         </Grid>
-        <Grid
-          item
+        <Grid item
           className={comunStyle.boxHoras}
-          style={{ marginLeft: "20px" }}
+          style={{marginLeft: "20px"}}
         >
           <div>
             <Button
               variant="text"
-              // onClick={() => {
-              //   setIndiceMinutos((m) => --m);
-              // }}
+              // onClick={() => { setIndiceMinutos((m) => --m)}}
               onMouseDown={() => {
                 longPressDownMinutos();
               }}
               onMouseUp={() => {
                 onMouseUp();
               }}
-              
             >
               <KeyboardArrowUp />
             </Button>
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {minutos[obtenPosicion(indiceMinutos-2)]}
+            {minutosArray[obtenPosicion(indiceMinutos-2)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-          {minutos[obtenPosicion(indiceMinutos-1)]}
+            {minutosArray[obtenPosicion(indiceMinutos-1)]}
             {/* {minutos === 0
               ? 59
               : minutos - 1 < 10
@@ -247,23 +242,21 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemPrincipal}>
             {/* {minutos < 10 ? "0" + minutos : minutos} */}
-            {minutos[indiceMinutos]}
+            {minutosArray[indiceMinutos]}
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemsCostados}>
-          {minutos[obtenPosicion(indiceMinutos+1)]}
+            {minutosArray[obtenPosicion(indiceMinutos+1)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-          {minutos[obtenPosicion(indiceMinutos+2)]}
+            {minutosArray[obtenPosicion(indiceMinutos+2)]}
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div>
             <Button
               variant="text"
              // disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
-              // onClick={() => {
-              //   setIndiceMinutos((m) => ++m);
-              // }}
+             // onClick={() => { setIndiceMinutos((m) => ++m) }}
               onMouseDown={() => {
                 longPressUPMinutos();
               }}
@@ -271,9 +264,7 @@ const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minut
                 onMouseUp3();
               }}
             >
-              <KeyboardArrowDown
-                
-              />
+              <KeyboardArrowDown />
             </Button>
           </div>
         </Grid>

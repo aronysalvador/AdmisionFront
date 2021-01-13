@@ -8,20 +8,15 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
 
 const CausaNoLaboral = () => {
   const {
-    addmissionForm: { percentage, razonAlertaForm },
+    addmissionForm: { percentage, razonAlertaForm }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
-  const {
-    buttonAchs,
-    root,
-    bottomElement,
-    tituloTextbox,
-    titleBlue,
-    titleBlack
-  } = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const [causas, setCausas] = useState(() => {
@@ -46,61 +41,78 @@ const CausaNoLaboral = () => {
     )
   }, [causasList])
 
-
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(26.2))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Selecciona la razón de
-        <Grid component="span"  className={titleBlue}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(26.2))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+          Selecciona la razón de
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;posible causa no laboral
-        </Grid>                  
-      </Typography>
-      <div className={spaceStyle.space2} />
-
-      <Typography className={tituloTextbox} variant="subtitle2">
-        Selecciona
-      </Typography>
-      <AutoComplete
-        value={causas}
-        onChange={(event, value) => {
-          setCausas(value);
-        }}
-        style={{ width: 300 }}
-        options={fixedCausasList}
-        getOptionLabel={(option) => option.glosa}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="outlined"
-            InputProps={{
-              ...params.InputProps,
-              style: {
-                paddingTop: "3px",
-                paddingBottom: "3px",
-                paddingLeft: "5xp",
-                marginTop: "7px",
-              },
+          </Grid>                  
+        </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextBox} >
+            Selecciona
+          </Typography>
+          <AutoComplete
+            value={causas}
+            onChange={(event, value) => {
+              setCausas(value);
             }}
+            options={fixedCausasList}
+            getOptionLabel={(option) => option.glosa}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    paddingTop: "3px",
+                    paddingBottom: "3px",
+                    paddingLeft: "5xp",
+                    marginTop: "7px",
+                  },
+                }}
+              />
+            )}
           />
-        )}
-      />
-
-      <div className={bottomElement}>
-        <Button
-          variant="contained"
-          className={buttonAchs}
-          disabled={!causas}
-          onClick={() => {
-            dispatch(updateForm("razonAlertaForm", {...razonAlertaForm, causasID:causas.id,causasGlosa:causas.glosa}));
-            dispatch(handleSetStep(26.4));
-          }}
-        >
-          Confirmar Alerta
-        </Button>
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            variant="contained"
+            className={comunClass.buttonAchs}
+            disabled={!causas}
+            onClick={() => {
+              dispatch(updateForm("razonAlertaForm", {...razonAlertaForm, causasID:causas.id,causasGlosa:causas.glosa}));
+              dispatch(handleSetStep(26.4));
+            }}
+          >
+            Confirmar Alerta
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

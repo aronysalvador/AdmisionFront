@@ -5,11 +5,12 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import BoxTestigosResponsable from "../../components/Questions/BoxTestigosResponsable";
 import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
+import Header from "../../components/header/index";
 
 const BoxQuestionResponsable = (props) => {
-  const { dispatch, addmissionForm } = props;
+  const { dispatch, addmissionForm, microsoftReducer } = props;
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const classes = cardSiniestroStyles();
 
   const tituloTestigo = "Responsable";
@@ -27,11 +28,19 @@ const BoxQuestionResponsable = (props) => {
   ];
 
   return (
-    <div className={classesComun.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(17))}
-        percentage={addmissionForm.percentage}
-      />
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header
+          userMsal={ microsoftReducer.userMsal }
+          // step={1}
+        />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep("x",17.1))}
+          percentage={addmissionForm.percentage}
+        />
+      </div>
       <BoxTestigosResponsable
         titulo={"¿Se le "}
         titulo2={"reportó el accidente a un responsable"}
@@ -44,9 +53,10 @@ const BoxQuestionResponsable = (props) => {
   );
 };
 
-function mapStateToProps({ addmissionForm }) {
+function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 }
 

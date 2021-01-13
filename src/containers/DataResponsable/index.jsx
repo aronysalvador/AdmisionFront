@@ -8,24 +8,23 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-
 //Action de Redux
 import { sendResponsable } from "../../redux/actions/AdmissionAction";
-// import { searchCargos } from "../../redux/actions/WitnessResponsableAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import image from './../../img/relato.svg'
 
 const DataResponsable = () => {
   const {
-    addmissionForm: { responsable, percentage, step },
+    addmissionForm: { responsable, percentage, step }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-
   const dispatch = useDispatch();
 
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   //State
@@ -36,16 +35,6 @@ const DataResponsable = () => {
     return !responsable ? "" : responsable.cargo;
   });
 
-  // const initFn = useCallback(() => {
-  //   const consultaCargos = () => dispatch(searchCargos()); // eslint-disable-line no-use-before-define
-  //   consultaCargos();
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   //Call Action
-  //   initFn()
-  // }, [initFn]);
-
   const clickSendResponsable = () => {
     dispatch(sendResponsable(nombre, cargos));
     dispatch(updateForm("responsableForm", nombre + "-" + cargos));
@@ -53,107 +42,115 @@ const DataResponsable = () => {
   };
 
   return (
-    <div className={classesComun.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(15))}
-        percentage={percentage}
-      />
-      <div>
-        <Typography variant="p" component="p" className={classesComun.titleBlack}>
-        Solicita una 
-          <Grid component="span"  className={classesComun.titleBlue}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(15))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+          Solicita una 
+          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;referencia del responsable
           </Grid>          
-        </Typography>
-      </div>
-      <div className={spaceStyle.space1} />
-
-      <div>
-        <Typography
-          variant="p"
-          component="p"
-          className={[classesComun.tituloTextbox]}
-        >
-          Nombre
-        </Typography>
+        </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
       </div>
 
-      <div>
-        <TextField
-          id="nombre"
-          value={nombre}
-          onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
-          helperText="Ejemplo: Luis Morales"
-          margin="dense"
-          variant="outlined"
-          fullWidth
-          autoComplete="off"
-          type="text"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={() => {
-                    saveNombre("");
-                  }}
-                >
-                  <ClearIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space1} />
+        </div>
+        <div className={comunClass.containerTextBox}>
+          <div>
+            <Typography className={comunClass.tituloTextBox}>
+              Nombre
+            </Typography>
+          </div>
+          <div>
+            <TextField
+              id="nombre"
+              value={nombre}
+              onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
+              helperText="Ejemplo: Luis Morales"
+              margin="dense"
+              variant="outlined"
+              fullWidth
+              autoComplete="off"
+              type="text"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => {
+                        saveNombre("");
+                      }}
+                    >
+                      <ClearIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
+
+          <div className={spaceStyle.space1} />
+
+          <div>
+            <Typography className={comunClass.tituloTextBox} >
+              Cargo o Relación
+            </Typography>
+          </div>
+          <div>
+            <TextField
+              id="cargos"
+              value={cargos}
+              onChange={(e) => saveCargos(Format.caracteresInvalidos(e.target.value))}
+              helperText="Ejemplo: Jefe de área, Prevencionista"
+              margin="dense"
+              variant="outlined"
+              autoComplete="off"
+              type="text"
+              fullWidth
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => {
+                        saveCargos("");
+                      }}
+                    >
+                      <ClearIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            type="submit"
+            disabled={!nombre || !cargos}
+            onClick={() => clickSendResponsable()}
+          >
+            Agregar
+          </Button>
+        </div>
       </div>
-
-      <div className={spaceStyle.space1} />
-
-      <div>
-        <Typography
-          variant="p"
-          component="p"
-          className={[classesComun.tituloTextbox]}
-        >
-          Cargo o Relación
-        </Typography>
-      </div>
-
-      <div>
-        <TextField
-          id="cargos"
-          value={cargos}
-          onChange={(e) => saveCargos(Format.caracteresInvalidos(e.target.value))}
-          helperText="Ejemplo: Jefe de área, Prevencionista"
-          margin="dense"
-          variant="outlined"
-          autoComplete="off"
-          type="text"
-          fullWidth
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={() => {
-                    saveCargos("");
-                  }}
-                >
-                  <ClearIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </div>
-
-      <div className={classesComun.bottomElement}>
-        <Button
-          className={classesComun.buttonAchs}
-          variant="contained"
-          type="submit"
-          disabled={!nombre || !cargos}
-          onClick={() => clickSendResponsable()}
-        >
-          Agregar
-        </Button>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

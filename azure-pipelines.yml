@@ -7,222 +7,461 @@ trigger:
       - release/*
       - develop
       - hotfix/*
-      #- feature/*   
- 
-variables:
-  - group: VARIABLE-ENTORNO-ADMISIONDIGITAL 
+      - paralleldevelopment
 
-  - name: Repository
-    value: 'admision_digital/achs-fr-admision'
-  - name: DockerRepositoryDesa
-    value: desa/${{variables['Repository'] }} 
-  - name: DockerRepositoryQA
-    value: qa/${{variables['Repository'] }} 
-  - name: DockerRepositoryProd
-    value: prod/${{variables['Repository'] }} 
+variables:
+  - group: VARIABLE-ENTORNO-ADMISIONDIGITAL
+
+  - name: Repositorio
+    value: "salud/admision-digital/front-admision"
 
   - name: ImageTag
-    value: '_$(Build.BuildId)'
-
-  - name: urlOrquestadorDesa 
-    value: 'https://desa.orquestador.admision.40.121.134.234.nip.io'
-    # value: 'https://wa-desa-admdig-msorquestador.azurewebsites.net'
-  - name: urlOrquestadorQA 
-  # value: 'https://qa.orquestador.admision.52.149.214.89.nip.io'
-    value: 'https://wa-qa-admisiondigital-msorquestador.azurewebsites.net'
-  - name: urlOrquestadorSTG 
-    value: 'https://wa-stg-admdig-msorquestador.azurewebsites.net'
-  - name: urlOrquestadorPROD 
-    value: 'https://wa-prod-admdig-msorquestador.azurewebsites.net'
+    value: "_$(Build.BuildId)"  
 
 pool:
-    vmImage: $(vmImageName)
+  vmImage: $(vmImageName)
 
-stages: 
+stages:
   - stage: INFO
-    displayName: 'Building'
+    displayName: "Building"
     jobs:
-    - deployment: Info
-      displayName: 'Info'
-      environment: 'Info' 
-    - job: Build
-      displayName: 'Info' 
-      steps:
-        - script: |
-            echo "TargetBranch" $(System.PullRequest.TargetBranch)
-            echo "sourceBranch " $(System.pullRequest.sourceBranch) 
-             
-  # STAGES
+      - deployment: Info
+        displayName: "Info"
+        environment: "Info"
+      - job: Build
+        displayName: "Info"
+        steps:
+          - script: |
+              echo "TargetBranch" $(System.PullRequest.TargetBranch)
+              echo "sourceBranch " $(System.pullRequest.sourceBranch)
 
   # DESA #
   - stage: Deploy_DESA
-    displayName: 'Building Desploy DESA'
+    displayName: "Building Desploy DESA"
     condition: |
       or(
         and(
           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        ), 
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployDesaHotfix']),
+          startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/develop'),
           eq(variables['Build.Reason'], 'PullRequest')
         ),
         and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
+          startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/paralleldevelopment'),
+          startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/develop'),
           eq(variables['Build.Reason'], 'PullRequest')
         )
-      ) 
+      )
     jobs:
-    - deployment: Deploy
-      displayName: 'Deploy DESA'
-      environment: 'Deploy_DESA' 
-    - job: Build
-      displayName: 'Deploy_DESA' 
-      steps:
-        - task: Docker@2
-          displayName: Build Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryDesa)
-            command: build
-            Dockerfile: ./Dockerfile 
-            tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorDesa) --build-arg idAzure=$(azureAdDesarrollo) --build-arg app=$(appNameDESAFront) 
-        - task: Docker@2
-          displayName: Push Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryDesa)
-            command: push
-            tags: $(ImageTag)   
+      - deployment: Deploy
+        displayName: "Deploy DESA"
+        environment: "Deploy_DESA"
+      - job: Build
+        displayName: "Deploy_DESA"
+        steps:
 
-        # - task: AzureWebAppContainer@1
-        #   inputs:
-        #     azureSubscription: $(azureSubcritionDESA)
-        #     appName: $(appNameDESAFront)
-        #     containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryDesa):$(ImageTag)   
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=desarrolloTest
+                sh reemplaza-envs.sh
 
-        - task: KubernetesManifest@0
-          inputs:
-            action: 'deploy'
-            kubernetesServiceConnection: 'AKS-DESA-SALUD-NS-ADMISIONDIGITAL'
-            namespace: 'admisiondigital'
-            manifests: |
-                      /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
-                      /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-service.yaml
-                      /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-ingress.yaml
-            containers: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:$(ImageTag)
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
 
-# DESA #
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
 
-# QA #
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: push
+              tags: $(ImageTag)
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdDesarrollo)?" /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-DESA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/desa/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+
+  - stage: Deploy_DESA_Parallel
+    displayName: "Building Desploy DESA Parallel"
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDesa']),
+         startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/paralleldevelopment'),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy DESA Parallel"
+        environment: "Deploy_DESA"
+      - job: Build
+        displayName: "Deploy_DESA_Parallel"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=ParallelDesarrolloTest
+                export nombreSprint=$(sprintName)
+                sh reemplaza-envs.sh        
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'    
+          # - task: Npm@1
+          #   displayName: Npm Test
+          #   inputs:
+          #     command: 'custom'
+          #     workingDir: 'src/__tests__'
+          #     customCommand: 'test'                    
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: push
+              tags: $(ImageTag)
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdDesarrollo)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-service.yaml
+                sed -i "s?sprintName?$(sprintName)?" /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-ingress.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-DESA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)              
+  # DESA #
+
+  # QA #
   - stage: Deploy_QA
-    displayName: 'Building Deploy QA'
+    displayName: "Building Deploy QA"
     condition: |
-       or( 
-         and(
-            startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchQa']),
-            startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
-            eq(variables['Build.Reason'], 'PullRequest')
-          ), 
-          and(
-            startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployQaHotfix']),
-            eq(variables['Build.Reason'], 'PullRequest')
-          ),
-          and(
-            startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
-            eq(variables['Build.Reason'], 'PullRequest')
-          )
-        )
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchQa']),
+         startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
     jobs:
-    - deployment: Deploy
-      displayName: 'Deploy QA'
-      environment: 'Deploy_QA'
-    - job: Build
-      displayName: 'Deploy QA'
-      steps:
-        - task: Docker@2
-          displayName: Build Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryQA)
-            command: build
-            Dockerfile: ./Dockerfile 
-            tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorQA) --build-arg idAzure=$(azureAdQa) --build-arg app=$(appNameQAFront) 
-        - task: Docker@2
-          displayName: Push Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryQA)
-            command: push
-            tags: $(ImageTag)    
+      - deployment: Deploy
+        displayName: "Deploy QA"
+        environment: "Deploy_QA"
+      - job: Build
+        displayName: "Deploy QA"
+        steps:
 
-        - task: AzureWebAppContainer@1
-          inputs:
-            azureSubscription: $(azureSubcritionQA) 
-            appName: $(appNameQAFront) 
-            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryQA):$(ImageTag) 
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=qaTest
+                sh reemplaza-envs.sh
+                echo ls
 
-        #- task: KubernetesManifest@0
-        #  inputs:
-        #    action: 'deploy'
-        #    kubernetesServiceConnection: 'AKS-QA-SALUD-NS-ADMISIONDIGITAL'
-        #    namespace: 'admisiondigital'
-        #    manifests: |
-        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
-        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
-        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-cluster-issuer.yaml
-        #              /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
-        #    containers: crdesacontainer.azurecr.io/qa/admision_digital/achs-fr-admision:$(ImageTag)            
-# QA #
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
 
-# PROD #
-  - stage: Deploy_PROD
-    displayName: 'Building Deploy PROD'
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdQa)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-QA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)          
+   # HOTFIX #
+  - stage: Deploy_QA_Hotfix
+    displayName: "Building Desploy Qa Hotfix"
     condition: |
-      or(
-        and(
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployQaHotfix']),
+         startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchQa']),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy QA Hotfix"
+        environment: "Deploy_QA"
+      - job: Build
+        displayName: "Deploy QA Hotfix"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=qaTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: push
+              tags: $(ImageTag)
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdQa)?" /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-QA-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/qa/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+  # HOTFIX #
+  # QA #
+
+  # STG #
+  - stage: Deploy_STG
+    displayName: "Building Deploy STG"
+    condition: |
+       and(
+          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchStg']),
+          startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchStg']),
+          eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy STG"
+        environment: "Deploy_STG"
+      - job: Build
+        displayName: "Deploy STG"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=stagingTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)?" /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdStg)?" /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-STG-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)   
+  # STG #
+
+  # PROD #
+  - stage: Deploy_PROD
+    displayName: "Building Deploy PROD"
+    condition: |
+       and(
           startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchProd']),
           startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchProd']),
           eq(variables['Build.Reason'], 'PullRequest')
-        ), 
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployProdHotfix']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        ),        
-        and(
-          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployHotfix']),
-          eq(variables['Build.Reason'], 'PullRequest')
-        )         
-       )  
+       )
     jobs:
-    - deployment: Deploy
-      displayName: 'Deploy PROD'
-      environment: 'Deploy_PROD'
-    - job: Build
-      displayName: 'Deploy PROD'
-      steps:
-        - task: Docker@2
-          displayName: Build Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryProd)
-            command: build
-            Dockerfile: ./Dockerfile 
-            tags: $(ImageTag)   
-            arguments: --build-arg urlOrquestador=$(urlOrquestadorPROD) --build-arg idAzure=$(azureAdProd) --build-arg app=$(appNameProdFront) 
-        - task: Docker@2
-          displayName: Push Docker Image
-          inputs:
-            containerRegistry: $(ContainerRegistryName)
-            repository: $(DockerRepositoryProd)
-            command: push
-            tags: $(ImageTag)                    
-        - task: AzureWebAppContainer@1
-          inputs:
-            azureSubscription: $(azureSubcritionProd)
-            appName: $(appNameProdFront)
-            containers: $(ContainerRegistryName).azurecr.io/$(DockerRepositoryProd):$(ImageTag)   
-# PROD #      
+      - deployment: Deploy
+        displayName: "Deploy PROD"
+        environment: "Deploy_PROD"
+      - job: Build
+        displayName: "Deploy PROD"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=produccionTest
+                sh reemplaza-envs.sh
 
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdProd)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-PROD-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)   
+  # HOTFIX #
+  - stage: Deploy_PROD_Hotfix
+    displayName: "Building Desploy PROD Hotfix"
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployProdHotfix']),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy PROD Hotfix"
+        environment: "Deploy_PROD"
+      - job: Build
+        displayName: "Deploy PROD Hotfix"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=produccionTest
+                sh reemplaza-envs.sh
+
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: push
+              tags: $(ImageTag)
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdProd)?" /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-PROD-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/prod/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+  # HOTFIX #       
+  # PROD #

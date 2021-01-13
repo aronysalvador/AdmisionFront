@@ -13,8 +13,13 @@ spec:
     spec:
       containers:
       - name: web-qa-front-admision
-        image: crdesacontainer.azurecr.io/qa/admision_digital/achs-fr-admision:_18652         
+        image: imagen         
         imagePullPolicy: Always
+        env:
+          - name: PUBLIC_URL
+            value: /web-admision     
+          - name: ENTORNO
+            value: qa
         ports:
         - containerPort: 80
         resources:

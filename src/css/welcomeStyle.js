@@ -1,37 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export const getWelcomeStyle = makeStyles((theme) => ({
-    avatarContainer: {
-        display: "flex",
-        justifyContent: "center",
-    },
-    avatar: {
-        border: "1px solid #DEDEDE !important",
-        backgroundColor: "#FFFFFF !important",
-        color: "#DEDEDE !important",
-        verticalAlign: "middle",
-        padding: "1.92em",
-        fontSize: "32px !important",
-        boxSizing: "border-box",
-        // width: "5em",
-        // height: "5em",
-    },
-    avatarContainerRight: {
-        display: "flex",
-        justifyContent: "center",
-        float: "right",
-    },
+
     bienvenido: {
         fontSize: "2em",
-        fontWeight: "bold",
-    },
-    bienvenidoAchs: {
-        fontSize: "25px",
         fontWeight: "bold",
     },
     boxCentroAlign: {
         display: "flex",
         justifyContent: "space-between",
+        minWidth: "305px",
     },
     boxCentroAchs: {
         display: "inline-flex",
@@ -39,6 +17,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         alignItems: "center",
         flexDirection: "column",
         width: "45%",
+        minWidth: "146px",
         height: "116px", //"90px",
         border: "2px solid #007A33",
         borderSpacing: "2px",
@@ -55,12 +34,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     textBoxAchs: {
         fontSize: "16px !important"
     },
-    backgroundBoxAchs: {
-        backgroundColor: "#DFF3F2 !important",
-        width: "25.715em",
-        height: "32em",
-        padding: "16px"
-    },
     starIcon: {
         display: "flex",
         borderRadius: "1em",
@@ -73,14 +46,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
     star: {
         color: "#00B2A9 !important",
-    },
-    backPosicion: {
-        marginLeft: "0.5em",
-    },
-    marginStar: {
-        display: "table",
-        marginLeft: "auto",
-        marginRight: "auto",
     },
     button: {
         width: "100%",
@@ -104,23 +69,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     beginContainer: {
         padding: "16px 16px 0 16px",
     },
-    textContainer: {
-        padding: "16px 0",
-    },
-    titleBegin: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "25px",
-        lineHeight: "34px",
-        color: "#007A33",
-    },
-    titleContainer: {
-        padding: "0.5em 1.5em 0.5em 1.5em",
-        background: "#FFFFFF",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
-    },
     txtBegin: {
         textAlign: "center",
         fontFamily: "Catamaran",
@@ -128,8 +76,9 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontWeight: "bold",
         fontSize: "16px",
         lineHeight: "20px",
-        color: "#000000",
+        // color: "#000000",
         marginLeft: "20px",
+        verticalAlign: "super"
     },
     subTitleBegin: {
         fontFamily: "Catamaran",
@@ -139,15 +88,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         lineHeight: "18px",
         color: "#373737",
         marginBottom: "10px",
-    },
-    pBegin: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: "13px",
-        lineHeight: "16px",
-        color: "#000000",
-        maxWidth: "210px",
     },
     itemText2: {
         fontFamily: "Catamaran",
@@ -162,56 +102,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "0.87em",
         textAlign: "center",
     },
-    divRow: {
-        display: "flex",
-        alignItems: "center",
-    },
-    divRowBottom: {
-        display: "flex",
-        alignItems: "center",
-        marginBottom: "20px",
-    },
-    divRowBottom2: {
-        display: "flex",
-        alignItems: "center",
-        marginBottom: "5px",
-    },
-    bottomBegin: {
-        marginTop: "10px",
-    },
-    iconCircular: {
-        width: "54px",
-        height: "54px",
-        verticalAlign: "middle",
-    },
-    iconAlignIndicaciones: {
-        alignSelf: "flex-start",
-        display: "flex",
-    },
-    titleContainerCards: {
-        padding: "1.5em",
-        background: "#FFFFFF",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
-    },
-    itemBegin: {
-        marginLeft: "20px",
-    },
-    itemText: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "16px",
-        lineHeight: "20px",
-        color: "#000000",
-    },
     rutSiniestroContainer: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
     },
-
     img: {
         height: "1.5em",
         width: "1.5em",
@@ -244,12 +140,320 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             background: "#104F28",
         },
     },
-        
-    titleContainerCards2: {
-        padding: "1.5em 1.5em 0.5em 1.5em",
-        background: "#FFFFFF",
-        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-        borderRadius: "10px",
+    avatar: {
+        border: "1px solid #DEDEDE !important",
+        backgroundColor: "#FFFFFF !important",
+        color: "#DEDEDE !important",
+        verticalAlign: "middle",
+        padding: "1.92em",
+        fontSize: "32px !important",
+        boxSizing: "border-box",
+        // width: "5em",
+        // height: "5em",
+    },
+    divRowBottomEmail: {
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "5px",
+    },
+    switchText: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '1.075em',
+        // lineHeight: '1.786em',
+        color: '#787878',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 
+    '@media (max-width: 767px)': {
+        /* For mobile phones */
+        backPosicion: {
+            marginLeft: "0.5em",
+        },
+        avatarContainer: {
+            display: "flex",
+            justifyContent: "center",
+        },
+        avatarContainerRight: {
+            display: "flex",
+            justifyContent: "center",
+            float: "right",
+        },
+        backgroundBoxAchs: {
+            backgroundColor: "#DFF3F2 !important",
+            width: "25.715em",
+            height: "32em",
+            padding: "16px"
+        },
+        marginStar: {
+            display: "table",
+            marginLeft: "auto",
+            marginRight: "auto",
+        },
+        titleContainer: {
+            padding: "0.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        titleContainerCards: {
+            padding: "1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        iconAlignIndicaciones: {
+            alignSelf: "flex-start",
+            display: "flex",
+        },
+        divRow: {
+            display: "flex",
+            alignItems: "center",
+        },
+        divRow2: {
+            display: "flex",
+            alignItems: "center",
+        },
+        divRowBottom: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "20px",
+        },
+        divRowBottom2: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "5px",
+        },
+        divRowPantallaFinal: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "20px",
+        },
+        titleBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "32px", //"25px",
+            lineHeight: "34px",
+            color: "#007A33",
+        },
+        titleBegin2: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "20px",
+            lineHeight: "28px",
+            color: "#007A33",
+        },
+        textContainer: {
+            padding: "16px 0",
+        },
+        itemBegin: {
+            marginLeft: "20px",
+        },
+        pBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            fontSize: "13px",
+            lineHeight: "16px",
+            color: "#000000",
+            maxWidth: "210px",
+        },
+        itemText: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "16px",
+            lineHeight: "18px",
+            color: "#000000",
+        },
+        bienvenidoAchs: {
+            fontSize: "25px",
+            fontWeight: "bold",
+        },
+        iconCircular: {
+            width: "54px",
+            height: "54px",
+            verticalAlign: "middle",
+        },
+        titleContainerCards2: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        titleContainerCardsEmail: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        bottomBegin: {
+            marginTop: "10px",
+        },
+
+    },
+
+    '@media (min-width: 768px)': {
+        /* Medium devices (landscape tablets, 768px and up) */
+        backPosicion: {
+            display: 'none',
+        },
+        avatarHeader: {
+            border: "1px solid #DEDEDE !important",
+            backgroundColor: "#FFFFFF !important",
+            color: "#DEDEDE !important",
+            verticalAlign: "middle",
+            padding: "1em",
+            fontSize: "14px !important",
+            boxSizing: "border-box",
+            // width: "5em",
+            // height: "5em",
+            display: 'flex'
+        },
+        avatarContainer: {
+            display: "inline-flex",
+            // justifyContent: "end",
+            // margin: 'auto',
+            alignItems: 'center',
+            color: '#FFFFFF'
+        },
+        backgroundBoxAchs: {
+            backgroundColor: "#016C2E !important",
+            // width: "25.715em",
+            // height: "32em",
+            padding: "64px 10%", //5%
+        },
+        backgroundBoxAchsDesk: {
+            backgroundColor: "#016C2E !important",
+            // width: "25.715em",
+            // height: "32em",
+            padding: "10px 64px",
+            color: "white !important"
+        },
+        marginBoxGreen: {
+            display: 'grid',
+            margin: 'auto 1em'
+        },
+        contentBlock: {
+            display: 'block'
+        },
+        titleContainerCards: {
+            padding: "1.5em",
+            background: "#FFFFFF",
+            // boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        iconAlignIndicaciones: {
+            alignSelf: "flex-start",
+            // display: "flex",
+            textAlign: "center",
+            height: "32px"
+        },
+        divRow: {
+            display: "block",
+            alignItems: "center",
+            paddingBottom: "10px", //"30px",
+        },
+        divRow2: {
+            display: "block",
+            alignItems: "center",
+            paddingBottom: "10px", //"30px",
+            width: "33%"
+        },
+        divRowBottom: {
+            display: "block",
+            alignItems: "center",
+            marginBottom: "10px", //"20px",
+            width: "33%"
+        },
+        divRowBottom2: {
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "5px",
+            justifyContent: "center",
+        },
+        divRowPantallaFinal: {
+            display: "block",
+            alignItems: "center",
+            paddingBottom: "10px", //"30px",
+            width: "150px",
+        },
+        titleBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "32px",
+            lineHeight: "34px",
+            // color: "#007A33",
+        },
+        titleBegin2: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "20px",
+            lineHeight: "28px",
+            // color: "#007A33",
+        },
+        textContainer: {
+            paddingBottom: "10px",
+        },
+        itemBegin: {
+            marginLeft: "0px",
+        },
+        boxCentroAlignDesk: {
+            position: 'absolute',
+            right: '5%'
+        },
+        bienvenidoAchs: {
+            fontSize: "20px",
+            fontWeight: "bold",
+        },
+        iconCircular: {
+            width: "37px",
+            height: "37px",
+            verticalAlign: "middle",
+        },
+        pBegin: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            fontSize: "16px",
+            lineHeight: "16px",
+            color: "#000000",
+            // maxWidth: "210px",
+        },
+        itemText: {
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "18px",
+            lineHeight: "28px",
+            color: "#000000",
+        },
+        titleContainerCards2: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            // boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+        titleContainerCardsEmail: {
+            padding: "1.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+        },
+
+    },
+
+    '@media (min-width: 860px)': {
+        bienvenidoAchs: {
+            fontSize: "25px",
+            fontWeight: "bold",
+        },
+    },
 }));

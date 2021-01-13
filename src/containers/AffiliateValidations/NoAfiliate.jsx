@@ -7,10 +7,12 @@ import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoAfiliateCard from './NoAfiliateCard';
+import Header from "../../components/header/index";
+import image from './../../img/error-siniestro.svg'
 
 const NoAfiliate = (props) => {
 
-  const { dispatch } = props;
+  const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
@@ -18,54 +20,59 @@ const NoAfiliate = (props) => {
 
   return (
     <div>
-      <CabeceraSinBarra
-        dispatch={() => dispatch(handleSetStep(5.1))} // 5.1
-        color="#FFFFFF"
-      />
-      <div className={blackStyle.root} style={{height: "40em"}}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space1} />
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <CabeceraSinBarra
+          dispatch={() => dispatch(handleSetStep(5.1))} // 5.1
+          color="#FFFFFF"
+        />
+      </div>
+      <div className={blackStyle.root}>
+      {/* style={{height: "40em"}}  */}
         <img
           alt="load"
-          src="./static/error-siniestro.svg"
+          src={image}
           className={blackStyle.imgNoAfiliate}
         />
         <div className={spaceStyle.space1} />
-        <Typography
-          color="textSecondary"
-          gutterBottom
-          className={blackStyle.textWarning}
-        >
-        ¡Atención!
+        <Typography className={blackStyle.textWarning}>
+          ¡Atención!
         </Typography>
-        <Typography
-          color="textSecondary"
-          gutterBottom
-          className={blackStyle.textNoAfiliate}
-        >
+        <Typography className={blackStyle.textNoAfiliate}>
           Empresa de este paciente no presenta afiliación en ACHS
         </Typography>
         <div className={spaceStyle.space1} />
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space1} />
+        </div>
 
         <NoAfiliateCard />
         
         <div className={comunClass.bottomElement}>
-          
-          <div className={spaceStyle.space2} />
           <Button
             className={blackStyle.buttonFooter}
-            onClick={() => {
-              dispatch(handleSetStep(1.1));
-            }}
+            onClick={() => { dispatch(handleSetStep(1.1)) }}
           >
             Volver al inicio
           </Button>
         </div>
       </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
+      </div>
     </div>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(NoAfiliate);

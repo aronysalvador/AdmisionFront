@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { Format } from "../../helpers/strings";
+import image from './../../img/relato.svg'
 
 const FormQuestion = (props) => {
-  const { titulo, pregunta, placeholder, accion, valueFromState } = props;
+  const { titulo, titulo2, pregunta, pregunta2, placeholder, accion, valueFromState } = props;
 
   //const [localValue, setLocalValue] = useState("")
   const [localValue, setLocalValue] = useState(() => {
@@ -17,7 +18,7 @@ const FormQuestion = (props) => {
   const onChangeHandler = (event) => {
     setLocalValue(Format.caracteresInvalidos(event.target.value));
   };
-  const classesComun = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const isDisabled = () => {
     return localValue.length < 5;
@@ -25,51 +26,60 @@ const FormQuestion = (props) => {
 
   return (
     <form onSubmit={() => accion(localValue)}>
-      <div>
-        <Typography
-          variant="h1"
-          component="h1"
-          className={classesComun.titleBlack}
+      <div className={comunClass.titlePrimaryDesk}>
+        <Grid
+          className={[comunClass.titleBlue, comunClass.titleBlue2, comunClass.textPrimaryDesk]}
         >
           {titulo}
-        </Typography>
+          <Grid component="span"  className={[comunClass.titleBlack, comunClass.titleBlack2]}>
+            &nbsp;{titulo2}
+          </Grid> 
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;{pregunta}
+          </Grid>
+          <Grid component="span"  className={[comunClass.titleBlack, comunClass.titleBlack2]}>
+            &nbsp;{pregunta2}
+          </Grid>
+        </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
       </div>
-
-      <div className={spaceStyle.space2}></div>
-      <div>
-        <Typography
-          variant="h2"
-          component="h2"
-          className={classesComun.titleBlack}
-        >
-          {pregunta}
-        </Typography>
+      <div className={comunClass.displayMobile}>
+        <div className={spaceStyle.space2}></div>
       </div>
-      <div className={classesComun.scrollText}>
-        <TextField
-          id="txtRespuesta"
-          placeholder={placeholder}
-          label=""
-          value={localValue}
-          margin="dense"
-          variant="outlined"
-          fullWidth
-          rows={5}
-          multiline
-          inputProps={{ maxLength: 200 }}
-          onChange={onChangeHandler}
-        />
+      <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
+        <div>
+          <TextField
+            id="txtRespuesta"
+            placeholder={placeholder}
+            label=""
+            value={localValue}
+            margin="dense"
+            variant="outlined"
+            fullWidth
+            rows={5}
+            multiline
+            inputProps={{ maxLength: 200 }}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <label className={comunClass.pullRight}>{localValue.length}/200</label>
+        <div className={comunClass.bottomElement}>
+          <Button
+            className={comunClass.buttonAchs}
+            variant="contained"
+            type="submit"
+            disabled={isDisabled()}
+          >
+            Continuar
+          </Button>
+        </div>
       </div>
-      <label className={classesComun.pullRight}>{localValue.length}/200</label>
-      <div className={classesComun.bottomElement}>
-        <Button
-          className={classesComun.buttonAchs}
-          variant="contained"
-          type="submit"
-          disabled={isDisabled()}
-        >
-          Continuar
-        </Button>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </form>
   );

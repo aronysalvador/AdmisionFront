@@ -1,103 +1,64 @@
 import React from "react";
 import { connect } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";
-
-const getUseStyles = makeStyles({
-  center: {
-    paddingLeft: "3.4375em",
-    paddingRight: "3.4375em",
-    padding: "0em",
-  },
-  img: {
-    width: "15.625em",
-  },
-  text1: {
-    textAlign: "center",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "1.5625em",
-    lineHeight: "1.6875em",
-    alignItems: "center",
-    color: "#081C15",
-  },
-  text2: {
-    textAlign: "center",
-    fontFamily: "Catamaran",
-    fontStyle: "normal",
-    fontSize: "1em",
-    lineHeight: "1.5625em",
-    alignItems: "center",
-    color: "#081C15",
-  },
-  text3: {
-    color: "#007A33",
-    padding: "0 50px"
-  },
-  center2: {
-    paddingLeft: "7.625em",
-    paddingRight: "7.625em",
-    padding: "0em",
-  },
-  img2: {
-    width: "7.28125em",
-  },
-});
+import Header from "../../components/header/index";
+import image from './../../img/notificacion.svg'
 
 const SameDateSinister = (props) => {
-  const { dispatch } = props;
+  const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
-  const useStyles = getUseStyles();
   const comunClass = getComunStyle();
   const blackStyle = getBlackTheme();
 
   return (
     <div className={comunClass.root}>
-      <div className={spaceStyle.space5} />
-      <div className={useStyles.center}>
-        <img alt="load" src="./static/notificacion.png" className={useStyles.img} />
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
       </div>
-      <div className={spaceStyle.space3} />
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        className={useStyles.text1}
-      >
-        ¡Atención!
-      </Typography>
-      <div className={spaceStyle.space1} />
-      <Typography
-        // color="textSecondary"
-        gutterBottom
-        className={[blackStyle.textMessage]}
-        style={ {color: "#007A33", fontWeight: "bold"} }
-        //useStyles.text3, useStyles.text2
-      >
-        Este paciente tiene un siniestro activo en la misma fecha
-      </Typography>
-
-      
-      <div className={comunClass.bottomElement}>
-        <Button
-          className={comunClass.buttonAchs}
+      <div className={comunClass.displayMobile}> 
+        <div className={spaceStyle.space3} />
+      </div>
+      <div className={spaceStyle.space2} />
+      <center>
+        <div>
+          <img alt="load" src={image} />
+        </div>
+        <div className={comunClass.displayMobile}> 
+          <div className={spaceStyle.space2} />
+        </div>
+        <div className={spaceStyle.space1} />
+        <Typography className={blackStyle.textWarning2}>
+          ¡Atención!
+        </Typography>
+        <div className={spaceStyle.space1} />
+        <Typography className={blackStyle.textMessage2}>
+          Este paciente tiene un siniestro activo&nbsp;
+          <br className={comunClass.displayDesk}/>
+          en la misma fecha
+        </Typography>
+        
+        <div className={comunClass.bottomElement} style={{ padding: '1.145em' }}>
+          <Button
+            className={comunClass.buttonAchs}
             onClick={() => dispatch(handleSetStep(5.1)) }
-        >
-          Entendido
-        </Button>
-      </div>
+          >
+            Entendido
+          </Button>
+        </div>
+      </center>
     </div>
   );
 };
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(SameDateSinister);

@@ -4,18 +4,31 @@ metadata:
   name: web-front-admision-ingress
   annotations:
        kubernetes.io/ingress.class: nginx
-       cert-manager.io/cluster-issuer: admision-cert
+       cert-manager.io/cluster-issuer: letsencrypt
+       nginx.ingress.kubernetes.io/rewrite-target: /$1
 
 spec:
   tls:
     - hosts:
-      - desa.front.admision.40.121.134.234.nip.io 
+      - desa.salud.achs.cl
       secretName: admision-web-cert
   rules:
-  - host: desa.front.admision.40.121.134.234.nip.io 
+  - host: desa.salud.achs.cl 
     http:
       paths:
-      - backend:
+      - path: /web-admision(/?.*)
+        backend:
           serviceName: web-front-admision-service
           servicePort: 80
-        path: /         
+      - path: /web-firmadigital(/?.*)
+        backend:
+          serviceName: web-front-firmadigital-service
+          servicePort: 80   
+      - path: /web-digitalizador-documentos(/?.*)
+        backend:
+          serviceName: web-front-digitalizaciondocumentos-service
+          servicePort: 80   
+      - path: /orquestador/(.*)
+        backend:
+          serviceName: api-orquestador-service
+          servicePort: 80       

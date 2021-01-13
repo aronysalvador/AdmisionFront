@@ -4,13 +4,14 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import QuestionForm from "../../components/Questions/questionForm";
+import Header from "../../components/header/index";
 
 const AccidentPlaceForm = (props) => {
-  const { dispatch, addmissionForm } = props;
-  const comunClass = getComunStyle();
-
+  const { dispatch, addmissionForm, microsoftReducer } = props;
   const { lugarAccidente } = addmissionForm;
   const respuestaOriginal = lugarAccidente;
+  
+  const comunClass = getComunStyle();
 
   const saveAnswer = (value) => {
     dispatch(updateForm("lugarAccidente", value));    
@@ -19,17 +20,23 @@ const AccidentPlaceForm = (props) => {
       dispatch(updateForm("volverAConcatenar", true));
     }
   };
+ 
 
   return (
     <div className={comunClass.root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(5.7))}
-        percentage={addmissionForm.percentage}
-      />
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep("x",6))}
+          percentage={addmissionForm.percentage}
+        />
+      </div>
       <div>
         <QuestionForm
-          titulo={' "Al momento del accidente estaba..." '}
-          // pregunta={' estaba..." '}
+          titulo={' "Al momento del accidente'}
+          titulo2={'estaba..." '}
           placeholder={
             "Ejemplo: Caminando por el patio del colegio, corriendo para alcanzar la micro, sentado en mi escritorio"
           }
@@ -41,9 +48,10 @@ const AccidentPlaceForm = (props) => {
   );
 };
 
-const mapStateToProps = ({ addmissionForm }) => {
+const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
     addmissionForm: addmissionForm,
+    microsoftReducer: microsoftReducer
   };
 };
 export default connect(mapStateToProps)(AccidentPlaceForm);

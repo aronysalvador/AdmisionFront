@@ -1,71 +1,113 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
-import { Typography } from "@material-ui/core";
 import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-import { getRazonAlertaPrincipal } from "./../../redux/actions/AlertaCalificacionRazonAction";
+
 import BotonSeleccionarCustomItemAlerta from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemAlerta";
+import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
+import image from './../../img/relato.svg'
+
 
 const AlertaCalificacionRazon = () => {
   const {
-    addmissionForm: { percentage, razonAlertaForm },
+    addmissionForm: { percentage, razonAlertaForm, tipoSiniestro },
   } = useSelector((state) => state, shallowEqual);
-
-  const razon =  !razonAlertaForm ? "" : razonAlertaForm 
-
-  const dispatch = useDispatch();
-
-  const initFn = useCallback(() => {
-    dispatch(getRazonAlertaPrincipal(""));
-  }, [dispatch]);
-
-  useEffect(() => {
-    initFn();
-  }, [initFn]);
-
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const { data: razonAlertaList } = useSelector(
     (state) => state.razonAlertaForm,
     shallowEqual
   );
 
-  const { root, titleBlue, titleBlack } = getComunStyle();
+  const razon =  !razonAlertaForm ? "" : razonAlertaForm 
+  const dispatch = useDispatch();
+
+  const [listado, setListado] = useState([])
+
+  useEffect(() => {
+    if(razonAlertaList.length>0){
+      FilterbySinister()
+    }
+    // eslint-disable-next-line
+  }, [razonAlertaList]);
+
+
+  const FilterbySinister = () => {
+    var response = []  
+    switch(tipoSiniestro.Id){
+      //Caso Acciddente de Trabajo
+      case 1:
+        response =  razonAlertaList
+        break;
+      //Caso Accidente de Trayecto  
+      case 2:
+        response =  razonAlertaList.slice(1,razonAlertaList.length)
+        break;
+      //Caso Enfermedad Profesional
+      case 3:
+        response =  razonAlertaList.slice(1,3)
+        break;
+      default:
+        response =  razonAlertaList
+        break;
+    }
+    setListado(response)
+  }
+  const comunClass = getComunStyle();
+  const spaceStyle = getSpaceStyle();
 
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(26.1))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Selecciona
-        <Grid component="span"  className={titleBlue}>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(26.1))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+          Selecciona
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
             &nbsp;la razón de la alerta
-        </Grid>          
-      </Typography>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        {razonAlertaList && razonAlertaList.map((razonAlerta) => (
-          <BotonSeleccionarCustom
-            key={razonAlerta.glosa}
-            data={razonAlerta}
-            itemForm={"razonAlertaForm"}
-            selected={razonAlerta.glosa === razon.glosa}
-          >
-            <BotonSeleccionarCustomItemAlerta {...razonAlerta} />
-          </BotonSeleccionarCustom>
-        ))}
+          </Grid>          
+        </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDeskCardBtn}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          {listado && listado.map((razonAlerta) => (
+            <BotonSeleccionarCustom
+              key={razonAlerta.glosa}
+              data={razonAlerta}
+              itemForm={"razonAlertaForm"}
+              selected={razonAlerta.glosa === razon.glosa}
+            >
+              <BotonSeleccionarCustomItemAlerta {...razonAlerta} />
+            </BotonSeleccionarCustom>
+          ))}
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

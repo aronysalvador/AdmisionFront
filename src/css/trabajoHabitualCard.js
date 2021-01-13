@@ -6,11 +6,7 @@ export const getTrabajoHabitualCardStyle = makeStyles((theme) => ({
         borderRadius: "10px",
         padding: "15px;",
     },
-    containerNoQuote: {
-        backgroundColor: "#FFF",
-        borderRadius: "10px",
-        padding: "10px;",
-    },
+    
     cardIconContainer: {
         paddingLeft: "15px",
     },
@@ -37,5 +33,22 @@ export const getTrabajoHabitualCardStyle = makeStyles((theme) => ({
     },
     iconVector: {
         float: "left",
+    },
+    '@media (max-width: 767px)': {
+        /* For mobile phones */
+        containerNoQuote: {
+            backgroundColor: "#FFF",
+            borderRadius: "10px",
+            padding: "10px;",
+        },
+    },
+    '@media (min-width: 768px)': {
+        /* Medium devices (landscape tablets, 768px and up) */
+        containerNoQuote: {
+            backgroundColor: "#FFF",
+            borderRadius: "10px",
+            padding: "10px;",
+            textAlign: "center",
+        },
     },
 }));

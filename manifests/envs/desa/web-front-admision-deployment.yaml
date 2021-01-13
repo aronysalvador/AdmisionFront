@@ -13,8 +13,14 @@ spec:
     spec:
       containers:
       - name: web-front-admision
-        image: crdesacontainer.azurecr.io/desa/admision_digital/achs-fr-admision:_18287           
+        image: imagen          
         imagePullPolicy: Always
+        env:
+          - name: PUBLIC_URL
+            value: /web-admision     
+          - name: ENTORNO
+            value: desarrollo
+
         ports:
         - containerPort: 80
         resources:

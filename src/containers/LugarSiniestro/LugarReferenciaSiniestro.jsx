@@ -10,93 +10,112 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { IconButton } from "material-ui";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
+import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
+import image from './../../img/relato.svg'
 
 const LugarReferenciaSiniestro = () => {
   let {
-    addmissionForm: { step, percentage, lugarReferenciaSiniestro },
+    addmissionForm: { step, percentage, lugarReferenciaSiniestro, tipoSiniestro },
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
   const [lugarReferencia, setLugarReferencia] = useState(() => {
     return !lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro;
   });
-
   const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(true);
-
+  
+  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
-  const {
-    root,
-    buttonAchs,
-    tituloTextbox,
-    bottomElement,
-    titleBlue,
-    titleBlack
-  } = getComunStyle();
+  const comunClass = getComunStyle();
   const { mobileCaption } = siniestroStyle();
   const spaceStyle = getSpaceStyle();
   return (
-    <div className={root}>
-      <Cabecera
-        dispatch={() => dispatch(handleSetStep(--stepx))}
-        percentage={percentage}
-      />
-      <Typography className={titleBlack}>
-        Pide al paciente el
-        <Grid component="span"  className={titleBlue}>
-         &nbsp;sitio específico 
-        </Grid>        
-        &nbsp;de donde ocurrió el accidente
-      </Typography>
-      <div className={spaceStyle.space2} />
-      <Typography className={tituloTextbox}>
-        Referencia
-      </Typography>
-      <TextField
-        helperText={
-          !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
-        }
-        error={!isLugarReferenciaValid}
-        value={lugarReferencia}
-        variant="outlined"
-        size="small"
-        margin="dense"
-        required
-        fullWidth
-        onChange={(e) => {
-          let texto = Format.caracteresInvalidos(e.target.value);
-          setIsLugarReferenciaValid(texto.length > 0);
-          setLugarReferencia(texto);
-        }}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-                <IconButton
-                  onClick={() => {
-                    setLugarReferencia("");
-                  }}
-                >
-                  <ClearIcon />
-                </IconButton>
-              </InputAdornment>
-          ),
-        }}
-      />
-      <Typography className={mobileCaption} variant="subtitle1">
-        Ejemplo: Piso 21, Área 453, Puesto 12A
-      </Typography>
-      <div className={bottomElement}>
-        <Button
-          disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
-          className={buttonAchs}
-          variant="contained"
-          onClick={() => {
-            dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-            dispatch(handleSetStep(12.1)); //++stepx
-          }}
-        >
-          Continuar
-        </Button>
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
+        <Header userMsal={ microsoftReducer.userMsal }/>
+      </div>
+      <div className={comunClass.beginContainerDesk}>
+        <Cabecera
+          dispatch={() => dispatch(handleSetStep(--stepx))}
+          percentage={percentage}
+        />
+      </div>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+          Pide al paciente el
+          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            &nbsp;sitio específico 
+          </Grid>        
+          &nbsp;de donde ocurrió el accidente
+        </Grid>
+        <div className={comunClass.displayDeskImg}>
+          <Grid component="span" className={comunClass.imgPrimaryDesk}>
+            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          </Grid>
+        </div>
+      </div>
+      <div className={comunClass.boxDesk}>
+        <div className={comunClass.displayMobile}>
+          <div className={spaceStyle.space2} />
+        </div>
+        <div className={comunClass.containerTextBox}>
+          <Typography className={comunClass.tituloTextBox}>
+            Referencia
+          </Typography>
+          <TextField
+            helperText={
+              !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
+            }
+            error={!isLugarReferenciaValid}
+            value={lugarReferencia}
+            variant="outlined"
+            size="small"
+            margin="dense"
+            required
+            fullWidth
+            onChange={(e) => {
+              let texto = Format.caracteresInvalidos(e.target.value);
+              setIsLugarReferenciaValid(texto.length > 0);
+              setLugarReferencia(texto);
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => {
+                        setLugarReferencia("");
+                      }}
+                    >
+                      <ClearIcon />
+                    </IconButton>
+                  </InputAdornment>
+              ),
+            }}
+          />
+          <Typography className={mobileCaption}>
+            Ejemplo: Piso 21, Área 453, Puesto 12A
+          </Typography>
+        </div>
+        <div className={comunClass.bottomElement}>
+          <Button
+            disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
+            className={comunClass.buttonAchs}
+            variant="contained"
+            onClick={() => {
+                dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+                if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
+                  dispatch(updateForm("AccidenteEnSucursal", "no"))
+                }                
+                dispatch(handleSetStep("x",12))
+            }}
+          >
+            Continuar
+          </Button>
+        </div>
+      </div>
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space2} />
       </div>
     </div>
   );

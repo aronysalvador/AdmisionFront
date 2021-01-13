@@ -6,7 +6,7 @@ import {
 import Axios from "axios";
 
 export const getData = async () => {
-  return Axios.get(process.env.REACT_APP_ALERTAS);
+  return Axios.get(window.REACT_APP_ALERTAS);
 };
 
 export const getRazonAlertaPrincipal = () => async (dispatch) => {
@@ -15,22 +15,25 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
     payload: true,
   });
 
-  //getData()
-
+  // Mostrar alertas segun tipo de siniestro 
   getData()
     .then((response) => {
-      dispatch(successCallRazonAlerta(response.data.content.response[0].opciones));
+      let data = response.data.content.response[0].opciones
+      dispatch(successCallRazonAlerta(data));      
     })
     .catch((error) => {
-      dispatch(errorCallRazonAlerta());
+      dispatch(errorCallRazonAlerta(error));
     });
+};
 
-  const successCallRazonAlerta = (razon) => ({
-    type: GET_RAZON_ALERTA_SUCCESS,
-    payload: razon,
-  });
+const successCallRazonAlerta = (razon) => ({
+  type: GET_RAZON_ALERTA_SUCCESS,
+  payload: razon,
+});
 
-  const errorCallRazonAlerta = () => ({
+const errorCallRazonAlerta = (error) => {
+  console.log(error);
+  return  ({
     type: GET_RAZON_ALERTA_FAILURE,
-  });
+  })
 };
