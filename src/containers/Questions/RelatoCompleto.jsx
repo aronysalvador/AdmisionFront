@@ -104,7 +104,7 @@ const RelatoCompleto = () => {
         <div className={comunClass.beginContainerDesk}>
             <Cabecera
             id={"RelatoCompleto-BtnBack"}
-            dispatch={() => dispatch(handleSetStep("x",6))}
+            dispatch={() => dispatch(handleSetStep("x",6.06))}
             percentage={percentage}
             />
         </div>
