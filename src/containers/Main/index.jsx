@@ -49,8 +49,8 @@ import CategoriaOcupacional from "../CategoriaOcupacional/index";
 import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
 import Cargo from "../Cargo/index";
 
-import PersonalSuccess from "../FeedBack/PersonalSuccess";
-import RelatoSuccess from "../FeedBack/RelatoSuccess";
+// import PersonalSuccess from "../FeedBack/PersonalSuccess";
+// import RelatoSuccess from "../FeedBack/RelatoSuccess";
 import SolicitarDocumentos from "../FeedBack/SolicitarDocumentos";
 
 import DireccionParticular from "../DireccionParticular/index";
@@ -112,8 +112,8 @@ import AtencionPrevia from "../AtencionPrevia/index";
 import AtencionMedica from "../AtencionPrevia/AtencionMedica";
 import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
 import PruebasComplementarias from "../DocComplementariosTrayecto/PruebasComplementarias";
-import Forecasts from "../Forecasts";
 
+import Forecasts from "../Forecasts";
 import InfoAccidente from "./../InfoAccidente";
 
 const Main = (props) => {
@@ -303,14 +303,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 5.7:
-        return (
-          <div className={layoutFix}>
-            <Paper className={paperFix}>
-              <PersonalSuccess />
-            </Paper>
-          </div>
-        );
+      // case 5.7:
+      //   return (
+      //     <div className={layoutFix}>
+      //       <Paper className={paperFix}>
+      //         <PersonalSuccess />
+      //       </Paper>
+      //     </div>
+      //   );
       case 5.81:
         return (
           <div className={blackLayout}>
@@ -383,7 +383,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 6.01:
+      case 6.01: //Inicio Trayecto
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -407,7 +407,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 6.04:
+      case 6.04: // Inicio EP
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -423,7 +423,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 6.06:
+      case 6.06: // Relato Unificado
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -455,7 +455,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 8.1: //Verificar numeración del case
+      case 8.1: //Resumen Relato Unificado
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -487,7 +487,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 10.1:
+      case 10.1: //Datos accidente Unificado
         return (
           <div className={layout}>
             <Paper className={paperAutoHeight}>
@@ -631,7 +631,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 18.01: 
+      case 18.01: // Previsiones Unificadas
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -671,14 +671,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19.2:
-        return (
-          <div className={layoutFix}>
-            <Paper className={paperFix}>
-              <RelatoSuccess />
-            </Paper>
-          </div>
-        );
+      // case 19.2:
+      //   return (
+      //     <div className={layoutFix}>
+      //       <Paper className={paperFix}>
+      //         <RelatoSuccess />
+      //       </Paper>
+      //     </div>
+      //   );
       case 19.201: //Atención Médica
         return (
           <div className={layoutFix}>
@@ -735,7 +735,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19.4:
+      case 19.4: // Datos Contractuales Unificada
         return (
           <div className={layout}>
             <Paper className={paperAutoHeight}>

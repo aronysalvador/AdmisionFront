@@ -34,7 +34,7 @@ const TipoAccidenteTrayecto = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id={"TipoAccidenteTrayecto-BtnBack"}
-          dispatch={() => dispatch(handleSetStep(5.7))}
+          dispatch={() => dispatch(handleSetStep(5.1))}
           percentage={percentage}
         />
       </div>

@@ -59,7 +59,7 @@ const PersonalData = (props) => {
       // si no tiene Grupo Etnico
       dispatch(handleSetStep(5.41)); //form Grupo Etnico
     } 
-    if(direccionParticular && telefonoParticular && razonSocial &&grupoEtnico) {
+    if(direccionParticular && telefonoParticular && razonSocial && grupoEtnico) {
       // si todos los datos relevantes están llenos
       if(rut && rutEmpresa && SucursalEmpresaObjeto){
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
@@ -142,7 +142,7 @@ const PersonalData = (props) => {
             disabled={loading}
             onClick={() => handleNext()}
           >
-            {(addmissionForm.direccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial)?"Sí, es correcta":"Rellenar información"}
+            {(addmissionForm.direccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.grupoEtnico.value)?"Sí, es correcta":"Rellenar información"}
             
           </Button>
         </div>

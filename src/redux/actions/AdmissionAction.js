@@ -63,7 +63,7 @@ export const handleSetStep = (step, actual = null) => {
 
             switch (actual) {
 
-                case 5.7: //PersonalSuccess
+                case 5.1: //PersonalData
                     switch (TIPO) {
                         case 1:
                             //RelatoUnido
@@ -102,7 +102,7 @@ export const handleSetStep = (step, actual = null) => {
                 case 6.06: //AccidentPlaceForm
                     switch (TIPO) {
                         case 1:
-                            PASO = 5.7
+                            PASO = 5.1
                             break;
                         case 2:
                             PASO = 6.03
@@ -671,7 +671,7 @@ export const validarAfiliacion = (data) => (dispatch) => {
                         } else if (!CotizacionesPaciente) {
                             dispatch(handleSetStep(5.12));
                         } else {
-                            dispatch(handleSetStep(5.7));
+                            dispatch(handleSetStep("x", 5.1)); //(5.7)
                         }
                     }
                 }

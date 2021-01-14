@@ -35,7 +35,7 @@ const SinBPInfoPersonal2 = () => {
   });
 
   const [grupo, setGrupo] = useState(() => {
-    return !grupoEtnico ? "" : grupoEtnico;
+    return !grupoEtnico ? {key: "NA", value: "Ninguno"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
   
 
