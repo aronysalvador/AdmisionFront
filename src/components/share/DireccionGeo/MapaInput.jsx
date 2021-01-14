@@ -140,7 +140,7 @@ const Mapa = (props) => {
                                         valido={direccionValida}
                                         setValido={setDireccionValida}
                                         DireccionEmpresa={DireccionEmpresa}
-                                        sucursalEmpresaSiniestro={sucursalEmpresaSiniestro}
+                                        sucursalEmpresaSiniestro={DireccionTemporal ? DireccionTemporal : sucursalEmpresaSiniestro}
                                         clearData={clearData}
                                         noFijarOption={true}
                                     />
