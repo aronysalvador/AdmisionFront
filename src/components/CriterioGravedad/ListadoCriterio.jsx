@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const CriterioList = (props) => {
 
-  const { data, setData, title, listado, id } = props
+  const { data, setData, title, listado, id, options } = props
 
   const comunClass = getComunStyle();
 
@@ -42,7 +42,19 @@ const CriterioList = (props) => {
                     option,
                     value,
                   ) => value.value === option.value}
-                  getOptionLabel={(option) => option.value}
+                  // getOptionLabel={(option) => option.descripcion}
+                  getOptionLabel={(option) =>{ 
+                    var response = ""
+                    if(option){
+                        if(options.length>0){
+                            for (let index = 0; index < options.length; index++) {
+                                const element = options[index];
+                                response += option[element]+" ";
+                            }
+                        }
+                    }                        
+                    return response
+                  }}
                   renderInput={(params) => (
                     <TextField
                       id={id+"Input"}
