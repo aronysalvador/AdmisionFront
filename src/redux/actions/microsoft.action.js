@@ -53,9 +53,7 @@ export const login = (scopes) => async(dispatch, getState) => {
         if (typeof err === "string") {
             const errParts = err.split("|");
             error =
-                errParts.length > 1 ?
-                { message: errParts[1], debug: errParts[0] } :
-                { message: err };
+                errParts.length > 1 ? { message: errParts[1], debug: errParts[0] } : { message: err };
         } else {
             error = {
                 message: err.message,
@@ -90,8 +88,9 @@ export const getCenters = async(email, token) => {
 
 const isNuevaAdmisionista = async(dispatch, email, getState) => {
     const result = await getCenters(email, getState().microsoftReducer.token);
-    // console.log(result.data.data.centrosForm.Centro_m.length);
-    if (result.data.data.centrosForm.Centro_m.length > 0) {
+    console.log("antes", result.data.data.centrosForm);
+    if (result.data.data.centrosForm) {
+        console.log("despues", result.data.data.centrosForm);
         dispatch(updateForm("centrosForm", result.data.data.centrosForm));
         return 1
     } else {

@@ -23,7 +23,7 @@ export const getCriteriosGravedad = () => async(dispatch) => {
         .then((response) => {
             if (response.data.status === 200 || response.data.status === 304) {
                 dispatch(successCallCRITERIOS(response.data.content[0]));
-                console.log(response.data.content[0]);
+                // console.log(response.data.content[0]);
             } else {
                 dispatch(updateForm("errorStep", 0));
                 dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CRITERIOS));
