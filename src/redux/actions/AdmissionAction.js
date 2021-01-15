@@ -57,7 +57,7 @@ export const handleSetStep = (step, actual = null) => {
         var PASO = step
 
         if (actual !== null) { // PANTALLAS QUE EVALUAN SEGUN EL TIPO DE SINIESTRO A DONDE DEBEN DIRIGIRSE
-            console.log("decidiendo....")
+         
             const { addmissionForm: { tipoSiniestro } } = getState();
             const TIPO = tipoSiniestro.Id
 
@@ -321,7 +321,7 @@ export const handleSetStep = (step, actual = null) => {
                     PASO = 500
                     break;
             }
-            console.log("PASO: " + PASO)
+            
             PASO !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: PASO }))
         }
 
@@ -348,7 +348,6 @@ export const obtenerData = async(rut, token) => {
 };
 
 export const obtenerDataRazon = async(rutEmpresa, token) => {
-    console.log("token", token)
     return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa, {
         headers: {
             "x-access-token": token
@@ -507,7 +506,6 @@ export const saveRut = (rut) => {
 
                     } else {
                         // NO TIENE BP
-                        console.log(getState());
                         const { microsoftReducer: { userMsal } } = getState();
                         const { email } = userMsal;
                         const { addmissionForm: { centrosForm, tipoSiniestro } } = getState();
@@ -541,9 +539,6 @@ const saveRazonSocial = (rut) => {
         if (rut) {
             obtenerDataRazon(rut, getState().microsoftReducer.token)
                 .then((result) => {
-
-                    console.log("result...")
-                    console.log(result)
 
                     if (result.data.status === 200 || result.data.status === 304) {
                         dispatch(updateForm("razonSocial", result.data.content.response[0]));

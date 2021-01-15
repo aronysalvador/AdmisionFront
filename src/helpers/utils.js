@@ -1,4 +1,4 @@
-import { getData } from "./../redux/actions/ComunaAction"
+import store from "./../store"
 
 export function Fecha() {
     var fecha = (new Date().toLocaleString("en-US", { timeZone: 'America/Santiago', hour12: false })).replace(/[,]/g, "");
@@ -30,29 +30,17 @@ export const eliminarDiacriticos = (texto) => {
 export const validarDireccionSN = async(direccion) => {
 
     var respuesta = { valida: false, comuna: null };
-
     if (typeof direccion.description === 'string') {
-
         const fragmentos = direccion.description.split(",")
         if (Array.isArray(fragmentos) && fragmentos.length >= 3) {
-            var comuna = fragmentos[fragmentos.length - 2].toUpperCase().trim()
-            if (comuna.includes("REGIÓN")) {
-                if (fragmentos.length < 5) {
-                    comuna = fragmentos[1].toUpperCase().trim()
-                } else {
-                    comuna = fragmentos[2].toUpperCase().trim()
-                }
-            }
-            let comunaSAP =  await validarComuna(comuna);
-            if(comunaSAP !== null){
+            let comunaSAP =  await validarComuna(direccion.description);
+            if(Object.keys(comunaSAP).length !== 0){
                 respuesta.valida=true
-                respuesta.comuna = comunaSAP
+                respuesta.comuna = comunaSAP.nombre
             } else
                 respuesta.valida = false
-
         }
     }
-
 
     return respuesta;
 }
@@ -61,51 +49,41 @@ export const validarDireccion = async(direccion) => {
 
     var respuesta = { valida: false, comuna: null };
     if (typeof direccion.description === 'string') {
-
         const fragmentos = direccion.description.split(",")
         if (Array.isArray(fragmentos) && fragmentos.length >= 3 && fragmentos[0].match(/\d+/g)) {
-            var comuna = fragmentos[fragmentos.length - 2].toUpperCase().trim()
-            if (comuna.includes("REGIÓN")) {
-                if (fragmentos.length < 5) {
-                    comuna = fragmentos[1].toUpperCase().trim()
-                } else {
-                    comuna = fragmentos[2].toUpperCase().trim()
-                }
-            }
-            let comunaSAP =  await validarComuna(comuna);
-            if(comunaSAP !== null){
+            let comunaSAP =  await validarComuna(direccion.description);
+            if(Object.keys(comunaSAP).length !== 0){
                 respuesta.valida=true
-                respuesta.comuna = comunaSAP
+                respuesta.comuna = comunaSAP.nombre
             } else
                 respuesta.valida = false
-
         }
     }
-
 
     return respuesta;
 }
 
-const validarComuna = async(comuna) => {
-    return new Promise(async function(resolve, reject) {
-        const result = await getData()
-        if (result.status === 200) {
-            var COMUNAS = result.data.content[0]
-            if (Array.isArray(COMUNAS)) {
+const validarComuna = async(direccion) => {
+    return new Promise(async function(resolve) {
+        let COMUNAS = []
+        const array = store.getState().comunaForm.data
+        for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+            element.nombre=eliminarDiacriticos(element.nombre)
+            COMUNAS.push(element)
+        }
 
-                var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
-                if (resultValid !== undefined) {
-                    resolve(resultValid.nombre);
-                    //NO BORRAR CONSOLE.LOG
-                    console.log("Comuna ", resultValid.nombre);
-                } else {
-                    resolve(null);
-                    //NO BORRAR CONSOLE.LOG
-                    console.log(resultValid);
-                }
+        // console.log("COMUNAS")
+        // console.log(COMUNAS)
 
-            } else { resolve(null); }
-        } else { resolve(null); }
+        let comuna = (eliminarDiacriticos(direccion).toUpperCase()).split(",");
+
+        // console.log("comuna")
+        // console.log(comuna)
+
+        let result = COMUNAS.filter((o) => comuna.includes(o.nombre));       
+        if(result.length>0){resolve(result[0]);}else{resolve([]);}   
+   
     });
 };
 
