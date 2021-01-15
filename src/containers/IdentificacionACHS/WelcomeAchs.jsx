@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/Star';
 import Header from "../../components/header/index";
 import hospital from './../../img/hospital.png'
-import check from './../../img/hospital.png'
+import check from './../../img/icon-check.svg'
 
 const useStyles = makeStyles((theme) => ({
   button: {
