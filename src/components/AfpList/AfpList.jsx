@@ -15,7 +15,6 @@ const AfpList = (props) => {
 
   useEffect(()=>{
     if(check.otro===false){
-      console.log("a verrr...")
       setCheckInt("")
     }
   },[check])
