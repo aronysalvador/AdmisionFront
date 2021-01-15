@@ -1,4 +1,3 @@
-import React from "react";
 import middleware from "./redux/middleware";
 import reducer from "./redux/reducers";
 import { createStore, compose } from "redux";
