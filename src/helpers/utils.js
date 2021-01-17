@@ -37,6 +37,7 @@ export const validarDireccionSN = async(direccion) => {
             if(Object.keys(comunaSAP).length !== 0){
                 respuesta.valida=true
                 respuesta.comuna = comunaSAP.nombre
+                console.log("valida: "+comunaSAP.nombre)
             } else
                 respuesta.valida = false
         }
@@ -55,6 +56,7 @@ export const validarDireccion = async(direccion) => {
             if(Object.keys(comunaSAP).length !== 0){
                 respuesta.valida=true
                 respuesta.comuna = comunaSAP.nombre
+                console.log("valida: "+comunaSAP.nombre)
             } else
                 respuesta.valida = false
         }
@@ -65,13 +67,13 @@ export const validarDireccion = async(direccion) => {
 
 const validarComuna = async(direccion) => {
     return new Promise(async function(resolve) {
-        let COMUNAS = []
-        const array = store.getState().comunaForm.data
-        for (let index = 0; index < array.length; index++) {
-            const element = array[index];
-            element.nombre=eliminarDiacriticos(element.nombre)
-            COMUNAS.push(element)
-        }
+        let COMUNAS = await getComunas()
+        // const array = store.getState().comunaForm.data
+        // for (let index = 0; index < array.length; index++) {
+        //     const element = array[index];
+        //     element.nombre=eliminarDiacriticos(element.nombre)
+        //     COMUNAS.push(element)
+        // }
 
         // console.log("COMUNAS")
         // console.log(COMUNAS)
@@ -81,11 +83,26 @@ const validarComuna = async(direccion) => {
         // console.log("comuna")
         // console.log(comuna)
 
-        let result = COMUNAS.filter((o) => comuna.includes(o.nombre));       
+        let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));       
         if(result.length>0){resolve(result[0]);}else{resolve([]);}   
    
     });
 };
+
+const getComunas = () => {
+    console.log("buscando comunas... ")
+    var loading = true
+    var data = []
+    do {        
+        console.log("...")
+        data = store.getState().comunaForm.data
+        if(!store.getState().comunaForm.loading){
+            loading = false
+        }
+    }
+    while (loading);
+    return data
+}
 
 export const validarDireccionCorrecta=(direccion)=> {
 
