@@ -33,7 +33,7 @@ const PersonalData = (props) => {
   const tituloTelefono = "Teléfono personal";
   const contenidoTelefono = [addmissionForm.telefonoParticular];
   const tituloGrupo = "Grupo étnico";
-  const contenidoGrupo = [addmissionForm?.grupoEtnico.value];
+  const contenidoGrupo = [addmissionForm?.grupoEtnico.descripcion];
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
   const [loading, setLoading] = useState(false)

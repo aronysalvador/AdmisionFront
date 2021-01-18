@@ -17,7 +17,7 @@ const GrupoEtnico = () => {
 
 
   const [grupo, setGrupo] = useState(() => {
-    return !grupoEtnico ? "" : grupoEtnico;
+    return !grupoEtnico ? {id: 1, descripcion: "Ninguno"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
   const { data: grupoList } = useSelector((state) => state.grupoForm, shallowEqual);
 
@@ -66,7 +66,7 @@ const GrupoEtnico = () => {
             // style={{ width: 300 }}
             options={grupoList}
   
-            getOptionLabel={(option) => option.value}
+            getOptionLabel={(option) => option.descripcion}
             renderInput={(params) => (
               <TextField
                 {...params}

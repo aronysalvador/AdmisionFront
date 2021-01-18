@@ -35,7 +35,7 @@ const SinBPInfoPersonal2 = () => {
   });
 
   const [grupo, setGrupo] = useState(() => {
-    return !grupoEtnico ? {key: "NA", value: "Ninguno"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
+    return !grupoEtnico ? {id: 1, descripcion: "Ninguno"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
   
 
@@ -166,7 +166,7 @@ const SinBPInfoPersonal2 = () => {
                 setGrupo(value);
               }}
               options={grupoList}
-              getOptionLabel={(option) => option.value}
+              getOptionLabel={(option) => option.descripcion}
               renderInput={(params) => (
                 <TextField
                   {...params}
