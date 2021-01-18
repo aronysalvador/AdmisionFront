@@ -57,13 +57,14 @@ export const handleSetStep = (step, actual = null) => {
         var PASO = step
 
         if (actual !== null) { // PANTALLAS QUE EVALUAN SEGUN EL TIPO DE SINIESTRO A DONDE DEBEN DIRIGIRSE
-         
+
             const { addmissionForm: { tipoSiniestro } } = getState();
             const TIPO = tipoSiniestro.Id
 
             switch (actual) {
 
                 case 5.1: //PersonalData
+                case 5.12: //NoQuotes
                     switch (TIPO) {
                         case 1:
                             //RelatoUnido
@@ -321,7 +322,7 @@ export const handleSetStep = (step, actual = null) => {
                     PASO = 500
                     break;
             }
-            
+
             PASO !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: PASO }))
         }
 

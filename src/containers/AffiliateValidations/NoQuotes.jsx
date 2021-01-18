@@ -67,7 +67,7 @@ const NoQuotes = (props) => {
                 id={"NoQuotes-Btn1"}
                 className={[blackStyle.buttonFooter, blackStyle.buttonFooterSpace]}
                 onClick={() => {
-                  dispatch(handleSetStep(5.7));
+                  dispatch(handleSetStep("x", 5.12));
                 }}
               >
                 Continuar admisión
