@@ -151,7 +151,7 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 10.1: //InfoAccidente 
-                    if(step==="x_back"){//hacia atras
+                    if (step === "x_back") { //hacia atras
                         switch (TIPO) {
                             case 1:
                                 PASO = 8.1
@@ -166,7 +166,7 @@ export const handleSetStep = (step, actual = null) => {
                                 PASO = 500
                                 break;
                         }
-                    }else{ //hacia adelante
+                    } else { //hacia adelante
                         switch (TIPO) {
                             case 1:
                                 PASO = 17.3
@@ -202,7 +202,7 @@ export const handleSetStep = (step, actual = null) => {
                     break;
 
                 case 13: //QuestionWitness
-                // case 17.3: //TestigoResponsable
+                    // case 17.3: //TestigoResponsable
                     switch (TIPO) {
                         case 1:
                             PASO = 12.1
@@ -316,22 +316,21 @@ export const obtenerData = async(rut, token) => {
 };
 
 export const obtenerDataRazon = async(rutEmpresa, token) => {
-    console.log("token",token)
+    console.log("token", token)
     return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa, {
         headers: {
-          "x-access-token": token
+            "x-access-token": token
         }
-      }
-    );
+    });
 };
 
 export const saveRut = (rut) => {
     return (dispatch, getState) => {
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
-                
-                if(result.data.status === 200 || result.data.status === 304){
-                    
+
+                if (result.status === 200) { // || result.data.status === 304
+
                     let BpCreado = result.data.content.response.BpCreado;
                     if (BpCreado) {
                         //Guardar datos adicionales paciente requeridos por SAP
@@ -474,7 +473,7 @@ export const saveRut = (rut) => {
                         const { addmissionForm: { centrosForm, tipoSiniestro, BP } } = getState();
                         dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: BP }))
 
-                    }else{
+                    } else {
                         // NO TIENE BP
                         console.log(getState());
                         const { microsoftReducer: { userMsal } } = getState();
@@ -485,7 +484,7 @@ export const saveRut = (rut) => {
                         dispatch(updateForm("bpForm", result.data.content.response));
                         dispatch(setStep(5.812, 0));
                     }
-                
+
                 } else {
 
                     dispatch(updateForm("errorStep", 3));
@@ -514,14 +513,14 @@ const saveRazonSocial = (rut) => {
                     console.log("result...")
                     console.log(result)
 
-                    if(result.data.status === 200 || result.data.status === 304){
-                        dispatch(updateForm("razonSocial", result.data.content.response[0])); 
-                    }else{
+                    if (result.data.status === 200 || result.data.status === 304) {
+                        dispatch(updateForm("razonSocial", result.data.content.response[0]));
+                    } else {
                         dispatch(updateForm("errorStep", 3));
                         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                         dispatch(handleSetStep(1004));
                     }
-                           
+
                 })
                 .catch((error) => {
                     console.log("error: " + String(error));
@@ -615,12 +614,12 @@ export const validarData = async(data) => {
 export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
-            if(response.data.status === 200 || response.data.status === 304){
+            if (response.data.status === 200 || response.data.status === 304) {
                 // dispatch({
-            //   type: DATE_EMPRESA_SUCCESS,
-            //   payload: response
-            // });
-            // console.log( response.data.content.response )
+                //   type: DATE_EMPRESA_SUCCESS,
+                //   payload: response
+                // });
+                // console.log( response.data.content.response )
                 if (Object.entries(response.data.content).length === 0) {
                     //respuesta vacia
                     dispatch(handleSetStep(500));
@@ -644,7 +643,7 @@ export const validarAfiliacion = (data) => (dispatch) => {
                         }
                     }
                 }
-            }else{
+            } else {
                 dispatch(updateForm("errorStep", 0));
                 dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_EMPRESA));
                 dispatch(handleSetStep(1004));
@@ -664,10 +663,9 @@ export const validarAfiliacion = (data) => (dispatch) => {
 export const sendingCaso = async(objeto, token) => {
     return await Axios.post(window.REACT_APP_INTEGRACION_SAP, objeto, {
         headers: {
-          "x-access-token": token
+            "x-access-token": token
         }
-      }
-    )
+    })
 }
 
 export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
@@ -703,65 +701,62 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
         const result = await sendingCaso(objeto, getState().microsoftReducer.token);
         const data = result.data
 
-        if (data.status === 200){
+        if (data.status === 200) {
 
             if (Object.keys(result).length > 0) {
-            
+
                 const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
 
-                if(IdEstadoAdmision !== 3 ){  // error en episodio
+                if (IdEstadoAdmision !== 3) { // error en episodio
                     dispatch(updateForm("mensajeErrorSAP", "Error al crear episodio"));
                     dispatch(handleSetStep(1002.1));
 
-                }
-                else if(IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7){ // error en siniestro
+                } else if (IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7) { // error en siniestro
                     dispatch(updateForm("mensajeErrorSAP", "Error al crear siniestro"));
                     dispatch(handleSetStep(1002.2));
 
-                }
-                else if(IdEstadoSiniestro === 7){ // error en documento
+                } else if (IdEstadoSiniestro === 7) { // error en documento
                     dispatch(updateForm("siniestroID", siniestroID));
                     dispatch(handleSetStep(1001.2));
 
-                }
-                else if(IdEstadoSiniestro === 8){ // error en status
+                } else if (IdEstadoSiniestro === 8) { // error en status
                     dispatch(updateForm("siniestroID", siniestroID));
                     dispatch(handleSetStep(1001.3));
-                    
-                }else{
 
-                    if(siniestroID.match("[\\D]+") === null) {
+                } else {
+
+                    if (siniestroID.match("[\\D]+") === null) {
 
                         dispatch(updateForm("siniestroID", siniestroID));
                         dispatch(handleSetStep(1001));
-                        
 
-                    }else{
+
+                    } else {
                         dispatch(updateForm("mensajeErrorSAP", siniestroID));
                         dispatch(handleSetStep(1002));
-                        
+
                     }
 
                 }
 
-                EndLog( ID, siniestroID, EpisodioID, data.status, dispatch )
+                EndLog(ID, siniestroID, EpisodioID, data.status, dispatch)
 
             } else {
                 dispatch(updateForm("mensajeErrorSAP", "Error de data"));
-                dispatch(handleSetStep(1002)); 
-                EndLog( ID,"","",500, dispatch )
+                dispatch(handleSetStep(1002));
+                EndLog(ID, "", "", 500, dispatch)
             }
 
-        }else{
+        } else {
             dispatch(updateForm("mensajeErrorSAP", data.mensaje));
             dispatch(handleSetStep(1002));
-            EndLog( ID,"","",500, dispatch )
-        }    
-                
+            EndLog(ID, "", "", 500, dispatch)
+        }
+
     } catch (error) {
         dispatch(updateForm("mensajeErrorSAP", String(error)));
         dispatch(handleSetStep(1002));
-        EndLog( ID,"","",500, dispatch )
+        EndLog(ID, "", "", 500, dispatch)
     }
 
 };
