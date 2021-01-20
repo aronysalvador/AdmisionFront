@@ -23,7 +23,11 @@ spec:
       - path: /web-firmadigital(/?.*)
         backend:
           serviceName: web-qa-front-firmadigital-service
-          servicePort: 80   
+          servicePort: 80
+      - path: /web-firmadigital-totem(/?.*)
+        backend:
+          serviceName: web-qa-front-firmadigital-service-totem-sprint10
+          servicePort: 80             
       - path: /web-digitalizador-documentos(/?.*)
         backend:
           serviceName: web-qa-front-digitalizaciondocumentos-service

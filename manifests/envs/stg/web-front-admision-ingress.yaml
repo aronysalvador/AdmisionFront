@@ -23,7 +23,11 @@ spec:
       - path: /web-firmadigital(/?.*)
         backend:
           serviceName: web-stg-front-firmadigital-service
-          servicePort: 80   
+          servicePort: 80 
+       - path: /web-firmadigital-totem(/?.*)
+        backend:
+          serviceName: web-stg-front-firmadigital-totem
+          servicePort: 80            
       - path: /web-digitalizador-documentos(/?.*)
         backend:
           serviceName: web-stg-front-digitalizaciondocumentos-service
