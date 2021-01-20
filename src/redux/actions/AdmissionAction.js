@@ -361,7 +361,8 @@ export const saveRut = (rut) => {
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
 
-                if (result.data.status === 200 || result.data.status === 304) {
+               // if (result.data.status === 200 || result.data.status === 304) {
+                if (result.status === 200) {
 
                     let BpCreado = result.data.content.response.BpCreado;
                     if (BpCreado) {
