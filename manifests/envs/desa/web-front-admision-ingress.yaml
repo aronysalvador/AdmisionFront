@@ -24,7 +24,7 @@ spec:
         backend:
           serviceName: web-front-firmadigital-service
           servicePort: 80 
-       - path: /web-firmadigital/totem(/?.*)
+      - path: /web-firmadigital-totem(/?.*)
         backend:
           serviceName: web-front-firmadigital-totem-service
           servicePort: 80            
