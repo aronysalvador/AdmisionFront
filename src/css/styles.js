@@ -45,8 +45,9 @@ const useStyles = makeStyles((theme) => ({
         },
         paperAutoHeight: {
             marginTop: '0 auto',
-            padding: '1.145em',
-            backgroundColor: "#F8F9FA"
+            // padding: '1.145em',
+            backgroundColor: "#F8F9FA",
+            boxShadow: 'none',
         }
     },
     '@media (min-width: 768px)': {
@@ -71,7 +72,8 @@ const useStyles = makeStyles((theme) => ({
         },
         paperAutoHeight: {
             marginTop: '0 auto',
-            padding: '1.145em',
+            boxShadow: 'none',
+            // padding: '1.145em',
             backgroundColor: "#F8F9FA",
             height: "100vh"
         }
