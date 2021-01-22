@@ -27,11 +27,11 @@ spec:
         - containerPort: 80
         resources:
           requests: 
+            cpu: 25m
+            memory: 32Mi
+          limits: 
             cpu: 50m
             memory: 64Mi
-          limits: 
-            cpu: 100m
-            memory: 128Mi
       imagePullSecrets:
       - name: regcred-crdesacontainer
 ---
