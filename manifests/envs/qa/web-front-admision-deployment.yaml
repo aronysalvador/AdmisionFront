@@ -24,10 +24,23 @@ spec:
         - containerPort: 80
         resources:
           requests: 
-            cpu: 100m
+            cpu: 50m
             memory: 64Mi
           limits: 
-            cpu: 200m
+            cpu: 100m
             memory: 128Mi
       imagePullSecrets:
-      - name: regcred-crdesacontainer 
+      - name: regcred-crdesacontainer
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-qa-front-admision
+spec:
+  maxReplicas: 10
+  minReplicas: 2 
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-qa-front-admision
+  targetCPUUtilizationPercentage: 50
