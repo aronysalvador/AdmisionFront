@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, TextField, InputAdornment, withStyles } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -57,9 +57,6 @@ const DocComplementariosTrayecto = () => {
     checked: {},
   })((props) => <Checkbox color="default" {...props} />);
   
-  useEffect(()=>{
-    console.log(state)
-  },[state])
 
   return (
     <div className={comunClass.root}>

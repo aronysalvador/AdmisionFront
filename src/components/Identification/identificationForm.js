@@ -114,9 +114,6 @@ const IdentificationForm = withFormik({
     }
     return errors;
   },
-  handleChange: (value) => {
-    console.log(value)
-  },
   handleSubmit: (values, { props, setSubmitting }) => {
     setSubmitting = false;
     values.rut = formateaRut(values.rut);

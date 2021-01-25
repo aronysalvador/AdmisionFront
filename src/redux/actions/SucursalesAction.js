@@ -98,11 +98,9 @@ export const getValidar = (isValid, rut) => async (dispatch, getState) => {
         }
       })
       .catch((error) => {
-        console.log(error)
         dispatch(updateForm("errorStep", 3));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
-        dispatch(handleSetStep(1004));
-        
+        dispatch(handleSetStep(1004));        
       })
   }
 

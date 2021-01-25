@@ -96,12 +96,12 @@ const validarComuna = async(comuna) => {
                 var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
                 if (resultValid !== undefined) {
                     resolve(resultValid.nombre);
-                    //NO BORRAR CONSOLE.LOG
-                    console.log("Comuna ", resultValid.nombre);
+                    // //NO BORRAR CONSOLE.LOG
+                    // console.log("Comuna ", resultValid.nombre);
                 } else {
                     resolve(null);
-                    //NO BORRAR CONSOLE.LOG
-                    console.log(resultValid);
+                    // //NO BORRAR CONSOLE.LOG
+                    // console.log(resultValid);
                 }
 
             } else { resolve(null); }

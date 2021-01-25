@@ -43,7 +43,6 @@ const successCallRazonAlerta = (razon) => ({
 });
 
 const errorCallRazonAlerta = (error) => {
-  console.log(error);
   return  ({
     type: GET_RAZON_ALERTA_FAILURE,
   })
