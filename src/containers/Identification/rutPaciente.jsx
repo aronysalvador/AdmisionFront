@@ -16,7 +16,7 @@ const RutPaciente = () => {
 
   return (
     <div>
-        <Grid className={comunClass.tituloTextBox} for={"RutPaciente-Lbl1"}>
+        <Grid className={comunClass.tituloTextBox}>
           RUT
         </Grid>
         <TextField

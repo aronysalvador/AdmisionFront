@@ -18,7 +18,7 @@ export const getAFP = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      if(response.status == 200){
+      if(response.status === 200){
         dispatch(successCallAFP(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));
