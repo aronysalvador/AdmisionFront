@@ -57,7 +57,6 @@ export const handleSetStep = (step, actual = null) => {
         var PASO = step
 
         if (actual !== null) { // PANTALLAS QUE EVALUAN SEGUN EL TIPO DE SINIESTRO A DONDE DEBEN DIRIGIRSE
-            console.log("decidiendo....")
             const { addmissionForm: { tipoSiniestro } } = getState();
             const TIPO = tipoSiniestro.Id
 
@@ -289,7 +288,6 @@ export const handleSetStep = (step, actual = null) => {
                     PASO = 500
                     break;
             }
-            console.log("PASO: " + PASO)
             PASO !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: PASO }))
         }
 
@@ -316,7 +314,6 @@ export const obtenerData = async(rut, token) => {
 };
 
 export const obtenerDataRazon = async(rutEmpresa, token) => {
-    console.log("token", token)
     return Axios.get(window.REACT_APP_RAZON_SOCIAL_RUT + rutEmpresa, {
         headers: {
             "x-access-token": token
@@ -488,15 +485,15 @@ export const saveRut = (rut) => {
                 } else {
 
                     dispatch(updateForm("errorStep", 3));
-                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                     dispatch(handleSetStep(1004));
 
                 }
             })
             .catch((error) => {
 
-                dispatch(updateForm("errorStep", 3));
-                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                dispatch(updateForm("errorStep", 3));              
+                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                 dispatch(handleSetStep(1004));
 
             });
@@ -519,7 +516,6 @@ const saveRazonSocial = (rut) => {
 
                 })
                 .catch((error) => {
-                    console.log("error: " + String(error));
                     dispatch(updateForm("errorStep", 3));
                     dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                     dispatch(handleSetStep(1004));
@@ -611,11 +607,7 @@ export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
             if (response.status === 200) {
-                // dispatch({
-                //   type: DATE_EMPRESA_SUCCESS,
-                //   payload: response
-                // });
-                // console.log( response.data.content.response )
+
                 if (Object.entries(response.data.content).length === 0) {
                     //respuesta vacia
                     dispatch(handleSetStep(500));

@@ -444,13 +444,11 @@ const FlujoTrayecto = () => {
 
                                     dispatch(sendCargo(nombreTestigo, cargoTestigo));
                                     dispatch(updateForm("testigoForm", nombreTestigo + "-" + cargoTestigo));                                   
-                                    console.log("SI Testigo")
                                 }else{
                                     json.TestigoS = ""
                                     json.TestigoN = "x"
                                     json.DatosTestig=""
                                     dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
-                                    console.log("NO Testigo")
                                 }
 
                                 if(nombreResponsable && cargoResponsable){
@@ -499,7 +497,6 @@ const FlujoTrayecto = () => {
                                         }
 
                                         dispatch(updateForm("TipoAvisoResponsable", check));
-                                        console.log("SI Resposanble")
                                     }else{
                                         json.avisoPresen=""  
                                         json.avisoMail=""  
@@ -509,13 +506,11 @@ const FlujoTrayecto = () => {
 
                                         dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
                                         dispatch(updateForm("fechaHoraResponsable",  ""));
-                                        console.log("NO Resposanble")
                                     }        
                                     
 
                                 dispatch(updateForm("CamposDocumentos", json));                        
                                 dispatch(handleSetStep(18.01))
-                                console.log("next")
                             }}
                         >
                             Continuar

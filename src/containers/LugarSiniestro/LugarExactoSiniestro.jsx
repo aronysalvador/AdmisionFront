@@ -52,13 +52,13 @@ const LugarExactoSiniestro = () => {
     setValido(resultado.valida)
   }
 
-  React.useEffect(()=>{
-        if(DireccionEmpresa){
-          const result = validarDireccionCorrecta(DireccionEmpresa)
-          console.log("validacion: "+result)
-        }
-     // eslint-disable-next-line
-  },[])
+  // React.useEffect(()=>{
+  //       if(DireccionEmpresa){
+  //         const result = validarDireccionCorrecta(DireccionEmpresa)
+  //         console.log("validacion: "+result)
+  //       }
+  //    // eslint-disable-next-line
+  // },[])
 
   return (
     <div className={comunClass.root}>

@@ -74,13 +74,3 @@ function mapStateToProps({ addmissionForm}) {
     }
 }
 export default connect(mapStateToProps)(Welcome)
-
-
-    /*
-import { login,isExistAccount,getAccount } from '../../redux/actions/microsoft.action'
-    {useEffect}
-    useEffect(() => {
-        const obj = dispatch(getAccount())
-        console.log("obj",obj)
-      },[])
-    */

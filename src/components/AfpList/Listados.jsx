@@ -14,7 +14,6 @@ const AfpList = (props) => {
 
   useEffect(()=>{
     if(check.otro===false){
-      console.log("a verrr...")
       setCheckInt("")
     }
   },[check])
@@ -65,7 +64,7 @@ const AfpList = (props) => {
             <div className="col-md-8">
               <NoPaddingAutocomplete
                 id={id+"Autocomplete"}
-                // onOpen={()=>{ console.log("aca"); var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
+                // onOpen={()=>{ var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
                 // setCheck(temp) }}
                 // openOnFocus
                 value={checkInt}
