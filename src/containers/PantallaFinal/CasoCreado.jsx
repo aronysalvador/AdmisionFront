@@ -55,7 +55,7 @@ const CasoCreado = () => {
                         <Button
                             className={comunClass.buttonAchs}
                             variant="contained"
-                            onClick={() => dispatch(handleSetStep(1.1))}
+                            onClick={() => dispatch(handleSetStep(1))} // 1.1 Empecemos eliminada
                             style={{float: "left"}}
                             >
                             Ir a Firma Digital Egreso en SAP
