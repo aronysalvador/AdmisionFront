@@ -59,7 +59,7 @@ const NoVigente = (props) => {
           <Button
             id={"NoVigente-Btn1"}
             className={blackStyle.buttonFooter}
-            onClick={() => { dispatch(handleSetStep(1.1)) }}
+            onClick={() => { dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
           >
             Volver al inicio
           </Button>

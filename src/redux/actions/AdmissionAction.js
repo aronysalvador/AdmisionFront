@@ -50,7 +50,7 @@ export const handleSetStep = (step, actual = null) => {
 
         //Mapear logs de pantallas
         const { LogForm: { ID } } = getState();
-        if ((step !== -1 && step !== 0 && step !== 1 && step !== 1.1 && step !== 2 && step !== 3 && step !== 26.4) && !actual) {
+        if ((step !== -1 && step !== 0 && step !== 1 && step !== 2 && step !== 3 && step !== 26.4) && !actual) { // step !== 1.1 &&
             ID !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: step }))
         }
 
@@ -361,7 +361,7 @@ export const saveRut = (rut) => {
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
 
-               // if (result.data.status === 200 || result.data.status === 304) {
+                // if (result.data.status === 200 || result.data.status === 304) {
                 if (result.status === 200) {
 
                     let BpCreado = result.data.content.response.BpCreado;

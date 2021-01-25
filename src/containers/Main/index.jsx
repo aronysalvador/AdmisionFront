@@ -16,7 +16,7 @@ import LugarExactoSiniestro from "../LugarSiniestro/LugarExactoSiniestro";
 import LugarSiniestroMapaSelection from "../LugarSiniestro/LugarSiniestroMapaSelection";
 import LugarReferenciaSiniestro from "../LugarSiniestro/LugarReferenciaSiniestro";
 import Load from "../Load/load";
-import Start from "../Welcome/WelcomeStart";
+// import Start from "../Welcome/WelcomeStart";
 import HealthForecast from "../HealthForecast/index";
 import HealthForecastIsapre from "../HealthForecastIsapre/index";
 import ValidarCorreoElectronico from "../ValidarCorreoElectronico/ValidarCorreoElectronico";
@@ -167,14 +167,14 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 1.1:
-        return (
-          <div className={layoutFix}>
-            <Paper className={paperFix}>
-              <Start />
-            </Paper>
-          </div>
-        );
+      // case 1.1:
+      //   return (
+      //     <div className={layoutFix}>
+      //       <Paper className={paperFix}>
+      //         <Start />
+      //       </Paper>
+      //     </div>
+      //   );
       case 2:
         return (
           <div className={layout}>

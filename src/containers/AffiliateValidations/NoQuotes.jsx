@@ -77,7 +77,7 @@ const NoQuotes = (props) => {
                 id={"NoQuotes-Btn2"}
                 className={blackStyle.buttonFooter2}
                 onClick={() => {
-                  dispatch(handleSetStep(1.1));
+                  dispatch(handleSetStep(1)); // 1.1 Empecemos eliminada
                 }}
               >
                 Volver al inicio
