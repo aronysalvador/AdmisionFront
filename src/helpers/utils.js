@@ -33,11 +33,11 @@ export const validarDireccionSN = async(direccion) => {
     if (typeof direccion.description === 'string') {
         const fragmentos = direccion.description.split(",")
         if (Array.isArray(fragmentos) && fragmentos.length >= 3) {
-            let comunaSAP =  await validarComuna(direccion.description);
-            if(Object.keys(comunaSAP).length !== 0){
-                respuesta.valida=true
+            let comunaSAP = await validarComuna(direccion.description);
+            if (Object.keys(comunaSAP).length !== 0) {
+                respuesta.valida = true
                 respuesta.comuna = comunaSAP.nombre
-                console.log("valida: "+comunaSAP.nombre)
+                    // console.log("valida: " + comunaSAP.nombre)
             } else
                 respuesta.valida = false
         }
@@ -52,11 +52,11 @@ export const validarDireccion = async(direccion) => {
     if (typeof direccion.description === 'string') {
         const fragmentos = direccion.description.split(",")
         if (Array.isArray(fragmentos) && fragmentos.length >= 3 && fragmentos[0].match(/\d+/g)) {
-            let comunaSAP =  await validarComuna(direccion.description);
-            if(Object.keys(comunaSAP).length !== 0){
-                respuesta.valida=true
+            let comunaSAP = await validarComuna(direccion.description);
+            if (Object.keys(comunaSAP).length !== 0) {
+                respuesta.valida = true
                 respuesta.comuna = comunaSAP.nombre
-                console.log("valida: "+comunaSAP.nombre)
+                    // console.log("valida: "+comunaSAP.nombre)
             } else
                 respuesta.valida = false
         }
@@ -68,12 +68,12 @@ export const validarDireccion = async(direccion) => {
 const validarComuna = async(direccion) => {
     return new Promise(async function(resolve) {
         let COMUNAS = await getComunas()
-        // const array = store.getState().comunaForm.data
-        // for (let index = 0; index < array.length; index++) {
-        //     const element = array[index];
-        //     element.nombre=eliminarDiacriticos(element.nombre)
-        //     COMUNAS.push(element)
-        // }
+            // const array = store.getState().comunaForm.data
+            // for (let index = 0; index < array.length; index++) {
+            //     const element = array[index];
+            //     element.nombre=eliminarDiacriticos(element.nombre)
+            //     COMUNAS.push(element)
+            // }
 
         // console.log("COMUNAS")
         // console.log(COMUNAS)
@@ -83,20 +83,20 @@ const validarComuna = async(direccion) => {
         // console.log("comuna")
         // console.log(comuna)
 
-        let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));       
-        if(result.length>0){resolve(result[0]);}else{resolve([]);}   
-   
+        let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));
+        if (result.length > 0) { resolve(result[0]); } else { resolve([]); }
+
     });
 };
 
 const getComunas = () => {
-    console.log("buscando comunas... ")
+    // console.log("buscando comunas... ")
     var loading = true
     var data = []
-    do {        
-        console.log("...")
+    do {
+        // console.log("...")
         data = store.getState().comunaForm.data
-        if(!store.getState().comunaForm.loading){
+        if (!store.getState().comunaForm.loading) {
             loading = false
         }
     }
@@ -104,38 +104,30 @@ const getComunas = () => {
     return data
 }
 
-export const validarDireccionCorrecta=(direccion)=> {
+export const validarDireccionCorrecta = (direccion) => {
 
     var string = direccion.toLowerCase();
     var patron = /[0-9]{2,}/;
-    
-    if(string.includes('calle')){
+
+    if (string.includes('calle')) {
         return true
-    }    
-    else if(string.includes('avenida')){
+    } else if (string.includes('avenida')) {
         return true
-    }
-    else if(string.includes('av')){
+    } else if (string.includes('av')) {
         return true
-    }
-    else if(string.includes('casa')){
+    } else if (string.includes('casa')) {
         return true
-    }    
-    else if(string.includes('dpto')){
+    } else if (string.includes('dpto')) {
         return true
-    }
-    else if(string.includes('departamento')){
+    } else if (string.includes('departamento')) {
         return true
-    }
-    else if(string.includes('villa')){
+    } else if (string.includes('villa')) {
         return true
-    }
-    else if(string.includes('poblacion')){
+    } else if (string.includes('poblacion')) {
         return true
-    }
-    else  if(patron.test(string)){
+    } else if (patron.test(string)) {
         return true
-    }else{
+    } else {
         return false
     }
 

@@ -88,9 +88,9 @@ export const getCenters = async(email, token) => {
 
 const isNuevaAdmisionista = async(dispatch, email, getState) => {
     const result = await getCenters(email, getState().microsoftReducer.token);
-    console.log("antes", result.data.data.centrosForm);
+    // console.log("antes", result.data.data.centrosForm);
     if (result.data.data.centrosForm) {
-        console.log("despues", result.data.data.centrosForm);
+        // console.log("despues", result.data.data.centrosForm);
         dispatch(updateForm("centrosForm", result.data.data.centrosForm));
         return 1
     } else {

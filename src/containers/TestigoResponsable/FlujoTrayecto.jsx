@@ -319,8 +319,8 @@ const FlujoTrayecto = () => {
                                                 InputProps={{
                                                     endAdornment: (
                                                         <ClearIcon id="FlujoTrayecto-ClearIcon3" style={{cursor:'pointer'}} onClick={() => {
-                                                                         setCheck({ id:5, description: "Otro", especificacion: "" })
-                                                                     }} 
+                                                                        setCheck({ id:5, description: "Otro", especificacion: "" })
+                                                                    }} 
                                                         />
                                                     ),
                                                     style: {
@@ -348,63 +348,63 @@ const FlujoTrayecto = () => {
                                     de lo que sucedió?
                                 </Grid>
                                 <div className="row">
-                                <div className="col-md-10">
-                                    <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
-                                    Nombre testigo
-                                    </Grid>
-                                    <TextField
-                                    id="FlujoTrayecto-Input4"
-                                    value={nombreTestigo}
-                                    onChange={(e) => saveNombreTestigo(Format.caracteresInvalidos(e.target.value))}
-                                    margin="dense"
-                                    variant="outlined"
-                                    autoComplete="off"
-                                    type="text"
-                                    fullWidth
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment position="end">
-                                                <IconButton id="FlujoTrayecto-ClearIcon4" onClick={() => { saveNombreTestigo("") }}>
-                                                    <ClearIcon />
-                                                </IconButton>
-                                            </InputAdornment>
-                                        ),
-                                        style: {
-                                            background: "#ffff"
-                                        },
-                                    }}
-                                    />
-                                 </div>   
+                                    <div className="col-md-10">
+                                        <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
+                                        Nombre testigo
+                                        </Grid>
+                                        <TextField
+                                        id="FlujoTrayecto-Input4"
+                                        value={nombreTestigo}
+                                        onChange={(e) => saveNombreTestigo(Format.caracteresInvalidos(e.target.value))}
+                                        margin="dense"
+                                        variant="outlined"
+                                        autoComplete="off"
+                                        type="text"
+                                        fullWidth
+                                        InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton id="FlujoTrayecto-ClearIcon4" onClick={() => { saveNombreTestigo("") }}>
+                                                        <ClearIcon />
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                            style: {
+                                                background: "#ffff"
+                                            },
+                                        }}
+                                        />
+                                    </div>   
                                 </div>
                                 <div className="row">
-                                <div className="col-md-10">
-                                    <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
-                                    Cargo o relación testigo
-                                    </Grid>
-                                    <TextField
-                                    id="FlujoTrayecto-Input5"
-                                    value={cargoTestigo}
-                                    onChange={(e) => saveCargoTestigo(Format.caracteresInvalidos(e.target.value))}
-                                    helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
-                                    margin="dense"
-                                    variant="outlined"
-                                    autoComplete="off"
-                                    type="text"
-                                    fullWidth
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment position="end">
-                                                <IconButton id="FlujoTrayecto-ClearIcon5" onClick={() => { saveCargoTestigo("") }}>
-                                                    <ClearIcon />
-                                                </IconButton>
-                                            </InputAdornment>
-                                        ),
-                                        style: {
-                                            background: "#ffff"
-                                        },
-                                    }}
-                                    />
-                                 </div>   
+                                    <div className="col-md-10">
+                                        <Grid className={comunClass.tituloTextBox} style={{marginTop:"5px "}}>
+                                        Cargo o relación testigo
+                                        </Grid>
+                                        <TextField
+                                        id="FlujoTrayecto-Input5"
+                                        value={cargoTestigo}
+                                        onChange={(e) => saveCargoTestigo(Format.caracteresInvalidos(e.target.value))}
+                                        helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
+                                        margin="dense"
+                                        variant="outlined"
+                                        autoComplete="off"
+                                        type="text"
+                                        fullWidth
+                                        InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton id="FlujoTrayecto-ClearIcon5" onClick={() => { saveCargoTestigo("") }}>
+                                                        <ClearIcon />
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                            style: {
+                                                background: "#ffff"
+                                            },
+                                        }}
+                                        />
+                                    </div>   
                                 </div>
 
                                 <div className="row">
@@ -420,7 +420,7 @@ const FlujoTrayecto = () => {
                                     telefono={datosTestig}
                                     step={14}
                                     />
-                                 </div>   
+                                </div>   
                                 </div>
                         </div>
                         </div>
@@ -445,13 +445,13 @@ const FlujoTrayecto = () => {
 
                                     dispatch(sendCargo(nombreTestigo, cargoTestigo));
                                     dispatch(updateForm("testigoForm", nombreTestigo + "-" + cargoTestigo));                                   
-                                    console.log("SI Testigo")
+                                    // console.log("SI Testigo")
                                 }else{
                                     json.TestigoS = ""
                                     json.TestigoN = "x"
                                     json.DatosTestig=""
                                     dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
-                                    console.log("NO Testigo")
+                                    // console.log("NO Testigo")
                                 }
 
                                 if(nombreResponsable && cargoResponsable){
@@ -500,7 +500,7 @@ const FlujoTrayecto = () => {
                                         }
 
                                         dispatch(updateForm("TipoAvisoResponsable", check));
-                                        console.log("SI Resposanble")
+                                        // console.log("SI Resposanble")
                                     }else{
                                         json.avisoPresen=""  
                                         json.avisoMail=""  
@@ -510,13 +510,13 @@ const FlujoTrayecto = () => {
 
                                         dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
                                         dispatch(updateForm("fechaHoraResponsable",  ""));
-                                        console.log("NO Resposanble")
+                                        // console.log("NO Resposanble")
                                     }        
                                     
 
                                 dispatch(updateForm("CamposDocumentos", json));                        
                                 dispatch(handleSetStep(18.01))
-                                console.log("next")
+                                // console.log("next")
                             }}
                         >
                             Continuar

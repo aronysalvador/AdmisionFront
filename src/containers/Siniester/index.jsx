@@ -41,7 +41,7 @@ const Siniester = (props) => {
       <Header userMsal={ microsoftReducer.userMsal }/>
     </div>
     <div className={comunClass.beginContainerDesk}>
-      <Cabecera id={"Siniester-BtnBack"} dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
+      <Cabecera id={"Siniester-BtnBack"} dispatch={() => dispatch(handleSetStep(1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
     </div>
     
     <div className={comunClass.displayDesk}>

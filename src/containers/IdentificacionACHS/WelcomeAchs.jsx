@@ -139,7 +139,7 @@ const SessionAchs = (props) => {
             id={"SessionAchs-Btn2"} 
             className={comunStyle.buttonAchs}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(1.1))}
+            onClick={() => dispatch(handleSetStep(2))} //1.1 Empecemos eliminada
           >
             Nueva admisión
           </Button>
