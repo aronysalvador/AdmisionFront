@@ -34,37 +34,26 @@ const SinBPInfoPersonal1 = () => {
   };
 
   //State
-  const [nombre, saveNombre] = useState(() => {
-    return !bpForm.nombre ? "" : Capitalize(bpForm.nombre);
-  });
+  const [nombre, saveNombre] = useState(() => { return !bpForm?.nombre ? "" : Capitalize(bpForm.nombre); });
 
-  const [apellidoPaterno, saveApellidoPaterno] = useState(() => {
-    return !bpForm.apellidoPaterno ? "" : Capitalize(bpForm.apellidoPaterno);
-  });
+  const [apellidoPaterno, saveApellidoPaterno] = useState(() => {  return !bpForm?.apellidoPaterno ? "" : Capitalize(bpForm.apellidoPaterno);  });
 
-  const [apellidoMaterno, saveApellidoMaterno] = useState(() => {
-    return !bpForm.apellidoMaterno ? "" : Capitalize(bpForm.apellidoMaterno);
-  });
+  const [apellidoMaterno, saveApellidoMaterno] = useState(() => {  return !bpForm?.apellidoMaterno ? "" : Capitalize(bpForm.apellidoMaterno); });
 
-  const formatDate = (fecha) => {
-    let fechaSplitted = fecha.split("-");
-    return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
-  };
+  const [fechaNacimiento, saveFechaNacimiento] = useState(() => { return !bpForm?.fechaNacimiento ? "" : formatDate(bpForm.fechaNacimiento);  });
 
-  const [fechaNacimiento, saveFechaNacimiento] = useState(() => {
-    return !bpForm.fechaNacimiento ? "" : formatDate(bpForm.fechaNacimiento);
-  });
-
-  const [sexo, saveSexo] = useState(() => {
-    return bpForm.masculino
-      ? "Masculino"
-      : "Femenino";
-  });
+  const [sexo, saveSexo] = useState(() => { return bpForm?.masculino  ? "Masculino"  : "Femenino";  });
 
   const { percentage } = useSelector(
     (state) => state.addmissionForm,
     shallowEqual
   );
+  
+  const formatDate = (fecha) => {
+    let fechaSplitted = fecha.split("-");
+    return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
+  };
+
 
   const sexos = ["Masculino", "Femenino"];
 
