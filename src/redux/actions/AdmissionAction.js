@@ -329,10 +329,10 @@ export const saveRut = (rut) => {
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
 
-                if (result.status === 200) { // || result.data.status === 304
+                if (result.status === 200 || result.status === 206) { // || result.data.status === 304
 
-                    let BpCreado = result.data.content.response.BpCreado;
-                    if (BpCreado) {
+                    let BpCreado = result.data.content.response ? result.data.content.response.BpCreado : "";
+                    if (BpCreado) {                        
                         //Guardar datos adicionales paciente requeridos por SAP
                         const {
                             apellidoMaterno,
@@ -474,8 +474,8 @@ export const saveRut = (rut) => {
                         dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: BP }))
 
                     } else {
+                        
                         // NO TIENE BP
-                        console.log(getState());
                         const { microsoftReducer: { userMsal } } = getState();
                         const { email } = userMsal;
                         const { addmissionForm: { centrosForm, tipoSiniestro } } = getState();
@@ -494,7 +494,6 @@ export const saveRut = (rut) => {
                 }
             })
             .catch((error) => {
-                console.log("error: " + String(error));
 
                 dispatch(updateForm("errorStep", 3));
                 dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
@@ -510,10 +509,7 @@ const saveRazonSocial = (rut) => {
             obtenerDataRazon(rut, getState().microsoftReducer.token)
                 .then((result) => {
 
-                    console.log("result...")
-                    console.log(result)
-
-                    if (result.data.status === 200 || result.data.status === 304) {
+                    if (result.status === 200) {
                         dispatch(updateForm("razonSocial", result.data.content.response[0]));
                     } else {
                         dispatch(updateForm("errorStep", 3));
@@ -614,7 +610,7 @@ export const validarData = async(data) => {
 export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
-            if (response.data.status === 200 || response.data.status === 304) {
+            if (response.status === 200) {
                 // dispatch({
                 //   type: DATE_EMPRESA_SUCCESS,
                 //   payload: response
@@ -701,7 +697,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
         const result = await sendingCaso(objeto, getState().microsoftReducer.token);
         const data = result.data
 
-        if (data.status === 200) {
+        if (result.status === 200) {
 
             if (Object.keys(result).length > 0) {
 

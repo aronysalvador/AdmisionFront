@@ -23,7 +23,7 @@ export const getSucursales = (rut) => async (dispatch, getState) => {
 
   obtenerData(rut, getState().microsoftReducer.token)
     .then((response) => {
-      if(response.status === 200 || response.status === 304){        
+      if(response.status === 200){       
         dispatch(successCallSucursales(response.data));  
       }else{
         dispatch(updateForm("errorStep", 3));
@@ -71,7 +71,7 @@ export const getValidar = (isValid, rut) => async (dispatch, getState) => {
     dispatch(updateForm("rutEmpresa", rut));
    await obtenerValidacion(rut, getState().microsoftReducer.token)
       .then(async(response) => {
-        if(response.data.status === 200 || response.data.status === 304){
+        if(response.status === 200){
           const json = response.data      
           if(json.content.response[0] !== undefined){
   
