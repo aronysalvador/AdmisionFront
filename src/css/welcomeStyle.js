@@ -8,8 +8,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
     boxCentroAlign: {
         display: "flex",
-        justifyContent: "space-between",
-        minWidth: "305px",
+        justifyContent: "center",
+        minWidth: "335px", //"265px"
     },
     boxCentroAchs: {
         display: "inline-flex",
@@ -311,8 +311,6 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             padding: "1em",
             fontSize: "14px !important",
             boxSizing: "border-box",
-            // width: "5em",
-            // height: "5em",
             display: 'flex'
         },
         avatarContainer: {
@@ -324,14 +322,10 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         backgroundBoxAchs: {
             backgroundColor: "#016C2E !important",
-            // width: "25.715em",
-            // height: "32em",
-            padding: "64px 10%", //5%
+            padding: "64px 14%", //10%
         },
         backgroundBoxAchsDesk: {
             backgroundColor: "#016C2E !important",
-            // width: "25.715em",
-            // height: "32em",
             padding: "10px 64px",
             color: "white !important"
         },

@@ -1683,7 +1683,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: '18px',
-        lineHeight: '34px',
+        lineHeight: '20px',
         color: '#00b2a9',
     },
     titleBlackDataCont: {
