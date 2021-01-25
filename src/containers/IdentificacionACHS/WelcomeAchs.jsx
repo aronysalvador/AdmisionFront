@@ -10,24 +10,24 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { makeStyles } from '@material-ui/core/styles';
-import StarIcon from '@material-ui/icons/Star';
+// import { makeStyles } from '@material-ui/core/styles';
+// import StarIcon from '@material-ui/icons/Star';
 import Header from "../../components/header/index";
 import hospital from './../../img/hospital.png'
-import check from './../../img/icon-check.svg'
+// import check from './../../img/icon-check.svg'
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
 const SessionAchs = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const contenidoCentroAchs = [
     addmissionForm.centrosForm.Centro_m,
@@ -77,7 +77,7 @@ const SessionAchs = (props) => {
                 Admisionista
               </Grid>
             </div>
-            <div className={welcomeStyle.marginStar}>
+            {/* <div className={welcomeStyle.marginStar}>
               <Button
                 variant="contained"
                 size="small"
@@ -86,7 +86,7 @@ const SessionAchs = (props) => {
               >
                 4.9
               </Button>
-            </div>
+            </div> */}
           </div>
           <div className={spaceStyle.space1} />
           <div className={welcomeStyle.boxCentroAlignDesk}>
@@ -103,7 +103,7 @@ const SessionAchs = (props) => {
                 <div className={comunStyle.textCenter}> { contenidoCentroAchs } </div>
                 <div className={welcomeStyle.textBoxAchs}>Centro</div>
               </div>
-              <div className={welcomeStyle.boxCentroAchs}>
+              {/* <div className={welcomeStyle.boxCentroAchs}>
                 <img
                   alt="Tiempo Admisión Promedio"
                   src={check}
@@ -111,7 +111,7 @@ const SessionAchs = (props) => {
                 />
                 8 minutos
                 <div className={welcomeStyle.textBoxAchs}>Admisión promedio</div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
