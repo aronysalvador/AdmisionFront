@@ -115,6 +115,7 @@ import PruebasComplementarias from "../DocComplementariosTrayecto/PruebasComplem
 
 import Forecasts from "../Forecasts";
 import InfoAccidente from "./../InfoAccidente";
+import CentroPaciente from "../Identification/centroPaciente";
 
 const Main = (props) => {
   const classes = useStyles();
@@ -303,7 +304,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      // case 5.7:
+      // case 5.7: ELIMINADO
       //   return (
       //     <div className={layoutFix}>
       //       <Paper className={paperFix}>
@@ -311,6 +312,14 @@ const Main = (props) => {
       //       </Paper>
       //     </div>
       //   );
+      case 5.7: //Centro Paciente
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <CentroPaciente />
+            </Paper>
+          </div>
+        );
       case 5.81:
         return (
           <div className={blackLayout}>
