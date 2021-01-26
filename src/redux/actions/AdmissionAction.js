@@ -104,7 +104,7 @@ export const handleSetStep = (step, actual = null) => {
                 case 6.06: //AccidentPlaceForm
                     switch (TIPO) {
                         case 1:
-                            PASO = 5.1
+                            PASO = 5.7
                             break;
                         case 2:
                             PASO = 6.03

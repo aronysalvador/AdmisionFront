@@ -6,21 +6,21 @@ import { Button, Grid } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
+// import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
-import { setCenter } from "../../redux/actions/UserCenterAction";
+// import { setCenter } from "../../redux/actions/UserCenterAction";
 import Header from "../../components/header/index";
 
 const CentroPaciente = () => {
   const {
-    addmissionForm: { centrosForm }, microsoftReducer: { userMsal },
+    addmissionForm: { centrosForm, percentage }, microsoftReducer: { userMsal },
   } = useSelector((state) => state, shallowEqual);
 
-  const { email } = userMsal;
+  // const { email } = userMsal;
 
-  const comunStyle = getComunStyle();
+  const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const welcomeStyle = getWelcomeStyle();
+  // const welcomeStyle = getWelcomeStyle();
 
   const [centros, setCENTROS] = useState(centrosForm);
 
@@ -36,39 +36,39 @@ const CentroPaciente = () => {
   );
 
   return (
-    <div className={comunStyle.root}>
-      <div className={comunStyle.displayDesk}> 
+    <div className={comunClass.root}>
+      <div className={comunClass.displayDesk}> 
         <Header userMsal={userMsal}/>
       </div>
-      <div className={ welcomeStyle.backPosicion }> 
-        <Cabecera id="Achs-BtnBack" dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
+      <div className={ comunClass.beginContainerDesk }> 
+        <Cabecera id="CentroPaciente-BtnBack" dispatch={() => dispatch(handleSetStep(5.1))} percentage={percentage} noSpace={true} /> 
       </div>
       <div className={spaceStyle.space1} />
-      <div className={comunStyle.displayDesk}>
-        <div className={spaceStyle.space2} />
+      <div className={comunClass.displayDesk}>
+        <div className={spaceStyle.space1} />
       </div>
-      <Grid  className={`${comunStyle.titleBlack} ${comunStyle.textCenterDesk}`}>El paciente se encuentra en:</Grid >
-      <div className={comunStyle.displayMobile}>
+      <Grid  className={`${comunClass.titleBlack} ${comunClass.textCenterDesk}`}>El paciente se encuentra en:</Grid >
+      <div className={comunClass.displayMobile}>
         <div className={spaceStyle.space2} />
       </div>
 
-      <div className={comunStyle.boxGeneral} >
-        <center className={comunStyle.displayDesk}>
+      <div className={comunClass.boxGeneral} >
+        <center className={comunClass.displayDesk}>
           <div className={spaceStyle.space2} />
-          <Grid className={comunStyle.subtitleBlack}>
+          <Grid className={comunClass.subtitleBlack}>
             Ingresa el centro donde se encuentra el paciente
           </Grid>
           <div className={spaceStyle.space1} />
-          <div className={comunStyle.displayMobile}>
+          <div className={comunClass.displayMobile}>
             <div className={spaceStyle.space1} />
           </div>
         </center>
-        <div className={comunStyle.containerTextBox}>
-          <Grid className={comunStyle.tituloTextBox} for={"Achs-Lbl1"}>
+        <div className={comunClass.containerTextBox}>
+          <Grid className={comunClass.tituloTextBox} for={"CentroPaciente-Lbl1"}>
             Centro
           </Grid>
           <AutoComplete
-            id={"Achs-Lbl1"} 
+            id={"CentroPaciente-Lbl1"} 
             value={centros}
             onChange={(event, value) => {
               setCENTROS(value);
@@ -103,16 +103,16 @@ const CentroPaciente = () => {
             )}
           />
         </div>
-        <div className={comunStyle.bottomElement}>
+        <div className={comunClass.bottomElement}>
           <Button
-            id={"Achs-Btn1"} 
+            id={"CentroPaciente-Btn1"} 
             variant="contained"
-            className={`${comunStyle.buttonAchs} ${comunStyle.bottomMargin}`}  
+            className={`${comunClass.buttonAchs} ${comunClass.bottomMargin}`}  
             type="submit"
             disabled={inputValue !== valueError || inputValue === ''}
             onClick={() => {
-              dispatch(updateForm("centrosForm", centros));
-              dispatch(setCenter(email, centros))
+              dispatch(updateForm("centroPacienteForm", centros));
+              // dispatch(setCenter(email, centros))
               dispatch(handleSetStep("x", 5.7));
             }}
           >
