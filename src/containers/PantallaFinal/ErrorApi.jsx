@@ -50,7 +50,7 @@ const ErrorApi = (props) => {
                   >
                   Hay un error con la siguiente API&nbsp;
                   <br/>
-                  {mensaje.length>0 ? mensaje[mensaje.length-4]+"/"+mensaje[mensaje.length-3]+"/"+mensaje[mensaje.length-2]+"/"+mensaje[mensaje.length-1] : mensajeErrorApi }
+                  {mensaje.length>0 ? mensaje[mensaje.length-3]+"/"+mensaje[mensaje.length-2]+"/"+mensaje[mensaje.length-1] : mensajeErrorApi }
               </Grid>
               )}
 
