@@ -113,7 +113,7 @@ const CentroPaciente = () => {
             onClick={() => {
               dispatch(updateForm("centrosForm", centros));
               dispatch(setCenter(email, centros))
-              dispatch(handleSetStep(1));
+              dispatch(handleSetStep("x", 5.7));
             }}
           >
             Aquí estoy
