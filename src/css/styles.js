@@ -79,6 +79,14 @@ const useStyles = makeStyles((theme) => ({
         }
     },
 
+    paperBlackAutoHeight:{
+        width: "100%",
+        boxShadow: "none",
+        borderRadius: 0,
+        backgroundColor: "#373737",
+        height: "100vh !important"
+    }
+
     // paperAutoHeight: {
     //     marginTop: '0 auto',
     //     padding: '1.145em',
