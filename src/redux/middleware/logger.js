@@ -1,7 +1,7 @@
 const logger = store => next => action => {
-  console.group(action.type);
+  // console.group(action.type);
   const result = next(action);
-  console.groupEnd();
+  // console.groupEnd();
   return result;
 };
 
