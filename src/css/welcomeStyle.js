@@ -18,7 +18,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         flexDirection: "column",
         width: "45%",
         minWidth: "146px",
-        height: "116px", //"90px",
+        minHeight: "116px", //"90px",
         border: "2px solid #007A33",
         borderSpacing: "2px",
         borderRadius: "10px",
@@ -322,7 +322,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         backgroundBoxAchs: {
             backgroundColor: "#016C2E !important",
-            padding: "64px 14%", //10%
+            padding: "64px 12%", //10%
         },
         backgroundBoxAchsDesk: {
             backgroundColor: "#016C2E !important",
