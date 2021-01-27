@@ -31,4 +31,4 @@ window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://desa.piloto4.40.121.134.23
 window.REACT_APP_PARTES_DEL_CUERPO = "https://desa.piloto4.40.121.134.234.nip.io/orquestador/api/trayecto/getPartesCuerpo/"
 window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://desa.piloto4.40.121.134.234.nip.io/orquestador/api/trayecto/causalMolestias"
 window.REACT_APP_ADMISION = "https://desa.piloto4.40.121.134.234.nip.io/orquestador/api/admision/"
-process.env.NODE_TLS_REJECT_UNAUTHORIZED=0
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED=0
