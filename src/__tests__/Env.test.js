@@ -14,13 +14,18 @@ describe("Variables de entorno", ()=>{
         FileEnvStg = "./env.stg.config.js",
         FileEnvProd = "./env.prod.config.js"
 
-           let variable = !(countLines(FileEnvDesa) === countLines(FileEnvQa) &&
-           countLines(FileEnvQa) === countLines(FileEnvStg) &&
-           countLines(FileEnvStg) === countLines(FileEnvProd)) ? false:true
+        console.log("DESA: ",countLines(FileEnvDesa))
+        console.log("QA: ", countLines(FileEnvQa))
+        console.log("STG: ", countLines(FileEnvStg))
+        console.log("PROD: ", countLines(FileEnvProd))
 
-           console.log("variable",variable)
+        let variable = !(countLines(FileEnvDesa) === countLines(FileEnvQa) &&
+        countLines(FileEnvQa) === countLines(FileEnvStg) &&
+        countLines(FileEnvStg) === countLines(FileEnvProd)) ? false:true
 
-           expect(variable).toBeTruthy()
+        console.log("RESULTADO: ",variable)
+
+        expect(variable).toBeTruthy()
     })
 })
 
