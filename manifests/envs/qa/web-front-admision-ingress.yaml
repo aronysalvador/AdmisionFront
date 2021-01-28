@@ -32,8 +32,4 @@ spec:
         backend:
           serviceName: web-qa-front-digitalizaciondocumentos-service
           servicePort: 80   
-      - path: /orquestador/(.*)
-        backend:
-          serviceName: api-qa-orquestador-service
-          servicePort: 80
        
