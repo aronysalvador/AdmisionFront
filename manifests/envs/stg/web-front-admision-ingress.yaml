@@ -32,8 +32,4 @@ spec:
         backend:
           serviceName: web-stg-front-digitalizaciondocumentos-service
           servicePort: 80   
-      - path: /orquestador/(.*)
-        backend:
-          serviceName: api-stg-orquestador-service
-          servicePort: 80
        
