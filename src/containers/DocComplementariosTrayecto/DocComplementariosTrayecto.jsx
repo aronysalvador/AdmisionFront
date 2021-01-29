@@ -57,9 +57,9 @@ const DocComplementariosTrayecto = () => {
     checked: {},
   })((props) => <Checkbox color="default" {...props} />);
   
-  useEffect(()=>{
-    // console.log(state)
-  },[state])
+  // useEffect(()=>{
+  //   // console.log(state)
+  // },[state])
 
   return (
     <div className={comunClass.root}>

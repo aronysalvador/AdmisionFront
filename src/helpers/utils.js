@@ -27,6 +27,7 @@ export const eliminarDiacriticos = (texto) => {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 }
 
+
 export const validarDireccionSN = async(direccion) => {
 
     var respuesta = { valida: false, comuna: null };
@@ -65,26 +66,27 @@ export const validarDireccion = async(direccion) => {
     return respuesta;
 }
 
-const validarComuna = async(comuna) => {
-    return new Promise(async function(resolve, reject) {
-        const result = await getData()
-        if (result.status === 200) {
-            var COMUNAS = result.data.content[0]
-            if (Array.isArray(COMUNAS)) {
+const validarComuna = async(direccion) => {
+    return new Promise(async function(resolve) {
+        let COMUNAS = await getComunas()
+            // const array = store.getState().comunaForm.data
+            // for (let index = 0; index < array.length; index++) {
+            //     const element = array[index];
+            //     element.nombre=eliminarDiacriticos(element.nombre)
+            //     COMUNAS.push(element)
+            // }
 
-                var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
-                if (resultValid !== undefined) {
-                    resolve(resultValid.nombre);
-                    // //NO BORRAR CONSOLE.LOG
-                    // console.log("Comuna ", resultValid.nombre);
-                } else {
-                    resolve(null);
-                    // //NO BORRAR CONSOLE.LOG
-                    // console.log(resultValid);
-                }
+        // console.log("COMUNAS")
+        // console.log(COMUNAS)
 
-            } else { resolve(null); }
-        } else { resolve(null); }
+        let comuna = (eliminarDiacriticos(direccion).toUpperCase()).split(",");
+
+        // console.log("comuna")
+        // console.log(comuna)
+
+        let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));
+        if (result.length > 0) { resolve(result[0]); } else { resolve([]); }
+
     });
 };
 

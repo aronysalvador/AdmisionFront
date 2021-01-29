@@ -1,6 +1,5 @@
 window.REACT_APP_ISAPRES = "https://desa.salud.achs.cl/orquestador/api/sap/isapres/"
 window.REACT_APP_AFP = "https://desa.salud.achs.cl/orquestador/api/sap/afp/"
-window.REACT_APP_GRUPOS="https://desa.salud.achs.cl/orquestador/api/datosPaciente/grupo/"
 window.REACT_APP_NACIONALIDADES = "https://desa.salud.achs.cl/orquestador/api/datosPaciente/nacionalidades/"
 window.REACT_APP_IDIOMAS = "https://desa.salud.achs.cl/orquestador/api/datosPaciente/idiomas/"
 window.REACT_APP_PAISES = "https://desa.salud.achs.cl/orquestador/api/datosPaciente/paises/"
@@ -33,3 +32,4 @@ window.REACT_APP_PARTES_DEL_CUERPO = "https://desa.salud.achs.cl/orquestador/api
 window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://desa.salud.achs.cl/orquestador/api/trayecto/causalMolestias"
 window.REACT_APP_CRITERIOS = "https://desa.salud.achs.cl/orquestador/api/sap/criteriosGravedad"
 window.REACT_APP_ADMISION = "https://desa.salud.achs.cl/orquestador/api/admision/"
+window.REACT_APP_GRUPOS="https://desa.salud.achs.cl/orquestador/api/datosPaciente/grupo/"
