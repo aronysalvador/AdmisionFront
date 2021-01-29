@@ -21,7 +21,7 @@ export const getCriteriosGravedad = () => async(dispatch) => {
 
     getData()
         .then((response) => {
-            if (response.data.status === 200 || response.data.status === 304) {
+            if (response.status === 200) {
                 dispatch(successCallCRITERIOS(response.data.content[0]));
                 // console.log(response.data.content[0]);
             } else {

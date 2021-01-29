@@ -65,7 +65,7 @@ const AfpList = (props) => {
             <div className="col-md-8" style={{width:"64%"}}>
               <NoPaddingAutocomplete
                 id={id+"Autocomplete"}
-                // onOpen={()=>{ console.log("aca"); var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
+                // onOpen={()=>{ var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
                 // setCheck(temp) }}
                 // openOnFocus
                 value={checkInt}
