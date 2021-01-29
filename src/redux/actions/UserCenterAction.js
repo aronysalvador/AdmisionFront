@@ -33,7 +33,6 @@ import {
           }
       })
       .catch((error) => {
-        console.log(error)
         dispatch(errorCallUserCenter(error));
       });
   

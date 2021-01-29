@@ -33,11 +33,6 @@ const TipoAvisoResponsable = () => {
         checked: {},
       })((props) => <Radio color="default" {...props} />);
 
- 
-    //   useEffect(()=>{
-    //     console.log(check)
-    //   },[check])
-      
 
     return (
         <div className={comunClass.root}>

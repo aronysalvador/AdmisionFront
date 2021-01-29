@@ -65,6 +65,7 @@ export const validarDireccion = async(direccion) => {
     return respuesta;
 }
 
+<<<<<<< HEAD
 const validarComuna = async(direccion) => {
     return new Promise(async function(resolve) {
         let COMUNAS = await getComunas()
@@ -86,6 +87,28 @@ const validarComuna = async(direccion) => {
         let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));
         if (result.length > 0) { resolve(result[0]); } else { resolve([]); }
 
+=======
+const validarComuna = async(comuna) => {
+    return new Promise(async function(resolve, reject) {
+        const result = await getData()
+        if (result.status === 200) {
+            var COMUNAS = result.data.content[0]
+            if (Array.isArray(COMUNAS)) {
+
+                var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
+                if (resultValid !== undefined) {
+                    resolve(resultValid.nombre);
+                    // //NO BORRAR CONSOLE.LOG
+                    // console.log("Comuna ", resultValid.nombre);
+                } else {
+                    resolve(null);
+                    // //NO BORRAR CONSOLE.LOG
+                    // console.log(resultValid);
+                }
+
+            } else { resolve(null); }
+        } else { resolve(null); }
+>>>>>>> 3463cd5d9ef490965a6ea91fefbc6e2deb98a668
     });
 };
 

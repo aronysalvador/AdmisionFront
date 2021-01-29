@@ -57,7 +57,6 @@ export const handleSetStep = (step, actual = null) => {
         var PASO = step
 
         if (actual !== null) { // PANTALLAS QUE EVALUAN SEGUN EL TIPO DE SINIESTRO A DONDE DEBEN DIRIGIRSE
-
             const { addmissionForm: { tipoSiniestro } } = getState();
             const TIPO = tipoSiniestro.Id
 
@@ -322,7 +321,6 @@ export const handleSetStep = (step, actual = null) => {
                     PASO = 500
                     break;
             }
-
             PASO !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: PASO }))
         }
 
@@ -361,11 +359,10 @@ export const saveRut = (rut) => {
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
 
-                // if (result.data.status === 200 || result.data.status === 304) {
-                if (result.status === 200) {
+                if (result.status === 200 || result.status === 206) { // || result.data.status === 304
 
-                    let BpCreado = result.data.content.response.BpCreado;
-                    if (BpCreado) {
+                    let BpCreado = result.data.content.response ? result.data.content.response.BpCreado : "";
+                    if (BpCreado) {                        
                         //Guardar datos adicionales paciente requeridos por SAP
                         const {
                             apellidoMaterno,
@@ -520,16 +517,15 @@ export const saveRut = (rut) => {
                 } else {
 
                     dispatch(updateForm("errorStep", 3));
-                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                     dispatch(handleSetStep(1004));
 
                 }
             })
             .catch((error) => {
-                console.log("error: " + String(error));
 
-                dispatch(updateForm("errorStep", 3));
-                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                dispatch(updateForm("errorStep", 3));              
+                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                 dispatch(handleSetStep(1004));
 
             });
@@ -542,7 +538,7 @@ const saveRazonSocial = (rut) => {
             obtenerDataRazon(rut, getState().microsoftReducer.token)
                 .then((result) => {
 
-                    if (result.data.status === 200 || result.data.status === 304) {
+                    if (result.status === 200) {
                         dispatch(updateForm("razonSocial", result.data.content.response[0]));
                     } else {
                         dispatch(updateForm("errorStep", 3));
@@ -552,7 +548,6 @@ const saveRazonSocial = (rut) => {
 
                 })
                 .catch((error) => {
-                    console.log("error: " + String(error));
                     dispatch(updateForm("errorStep", 3));
                     dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                     dispatch(handleSetStep(1004));
@@ -643,12 +638,8 @@ export const validarData = async(data) => {
 export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
-            if (response.data.status === 200 || response.data.status === 304) {
-                // dispatch({
-                //   type: DATE_EMPRESA_SUCCESS,
-                //   payload: response
-                // });
-                // console.log( response.data.content.response )
+            if (response.status === 200) {
+
                 if (Object.entries(response.data.content).length === 0) {
                     //respuesta vacia
                     dispatch(handleSetStep(500));
@@ -730,7 +721,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
         const result = await sendingCaso(objeto, getState().microsoftReducer.token);
         const data = result.data
 
-        if (data.status === 200) {
+        if (result.status === 200) {
 
             if (Object.keys(result).length > 0) {
 

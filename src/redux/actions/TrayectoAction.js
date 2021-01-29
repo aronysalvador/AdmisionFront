@@ -25,7 +25,7 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
 
   getDataTipoAccidente()
     .then((response) => {
-      if(response.data.status === 200 || response.data.status === 304){
+      if(response.status === 200){
         dispatch(successCall(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));
@@ -34,7 +34,7 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
       } 
     })
     .catch((error) => {
-      dispatch(errorCall());
+      dispatch(errorCall(error));
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO));
       dispatch(handleSetStep(1004));
@@ -59,7 +59,7 @@ export const getMediosTransporteTrayecto = () => async (dispatch) => {
 
   getDataMediosTransporte()
     .then((response) => {
-      if(response.data.status === 200 || response.data.status === 304){
+      if(response.status === 200){
         dispatch(successCall(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));

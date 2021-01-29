@@ -23,7 +23,7 @@ export const getSucursales = (rut) => async (dispatch, getState) => {
 
   obtenerData(rut, getState().microsoftReducer.token)
     .then((response) => {
-      if(response.status === 200 || response.status === 304){        
+      if(response.status === 200){       
         dispatch(successCallSucursales(response.data));  
       }else{
         dispatch(updateForm("errorStep", 3));
@@ -71,7 +71,7 @@ export const getValidar = (isValid, rut) => async (dispatch, getState) => {
     dispatch(updateForm("rutEmpresa", rut));
    await obtenerValidacion(rut, getState().microsoftReducer.token)
       .then(async(response) => {
-        if(response.data.status === 200 || response.data.status === 304){
+        if(response.status === 200){
           const json = response.data      
           if(json.content.response[0] !== undefined){
   
@@ -98,11 +98,9 @@ export const getValidar = (isValid, rut) => async (dispatch, getState) => {
         }
       })
       .catch((error) => {
-        console.log(error)
         dispatch(updateForm("errorStep", 3));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
-        dispatch(handleSetStep(1004));
-        
+        dispatch(handleSetStep(1004));        
       })
   }
 
