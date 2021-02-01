@@ -13,6 +13,10 @@ import { withStyles } from "@material-ui/core/styles";
 import ClearIcon from "@material-ui/icons/Clear";
 import Lugar from "../LugarSiniestroTrayecto/Lugar"
 import { Format } from "../../helpers/strings";
+import yesDisabled from './../../img/yesWork.svg'
+import notDisabled from './../../img/notWork.svg'
+import yesActive from './../../img/yesActive.svg'
+import notActive from './../../img/notActive.svg'
 import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
@@ -33,7 +37,7 @@ const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
     const [validDate, setValidDate] = useState(true);  
@@ -209,6 +213,40 @@ const InfoAccidente = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {tipoSiniestro.Id === 1 && 
+                            
+                            <div className={['row', comunClass.backgroundGrey].join(' ')}>
+                                <div className="col-md-10" style={{textAlign:"left"}}>
+                                <Grid className={`${comunClass.textPrimaryRelato}`} >
+                                    Al momento del accidente, ¿desarrollaba su
+                                    <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                                        &nbsp;trabajo habitual
+                                    </Grid> 
+                                    ?
+                                </Grid>
+                                </div>
+                                <div className="col-md-2" style={{ display: "contents" }}>
+                                    <img
+                                        id={"RelatoCompleto-BtnSi"}
+                                        alt="siTrabajo"
+                                        src={desarrollarTrabajoHabitual ==="Si" ? yesActive : yesDisabled}
+                                        type="button"
+                                        style={{ marginRight: "5px" }}
+                                        onClick={() => handleOnClick("Si")}
+                                    />
+
+                                    <img
+                                        id={"RelatoCompleto-BtnNo"}
+                                        alt="noTrabajo"
+                                        src={desarrollarTrabajoHabitual ==="No" ? notActive :notDisabled}
+                                        type="button"
+                                        onClick={() => handleOnClick("No")}                       
+                                    />
+                                </div>
+                            </div>                   
+                            
+                            }
 
                             <div className="col-md-12">
                                 <div className={spaceStyle.space2} />
