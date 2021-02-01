@@ -24,12 +24,12 @@ moment.locale("es");
 
 const NoPaddingTextField = withStyles({
     root: {
-      '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
-      },
-      '&& .MuiOutlinedInput-notchedOutline': {
-        top: "-2px"
-      }
+        '&& .MuiOutlinedInput-input': {
+            padding: "8.5px 14px"
+        },
+        '&& .MuiOutlinedInput-notchedOutline': {
+            top: "-2px"
+        }
     }
 })(TextField);
 
@@ -37,7 +37,7 @@ const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
     const [validDate, setValidDate] = useState(true);  
@@ -57,6 +57,10 @@ const InfoAccidente = () => {
 
     const [lugarReferencia, setLugarReferencia] = useState(!lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro);
     const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(lugarReferenciaSiniestro?lugarReferenciaSiniestro:false);
+
+    const handleOnClick = (respuesta) => {
+        dispatch(updateForm("AccidenteEnSucursal", respuesta));
+    };
 
     const handleNext = () => {
         dispatch(updateForm("fechaHoraSiniestro", `${date} ${hour}`))
@@ -86,7 +90,6 @@ const InfoAccidente = () => {
                     <div className={comunClass.displayMobile}>
                         <div className={spaceStyle.spaceMin1} />
                     </div>
-                        
 
                     <div className="container-fluid">
                         <div className="row">
@@ -106,31 +109,30 @@ const InfoAccidente = () => {
                                         </div>
 
 
-                                    <div className="container" style={{maxWidth: "30em", minHeight: "250px"}}>
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                                <Grid
-                                                    className={comunClass.tituloTextBox}
-                                                    style={{marginBottom:'8px', textAlign: "left"}}
-                                                >
-                                                    Fecha de accidente
-                                                </Grid> 
+                                        <div className="container" style={{maxWidth: "30em", minHeight: "250px"}}>
+                                            <div className="row">
+                                                <div className="col-md-12">
+                                                    <Grid
+                                                        className={comunClass.tituloTextBox}
+                                                        style={{marginBottom:'8px', textAlign: "left"}}
+                                                    >
+                                                        Fecha de accidente
+                                                    </Grid> 
 
-                                                <Date date={date} setDate={setDate} id="InfoAccidente-Lbl1" setValidDate={setValidDate} />
-                                            </div>
-                                            <div className="col-md-12" style={{ paddingTop: '2em' }}>
-                                                <Grid
-                                                    className={comunClass.tituloTextBox}
-                                                    style={{marginBottom:'8px', textAlign: "left"}}
-                                                >
-                                                    Hora de accidente
-                                                </Grid> 
+                                                    <Date date={date} setDate={setDate} id="InfoAccidente-Lbl1" setValidDate={setValidDate} />
+                                                </div>
+                                                <div className="col-md-12" style={{ paddingTop: '2em' }}>
+                                                    <Grid
+                                                        className={comunClass.tituloTextBox}
+                                                        style={{marginBottom:'8px', textAlign: "left"}}
+                                                    >
+                                                        Hora de accidente
+                                                    </Grid> 
 
-                                                <Time  id={"InfoAccidente-Lbl2"}  time={hour} setTime={setHour} setValidHour={setValidHour} />
+                                                    <Time  id={"InfoAccidente-Lbl2"}  time={hour} setTime={setHour} setValidHour={setValidHour} />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
 
                                     </div>
                                 </div>
@@ -219,18 +221,18 @@ const InfoAccidente = () => {
                             <div className={['row', comunClass.backgroundGrey].join(' ')}>
                                 <div className="col-md-10" style={{textAlign:"left"}}>
                                 <Grid className={`${comunClass.textPrimaryRelato}`} >
-                                    Al momento del accidente, ¿desarrollaba su
+                                    ¿El accidente ocurrió en  
                                     <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
-                                        &nbsp;trabajo habitual
+                                        &nbsp;sucursal
                                     </Grid> 
-                                    ?
+                                    &nbsp;a la que pertenece el trabajador?
                                 </Grid>
                                 </div>
                                 <div className="col-md-2" style={{ display: "contents" }}>
                                     <img
                                         id={"RelatoCompleto-BtnSi"}
                                         alt="siTrabajo"
-                                        src={desarrollarTrabajoHabitual ==="Si" ? yesActive : yesDisabled}
+                                        src={AccidenteEnSucursal ==="Si" ? yesActive : yesDisabled}
                                         type="button"
                                         style={{ marginRight: "5px" }}
                                         onClick={() => handleOnClick("Si")}
@@ -239,7 +241,7 @@ const InfoAccidente = () => {
                                     <img
                                         id={"RelatoCompleto-BtnNo"}
                                         alt="noTrabajo"
-                                        src={desarrollarTrabajoHabitual ==="No" ? notActive :notDisabled}
+                                        src={AccidenteEnSucursal ==="No" ? notActive :notDisabled}
                                         type="button"
                                         onClick={() => handleOnClick("No")}                       
                                     />
@@ -254,7 +256,7 @@ const InfoAccidente = () => {
                                     id={"InfoAccidente-Btn1"}
                                     variant="contained"
                                     className={comunClass.buttonAchs}
-                                    disabled={!validDate || !validHour || !isLugarReferenciaValid || !direccionValida}
+                                    disabled={tipoSiniestro.Id === 1 ? (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal) : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)}
                                     onClick={() => handleNext() }
                                 >
                                     Continuar
