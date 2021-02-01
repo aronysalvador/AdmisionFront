@@ -62,7 +62,7 @@ export default (props) => {
                         maxDateMessage="La fecha no puede exceder al día de hoy"
                         minDateMessage="La fecha es invalida"
                         keyboardIcon={<img alt="calendar" src={imageDate}/>}
-                        style={{
+                        style={ props.style || {
                             paddingTop: "3px",
                             background: "#ffff",
                             borderRadius: "0.7em"

@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
-import DateMasked from "./DateMasked";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -15,6 +14,7 @@ import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import image from './../../img/identify.svg'
+import Date from "../../components/Pickers/Date";
 
 
 const SinBPInfoPersonal1 = () => {
@@ -52,6 +52,8 @@ const SinBPInfoPersonal1 = () => {
   const [fechaNacimiento, saveFechaNacimiento] = useState(() => { return !bpForm?.fechaNacimiento ? "" : formatDate(bpForm.fechaNacimiento);  });
 
   const [sexo, saveSexo] = useState(() => { return bpForm?.masculino  ? "Masculino"  : "Femenino";  });
+
+  const [fechaValida, setFechaValida] = useState(false);
 
   const { percentage } = useSelector(
     (state) => state.addmissionForm,
@@ -147,7 +149,7 @@ const SinBPInfoPersonal1 = () => {
 
           <div className={spaceStyle.space1} />
 
-          <Grid className={[comunClass.tituloTextBox]}>
+          <Grid className={comunClass.tituloTextBox}>
             Apellido Materno
           </Grid>
           <TextField
@@ -172,30 +174,14 @@ const SinBPInfoPersonal1 = () => {
 
           <div className={spaceStyle.space1} />
           <div className={comunClass.paddingElement}>
-            <div className={[comunClass.widthDateSex]}>
-              <Grid className={[comunClass.tituloTextBox]}>
+            <div className={comunClass.widthDateSex}>
+              <Grid className={comunClass.tituloTextBox}>
                 Fecha de Nacimiento
               </Grid>
-              <TextField
-                id={"InfoPersonal1-Lbl4"}
-                value={fechaNacimiento}
-                onChange={(e) => saveFechaNacimiento(e.target.value)}
-                margin="dense"
-                variant="outlined"
-                autoComplete="off"
-                type="text"
-                fullWidth           
-                InputProps={{
-                  inputComponent:DateMasked,
-                  style: {
-                    marginRight: "10px",
-                    paddingRight: "0",
-                  },
-                  endAdornment: (
-                        <ClearIcon onClick={() => { saveFechaNacimiento("") }} />
-                  ),
-                }}
-              />
+              
+
+              <Date date={fechaNacimiento} setDate={saveFechaNacimiento} id="InfoPersonal1-Lbl4" style={{marginTop: "10px", marginRight: "10px", paddingRight: "0"}} setValidDate={setFechaValida} />
+
             </div>
 
             <div className={spaceStyle.space1} />
@@ -242,8 +228,8 @@ const SinBPInfoPersonal1 = () => {
               !nombre ||
               !apellidoPaterno ||
               !apellidoMaterno ||
-              !fechaNacimiento ||
-              !sexo
+              !sexo ||
+              !fechaValida
             }
             onClick={() => clickConfirmar()}
           >
