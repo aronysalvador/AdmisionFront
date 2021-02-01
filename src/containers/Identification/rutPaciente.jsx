@@ -11,8 +11,14 @@ const RutPaciente = () => {
     const dispatch = useDispatch();
 
     const comunClass = getComunStyle();
-    const [rut, setRut] = useState(); 
+    const [rut, setRut] = useState(""); 
     const [isValid, setIsValid] = useState(true);
+
+    const handleChange = (value) => {   
+      let format = formateaRut(value)   
+      setRut(value?(format!==undefined? format : value):"");    
+      setIsValid(Rut.validaRut(format))   
+    }
 
   return (
     <div>
@@ -30,11 +36,7 @@ const RutPaciente = () => {
           helperText={!isValid && "RUT no válido"}  
           autoComplete="off"          
           error={!isValid }
-          onChange={(e) => {
-            var format = formateaRut(e.target.value);
-            setRut(format!==undefined ? format : e.target.value);       
-            setIsValid(Rut.validaRut(format));   
-          }}
+          onChange={(e) => { handleChange( e.target.value ) }}
 
         />
         <div className={comunClass.bottomElement}>

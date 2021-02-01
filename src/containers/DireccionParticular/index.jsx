@@ -88,7 +88,7 @@ const DireccionParticular = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} variant="subtitle2" for={"DireccionParticular-Lbl1"} style={{marginBottom: '8px'}}>
+          <Typography className={comunClass.tituloTextBox} variant="subtitle2" style={{marginBottom: '8px'}}>
             Dirección particular
           </Typography>
 

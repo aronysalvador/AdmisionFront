@@ -97,7 +97,7 @@ const CausaEnfermedadProfesional = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <div>
-            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl1"}>
+            <Typography className={comunClass.tituloTextBox}>
               Describe las molestias y síntomas
             </Typography>
             <TextField
@@ -118,7 +118,7 @@ const CausaEnfermedadProfesional = () => {
           </div>
           <div className={spaceStyle.space1} />
           <div>
-            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl2"}>
+            <Typography className={comunClass.tituloTextBox}>
               Ingresa la parte del cuerpo afectada
             </Typography>
             <TextField
@@ -143,14 +143,14 @@ const CausaEnfermedadProfesional = () => {
           <div className={spaceStyle.space1} />
 
           <div>
-            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl2"} style={{marginBottom: "5px"}}>
+            <Typography className={comunClass.tituloTextBox} style={{marginBottom: "5px"}}>
               Ingresa la fecha de inicio de sintomas
             </Typography>
             <Date date={fechaSiniestro} setDate={setFechaSiniestro} id="CausaEP-Datepicker1" setValidDate={setValidFecha} />
           </div>
 
           <div className={spaceStyle.space1} />
-          <Typography className={welcomeStyle.switchText} style={{}} for={"CausaEP-Chk1"}>
+          <Typography className={welcomeStyle.switchText} style={{}}>
             <Grid component="span">
               <BlueCheckbox id={"CausaEP-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>

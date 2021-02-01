@@ -67,7 +67,7 @@ const CausalSiniestroTrayecto = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} for={"CausalSiniestroTrayecto-Lbl1"}>
+          <Typography className={comunClass.tituloTextBox}>
             Mecanismo Causal
           </Typography>
           <TextField
@@ -102,7 +102,7 @@ const CausalSiniestroTrayecto = () => {
 
           <div className={spaceStyle.space2} />
 
-          <Typography className={comunClass.tituloTextBox} for={"CausalSiniestroTrayecto-Lbl2"}>
+          <Typography className={comunClass.tituloTextBox}>
             Posible Causa
           </Typography>
           <TextField

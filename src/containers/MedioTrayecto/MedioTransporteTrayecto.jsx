@@ -63,7 +63,7 @@ const MedioTransporteTrayecto = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} for={"MedioTransporteTrayecto-Lbl1"}>
+          <Typography className={comunClass.tituloTextBox}>
             Medio de transporte
           </Typography>
           <AutoComplete
