@@ -40,7 +40,7 @@ const AfpList = (props) => {
     input: {}
   })(AutoComplete);
 
-  React.useEffect(()=>{ console.log("checkInt",checkInt) },[checkInt])
+  // React.useEffect(()=>{ console.log("checkInt",checkInt) },[checkInt])
 
   return (
       <div className=""> 
