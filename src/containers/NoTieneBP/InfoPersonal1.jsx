@@ -11,8 +11,6 @@ import TextField from "@material-ui/core/TextField";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 
 //Action de Redux
-import { InputAdornment } from "@material-ui/core";
-import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
@@ -33,6 +31,17 @@ const SinBPInfoPersonal1 = () => {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 
+  
+  const formatDate = (fecha) => {
+    if(fecha){
+      let fechaSplitted = fecha.split("-");
+      return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
+    }else{
+      return fecha
+    }
+  };
+
+  
   //State
   const [nombre, saveNombre] = useState(() => { return !bpForm?.nombre ? "" : Capitalize(bpForm.nombre); });
 
@@ -48,12 +57,6 @@ const SinBPInfoPersonal1 = () => {
     (state) => state.addmissionForm,
     shallowEqual
   );
-  
-  const formatDate = (fecha) => {
-    let fechaSplitted = fecha.split("-");
-    return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
-  };
-
 
   const sexos = ["Masculino", "Femenino"];
 
@@ -94,7 +97,7 @@ const SinBPInfoPersonal1 = () => {
         </div>
         <div className={comunClass.containerTextBox}>
 
-          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl1"}>
+          <Grid className={[comunClass.tituloTextBox]}>
             Nombres
           </Grid>
           <TextField
@@ -111,22 +114,15 @@ const SinBPInfoPersonal1 = () => {
                 textTransform: "capitalize !important",
                 paddingRight: "0",
               },
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  style={{ textTransform: "capitalize !important" }}
-                >
-                  <IconButton onClick={() => { saveNombre("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+              endAdornment: (                
+                <ClearIcon onClick={() => { saveNombre("") }} />
               ),
             }}
           />
 
           <div className={spaceStyle.space1} />
 
-          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl2"}>
+          <Grid className={[comunClass.tituloTextBox]}>
             Apellido Paterno
           </Grid>
           <TextField
@@ -144,20 +140,14 @@ const SinBPInfoPersonal1 = () => {
                 paddingRight: "0",
               },
               endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => { saveApellidoPaterno("") }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+                    <ClearIcon onClick={() => { saveApellidoPaterno("") }} />
               ),
             }}
           />
 
           <div className={spaceStyle.space1} />
 
-          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl3"}>
+          <Grid className={[comunClass.tituloTextBox]}>
             Apellido Materno
           </Grid>
           <TextField
@@ -175,11 +165,7 @@ const SinBPInfoPersonal1 = () => {
                 paddingRight: "0",
               },
               endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={() => { saveApellidoMaterno("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+                    <ClearIcon onClick={() => { saveApellidoMaterno("") }} />
               ),
             }}
           />
@@ -187,7 +173,7 @@ const SinBPInfoPersonal1 = () => {
           <div className={spaceStyle.space1} />
           <div className={comunClass.paddingElement}>
             <div className={[comunClass.widthDateSex]}>
-              <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl4"}>
+              <Grid className={[comunClass.tituloTextBox]}>
                 Fecha de Nacimiento
               </Grid>
               <TextField
@@ -206,11 +192,7 @@ const SinBPInfoPersonal1 = () => {
                     paddingRight: "0",
                   },
                   endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={() => { saveFechaNacimiento("") }}>
-                        <ClearIcon />
-                      </IconButton>
-                    </InputAdornment>
+                        <ClearIcon onClick={() => { saveFechaNacimiento("") }} />
                   ),
                 }}
               />
@@ -219,7 +201,7 @@ const SinBPInfoPersonal1 = () => {
             <div className={spaceStyle.space1} />
 
             <div className={[comunClass.widthDateSex]}>
-              <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl5"}>
+              <Grid className={[comunClass.tituloTextBox]}>
                 Sexo
               </Grid>
               <AutoComplete

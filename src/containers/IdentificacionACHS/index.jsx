@@ -64,7 +64,7 @@ const Achs = () => {
           </div>
         </center>
         <div className={comunStyle.containerTextBox}>
-          <Grid className={comunStyle.tituloTextBox} for={"Achs-Lbl1"}>
+          <Grid className={comunStyle.tituloTextBox}>
             Centro
           </Grid>
           <AutoComplete

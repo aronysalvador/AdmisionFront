@@ -34,7 +34,6 @@ export default (props) => {
       <Grid
         className={comunClass.tituloTextBox}
         style={{marginBottom:'8px', textAlign: "left"}}
-        for={"InfoAccidente-LblLugar"}
       >
         Dirección de trabajo
       </Grid> 

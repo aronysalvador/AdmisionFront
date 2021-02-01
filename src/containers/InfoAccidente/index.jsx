@@ -108,7 +108,6 @@ const InfoAccidente = () => {
                                                 <Grid
                                                     className={comunClass.tituloTextBox}
                                                     style={{marginBottom:'8px', textAlign: "left"}}
-                                                    for={"InfoAccidente-Lbl1"}
                                                 >
                                                     Fecha de accidente
                                                 </Grid> 
@@ -119,7 +118,6 @@ const InfoAccidente = () => {
                                                 <Grid
                                                     className={comunClass.tituloTextBox}
                                                     style={{marginBottom:'8px', textAlign: "left"}}
-                                                    for={"InfoAccidente-Lbl2"}
                                                 >
                                                     Hora de accidente
                                                 </Grid> 
@@ -168,7 +166,6 @@ const InfoAccidente = () => {
                                                     <Grid
                                                     className={comunClass.tituloTextBox}
                                                     style={{ marginBottom:'0px', textAlign: "left"}}
-                                                    for={"InfoAccidente-Lbl3"}
                                                     >
                                                         Referencia
                                                     </Grid> 

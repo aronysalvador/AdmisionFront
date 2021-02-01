@@ -100,7 +100,7 @@ const EditarTelefono = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} for={"EditarTelefono-Lbl1"}>
+          <Typography className={comunClass.tituloTextBox}>
             Teléfono
           </Typography>
           <InputMasked
@@ -122,7 +122,7 @@ const EditarTelefono = () => {
                 variant="inherit"
                 component="p"
                 className={welcomeStyle.itemText2}
-                for={"EditarTelefono-Chk1"}
+               
               >
                 Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
               </Typography>

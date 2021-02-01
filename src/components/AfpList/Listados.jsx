@@ -14,7 +14,6 @@ const AfpList = (props) => {
 
   useEffect(()=>{
     if(check.otro===false){
-      // console.log("a verrr...")
       setCheckInt("")
     }
   },[check])
@@ -41,6 +40,8 @@ const AfpList = (props) => {
     input: {}
   })(AutoComplete);
 
+  // React.useEffect(()=>{ console.log("checkInt",checkInt) },[checkInt])
+
   return (
       <div className=""> 
         <div className={['container', comunClass.backgroundWhite].join(' ')} >
@@ -65,10 +66,8 @@ const AfpList = (props) => {
             <div className="col-md-8" style={{width:"64%"}}>
               <NoPaddingAutocomplete
                 id={id+"Autocomplete"}
-                // onOpen={()=>{ var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
-                // setCheck(temp) }}
-                // openOnFocus
                 value={checkInt}
+                options={listado}
                 onChange={(event, value) => {
                   if(value){
                     value.otro = true
@@ -80,7 +79,6 @@ const AfpList = (props) => {
                   option,
                   value,
                ) => value.value === option.value}
-                options={listado}
                 getOptionLabel={(option) => option ? (option.nombre === "Otro" ? "" : option.nombre) : "" }
                 renderInput={(params) => (
                   <TextField

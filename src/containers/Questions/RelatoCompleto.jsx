@@ -114,7 +114,7 @@ const RelatoCompleto = () => {
                 <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
                     <div className={['row', comunClass.backgroundGrey].join(' ')}>
 
-                    <Grid className={`${comunClass.textPrimaryRelato}`} for={"RelatoCompleto-Lbl1"}>
+                    <Grid className={`${comunClass.textPrimaryRelato}`}>
                         ¿Qué estaba haciendo 
                         <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
                             &nbsp; justo antes del accidente?
@@ -132,11 +132,11 @@ const RelatoCompleto = () => {
                         helperText={(text1.length - 32 < 5 && text1.length - 32 > 0) &&"Se necesita al menos 5 caracteres"}
                         error={text1.length - 32 < 5 && text1.length - 32 > 0} 
                         onChange={text1.length >= 32 ? onChangeValue1 : setText1("Al momento del accidente estaba ")}
-                        defaultValue="Al momento del accidente estaba "
+                        // defaultValue="Al momento del accidente estaba "
                     />
                     <label className={comunClass.pullRight}>{text1.length }/200</label>
 
-                    <Grid className={`${comunClass.textPrimaryRelato}`} for={"RelatoCompleto-Lbl2"}>
+                    <Grid className={`${comunClass.textPrimaryRelato}`}>
                         ¿Qué 
                         <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
                             &nbsp; ocurrió y qué lesión &nbsp;
@@ -155,11 +155,11 @@ const RelatoCompleto = () => {
                         helperText={(text2.length - 23 < 5 && text2.length - 23 > 0)&&"Se necesita al menos 5 caracteres"}
                         error={text2.length - 23 < 5 && text2.length - 23 > 0} 
                         onChange={text2.length >= 23 ? onChangeValue2 : setText2("Lo que ocurrio fue que ")}
-                        defaultValue={"Lo que ocurrio fue que "}
+                        // defaultValue={"Lo que ocurrio fue que "}
                     />
                     <label className={comunClass.pullRight}>{text2.length}/200</label>
 
-                    <Grid className={`${comunClass.textPrimaryRelato}`} for={"RelatoCompleto-Lbl3"}>
+                    <Grid className={`${comunClass.textPrimaryRelato}`}>
                         ¿Con
                         <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
                             &nbsp; qué ocurrió el acciendente
@@ -178,7 +178,7 @@ const RelatoCompleto = () => {
                         helperText={(text3.length - 25 < 5 && text3.length - 25 > 0) &&"Se necesita al menos 5 caracteres"}
                         error={text3.length - 25 < 5 && text3.length - 25 > 0} 
                         onChange={text3.length >= 25 ? onChangeValue3 : setText3("El accidente ocurrio con ")}
-                        defaultValue={"El accidente ocurrio con "}
+                        // defaultValue={"El accidente ocurrio con "}
                     />
                     <label className={comunClass.pullRight}>{text3.length}/200</label>
 
