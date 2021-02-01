@@ -368,7 +368,8 @@ export const saveRut = (rut) => {
                             apellidoMaterno,
                             apellidoPaterno,
                             nombre,
-                            etnia,
+                            idEtnia,
+                            descripcionEtnia,
                             fechaNacimiento,
                             masculino,
                             femenino,
@@ -394,7 +395,8 @@ export const saveRut = (rut) => {
                         if (etnia) {
                             dispatch(
                                 updateForm("grupoEtnico", {
-                                    id: etnia,
+                                    id: idEtnia,
+                                    descripcion: descripcionEtnia,
                                 })
                             );
                         }
