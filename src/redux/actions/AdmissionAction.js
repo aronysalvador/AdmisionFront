@@ -392,7 +392,7 @@ export const saveRut = (rut) => {
                             })
                         );
 
-                        if (etnia) {
+                        if (idEtnia && descripcionEtnia) {
                             dispatch(
                                 updateForm("grupoEtnico", {
                                     id: idEtnia,
