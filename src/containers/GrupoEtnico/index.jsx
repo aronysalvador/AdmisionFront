@@ -17,7 +17,7 @@ const GrupoEtnico = () => {
 
 
   const [grupo, setGrupo] = useState(() => {
-    return !grupoEtnico ? {id: 1, descripcion: "Ninguno"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
+    return !grupoEtnico ? {id: 0, descripcion: "NINGUNA"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
   const { data: grupoList } = useSelector((state) => state.grupoForm, shallowEqual);
 

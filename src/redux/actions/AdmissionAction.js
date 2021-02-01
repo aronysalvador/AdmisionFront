@@ -362,12 +362,13 @@ export const saveRut = (rut) => {
                 if (result.status === 200 || result.status === 206) { // || result.data.status === 304
 
                     let BpCreado = result.data.content.response ? result.data.content.response.BpCreado : "";
-                    if (BpCreado) {                        
+                    if (BpCreado) {
                         //Guardar datos adicionales paciente requeridos por SAP
                         const {
                             apellidoMaterno,
                             apellidoPaterno,
                             nombre,
+                            etnia,
                             fechaNacimiento,
                             masculino,
                             femenino,
@@ -390,9 +391,17 @@ export const saveRut = (rut) => {
                             })
                         );
 
+                        if (etnia) {
+                            dispatch(
+                                updateForm("grupoEtnico", {
+                                    id: etnia,
+                                })
+                            );
+                        }
+
                         // determinar siguiente paso
                         var STEP = "";
-                        if (Object.keys(result.data.content.response.cita).length !== 0) {
+                        if (result.data.content.response.cita.length > 0) {
                             STEP = 5.82;
                         } else if (result.data.content.response.siniestros.length > 0) {
                             const mensajeAlerta = "Este paciente ya tiene un siniestro";
@@ -430,43 +439,47 @@ export const saveRut = (rut) => {
 
                         dispatch(handleSetStep(STEP));
 
-                        dispatch(saveRazonSocial(result.data.content.response.RutPagador));
-                        dispatch(getSucursales(result.data.content.response.RutPagador))
-
                         dispatch(updateForm("cita", result.data.content.response.cita));
                         dispatch(
                             updateForm("siniestros", result.data.content.response.siniestros)
                         );
-                        dispatch(
-                            updateForm(
-                                "razonSocial",
-                                result.data.content.response.NombreEmpresa
-                            )
-                        );
-                        dispatch(
-                            updateForm("rutEmpresa", result.data.content.response.RutPagador)
-                        );
-                        dispatch(updateForm("isAfiliado", "Si"));
-                        dispatch(
-                            updateForm(
-                                "SucursalEmpresa",
 
-                                result.data.content.response.SucursalEmpresa
-                            )
-                        );
-                        dispatch(
-                            updateForm(
-                                "DireccionEmpresa",
+                        if (result.data.content.response.RutPagador) {
+                            dispatch(saveRazonSocial(result.data.content.response.RutPagador));
+                            dispatch(getSucursales(result.data.content.response.RutPagador))
 
-                                result.data.content.response.DireccionEmpresa
-                            )
-                        );
-                        dispatch(
-                            updateForm(
-                                "comunaEmpresa",
-                                result.data.content.response.comunaEmpresa
-                            )
-                        );
+                            dispatch(
+                                updateForm(
+                                    "razonSocial",
+                                    result.data.content.response.NombreEmpresa
+                                )
+                            );
+                            dispatch(
+                                updateForm("rutEmpresa", result.data.content.response.RutPagador)
+                            );
+
+                            dispatch(updateForm("isAfiliado", "Si"));
+                            dispatch(
+                                updateForm(
+                                    "SucursalEmpresa",
+
+                                    result.data.content.response.SucursalEmpresa
+                                )
+                            );
+                            dispatch(
+                                updateForm(
+                                    "DireccionEmpresa",
+
+                                    result.data.content.response.DireccionEmpresa
+                                )
+                            );
+                            dispatch(
+                                updateForm(
+                                    "comunaEmpresa",
+                                    result.data.content.response.comunaEmpresa
+                                )
+                            );
+                        }
                         dispatch(
                             updateForm(
                                 "direccionParticular",
@@ -524,7 +537,7 @@ export const saveRut = (rut) => {
             })
             .catch((error) => {
 
-                dispatch(updateForm("errorStep", 3));              
+                dispatch(updateForm("errorStep", 3));
                 dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                 dispatch(handleSetStep(1004));
 
