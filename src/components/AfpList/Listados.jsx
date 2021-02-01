@@ -10,7 +10,7 @@ const AfpList = (props) => {
   
 
   const { checkedAfp: check, setCheckedAfp: setCheck, title, identificador, description, listado, id } = props
-  const [checkInt, setCheckInt] = useState(check?check:{})
+  const [checkInt, setCheckInt] = useState(check?check:"")
 
   useEffect(()=>{
     if(check.otro===false){
