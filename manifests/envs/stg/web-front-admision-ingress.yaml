@@ -24,7 +24,7 @@ spec:
         backend:
           serviceName: web-stg-front-firmadigital-service
           servicePort: 80 
-       - path: /web-firmadigital-totem(/?.*)
+      - path: /web-firmadigital-totem(/?.*)
         backend:
           serviceName: web-stg-front-firmadigital-totem
           servicePort: 80            
@@ -32,8 +32,4 @@ spec:
         backend:
           serviceName: web-stg-front-digitalizaciondocumentos-service
           servicePort: 80   
-      - path: /orquestador/(.*)
-        backend:
-          serviceName: api-stg-orquestador-service
-          servicePort: 80
        

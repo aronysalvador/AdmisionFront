@@ -121,7 +121,6 @@ import {
       .then((response) => {
           if(response.status === 200){  
             dispatch(successCallLogStep()); 
-
           }
       })
       .catch((error) => {

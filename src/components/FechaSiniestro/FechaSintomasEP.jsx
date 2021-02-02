@@ -43,7 +43,7 @@ const FechaSintomas = ({
   return (
     <>
       <div>
-        <Grid className={comunClass.tituloTextBox} style={{marginBottom: "7px"}} for={id}>
+        <Grid className={comunClass.tituloTextBox} style={{marginBottom: "7px"}}>
           {textoPrimario}
         </Grid>
       </div>

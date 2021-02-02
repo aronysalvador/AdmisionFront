@@ -80,8 +80,6 @@ const MapaSelection = () => {
     if(placeId){
       let urlMapa =  `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
       dispatch(updateForm("urlMapaDireccionParticular", urlMapa))
-    }else{
-      console.log("no place")
     }
 }
 

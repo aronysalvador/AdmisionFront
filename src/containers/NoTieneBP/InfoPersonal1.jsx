@@ -5,18 +5,16 @@ import Grid from "@material-ui/core/Grid";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
-import DateMasked from "./DateMasked";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 
 //Action de Redux
-import { InputAdornment } from "@material-ui/core";
-import { IconButton } from "material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import image from './../../img/identify.svg'
+import Date from "../../components/Pickers/Date";
 
 
 const SinBPInfoPersonal1 = () => {
@@ -33,33 +31,29 @@ const SinBPInfoPersonal1 = () => {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 
-  //State
-  const [nombre, saveNombre] = useState(() => {
-    return !bpForm.nombre ? "" : Capitalize(bpForm.nombre);
-  });
-
-  const [apellidoPaterno, saveApellidoPaterno] = useState(() => {
-    return !bpForm.apellidoPaterno ? "" : Capitalize(bpForm.apellidoPaterno);
-  });
-
-  const [apellidoMaterno, saveApellidoMaterno] = useState(() => {
-    return !bpForm.apellidoMaterno ? "" : Capitalize(bpForm.apellidoMaterno);
-  });
-
+  
   const formatDate = (fecha) => {
-    let fechaSplitted = fecha.split("-");
-    return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
+    if(fecha){
+      let fechaSplitted = fecha.split("-");
+      return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
+    }else{
+      return fecha
+    }
   };
 
-  const [fechaNacimiento, saveFechaNacimiento] = useState(() => {
-    return !bpForm.fechaNacimiento ? "" : formatDate(bpForm.fechaNacimiento);
-  });
+  
+  //State
+  const [nombre, saveNombre] = useState(() => { return !bpForm?.nombre ? "" : Capitalize(bpForm.nombre); });
 
-  const [sexo, saveSexo] = useState(() => {
-    return bpForm.masculino
-      ? "Masculino"
-      : "Femenino";
-  });
+  const [apellidoPaterno, saveApellidoPaterno] = useState(() => {  return !bpForm?.apellidoPaterno ? "" : Capitalize(bpForm.apellidoPaterno);  });
+
+  const [apellidoMaterno, saveApellidoMaterno] = useState(() => {  return !bpForm?.apellidoMaterno ? "" : Capitalize(bpForm.apellidoMaterno); });
+
+  const [fechaNacimiento, saveFechaNacimiento] = useState(() => { return !bpForm?.fechaNacimiento ? "" : formatDate(bpForm.fechaNacimiento);  });
+
+  const [sexo, saveSexo] = useState(() => { return bpForm?.masculino  ? "Masculino"  : "Femenino";  });
+
+  const [fechaValida, setFechaValida] = useState(false);
 
   const { percentage } = useSelector(
     (state) => state.addmissionForm,
@@ -105,7 +99,7 @@ const SinBPInfoPersonal1 = () => {
         </div>
         <div className={comunClass.containerTextBox}>
 
-          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl1"}>
+          <Grid className={[comunClass.tituloTextBox]}>
             Nombres
           </Grid>
           <TextField
@@ -122,22 +116,15 @@ const SinBPInfoPersonal1 = () => {
                 textTransform: "capitalize !important",
                 paddingRight: "0",
               },
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  style={{ textTransform: "capitalize !important" }}
-                >
-                  <IconButton onClick={() => { saveNombre("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+              endAdornment: (                
+                <ClearIcon onClick={() => { saveNombre("") }} />
               ),
             }}
           />
 
           <div className={spaceStyle.space1} />
 
-          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl2"}>
+          <Grid className={[comunClass.tituloTextBox]}>
             Apellido Paterno
           </Grid>
           <TextField
@@ -155,20 +142,14 @@ const SinBPInfoPersonal1 = () => {
                 paddingRight: "0",
               },
               endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => { saveApellidoPaterno("") }}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+                    <ClearIcon onClick={() => { saveApellidoPaterno("") }} />
               ),
             }}
           />
 
           <div className={spaceStyle.space1} />
 
-          <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl3"}>
+          <Grid className={comunClass.tituloTextBox}>
             Apellido Materno
           </Grid>
           <TextField
@@ -186,51 +167,27 @@ const SinBPInfoPersonal1 = () => {
                 paddingRight: "0",
               },
               endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={() => { saveApellidoMaterno("") }}>
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
+                    <ClearIcon onClick={() => { saveApellidoMaterno("") }} />
               ),
             }}
           />
 
           <div className={spaceStyle.space1} />
           <div className={comunClass.paddingElement}>
-            <div className={[comunClass.widthDateSex]}>
-              <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl4"}>
+            <div className={comunClass.widthDateSex}>
+              <Grid className={comunClass.tituloTextBox}>
                 Fecha de Nacimiento
               </Grid>
-              <TextField
-                id={"InfoPersonal1-Lbl4"}
-                value={fechaNacimiento}
-                onChange={(e) => saveFechaNacimiento(e.target.value)}
-                margin="dense"
-                variant="outlined"
-                autoComplete="off"
-                type="text"
-                fullWidth           
-                InputProps={{
-                  inputComponent:DateMasked,
-                  style: {
-                    marginRight: "10px",
-                    paddingRight: "0",
-                  },
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={() => { saveFechaNacimiento("") }}>
-                        <ClearIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
+              
+
+              <Date date={fechaNacimiento} setDate={saveFechaNacimiento} id="InfoPersonal1-Lbl4" style={{marginTop: "10px", marginRight: "10px", paddingRight: "0"}} setValidDate={setFechaValida} />
+
             </div>
 
             <div className={spaceStyle.space1} />
 
             <div className={[comunClass.widthDateSex]}>
-              <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal1-Lbl5"}>
+              <Grid className={[comunClass.tituloTextBox]}>
                 Sexo
               </Grid>
               <AutoComplete
@@ -271,8 +228,8 @@ const SinBPInfoPersonal1 = () => {
               !nombre ||
               !apellidoPaterno ||
               !apellidoMaterno ||
-              !fechaNacimiento ||
-              !sexo
+              !sexo ||
+              !fechaValida
             }
             onClick={() => clickConfirmar()}
           >

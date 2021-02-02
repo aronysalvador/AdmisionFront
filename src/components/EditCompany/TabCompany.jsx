@@ -118,7 +118,7 @@ const TabCompany = (props) => {
       </Tabs>
 
       <TabPanel value={value} index={0} style={{padding:"0"}}>
-        <Typography className={comunClass.tituloTextBox} for={"RazonSocial-Lbl1"} style={{marginBottom: '8px'}}>
+        <Typography className={comunClass.tituloTextBox} style={{marginBottom: '8px'}}>
           Razón Social
         </Typography>
         <div>
@@ -127,7 +127,7 @@ const TabCompany = (props) => {
       </TabPanel>
       
       <TabPanel value={value} index={1}>
-        <Typography className={comunClass.tituloTextBox} for={"RUTCompany-Lbl1"}>
+        <Typography className={comunClass.tituloTextBox}>
           RUT
         </Typography>
         <div>

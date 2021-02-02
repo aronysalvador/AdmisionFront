@@ -63,7 +63,7 @@ const ParteCuerpoAfectada = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Grid className={comunClass.tituloTextBox} style={{marginBottom: '10px'}} for={"ParteCuerpoAfectada-Lbl1"}>
+          <Grid className={comunClass.tituloTextBox} style={{marginBottom: '10px'}}>
             Ingresa la parte del cuerpo lesionada
           </Grid>
           <AutoComplete
@@ -92,7 +92,7 @@ const ParteCuerpoAfectada = () => {
 
           <div className={spaceStyle.space2} />
 
-          <Grid className={comunClass.tituloTextBox} for={"ParteCuerpoAfectada-Lbl2"}>
+          <Grid className={comunClass.tituloTextBox}>
             Ingresa la información adicional al relato
           </Grid>
           <TextField

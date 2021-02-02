@@ -34,9 +34,9 @@ const SessionAchs = (props) => {
   ];
 
   return (
-    <div className={[comunStyle.rootWhite, comunStyle.headerSesion]}>
+    <div className={comunStyle.rootWhite}>
       <div className={comunStyle.displayDesk}> 
-      <Header userMsal={ microsoftReducer.userMsal } />
+      <Header userMsal={ microsoftReducer.userMsal} />
       </div>
       <div className={welcomeStyle.backgroundBoxAchs}>
         <div className={comunStyle.displayDeskFlex}>
@@ -100,7 +100,7 @@ const SessionAchs = (props) => {
                   src={hospital}
                   style={{ color: "#007A33" }}
                 />
-                <div className={comunStyle.textCenter}> { contenidoCentroAchs } </div>
+                <div className={comunStyle.textCenter} style={{textAlign: 'center', paddingTop: '5px'}}> { contenidoCentroAchs } </div>
                 <div className={welcomeStyle.textBoxAchs}>Centro</div>
               </div>
               {/* <div className={welcomeStyle.boxCentroAchs}>

@@ -40,7 +40,6 @@ const LugarSiniestroTrayectoMapa = () => {
             })
         },
         function(error) {
-            console.error("Error Code = " + error.code + " - " + error.message);
             setCoords({
             latitude: 'notset',
             longitude: 'notset',
@@ -77,8 +76,6 @@ const LugarSiniestroTrayectoMapa = () => {
     if(placeId){
       let urlMapa =  `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
       dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
-    }else{
-      console.log("no place")
     }
   };
 

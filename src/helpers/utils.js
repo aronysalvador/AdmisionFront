@@ -27,6 +27,7 @@ export const eliminarDiacriticos = (texto) => {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 }
 
+
 export const validarDireccionSN = async(direccion) => {
 
     var respuesta = { valida: false, comuna: null };

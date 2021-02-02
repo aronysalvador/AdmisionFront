@@ -51,7 +51,7 @@ const EditarDireccionSucursal = () => {
       <div className={comunClass.boxDesk}>
         <div className={spaceStyle.space2} />
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextbox} for={"EditarDireccionSucursal-Lbl1"}>
+          <Typography className={comunClass.tituloTextbox}>
             Dirección
           </Typography>
           <AutoComplete

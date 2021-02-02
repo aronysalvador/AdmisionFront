@@ -101,7 +101,7 @@ const AgenteCausaEnfermedadProfesional = () => {
         </div>
         <div className={comunClass.containerTextBox}>
           <div>
-            <Typography className={comunClass.tituloTextBox} for={"AgenteCausaEP-Lbl1"}>
+            <Typography className={comunClass.tituloTextBox}>
               Ingrese agente que causa la molestia
             </Typography>
 
@@ -132,7 +132,7 @@ const AgenteCausaEnfermedadProfesional = () => {
           </div>
           <div className={spaceStyle.space1} />
           <div>
-            <Typography className={comunClass.tituloTextBox} for={"AgenteCausaEP-Lbl2"}>
+            <Typography className={comunClass.tituloTextBox}>
               Trabajo que realizaba al momento de las molestias
             </Typography>
             <TextField
@@ -154,7 +154,7 @@ const AgenteCausaEnfermedadProfesional = () => {
           <div className={spaceStyle.space1} />
 
           <div>
-            <Typography className={comunClass.tituloTextBox} for={"CausaEP-Lbl2"} style={{marginBottom: "5px"}}>
+            <Typography className={comunClass.tituloTextBox} style={{marginBottom: "5px"}}>
               Ingresa la fecha de exposición al agente
             </Typography>
             <Date date={fechaSiniestro} setDate={setFechaSiniestro} id="AgenteCausaEP-Datepicker1" setValidDate={setValidFecha} />

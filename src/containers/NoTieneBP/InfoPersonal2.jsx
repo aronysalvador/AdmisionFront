@@ -35,7 +35,7 @@ const SinBPInfoPersonal2 = () => {
   });
 
   const [grupo, setGrupo] = useState(() => {
-    return !grupoEtnico ? {id: 1, descripcion: "Ninguno"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
+    return !grupoEtnico ? {id: "00", descripcion: "NINGUNA"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
   
 
@@ -95,7 +95,7 @@ const SinBPInfoPersonal2 = () => {
         <div className="row">
 
           <div className="col-md-6">
-            <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal2-Lbl1"} style={{textAlign:"left"}}>
+            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
               Nacionalidad
             </Grid>
           
@@ -106,7 +106,11 @@ const SinBPInfoPersonal2 = () => {
                 setNacionalidad(value);
               }}
               options={nacionalidadList}
-              getOptionLabel={(option) => option.value}
+              getOptionLabel={(option) => option ? option.value : ""}
+              getOptionSelected= {(
+                option,
+                value,
+              ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -126,7 +130,7 @@ const SinBPInfoPersonal2 = () => {
           
             <div className={spaceStyle.space2} />
           
-            <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal2-Lbl2"} style={{textAlign:"left"}}>
+            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
               País de nacimiento
             </Grid>
             <AutoComplete
@@ -136,7 +140,11 @@ const SinBPInfoPersonal2 = () => {
                 setPais(value);
               }}
               options={paisesList}
-              getOptionLabel={(option) => option.value}
+              getOptionLabel={(option) => option ? option.value : ""}
+              getOptionSelected= {(
+                option,
+                value,
+              ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -156,7 +164,7 @@ const SinBPInfoPersonal2 = () => {
           </div>
           
           <div className="col-md-6">
-            <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal2-Lbl4"} style={{textAlign:"left"}}>
+            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
               Grupo étnico
             </Grid>
             <AutoComplete
@@ -166,7 +174,11 @@ const SinBPInfoPersonal2 = () => {
                 setGrupo(value);
               }}
               options={grupoList}
-              getOptionLabel={(option) => option.descripcion}
+              getOptionLabel={(option) => option ? option.descripcion : ""}
+              getOptionSelected= {(
+                option,
+                value,
+              ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -184,7 +196,7 @@ const SinBPInfoPersonal2 = () => {
               )}
             />
             <div className={spaceStyle.space2} />
-            <Grid className={[comunClass.tituloTextBox]} for={"InfoPersonal2-Lbl3"} style={{textAlign:"left"}}>
+            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
               Idioma
             </Grid>
             <AutoComplete
@@ -194,7 +206,11 @@ const SinBPInfoPersonal2 = () => {
                 setIdioma(value);
               }}
               options={idiomasList}
-              getOptionLabel={(option) => option.value}
+              getOptionLabel={(option) => option ? option.value : ""}
+              getOptionSelected= {(
+                option,
+                value,
+              ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}

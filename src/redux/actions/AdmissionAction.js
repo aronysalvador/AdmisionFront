@@ -57,7 +57,6 @@ export const handleSetStep = (step, actual = null) => {
         var PASO = step
 
         if (actual !== null) { // PANTALLAS QUE EVALUAN SEGUN EL TIPO DE SINIESTRO A DONDE DEBEN DIRIGIRSE
-
             const { addmissionForm: { tipoSiniestro } } = getState();
             const TIPO = tipoSiniestro.Id
 
@@ -323,7 +322,6 @@ export const handleSetStep = (step, actual = null) => {
                     PASO = 500
                     break;
             }
-
             PASO !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: PASO }))
         }
 
@@ -362,16 +360,17 @@ export const saveRut = (rut) => {
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
 
-                // if (result.data.status === 200 || result.data.status === 304) {
-                if (result.status === 200) {
+                if (result.status === 200 || result.status === 206) { // || result.data.status === 304
 
-                    let BpCreado = result.data.content.response.BpCreado;
+                    let BpCreado = result.data.content.response ? result.data.content.response.BpCreado : "";
                     if (BpCreado) {
                         //Guardar datos adicionales paciente requeridos por SAP
                         const {
                             apellidoMaterno,
                             apellidoPaterno,
                             nombre,
+                            idEtnia,
+                            descripcionEtnia,
                             fechaNacimiento,
                             masculino,
                             femenino,
@@ -394,9 +393,18 @@ export const saveRut = (rut) => {
                             })
                         );
 
+                        if (idEtnia && descripcionEtnia) {
+                            dispatch(
+                                updateForm("grupoEtnico", {
+                                    id: idEtnia,
+                                    descripcion: descripcionEtnia,
+                                })
+                            );
+                        }
+
                         // determinar siguiente paso
                         var STEP = "";
-                        if (Object.keys(result.data.content.response.cita).length !== 0) {
+                        if (result.data.content.response.cita.length > 0) {
                             STEP = 5.82;
                         } else if (result.data.content.response.siniestros.length > 0) {
                             const mensajeAlerta = "Este paciente ya tiene un siniestro";
@@ -434,43 +442,47 @@ export const saveRut = (rut) => {
 
                         dispatch(handleSetStep(STEP));
 
-                        dispatch(saveRazonSocial(result.data.content.response.RutPagador));
-                        dispatch(getSucursales(result.data.content.response.RutPagador))
-
                         dispatch(updateForm("cita", result.data.content.response.cita));
                         dispatch(
                             updateForm("siniestros", result.data.content.response.siniestros)
                         );
-                        dispatch(
-                            updateForm(
-                                "razonSocial",
-                                result.data.content.response.NombreEmpresa
-                            )
-                        );
-                        dispatch(
-                            updateForm("rutEmpresa", result.data.content.response.RutPagador)
-                        );
-                        dispatch(updateForm("isAfiliado", "Si"));
-                        dispatch(
-                            updateForm(
-                                "SucursalEmpresa",
 
-                                result.data.content.response.SucursalEmpresa
-                            )
-                        );
-                        dispatch(
-                            updateForm(
-                                "DireccionEmpresa",
+                        if (result.data.content.response.RutPagador) {
+                            dispatch(saveRazonSocial(result.data.content.response.RutPagador));
+                            dispatch(getSucursales(result.data.content.response.RutPagador))
 
-                                result.data.content.response.DireccionEmpresa
-                            )
-                        );
-                        dispatch(
-                            updateForm(
-                                "comunaEmpresa",
-                                result.data.content.response.comunaEmpresa
-                            )
-                        );
+                            dispatch(
+                                updateForm(
+                                    "razonSocial",
+                                    result.data.content.response.NombreEmpresa
+                                )
+                            );
+                            dispatch(
+                                updateForm("rutEmpresa", result.data.content.response.RutPagador)
+                            );
+
+                            dispatch(updateForm("isAfiliado", "Si"));
+                            dispatch(
+                                updateForm(
+                                    "SucursalEmpresa",
+
+                                    result.data.content.response.SucursalEmpresa
+                                )
+                            );
+                            dispatch(
+                                updateForm(
+                                    "DireccionEmpresa",
+
+                                    result.data.content.response.DireccionEmpresa
+                                )
+                            );
+                            dispatch(
+                                updateForm(
+                                    "comunaEmpresa",
+                                    result.data.content.response.comunaEmpresa
+                                )
+                            );
+                        }
                         dispatch(
                             updateForm(
                                 "direccionParticular",
@@ -521,16 +533,15 @@ export const saveRut = (rut) => {
                 } else {
 
                     dispatch(updateForm("errorStep", 3));
-                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                     dispatch(handleSetStep(1004));
 
                 }
             })
             .catch((error) => {
-                console.log("error: " + String(error));
 
                 dispatch(updateForm("errorStep", 3));
-                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                 dispatch(handleSetStep(1004));
 
             });
@@ -543,7 +554,7 @@ const saveRazonSocial = (rut) => {
             obtenerDataRazon(rut, getState().microsoftReducer.token)
                 .then((result) => {
 
-                    if (result.data.status === 200 || result.data.status === 304) {
+                    if (result.status === 200) {
                         dispatch(updateForm("razonSocial", result.data.content.response[0]));
                     } else {
                         dispatch(updateForm("errorStep", 3));
@@ -553,7 +564,6 @@ const saveRazonSocial = (rut) => {
 
                 })
                 .catch((error) => {
-                    console.log("error: " + String(error));
                     dispatch(updateForm("errorStep", 3));
                     dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                     dispatch(handleSetStep(1004));
@@ -644,12 +654,8 @@ export const validarData = async(data) => {
 export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
-            if (response.data.status === 200 || response.data.status === 304) {
-                // dispatch({
-                //   type: DATE_EMPRESA_SUCCESS,
-                //   payload: response
-                // });
-                // console.log( response.data.content.response )
+            if (response.status === 200) {
+
                 if (Object.entries(response.data.content).length === 0) {
                     //respuesta vacia
                     dispatch(handleSetStep(500));
@@ -731,7 +737,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
         const result = await sendingCaso(objeto, getState().microsoftReducer.token);
         const data = result.data
 
-        if (data.status === 200) {
+        if (result.status === 200) {
 
             if (Object.keys(result).length > 0) {
 

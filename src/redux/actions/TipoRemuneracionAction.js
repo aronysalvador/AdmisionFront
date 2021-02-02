@@ -18,7 +18,7 @@ export const getRemuneracion = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      if(response.data.status === 200 || response.data.status === 304){
+      if(response.status === 200){
         dispatch(successCallRemuneracion(response.data.content[0]));
       }else{
         dispatch(updateForm("errorStep", 0));

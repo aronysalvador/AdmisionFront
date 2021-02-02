@@ -132,6 +132,7 @@ const Main = (props) => {
     initFn();
   }, [initFn]);
 
+  
   const {
     layout,
     paper,
@@ -139,7 +140,8 @@ const Main = (props) => {
     paperFix,
     blackLayout,
     paperNoColor,
-    paperAutoHeight
+    paperAutoHeight,
+    paperBlackAutoHeight
   } = classes;
 
   const renderForm = (step) => {
@@ -931,7 +933,7 @@ const Main = (props) => {
       case 1004:
         return (
           <div className={blackLayout}>
-            <Paper className={paperNoColor}>
+            <Paper className={paperBlackAutoHeight}>
               <ErrorApi />
             </Paper>
           </div>
