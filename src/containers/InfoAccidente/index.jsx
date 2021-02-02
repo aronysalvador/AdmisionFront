@@ -217,10 +217,11 @@ const InfoAccidente = () => {
                             </div>
 
                             {tipoSiniestro.Id === 1 && 
-                            
-                            <div className={['row', comunClass.backgroundGrey].join(' ')}>
+                            <>
+                            <div className={spaceStyle.spaceMin1} />
+                            <div className={['row', comunClass.backgroundGrey].join(' ')} style={{maxWidth:"90%", margin: "auto", alignItems: "center"}}>
                                 <div className="col-md-10" style={{textAlign:"left"}}>
-                                <Grid className={`${comunClass.textPrimaryRelato}`} >
+                                <Grid className={`${comunClass.textPrimaryRelato}`} style={{width: "auto"}}>
                                     ¿El accidente ocurrió en  
                                     <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
                                         &nbsp;sucursal
@@ -247,7 +248,7 @@ const InfoAccidente = () => {
                                     />
                                 </div>
                             </div>                   
-                            
+                            </>
                             }
 
                             <div className="col-md-12">

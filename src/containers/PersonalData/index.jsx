@@ -142,7 +142,7 @@ const PersonalData = (props) => {
             disabled={loading}
             onClick={() => handleNext()}
           >
-            {(addmissionForm.direccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.grupoEtnico.value)?"Sí, es correcta":"Rellenar información"}
+            {(addmissionForm.direccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.grupoEtnico.descripcion)?"Sí, es correcta":"Rellenar información"}
             
           </Button>
         </div>
