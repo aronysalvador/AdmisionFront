@@ -625,7 +625,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 17.4: //Pantalla Testio-Responsable Flujo Trayecto
+      case 17.4: //Pantalla Testigo-Responsable Flujo Trayecto
         return (
           <div className={layout}>
             <Paper className={paper}>
