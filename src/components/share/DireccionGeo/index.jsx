@@ -107,7 +107,7 @@ const DireccionGeo = (props) => {
                   id={id}
                   value={direccion}
                   filterOptions={(options) => options}
-                  style={background ? { width: '100%', background, borderRadius: "0.7em" } : { width: '100%', borderRadius: "0.7em"  }}
+                  style={background ? { width: '100%', background, borderRadius: "4px" } : { width: '100%', borderRadius: "4px"  }}
                   open={open}
                   onOpen={() => { setOpen(true) }}
                   onClose={() => { setOpen(false) }}
