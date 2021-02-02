@@ -219,7 +219,7 @@ const InfoAccidente = () => {
                             {tipoSiniestro.Id === 1 && 
                             <>
                             <div className={spaceStyle.spaceMin1} />
-                            <div className={['row', comunClass.backgroundGrey].join(' ')} style={{maxWidth:"90%", margin: "auto", alignItems: "center"}}>
+                            <div className={['row', comunClass.backgroundGrey].join(' ')} style={{maxWidth:"90%", margin: "auto"}}>
                                 <div className="col-md-10" style={{textAlign:"left"}}>
                                 <Grid className={`${comunClass.textPrimaryRelato}`} style={{width: "auto"}}>
                                     ¿El accidente ocurrió en  
@@ -257,7 +257,7 @@ const InfoAccidente = () => {
                                     id={"InfoAccidente-Btn1"}
                                     variant="contained"
                                     className={comunClass.buttonAchs}
-                                    disabled={tipoSiniestro.Id === 1 ? (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal) : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)}
+                                    disabled={tipoSiniestro.Id === 1 ? !validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)}
                                     onClick={() => handleNext() }
                                 >
                                     Continuar
