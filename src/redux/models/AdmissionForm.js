@@ -121,8 +121,15 @@ export const AdmissionForm = {
 
     },
 
+    molestiaEP: "",
+    parteAfectadaEP: "",
     FechaSintomasEP: "",
+    molestiasAnterioresEP: "",
+
+    AgenteCausaEP: {},
+    TrabajoMolestiasEP: "",
     FechaExposicionAgenteEP: "",
-    AgenteCausaEP: "",
+    mismasMolestiasCompañerosEP: "",
+
     TipoAvisoResponsable: {}
 };

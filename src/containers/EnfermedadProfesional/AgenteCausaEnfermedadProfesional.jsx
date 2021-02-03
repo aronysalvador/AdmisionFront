@@ -31,7 +31,6 @@ const AgenteCausaEnfermedadProfesional = () => {
     return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
   }
 
-
   const [agenteCausa, setAgenteCausa] = useState(() => {
     return !AgenteCausaEP ? {} : AgenteCausaEP;
   });
@@ -44,7 +43,7 @@ const AgenteCausaEnfermedadProfesional = () => {
   });
 
   const [fechaSiniestro, setFechaSiniestro] = useState(!FechaExposicionAgenteEP ? "" : formatDate(FechaExposicionAgenteEP));
-  const [validFecha, setValidFecha] = useState(false);
+  const [validFecha, setValidFecha] = useState(!FechaExposicionAgenteEP ? false : true);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -176,7 +175,7 @@ const AgenteCausaEnfermedadProfesional = () => {
             variant="contained"
             disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || !validFecha}
             onClick={() => {
-              dispatch(updateForm("AgenteCausaEP", agenteCausa.id));
+              dispatch(updateForm("AgenteCausaEP", agenteCausa));
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
               dispatch(updateForm("FechaExposicionAgenteEP", validFecha ? fechaSiniestro.replace(/[-]/g, '.') : ""));
               dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
