@@ -24,8 +24,8 @@ const DocExtranjero = () => {
     const handleChange = (value) => {   
       // let format = formateaRut(value)   
       // setNroDocumento(value?(format!==undefined? format : value):"");    
-      // setIsValid(Rut.validaRut(format))   
-      setIsValid(value.length > 0);
+      // setIsValid(Rut.clean(value))   
+      setIsValid(value.length > 5 && value.length < 16);
       setNroDocumento(value);
     }
 
@@ -99,8 +99,8 @@ const DocExtranjero = () => {
             disabled={!nroDocumento || !isValid || !check.id}
             onClick={() => {
               dispatch(updateForm("tipoDocumento", check.description));
-              dispatch(updateForm("nroDocumento", nroDocumento));
-              // dispatch(handleSetStep(5)); 
+              dispatch(updateForm("rut", nroDocumento));
+              dispatch(handleSetStep(5)); 
             }}
           >
             Continuar
