@@ -54,12 +54,12 @@ export default (props) => {
                         inputValue={date}
                         onChange={onDateChange} 
                         autoComplete="off"                              
-                        animateYearScrolling       
                         InputAdornmentProps={{ position: 'start'}}
                         fullWidth
                         onError={(e)=>{if(e){ setValidDate(false) } }}
                         invalidDateMessage="Formato invalido"
                         maxDateMessage="La fecha no puede exceder al día de hoy"
+
                         minDateMessage="La fecha es invalida"
                         keyboardIcon={<img alt="calendar" src={imageDate}/>}
                         style={ props.style || {
