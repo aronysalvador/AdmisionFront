@@ -45,8 +45,9 @@ const RutPaciente = () => {
             variant="contained"
             disabled={!rut || !isValid}
             onClick={() => {
-                dispatch(updateForm("rut", rut));
-                dispatch(handleSetStep(5)); 
+              dispatch(updateForm("tipoDocumento", "RU"));
+              dispatch(updateForm("nroDocumento", rut));
+              dispatch(handleSetStep(5)); 
             }}
           >
             Continuar

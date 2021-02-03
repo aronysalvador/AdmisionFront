@@ -16,17 +16,17 @@ const DocExtranjero = () => {
 
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
-    const [docExtranjero, setDocExtranjero] = useState(""); 
+    const [nroDocumento, setNroDocumento] = useState(""); 
     const [isValid, setIsValid] = useState(true);
 
     const [check,setCheck] = useState({});
 
     const handleChange = (value) => {   
       // let format = formateaRut(value)   
-      // setDocExtranjero(value?(format!==undefined? format : value):"");    
+      // setNroDocumento(value?(format!==undefined? format : value):"");    
       // setIsValid(Rut.validaRut(format))   
       setIsValid(value.length > 0);
-      setDocExtranjero(value);
+      setNroDocumento(value);
     }
 
     const BlueRadio = withStyles({
@@ -49,7 +49,7 @@ const DocExtranjero = () => {
                         <BlueRadio
                             id="DocExtranjero-Check1"
                             checked={check.id === 1}
-                            onChange={()=>setCheck({ id:1, description: "DNI" })}
+                            onChange={()=>setCheck({ id:1, description: "EX" })}
                             value={check.id}
                             name="radio-button-demo"
                             inputProps={{ 'aria-label': 'C' }}
@@ -64,7 +64,7 @@ const DocExtranjero = () => {
                         <BlueRadio
                             id="DocExtranjero-Check2"
                             checked={check.id === 2}
-                            onChange={()=>{setCheck({ id:2, description: "Pasaporte" })}}
+                            onChange={()=>{setCheck({ id:2, description: "PS" })}}
                             value={check.id}
                             name="radio-button-demo"
                             inputProps={{ 'aria-label': 'C' }}
@@ -81,7 +81,7 @@ const DocExtranjero = () => {
         <TextField
           id={"DocExtranjero-Lbl1"}
           type="text"
-          value={docExtranjero}
+          value={nroDocumento}
           variant="outlined"
           size="small"
           margin="dense"
@@ -96,10 +96,11 @@ const DocExtranjero = () => {
             id={"DocExtranjero-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={!docExtranjero || !isValid}
+            disabled={!nroDocumento || !isValid || !check.id}
             onClick={() => {
-                dispatch(updateForm("docExtranjero", docExtranjero));
-                // dispatch(handleSetStep(5)); 
+              dispatch(updateForm("tipoDocumento", check.description));
+              dispatch(updateForm("nroDocumento", nroDocumento));
+              // dispatch(handleSetStep(5)); 
             }}
           >
             Continuar
