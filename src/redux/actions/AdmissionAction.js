@@ -64,7 +64,7 @@ export const handleSetStep = (step, actual = null) => {
 
                 // case 5.1: //PersonalData
                 case 5.7: //CentroPaciente
-                case 5.12: //NoQuotes
+                    // case 5.12: //NoQuotes
                     switch (TIPO) {
                         case 1:
                             //RelatoUnido
