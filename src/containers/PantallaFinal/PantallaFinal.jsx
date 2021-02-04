@@ -69,7 +69,7 @@ const PantallaFinal = (props) => {
                 />
                 <CajaRutSiniestro
                   textoPrincipal={rut}
-                  textoSecundario="Doc. Identidad"
+                  textoSecundario="N° Doc. Identidad"
                 />
               </div>
             </div>
