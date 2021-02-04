@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { TextField, Button } from "@material-ui/core";
 // import { Rut, formateaRut } from "../../helpers/rut";
+import { Format } from "../../helpers/strings";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from "@material-ui/core/Grid";
@@ -89,7 +90,8 @@ const DocExtranjero = () => {
           helperText={!isValid && "Documento no válido"}  
           autoComplete="off"          
           error={!isValid }
-          onChange={(e) => { handleChange( e.target.value ) }}
+          inputProps={{ maxLength: 15 }}
+          onChange={(e) => { handleChange(Format.caracteresInvalidos(e.target.value)) }}
         />
         <div className={comunClass.bottomElement}>
           <Button

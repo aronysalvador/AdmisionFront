@@ -2,7 +2,6 @@ export const AdmissionForm = {
     step: 0,
     percentage: 0,
     rut: "",
-    docExtranjero: "",
     isAfiliado: "",
     empresa: "",
     rutEmpresa: "",
