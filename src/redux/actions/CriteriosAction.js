@@ -4,10 +4,12 @@ import {
     GET_CRITERIOS_FAILURE,
 } from "../types/criteriosType";
 import Axios from "axios";
+import axiosRetry from 'axios-retry';
 // import { CriteriosGravedad } from "../../util/fakeApi";
 
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
+axiosRetry(Axios, { retries: 3 });
 export const getData = async() => {
     return Axios.get(window.REACT_APP_CRITERIOS);
     // return CriteriosGravedad();
