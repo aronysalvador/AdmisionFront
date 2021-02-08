@@ -13,7 +13,7 @@ import Header from "../../components/header/index";
 
 const CentroPaciente = () => {
   const {
-    addmissionForm: { centrosForm, percentage }, microsoftReducer: { userMsal },
+    addmissionForm: { percentage, centroPacienteForm }, microsoftReducer: { userMsal },
   } = useSelector((state) => state, shallowEqual);
 
   // const { email } = userMsal;
@@ -22,7 +22,9 @@ const CentroPaciente = () => {
   const spaceStyle = getSpaceStyle();
   // const welcomeStyle = getWelcomeStyle();
 
-  const [centros, setCENTROS] = useState(centrosForm);
+  const [centros, setCENTROS] = useState(() => {
+    return !centroPacienteForm ? {} : centroPacienteForm; 
+  });
 
   const [inputValue, setInputValue] = useState("");
 
