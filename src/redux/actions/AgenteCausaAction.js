@@ -4,9 +4,12 @@ import {
     GET_TRAYECTO_AGENTECAUSAENFERMEDAD_FAILURE,
 } from "../types/trayectoType";
 import Axios from "axios";
+import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 // import { agenteCausa } from "../../util/fakeApi";
 
+
+axiosRetry(Axios, { retries: 3 });
 export const getData = async() => {
     return Axios.get(window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD);
     // return agenteCausa();
