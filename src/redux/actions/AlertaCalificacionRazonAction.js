@@ -4,8 +4,10 @@ import {
   GET_RAZON_ALERTA_FAILURE,
 } from "../types/alertaCalificacionRazonType";
 import Axios from "axios";
+import axiosRetry from 'axios-retry';
 import { handleSetStep,updateForm } from "../../redux/actions/AdmissionAction";
 
+axiosRetry(Axios, { retries: 3 });
 export const getData = async () => {
   return Axios.get(window.REACT_APP_ALERTAS);
 };
