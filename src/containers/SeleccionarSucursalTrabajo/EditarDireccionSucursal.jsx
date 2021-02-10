@@ -77,6 +77,7 @@ const EditarDireccionSucursal = () => {
               dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
               dispatch(updateForm("SucursalEmpresaObjeto", sucursalEmpresa));
               dispatch(updateForm("DireccionEmpresa", sucursalEmpresa.direccion));
+              dispatch(updateForm("comunaEmpresa", sucursalEmpresa.comuna));
               dispatch(updateForm("codigoSucursal", sucursalEmpresa.codigo));
               dispatch(handleSetStep(5.1));
             }}

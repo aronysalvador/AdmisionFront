@@ -37,7 +37,7 @@ const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
     const [validDate, setValidDate] = useState(true);  
@@ -164,6 +164,7 @@ const InfoAccidente = () => {
                                                         valido={direccionValida}
                                                         setValido={setDireccionValida}
                                                         DireccionEmpresa={DireccionEmpresa}
+                                                        comunaEmpresa={comunaEmpresa}
                                                         sucursalEmpresaSiniestro={sucursalEmpresaSiniestro}
                                                         clearData={clearData}
                                                     />
