@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 export default (props) => {
 
-  const { sucursal, setSucursal, setMapaUrl, comunaEmpresa, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption } = props 
+  const { titulo, sucursal, setSucursal, setMapaUrl, comunaEmpresa, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption } = props 
 
   const dispatch = useDispatch();
   const comunClass = getComunStyle();
@@ -35,7 +35,7 @@ export default (props) => {
         className={comunClass.tituloTextBox}
         style={{marginBottom:'8px', textAlign: "left"}}
       >
-        Dirección de trabajo
+        {titulo}
       </Grid> 
       <DireccionGeo
         id={"InfoAccidente-LblLugar"}
