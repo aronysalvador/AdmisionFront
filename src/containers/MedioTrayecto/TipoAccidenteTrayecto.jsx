@@ -32,6 +32,15 @@ const TipoAccidenteTrayecto = () => {
       dispatch(updateForm("sucursalEmpresaSiniestro", ""))
       dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
   }
+
+  const handleNext = () => {
+    console.log("tipoAccTrayecto", tipoAccidente.key);
+    // dispatch(updateForm("tipoAccTrayecto", tipoAccidente.key))
+    // dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
+    // dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
+    // dispatch(updateForm("comunaSiniestro", nombreComuna))
+    // dispatch(handleSetStep(6.02))
+  }
   
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -83,7 +92,7 @@ const TipoAccidenteTrayecto = () => {
           )}
         </div>
         <div className={spaceStyle.space2} />
-        <div className="row">
+        <div className="row" style={{width: '70%', margin: 'auto', minWidth: '300px'}}>
           <div className="col-md-12">
             <Lugar     
               titulo={"Lugar de trabajo del día del accidente"}                                               
@@ -109,8 +118,8 @@ const TipoAccidenteTrayecto = () => {
             id={"TipoAccidenteTrayecto-BtnContinuar"}
             variant="contained"
             className={comunClass.buttonAchs}
-            disabled={!tipoAccidenteTrayectoForm || !direccionValida}
-            // onClick={() => handleNext() }
+            // disabled={!tipoAccidenteTrayectoForm || !direccionValida}
+            onClick={() => handleNext() }
           >
             Continuar
           </Button>
