@@ -167,6 +167,7 @@ const InfoAccidente = () => {
                                                         comunaEmpresa={comunaEmpresa}
                                                         sucursalEmpresaSiniestro={sucursalEmpresaSiniestro}
                                                         clearData={clearData}
+                                                        tipoSiniestro={tipoSiniestro?.Id ? tipoSiniestro.Id : 1}
                                                     />
                                                 </div>
                                                 <div className="col-md-12" style={{ paddingTop: '2em' }}>
