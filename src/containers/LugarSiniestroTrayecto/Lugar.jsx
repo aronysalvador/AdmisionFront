@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 export default (props) => {
 
-  const { titulo, sucursal, setSucursal, setMapaUrl, comunaEmpresa, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption } = props 
+  const { titulo, sucursal, setSucursal, setMapaUrl, comunaEmpresa, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption, tipoSiniestro } = props 
 
   const dispatch = useDispatch();
   const comunClass = getComunStyle();
@@ -48,7 +48,7 @@ export default (props) => {
           setSucursal({description: ''}); 
           dispatch(handleSetStep(12.4))
         }}
-        direccionTemporal={!sucursalEmpresaSiniestro?`${DireccionEmpresa}, ${comunaEmpresa}`:""}
+        direccionTemporal={(!sucursalEmpresaSiniestro && tipoSiniestro===1)?`${DireccionEmpresa}, ${comunaEmpresa}`:""}
         small
         background={"#fff"}
         noFijarOption={noFijarOption}
