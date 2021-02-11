@@ -155,7 +155,7 @@ const InfoAccidente = () => {
                                             <div className="row">
                                                 <div className="col-md-12">
                                                     <Lugar   
-                                                        titulo={"Dirección de trabajo"}                                                
+                                                        titulo={"Dirección"}                                                
                                                         sucursal={sucursal}
                                                         setSucursal={setSucursal}
                                                         mapaUrl={mapaUrl} 
