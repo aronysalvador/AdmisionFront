@@ -1739,17 +1739,17 @@ export const getComunStyle = makeStyles((theme) => ({
         display: "inline-block",
         textAlign: "center",
         verticalAlign: "top",
-        padding: "30px 0 40px 0"
+        padding: "30px 0" //40px 0"
     },
     rootNew: {
         position: "relative",
         backgroundColor: "#F8F9FA",
     },
     mobileCaption: {
-        fontFamily: "Catamaran",
+        fontFamily: "Catamaran !important",
         fontStyle: "normal",
         fontWeight: "normal",
-        fontSize: "13px",
+        fontSize: "13px  !important",
         lineHeight: "16px",
         color: "#787878",
         textAlign: "left"

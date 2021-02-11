@@ -102,7 +102,7 @@ const InfoAccidente = () => {
                                         </div>
 
 
-                                    <div className="container" style={{maxWidth: "30em", minHeight: "250px"}}>
+                                    <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
                                         <div className="row">
                                             <div className="col-md-12">
                                                 <Grid
@@ -145,7 +145,7 @@ const InfoAccidente = () => {
                                             </Grid>
                                         </div>
                                         
-                                        <div className="container" style={{maxWidth: "30em", minHeight: "250px"}}>
+                                        <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
                                             <div className="row">
                                                 <div className="col-md-12">
                                                     <Lugar                                                   
