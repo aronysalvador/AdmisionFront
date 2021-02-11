@@ -1671,7 +1671,8 @@ export const getComunStyle = makeStyles((theme) => ({
     backgroundGrey: {
         background: '#f4f4f4',
         padding: '1em',
-        borderRadius: '8px'
+        borderRadius: '8px',
+        alignItems: "center"
     },
     backgroundWhite: {
         background: '#fff',

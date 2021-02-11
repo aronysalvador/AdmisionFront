@@ -56,7 +56,7 @@ export const AdmissionForm = {
     DireccionTemporal: {}, // direccion temporal que es enviada al mapa dinámico
     LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
     LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
-    AccidenteEnSucursal: "no",
+    AccidenteEnSucursal: "",
     sucursalCargo: "", //Codigo de la sucursal
 
     comunaSiniestro: "",
@@ -121,8 +121,15 @@ export const AdmissionForm = {
 
     },
 
+    molestiaEP: "",
+    parteAfectadaEP: "",
     FechaSintomasEP: "",
+    molestiasAnterioresEP: "",
+
+    AgenteCausaEP: {},
+    TrabajoMolestiasEP: "",
     FechaExposicionAgenteEP: "",
-    AgenteCausaEP: "",
+    mismasMolestiasCompañerosEP: "",
+
     TipoAvisoResponsable: {}
 };

@@ -142,6 +142,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
                 dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
                 dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
                 dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
+                dispatch(updateForm("comunaEmpresa", sucursales[0].comuna))
                 dispatch(
                   updateForm("sucursalCargo", sucursales[0].sucursalCargo)
                 );

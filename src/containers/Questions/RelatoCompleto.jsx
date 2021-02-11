@@ -82,7 +82,7 @@ const RelatoCompleto = () => {
 
     const handleOnClick = (respuesta) => {
         dispatch(updateForm("desarrollarTrabajoHabitual", respuesta));
-      };
+    };
 
     const respuestaOriginal  = objetoAccidente;
     const saveAnswer = () => {

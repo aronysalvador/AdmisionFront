@@ -61,6 +61,9 @@ const FlujoTrayecto = () => {
 
     const [btnValido, setBtnValido] = useState(false)
 
+    const [btnValido2, setBtnValido2] = useState(false)
+
+    const [btnValidoTotal, setBtnValidoTotal] = useState(false)
     const handleOnChange = (e) => {
         const value = e.target.value;
         if (value !== datosTestig) {
@@ -91,9 +94,19 @@ const FlujoTrayecto = () => {
               }
           }
           
-          setBtnValido(valida)
+          setBtnValido2(valida)
 
       }, [nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour])
+
+      useEffect(() =>{
+        let valida2 = false;
+        if((btnValido && !btnValido2)||(!btnValido && btnValido2)||(btnValido && btnValido2)){
+            valida2=true
+        }
+        
+        setBtnValidoTotal(valida2)
+
+    }, [btnValido, btnValido2])
 
     const BlueRadio = withStyles({
         root: {
@@ -433,7 +446,7 @@ const FlujoTrayecto = () => {
                             id="FlujoTrayecto-Btn1"
                             className={comunClass.buttonAchs}
                             variant="contained"
-                            disabled={btnValido}
+                            disabled={btnValidoTotal}
                             onClick={() => {
 
                                 let json = { ...CamposDocumentos }

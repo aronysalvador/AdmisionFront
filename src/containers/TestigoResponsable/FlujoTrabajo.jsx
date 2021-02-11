@@ -33,17 +33,18 @@ const FlujoTrabajo = () => {
 
 
     const handleOnClick = (respuesta) => {
+        let newValue
         if(respuesta === "Si"){
-            CamposDocumentos.TestigoS = "x"
-            CamposDocumentos.TestigoN = ""
-            dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+            newValue = {...CamposDocumentos, TestigoS: "x", TestigoN: ""}
+            dispatch(updateForm("testigoTrabajo", true));
+            dispatch(updateForm("CamposDocumentos", newValue));
         }else{
-            CamposDocumentos.TestigoS = ""
-            CamposDocumentos.TestigoN = "x"
-            dispatch(updateForm("CamposDocumentos", CamposDocumentos));
+            newValue = {...CamposDocumentos, TestigoS: "", TestigoN: "x"}
+            dispatch(updateForm("CamposDocumentos", newValue));
+            dispatch(updateForm("testigoTrabajo", false));
             dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
         }
-        if((CamposDocumentos.TestigoS === "x" || CamposDocumentos.TestigoN === "x") && responsableForm === "No" ){
+        if((newValue.TestigoS === "x" || newValue.TestigoN === "x") && responsableForm === "No" ){
             dispatch(handleSetStep(18.01))
         }
         

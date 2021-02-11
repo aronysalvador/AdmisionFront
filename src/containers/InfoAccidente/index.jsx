@@ -13,6 +13,10 @@ import { withStyles } from "@material-ui/core/styles";
 import ClearIcon from "@material-ui/icons/Clear";
 import Lugar from "../LugarSiniestroTrayecto/Lugar"
 import { Format } from "../../helpers/strings";
+import yesDisabled from './../../img/yesWork.svg'
+import notDisabled from './../../img/notWork.svg'
+import yesActive from './../../img/yesActive.svg'
+import notActive from './../../img/notActive.svg'
 import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
@@ -20,12 +24,12 @@ moment.locale("es");
 
 const NoPaddingTextField = withStyles({
     root: {
-      '&& .MuiOutlinedInput-input': {
-        padding: "8.5px 14px"
-      },
-      '&& .MuiOutlinedInput-notchedOutline': {
-        top: "-2px"
-      }
+        '&& .MuiOutlinedInput-input': {
+            padding: "8.5px 14px"
+        },
+        '&& .MuiOutlinedInput-notchedOutline': {
+            top: "-2px"
+        }
     }
 })(TextField);
 
@@ -33,7 +37,7 @@ const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
     const [validDate, setValidDate] = useState(true);  
@@ -53,6 +57,10 @@ const InfoAccidente = () => {
 
     const [lugarReferencia, setLugarReferencia] = useState(!lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro);
     const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(lugarReferenciaSiniestro?lugarReferenciaSiniestro:false);
+
+    const handleOnClick = (respuesta) => {
+        dispatch(updateForm("AccidenteEnSucursal", respuesta));
+    };
 
     const handleNext = () => {
         dispatch(updateForm("fechaHoraSiniestro", `${date} ${hour}`))
@@ -82,7 +90,6 @@ const InfoAccidente = () => {
                     <div className={comunClass.displayMobile}>
                         <div className={spaceStyle.spaceMin1} />
                     </div>
-                        
 
                     <div className="container-fluid">
                         <div className="row">
@@ -102,31 +109,30 @@ const InfoAccidente = () => {
                                         </div>
 
 
-                                    <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                                <Grid
-                                                    className={comunClass.tituloTextBox}
-                                                    style={{marginBottom:'8px', textAlign: "left"}}
-                                                >
-                                                    Fecha de accidente
-                                                </Grid> 
+                                        <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
+                                            <div className="row">
+                                                <div className="col-md-12">
+                                                    <Grid
+                                                        className={comunClass.tituloTextBox}
+                                                        style={{marginBottom:'8px', textAlign: "left"}}
+                                                    >
+                                                        Fecha de accidente
+                                                    </Grid> 
 
-                                                <Date date={date} setDate={setDate} id="InfoAccidente-Lbl1" setValidDate={setValidDate} />
-                                            </div>
-                                            <div className="col-md-12" style={{ paddingTop: '2em' }}>
-                                                <Grid
-                                                    className={comunClass.tituloTextBox}
-                                                    style={{marginBottom:'8px', textAlign: "left"}}
-                                                >
-                                                    Hora de accidente
-                                                </Grid> 
+                                                    <Date date={date} setDate={setDate} id="InfoAccidente-Lbl1" setValidDate={setValidDate} />
+                                                </div>
+                                                <div className="col-md-12" style={{ paddingTop: '2em' }}>
+                                                    <Grid
+                                                        className={comunClass.tituloTextBox}
+                                                        style={{marginBottom:'8px', textAlign: "left"}}
+                                                    >
+                                                        Hora de accidente
+                                                    </Grid> 
 
-                                                <Time  id={"InfoAccidente-Lbl2"}  time={hour} setTime={setHour} setValidHour={setValidHour} />
+                                                    <Time  id={"InfoAccidente-Lbl2"}  time={hour} setTime={setHour} setValidHour={setValidHour} />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
 
                                     </div>
                                 </div>
@@ -158,6 +164,7 @@ const InfoAccidente = () => {
                                                         valido={direccionValida}
                                                         setValido={setDireccionValida}
                                                         DireccionEmpresa={DireccionEmpresa}
+                                                        comunaEmpresa={comunaEmpresa}
                                                         sucursalEmpresaSiniestro={sucursalEmpresaSiniestro}
                                                         clearData={clearData}
                                                     />
@@ -210,13 +217,48 @@ const InfoAccidente = () => {
                                 </div>
                             </div>
 
+                            {tipoSiniestro.Id === 1 && 
+                            <>
+                            <div className={spaceStyle.spaceMin1} />
+                            <div className={['row', comunClass.backgroundGrey].join(' ')} style={{maxWidth:"90%", margin: "auto"}}>
+                                <div className="col-md-10" style={{textAlign:"left"}}>
+                                <Grid className={`${comunClass.textPrimaryRelato}`} style={{width: "auto"}}>
+                                    ¿El accidente ocurrió en  
+                                    <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                                        &nbsp;sucursal
+                                    </Grid> 
+                                    &nbsp;a la que pertenece el trabajador?
+                                </Grid>
+                                </div>
+                                <div className="col-md-2" style={{ display: "contents" }}>
+                                    <img
+                                        id={"RelatoCompleto-BtnSi"}
+                                        alt="siTrabajo"
+                                        src={AccidenteEnSucursal ==="Si" ? yesActive : yesDisabled}
+                                        type="button"
+                                        style={{ marginRight: "5px" }}
+                                        onClick={() => handleOnClick("Si")}
+                                    />
+
+                                    <img
+                                        id={"RelatoCompleto-BtnNo"}
+                                        alt="noTrabajo"
+                                        src={AccidenteEnSucursal ==="No" ? notActive :notDisabled}
+                                        type="button"
+                                        onClick={() => handleOnClick("No")}                       
+                                    />
+                                </div>
+                            </div>                   
+                            </>
+                            }
+
                             <div className="col-md-12">
                                 <div className={spaceStyle.space2} />
                                 <Button
                                     id={"InfoAccidente-Btn1"}
                                     variant="contained"
                                     className={comunClass.buttonAchs}
-                                    disabled={!validDate || !validHour || !isLugarReferenciaValid || !direccionValida}
+                                    disabled={tipoSiniestro.Id === 1 ? !validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)}
                                     onClick={() => handleNext() }
                                 >
                                     Continuar

@@ -72,7 +72,7 @@ const CausalSiniestroTrayecto = () => {
           </Typography>
           <TextField
             id={"CausalSiniestroTrayecto-Lbl1"}
-            autoComplete
+            autoComplete="off"
             helperText={!mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"}
             error={!mecanismoCausalValid}
             value={mecanismoCausal}
@@ -107,7 +107,7 @@ const CausalSiniestroTrayecto = () => {
           </Typography>
           <TextField
             id={"CausalSiniestroTrayecto-Lbl2"}
-            autoComplete
+            autoComplete="off"
             helperText={!posibleCausaValid && "Debes ingresar al menos una posible causa"}
             error={!posibleCausaValid}
             value={posibleCausa}

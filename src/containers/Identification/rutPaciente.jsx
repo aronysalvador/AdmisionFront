@@ -37,7 +37,6 @@ const RutPaciente = () => {
           autoComplete="off"          
           error={!isValid }
           onChange={(e) => { handleChange( e.target.value ) }}
-
         />
         <div className={comunClass.bottomElement}>
           <Button
@@ -46,8 +45,9 @@ const RutPaciente = () => {
             variant="contained"
             disabled={!rut || !isValid}
             onClick={() => {
-                dispatch(updateForm("rut", rut));
-                dispatch(handleSetStep(5)); 
+              dispatch(updateForm("tipoDocumento", "RU"));
+              dispatch(updateForm("rut", rut));
+              dispatch(handleSetStep(5)); 
             }}
           >
             Continuar
