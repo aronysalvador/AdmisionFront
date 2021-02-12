@@ -101,6 +101,7 @@ import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
 
 import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
 import LugarSiniestroTrayectoMapaNew from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapaNew";
+import LugarTrabajoTrayectoMapa from "../LugarSiniestroTrayecto/LugarTrabajoTrayectoMapa";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
 import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
 
@@ -399,6 +400,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <TipoAccidenteTrayecto />
+            </Paper>
+          </div>
+        );
+      case 6.011: //Inicio Trayecto
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <LugarTrabajoTrayectoMapa />
             </Paper>
           </div>
         );

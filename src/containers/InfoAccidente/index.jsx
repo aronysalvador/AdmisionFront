@@ -37,7 +37,7 @@ const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
     const [validDate, setValidDate] = useState(true);  
@@ -109,7 +109,7 @@ const InfoAccidente = () => {
                                         </div>
 
 
-                                        <div className="container" style={{maxWidth: "30em", minHeight: "250px"}}>
+                                        <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
                                             <div className="row">
                                                 <div className="col-md-12">
                                                     <Grid
@@ -151,10 +151,11 @@ const InfoAccidente = () => {
                                             </Grid>
                                         </div>
                                         
-                                        <div className="container" style={{maxWidth: "30em", minHeight: "250px"}}>
+                                        <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
                                             <div className="row">
                                                 <div className="col-md-12">
-                                                    <Lugar                                                   
+                                                    <Lugar   
+                                                        titulo={"Dirección"}                                                
                                                         sucursal={sucursal}
                                                         setSucursal={setSucursal}
                                                         mapaUrl={mapaUrl} 
@@ -164,8 +165,10 @@ const InfoAccidente = () => {
                                                         valido={direccionValida}
                                                         setValido={setDireccionValida}
                                                         DireccionEmpresa={DireccionEmpresa}
+                                                        comunaEmpresa={comunaEmpresa}
                                                         sucursalEmpresaSiniestro={sucursalEmpresaSiniestro}
                                                         clearData={clearData}
+                                                        tipoSiniestro={tipoSiniestro?.Id ? tipoSiniestro.Id : 1}
                                                     />
                                                 </div>
                                                 <div className="col-md-12" style={{ paddingTop: '2em' }}>
