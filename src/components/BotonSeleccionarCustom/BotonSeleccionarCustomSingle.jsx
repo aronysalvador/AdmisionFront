@@ -31,7 +31,7 @@ const BotonSeleccionarCustomSingle = (props) => {
             );
 
              dispatch(updateForm("tipoAccTrayecto", data.key));
-             setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 1000);
+            // setTimeout(function(){ dispatch(handleSetStep(6.02)); }, 1000);
           }
           else {
             dispatch(

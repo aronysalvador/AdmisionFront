@@ -39,6 +39,10 @@ export const AdmissionForm = {
     inicioJornadaLaboral: "",
     finJornadaLaboral: "",
 
+    sucursalTrabajoTrayecto:"",
+    urlMapaTrabajoTrayecto:"",
+    comunaTrabajoTrayecto:"",
+
     //State de Cargo
     //Lugar Exacto Sinietsro
     sucursalEmpresaSiniestro: "",
@@ -131,5 +135,7 @@ export const AdmissionForm = {
     FechaExposicionAgenteEP: "",
     mismasMolestiasCompañerosEP: "",
 
-    TipoAvisoResponsable: {}
+    TipoAvisoResponsable: {},
+
+    
 };

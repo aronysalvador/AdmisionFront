@@ -46,7 +46,7 @@ export default (props) => {
         clearData={clearData}
         showDinamicMap={()=> {
           setSucursal({description: ''}); 
-          dispatch(handleSetStep(12.4))
+          dispatch(handleSetStep(6.011))
         }}
         direccionTemporal={(!sucursalEmpresaSiniestro && tipoSiniestro===1)?`${DireccionEmpresa}, ${comunaEmpresa}`:""}
         small
