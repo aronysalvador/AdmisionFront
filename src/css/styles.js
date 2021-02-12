@@ -43,6 +43,12 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#F8F9FA",
             height: "45.715em",
         },
+        paperAutoHeight: {
+            marginTop: '0 auto',
+            // padding: '1.145em',
+            backgroundColor: "#F8F9FA",
+            boxShadow: 'none',
+        }
     },
     '@media (min-width: 768px)': {
         /* Medium devices (landscape tablets, 768px and up) */
@@ -64,8 +70,29 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#373737",
             borderRadius: "0",
         },
+        paperAutoHeight: {
+            marginTop: '0 auto',
+            boxShadow: 'none',
+            // padding: '1.145em',
+            backgroundColor: "#F8F9FA",
+            height: "100vh"
+        }
+    },
+
+    paperBlackAutoHeight:{
+        width: "100%",
+        boxShadow: "none",
+        borderRadius: 0,
+        backgroundColor: "#373737",
+        height: "100vh !important"
     }
 
+    // paperAutoHeight: {
+    //     marginTop: '0 auto',
+    //     padding: '1.145em',
+    //     backgroundColor: "#F8F9FA",
+    //     height: "100 vh"
+    // }
 
 
 }));

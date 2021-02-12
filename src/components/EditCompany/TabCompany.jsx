@@ -105,18 +105,20 @@ const TabCompany = (props) => {
     <div className={comunClass.containerTextBox}>
       <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered >
         <Tab
+          id={"TabCompany-Tab0"}
           classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 } }
           label="Razón Social"
           style={{textTransform: 'none'}}
         />
         <Tab
+          id={"TabCompany-Tab1"}
           classes={ value === 1 ? { root: classes.root3 } : { root: classes.root } }
           label="RUT"
         />
       </Tabs>
 
       <TabPanel value={value} index={0} style={{padding:"0"}}>
-        <Typography className={comunClass.tituloTextBox}>
+        <Typography className={comunClass.tituloTextBox} style={{marginBottom: '8px'}}>
           Razón Social
         </Typography>
         <div>

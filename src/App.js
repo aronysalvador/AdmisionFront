@@ -10,6 +10,7 @@ import { getAFP } from "./redux/actions/AfpAction";
 import { getCentros } from "././redux/actions/CentrosAchsAction";
 import { getComuna } from "./redux/actions/ComunaAction";
 import { getIdiomas } from "././redux/actions/IdiomasAction";
+import { getGrupo } from "./redux/actions/GrupoAction";
 import { getNacionalidades } from "././redux/actions/NacionalidadesAction";
 import { getPaises } from "././redux/actions/PaisesAction";
 import { searchIsapres } from "./redux/actions/PrevisionAction";
@@ -23,6 +24,7 @@ import { getMediosTransporteTrayecto } from "./redux/actions/TrayectoAction";
 import { getTiposAccidenteTrayecto } from "./redux/actions/TrayectoAction";
 import { getPartesCuerpo } from "./redux/actions/ParteCuerpoAction";
 import { getRazonAlertaPrincipal } from "./redux/actions/AlertaCalificacionRazonAction";
+import { getCriteriosGravedad } from "././redux/actions/CriteriosAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +56,7 @@ function App() {
     dispatch(getNacionalidades());
     dispatch(getIdiomas());
     dispatch(getPaises());
+    dispatch(getGrupo());
     dispatch(searchIsapres());
     dispatch(getProfesion(""));
     dispatch(getContrato(""));
@@ -65,6 +68,7 @@ function App() {
     dispatch(getTiposAccidenteTrayecto());
     dispatch(getPartesCuerpo());
     dispatch(getRazonAlertaPrincipal());
+    dispatch(getCriteriosGravedad());
   }, [dispatch]);
 
   useEffect(() => {

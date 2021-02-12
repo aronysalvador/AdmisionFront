@@ -11,11 +11,11 @@ import { Grid } from '@material-ui/core';
 
 
 const BoxEmpresa = (props) => {
-    const { titulo, contenidoDireccionEmpresa, contenidoRazonSocialForm, contenidoRutEmpresa, step } = props
+    const { id, titulo, contenidoDireccionEmpresa, contenidoRazonSocialForm, contenidoRutEmpresa, step } = props
     const classes = cardSiniestroStyles();
     const dispatch = useDispatch();
     return (<div className={classes.containerBox}>
-                <Grid container>
+                <Grid container id={id} onClick={() => dispatch(handleSetStep(step))}>
                     <Grid item xs={11} >
                         <div className={classes.cuerpo}>
                             <div>

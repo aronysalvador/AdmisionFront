@@ -43,6 +43,7 @@ const CausalSiniestroTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"CausalSiniestroTrayecto-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.02))}
           percentage={percentage}
         />
@@ -70,7 +71,8 @@ const CausalSiniestroTrayecto = () => {
             Mecanismo Causal
           </Typography>
           <TextField
-            autoComplete
+            id={"CausalSiniestroTrayecto-Lbl1"}
+            autoComplete="off"
             helperText={!mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"}
             error={!mecanismoCausalValid}
             value={mecanismoCausal}
@@ -104,7 +106,8 @@ const CausalSiniestroTrayecto = () => {
             Posible Causa
           </Typography>
           <TextField
-            autoComplete
+            id={"CausalSiniestroTrayecto-Lbl2"}
+            autoComplete="off"
             helperText={!posibleCausaValid && "Debes ingresar al menos una posible causa"}
             error={!posibleCausaValid}
             value={posibleCausa}
@@ -134,12 +137,13 @@ const CausalSiniestroTrayecto = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"CausalSiniestroTrayecto-Btn1"}
             disabled={(mecanismoCausal?.length <= 3 || !mecanismoCausalValid) || (posibleCausa?.length <= 3 || !posibleCausaValid)}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
               dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, Mecanismo: mecanismoCausal, PosibleCaus: posibleCausa}));
-              dispatch(handleSetStep(6));
+              dispatch(handleSetStep(6.06));
             }}
           >
             Continuar

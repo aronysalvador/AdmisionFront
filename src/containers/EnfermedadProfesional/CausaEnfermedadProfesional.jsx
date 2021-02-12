@@ -8,14 +8,14 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Grid from '@material-ui/core/Grid';
-import { InputAdornment } from "@material-ui/core";
-import { IconButton } from "material-ui";
+import Date from './../../components/Pickers/Date'
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
-import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
-import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
+import moment from "moment";
+import "moment/locale/es";
+moment.locale("es");
 
 const CausaEnfermedadProfesional = () => {
   const {
@@ -26,6 +26,11 @@ const CausaEnfermedadProfesional = () => {
   
   const dispatch = useDispatch();
 
+  const formatDate = (fecha) => {
+    let newfecha = fecha.replace(/[.]/g, '-')
+    return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
+  }
+
   const [molestia, setMolestia] = useState(() => {
     return !molestiaEP ? "" : molestiaEP;
   });
@@ -33,30 +38,10 @@ const CausaEnfermedadProfesional = () => {
   const [parteAfectada, setParteAfectada] = useState(() => {
     return !parteAfectadaEP ? "" : parteAfectadaEP;
   });
-  const { days, month, year } = FechaSintomasEP ? FechaSintomasEP : new Date();
-  const [fechaSiniestro, setFechaSiniestro] = useState(() => {
-    return !FechaSintomasEP ? {} : FechaSintomasEP
-  });
-  const [invalidFecha, setInvalidFecha] = useState(false);
+  
+  const [fechaSiniestro, setFechaSiniestro] = useState(!FechaSintomasEP ? "" : formatDate(FechaSintomasEP));
+  const [validFecha, setValidFecha] = useState(FechaSintomasEP.length>0 ? true :false);
 
-  function setFechaValueSiniestro(value) {
-    setFechaSiniestro({ ...value });
-  }
-
-  React.useEffect(() => {
-    let current = new Date();
-    console.log(fechaSiniestro)
-    //========= Fecha =======
-    if(fechaSiniestro.year <= 1900 || 
-      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month > current.getMonth()+1 ) ||//&& fechaSiniestro.days <= current.getDate()
-      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days > current.getDate()) ||
-      (fechaSiniestro.year > current.getFullYear())
-      ) 
-      setInvalidFecha(true)
-    else
-      setInvalidFecha(false)
-    //====== Fin Fecha ======
-  }, [fechaSiniestro])
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -88,7 +73,8 @@ const CausaEnfermedadProfesional = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(5.7))}
+          id={"CausaEP-BtnBack"}
+          dispatch={() => dispatch(handleSetStep(5.1))}
           percentage={percentage}
         />
       </div>
@@ -115,7 +101,7 @@ const CausaEnfermedadProfesional = () => {
               Describe las molestias y síntomas
             </Typography>
             <TextField
-              id="nombre"
+              id={"CausaEP-Lbl1"}
               value={molestia}
               placeholder={"Ejemplo: Dolor de garganta, dolor de espalda, fiebre, tos, dolor de estomago"}
               onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
@@ -136,7 +122,8 @@ const CausaEnfermedadProfesional = () => {
               Ingresa la parte del cuerpo afectada
             </Typography>
             <TextField
-              autoComplete
+              id={"CausaEP-Lbl2"}
+              autoComplete="off"
               value={parteAfectada}
               variant="outlined"
               size="small"
@@ -146,11 +133,7 @@ const CausaEnfermedadProfesional = () => {
               onChange={(e) => setParteAfectada (Format.caracteresInvalidos(e.target.value)) }
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={() => { setParteAfectada("") }}>
-                      <ClearIcon />
-                    </IconButton>
-                  </InputAdornment>
+                      <ClearIcon onClick={() => { setParteAfectada("") }} />
                 )
               }}
               inputProps={{ maxLength: 200 }}
@@ -158,25 +141,18 @@ const CausaEnfermedadProfesional = () => {
             
           </div>
           <div className={spaceStyle.space1} />
-          <FechaSintomas
-            onChange={setFechaValueSiniestro}
-            daysFromState={days}
-            monthFromState={month}
-            yearFromState={year}
-            textoPrimario="Ingresa la fecha de inicio de sintomas"
-          />
-          <div style={{display:'none'}}>
-            <FechaSiniestroCalendar
-              onChange={setFechaValueSiniestro}
-              daysFromState={days}
-              monthFromState={month}
-              yearFromState={year}
-            />
+
+          <div>
+            <Typography className={comunClass.tituloTextBox} style={{marginBottom: "5px"}}>
+              Ingresa la fecha de inicio de sintomas
+            </Typography>
+            <Date date={fechaSiniestro} setDate={setFechaSiniestro} id="CausaEP-Datepicker1" setValidDate={setValidFecha} />
           </div>
+
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
             <Grid component="span">
-              <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+              <BlueCheckbox id={"CausaEP-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>
               Existen molestias anteriores a la fecha indicada
           </Typography>
@@ -184,13 +160,14 @@ const CausaEnfermedadProfesional = () => {
 
         <div className={comunClass.bottomElement} style={{padding: "10px 0"}}>
           <Button
+            id={"CausaEP-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={molestia?.length <= 4 || parteAfectada?.length <= 3 || invalidFecha}
+            disabled={molestia?.length <= 4 || parteAfectada?.length <= 3 || !validFecha}
             onClick={() => {
               dispatch(updateForm("molestiaEP", molestia));
               dispatch(updateForm("parteAfectadaEP", parteAfectada));
-              dispatch(updateForm("FechaSintomasEP", { ...fechaSiniestro }));
+              dispatch(updateForm("FechaSintomasEP", validFecha ? fechaSiniestro.replace(/[-]/g, '.') : ""));
               dispatch(updateForm("molestiasAnterioresEP", respMolestias));
               dispatch(handleSetStep(6.05)); 
             }}

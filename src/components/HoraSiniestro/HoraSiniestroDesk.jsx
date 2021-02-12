@@ -10,31 +10,25 @@ import image from './../../img/iconClock.svg'
 const HoraSiniestroDesk = ({
   onChange,
   horasFromState,
+  indiceMinutosFromState,
   minutos,
-  textLabel
+  textLabel,
+  UpComponent
 }) => {
 
-
+  const IdComponent = UpComponent ? UpComponent : "";
+  
+  if(horasFromState?.toString().length === 1){
+    horasFromState = ("0" + horasFromState).slice(-2)
+  }
 
   const [inputValue2,setInputValue2]= useState(() =>{
-    if(horasFromState?.toString().length === 1){
-      horasFromState = ("0" + horasFromState).slice(-2)
-    }
     if(!horasFromState){
       let time = new Date(new Date().setHours(new Date().getHours()-1))
       return `${(time.getHours() < 10)?"0"+time.getHours():time.getHours()}:${(time.getMinutes() < 10)?"0"+time.getMinutes():time.getMinutes()}`;
     }else
-      return `${horasFromState}:${(minutos < 10)?"0"+minutos:minutos}`;
+      return `${horasFromState}:${indiceMinutosFromState}0`;
   })
-
-
-  React.useEffect(() => {
-    if(horasFromState === undefined || isNaN(horasFromState)){
-      let time = new Date(new Date().setHours(new Date().getHours()-1))
-      onChange({horas: time.getHours(), minutos: time.getMinutes()})
-    }
-  }, [horasFromState, minutos])
-
 
   const comunClass = getComunStyle();
 
@@ -42,10 +36,10 @@ const HoraSiniestroDesk = ({
     setInputValue2(value?value:"")
     if(value?.length){
       let horas = -1;
-      let minuts = -1;
+      let indiceMinutos = -1;
+      let minutos = -1;
 
       let horasDetails = value.split(':')
-      console.log(horasDetails[0])
       if(horasDetails[0].includes("_"))
         horas = -1;
 
@@ -54,14 +48,15 @@ const HoraSiniestroDesk = ({
         horas = parseInt(horasDetails[0])
 
       if(horasDetails[1].includes("_")){
-        minuts = -1
+        indiceMinutos = -1
+        minutos = -1
       }
       else if(parseInt(horasDetails[1]) >= 0 && parseInt(horasDetails[1]) <= 59){
-        minuts = parseInt(horasDetails[1])
+        indiceMinutos = parseInt(horasDetails[1].substr(0,1)) 
+        minutos = parseInt(horasDetails[1])
       }
-      
   
-      onChange({ horas, minutos: minuts });
+      onChange({ horas, indiceMinutos, minutos});
 
     }
   };
@@ -71,6 +66,7 @@ const HoraSiniestroDesk = ({
       <div>
         <Grid
           className={comunClass.tituloTextBox}
+          style={{marginBottom:'15px'}}
         >
           {textLabel}
         </Grid>
@@ -79,6 +75,7 @@ const HoraSiniestroDesk = ({
         <MuiPickersUtilsProvider utils={MomentUtils}  >
           <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
             <KeyboardTimePicker
+            id={IdComponent+"-TimePicker1"} 
             inputVariant="outlined"
             value={new Date(inputValue2)}
             inputValue={inputValue2}

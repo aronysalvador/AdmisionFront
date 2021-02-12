@@ -39,6 +39,7 @@ const MedioTransporteTrayecto = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"MedioTransporteTrayecto-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.01))}
           percentage={percentage}
         />
@@ -66,6 +67,7 @@ const MedioTransporteTrayecto = () => {
             Medio de transporte
           </Typography>
           <AutoComplete
+            id={"MedioTransporteTrayecto-Lbl1"}
             inputValue={medioTransporte}
             onInputChange={(event, value) => {
               event&&setMedioTransporte(value);
@@ -92,6 +94,7 @@ const MedioTransporteTrayecto = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"MedioTransporteTrayecto-Btn1"}
             disabled={medioTransporte?.length < 3}
             className={comunClass.buttonAchs}
             variant="contained"

@@ -31,7 +31,7 @@ const Start = (props) =>{
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
-          <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} noSpace={true} />
+          <Cabecera id={"Start-BtnBack"} dispatch={() => dispatch(handleSetStep(1))} percentage={-1} noSpace={true} />
           <div className={comunStyle.displayMobile}>
             <div className={welcomeStyle.avatarContainerRight}>
               <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
@@ -98,6 +98,7 @@ const Start = (props) =>{
             </div>
             <div style={{marginTop: "3px"}}>
               <Button
+                id={"Start-Btn1"} 
                 className={comunStyle.buttonAchs}
                 variant="contained"
                 onClick={() => dispatch(handleSetStep(2)) }

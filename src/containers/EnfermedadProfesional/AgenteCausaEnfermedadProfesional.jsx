@@ -8,12 +8,14 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Grid from '@material-ui/core/Grid';
+import Date from './../../components/Pickers/Date'
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import relato from './../../img/relato.svg';
-import FechaSintomas from "../../components/FechaSiniestro/FechaSintomasEP";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
+import moment from "moment";
+import "moment/locale/es";
+moment.locale("es");
 
 const AgenteCausaEnfermedadProfesional = () => {
   const {
@@ -23,6 +25,11 @@ const AgenteCausaEnfermedadProfesional = () => {
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   
   const dispatch = useDispatch();
+
+  const formatDate = (fecha) => {
+    let newfecha = fecha.replace(/[.]/g, '-')
+    return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
+  }
 
   const [agenteCausa, setAgenteCausa] = useState(() => {
     return !AgenteCausaEP ? {} : AgenteCausaEP;
@@ -35,29 +42,8 @@ const AgenteCausaEnfermedadProfesional = () => {
     return !TrabajoMolestiasEP ? "" : TrabajoMolestiasEP;
   });
 
-  const { days, month, year } = FechaExposicionAgenteEP ? FechaExposicionAgenteEP : new Date();
-  const [fechaSiniestro, setFechaSiniestro] = useState(() => {
-    return !FechaExposicionAgenteEP ? {} : FechaExposicionAgenteEP
-  });
-  const [invalidFecha, setInvalidFecha] = useState(false);
-
-  function setFechaValueSiniestro(value) {
-    setFechaSiniestro({ ...value });
-  }
-
-  React.useEffect(() => {
-    let current = new Date();
-    //========= Fecha =======
-    if(fechaSiniestro.year <= 1900 || 
-      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month > current.getMonth()+1 ) ||//&& fechaSiniestro.days <= current.getDate()
-      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days > current.getDate()) ||
-      (fechaSiniestro.year > current.getFullYear())
-      ) 
-      setInvalidFecha(true)
-    else
-      setInvalidFecha(false)
-    //====== Fin Fecha ======
-  }, [fechaSiniestro])
+  const [fechaSiniestro, setFechaSiniestro] = useState(!FechaExposicionAgenteEP ? "" : formatDate(FechaExposicionAgenteEP));
+  const [validFecha, setValidFecha] = useState(!FechaExposicionAgenteEP ? false : true);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -89,6 +75,7 @@ const AgenteCausaEnfermedadProfesional = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"AgenteCausaEP-BtnBack"}
           dispatch={() => dispatch(handleSetStep(6.04))}
           percentage={percentage}
         />
@@ -118,6 +105,7 @@ const AgenteCausaEnfermedadProfesional = () => {
             </Typography>
 
             <AutoComplete
+              id={"AgenteCausaEP-Lbl1"}
               value={agenteCausa}
               onChange={(event, value) => {
                 setAgenteCausa(value);
@@ -127,7 +115,7 @@ const AgenteCausaEnfermedadProfesional = () => {
               getOptionSelected= {(
                 option,
                 value,
-             ) => value.value === option.value}
+              ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -147,7 +135,7 @@ const AgenteCausaEnfermedadProfesional = () => {
               Trabajo que realizaba al momento de las molestias
             </Typography>
             <TextField
-              id="nombre"
+              id={"AgenteCausaEP-Lbl2"}
               value={molestia}
               placeholder={"Ejemplo: aire acondicionado, silla de escritorio"}
               onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
@@ -163,25 +151,18 @@ const AgenteCausaEnfermedadProfesional = () => {
             <label className={comunClass.pullRight}>{molestia.length}/200</label>
           </div>
           <div className={spaceStyle.space1} />
-          <FechaSintomas
-            onChange={setFechaValueSiniestro}
-            daysFromState={days}
-            monthFromState={month}
-            yearFromState={year}
-            textoPrimario="Ingresa la fecha de exposición al agente"
-          />
-          <div style={{display:'none'}}>
-            <FechaSiniestroCalendar
-              onChange={setFechaValueSiniestro}
-              daysFromState={days}
-              monthFromState={month}
-              yearFromState={year}
-            />
+
+          <div>
+            <Typography className={comunClass.tituloTextBox} style={{marginBottom: "5px"}}>
+              Ingresa la fecha de exposición al agente
+            </Typography>
+            <Date date={fechaSiniestro} setDate={setFechaSiniestro} id="AgenteCausaEP-Datepicker1" setValidDate={setValidFecha} />
           </div>
+
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
             <Grid component="span">
-              <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
+              <BlueCheckbox id={"AgenteCausaEP-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>
             Existen compañeros de trabajo con las mismas molestias
           </Typography>
@@ -189,16 +170,16 @@ const AgenteCausaEnfermedadProfesional = () => {
 
         <div className={comunClass.bottomElement} style={{padding: "10px 0"}}>
           <Button
+            id={"AgenteCausaEP-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || invalidFecha}
+            disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || !validFecha}
             onClick={() => {
-              console.log(agenteCausa.id)
-              dispatch(updateForm("AgenteCausaEP", agenteCausa.id));
+              dispatch(updateForm("AgenteCausaEP", agenteCausa));
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
-              dispatch(updateForm("FechaExposicionAgenteEP", { ...fechaSiniestro }));
+              dispatch(updateForm("FechaExposicionAgenteEP", validFecha ? fechaSiniestro.replace(/[-]/g, '.') : ""));
               dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
-              dispatch(handleSetStep(18.1)); 
+              dispatch(handleSetStep(18.01)); //18.1 
             }}
           >
             Continuar

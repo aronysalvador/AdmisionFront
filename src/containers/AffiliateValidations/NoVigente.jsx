@@ -29,6 +29,7 @@ const NoVigente = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
+          id={"NoVigente-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.1))} 
           color="#FFFFFF"
         />
@@ -56,8 +57,9 @@ const NoVigente = (props) => {
             <div className={spaceStyle.space2} />
           </div>
           <Button
+            id={"NoVigente-Btn1"}
             className={blackStyle.buttonFooter}
-            onClick={() => { dispatch(handleSetStep(1.1)) }}
+            onClick={() => { dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
           >
             Volver al inicio
           </Button>

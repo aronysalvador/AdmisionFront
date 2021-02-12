@@ -4,7 +4,10 @@ import {
   GET_RAZON_ALERTA_FAILURE,
 } from "../types/alertaCalificacionRazonType";
 import Axios from "axios";
+import axiosRetry from 'axios-retry';
+import { handleSetStep,updateForm } from "../../redux/actions/AdmissionAction";
 
+axiosRetry(Axios, { retries: 3 });
 export const getData = async () => {
   return Axios.get(window.REACT_APP_ALERTAS);
 };
@@ -18,11 +21,21 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
   // Mostrar alertas segun tipo de siniestro 
   getData()
     .then((response) => {
-      let data = response.data.content.response[0].opciones
-      dispatch(successCallRazonAlerta(data));      
+      if(response.status === 200){
+        let data = response.data.content.response[0].opciones
+        dispatch(successCallRazonAlerta(data));  
+      }else{
+        dispatch(updateForm("errorStep", 0));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ALERTAS));
+        dispatch(handleSetStep(1004));
+      }
+          
     })
     .catch((error) => {
       dispatch(errorCallRazonAlerta(error));
+      dispatch(updateForm("errorStep", 0));
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ALERTAS));
+      dispatch(handleSetStep(1004));
     });
 };
 
@@ -32,7 +45,6 @@ const successCallRazonAlerta = (razon) => ({
 });
 
 const errorCallRazonAlerta = (error) => {
-  console.log(error);
   return  ({
     type: GET_RAZON_ALERTA_FAILURE,
   })

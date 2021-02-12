@@ -1,4 +1,4 @@
-import { getData } from "./../redux/actions/ComunaAction"
+import store from "./../store"
 
 export function Fecha() {
     var fecha = (new Date().toLocaleString("en-US", { timeZone: 'America/Santiago', hour12: false })).replace(/[,]/g, "");
@@ -27,32 +27,22 @@ export const eliminarDiacriticos = (texto) => {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 }
 
+
 export const validarDireccionSN = async(direccion) => {
 
     var respuesta = { valida: false, comuna: null };
-
     if (typeof direccion.description === 'string') {
-
         const fragmentos = direccion.description.split(",")
         if (Array.isArray(fragmentos) && fragmentos.length >= 3) {
-            var comuna = fragmentos[fragmentos.length - 2].toUpperCase().trim()
-            if (comuna.includes("REGIÓN")) {
-                if (fragmentos.length < 5) {
-                    comuna = fragmentos[1].toUpperCase().trim()
-                } else {
-                    comuna = fragmentos[2].toUpperCase().trim()
-                }
-            }
-            let comunaSAP =  await validarComuna(comuna);
-            if(comunaSAP !== null){
-                respuesta.valida=true
-                respuesta.comuna = comunaSAP
+            let comunaSAP = await validarComuna(direccion.description);
+            if (Object.keys(comunaSAP).length !== 0) {
+                respuesta.valida = true
+                respuesta.comuna = comunaSAP.nombre
+                    // console.log("valida: " + comunaSAP.nombre)
             } else
                 respuesta.valida = false
-
         }
     }
-
 
     return respuesta;
 }
@@ -61,86 +51,84 @@ export const validarDireccion = async(direccion) => {
 
     var respuesta = { valida: false, comuna: null };
     if (typeof direccion.description === 'string') {
-
         const fragmentos = direccion.description.split(",")
         if (Array.isArray(fragmentos) && fragmentos.length >= 3 && fragmentos[0].match(/\d+/g)) {
-            var comuna = fragmentos[fragmentos.length - 2].toUpperCase().trim()
-            if (comuna.includes("REGIÓN")) {
-                if (fragmentos.length < 5) {
-                    comuna = fragmentos[1].toUpperCase().trim()
-                } else {
-                    comuna = fragmentos[2].toUpperCase().trim()
-                }
-            }
-            let comunaSAP =  await validarComuna(comuna);
-            if(comunaSAP !== null){
-                respuesta.valida=true
-                respuesta.comuna = comunaSAP
+            let comunaSAP = await validarComuna(direccion.description);
+            if (Object.keys(comunaSAP).length !== 0) {
+                respuesta.valida = true
+                respuesta.comuna = comunaSAP.nombre
+                    // console.log("valida: "+comunaSAP.nombre)
             } else
                 respuesta.valida = false
-
         }
     }
-
 
     return respuesta;
 }
 
-const validarComuna = async(comuna) => {
-    return new Promise(async function(resolve, reject) {
-        const result = await getData()
-        if (result.status === 200) {
-            var COMUNAS = result.data.content[0]
-            if (Array.isArray(COMUNAS)) {
+const validarComuna = async(direccion) => {
+    return new Promise(async function(resolve) {
+        let COMUNAS = await getComunas()
+            // const array = store.getState().comunaForm.data
+            // for (let index = 0; index < array.length; index++) {
+            //     const element = array[index];
+            //     element.nombre=eliminarDiacriticos(element.nombre)
+            //     COMUNAS.push(element)
+            // }
 
-                var resultValid = COMUNAS.find(ele => eliminarDiacriticos(ele.nombre) === eliminarDiacriticos(comuna))
-                if (resultValid !== undefined) {
-                    resolve(resultValid.nombre);
-                    //NO BORRAR CONSOLE.LOG
-                    console.log("Comuna ", resultValid.nombre);
-                } else {
-                    resolve(null);
-                    //NO BORRAR CONSOLE.LOG
-                    console.log(resultValid);
-                }
+        // console.log("COMUNAS")
+        // console.log(COMUNAS)
 
-            } else { resolve(null); }
-        } else { resolve(null); }
+        let comuna = (eliminarDiacriticos(direccion).toUpperCase()).split(",");
+
+        // console.log("comuna")
+        // console.log(comuna)
+
+        let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));
+        if (result.length > 0) { resolve(result[0]); } else { resolve([]); }
+
     });
 };
 
-export const validarDireccionCorrecta=(direccion)=> {
+const getComunas = () => {
+    // console.log("buscando comunas... ")
+    var loading = true
+    var data = []
+    do {
+        // console.log("...")
+        data = store.getState().comunaForm.data
+        if (!store.getState().comunaForm.loading) {
+            loading = false
+        }
+    }
+    while (loading);
+    return data
+}
+
+export const validarDireccionCorrecta = (direccion) => {
 
     var string = direccion.toLowerCase();
     var patron = /[0-9]{2,}/;
-    
-    if(string.includes('calle')){
+
+    if (string.includes('calle')) {
         return true
-    }    
-    else if(string.includes('avenida')){
+    } else if (string.includes('avenida')) {
         return true
-    }
-    else if(string.includes('av')){
+    } else if (string.includes('av')) {
         return true
-    }
-    else if(string.includes('casa')){
+    } else if (string.includes('casa')) {
         return true
-    }    
-    else if(string.includes('dpto')){
+    } else if (string.includes('dpto')) {
         return true
-    }
-    else if(string.includes('departamento')){
+    } else if (string.includes('departamento')) {
         return true
-    }
-    else if(string.includes('villa')){
+    } else if (string.includes('villa')) {
         return true
-    }
-    else if(string.includes('poblacion')){
+    } else if (string.includes('poblacion')) {
         return true
-    }
-    else  if(patron.test(string)){
+    } else if (patron.test(string)) {
         return true
-    }else{
+    } else {
         return false
     }
 

@@ -51,6 +51,7 @@ const EditCompany = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"EditCompany-BtnBack"}
           dispatch={() => (creacionBP ? dispatch(handleSetStep(5.813)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
@@ -77,6 +78,7 @@ const EditCompany = () => {
 
         <div className={comunClass.bottomElement}>
           <Button
+            id={"EditCompany-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"

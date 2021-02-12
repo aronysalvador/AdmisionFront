@@ -30,10 +30,7 @@ const BoxQuestionResponsable = (props) => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -47,7 +44,7 @@ const BoxQuestionResponsable = (props) => {
         titulo3={"  en la empresa?"}
         tituloTestigo={tituloTestigo}
         contenidoTestigo={contenidoResponsable}
-        irA={() => dispatch(handleSetStep(18.1))}
+        irA={() => dispatch(handleSetStep(18.01))} //18.1
       />
     </div>
   );

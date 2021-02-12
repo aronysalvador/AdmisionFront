@@ -157,6 +157,22 @@ export const getComunStyle = makeStyles((theme) => ({
             height: "3.5em",
             marginTop: "5px",
         },
+        buttonAchs3: {
+            width: "100%",
+            background: "inherit",
+            border: "2px solid #007A33",
+            boxSizing: "border-box",
+            borderRadius: "0.71em",
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "1.125em",
+            lineHeight: "1.125em",
+            color: "#007A33",
+            textTransform: "inherit",
+            height: "3.5em",
+            marginTop: "5px",
+        },
         cardsButtonAlign: {
             display: "flex",
             justifyContent: "space-between",
@@ -554,6 +570,29 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: '30px 20px 20px', //'33px',
             textAlign: 'center',
         },
+        boxDesk2: {
+            width: '60%', //'416px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            textAlign: 'center',
+        },
+        boxDesk3: {
+            width: '80%',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '0 20px 0 20px',
+            textAlign: 'center',
+        },
         boxDeskCardBtn: {
             width: '60%',
             maxWidth: '860px',
@@ -565,6 +604,32 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: 'center',
             margin: 'auto',
             padding: '30px 100px',
+            textAlign: 'center',
+        },
+        boxDesk4: {
+            width: '60%', //'416px',
+            maxWidth: '860px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '5em 8em 4em 8em', //'33px',
+            textAlign: 'center',
+        },
+        boxCardBtn: {
+            width: '100%',
+            // maxWidth: '860px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '30px',
             textAlign: 'center',
         },
         boxDeskMap: {
@@ -619,6 +684,10 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: "30px 0",
             textAlign: "center",
         },
+        bottomElement2: {
+            padding: "15px",
+            textAlign: "center",
+        },
         bottomElementMap: {
             padding: '40px 0',
             textAlign: 'center',
@@ -657,6 +726,24 @@ export const getComunStyle = makeStyles((theme) => ({
         buttonAchs2: {
             width: "50%",
             background: "#FFFFFF",
+            border: "2px solid #007A33",
+            boxSizing: "border-box",
+            borderRadius: "0.71em",
+            fontFamily: "Catamaran",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "1.125em",
+            lineHeight: "1.125em",
+            color: "#007A33",
+            textTransform: "inherit",
+            height: "3.5em",
+            marginTop: "5px",
+            minWidth: "300px",
+            maxWidth: '60%', //"328px",
+        },
+        buttonAchs3: {
+            width: "50%",
+            background: "inherit",
             border: "2px solid #007A33",
             boxSizing: "border-box",
             borderRadius: "0.71em",
@@ -848,6 +935,13 @@ export const getComunStyle = makeStyles((theme) => ({
             minWidth: '300px',
             textAlign: 'left',
             margin: 'auto',
+        },
+        containerTextBox2: {
+            width: '50%',
+            minWidth: '300px',
+            textAlign: 'left',
+            margin: 'auto',
+            padding: "0 0 6em 0"
         },
         beginContainerDesk: {
             width: '90%',
@@ -1189,21 +1283,31 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex',
             minWidth: '315px',
             width: '100%',
-        }, 
+        },
         roundedNormalNoMargin: {
             display: 'flex',
             minWidth: '315px',
             width: '100%'
-        },       
+        },
         roundedBlue: {
             display: 'flex',
             minWidth: '315px',
             width: '100%',
             margin: '0 5px'
         },
+        roundedRadioBlue: {
+            display: 'flex',
+            width: '100%',
+            margin: '0 5px'
+        },
         roundedNormal: {
             display: 'flex',
             minWidth: '315px',
+            width: '100%',
+            margin: '0 5px'
+        },
+        roundedRadioNormal: {
+            display: 'flex',
             width: '100%',
             margin: '0 5px'
         },
@@ -1361,14 +1465,14 @@ export const getComunStyle = makeStyles((theme) => ({
     },
 
     tituloTextBox: {
-        fontFamily: "Catamaran",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: "1em",
-        lineHeight: "14px",
-        letterSpacing: ".03em",
+        fontFamily: "Catamaran !important",
+        fontStyle: "normal !important",
+        fontWeight: "normal !important",
+        fontSize: "1em !important",
+        lineHeight: "14px !important",
+        letterSpacing: ".03em !important",
         // textTransform: "uppercase",
-        color: "#787878",
+        color: "#787878 !important",
     },
     textErrorP2: {
         fontFamily: "Catamaran",
@@ -1484,7 +1588,23 @@ export const getComunStyle = makeStyles((theme) => ({
         // justifyContent: "center",
         backgroundColor: "#DFF3F2 !important"
     },
+    roundedRadioBlue: {
+        color: "#373737",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        backgroundColor: "#DFF3F2 !important"
+    },
     roundedNormal: {
+        color: "#373737",
+        border: "2px solid #787878 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        background: "#FFFFFF"
+    },
+    roundedRadioNormal: {
         color: "#373737",
         border: "2px solid #787878 !important",
         borderRadius: "10px",
@@ -1499,7 +1619,7 @@ export const getComunStyle = makeStyles((theme) => ({
         alignItems: "center",
         // justifyContent: "center",
         backgroundColor: "#DFF3F2 !important"
-    },    
+    },
     roundedNormalNoMargin: {
         color: "#373737",
         border: "2px solid #787878 !important",
@@ -1523,5 +1643,143 @@ export const getComunStyle = makeStyles((theme) => ({
     containerOpctionCompl: {
         display: "flex",
         marginLeft: "10px"
+    },
+    textPrimaryRelato: {
+        display: "inline-block",
+        width: "86%",
+        textAlign: "left",
+        verticalAlign: "top",
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        lineHeight: '25px',
+        color: '#373737',
+    },
+    textPrimaryRelatoBlue: {
+        width: "86%",
+        textAlign: "left",
+        verticalAlign: "top",
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        lineHeight: '25px',
+        color: '#00b2a9',
+        display: "contents",
+    },
+    backgroundGrey: {
+        background: '#f4f4f4',
+        padding: '1em',
+        borderRadius: '8px',
+        alignItems: "center"
+    },
+    backgroundWhite: {
+        background: '#fff',
+        padding: '1em',
+        borderRadius: '8px'
+    },
+    titleBlueDataCont: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '18px',
+        lineHeight: '20px',
+        color: '#00b2a9',
+    },
+    titleBlackDataCont: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '18px',
+        color: '#373737',
+    },
+    textPrimaryDeskDataCont: {
+        display: "inline-block",
+        width: "86%",
+        textAlign: "left",
+        verticalAlign: "top",
+    },
+    containerTextBoxDataCont: {
+        textAlign: 'left',
+    },
+    boxDeskTestigo: {
+        width: '100%', //'416px',
+        border: '0',
+        background: 'white !important',
+        boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+        borderRadius: '8px',
+        alignItems: 'center',
+        margin: 'auto',
+        padding: '30px 20px 20px', //'33px',
+        textAlign: 'center',
+    },
+    roundedBlue2: {
+        color: "#373737",
+        border: "2px solid #00B2A9 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        backgroundColor: "#DFF3F2 !important"
+    },
+    roundedNormal2: {
+        color: "#373737",
+        border: "2px solid #787878 !important",
+        borderRadius: "10px",
+        alignItems: "center",
+        // justifyContent: "center",
+        background: "#FFFFFF"
+    },
+    subtitleBlack2: {
+        fontFamily: 'Catamaran',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '28px',
+        color: '#373737',
+        display: "inline-block",
+        textAlign: "center",
+        verticalAlign: "top",
+        padding: "30px 0" //40px 0"
+    },
+    rootNew: {
+        position: "relative",
+        backgroundColor: "#F8F9FA",
+    },
+    mobileCaption: {
+        fontFamily: "Catamaran !important",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "13px  !important",
+        lineHeight: "16px",
+        color: "#787878",
+        textAlign: "left"
+    },
+    titleH1: {
+        fontFamily: "Catamaran",
+        fontSize: "32px",
+        fontStyle: "normal",
+        fontWeight: "700",
+        lineHeight: "34px",
+        letterSpacing: "0em",
+        textAlign: "center",
+    },
+    titleH3: {
+        fontFamily: "Catamaran",
+        fontSize: "20px",
+        fontStyle: "normal",
+        fontWeight: "700",
+        lineHeight: "28px",
+        letterSpacing: "0em",
+        textAlign: "center",
+    },
+    subTitleH4: {
+        fontFamily: "Catamaran",
+        fontSize: "20px",
+        fontStyle: "normal",
+        fontWeight: "400",
+        lineHeight: "28px",
+        letterSpacing: "0em",
+        textAlign: "center",
     }
 }));

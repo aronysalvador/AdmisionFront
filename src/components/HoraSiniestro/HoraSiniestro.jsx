@@ -4,17 +4,15 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 //import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
-const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
-  const minutosArray = [0, 10, 20, 30, 40, 50]
-  let indiceMinutosFromState;
-
-
+const HoraSiniestro = ({ onChange, horasFromState, indiceMinutosFromState, minutos, UpComponent }) => {
   const [horas, setHoras] = useState(() => {
     return !horasFromState ? new Date().getHours() - 1 : horasFromState;
   });
-  const [minutos, setMinutos] = useState(() => {
-    return new Date().getMinutes();
-  });
+  // const [minutos, setMinutos] = useState(() => {
+  //   return !minutosFromState ? new Date().getMinutes() : minutosFromState;
+  // });
+
+  const IdComponent = UpComponent ? UpComponent : "";
 
   const getMin = () => {
     let minutosActuales = new Date().getMinutes();
@@ -28,7 +26,7 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
   };
 
   const [indiceMinutos, setIndiceMinutos] = useState(() => {
-    return minutos === undefined ? getMin() : indiceMinutosFromState;
+    return indiceMinutosFromState === -1 ? getMin() : indiceMinutosFromState;
   });
 
   const [t, setT] = useState(0);
@@ -39,25 +37,13 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
   const comunStyle = getComunStyle();
   
   useEffect(() => {
-    if(indiceMinutos === undefined){
-      setIndiceMinutos(minuts)
-      return
-    } 
-    if (indiceMinutos === 6){
-      setIndiceMinutos(0);
-      return
-    }
-    if (indiceMinutos < 0){
-      setIndiceMinutos(5);
-      return
-    } 
     if (horas > 23) setHoras(0);
     if (horas < 0) setHoras(23);
-
-    setMinutos(parseInt(`${indiceMinutos}0`))
-    onChange({ horas, minutos: parseInt(`${indiceMinutos}0`) });
+    if (indiceMinutos === minutos.length) setIndiceMinutos(0);
+    if (indiceMinutos < 0) setIndiceMinutos(minutos.length-1);
+    onChange({ horas, indiceMinutos });
     // eslint-disable-next-line
-  }, [horas, indiceMinutos]);
+  }, [horas, minutos[indiceMinutos]]);
 
   const TRef = useRef(t);
   TRef.current = t;
@@ -150,7 +136,8 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
         </Grid>
         <Grid item className={comunStyle.boxHoras}>
           <div>
-            <Button
+            <Button 
+              id={IdComponent+"-Btn1"} 
               variant="text"
               // onClick={() => { setHoras((h) => --h) }}
               onMouseDown={() => {
@@ -185,6 +172,7 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
           {/* <div className={spaceStyle.spaceMin1} /> */}
           <div>
             <Button
+              id={IdComponent+"-Btn2"} 
               variant="text"
               // disabled={ horas === new Date().getHours()}
               // onClick={() => { setHoras((h) => ++h) }}
@@ -215,6 +203,7 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
         >
           <div>
             <Button
+              id={IdComponent+"-Btn3"} 
               variant="text"
               // onClick={() => { setIndiceMinutos((m) => --m)}}
               onMouseDown={() => {
@@ -229,10 +218,10 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {minutosArray[obtenPosicion(indiceMinutos-2)]}
+            {minutos[obtenPosicion(indiceMinutos-2)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {minutosArray[obtenPosicion(indiceMinutos-1)]}
+            {minutos[obtenPosicion(indiceMinutos-1)]}
             {/* {minutos === 0
               ? 59
               : minutos - 1 < 10
@@ -242,18 +231,19 @@ const HoraSiniestro = ({ onChange, horasFromState, minutos: minuts }) => {
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemPrincipal}>
             {/* {minutos < 10 ? "0" + minutos : minutos} */}
-            {minutosArray[indiceMinutos]}
+            {minutos[indiceMinutos]}
           </div>
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemsCostados}>
-            {minutosArray[obtenPosicion(indiceMinutos+1)]}
+            {minutos[obtenPosicion(indiceMinutos+1)]}
           </div>
           <div className={comunStyle.selectorRuedaItemsCostados2}>
-            {minutosArray[obtenPosicion(indiceMinutos+2)]}
+            {minutos[obtenPosicion(indiceMinutos+2)]}
           </div>
           {/* <div className={spaceStyle.space1} /> */}
           <div>
             <Button
+              id={IdComponent+"-Btn4"} 
               variant="text"
              // disabled={ indiceMinutos === getMin() && horas === new Date().getHours()}
              // onClick={() => { setIndiceMinutos((m) => ++m) }}

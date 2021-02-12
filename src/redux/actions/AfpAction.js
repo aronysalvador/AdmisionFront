@@ -4,6 +4,10 @@ import {
   GET_AFP_FAILURE,
 } from "../types/afpType";
 import Axios from "axios";
+import axiosRetry from 'axios-retry';
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+
+axiosRetry(Axios, { retries: 3 });
 
 export const getData = async () => {
   return Axios.get(window.REACT_APP_AFP);
@@ -17,10 +21,19 @@ export const getAFP = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallAFP(response.data.content[0]));
+      if(response.status === 200){
+        dispatch(successCallAFP(response.data.content[0]));
+      }else{
+        dispatch(updateForm("errorStep", 0));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AFP));
+        dispatch(handleSetStep(1004));
+      }
     })
     .catch((error) => {
       dispatch(errorCallAFP());
+      dispatch(updateForm("errorStep", 0));
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AFP));
+      dispatch(handleSetStep(1004));
     });
 
   const successCallAFP = (afp) => ({

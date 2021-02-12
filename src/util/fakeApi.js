@@ -258,3 +258,13 @@ const agenteCausaJson = [
 export const agenteCausa = async() => {
     return agenteCausaJson;
 };
+
+const CriteriosGravedadJson = [
+    { key: 49, value: "Otro", nombre: "1 - Otro" },
+    { key: 50, value: "Grave", nombre: "2 - Grave" },
+    { key: 51, value: "Fatal", nombre: "3 - Fatal" }
+];
+
+export const CriteriosGravedad = async() => {
+    return CriteriosGravedadJson;
+};

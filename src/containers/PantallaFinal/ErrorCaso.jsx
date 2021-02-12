@@ -51,6 +51,7 @@ const ErrorCaso = (props) => {
         <div className={comunClass.bottomElement} style={{padding: '1.145em'}}>
           {/* <div className={comunClass.paddingElement}> */}
             <Button
+              id="ErrorCaso-Btn1"
               className={[comunClass.buttonAchs]} //blackStyle.buttonFooterSpace
               variant="contained"
               onClick={() => dispatch(handleSetStep(27))}
@@ -59,9 +60,10 @@ const ErrorCaso = (props) => {
             </Button>
             <div className={spaceStyle.space1}></div>
             <Button
+              id="ErrorCaso-Btn2"
               className={comunClass.buttonAchs2}
               variant="contained"
-              onClick={() => dispatch(handleSetStep(1.1))}
+              onClick={() => dispatch(handleSetStep(1))} // 1.1 Empecemos eliminada
             >
               Volver al inicio
             </Button>

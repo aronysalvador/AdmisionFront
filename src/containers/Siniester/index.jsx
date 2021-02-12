@@ -18,7 +18,7 @@ import enfermedad from './../../img/enfermedad-profesional.svg'
 import enfermedadActive from './../../img/enfermedad-profesional-active.svg'
 import licenciaCard from './../../img/licenciaCard.png'
 
-const Identification = (props) => {
+const Siniester = (props) => {
 
   const { dispatch, addmissionForm, addmissionForm: { tipoSiniestro }, microsoftReducer } = props
   const classes = siniestroStyle()
@@ -30,6 +30,9 @@ const Identification = (props) => {
 
   const handlenext = (data) => {
     dispatch(updateForm("tipoSiniestro", data));  
+    if(data.Id === 2) {//Accidente de Trayecto
+      dispatch(updateForm("AccidenteEnSucursal", "no"))
+    }  
     dispatch(handleSetStep(3));   
   }
 
@@ -38,7 +41,7 @@ const Identification = (props) => {
       <Header userMsal={ microsoftReducer.userMsal }/>
     </div>
     <div className={comunClass.beginContainerDesk}>
-      <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
+      <Cabecera id={"Siniester-BtnBack"} dispatch={() => dispatch(handleSetStep(1))} percentage={addmissionForm.percentage} color={'#373737 !important'} />
     </div>
     
     <div className={comunClass.displayDesk}>
@@ -63,7 +66,7 @@ const Identification = (props) => {
       <div className={spaceStyle.space2} />
       <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
-          <Button className={classes.button} variant="contained" onClick={()=>{ 
+          <Button id={"Siniester-Btn1"} className={classes.button} variant="contained" onClick={()=>{ 
               handlenext({ Id:1, Descripcion: "Accidente Trabajo" })
             }}
             onMouseOver={() =>{ setButtonOverTrabajo(true) }}
@@ -78,8 +81,8 @@ const Identification = (props) => {
         </div>
         <div  className={spaceStyle.space1} />
         <div className={comunClass.alignBtnSiniesterRight}>
-          <Button className={classes.button} variant="contained" onClick={()=>{ 
-             handlenext({ Id:2, Descripcion: "Accidente Trayecto" })
+          <Button id={"Siniester-Btn2"} className={classes.button} variant="contained" onClick={()=>{ 
+              handlenext({ Id:2, Descripcion: "Accidente Trayecto" })
             }}
             onMouseOver={() =>{ setButtonOverTrayecto(true) }}
             onMouseOut={() =>{ setButtonOverTrayecto(false) }}
@@ -95,7 +98,7 @@ const Identification = (props) => {
       </div>
       <div className={comunClass.displayOnlyDeskInline}>
         <div className={comunClass.alignBtnSiniesterLeft}>
-          <Button className={classes.button} variant="contained" onClick={()=>{ 
+          <Button id={"Siniester-Btn3"} className={classes.button} variant="contained" onClick={()=>{ 
               handlenext({ Id:3, Descripcion: "Enfermedad Profesional" })
             }}
             onMouseOver={() =>{ setButtonOverEP(true) }}
@@ -110,7 +113,7 @@ const Identification = (props) => {
         </div>  
         <div  className={spaceStyle.space1} />
         <div className={comunClass.alignBtnSiniesterRight}>
-          <Button  className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
+          <Button  id={"Siniester-Btn4"} className={classes.button} variant="contained" disabled={true} style={{border: 0}}>
             <div><img alt="Licencia Rechazada" src={licenciaCard} className={classes.imgButton} /></div>
             <div>Licencia Rechazada <br/>
               <span className={classes.textButton}>Por Isapre o Fonasa</span>
@@ -132,4 +135,4 @@ const mapStateToProps = ({ addmissionForm,  microsoftReducer}) => {
     microsoftReducer: microsoftReducer
   }
 }
-export default connect(mapStateToProps)(Identification);
+export default connect(mapStateToProps)(Siniester);

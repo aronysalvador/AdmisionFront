@@ -18,7 +18,7 @@ import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
 
 const AlertaCalificacion = () => {
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer,addmissionForm: { categoriaOcupacionalForm } } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
   const welcomeStyle = getWelcomeStyle();
@@ -35,7 +35,8 @@ const AlertaCalificacion = () => {
         <div className={welcomeStyle.beginContainer}>
           <div className={comunClass.displayMobile}>
             <Cabecera
-              dispatch={() => dispatch(handleSetStep(26))}
+              id="AlertaCalificacion-BtnBack1"
+              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) }
               color="#373737"
               percentage={-1}
               noSpace={true}
@@ -43,7 +44,8 @@ const AlertaCalificacion = () => {
           </div>
           <div className={comunClass.displayDesk}>
             <Cabecera 
-              dispatch={() => dispatch(handleSetStep(26))} 
+              id="AlertaCalificacion-BtnBack2"
+              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) } 
               color={"#fff" } 
               percentage={-1} 
               noSpace={true} />
@@ -113,6 +115,7 @@ const AlertaCalificacion = () => {
             <div className={welcomeStyle.bottomBegin}>
               <div className={comunClass.paddingElement}>
                 <Button
+                  id="AlertaCalificacion-Btn1"
                   className={[comunClass.buttonAchs, blackStyle.buttonFooterSpace]}
                   variant="contained"
                   onClick={() => dispatch(handleSetStep(27))}
@@ -121,6 +124,7 @@ const AlertaCalificacion = () => {
                 </Button>
                 <div className={spaceStyle.space1} />
                 <Button
+                  id="AlertaCalificacion-Btn2"
                   className={comunClass.buttonAchs2}
                   variant="contained"
                   onClick={() => dispatch(handleSetStep(26.2))}

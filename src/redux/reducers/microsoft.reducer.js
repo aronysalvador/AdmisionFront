@@ -1,4 +1,4 @@
-import { MSAL_INIT, MSAL_SUCCESS, MSAL_FAILURE } from '../types/microsoftType'
+import { MSAL_INIT, MSAL_SUCCESS, MSAL_FAILURE, SAVE_TOKEN } from '../types/microsoftType'
 //import storage from '../../../config/storage'
 
 /*
@@ -25,6 +25,12 @@ export default function microsoft(state = initialState, action) {
         authenticatedMsal: true,
         userMsal: action.payload,
         loading: false,
+      }
+
+    case SAVE_TOKEN:
+      return {
+        ...state,
+        token: action.payload
       }
 
     case MSAL_FAILURE:

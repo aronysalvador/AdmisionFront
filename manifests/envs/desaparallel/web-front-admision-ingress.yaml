@@ -3,6 +3,11 @@ kind: Ingress
 metadata:
   name: web-front-admision-ingress-sprintName
   annotations:
+       nginx.ingress.kubernetes.io/enable-cors: "true"
+       nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+       nginx.ingress.kubernetes.io/configuration-snippet: |
+          more_set_headers "Access-Control-Allow-Origin: $http_origin";
+          more_set_headers "'Access-Control-Allow-Headers: Accept,Content-Type,Keep-Alive,Origin,x-access-token' always";
        kubernetes.io/ingress.class: nginx
        cert-manager.io/cluster-issuer: letsencrypt
        nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -24,6 +29,10 @@ spec:
         backend:
           serviceName: web-front-firmadigital-service-sprintName
           servicePort: 80   
+      - path: /web-firmadigital-totem(/?.*)
+        backend:
+          serviceName: web-front-firmadigital-service-totem-sprintName
+          servicePort: 80             
       - path: /web-digitalizador-documentos(/?.*)
         backend:
           serviceName: web-front-digitalizaciondocumentos-service-sprintName
