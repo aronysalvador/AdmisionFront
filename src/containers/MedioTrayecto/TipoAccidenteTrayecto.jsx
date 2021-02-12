@@ -29,7 +29,6 @@ const TipoAccidenteTrayecto = () => {
   const [direccionValida, setDireccionValida] = useState(false)
 
 
-      
   const clearData = () => {
       dispatch(updateForm("sucursalEmpresaSiniestro", ""))
       dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
@@ -56,9 +55,8 @@ const TipoAccidenteTrayecto = () => {
     }else{
       setActivo(true)
     }
-      console.log(direccionValida)
-      console.log(tipoAccidenteTrayectoForm)
-
+      // console.log(direccionValida)
+      // console.log(tipoAccidenteTrayectoForm)
   },[direccionValida, tipoAccidenteTrayectoForm])
 
   return (
