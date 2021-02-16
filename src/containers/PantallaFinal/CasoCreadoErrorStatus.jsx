@@ -12,6 +12,7 @@ import Header from "../../components/header/index";
 import { Grid } from '@material-ui/core';
 import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
+import { initSessionDate } from "./../../redux/actions/Log";
 
 const CasoCreadoErrorStatus = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
@@ -120,7 +121,7 @@ const CasoCreadoErrorStatus = (props) => {
                 id="CasoCreadoErrorDoc-Btn1"
                 className={[comunClass.buttonAchs, comunClass.pantallaFinalBotones]}
                 variant="contained"
-                onClick={() => dispatch(handleSetStep(1))} // 1.1 Empecemos eliminada
+                onClick={() =>{dispatch(initSessionDate("")); dispatch(handleSetStep(1))}} // 1.1 Empecemos eliminada
               >
                 Firma de documentos en SAP
               </Button>
