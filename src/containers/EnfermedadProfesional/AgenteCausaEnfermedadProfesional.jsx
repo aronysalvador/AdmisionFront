@@ -173,7 +173,7 @@ const AgenteCausaEnfermedadProfesional = () => {
             id={"AgenteCausaEP-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
-            disabled={agenteCausa?.length <= 4 || molestia?.length <= 4 || !validFecha}
+            disabled={!agenteCausa?.id || molestia?.length <= 4 || !validFecha}
             onClick={() => {
               dispatch(updateForm("AgenteCausaEP", agenteCausa));
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
