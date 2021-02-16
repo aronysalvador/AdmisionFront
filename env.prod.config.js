@@ -33,3 +33,4 @@ window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://prod.salud.achs.cl/orquestad
 window.REACT_APP_CRITERIOS = "https://prod.salud.achs.cl/orquestador/api/sap/criteriosGravedad"
 window.REACT_APP_ADMISION = "https://prod.salud.achs.cl/orquestador/api/admision/"
 window.REACT_APP_GRUPOS= "https://prod.salud.achs.cl/orquestador/api/datosPaciente/grupo/"
+window.APPLICATION_INSIGHTS = "b7b4d059-8a03-41c1-879e-5ecffd6f36ff"

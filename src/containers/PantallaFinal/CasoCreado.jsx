@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Header from "../../components/header/index";
 import warning from './../../img/casoCreado.svg'
+import { initSessionDate } from "./../../redux/actions/Log";
 
 const CasoCreado = () => {
   const spaceStyle = getSpaceStyle();
@@ -45,7 +46,7 @@ const CasoCreado = () => {
                         <Button
                             className={[comunClass.buttonAchs3]} 
                             variant="contained"
-                            onClick={() => dispatch(handleSetStep(27))}
+                            onClick={() =>{ dispatch(initSessionDate("")); dispatch(handleSetStep(27))}}
                             style={{float: "right"}}
                             >
                             Ir a Firma Digital Admisión
@@ -55,7 +56,7 @@ const CasoCreado = () => {
                         <Button
                             className={comunClass.buttonAchs}
                             variant="contained"
-                            onClick={() => dispatch(handleSetStep(1))} // 1.1 Empecemos eliminada
+                            onClick={() =>{  dispatch(initSessionDate("")); dispatch(handleSetStep(1))}} // 1.1 Empecemos eliminada
                             style={{float: "left"}}
                             >
                             Ir a Firma Digital Egreso en SAP

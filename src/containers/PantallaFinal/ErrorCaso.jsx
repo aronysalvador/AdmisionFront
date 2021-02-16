@@ -8,6 +8,7 @@ import { Button } from "@material-ui/core";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Header from "../../components/header/index";
 import warning from './../../img/WarningErrorCaso.png'
+import { initSessionDate } from "./../../redux/actions/Log";
 
 const ErrorCaso = (props) => {
   const spaceStyle = getSpaceStyle();
@@ -63,7 +64,7 @@ const ErrorCaso = (props) => {
               id="ErrorCaso-Btn2"
               className={comunClass.buttonAchs2}
               variant="contained"
-              onClick={() => dispatch(handleSetStep(1))} // 1.1 Empecemos eliminada
+              onClick={() =>{ dispatch(initSessionDate("")); dispatch(handleSetStep(1))}} // 1.1 Empecemos eliminada
             >
               Volver al inicio
             </Button>

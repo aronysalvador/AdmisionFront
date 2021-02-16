@@ -1,4 +1,3 @@
-// tuve que apuntar performance a trayecto para no tener que desplegar los otros repos
 window.REACT_APP_ISAPRES="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/sap/isapres/"
 window.REACT_APP_AFP="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/sap/afp/"
 window.REACT_APP_NACIONALIDADES="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/datosPaciente/nacionalidades/"
@@ -31,4 +30,7 @@ window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO = "https://desa.sprintName.40.121.134.2
 window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getMediosTransporte/"
 window.REACT_APP_PARTES_DEL_CUERPO = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/getPartesCuerpo/"
 window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/trayecto/causalMolestias"
+window.REACT_APP_CRITERIOS = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/sap/criteriosGravedad"
 window.REACT_APP_ADMISION = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/admision/"
+window.REACT_APP_GRUPOS="https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/datosPaciente/grupo/"
+window.APPLICATION_INSIGHTS = "ab61277f-d80c-4e3f-8d56-d48f5f2b23e6"

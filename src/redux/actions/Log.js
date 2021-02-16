@@ -5,7 +5,8 @@ import {
     POST_LOG_INIT_STEP,
     POST_LOG_SUCCESS_STEP,
     POST_LOG_FAILURE_STEP,
-    LOAD_LOG_STATE_SESSIONSTORAGE
+    LOAD_LOG_STATE_SESSIONSTORAGE,
+    INIT_SESSION_DATE
   } from "../types/LogType";
   import Axios from "axios";
   
@@ -30,6 +31,12 @@ import {
     }
 
     return await Axios.post(window.REACT_APP_LOG, params);
+  };
+
+  export const initSessionDate = () => (dispatch) => {
+    dispatch({
+      type: INIT_SESSION_DATE
+    });
   };
   
   export const handleLog = (datos) => (dispatch) => {
