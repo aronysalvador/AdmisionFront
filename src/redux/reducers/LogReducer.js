@@ -18,7 +18,7 @@ import {
     ID: 0,
     loading: false,
     error: null,
-    fecha: ""
+    fecha: getDate()
   };
   
   export default function logForm(state = INITIAL_STATE, action) {
@@ -30,8 +30,10 @@ import {
           fecha: getDate()
       };
 
-      case LOAD_LOG_STATE_SESSIONSTORAGE:
+      case LOAD_LOG_STATE_SESSIONSTORAGE:{
+        action.payload.fecha = state.fecha
         return { ...action.payload };
+      }
 
       case POST_LOG_INIT:
       case POST_LOG_INIT_STEP:
