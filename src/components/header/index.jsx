@@ -33,8 +33,9 @@ const Header = (props) => {
             <Grid className={comunClass.tituloCerrarSesion}>
               {displayName}
             </Grid>
-            {(step === 1 || step === 1.1 || step === 40 || step === 1001) && 
+            {(step === 1 || step === 40 || step === 1001) && // step === 1.1 ||
               <Grid
+                id={"Header-BtnEnd"}
                 className={comunClass.tituloCerrarSesion}
                 style={{ cursor: 'pointer'}}
                 onClick={()=> dispatch(logout())}

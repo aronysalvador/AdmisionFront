@@ -17,6 +17,8 @@ import excelent from './../../img/excelent.svg'
 import espera from './../../img/espera.svg'
 import work from './../../img/work.svg'
 
+import { initSessionDate } from "./../../redux/actions/Log";
+
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
   const { siniestroID, rut } = addmissionForm;
@@ -69,7 +71,7 @@ const PantallaFinal = (props) => {
                 />
                 <CajaRutSiniestro
                   textoPrincipal={rut}
-                  textoSecundario="Rut Paciente"
+                  textoSecundario="N° Doc. Identidad"
                 />
               </div>
             </div>
@@ -121,9 +123,10 @@ const PantallaFinal = (props) => {
                 <div className={spaceStyle.spaceMin1} />
               </div>
               <Button
+                id="PantallaFinal-Btn1"
                 className={[comunClass.buttonAchs, comunClass.pantallaFinalBotones]}
                 variant="contained"
-                onClick={() => dispatch(handleSetStep(1.1))}
+                onClick={() =>{dispatch(initSessionDate("")); dispatch(handleSetStep(1))}} // 1.1 Empecemos eliminada
               >
                 Firma de documentos en SAP
               </Button>

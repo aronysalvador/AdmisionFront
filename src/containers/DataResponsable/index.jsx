@@ -48,6 +48,7 @@ const DataResponsable = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="DataResponsable-BtnBack"
           dispatch={() => dispatch(handleSetStep(15))}
           percentage={percentage}
         />
@@ -78,7 +79,7 @@ const DataResponsable = () => {
           </div>
           <div>
             <TextField
-              id="nombre"
+              id="DataResponsable-Input1"
               value={nombre}
               onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
               helperText="Ejemplo: Luis Morales"
@@ -112,7 +113,7 @@ const DataResponsable = () => {
           </div>
           <div>
             <TextField
-              id="cargos"
+              id="DataResponsable-Input2"
               value={cargos}
               onChange={(e) => saveCargos(Format.caracteresInvalidos(e.target.value))}
               helperText="Ejemplo: Jefe de área, Prevencionista"
@@ -139,6 +140,7 @@ const DataResponsable = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id="DataResponsable-Btn1"
             className={comunClass.buttonAchs}
             variant="contained"
             type="submit"

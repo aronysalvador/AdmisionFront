@@ -14,9 +14,11 @@ const FechaSiniestroDesk = ({
   daysFromState,
   monthFromState,
   yearFromState,
-  textLabel
+  textLabel,
+  UpComponent
 }) => {
 
+  const IdComponent = UpComponent ? UpComponent : "";
   if(daysFromState?.toString().length === 1){
     daysFromState = ("0" + daysFromState).slice(-2)
   }
@@ -46,6 +48,7 @@ const FechaSiniestroDesk = ({
       <div>
         <Grid
           className={comunClass.tituloTextBox}
+          style={{marginBottom:'15px'}}
         >
           {textLabel}
         </Grid>
@@ -53,6 +56,7 @@ const FechaSiniestroDesk = ({
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
+            id={IdComponent+"-Desk-DatePicker1"} 
             inputVariant="outlined"
             disableFuture
             format="DD-MM-YYYY"
@@ -60,7 +64,7 @@ const FechaSiniestroDesk = ({
             onChange={onDateChange}
             animateYearScrolling            
             disableToolbar  // seleccionar año
-            InputAdornmentProps={{ position: 'start', paddingLeft: '6px'}}
+            InputAdornmentProps={{ position: 'start', padding: '0 0 0 6px'}}
             fullWidth
             invalidDateMessage="Formato invalido"
             maxDateMessage="La fecha no puede exceder al día de hoy"

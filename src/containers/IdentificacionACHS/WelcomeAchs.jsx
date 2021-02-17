@@ -10,36 +10,33 @@ import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
 import { logout } from "../../redux/actions/microsoft.action";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { makeStyles } from '@material-ui/core/styles';
-import StarIcon from '@material-ui/icons/Star';
+// import { makeStyles } from '@material-ui/core/styles';
+// import StarIcon from '@material-ui/icons/Star';
 import Header from "../../components/header/index";
 import hospital from './../../img/hospital.png'
-import check from './../../img/hospital.png'
+// import check from './../../img/icon-check.svg'
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
 const SessionAchs = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const contenidoCentroAchs = [
     addmissionForm.centrosForm.Centro_m,
   ];
 
   return (
-    <div className={[comunStyle.rootWhite, comunStyle.headerSesion]}>
+    <div className={comunStyle.rootWhite}>
       <div className={comunStyle.displayDesk}> 
-      <Header
-        userMsal={ microsoftReducer.userMsal }
-        // step={1}
-      />
+      <Header userMsal={ microsoftReducer.userMsal} />
       </div>
       <div className={welcomeStyle.backgroundBoxAchs}>
         <div className={comunStyle.displayDeskFlex}>
@@ -80,7 +77,7 @@ const SessionAchs = (props) => {
                 Admisionista
               </Grid>
             </div>
-            <div className={welcomeStyle.marginStar}>
+            {/* <div className={welcomeStyle.marginStar}>
               <Button
                 variant="contained"
                 size="small"
@@ -89,23 +86,24 @@ const SessionAchs = (props) => {
               >
                 4.9
               </Button>
-            </div>
+            </div> */}
           </div>
           <div className={spaceStyle.space1} />
           <div className={welcomeStyle.boxCentroAlignDesk}>
             <div className={welcomeStyle.boxCentroAlign} >
-              <div className={welcomeStyle.boxCentroAchs} 
-              style={{ cursor: 'pointer'}}
-              onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
+              <div className={welcomeStyle.boxCentroAchs}
+                id={"SessionAchs-Btn1"} 
+                style={{ cursor: 'pointer'}}
+                onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
                 <img
                   alt="Centro ACHS"
                   src={hospital}
                   style={{ color: "#007A33" }}
                 />
-                <div className={comunStyle.textCenter}> { contenidoCentroAchs } </div>
+                <div className={comunStyle.textCenter} style={{textAlign: 'center', paddingTop: '5px'}}> { contenidoCentroAchs } </div>
                 <div className={welcomeStyle.textBoxAchs}>Centro</div>
               </div>
-              <div className={welcomeStyle.boxCentroAchs}>
+              {/* <div className={welcomeStyle.boxCentroAchs}>
                 <img
                   alt="Tiempo Admisión Promedio"
                   src={check}
@@ -113,7 +111,7 @@ const SessionAchs = (props) => {
                 />
                 8 minutos
                 <div className={welcomeStyle.textBoxAchs}>Admisión promedio</div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -138,9 +136,10 @@ const SessionAchs = (props) => {
             <div className={spaceStyle.space1} />
           </div>
           <Button
+            id={"SessionAchs-Btn2"} 
             className={comunStyle.buttonAchs}
             variant="contained"
-            onClick={() => dispatch(handleSetStep(1.1))}
+            onClick={() => dispatch(handleSetStep(2))} //1.1 Empecemos eliminada
           >
             Nueva admisión
           </Button>

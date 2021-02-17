@@ -1,35 +1,37 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { getWelcomeStyle } from "../../css/welcomeStyle";
 import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
-import { Button, Typography, withStyles } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import Checkbox from '@material-ui/core/Checkbox';
 import relato from './../../img/relato.svg'
 import editaRelato from './../../img/editar-relato.svg'
 import { Format } from "../../helpers/strings";
+import ListadoCriterio from "../../components/CriterioGravedad/ListadoCriterio";
 
-const RelatoFinal = (props) => {
-  const { dispatch, addmissionForm, microsoftReducer } = props;
-  const { relatoAccidente, volverAConcatenar, tipoSiniestro, coberturaSoap } = addmissionForm;
+const RelatoFinal = () => {
+
+  const {
+    addmissionForm: { lugarAccidente, descripcionAccidente, objetoAccidente, relatoAccidente, volverAConcatenar, tipoSiniestro, criteriosForm, percentage },
+    microsoftReducer
+  } = useSelector((state) => state, shallowEqual);
+
+  const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const welcomeStyle = getWelcomeStyle();
 
   const getRelato = () => {
     return (
-      "Al momento del accidente estaba " +
-      addmissionForm.lugarAccidente +
-      ". Lo que ocurrió fue que " +
-      addmissionForm.descripcionAccidente +
-      ". El accidente ocurrió con " +
-      addmissionForm.objetoAccidente + "."
+      lugarAccidente +
+      ". " +
+      descripcionAccidente +
+      ". " +
+      objetoAccidente + "."
     );
   };
 
@@ -42,24 +44,17 @@ const RelatoFinal = (props) => {
       dispatch(updateForm("relatoAccidenteTemporal", localValue));
     }
   });
-
-  const [stateCheckbox, setStateCheckbox] = useState(() => {
-    return coberturaSoap === "si" ? true : false 
-  });
-console.log(stateCheckbox);
-console.log(coberturaSoap);
-  const handleCheckBoxChange = (event) => {
-    setStateCheckbox( event.target.checked );
-  };
-
-  var respSoap = stateCheckbox ? "si" : "no" ;
+  
+  // Listado Criterio de Gravedad
+  const { data: criterioList } = useSelector((state) => state.criteriosForm, shallowEqual);
+  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : {id: 1, descripcion: "Otro"});
 
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
-    dispatch(updateForm("coberturaSoap", respSoap));
+    dispatch(updateForm("criteriosForm", criterioGravedad));
     if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
-       dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
+      dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
     dispatch(handleSetStep("x",8.1))
   };
@@ -69,17 +64,8 @@ console.log(coberturaSoap);
   };
 
   const isDisabled = () => {
-    return localValue.length < 15;
+    return localValue.length < 15 || !criterioGravedad;
   };
-
-  const BlueCheckbox = withStyles({
-    root: {
-      '&$checked': {
-        color: '#00B2A9',
-      },
-    },
-    checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
 
   return (
     <div className={comunClass.root}>
@@ -88,8 +74,9 @@ console.log(coberturaSoap);
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(8))}
-          percentage={addmissionForm.percentage}
+          id={"RelatoFinal-BtnBack"}
+          dispatch={() => dispatch(handleSetStep(6.06))}
+          percentage={percentage}
         />
       </div>
       <div>
@@ -118,7 +105,7 @@ console.log(coberturaSoap);
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
                     </div>
                     <TextField
-                      id="txtRespuesta"
+                      id={"RelatoFinal-Lbl1"}
                       label=""
                       value={localValue}
                       margin="dense"
@@ -149,6 +136,7 @@ console.log(coberturaSoap);
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
                     <div>
                       <div
+                        id={"RelatoFinal-Btn1"}
                         className={comunClass.buttonEditRelato}
                         onClick={() => setEditable(true)}
                       >
@@ -162,20 +150,26 @@ console.log(coberturaSoap);
                   </div>
                 </div>
               )}
-
-              <Typography className={welcomeStyle.switchText}>
-                <Grid component="span">
-                  <BlueCheckbox checked={stateCheckbox} onChange={handleCheckBoxChange} />
-                </Grid>
-                Corresponde a cobertura &nbsp;<b>SOAP</b>
-              </Typography>
             </div>
 
             <div className={comunClass.displayMobile}>
-            <div className={spaceStyle.space1} />
-          </div>
+              <div className={spaceStyle.space1} />
+            </div>
+            {!isEdit &&
+            <div className="row">
+              <ListadoCriterio 
+                id="RelatoFinal-ListCriterio"  
+                title="Criterio de gravedad" 
+                data={criterioGravedad} 
+                setData={setCriterioGravedad} 
+                listado={criterioList}  
+                options={['id','descripcion']}
+              />
+            </div>}
+            
             <div className={comunClass.bottomElement}>
               <Button
+                id={"RelatoFinal-Btn2"}
                 className={comunClass.buttonAchs}
                 variant="contained"
                 type="submit"
@@ -194,10 +188,4 @@ console.log(coberturaSoap);
   );
 };
 
-const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
-  return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
-  };
-};
-export default connect(mapStateToProps)(RelatoFinal);
+export default RelatoFinal;

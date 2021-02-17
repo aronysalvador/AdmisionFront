@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField } from "@material-ui/core";
+import { Button,  TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -43,6 +43,7 @@ const ParteCuerpoAfectada = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"ParteCuerpoAfectada-BtnBack"}
           dispatch={() => dispatch(handleSetStep(8.1))}
           percentage={percentage}
         />
@@ -62,12 +63,14 @@ const ParteCuerpoAfectada = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox}>
+          <Grid className={comunClass.tituloTextBox} style={{marginBottom: '10px'}}>
             Ingresa la parte del cuerpo lesionada
-          </Typography>
+          </Grid>
           <AutoComplete
+            id={"ParteCuerpoAfectada-Lbl1"}
             inputValue={parteAfectada}
             freeSolo
+            size="small"
             options={sugerenciasParteCuerpo}
             onInputChange={(event, value) => {
               event&&setParteAfectada(value);
@@ -81,7 +84,7 @@ const ParteCuerpoAfectada = () => {
                 inputProps={{
                   ...params.inputProps,
                   maxLength: 100,
-                  style: { marginTop: "7px" },
+                  // style: { marginTop: "7px" },
                 }}
               />
             )}
@@ -89,10 +92,11 @@ const ParteCuerpoAfectada = () => {
 
           <div className={spaceStyle.space2} />
 
-          <Typography className={comunClass.tituloTextBox}>
+          <Grid className={comunClass.tituloTextBox}>
             Ingresa la información adicional al relato
-          </Typography>
+          </Grid>
           <TextField
+            id={"ParteCuerpoAfectada-Lbl2"}
             value={otrasCircunstancias}
             margin="dense"
             variant="outlined"
@@ -110,12 +114,14 @@ const ParteCuerpoAfectada = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"ParteCuerpoAfectada-Btn1"}
             disabled={parteAfectada?.length < 3}
             className={comunClass.buttonAchs}
             variant="contained"
             onClick={() => {
               dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, ParteAfecta: parteAfectada, Otras: otrasCircunstancias}));
-              dispatch(handleSetStep(10));
+              // dispatch(handleSetStep(10));
+              dispatch(handleSetStep(10.1));
             }}
           >
             Continuar

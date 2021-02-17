@@ -14,7 +14,7 @@ const SolicitarDocumentos = () => {
   const comunClass = getComunStyle();
   const dispatch = useDispatch();
 
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+  const { addmissionForm: { step }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={comunClass.root}>
@@ -38,9 +38,15 @@ const SolicitarDocumentos = () => {
         <div className={comunClass.bottomElement} style={{padding: '1.145em'}}>
           {/* <div className={comunClass.paddingElement}> */}
             <Button
+              id="SolicitarDocumentos-Btn1"
               className={[comunClass.buttonAchs]} //blackStyle.buttonFooterSpace
               variant="contained"
-              onClick={() => dispatch(handleSetStep(19.2))}
+              onClick={() => 
+                {step === 19.22 ?
+                  dispatch(handleSetStep(19.23)) : dispatch(handleSetStep(19.4))
+                }
+                // dispatch(handleSetStep(19.23))
+              }
             >
               Entendido
             </Button>

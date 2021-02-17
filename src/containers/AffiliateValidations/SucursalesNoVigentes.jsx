@@ -29,6 +29,7 @@ const SucursalesNoVigentes = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
+          id={"SucursalesNoVigentes-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.4))} 
           color="#FFFFFF"
         />
@@ -56,8 +57,9 @@ const SucursalesNoVigentes = (props) => {
           <div className={spaceStyle.space2} />
         </div>
           <Button
+            id={"SucursalesNoVigentes-Btn1"}
             className={blackStyle.buttonFooter}
-            onClick={() => { dispatch(handleSetStep(1.1)) }}
+            onClick={() => { dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
           >
             Volver al inicio
           </Button>

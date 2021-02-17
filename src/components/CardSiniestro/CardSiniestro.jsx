@@ -17,6 +17,7 @@ const CardSiniestro = (props) => {
 
   return (
     <div
+      id={"CardSiniestro-Btn"+id}
       className={styles.container}
       onClick={() => {
         dispatch(updateForm("siniestroDetalle", siniestro));

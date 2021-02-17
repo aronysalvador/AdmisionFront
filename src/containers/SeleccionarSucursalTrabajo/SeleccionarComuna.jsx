@@ -72,6 +72,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"SeleccionarComuna-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.4))}
           percentage={percentage}
         />
@@ -95,10 +96,11 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
           <div className={spaceStyle.space2} />
         </div> 
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox}>
+          <Typography className={comunClass.tituloTextBox}  style={{marginBottom: '8px'}}>
             Comuna
           </Typography>
           <AutoComplete
+            id={"SeleccionarComuna-Lbl1"}
             value={comuna}
             onChange={(event, value) => {
               const sucursalesComuna = sucursalesEmpresa.filter(
@@ -123,6 +125,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id={"SeleccionarComuna-Btn1"}
             className={comunClass.buttonAchs}
             variant="contained"
             disabled={!comuna}
@@ -139,6 +142,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
                 dispatch(updateForm("SucursalEmpresa", sucursales[0].nombre));
                 dispatch(updateForm("DireccionEmpresa", sucursales[0].direccion));
                 dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
+                dispatch(updateForm("comunaEmpresa", sucursales[0].comuna))
                 dispatch(
                   updateForm("sucursalCargo", sucursales[0].sucursalCargo)
                 );

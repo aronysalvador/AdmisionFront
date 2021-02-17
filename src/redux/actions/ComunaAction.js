@@ -4,6 +4,10 @@ import {
   GET_COMUNA_FAILURE,
 } from "../types/comunaType";
 import Axios from "axios";
+import axiosRetry from 'axios-retry';
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+
+axiosRetry(Axios, { retries: 3 });
 
 export const getData = async () => {
   return Axios.get(window.REACT_APP_COMUNA);
@@ -17,10 +21,19 @@ export const getComuna = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallComuna(response.data.content[0]));
+      if(response.status === 200){
+        dispatch(successCallComuna(response.data.content[0]));
+      }else{
+        dispatch(updateForm("errorStep", 0));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_COMUNA));
+        dispatch(handleSetStep(1004));
+      }
     })
     .catch((error) => {
       dispatch(errorCallComuna());
+      dispatch(updateForm("errorStep", 0));
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_COMUNA));
+      dispatch(handleSetStep(1004));
     });
 
   const successCallComuna = (comuna) => ({
@@ -32,3 +45,4 @@ export const getComuna = () => async (dispatch) => {
     type: GET_COMUNA_FAILURE,
   });
 };
+

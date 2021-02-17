@@ -3,6 +3,11 @@ kind: Ingress
 metadata:
   name: web-stg-front-admision-ingress
   annotations:
+       nginx.ingress.kubernetes.io/enable-cors: "true"
+       nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+       nginx.ingress.kubernetes.io/configuration-snippet: |
+          more_set_headers "Access-Control-Allow-Origin: $http_origin";
+          more_set_headers "'Access-Control-Allow-Headers: Accept,Content-Type,Keep-Alive,Origin,x-access-token' always";
        kubernetes.io/ingress.class: nginx
        cert-manager.io/cluster-issuer: letsencrypt
        nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -23,13 +28,13 @@ spec:
       - path: /web-firmadigital(/?.*)
         backend:
           serviceName: web-stg-front-firmadigital-service
-          servicePort: 80   
+          servicePort: 80 
+      - path: /web-firmadigital-totem(/?.*)
+        backend:
+          serviceName: web-stg-front-firmadigital-totem
+          servicePort: 80            
       - path: /web-digitalizador-documentos(/?.*)
         backend:
           serviceName: web-stg-front-digitalizaciondocumentos-service
           servicePort: 80   
-      - path: /orquestador/(.*)
-        backend:
-          serviceName: api-stg-orquestador-service
-          servicePort: 80
        

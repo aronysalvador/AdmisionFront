@@ -41,7 +41,7 @@ const Achs = () => {
         <Header userMsal={userMsal}/>
       </div>
       <div className={ welcomeStyle.backPosicion }> 
-        <Cabecera dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
+        <Cabecera id="Achs-BtnBack" dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
       </div>
       <div className={spaceStyle.space1} />
       <div className={comunStyle.displayDesk}>
@@ -68,6 +68,7 @@ const Achs = () => {
             Centro
           </Grid>
           <AutoComplete
+            id={"Achs-Lbl1"} 
             value={centros}
             onChange={(event, value) => {
               setCENTROS(value);
@@ -105,6 +106,7 @@ const Achs = () => {
         </div>
         <div className={[comunStyle.bottomElement]}>
           <Button
+            id={"Achs-Btn1"} 
             variant="contained"
             className={[comunStyle.buttonAchs, comunStyle.bottomMargin]}  
             type="submit"

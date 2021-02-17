@@ -4,7 +4,10 @@ import {
   GET_REMUNERACION_FAILURE,
 } from "../types/tipoRemuneracionType";
 import Axios from "axios";
+import axiosRetry from 'axios-retry';
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 
+axiosRetry(Axios, { retries: 3 });
 export const getData = async()=>{
   return  Axios.get(window.REACT_APP_TIPO_REMUNERACIONES)
 }
@@ -17,10 +20,19 @@ export const getRemuneracion = () => async (dispatch) => {
 
   getData()
     .then((response) => {
-      dispatch(successCallRemuneracion(response.data.content[0]));
+      if(response.status === 200){
+        dispatch(successCallRemuneracion(response.data.content[0]));
+      }else{
+        dispatch(updateForm("errorStep", 0));
+        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_REMUNERACIONES));
+        dispatch(handleSetStep(1004));
+      }     
     })
     .catch((error) => {
       dispatch(errorCallRemuneracion());
+      dispatch(updateForm("errorStep", 0));
+      dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_REMUNERACIONES));
+      dispatch(handleSetStep(1004));
     });
 
   const successCallRemuneracion = (remuneracion) => ({

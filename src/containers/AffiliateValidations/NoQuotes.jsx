@@ -29,6 +29,7 @@ const NoQuotes = (props) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
+          id={"NoQuotes-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.1))} 
           color="#FFFFFF"
         />
@@ -63,18 +64,20 @@ const NoQuotes = (props) => {
           <div className={comunClass.bottomElement}>
             <div className={comunClass.paddingElement}>
               <Button
+                id={"NoQuotes-Btn1"}
                 className={[blackStyle.buttonFooter, blackStyle.buttonFooterSpace]}
                 onClick={() => {
-                  dispatch(handleSetStep(5.7));
+                  dispatch(handleSetStep("x", 5.12));
                 }}
               >
                 Continuar admisión
               </Button>
               {/* <div className={spaceStyle.spaceMin1} /> */}
               <Button
+                id={"NoQuotes-Btn2"}
                 className={blackStyle.buttonFooter2}
                 onClick={() => {
-                  dispatch(handleSetStep(1.1));
+                  dispatch(handleSetStep(1)); // 1.1 Empecemos eliminada
                 }}
               >
                 Volver al inicio

@@ -9,6 +9,7 @@ import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker"
 import image from './../../img/iconCalendar.svg'
 
 const FechaSintomas = ({
+  id,
   onChange,
   daysFromState,
   monthFromState,
@@ -49,6 +50,7 @@ const FechaSintomas = ({
       <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
+            id={id}
             inputVariant="outlined"
             size="small"
             disableFuture

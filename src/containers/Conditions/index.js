@@ -16,7 +16,7 @@ const Conditions = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <Cabecera dispatch={() => dispatch(handleSetStep(1.1))} percentage={-1} />
+      <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} /> 
       <div>
         <Typography className={comunClass.pregunta}>
           Términos y condiciones

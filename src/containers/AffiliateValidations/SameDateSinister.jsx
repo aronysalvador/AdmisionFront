@@ -45,6 +45,7 @@ const SameDateSinister = (props) => {
         
         <div className={comunClass.bottomElement} style={{ padding: '1.145em' }}>
           <Button
+            id={"SameDateSinister-Btn1"}
             className={comunClass.buttonAchs}
             onClick={() => dispatch(handleSetStep(5.1)) }
           >

@@ -3,9 +3,10 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
+// import { id } from "date-fns/locale";
 
 const BotonSeleccionarCustom = (props) => {
-  const { data, itemForm, selected, step, handlerGuardarData } = props;
+  const { id, data, itemForm, selected, step, handlerGuardarData } = props;
 
   const {
     addmissionForm: { razonAlertaForm }
@@ -35,6 +36,7 @@ const BotonSeleccionarCustom = (props) => {
 
   return (
     <div
+      id={id}
       onClick={() => {
         setIsSelected((selected) => !selected);
         if (!isSelected) {

@@ -48,7 +48,7 @@ const Cargo = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep(19.3))}
+          dispatch={() => dispatch(handleSetStep(19.4))}
           percentage={percentage}
         />
       </div>

@@ -5,19 +5,35 @@ import {
   POST_LOG_INIT_STEP,
   POST_LOG_SUCCESS_STEP,
   POST_LOG_FAILURE_STEP,
-  LOAD_LOG_STATE_SESSIONSTORAGE
+  LOAD_LOG_STATE_SESSIONSTORAGE,
+  INIT_SESSION_DATE
   } from "../types/LogType";
+
+
+  const getDate = () =>{
+    return "( "+new Date().toLocaleString("en-US", { timeZone: 'America/Santiago', hour12: false })+" )"
+  }
 
   const INITIAL_STATE = {
     ID: 0,
     loading: false,
     error: null,
+    fecha: getDate()
   };
   
   export default function logForm(state = INITIAL_STATE, action) {
     switch (action.type) {
-      case LOAD_LOG_STATE_SESSIONSTORAGE:
+
+      case INIT_SESSION_DATE:
+        return { 
+          ...state,
+          fecha: getDate()
+      };
+
+      case LOAD_LOG_STATE_SESSIONSTORAGE:{
+        action.payload.fecha = state.fecha
         return { ...action.payload };
+      }
 
       case POST_LOG_INIT:
       case POST_LOG_INIT_STEP:

@@ -20,10 +20,11 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
   const comunClass = getComunStyle();
 
   const handlerGuradarSucursalTexto = (itemForm, data, step) => {
-    const { nombre, direccion, codigo, sucursalCargo } = data;
+    const { nombre, direccion, comuna, codigo, sucursalCargo } = data;
     const sucursalTexto = nombre;
     dispatch(updateForm(itemForm, sucursalTexto));
     dispatch(updateForm("DireccionEmpresa", direccion));
+    dispatch(updateForm("comunaEmpresa", comuna))
     dispatch(updateForm("codigoSucursal", codigo));
     dispatch(updateForm("sucursalCargo", sucursalCargo));
   };
@@ -34,6 +35,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"SeleccionarSucursal-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.4))}
           percentage={percentage}
         />
@@ -64,6 +66,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
         >
           {sucursalesEmpresa.map((sucursal, index) => (
             <BotonSeleccionarCustom
+              id={`SeleccionarSucursal-Btn${index}`}
               key={index}
               data={sucursal}
               itemForm={"SucursalEmpresa"}

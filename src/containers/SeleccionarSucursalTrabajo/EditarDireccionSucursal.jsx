@@ -25,13 +25,11 @@ const EditarDireccionSucursal = () => {
   return (
     <div className={comunClass.root}>
       <div className={comunClass.displayDesk}> 
-        <Header
-          userMsal={ microsoftReducer.userMsal }
-          // step={1}
-        />
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id={"EditarDireccionSucursal-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.5))}
           percentage={percentage}
         />
@@ -57,6 +55,7 @@ const EditarDireccionSucursal = () => {
             Dirección
           </Typography>
           <AutoComplete
+            id={"EditarDireccionSucursal-Lbl1"}
             value={sucursalEmpresa}
             onChange={(event, value) => {
               setSucursalEmpresa(value);
@@ -70,6 +69,7 @@ const EditarDireccionSucursal = () => {
         </div>  
         <div className={comunClass.bottomElement}>
           <Button
+            id={"EditarDireccionSucursal-Btn1"}
             variant="contained"
             disabled={!sucursalEmpresa}
             className={comunClass.buttonAchs}
@@ -77,6 +77,7 @@ const EditarDireccionSucursal = () => {
               dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
               dispatch(updateForm("SucursalEmpresaObjeto", sucursalEmpresa));
               dispatch(updateForm("DireccionEmpresa", sucursalEmpresa.direccion));
+              dispatch(updateForm("comunaEmpresa", sucursalEmpresa.comuna));
               dispatch(updateForm("codigoSucursal", sucursalEmpresa.codigo));
               dispatch(handleSetStep(5.1));
             }}

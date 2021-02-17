@@ -13,7 +13,7 @@ const ContinueSAP = (props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(handleSetStep(1.1));
+      dispatch(handleSetStep(1));
     }, 4000);
   });
 

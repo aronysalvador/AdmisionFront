@@ -48,6 +48,7 @@ const CausaNoLaboral = () => {
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
+          id="CausaNoLaboral-BtnBack"
           dispatch={() => dispatch(handleSetStep(26.2))}
           percentage={percentage}
         />
@@ -74,6 +75,7 @@ const CausaNoLaboral = () => {
             Selecciona
           </Typography>
           <AutoComplete
+            id="CausaNoLaboral-Autocomplete1"
             value={causas}
             onChange={(event, value) => {
               setCausas(value);
@@ -99,6 +101,7 @@ const CausaNoLaboral = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
+            id="CausaNoLaboral-Btn1"
             variant="contained"
             className={comunClass.buttonAchs}
             disabled={!causas}
