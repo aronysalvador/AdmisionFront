@@ -72,7 +72,7 @@ const NoQuotes = (props) => {
               >
                 Continuar admisión
               </Button>
-              {/* <div className={spaceStyle.spaceMin1} /> */}
+
               <Button
                 id={"NoQuotes-Btn2"}
                 className={blackStyle.buttonFooter2}
