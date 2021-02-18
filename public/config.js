@@ -19,6 +19,7 @@ window.REACT_APP_RAZON_SOCIAL_RUT = "https://desa.salud.achs.cl/orquestador/api/
 window.REACT_APP_VALIDAR_DATA_EMPRESA = "https://desa.salud.achs.cl/orquestador/api/paciente/"
 window.REACT_APP_VALIDAR_DATA_PACIENTE = "https://desa.salud.achs.cl/orquestador/api/paciente/getPaciente"
 window.REACT_APP_INTEGRACION_SAP = "https://desa.salud.achs.cl/orquestador/api/sap/integracionsap"
+//window.REACT_APP_INTEGRACION_SAP = "http://localhost/api/sap/integracionsap" //PRUEBA CENTRO PACIENTE
 window.REACT_APP_HOMOLOGACION = "https://desa.salud.achs.cl/orquestador/api/admisionista/getAliasSapByEmail"
 window.REACT_APP_GEO_AUTOCOMPLETE = "https://desa.salud.achs.cl/orquestador/api/geo/autocompletarDirecciones"
 window.REACT_APP_GEO_STATICMAP = "https://desa.salud.achs.cl/orquestador/api/geo/getMapaEstatico"

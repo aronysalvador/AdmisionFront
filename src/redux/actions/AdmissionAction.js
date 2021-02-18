@@ -64,8 +64,9 @@ export const handleSetStep = (step, actual = null) => {
 
             switch (actual) {
 
-                case 5.1: //PersonalData
-                case 5.12: //NoQuotes
+                // case 5.1: //PersonalData
+                case 5.7: //CentroPaciente
+                    // case 5.12: //NoQuotes
                     switch (TIPO) {
                         case 1:
                             //RelatoUnido
@@ -104,7 +105,7 @@ export const handleSetStep = (step, actual = null) => {
                 case 6.06: //AccidentPlaceForm
                     switch (TIPO) {
                         case 1:
-                            PASO = 5.1
+                            PASO = 5.7
                             break;
                         case 2:
                             PASO = 6.03
@@ -683,7 +684,7 @@ export const validarAfiliacion = (data) => (dispatch) => {
                         } else if (!CotizacionesPaciente) {
                             dispatch(handleSetStep(5.12));
                         } else {
-                            dispatch(handleSetStep("x", 5.1)); //(5.7)
+                            dispatch(handleSetStep(5.7)); // ("x", 5.1)); 
                         }
                     }
                 }
