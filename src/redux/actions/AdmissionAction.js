@@ -7,6 +7,8 @@ import {
     LOAD_STATE_SESSIONSTORAGE,
     SEND_CENTROACHS,
     DATE_EMPRESA_FAILURE,
+    RESPONSE_SUCCESS,
+    RESPONSE_ERROR
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
@@ -359,6 +361,10 @@ export const saveRut = (rut) => {
     return (dispatch, getState) => {
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
+                dispatch({
+                    type: RESPONSE_SUCCESS,
+                    payload: result,
+                });
 
                 if (result.status === 200 || result.status === 206) { // || result.data.status === 304
 
@@ -539,7 +545,10 @@ export const saveRut = (rut) => {
                 }
             })
             .catch((error) => {
-
+                dispatch({
+                    type: RESPONSE_ERROR,
+                    payload: error,
+                });
                 dispatch(updateForm("errorStep", 3));
                 dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                 dispatch(handleSetStep(1004));
