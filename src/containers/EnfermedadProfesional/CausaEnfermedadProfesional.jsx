@@ -74,7 +74,7 @@ const CausaEnfermedadProfesional = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id={"CausaEP-BtnBack"}
-          dispatch={() => dispatch(handleSetStep(5.1))}
+          dispatch={() => dispatch(handleSetStep(5.7))}
           percentage={percentage}
         />
       </div>
