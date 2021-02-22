@@ -3,15 +3,10 @@ import {
   GET_COMUNA_SUCCESS,
   GET_COMUNA_FAILURE,
 } from "../types/comunaType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { createHttpGetClient } from '../common';
 
-axiosRetry(Axios, { retries: 3 });
-
-export const getData = async () => {
-  return Axios.get(window.REACT_APP_COMUNA);
-};
+export const getData = createHttpGetClient(window.REACT_APP_COMUNA);
 
 export const getComuna = () => async (dispatch) => {
   dispatch({

@@ -30,14 +30,3 @@ export function createHttpClient({ url, headers, retries = 3, ...rest })
 
     return client;
 }
-
-// axios.get('url', { adapter: cachingAdapter });
-
-// function cachingAdapter(resolve, reject, config) {
-//   cache.get(generateOptions(config, options))
-//   .then(function(result) {
-//     resolve(createResponse(result));
-//   }, function() {
-//     axios.defaults.adapter(resolve, reject, config);
-//   });
-// }

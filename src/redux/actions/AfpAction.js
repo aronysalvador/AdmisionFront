@@ -4,14 +4,9 @@ import {
   GET_AFP_FAILURE,
 } from "../types/afpType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { createHttpClient } from 'util/http.util';
-import { cacheAsyncCallback } from 'util/cache.util';
+import { createHttpGetClient } from '../common';
 
-const httpClient = createHttpClient({ url: window.REACT_APP_AFP })
-
-export const getData = async () => {
-  return httpClient.get();
-};
+export const getData = createHttpGetClient(window.REACT_APP_AFP);
 
 export const getAFP = () => async (dispatch) => {
   dispatch({
