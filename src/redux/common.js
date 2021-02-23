@@ -7,8 +7,12 @@ const getToken = () => {
     return token;
 }
 
-export const createHttpGetClient = (url) => {
-    const httpClient = createHttpClient({ url });
+const httpClient = createHttpClient();
 
-    return () => cacheAsyncCallback(url, httpClient.get);
+export const createHttpGetClient = (url) => () => {
+    return cacheAsyncCallback(url, () => httpClient.get(url, {
+        headers: {
+            'Authorization': `Bearer ${getToken()}`
+        }
+    }));
 }

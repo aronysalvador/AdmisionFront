@@ -10,7 +10,7 @@ const packageMiddlewares = () => {
         const localLogger = createLogger({
             duration: true,
             timestamp: true,
-            diff: true,
+            // diff: true,
             collapsed: (getState, action, logEntry) => true//!logEntry.error
         });
 
