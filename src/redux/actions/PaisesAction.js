@@ -3,14 +3,10 @@ import {
   GET_PAIS_SUCCESS,
   GET_PAIS_FAILURE,
 } from "../types/paisType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { createHttpGetClient } from '../common';
 
-axiosRetry(Axios, { retries: 3 });
-export const getData = async () => {
-  return Axios.get(window.REACT_APP_PAISES);
-};
+export const getData = createHttpGetClient(window.REACT_APP_PAISES);
 
 export const getPaises = () => async (dispatch) => {
   dispatch({
@@ -26,7 +22,7 @@ export const getPaises = () => async (dispatch) => {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_PAISES));
         dispatch(handleSetStep(1004));
-      } 
+      }
     })
     .catch((error) => {
       dispatch(errorCall());

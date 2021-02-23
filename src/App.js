@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Main from "./containers/Main/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { loadStateFromSessionStorage } from "./redux/actions/AdmissionAction";
 import { loadLogStateFromSessionStorage } from "./redux/actions/Log";
 import { getSessionStorageState } from "./util/sessionStorage";
@@ -17,7 +17,7 @@ import { searchIsapres } from "./redux/actions/PrevisionAction";
 import { getProfesion } from "././redux/actions/ProfesionAction";
 import { getContrato } from "./redux/actions/TipoContratoAction";
 import { getJornadaLaboralPrincipal } from "././redux/actions/TipoJornadaLaboralAction";
-import { getRemuneracion } from "./redux/actions/TipoRemuneracionAction";  
+import { getRemuneracion } from "./redux/actions/TipoRemuneracionAction";
 import { getCategoriaOcupacionalPrincipal } from "./redux/actions/CategoriaOcupacionalAction";
 import { getAgenteCausa } from "./redux/actions/AgenteCausaAction";
 import { getMediosTransporteTrayecto } from "./redux/actions/TrayectoAction";
@@ -26,8 +26,32 @@ import { getPartesCuerpo } from "./redux/actions/ParteCuerpoAction";
 import { getRazonAlertaPrincipal } from "./redux/actions/AlertaCalificacionRazonAction";
 import { getCriteriosGravedad } from "././redux/actions/CriteriosAction";
 
+// retrieves master data
+const getMasterData = (dispatch) => {
+  dispatch(getAFP(""));
+  dispatch(getCentros(""));
+  dispatch(getComuna(""));
+  dispatch(getNacionalidades());
+  dispatch(getIdiomas());
+  dispatch(getPaises());
+  dispatch(getGrupo());
+  dispatch(searchIsapres());
+  dispatch(getProfesion(""));
+  dispatch(getContrato(""));
+  dispatch(getJornadaLaboralPrincipal(""));
+  dispatch(getRemuneracion(""));
+  dispatch(getCategoriaOcupacionalPrincipal(""));
+  dispatch(getAgenteCausa());
+  dispatch(getMediosTransporteTrayecto());
+  dispatch(getTiposAccidenteTrayecto());
+  dispatch(getPartesCuerpo());
+  dispatch(getRazonAlertaPrincipal());
+  dispatch(getCriteriosGravedad());
+};
+
 function App() {
   const dispatch = useDispatch();
+  const { microsoftReducer: { token } } = useSelector((state) => state, shallowEqual);
 
   const initFn = useCallback(() => {
     const result = getSessionStorageState();
@@ -42,38 +66,17 @@ function App() {
         loading: false,
         error: null,
       };
-   dispatch(loadLogStateFromSessionStorage(result3));    
+   dispatch(loadLogStateFromSessionStorage(result3));
   }, [dispatch]);
 
   useEffect(() => {
     initFn();
   }, [initFn]);
 
-  const initFuncTion = useCallback(() => {
-    dispatch(getAFP(""));
-    dispatch(getCentros(""));
-    dispatch(getComuna(""));
-    dispatch(getNacionalidades());
-    dispatch(getIdiomas());
-    dispatch(getPaises());
-    dispatch(getGrupo());
-    dispatch(searchIsapres());
-    dispatch(getProfesion(""));
-    dispatch(getContrato(""));
-    dispatch(getJornadaLaboralPrincipal(""));
-    dispatch(getRemuneracion(""));    
-    dispatch(getCategoriaOcupacionalPrincipal(""));
-    dispatch(getAgenteCausa());
-    dispatch(getMediosTransporteTrayecto());
-    dispatch(getTiposAccidenteTrayecto());
-    dispatch(getPartesCuerpo());
-    dispatch(getRazonAlertaPrincipal());
-    dispatch(getCriteriosGravedad());
-  }, [dispatch]);
-
   useEffect(() => {
-    initFuncTion()
-  }, [initFuncTion]);
+    if(token)
+      getMasterData(dispatch);
+  }, [dispatch, token]);
 
   return (
     <BrowserRouter>

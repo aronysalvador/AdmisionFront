@@ -3,17 +3,11 @@ import {
     GET_TRAYECTO_AGENTECAUSAENFERMEDAD_SUCCESS,
     GET_TRAYECTO_AGENTECAUSAENFERMEDAD_FAILURE,
 } from "../types/trayectoType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 // import { agenteCausa } from "../../util/fakeApi";
+import { createHttpGetClient } from '../common';
 
-
-axiosRetry(Axios, { retries: 3 });
-export const getData = async() => {
-    return Axios.get(window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD);
-    // return agenteCausa();
-};
+export const getData = createHttpGetClient(window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD);
 
 export const getAgenteCausa = () => async(dispatch) => {
     dispatch({
@@ -29,7 +23,7 @@ export const getAgenteCausa = () => async(dispatch) => {
               dispatch(updateForm("errorStep", 0));
               dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD));
               dispatch(handleSetStep(1004));
-            }          
+            }
         })
         .catch((error) => {
             dispatch(errorCallAgenteCausa());

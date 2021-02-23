@@ -6,18 +6,11 @@ import {
   GET_TRAYECTO_MEDIOTRANSPORTE_SUCCESS,
   GET_TRAYECTO_MEDIOTRANSPORTE_FAILURE,
 } from "../types/trayectoType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { createHttpGetClient } from '../common';
 
-axiosRetry(Axios, { retries: 3 });
-export const getDataTipoAccidente = async () => {
-  return Axios.get(window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO);
-};
-
-export const getDataMediosTransporte = async () => {
-  return Axios.get(window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO);
-};
+export const getDataTipoAccidente = createHttpGetClient(window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO);
+export const getDataMediosTransporte = createHttpGetClient(window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO);
 
 export const getTiposAccidenteTrayecto = () => async (dispatch) => {
   dispatch({
@@ -33,7 +26,7 @@ export const getTiposAccidenteTrayecto = () => async (dispatch) => {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_ACCIDENTE_TRAYECTO));
         dispatch(handleSetStep(1004));
-      } 
+      }
     })
     .catch((error) => {
       dispatch(errorCall(error));

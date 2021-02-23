@@ -1,8 +1,9 @@
 import { getData } from "./../redux/actions/ComunaAction";
+import { getToken } from './common';
 
 describe("SeleccionarComuna ", () => {
   it("Probar Endpoint que obtiene Comuna ", async () => {
-    const resultado = await getData();
+    const resultado = await getData(await getToken());
     const status = resultado ? resultado.status : 0;
     if (status == 200) {
       const total = resultado ? resultado.data.content[0].length : 0;
