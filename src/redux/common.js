@@ -12,7 +12,8 @@ const httpClient = createHttpClient();
 export const createHttpGetClient = (url) => () => {
     return cacheAsyncCallback(url, () => httpClient.get(url, {
         headers: {
-            'Authorization': `Bearer ${getToken()}`
+            // 'Authorization': `Bearer ${getToken()}`
+            'x-access-token': getToken()
         }
     }));
 }
