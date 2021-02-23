@@ -1,8 +1,9 @@
 import { getData } from '../redux/actions/AgenteCausaAction';
+import { getToken } from './common';
 
 describe("Agente Causal", () => {
     it("Probar Endpoint que obtiene Agente Causal EP", async() => {
-        const resultado = await getData()
+        const resultado = await getData(await getToken())
         const status = resultado ? resultado.status : 0
         if (status == 200) {
             const total = resultado ? resultado.data.content[0].length : 0

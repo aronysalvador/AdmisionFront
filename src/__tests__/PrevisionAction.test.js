@@ -1,8 +1,9 @@
 import { fetchData } from  './../redux/actions/PrevisionAction';
+import { getToken } from './common';
 
 describe("HealthForecast, HealthForecastIsapre",()=>{
     it("Probar Endpoint que obtiene Isapres",async()=>{
-        const resultado = await fetchData()
+        const resultado = await fetchData(await getToken())
         const status = resultado ? resultado.status : 0
         if(status==200){
             const total = resultado ? resultado.data.content[0].length :0

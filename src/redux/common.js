@@ -4,11 +4,10 @@ import { getToken } from 'redux/selectors/auth.selector';
 
 const httpClient = createHttpClient();
 
-export const createHttpGetClient = (url) => () => {
+export const createHttpGetClient = (url) => (tkn) => {
     return cacheAsyncCallback(url, () => httpClient.get(url, {
         headers: {
-            // 'Authorization': `Bearer ${getToken()}`
-            'x-access-token': getToken()
+            'x-access-token': tkn ?? getToken()
         }
     }));
 }

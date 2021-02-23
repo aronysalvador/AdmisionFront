@@ -39,7 +39,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false --testTimeout=60000",
+    "test": "react-scripts test --watchAll=false --testTimeout=60000 --testPathIgnorePatterns=src/__tests__/common",
     "eject": "react-scripts eject",
     "build:development": "env-cmd -f .env.development npm run build",
     "build:QA": "env-cmd -f .env.QA npm run build",
