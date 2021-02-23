@@ -18,6 +18,8 @@ import { FechaHora } from './../../helpers/utils'
 import { Pipes } from "./../../containers/EditarTelefono/phone";
 import { getSucursales } from "./SucursalesAction";
 
+import { getToken } from 'redux/selectors/auth.selector';
+
 const totalSteps = 27;
 
 export const loadStateFromSessionStorage = (state) => {
@@ -100,7 +102,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //Relato Unido    
+                    //Relato Unido
                 case 6.06: //AccidentPlaceForm
                     switch (TIPO) {
                         case 1:
@@ -135,7 +137,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 10: //FechaHoraSiniestro 
+                case 10: //FechaHoraSiniestro
                     switch (TIPO) {
                         case 1:
                             PASO = 8.1
@@ -152,7 +154,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 10.1: //InfoAccidente 
+                case 10.1: //InfoAccidente
                     if (step === "x_back") { //hacia atras
                         switch (TIPO) {
                             case 1:
@@ -655,7 +657,12 @@ export const validarData = async(data) => {
         "&rutEmpresa=" +
         data.rutEmpresa +
         "&BpSucursal=" +
-        data.BpSucursal
+        data.BpSucursal,
+        {
+            headers: {
+                'x-access-token': getToken()
+            }
+        }
     );
 };
 

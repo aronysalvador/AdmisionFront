@@ -1,11 +1,6 @@
-import store from 'store';
 import { createHttpClient } from 'util/http.util';
 import { cacheAsyncCallback } from 'util/cache.util';
-
-const getToken = () => {
-    const { microsoftReducer: { token } } = store.getState();
-    return token;
-}
+import { getToken } from 'redux/selectors/auth.selector';
 
 const httpClient = createHttpClient();
 
