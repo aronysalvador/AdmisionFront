@@ -72,7 +72,7 @@ function dateNextDays(days)
  *
  * @returns {Promise<any>} cached/persisted value or promise result.
  */
-export async function cacheAsyncCallback(key, promise, { expirationInDays, storageType = "sessionStorage" } = {})
+export async function cacheAsyncCallback(key, promise, { expirationInDays = 7, storageType = "sessionStorage" } = {})
 {
     if (!key)
         throw new Error('[key] is required.');
@@ -85,15 +85,15 @@ export async function cacheAsyncCallback(key, promise, { expirationInDays, stora
         // delayed data refresh from source.
         (async () =>
         {
-            const data = await promise;
+            const data = await promise();
             write(key, { expiration: dateNextDays(expirationInDays), data }, storageType);
         })();
     }
 
-    if (cache)
+    if (cache?.data)
         return Promise.resolve(cache.data);
 
-    const data = await promise;
+    const data = await promise();
     write(key, { expiration: dateNextDays(expirationInDays), data }, storageType);
 
     return data;

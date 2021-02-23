@@ -3,14 +3,10 @@ import {
   GET_GRUPO_SUCCESS,
   GET_GRUPO_FAILURE,
 } from "../types/grupoType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "./AdmissionAction";
+import { createHttpGetClient } from '../common';
 
-axiosRetry(Axios, { retries: 3 });
-export const getData = async () => {
-  return Axios.get(window.REACT_APP_GRUPOS);
-};
+export const getData = createHttpGetClient(window.REACT_APP_GRUPOS);
 
 export const getGrupo = () => async (dispatch) => {
   dispatch({

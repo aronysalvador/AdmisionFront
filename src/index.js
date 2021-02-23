@@ -9,13 +9,11 @@ import store from './store'
 
 let persistor = persistStore(store);
 ReactDOM.render(
-  <React.Fragment>
-    <Provider store={store} pers>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </Provider>
-  </React.Fragment>,
+  <Provider store={store} pers>
+    <PersistGate persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>,
   document.getElementById("root")
 );
 
