@@ -24,7 +24,7 @@ obtenerData()
             dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CARGOS));
             dispatch(handleSetStep(1004));
         }
-    }).catch((error) => {
+    }).catch(() => {
         dispatch(errorCallCargos())
         dispatch(updateForm("errorStep", 3));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CARGOS));
