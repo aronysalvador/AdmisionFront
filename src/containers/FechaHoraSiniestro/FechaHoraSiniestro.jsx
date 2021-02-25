@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
 // import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
@@ -38,7 +38,7 @@ const FechaHoraSiniestro = () => {
     setHoraSiniestro({ ...value });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     let current = new Date();
 
     // ========= Fecha =======

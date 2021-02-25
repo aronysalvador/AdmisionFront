@@ -1,4 +1,3 @@
-import React from "react";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
 import { ErrorOutline } from "@material-ui/icons";
 import { getComunStyle } from "../../css/comun";

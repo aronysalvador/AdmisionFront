@@ -1,6 +1,6 @@
-import React from "react";
 import { useDispatch } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
 import { getComunStyle } from "../../css/comun"
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined';

@@ -1,4 +1,3 @@
-import React from "react";
 import { getComunStyle } from "../../css/comun";
 const CrearCaso = () => {
   const { root } = getComunStyle();

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-import { getComunStyle } from "../../css/comun";import Radio from '@material-ui/core/Radio';
+import { getComunStyle } from "../../css/comun";
+import Radio from '@material-ui/core/Radio';
 import { withStyles } from '@material-ui/core/styles';
 import specialBlue from "../../util/color/specialBlue";
 

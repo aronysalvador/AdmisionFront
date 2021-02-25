@@ -1,5 +1,3 @@
-import React from "react";
-
 const BotonSeleccionarCustomItemAlerta = ({ glosa }) => {
   return (
     <div style={{ textAlign: "center" }}>

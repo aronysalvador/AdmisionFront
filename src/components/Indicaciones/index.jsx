@@ -1,4 +1,3 @@
-import React from "react";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import Typography from "@material-ui/core/Typography";

@@ -1,4 +1,3 @@
-import React from "react";
 import { connect, shallowEqual, useSelector } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -10,7 +9,8 @@ import Header from "../../components/header/index";
 import { Grid } from '@material-ui/core';
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
-import { getSpaceStyle } from "../../css/spaceStyle";import check from './../../img/icon-check.png'
+import { getSpaceStyle } from "../../css/spaceStyle";
+import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
 import espera from './../../img/espera.svg'
 import sms from './../../img/sms.svg'

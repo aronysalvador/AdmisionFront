@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
@@ -42,7 +42,7 @@ const DireccionParticular = () => {
   const { googleMap } = getComunStyle()
 
   const [ valido, setValido ] = useState(false)
-  React.useEffect(() => {
+  useEffect(() => {
     if (direccion){
       validaDireccion(direccion)
     } else {

@@ -1,4 +1,3 @@
-import React from "react";
 import { Format } from '../../helpers/strings';
 const BotonSeleccionarCustomSucursalItem = ({
   direccion,

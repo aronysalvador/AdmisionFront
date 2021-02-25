@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";

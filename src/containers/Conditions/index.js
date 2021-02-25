@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Typography from "@material-ui/core/Typography";

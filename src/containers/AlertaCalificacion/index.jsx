@@ -1,4 +1,3 @@
-import React from "react";
 import Cabecera from "../../components/cabecera/cabeceraSinBarra";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";

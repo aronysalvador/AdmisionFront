@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -7,7 +7,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-import AutoComplete from "@material-ui/lab/Autocomplete";// Action de Redux
+import AutoComplete from "@material-ui/lab/Autocomplete";
+// Action de Redux
 import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";

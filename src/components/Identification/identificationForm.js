@@ -1,4 +1,3 @@
-import React from "react";
 import { withFormik } from "formik";
 import { connect } from "react-redux";
 import { updateForm, handleSetStep } from "../../redux/actions/AdmissionAction";

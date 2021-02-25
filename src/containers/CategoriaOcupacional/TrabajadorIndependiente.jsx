@@ -1,4 +1,3 @@
-import React from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button} from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';

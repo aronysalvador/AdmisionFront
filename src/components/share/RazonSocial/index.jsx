@@ -1,10 +1,10 @@
-import React from 'react'
+import { useState } from 'react';
 import {TextField} from "@material-ui/core"
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
 const RazonSocialAutoComplete = () => {
-    const [ options, setOptions ] = React.useState([])
-    const [ razon, setRazon ] = React.useState([])
+    const [ options, setOptions ] = useState([])
+    const [ razon, setRazon ] = useState([])
 
     const getData = async(newInputValue) => {
       if (newInputValue){

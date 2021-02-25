@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -7,7 +7,8 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-import Grid from '@material-ui/core/Grid';// Action de Redux
+import Grid from '@material-ui/core/Grid';
+// Action de Redux
 import { sendCargo } from "../../redux/actions/AdmissionAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";

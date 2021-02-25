@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Button, Typography, withStyles, Checkbox } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";

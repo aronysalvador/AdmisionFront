@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { handleSetStep} from "../../redux/actions/AdmissionAction";
 import { Button } from "@material-ui/core";

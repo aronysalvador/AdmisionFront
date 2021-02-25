@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -10,10 +9,12 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import IndiciacionesPacientes from "../../components/Indicaciones";
 import CajaRutSiniestro from "./CajaRutSiniestro";
 import Header from "../../components/header/index";
-import { Grid } from '@material-ui/core';import check from './../../img/icon-check.png'
+import { Grid } from '@material-ui/core';
+import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
 import espera from './../../img/espera.svg'
-import work from './../../img/work.svg'import { initSessionDate } from "./../../redux/actions/Log";
+import work from './../../img/work.svg'
+import { initSessionDate } from "./../../redux/actions/Log";
 
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;

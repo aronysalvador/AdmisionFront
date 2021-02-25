@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FechaSiniestro from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";

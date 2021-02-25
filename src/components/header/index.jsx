@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { getWelcomeStyle } from "../../css/welcomeStyle";

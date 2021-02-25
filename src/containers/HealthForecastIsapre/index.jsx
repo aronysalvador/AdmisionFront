@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { connect, useDispatch, useSelector, shallowEqual } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -10,7 +10,8 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from '@material-ui/core/Grid';
-import Header from "../../components/header/index";// Action de Redux
+import Header from "../../components/header/index";
+// Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import image from './../../img/relato.svg'
 

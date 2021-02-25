@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { Typography } from "@material-ui/core"
 

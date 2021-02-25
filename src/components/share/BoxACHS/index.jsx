@@ -1,4 +1,3 @@
-import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { useDispatch } from "react-redux";
 import { handleSetStep } from "../../../redux/actions/AdmissionAction";

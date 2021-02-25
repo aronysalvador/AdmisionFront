@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
 import { ThemeProvider } from "@material-ui/styles";
@@ -26,7 +26,7 @@ const NoPaddingDatePicker = withStyles({
 export default (props) => {
     const { date, setDate, id, setValidDate } = props
 
-    const [ selectedDate, setSelectedDate ] = React.useState(date ? moment() : null);
+    const [ selectedDate, setSelectedDate ] = useState(date ? moment() : null);
 
     const onDateChange = (date, value) => {
         if (date){
@@ -55,7 +55,7 @@ export default (props) => {
                         autoComplete='off'
                         InputAdornmentProps={{ position: 'start'}}
                         fullWidth
-                        onError={(e) => { if (e){ setValidDate(false) } }}
+                        onError={(e) => { e && setValidDate(false) }}
                         invalidDateMessage='Formato invalido'
                         maxDateMessage='La fecha no puede exceder al día de hoy'
 

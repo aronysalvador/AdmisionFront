@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { Button, Typography } from "@material-ui/core";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";

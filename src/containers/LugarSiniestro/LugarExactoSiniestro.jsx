@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useEffect, useState } from "react";
 import { getComunStyle } from "../../css/comun"
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { Button, Typography } from "@material-ui/core"
@@ -36,7 +36,7 @@ const LugarExactoSiniestro = () => {
   }
 
   const [ valido, setValido ] = useState(false)
-  React.useEffect(() => {
+  useEffect(() => {
     if (sucursal){
       validaDireccion(sucursal)
     } else {

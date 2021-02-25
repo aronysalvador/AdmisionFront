@@ -1,4 +1,3 @@
-import React from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";

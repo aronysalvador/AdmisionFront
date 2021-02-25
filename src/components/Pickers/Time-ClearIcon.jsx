@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers'
 import { ThemeProvider } from "@material-ui/styles";
@@ -20,7 +20,7 @@ const NoPaddingPicker = withStyles({
 export default (props) => {
     const { time, setTime, id, setValidHour, open } = props
 
-    const [ selectedDate, setSelectedDate ] = React.useState(time ? moment() : null);
+    const [ selectedDate, setSelectedDate ] = useState(time ? moment() : null);
 
     const onDateChange = (date, value) => {
         if (date){
@@ -50,7 +50,7 @@ export default (props) => {
                                 ampm={false}
                                 autoComplete='off'
                                 fullWidth
-                                onError={(e) => { if (e){ setValidHour(false) } }}
+                                onError={(e) => { e && setValidHour(false) }}
                                 invalidDateMessage='Formato invalido'
                                 keyboardIcon={<img alt='clock' src={image} />}
                                 style={{

@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import Divider from "@material-ui/core/Divider";// Action de Redux
+import Divider from "@material-ui/core/Divider";
+// Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";

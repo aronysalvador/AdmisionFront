@@ -1,4 +1,4 @@
-import React from 'react'import { getComunStyle } from "../../css/comun";
+import { getComunStyle } from "../../css/comun";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { TextField } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';

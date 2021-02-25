@@ -1,7 +1,7 @@
-import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import { useDispatch } from "react-redux";
-import { handleSetStep } from "../../../redux/actions/AdmissionAction";import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { handleSetStep } from "../../../redux/actions/AdmissionAction";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { cardSiniestroStyles } from '../../../css/cardSiniestroStyle';
 import { Grid } from '@material-ui/core';
 

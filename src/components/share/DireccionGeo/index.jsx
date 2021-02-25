@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 import {TextField} from "@material-ui/core"
 import AutoComplete from '@material-ui/lab/Autocomplete'
 import { getComunStyle } from "./../../../css/comun"
@@ -33,13 +33,13 @@ const DireccionGeo = (props) => {
     const comunStyle = getComunStyle();
     const { id, direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal, background, small, noFijarOption } = props
 
-    const [ open, setOpen ] = React.useState(false)
+    const [ open, setOpen ] = useState(false)
 
     const DinamycOption = { description: 'Fijar en el mapa' }
-    const [ loading, setLoading ] = React.useState(false)
-    const [ options, setOptions ] = React.useState([ DinamycOption ])
+    const [ loading, setLoading ] = useState(false)
+    const [ options, setOptions ] = useState([ DinamycOption ])
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (direccionTemporal)
         setearDirection(direccionTemporal)
 

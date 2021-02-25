@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -8,9 +7,11 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Indiciaciones from "../../components/Indicaciones";
-import Header from "../../components/header/index";import { getWelcomeStyle } from "../../css/welcomeStyle";
+import Header from "../../components/header/index";
+import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
-import { getSpaceStyle } from "../../css/spaceStyle";import espera from './../../img/espera.svg'
+import { getSpaceStyle } from "../../css/spaceStyle";
+import espera from './../../img/espera.svg'
 import sms from './../../img/sms.svg'
 import work from './../../img/work.svg'
 

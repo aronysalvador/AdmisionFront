@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import FechaSiniestroCalendar from "../../components/FechaSiniestro/FechaSiniestroCalendar";
 import FechaSiniestroDesk from "../../components/FechaSiniestro/FechaSiniestroCalendarDesk";
 import HoraSiniestro from "./../../components/HoraSiniestro/HoraSiniestro";
@@ -24,7 +24,7 @@ const FechaHoraSiniestro = (props) => {
     setHoraSiniestro({ ...value });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     let current = new Date();
 
     // ========= Fecha =======

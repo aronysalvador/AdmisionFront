@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { updateForm } from "../../redux/actions/AdmissionAction";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";

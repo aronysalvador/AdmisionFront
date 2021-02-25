@@ -1,4 +1,4 @@
-import React from "react"
+import { useEffect } from "react";
 import { getComunStyle } from "../../css/comun"
 import { useDispatch } from "react-redux"
 import { handleSetStep } from "../../redux/actions/AdmissionAction"
@@ -12,7 +12,7 @@ export default (props) => {
   const dispatch = useDispatch();
   const comunClass = getComunStyle();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (sucursal){
       validaDireccion(sucursal)
     } else {

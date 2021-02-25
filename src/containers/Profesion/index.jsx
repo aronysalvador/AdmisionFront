@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import AutoComplete from "@material-ui/lab/Autocomplete";import { Button, Typography } from "@material-ui/core";
+import AutoComplete from "@material-ui/lab/Autocomplete";
+import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import { connect } from 'react-redux'
 import { handleSetStep, updateForm } from '../../redux/actions/AdmissionAction'
 import Grid from '@material-ui/core/Grid';

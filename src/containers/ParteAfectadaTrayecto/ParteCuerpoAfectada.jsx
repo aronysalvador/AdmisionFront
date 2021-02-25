@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";

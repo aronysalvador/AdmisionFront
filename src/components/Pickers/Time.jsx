@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers'
 import { ThemeProvider } from "@material-ui/styles";
@@ -19,7 +19,7 @@ const NoPaddingPicker = withStyles({
 export default (props) => {
     const { time, setTime, id, open } = props
 
-    const [ selectedDate, setSelectedDate ] = React.useState(time ? moment() : null);
+    const [ selectedDate, setSelectedDate ] = useState(time ? moment() : null);
 
     const onDateChange = (date, value) => {
         setSelectedDate(date);

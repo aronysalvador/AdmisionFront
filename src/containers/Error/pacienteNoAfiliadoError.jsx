@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import {getComunStyle} from '../../css/comun'
 import { handleSetStep } from '../../redux/actions/AdmissionAction'

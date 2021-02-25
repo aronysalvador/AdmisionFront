@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";

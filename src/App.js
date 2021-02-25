@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Main from "./containers/Main/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";

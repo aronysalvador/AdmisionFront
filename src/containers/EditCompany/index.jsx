@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import TabCompany from "../../components/EditCompany/TabCompany";
 import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
@@ -21,7 +21,7 @@ const EditCompany = () => {
 
   const { sucursalesForm: {loading, data: sucursalesList} } = useSelector((state) => state, shallowEqual);
 
-  const [ cargando, setCargando ]= React.useState(false);
+  const [ cargando, setCargando ]= useState(false);
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
@@ -31,7 +31,7 @@ const EditCompany = () => {
     if (sucursalesList.length===0) await dispatch(getSucursales(rutEmpresa));
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (cargando){
       if (!loading){
         if (sucursalesList.length>0)

@@ -1,4 +1,3 @@
-import React from "react";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 // import Typography from "@material-ui/core/Typography";
