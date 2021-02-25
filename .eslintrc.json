@@ -56,7 +56,7 @@
             }
         ],
         "comma-style": ["warn", "last"],
-        "curly": ["warn", "multi-or-nest", "consistent"],
+        "curly": ["off", "multi-or-nest", "consistent"],
         "default-case": "warn",
         "dot-location": ["warn", "property"],
         "dot-notation": "warn",
