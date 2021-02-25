@@ -92,5 +92,5 @@ const Mapa = (props) => {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyB7A81JqF6R2b0lZ2SAAlR1jYRfNZNm-wM'
+  apiKey: window.GOOGLE_MAPS_API_KEY
 })(Mapa);

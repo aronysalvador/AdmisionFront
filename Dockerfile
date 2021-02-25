@@ -18,7 +18,7 @@ RUN npm run build
 
 ### STAGE 2: Production Environment ###
 FROM nginx:1.13.12-alpine
-RUN apk add -U dos2unix
+RUN apk add -U dos2unix=7.4.2-r0
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 
 COPY docker-entrypoint.sh reemplaza-envs.sh /
