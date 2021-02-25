@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
@@ -11,7 +10,6 @@ import Header from "../../components/header/index";
 import image from './../../img/error-siniestro.svg'
 
 const NoQuotes = (props) => {
-
   const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
@@ -20,9 +18,9 @@ const NoQuotes = (props) => {
 
   return (
     <div>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
-        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
+        <div style={{position: 'absolute', width: '100%', height: '92%', backgroundColor: '#373737'}} />
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space1} />
@@ -30,26 +28,26 @@ const NoQuotes = (props) => {
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
           id={"NoQuotes-BtnBack"}
-          dispatch={() => dispatch(handleSetStep(5.1))} 
-          color="#FFFFFF"
+          dispatch={() => dispatch(handleSetStep(5.1))}
+          color='#FFFFFF'
         />
       </div>
       <div className={blackStyle.root}>
       {/* style={{height: "40em"}}  */}
         <img
-          alt="load"
+          alt='load'
           src={image}
           className={blackStyle.imgNoAfiliate}
         />
         <div className={spaceStyle.space1} />
         <Typography
-          color="textSecondary"
+          color='textSecondary'
           className={blackStyle.textWarning}
         >
         ¡Atención!
         </Typography>
         <Typography
-          color="textSecondary"
+          color='textSecondary'
           className={blackStyle.textNoAfiliate}
         >
           No tenemos cotizaciones por este paciente
@@ -65,7 +63,7 @@ const NoQuotes = (props) => {
             <div className={comunClass.paddingElement}>
               <Button
                 id={"NoQuotes-Btn1"}
-                className={[blackStyle.buttonFooter, blackStyle.buttonFooterSpace]}
+                className={[ blackStyle.buttonFooter, blackStyle.buttonFooterSpace ]}
                 onClick={() => {
                   dispatch(handleSetStep(5.7)); // ("x", 5.12)
                 }}
@@ -84,7 +82,7 @@ const NoQuotes = (props) => {
               </Button>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
@@ -94,8 +92,8 @@ const NoQuotes = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(NoQuotes);

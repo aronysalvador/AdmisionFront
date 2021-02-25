@@ -21,7 +21,7 @@ export const getBlackTheme = makeStyles((theme) => ({
         fontSize: "1em",
         lineHeight: "1em",
         alignItems: "center",
-        color: "#FFFFFF",
+        color: "#FFFFFF"
     },
 
     textDetailSimpleNoSAP: {
@@ -32,7 +32,7 @@ export const getBlackTheme = makeStyles((theme) => ({
         lineHeight: "1.6875em",
         alignItems: "center",
         color: "#FFFFFF",
-        padding: "0em 3em",
+        padding: "0em 3em"
     },
 
     textDetailStrong: {
@@ -42,7 +42,7 @@ export const getBlackTheme = makeStyles((theme) => ({
         lineHeight: "1em",
         fontWeight: "bold",
         alignItems: "center",
-        color: "#FFFFFF",
+        color: "#FFFFFF"
     },
 
     buttonFooter: {
@@ -59,7 +59,7 @@ export const getBlackTheme = makeStyles((theme) => ({
         borderRadius: "10px",
         height: "3.5em",
         "&:hover": {
-            background: "#FFFFFF",
+            background: "#FFFFFF"
         },
         margin: "8px 0"
     },
@@ -79,7 +79,7 @@ export const getBlackTheme = makeStyles((theme) => ({
         borderRadius: "10px",
         height: "3.5em",
         "&:hover": {
-            background: "transparent",
+            background: "transparent"
         },
         margin: "8px 0"
     },
@@ -107,17 +107,17 @@ export const getBlackTheme = makeStyles((theme) => ({
         root: {
             position: "relative",
             width: "22.5em",
-            height: "40em", //"43em",
+            height: "40em", // "43em",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            alignItems: "center",
+            alignItems: "center"
         },
         img: {
-            width: "11em",
+            width: "11em"
         },
         imgNoAfiliate: {
-            width: "7em",
+            width: "7em"
         },
         textWarning: {
             textAlign: "center",
@@ -127,7 +127,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             fontSize: "1.563em",
             lineHeight: "1.6875em",
             alignItems: "center",
-            color: "#FFFFFF",
+            color: "#FFFFFF"
         },
         textWarning2: {
             textAlign: "center",
@@ -137,7 +137,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             fontSize: "1.563em",
             lineHeight: "1.6875em",
             alignItems: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         textMessage: {
             textAlign: "center",
@@ -147,7 +147,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             lineHeight: "1.250em",
             alignItems: "center",
             color: "#06D6A0",
-            padding: "0em 4em",
+            padding: "0em 4em"
         },
         textMessage2: {
             textAlign: "center",
@@ -158,7 +158,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             lineHeight: "1.250em",
             alignItems: "center",
             color: "#007A33",
-            padding: "0em 4em",
+            padding: "0em 4em"
         },
         textFinal: {
             textAlign: "center",
@@ -167,7 +167,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             fontSize: "1.250em",
             lineHeight: "1.250em",
             alignItems: "center",
-            color: "#FFFFFF",
+            color: "#FFFFFF"
         },
         containerQuote: {
             display: "flex",
@@ -175,12 +175,12 @@ export const getBlackTheme = makeStyles((theme) => ({
             border: "1px solid #FFFFFF",
             width: "100%",
             padding: "10px",
-            justifyContent: "space-evenly",
+            justifyContent: "space-evenly"
         },
         listDetails: {
             width: '100%',
-            textAlign: 'center',
-        },
+            textAlign: 'center'
+        }
     },
 
     '@media (min-width: 768px)': {
@@ -190,13 +190,13 @@ export const getBlackTheme = makeStyles((theme) => ({
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            alignItems: "center",
+            alignItems: "center"
         },
         img: {
-            width: "14em",
+            width: "14em"
         },
         imgNoAfiliate: {
-            width: "8em",
+            width: "8em"
         },
         textWarning: {
             textAlign: "center",
@@ -206,7 +206,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             fontSize: "2.2857em",
             lineHeight: "2.4285em",
             alignItems: "center",
-            color: "#FFFFFF",
+            color: "#FFFFFF"
         },
         textWarning2: {
             textAlign: "center",
@@ -216,7 +216,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             fontSize: "2.2857em",
             lineHeight: "2.4285em",
             alignItems: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         textMessage: {
             textAlign: "center",
@@ -226,7 +226,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             fontSize: "1.4285em",
             lineHeight: "2em",
             alignItems: "center",
-            color: "#06D6A0",
+            color: "#06D6A0"
             // padding: "0em 4em",
         },
         textMessage2: {
@@ -238,7 +238,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             // lineHeight: "2em",
             alignItems: "center",
             color: "#007A33",
-            padding: "0em 4em",
+            padding: "0em 4em"
         },
         textFinal: {
             textAlign: "center",
@@ -248,7 +248,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             fontSize: "1.4285em",
             lineHeight: "2em",
             alignItems: "center",
-            color: "#FFFFFF",
+            color: "#FFFFFF"
         },
         containerQuote: {
             display: "flex",
@@ -257,7 +257,7 @@ export const getBlackTheme = makeStyles((theme) => ({
             width: "50%",
             maxWidth: "31.746em",
             padding: "10px",
-            justifyContent: "space-evenly",
+            justifyContent: "space-evenly"
         },
         containerQuoteDesk: {
             display: "flex",
@@ -266,23 +266,23 @@ export const getBlackTheme = makeStyles((theme) => ({
             width: "50%",
             maxWidth: "31.746em",
             padding: "10px",
-            justifyContent: "space-evenly",
+            justifyContent: "space-evenly"
         },
         listDetails: {
             // width: '100%',
             textAlign: 'center',
             flexGrow: '0',
             maxWidth: '49%',
-            flexBasis: '50%',
+            flexBasis: '50%'
         },
         containerBottom: {
             maxWidth: '40%'
         },
         buttonFooterSpace: {
             marginRight: '20px'
-        },
+        }
 
-    },
+    }
 
     // '@media (min-height: 800px)': { //775px
     //     root: {

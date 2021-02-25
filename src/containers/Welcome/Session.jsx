@@ -1,4 +1,3 @@
-import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
@@ -11,7 +10,6 @@ import { login } from "../../redux/actions/microsoft.action";
 import logo from './../../img/Achs.svg'
 import profile from './../../img/Profile.svg'
 
-
 const Session = (props) => {
   const { dispatch } = props;
   const welcomeStyle = getWelcomeStyle();
@@ -20,38 +18,38 @@ const Session = (props) => {
 
   return (
     <div className={ comunStyle.rootImg }>
-      <div style={ {padding: '1.5em'} } className={ comunStyle.headerSesion } >
+      <div style={ {padding: '1.5em'} } className={ comunStyle.headerSesion }>
         <img
-            alt="logo"
+            alt='logo'
             src={logo}
             className={comunStyle.imgAchs}
-          />
+        />
         <div className={spaceStyle.space10} />
 
-        <div className={comunStyle.boxSesion} >
+        <div className={comunStyle.boxSesion}>
           <center style={{padding: "26px"}}>
-            <img 
-              alt="zoomMas" 
+            <img
+              alt='zoomMas'
               src={profile}
               className={ comunStyle.imgProfile }
-              />
+            />
           </center>
           <Grid
-            className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
+            className={[ comunStyle.textAchsContent, welcomeStyle.bienvenido ]}
           >
             Bienvenido/a
           </Grid>
-        
+
           <Grid
-            className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
+            className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ]}
           >
             <br />
-            Ingresa a tu cuenta y gestiona 
+            Ingresa a tu cuenta y gestiona
             <br />
             admisiones de pacientes
             <br />
           </Grid>
-        
+
           <div className={comunStyle.bottomElement}
           style={{padding: '1.5em'}}
           >
@@ -59,8 +57,8 @@ const Session = (props) => {
               id={"Session-Btn1"}
               className={comunStyle.buttonAchs}
               style={{width: '100%'}}
-              variant="contained"
-              onClick={() => dispatch(login(["user.read"]))}
+              variant='contained'
+              onClick={() => dispatch(login([ "user.read" ]))}
             >
               Ingresar
             </Button>
@@ -73,7 +71,7 @@ const Session = (props) => {
 
 function mapStateToProps({ addmissionForm }) {
   return {
-    addmissionForm: addmissionForm,
+    addmissionForm
   };
 }
 export default connect(mapStateToProps)(Session);

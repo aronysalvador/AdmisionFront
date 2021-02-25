@@ -1,7 +1,7 @@
 import {
   GET_JORNADA_LABORAL_INIT,
   GET_JORNADA_LABORAL_SUCCESS,
-  GET_JORNADA_LABORAL_FAILURE,
+  GET_JORNADA_LABORAL_FAILURE
 } from "../types/tipoJornadaLaboralType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,14 +11,14 @@ export const getData = createHttpGetClient(window.REACT_APP_JORNADA_TRABAJO);
 export const getJornadaLaboralPrincipal = () => async (dispatch) => {
   dispatch({
     type: GET_JORNADA_LABORAL_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCallTipoJornada(response.data.content[0]));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_JORNADA_TRABAJO));
         dispatch(handleSetStep(1004));
@@ -33,10 +33,10 @@ export const getJornadaLaboralPrincipal = () => async (dispatch) => {
 
   const successCallTipoJornada = (jornada) => ({
     type: GET_JORNADA_LABORAL_SUCCESS,
-    payload: jornada,
+    payload: jornada
   });
 
   const errorCallTipoJornada = () => ({
-    type: GET_JORNADA_LABORAL_FAILURE,
+    type: GET_JORNADA_LABORAL_FAILURE
   });
 };

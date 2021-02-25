@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
@@ -18,48 +18,46 @@ const TipoAvisoResponsable = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm, addmissionForm:{ CamposDocumentos },  microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm, addmissionForm: { CamposDocumentos }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-
-    const [check,setCheck] = useState(addmissionForm.TipoAvisoResponsable? addmissionForm.TipoAvisoResponsable : { id:1,description:"Presencial" })
+    const [ check, setCheck ] = useState(addmissionForm.TipoAvisoResponsable? addmissionForm.TipoAvisoResponsable : { id: 1, description: "Presencial" })
 
     const BlueRadio = withStyles({
         root: {
           color: specialBlue,
           '&$checked': {
-            color: specialBlue[600],
-          },
+            color: specialBlue[600]
+          }
         },
-        checked: {},
-      })((props) => <Radio color="default" {...props} />);
-
+        checked: {}
+      })((props) => <Radio color='default' {...props} />);
 
     return (
         <div className={comunClass.root}>
-            <div className={comunClass.displayDesk}> 
+            <div className={comunClass.displayDesk}>
                 <Header
                     userMsal={ microsoftReducer.userMsal }
                 />
             </div>
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
-                    id="TipoAvisoResponsable-BtnBack"
+                    id='TipoAvisoResponsable-BtnBack'
                     dispatch={() => dispatch(handleSetStep(17))}
                     percentage={addmissionForm.percentage}
                 />
-            </div>                
-           
+            </div>
+
             <div className={comunClass.titlePrimaryDesk}>
-                <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-                ¿Cómo dió  
-                    <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+                <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+                ¿Cómo dió
+                    <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
                         &nbsp;aviso del accidente?
-                    </Grid>          
+                    </Grid>
                 </Grid>
             </div>
 
             <div className={comunClass.boxDesk}>
-                <div className={comunClass.bottomElement} style={{position:'inherit'}}>
+                <div className={comunClass.bottomElement} style={{position: 'inherit'}}>
                     <div className={comunClass.displayMobile}>
                         <div className={spaceStyle.spaceMin1} />
                     </div>
@@ -67,67 +65,65 @@ const TipoAvisoResponsable = () => {
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <div>
 
-
                         <div className={comunClass.deskFlex}>
                            <div className={check.id === 1 ? comunClass.roundedBlue : comunClass.roundedNormal}>
-                                <div className={comunClass.containerOpction} style={{alignItems:"flex-end"}}>
+                                <div className={comunClass.containerOpction} style={{alignItems: "flex-end"}}>
                                     <BlueRadio
-                                        id="TipoAvisoResponsable-Check1"
+                                        id='TipoAvisoResponsable-Check1'
                                         checked={check.id === 1}
-                                         onChange={()=>setCheck({ id:1, description: "Presencial" })}
+                                         onChange={() => setCheck({ id: 1, description: "Presencial" })}
                                         value={check.id}
-                                        name="radio-button-demo"
+                                        name='radio-button-demo'
                                         inputProps={{ 'aria-label': 'C' }}
                                     />
                                     <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Presencial</p>
                                 </div>
-                            </div>
+                           </div>
 
- 
                             <div className={spaceStyle.spaceMin1} />
 
                             <div className={check.id === 2 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
                                         <BlueRadio
-                                            id="TipoAvisoResponsable-Check2"
+                                            id='TipoAvisoResponsable-Check2'
                                             checked={check.id === 2}
-                                            onChange={()=>{setCheck({ id:2, description: "E-mail" })}}
+                                            onChange={() => { setCheck({ id: 2, description: "E-mail" }) }}
                                             value={check.id}
-                                            name="radio-button-demo"
+                                            name='radio-button-demo'
                                             inputProps={{ 'aria-label': 'C' }}
                                         />
                                         <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>E-mail</p>
                                     </div>
                             </div>
-                        </div>    
- 
+                        </div>
+
                         <div className={spaceStyle.spaceMin1} />
 
                         <div className={comunClass.deskFlex}>
                             <div className={check.id === 3 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
-                                        <BlueRadio                                            
-                                            id="TipoAvisoResponsable-Check3"
+                                        <BlueRadio
+                                            id='TipoAvisoResponsable-Check3'
                                             checked={check.id === 3}
-                                            onChange={()=>{setCheck({ id:3, description: "Llamada telefónica" })}}
+                                            onChange={() => { setCheck({ id: 3, description: "Llamada telefónica" }) }}
                                             value={check.id}
-                                            name="radio-button-demo"
+                                            name='radio-button-demo'
                                             inputProps={{ 'aria-label': 'C' }}
                                         />
                                         <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Llamada telefónica</p>
                                     </div>
                             </div>
-                            
+
                             <div className={spaceStyle.spaceMin1} />
 
                             <div className={check.id === 4 ? comunClass.roundedBlue : comunClass.roundedNormal}>
                                     <div className={comunClass.containerOpction}>
-                                        <BlueRadio                                            
-                                            id="TipoAvisoResponsable-Check4"
+                                        <BlueRadio
+                                            id='TipoAvisoResponsable-Check4'
                                             checked={check.id === 4}
-                                            onChange={()=>{setCheck({ id:4, description: "Whatsapp" })}}
+                                            onChange={() => { setCheck({ id: 4, description: "Whatsapp" }) }}
                                             value={check.id}
-                                            name="radio-button-demo"
+                                            name='radio-button-demo'
                                             inputProps={{ 'aria-label': 'C' }}
                                         />
                                         <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Whatsapp</p>
@@ -140,42 +136,42 @@ const TipoAvisoResponsable = () => {
                             <div className={check.id === 5 ? comunClass.roundedBlueNoMargin : comunClass.roundedNormalNoMargin}>
                                     <div style={{width: "100%"}}>
                                         <div className={comunClass.containerOpction}>
-                                            <BlueRadio                                                
-                                                id="TipoAvisoResponsable-Check5"
+                                            <BlueRadio
+                                                id='TipoAvisoResponsable-Check5'
                                                 checked={check.id === 5}
-                                                onChange={()=>{setCheck({ id:5, description: "Otro", especificacion: "" })}}
+                                                onChange={() => { setCheck({ id: 5, description: "Otro", especificacion: "" }) }}
                                                 value={check.id}
-                                                name="radio-button-demo"
+                                                name='radio-button-demo'
                                                 inputProps={{ 'aria-label': 'C' }}
                                             />
                                             <p className={comunClass.txtRadios} style={{ marginTop: "17px" }}>Otro</p>
                                         </div>
 
-                                        <div 
+                                        <div
                                             style={{
                                                 paddingLeft: "30px",
                                                 paddingRight: "30px",
-                                                paddingBottom: "30px"                                            
+                                                paddingBottom: "30px"
                                             }}
                                         >
-                                            <TextField                                                
-                                                id="TipoAvisoResponsable-Input1"
-                                                onClick={()=>{setCheck({ id:5, description: "Otro", especificacion: "" })}}
-                                                focused={check.id === 5?true:false}
+                                            <TextField
+                                                id='TipoAvisoResponsable-Input1'
+                                                onClick={() => { setCheck({ id: 5, description: "Otro", especificacion: "" }) }}
+                                                focused={check.id === 5}
                                                 value={check.especificacion?check.especificacion:""}
-                                                onChange={(e) =>  setCheck({ id:5, description: "Otro", especificacion: Format.caracteresInvalidos(e.target.value) }) }
-                                                margin="dense"
-                                                variant="outlined"
+                                                onChange={(e) => setCheck({ id: 5, description: "Otro", especificacion: Format.caracteresInvalidos(e.target.value) }) }
+                                                margin='dense'
+                                                variant='outlined'
                                                 fullWidth
-                                                autoComplete="off"
-                                                type="text"
+                                                autoComplete='off'
+                                                type='text'
                                                 style={{ background: "#ffff"}}
                                                 inputProps={{ maxLength: 200 }}
                                                 InputProps={{
                                                     endAdornment: (
-                                                        <ClearIcon style={{cursor:'pointer'}} onClick={() => {
-                                                                         setCheck({ id:5, description: "Otro", especificacion: "" })
-                                                                     }} 
+                                                        <ClearIcon style={{cursor: 'pointer'}} onClick={() => {
+                                                                         setCheck({ id: 5, description: "Otro", especificacion: "" })
+                                                                     }}
                                                         />
                                                     )
                                                 }}
@@ -185,50 +181,49 @@ const TipoAvisoResponsable = () => {
                             </div>
 
                             <div className={comunClass.bottomElement}>
-                                <Button                   
-                                    id="TipoAvisoResponsable-Btn1"
-                                    variant="contained"
+                                <Button
+                                    id='TipoAvisoResponsable-Btn1'
+                                    variant='contained'
                                     className={comunClass.buttonAchs}
                                     disabled={(!check.id || (check.id===5 && check.especificacion.length<5))}
                                     onClick={() => {
-
                                         switch (check.id) {
                                             case 1:
-                                                CamposDocumentos.avisoPresen="x"  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro=""  
-                                                CamposDocumentos.avisoCual=""  
+                                                CamposDocumentos.avisoPresen="x"
+                                                CamposDocumentos.avisoMail=""
+                                                CamposDocumentos.avisoFono=""
+                                                CamposDocumentos.avisoOtro=""
+                                                CamposDocumentos.avisoCual=""
                                                 break;
                                             case 2:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail="x"  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro=""  
-                                                CamposDocumentos.avisoCual=""  
+                                                CamposDocumentos.avisoPresen=""
+                                                CamposDocumentos.avisoMail="x"
+                                                CamposDocumentos.avisoFono=""
+                                                CamposDocumentos.avisoOtro=""
+                                                CamposDocumentos.avisoCual=""
                                                 break;
                                             case 3:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono="x"  
-                                                CamposDocumentos.avisoOtro=""  
-                                                CamposDocumentos.avisoCual=""  
+                                                CamposDocumentos.avisoPresen=""
+                                                CamposDocumentos.avisoMail=""
+                                                CamposDocumentos.avisoFono="x"
+                                                CamposDocumentos.avisoOtro=""
+                                                CamposDocumentos.avisoCual=""
                                                 break;
                                             case 4:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro="x"  
-                                                CamposDocumentos.avisoCual=check.description  
+                                                CamposDocumentos.avisoPresen=""
+                                                CamposDocumentos.avisoMail=""
+                                                CamposDocumentos.avisoFono=""
+                                                CamposDocumentos.avisoOtro="x"
+                                                CamposDocumentos.avisoCual=check.description
                                                 break;
                                             case 5:
-                                                CamposDocumentos.avisoPresen=""  
-                                                CamposDocumentos.avisoMail=""  
-                                                CamposDocumentos.avisoFono=""  
-                                                CamposDocumentos.avisoOtro="x"  
-                                                CamposDocumentos.avisoCual=check.especificacion  
+                                                CamposDocumentos.avisoPresen=""
+                                                CamposDocumentos.avisoMail=""
+                                                CamposDocumentos.avisoFono=""
+                                                CamposDocumentos.avisoOtro="x"
+                                                CamposDocumentos.avisoCual=check.especificacion
                                                 break;
-                                        
+
                                             default:
                                                 break;
                                         }
@@ -241,15 +236,14 @@ const TipoAvisoResponsable = () => {
                                     Continuar
                                 </Button>
                             </div>
-                             
+
                         </div>
                     </div>
-            
-            
+
                 </div>
             </div>
 
-      </div>
+        </div>
     )
 }
 

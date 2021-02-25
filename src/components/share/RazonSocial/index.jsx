@@ -1,22 +1,19 @@
-import React from 'react'
+import { useState } from 'react';
 import {TextField} from "@material-ui/core"
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
-
 const RazonSocialAutoComplete = () => {
+    const [ options, setOptions ] = useState([])
+    const [ razon, setRazon ] = useState([])
 
-    const [options, setOptions] = React.useState([])
-    const [razon, setRazon] = React.useState([])
-
-    const getData = async(newInputValue) =>{ 
-      if(newInputValue){
+    const getData = async(newInputValue) => {
+      if (newInputValue){
           const test = await fetch(window.REACT_APP_RAZONSOCIAL+ newInputValue)
           const json = await test.json()
-          var predictions = (Array.isArray(json.content?.response)) ? json.content.response : []           
+          let predictions = (Array.isArray(json.content?.response)) ? json.content.response : []
           setOptions(predictions)
-          if(predictions.length == 1){
+          if (predictions.length == 1)
             setRazon(predictions)
-          }
       }
     }
 
@@ -24,19 +21,19 @@ const RazonSocialAutoComplete = () => {
                 <Autocomplete
                   value={razon.name}
                   style={{ width: '100%' }}
-                  size="small"
+                  size='small'
                   fullWidth
                   getOptionLabel={(option) => option.name}
                   options={options}
-                  
-                  onInputChange={(event,newInputValue) => {
+
+                  onInputChange={(event, newInputValue) => {
                     getData(newInputValue)
                   }}
                   renderInput={(params) => {
-                    return(
-                      <TextField {...params} style={{color:'red'}} variant="outlined" />
-                  )}}
-                  
+                    return (
+                      <TextField {...params} style={{color: 'red'}} variant='outlined' />
+                  ) }}
+
                 />
             </div>
     );

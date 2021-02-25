@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
-
 import { Button, Typography } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -20,7 +19,7 @@ const Profesion = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const [profesion, setProfesion] = useState(() => {
+  const [ profesion, setProfesion ] = useState(() => {
     return !profesionForm ? "" : profesionForm;
   });
 
@@ -33,8 +32,8 @@ const Profesion = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -43,16 +42,16 @@ const Profesion = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Selecciona la 
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          Selecciona la
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;profesión u oficio
-          </Grid>          
+          </Grid>
           &nbsp;que mejor se ajusta al paciente
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -76,15 +75,15 @@ const Profesion = () => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"
+                variant='outlined'
                 InputProps={{
                   ...params.InputProps,
                   style: {
                     paddingTop: "3px",
                     paddingBottom: "3px",
                     paddingLeft: "5xp",
-                    marginTop: "7px",
-                  },
+                    marginTop: "7px"
+                  }
                 }}
               />
             )}
@@ -92,7 +91,7 @@ const Profesion = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             disabled={!profesion}
             onClick={() => {

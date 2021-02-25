@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 // import React, { useState, useEffect, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
-//Action de Redux
+// Action de Redux
 import { sendResponsable } from "../../redux/actions/AdmissionAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
@@ -27,11 +27,11 @@ const DataResponsable = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  //State
-  const [nombre, saveNombre] = useState(() => {
+  // State
+  const [ nombre, saveNombre ] = useState(() => {
     return !responsable ? "" : responsable.nombre;
   });
-  const [cargos, saveCargos] = useState(() => {
+  const [ cargos, saveCargos ] = useState(() => {
     return !responsable ? "" : responsable.cargo;
   });
 
@@ -43,26 +43,26 @@ const DataResponsable = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          id="DataResponsable-BtnBack"
+          id='DataResponsable-BtnBack'
           dispatch={() => dispatch(handleSetStep(15))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Solicita una 
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          Solicita una
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;referencia del responsable
-          </Grid>          
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -79,18 +79,18 @@ const DataResponsable = () => {
           </div>
           <div>
             <TextField
-              id="DataResponsable-Input1"
+              id='DataResponsable-Input1'
               value={nombre}
               onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
-              helperText="Ejemplo: Luis Morales"
-              margin="dense"
-              variant="outlined"
+              helperText='Ejemplo: Luis Morales'
+              margin='dense'
+              variant='outlined'
               fullWidth
-              autoComplete="off"
-              type="text"
+              autoComplete='off'
+              type='text'
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
+                  <InputAdornment position='end'>
                     <IconButton
                       onClick={() => {
                         saveNombre("");
@@ -99,7 +99,7 @@ const DataResponsable = () => {
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
@@ -107,24 +107,24 @@ const DataResponsable = () => {
           <div className={spaceStyle.space1} />
 
           <div>
-            <Typography className={comunClass.tituloTextBox} >
+            <Typography className={comunClass.tituloTextBox}>
               Cargo o Relación
             </Typography>
           </div>
           <div>
             <TextField
-              id="DataResponsable-Input2"
+              id='DataResponsable-Input2'
               value={cargos}
               onChange={(e) => saveCargos(Format.caracteresInvalidos(e.target.value))}
-              helperText="Ejemplo: Jefe de área, Prevencionista"
-              margin="dense"
-              variant="outlined"
-              autoComplete="off"
-              type="text"
+              helperText='Ejemplo: Jefe de área, Prevencionista'
+              margin='dense'
+              variant='outlined'
+              autoComplete='off'
+              type='text'
               fullWidth
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
+                  <InputAdornment position='end'>
                     <IconButton
                       onClick={() => {
                         saveCargos("");
@@ -133,17 +133,17 @@ const DataResponsable = () => {
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            id="DataResponsable-Btn1"
+            id='DataResponsable-Btn1'
             className={comunClass.buttonAchs}
-            variant="contained"
-            type="submit"
+            variant='contained'
+            type='submit'
             disabled={!nombre || !cargos}
             onClick={() => clickSendResponsable()}
           >

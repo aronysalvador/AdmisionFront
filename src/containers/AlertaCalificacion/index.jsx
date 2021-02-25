@@ -1,4 +1,3 @@
-import React from "react";
 import Cabecera from "../../components/cabecera/cabeceraSinBarra";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -18,7 +17,7 @@ import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
 
 const AlertaCalificacion = () => {
-  const { microsoftReducer,addmissionForm: { categoriaOcupacionalForm } } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer, addmissionForm: { categoriaOcupacionalForm } } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
   const welcomeStyle = getWelcomeStyle();
@@ -28,27 +27,28 @@ const AlertaCalificacion = () => {
 
   return (
     <div className={comunClass.rootBegin}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
           <div className={comunClass.displayMobile}>
             <Cabecera
-              id="AlertaCalificacion-BtnBack1"
+              id='AlertaCalificacion-BtnBack1'
               dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) }
-              color="#373737"
+              color='#373737'
               percentage={-1}
-              noSpace={true}
+              noSpace
             />
           </div>
           <div className={comunClass.displayDesk}>
-            <Cabecera 
-              id="AlertaCalificacion-BtnBack2"
-              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) } 
-              color={"#fff" } 
-              percentage={-1} 
-              noSpace={true} />
+            <Cabecera
+              id='AlertaCalificacion-BtnBack2'
+              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) }
+              color={"#fff" }
+              percentage={-1}
+              noSpace
+            />
           </div>
           <div className={comunClass.displayMobile}>
             <div className={welcomeStyle.avatarContainerRight}>
@@ -62,7 +62,7 @@ const AlertaCalificacion = () => {
             <div className={welcomeStyle.TextContainer}>
               <div className={comunClass.displayMobile}>
                 <img
-                  alt="Excelente"
+                  alt='Excelente'
                   src={check}
                   className={welcomeStyle.iconCircular}
                 />
@@ -75,21 +75,21 @@ const AlertaCalificacion = () => {
                   Eso fue rápido&nbsp;
                 </Typography>
                 <div className={comunClass.displayDeskInline}>
-                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
+                  <img alt='Excelente' src={check} className={welcomeStyle.iconCircular} />
                 </div>
               </div>
             </div>
             <div className={comunClass.displayDeskInline}>
-              <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="excelente" src={excelent} />
+              <Grid component='span' className={comunClass.imgPrimaryDesk}>
+                <img alt='excelente' src={excelent} />
               </Grid>
             </div>
           </div>
         </div>
       </div>
       <div className={welcomeStyle.beginContainer}>
-        <div className={comunClass.displayDesk}> 
-          <div className={spaceStyle.space1} />   
+        <div className={comunClass.displayDesk}>
+          <div className={spaceStyle.space1} />
         </div>
         <div className={comunClass.textCenterDesk}>
           <Typography className={welcomeStyle.subTitleBegin}>
@@ -100,42 +100,42 @@ const AlertaCalificacion = () => {
           </div>
           <div className={comunClass.boxDesk}>
             <div className={welcomeStyle.titleContainerCards2}>
-              <div  className={welcomeStyle.divRowBottom2}>
+              <div className={welcomeStyle.divRowBottom2}>
                 <ErrorOutline />
                 <Typography className={welcomeStyle.itemText2}>
                   Pide un e-mail al paciente
                 </Typography>
               </div>
-              <div  className={welcomeStyle.divRowBottom2}>
+              <div className={welcomeStyle.divRowBottom2}>
                 <Typography className={welcomeStyle.pBegin}>
-                  Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar. 
+                  Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar.
                 </Typography>
               </div>
             </div>
             <div className={welcomeStyle.bottomBegin}>
               <div className={comunClass.paddingElement}>
                 <Button
-                  id="AlertaCalificacion-Btn1"
-                  className={[comunClass.buttonAchs, blackStyle.buttonFooterSpace]}
-                  variant="contained"
+                  id='AlertaCalificacion-Btn1'
+                  className={[ comunClass.buttonAchs, blackStyle.buttonFooterSpace ]}
+                  variant='contained'
                   onClick={() => dispatch(handleSetStep(27))}
                 >
                   Continuar
                 </Button>
                 <div className={spaceStyle.space1} />
                 <Button
-                  id="AlertaCalificacion-Btn2"
+                  id='AlertaCalificacion-Btn2'
                   className={comunClass.buttonAchs2}
-                  variant="contained"
+                  variant='contained'
                   onClick={() => dispatch(handleSetStep(26.2))}
                 >
                   Levantar alerta de calificación
                 </Button>
-              </div>    
+              </div>
             </div>
           </div>
         </div>
-      </div>  
+      </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
       </div>

@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 
 const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, horarios }) => {
-  const [indiceInicio, setIndiceInicio] = useState(() => {
+  const [ indiceInicio, setIndiceInicio ] = useState(() => {
     return indiceInicioFromState === -1 ? 17 : indiceInicioFromState;
   });
 
-  const [indiceFin, setIndiceFin] = useState(() => {
+  const [ indiceFin, setIndiceFin ] = useState(() => {
     return indiceFinFromState === -1 ? 35 : indiceFinFromState;
   });
 
@@ -17,17 +17,18 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
   const comunStyle = getComunStyle();
 
   const initFn = useCallback(() => {
-    onChange({  horaInicio: horarios[indiceInicio], horaFin: horarios[indiceFin] }); 
-  }, [onChange, horarios, indiceInicio, indiceFin]);
+    onChange({ horaInicio: horarios[indiceInicio], horaFin: horarios[indiceFin] });
+  }, [ onChange, horarios, indiceInicio, indiceFin ]);
 
-  useEffect(() => {    
+  useEffect(() => {
     initFn()
-  }, [initFn]);
-  
+  }, [ initFn ]);
 
   return (
-    <Grid container direction="row" justify="center" alignItems="center">
-      <Grid item direction="column">
+    <Grid container direction='row' justify='center'
+alignItems='center'
+    >
+      <Grid item direction='column'>
         <Grid
           item
           className={comunStyle.boxTitleHoras}
@@ -44,7 +45,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
         >
           <div>
             <Button
-              variant="text"
+              variant='text'
               disabled={indiceInicio < 1}
               onClick={() => {
                 setIndiceInicio((h) => --h);
@@ -57,7 +58,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           <div style={{ textAlign: "center" }}>
           <div className={comunStyle.selectorRuedaItemsCostados2}>{indiceInicio > 1 ? horarios[indiceInicio - 2] : "-"}</div>
           <div className={comunStyle.selectorRuedaItemsCostados}>{indiceInicio > 0 ? horarios[indiceInicio - 1] : "-"}</div>
-          
+
           <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
           <div className={comunStyle.selectorRuedaItemPrincipal}> {horarios[indiceInicio]}</div>
             <hr className={comunStyle.selectorRuedaBordesItemPrincipal} />
@@ -69,7 +70,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           <div>
             <Button
             disabled={indiceInicio > 44}
-              variant="text"
+              variant='text'
               onClick={() => {
                 setIndiceInicio((h) => ++h);
               }}
@@ -79,7 +80,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           </div>
         </Grid>
       </Grid>
-      <Grid item direction="column">
+      <Grid item direction='column'>
         <Grid
           item
           className={comunStyle.boxTitleHoras}
@@ -98,7 +99,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
         >
           <div>
             <Button
-              variant="text"
+              variant='text'
               disabled={indiceFin < 1}
               onClick={() => {
                 setIndiceFin((m) => --m);
@@ -122,7 +123,7 @@ const JornadaLaboral = ({ onChange, indiceInicioFromState, indiceFinFromState, h
           <div className={spaceStyle.space1} />
           <div>
             <Button
-              variant="text"
+              variant='text'
               disabled={indiceFin > 44}
               onClick={() => {
                 setIndiceFin((m) => ++m);

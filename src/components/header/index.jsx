@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
@@ -19,11 +18,11 @@ const Header = (props) => {
 
   return (
     <div className={comunClass.header}>
-      <div className="container" style={{display:"flex", width: "100%"}}>
-        <img 
-          alt="logo" 
+      <div className='container' style={{display: "flex", width: "100%"}}>
+        <img
+          alt='logo'
           src={image}
-          style={{width: "64px", height: "64px", margin:"auto 10%"}}   //marginLeft:"25%"
+          style={{width: "64px", height: "64px", margin: "auto 10%"}} // marginLeft:"25%"
         />
         <div className={comunClass.containerHeader}>
           <div className={welcomeStyle.avatarContainer}>
@@ -38,8 +37,8 @@ const Header = (props) => {
                 id={"Header-BtnEnd"}
                 className={comunClass.tituloCerrarSesion}
                 style={{ cursor: 'pointer'}}
-                onClick={()=> dispatch(logout())}
-              > 
+                onClick={() => dispatch(logout())}
+              >
                 Cerrar sesión
               </Grid> }
           </div>

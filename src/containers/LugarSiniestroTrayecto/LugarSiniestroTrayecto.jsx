@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useEffect, useState } from "react";
 import { getComunStyle } from "../../css/comun"
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { Button, Typography } from "@material-ui/core"
@@ -17,13 +17,13 @@ const LugarSiniestroTrayecto = () => {
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
-  const [sucursal, setSucursal] = useState(() => {
+  const [ sucursal, setSucursal ] = useState(() => {
     return sucursalEmpresaDiaSiniestroTrayecto ? sucursalEmpresaDiaSiniestroTrayecto : ""
   });
-  const [mapaUrl, setMapaUrl] = useState(() => {
+  const [ mapaUrl, setMapaUrl ] = useState(() => {
     return urlMapaSucursalDiaSiniestroTrayecto ? urlMapaSucursalDiaSiniestroTrayecto : ""
   });
-  const [nombreComuna,setNombreComuna]=useState("");
+  const [ nombreComuna, setNombreComuna ]=useState("");
 
   const dispatch = useDispatch();
 
@@ -35,18 +35,18 @@ const LugarSiniestroTrayecto = () => {
     dispatch(updateForm("urlMapaSucursalDiaSiniestroTrayecto", ""))
   }
 
-  const [valido, setValido] = useState(false)
-  React.useEffect(()=>{
-    if(sucursal){
-      validaDireccion(sucursal)      
-    }else{
-      setValido( false )
+  const [ valido, setValido ] = useState(false)
+  useEffect(() => {
+    if (sucursal){
+      validaDireccion(sucursal)
+    } else {
+      setValido(false)
       setNombreComuna("")
     }
     // eslint-disable-next-line
   },[sucursal])
-  
-  const validaDireccion = async()=>{
+
+  const validaDireccion = async() => {
     const resultado = await validarDireccion(sucursal)
     setNombreComuna(resultado.comuna)
     setValido(resultado.valida)
@@ -54,8 +54,8 @@ const LugarSiniestroTrayecto = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -64,15 +64,15 @@ const LugarSiniestroTrayecto = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]} style={{paddingBottom:'20px'}}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]} style={{paddingBottom: '20px'}}>
           Indica la dirección del
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;lugar de trabajo el día del accidente
-          </Grid>          
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth}/>
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -83,29 +83,29 @@ const LugarSiniestroTrayecto = () => {
           </Typography>
           <DireccionGeo
             comunStyle={getComunStyle()}
-            direccion={sucursal} 
-            setMapa={setMapaUrl} 
-            setDireccion={setSucursal} 
+            direccion={sucursal}
+            setMapa={setMapaUrl}
+            setDireccion={setSucursal}
             clearData={clearData}
-            showDinamicMap={()=> {
-              setSucursal({description: ''}); 
+            showDinamicMap={() => {
+              setSucursal({description: ''});
               dispatch(handleSetStep(12.3))
             }}
             direccionTemporal={!sucursalEmpresaDiaSiniestroTrayecto?DireccionEmpresa:""}
           />
           <center>
             {(mapaUrl)?
-            <img alt="MapaDiaSiniestro" className={comunClass.googleMap}  src={mapaUrl} />
+            <img alt='MapaDiaSiniestro' className={comunClass.googleMap} src={mapaUrl} />
             :null}
           </center>
-        </div> 
+        </div>
         {/* <div className={comunClass.displayDesk}>
           <div className={spaceStyle.space1} />
         </div> */}
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={!valido}
             onClick={() => {
               dispatch(updateForm("sucursalEmpresaDiaSiniestroTrayecto", sucursal))

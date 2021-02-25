@@ -1,11 +1,9 @@
-import React from "react";
 import { TextField } from "@material-ui/core";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { getComunStyle } from "../../css/comun";
 import { withStyles } from '@material-ui/core/styles';
 
 const CriterioList = (props) => {
-
   const { data, setData, title, listado, id, options } = props
 
   const comunClass = getComunStyle();
@@ -20,17 +18,17 @@ const CriterioList = (props) => {
   })(AutoComplete);
 
   return (
-      <div className=""> 
-        <div className={['container', comunClass.backgroundWhite].join(' ')} >
-          <div className="" style={{padding: "5px"}}>
+      <div className=''>
+        <div className={[ 'container', comunClass.backgroundWhite ].join(' ')}>
+          <div className='' style={{padding: "5px"}}>
 
-            <div className="row" style={{padding:0,margin:0,width:"100%"}}>
-              <div className="col-md-1"></div>
-              <div className="col-md-4" style={{alignSelf: "center", textAlign: "end"}}>
+            <div className='row' style={{padding: 0, margin: 0, width: "100%"}}>
+              <div className='col-md-1' />
+              <div className='col-md-4' style={{alignSelf: "center", textAlign: "end"}}>
                 <span className={comunClass.txtRadios}>{title}</span>
               </div>
-              
-              <div className="col-md-5">
+
+              <div className='col-md-5'>
                 <NoPaddingAutocomplete
                   id={id+"Autocomplete"}
                   value={data}
@@ -40,26 +38,27 @@ const CriterioList = (props) => {
                   options={listado}
                   getOptionSelected= {(
                     option,
-                    value,
+                    value
                   ) => value.value === option.value}
                   // getOptionLabel={(option) => option.descripcion}
-                  getOptionLabel={(option) =>{ 
-                    var response = ""
-                    if(option){
-                        if(options.length>0){
+                  getOptionLabel={(option) => {
+                    let response = ""
+                    if (option){
+                        if (options.length>0){
                             for (let index = 0; index < options.length; index++) {
                                 const element = options[index];
                                 response += option[element]+" ";
                             }
                         }
-                    }                        
+                    }
+
                     return response
                   }}
                   renderInput={(params) => (
                     <TextField
                       id={id+"Input"}
                       {...params}
-                      variant="outlined"
+                      variant='outlined'
                       InputProps={{
                         ...params.InputProps,
                         style: {
@@ -67,14 +66,14 @@ const CriterioList = (props) => {
                           paddingBottom: "3px",
                           paddingLeft: "5xp",
                           marginTop: "14px",
-                          backgroundColor:"white"
-                        },
+                          backgroundColor: "white"
+                        }
                       }}
                     />
                   )}
                 />
               </div>
-              <div className="col-md-2"></div>
+              <div className='col-md-2' />
             </div>
 
           </div>

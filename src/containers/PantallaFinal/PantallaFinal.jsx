@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -11,12 +10,10 @@ import IndiciacionesPacientes from "../../components/Indicaciones";
 import CajaRutSiniestro from "./CajaRutSiniestro";
 import Header from "../../components/header/index";
 import { Grid } from '@material-ui/core';
-
 import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
 import espera from './../../img/espera.svg'
 import work from './../../img/work.svg'
-
 import { initSessionDate } from "./../../redux/actions/Log";
 
 const PantallaFinal = (props) => {
@@ -25,10 +22,11 @@ const PantallaFinal = (props) => {
   const welcomeStyle = getWelcomeStyle();
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
+
   return (
     <div className={comunClass.rootBegin}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
@@ -45,7 +43,7 @@ const PantallaFinal = (props) => {
               <div className={welcomeStyle.TextContainer}>
                 <div className={comunClass.displayMobile}>
                   <img
-                    alt="Excelente"
+                    alt='Excelente'
                     src={check}
                     className={welcomeStyle.iconCircular}
                   />
@@ -57,34 +55,34 @@ const PantallaFinal = (props) => {
                   </Typography>
                 </div>
                 <div className={comunClass.displayDeskInline} style={{verticalAlign: 'bottom'}}>
-                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
+                  <img alt='Excelente' src={check} className={welcomeStyle.iconCircular} />
                 </div>
               </div>
-              <div className={spaceStyle.space1} />  
+              <div className={spaceStyle.space1} />
               <div className={comunClass.displayMobile}>
                 <div className={spaceStyle.space1} />
-              </div>          
+              </div>
               <div className={welcomeStyle.rutSiniestroContainer}>
                 <CajaRutSiniestro
                   textoPrincipal={siniestroID}
-                  textoSecundario="ID Siniestro"
+                  textoSecundario='ID Siniestro'
                 />
                 <CajaRutSiniestro
                   textoPrincipal={rut}
-                  textoSecundario="N° Doc. Identidad"
+                  textoSecundario='N° Doc. Identidad'
                 />
               </div>
             </div>
             <div className={comunClass.displayDeskInline}>
-              <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="excelente" src={excelent} />
+              <Grid component='span' className={comunClass.imgPrimaryDesk}>
+                <img alt='excelente' src={excelent} />
               </Grid>
             </div>
           </div>
         </div>
       </div>
       <div className={welcomeStyle.beginContainer}>
-        
+
         <div className={comunClass.textCenterDesk}>
           <div className={comunClass.displayDesk}>
             <div className={spaceStyle.space1} />
@@ -102,7 +100,7 @@ const PantallaFinal = (props) => {
                   icono: espera,
                   textoPrimario: "Esperar en sala",
                   textoSecundario: "al llamado del doctor",
-                  clase: welcomeStyle.divRowPantallaFinal,
+                  clase: welcomeStyle.divRowPantallaFinal
                 },
                 // {
                 //   icono: "sms.svg",
@@ -114,8 +112,8 @@ const PantallaFinal = (props) => {
                   icono: work,
                   textoPrimario: "Si el paciente presenta dolor",
                   textoSecundario: "avisa a la ECS",
-                  clase: welcomeStyle.divRowPantallaFinal,
-                },
+                  clase: welcomeStyle.divRowPantallaFinal
+                }
               ]}
             />
             <div className={welcomeStyle.bottomBegin}>
@@ -123,10 +121,10 @@ const PantallaFinal = (props) => {
                 <div className={spaceStyle.spaceMin1} />
               </div>
               <Button
-                id="PantallaFinal-Btn1"
-                className={[comunClass.buttonAchs, comunClass.pantallaFinalBotones]}
-                variant="contained"
-                onClick={() =>{dispatch(initSessionDate("")); dispatch(handleSetStep(1))}} // 1.1 Empecemos eliminada
+                id='PantallaFinal-Btn1'
+                className={[ comunClass.buttonAchs, comunClass.pantallaFinalBotones ]}
+                variant='contained'
+                onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
               >
                 Firma de documentos en SAP
               </Button>
@@ -136,18 +134,18 @@ const PantallaFinal = (props) => {
             </div>
           </div>
         </div>
-      </div>  
+      </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
-      </div>  
+      </div>
     </div>
   );
 };
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer,
+    addmissionForm,
+    microsoftReducer
   };
 }
 export default connect(mapStateToProps)(PantallaFinal);

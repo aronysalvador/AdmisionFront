@@ -1,9 +1,9 @@
 import {
   GET_RAZON_ALERTA_INIT,
   GET_RAZON_ALERTA_SUCCESS,
-  GET_RAZON_ALERTA_FAILURE,
+  GET_RAZON_ALERTA_FAILURE
 } from "../types/alertaCalificacionRazonType";
-import { handleSetStep,updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
 
 export const getData = createHttpGetClient(window.REACT_APP_ALERTAS);
@@ -11,21 +11,20 @@ export const getData = createHttpGetClient(window.REACT_APP_ALERTAS);
 export const getRazonAlertaPrincipal = () => async (dispatch) => {
   dispatch({
     type: GET_RAZON_ALERTA_INIT,
-    payload: true,
+    payload: true
   });
 
   // Mostrar alertas segun tipo de siniestro
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         let data = response.data.content.response[0].opciones
         dispatch(successCallRazonAlerta(data));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ALERTAS));
         dispatch(handleSetStep(1004));
       }
-
     })
     .catch((error) => {
       dispatch(errorCallRazonAlerta(error));
@@ -37,11 +36,11 @@ export const getRazonAlertaPrincipal = () => async (dispatch) => {
 
 const successCallRazonAlerta = (razon) => ({
   type: GET_RAZON_ALERTA_SUCCESS,
-  payload: razon,
+  payload: razon
 });
 
 const errorCallRazonAlerta = (error) => {
-  return  ({
-    type: GET_RAZON_ALERTA_FAILURE,
+  return ({
+    type: GET_RAZON_ALERTA_FAILURE
   })
 };

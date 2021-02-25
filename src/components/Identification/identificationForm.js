@@ -1,4 +1,3 @@
-import React from "react"; 
 import { withFormik } from "formik";
 import { connect } from "react-redux";
 import { updateForm, handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -12,13 +11,12 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import image from './../../img/identify.svg'
 
 const form = (props) => {
-
   const {
     values,
     touched,
     errors,
-    isSubmitting, 
-    handleChange, 
+    isSubmitting,
+    handleChange,
     handleBlur,
     handleSubmit
   } = props;
@@ -30,25 +28,25 @@ const form = (props) => {
     <form onSubmit={handleSubmit}>
       <div className={comunClass.displayDesk}>
         <div className={comunClass.titlePrimaryDesk}>
-          <Grid component="span" className={comunClass.textPrimaryDesk}>
-            <Typography variant="inherit" component="p" className={comunClass.titleBlack2}>
-              Empecemos completando <br /> algunos datos 
+          <Grid component='span' className={comunClass.textPrimaryDesk}>
+            <Typography variant='inherit' component='p' className={comunClass.titleBlack2}>
+              Empecemos completando <br /> algunos datos
             </Typography>
           </Grid>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
         <div>
           <Typography
-            variant="h1"
-            component="h1"
-            className={[comunClass.titleBlack, comunClass.subtitleBlack]}
+            variant='h1'
+            component='h1'
+            className={[ comunClass.titleBlack, comunClass.subtitleBlack ]}
           >
-            Ingresa el           
-            <Grid component="span"  className={comunClass.titleBlue} style={{display: "contents"}}>
+            Ingresa el
+            <Grid component='span' className={comunClass.titleBlue} style={{display: "contents"}}>
               &nbsp;RUT
             </Grid>
             &nbsp;del paciente{" "}
@@ -61,19 +59,19 @@ const form = (props) => {
           </Typography>
           <div>
             <TextField
-              id="rut"
+              id='rut'
               value={values.rut}
-              onChange={(e)=>{  if(e.currentTarget.value.length > 1){ e.currentTarget.value=formateaRut(e.currentTarget.value); handleChange(e) }else{ handleChange(e) } } }
-              
+              onChange={(e) => { if (e.currentTarget.value.length > 1){ e.currentTarget.value=formateaRut(e.currentTarget.value); handleChange(e) } else { handleChange(e) } } }
+
               onBlur={handleBlur}
               helperText={touched.rut ? errors.rut : ""}
               error={touched.rut && Boolean(errors.rut)}
               className={comunClass.borderBox}
-              margin="dense"
-              variant="outlined"
+              margin='dense'
+              variant='outlined'
               fullWidth
-              autoComplete="off"
-              type="text"
+              autoComplete='off'
+              type='text'
             />
           </div>{" "}
         </div>
@@ -84,9 +82,9 @@ const form = (props) => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={isSubmitting}
-            type="submit"
+            type='submit'
           >
             Continuar{" "}
           </Button>{" "}
@@ -102,30 +100,30 @@ const form = (props) => {
 const IdentificationForm = withFormik({
   mapPropsToValues: ({ rut }) => {
     return {
-      rut: rut || "",
+      rut: rut || ""
     };
   },
   validate: (values) => {
     const errors = {};
-    if (typeof values.rut !== "undefined" && values.rut.length < 1) {
+    if (typeof values.rut !== "undefined" && values.rut.length < 1)
       errors.rut = "Debe ingresar el RUT del Paciente";
-    } else if (!Rut.validaRut(formateaRut(values.rut))) {
+     else if (!Rut.validaRut(formateaRut(values.rut)))
       errors.rut = "Ingresa un RUT válido";
-    }
+
     return errors;
   },
   handleSubmit: (values, { props, setSubmitting }) => {
     setSubmitting = false;
     values.rut = formateaRut(values.rut);
-    var rut = Rut.clean(values.rut)
+    let rut = Rut.clean(values.rut)
     props.dispatch(updateForm("rut", rut));
-    props.dispatch(handleSetStep(5));  
-  },
+    props.dispatch(handleSetStep(5));
+  }
 })(form);
 
 function mapStateToProps({ addmissionForm }) {
   return {
-    addmissionForm: addmissionForm,
+    addmissionForm
   };
 }
 export default connect(mapStateToProps)(IdentificationForm);

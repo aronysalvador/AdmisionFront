@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -13,7 +13,7 @@ import Header from "../../components/header/index";
 
 const Achs = () => {
   const {
-    addmissionForm: { centrosForm }, microsoftReducer: { userMsal },
+    addmissionForm: { centrosForm }, microsoftReducer: { userMsal }
   } = useSelector((state) => state, shallowEqual);
 
   const { email } = userMsal;
@@ -22,11 +22,11 @@ const Achs = () => {
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
 
-  const [centros, setCENTROS] = useState(centrosForm);
+  const [ centros, setCENTROS ] = useState(centrosForm);
 
-  const [inputValue, setInputValue] = useState("");
+  const [ inputValue, setInputValue ] = useState("");
 
-  const [valueError, setValueError] = useState("");
+  const [ valueError, setValueError ] = useState("");
 
   const dispatch = useDispatch();
 
@@ -37,22 +37,23 @@ const Achs = () => {
 
   return (
     <div className={comunStyle.root}>
-      <div className={comunStyle.displayDesk}> 
-        <Header userMsal={userMsal}/>
+      <div className={comunStyle.displayDesk}>
+        <Header userMsal={userMsal} />
       </div>
-      <div className={ welcomeStyle.backPosicion }> 
-        <Cabecera id="Achs-BtnBack" dispatch={() => dispatch(handleSetStep(0))} percentage={-1} noSpace={true} /> 
+      <div className={ welcomeStyle.backPosicion }>
+        <Cabecera id='Achs-BtnBack' dispatch={() => dispatch(handleSetStep(0))} percentage={-1}
+noSpace />
       </div>
       <div className={spaceStyle.space1} />
       <div className={comunStyle.displayDesk}>
         <div className={spaceStyle.space2} />
       </div>
-      <Grid  className={[comunStyle.titleBlack, comunStyle.textCenterDesk]}>Te encuentras en:</Grid >
+      <Grid className={[ comunStyle.titleBlack, comunStyle.textCenterDesk ]}>Te encuentras en:</Grid>
       <div className={comunStyle.displayMobile}>
         <div className={spaceStyle.space2} />
       </div>
 
-      <div className={comunStyle.boxGeneral} >
+      <div className={comunStyle.boxGeneral}>
         <center className={comunStyle.displayDesk}>
           <div className={spaceStyle.space2} />
           <Grid className={comunStyle.subtitleBlack}>
@@ -68,11 +69,11 @@ const Achs = () => {
             Centro
           </Grid>
           <AutoComplete
-            id={"Achs-Lbl1"} 
+            id={"Achs-Lbl1"}
             value={centros}
             onChange={(event, value) => {
               setCENTROS(value);
-              value ? setValueError(value?.Centro_m)  : setValueError("");          
+              value ? setValueError(value?.Centro_m) : setValueError("");
             }}
             inputValue={inputValue}
             onInputChange={(event, newInputValue) => {
@@ -85,31 +86,31 @@ const Achs = () => {
               <TextField
                 {...params}
                 helperText={
-                  inputValue !== valueError  && valueError !== ''
+                  inputValue !== valueError && valueError !== ''
                     ? "Este centro no existe"
                     : null
                 }
                 error={inputValue !== valueError && valueError !== ''}
-                variant="outlined"
+                variant='outlined'
                 InputProps={{
                   ...params.InputProps,
                   style: {
                     paddingTop: "3px",
                     paddingBottom: "3px",
                     paddingLeft: "5xp",
-                    marginTop: "7px",
-                  },
+                    marginTop: "7px"
+                  }
                 }}
               />
             )}
           />
         </div>
-        <div className={[comunStyle.bottomElement]}>
+        <div className={[ comunStyle.bottomElement ]}>
           <Button
-            id={"Achs-Btn1"} 
-            variant="contained"
-            className={[comunStyle.buttonAchs, comunStyle.bottomMargin]}  
-            type="submit"
+            id={"Achs-Btn1"}
+            variant='contained'
+            className={[ comunStyle.buttonAchs, comunStyle.bottomMargin ]}
+            type='submit'
             disabled={inputValue !== valueError || inputValue === ''}
             onClick={() => {
               dispatch(updateForm("centrosForm", centros));
@@ -120,7 +121,7 @@ const Achs = () => {
             Aquí estoy
           </Button>
         </div>
-        
+
       </div>
     </div>
   );

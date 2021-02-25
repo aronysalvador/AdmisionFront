@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import TabCompany from "../../components/EditCompany/TabCompany";
 import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
@@ -21,24 +21,23 @@ const EditCompany = () => {
 
   const { sucursalesForm: {loading, data: sucursalesList} } = useSelector((state) => state, shallowEqual);
 
-  const [cargando, setCargando]= React.useState(false);
+  const [ cargando, setCargando ]= useState(false);
 
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
 
   const handleNext= async() => {
     setCargando(true)
-    if(sucursalesList.length===0) await dispatch(getSucursales(rutEmpresa));
+    if (sucursalesList.length===0) await dispatch(getSucursales(rutEmpresa));
   }
 
-  React.useEffect(()=>{
-    if(cargando){
-      if(!loading){
-        if(sucursalesList.length>0){
+  useEffect(() => {
+    if (cargando){
+      if (!loading){
+        if (sucursalesList.length>0)
             dispatch(handleSetStep(5.5))
-        }else{
+        else
           dispatch(handleSetStep(5.14))
-        }
       }
     }
     // eslint-disable-next-line
@@ -46,7 +45,7 @@ const EditCompany = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -57,21 +56,21 @@ const EditCompany = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
           Identifica la empresa en la que trabaja con su
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;razón social o RUT
-          </Grid>      
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
 
       <div className={comunClass.boxDesk}>
-      <div className={comunClass.displayMobile}> 
+      <div className={comunClass.displayMobile}>
         <div className={spaceStyle.space2} />
       </div>
         <TabCompany />
@@ -80,8 +79,8 @@ const EditCompany = () => {
           <Button
             id={"EditCompany-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
-            type="submit"
+            variant='contained'
+            type='submit'
             disabled={!razonSocial || !rutEmpresa || cargando}
             onClick={() => {
               handleNext()

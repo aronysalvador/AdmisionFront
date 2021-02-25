@@ -1,4 +1,3 @@
-import React from "react";
 import { getTrabajoHabitualCardStyle } from "../../css/trabajoHabitualCard";
 import { getComunStyle } from "../../css/comun";
 import { ErrorOutline } from "@material-ui/icons";
@@ -8,12 +7,13 @@ const TrabajoHabitualCard = () => {
     container,
     cardIconContainer,
     cardTextContainer,
-    cardText,
+    cardText
   } = getTrabajoHabitualCardStyle();
   const comunClass = getComunStyle();
+
   return (
     <div className={container}>
-      <div className={comunClass.displayMobile}> 
+      <div className={comunClass.displayMobile}>
       <div className={cardIconContainer}>
         <ErrorOutline />
       </div>

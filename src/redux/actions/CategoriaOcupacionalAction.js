@@ -1,7 +1,7 @@
 import {
   GET_CATEGORIAOCUPACIONAL_INIT,
   GET_CATEGORIAOCUPACIONAL_SUCCESS,
-  GET_CATEGORIAOCUPACIONAL_FAILURE,
+  GET_CATEGORIAOCUPACIONAL_FAILURE
 } from "../types/categoriaOcupacionalType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,14 +11,14 @@ export const getData = createHttpGetClient(window.REACT_APP_CATEGORIA_OCUPACIONA
 export const getCategoriaOcupacionalPrincipal = () => async (dispatch) => {
   dispatch({
     type: GET_CATEGORIAOCUPACIONAL_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCallCategoria(response.data.content[0]));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CATEGORIA_OCUPACIONAL));
         dispatch(handleSetStep(1004));
@@ -33,10 +33,10 @@ export const getCategoriaOcupacionalPrincipal = () => async (dispatch) => {
 
   const successCallCategoria = (jornada) => ({
     type: GET_CATEGORIAOCUPACIONAL_SUCCESS,
-    payload: jornada,
+    payload: jornada
   });
 
   const errorCallCategoria = () => ({
-    type: GET_CATEGORIAOCUPACIONAL_FAILURE,
+    type: GET_CATEGORIAOCUPACIONAL_FAILURE
   });
 };

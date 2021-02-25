@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -18,7 +17,7 @@ const NoCuentaSap = (props) => {
 
   return (
     <>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header
             userMsal={ microsoftReducer.userMsal }
             // step={1}
@@ -28,10 +27,10 @@ const NoCuentaSap = (props) => {
         <div className={spaceStyle.space5} />
         <div>
         <img
-            alt="load"
+            alt='load'
             src={image}
             className={blackStyle.img}
-          />
+        />
         </div>
         <div className={spaceStyle.space2} />
         <Grid
@@ -44,7 +43,7 @@ const NoCuentaSap = (props) => {
           className={blackStyle.textNoAfiliate}
         >
           No tienes cuenta SAP&nbsp;
-          <br className={comunClass.displayDesk}/>
+          <br className={comunClass.displayDesk} />
           con permisos para realizar esta acción
         </Grid>
         <div className={spaceStyle.space1} />
@@ -56,7 +55,7 @@ const NoCuentaSap = (props) => {
 
         <div className={comunClass.bottomElement}>
           <Button
-            id="NoCuentaSap-Btn1"
+            id='NoCuentaSap-Btn1'
             className={blackStyle.buttonFooter}
               onClick={() => dispatch(handleSetStep(0)) }
           >
@@ -72,8 +71,8 @@ const NoCuentaSap = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(NoCuentaSap);

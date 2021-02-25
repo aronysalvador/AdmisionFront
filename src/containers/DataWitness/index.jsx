@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -8,8 +8,7 @@ import Cabecera from "../../components/cabecera/index";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import TextField from "@material-ui/core/TextField";
 import Grid from '@material-ui/core/Grid';
-
-//Action de Redux
+// Action de Redux
 import { sendCargo } from "../../redux/actions/AdmissionAction";
 import { InputAdornment } from "@material-ui/core";
 import { IconButton } from "material-ui";
@@ -23,7 +22,7 @@ import image from './../../img/relato.svg'
 
 const DataWitness = () => {
   const {
-    addmissionForm: { testigos, percentage, tipoSiniestro, step, CamposDocumentos },
+    addmissionForm: { testigos, percentage, tipoSiniestro, step, CamposDocumentos }
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -31,12 +30,12 @@ const DataWitness = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  //State
-  const [nombre, saveNombre] = useState(() => {
+  // State
+  const [ nombre, saveNombre ] = useState(() => {
     return !testigos ? "" : testigos.nombre;
   });
 
-  const [cargos, saveCargos] = useState(() => {
+  const [ cargos, saveCargos ] = useState(() => {
     return !testigos ? "" : testigos.cargo;
   });
 
@@ -47,11 +46,11 @@ const DataWitness = () => {
     dispatch(handleSetStep(14.1));
   };
 
-  const [datosTestig, setDatosTestig] = useState(() => {
-    return !CamposDocumentos.DatosTestig ? "" : CamposDocumentos.DatosTestig; //"+56 9"
+  const [ datosTestig, setDatosTestig ] = useState(() => {
+    return !CamposDocumentos.DatosTestig ? "" : CamposDocumentos.DatosTestig; // "+56 9"
   });
-  const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
-    return CamposDocumentos.DatosTestig ? true : false;
+  const [ telefonoIsValid, setTelefonoIsValid ] = useState(() => {
+    return !!CamposDocumentos.DatosTestig;
   });
 
   const handleOnChange = (e) => {
@@ -66,8 +65,8 @@ const DataWitness = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -76,15 +75,15 @@ const DataWitness = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Solicita una 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          Solicita una
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
           &nbsp;referencia del testigo
-          </Grid>                    
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -100,23 +99,23 @@ const DataWitness = () => {
           </div>
           <div>
             <TextField
-              id="nombre"
+              id='nombre'
               value={nombre}
               onChange={(e) => saveNombre(Format.caracteresInvalidos(e.target.value))}
-              helperText="Ejemplo: Luis Morales"
-              margin="dense"
-              variant="outlined"
-              autoComplete="off"
-              type="text"
+              helperText='Ejemplo: Luis Morales'
+              margin='dense'
+              variant='outlined'
+              autoComplete='off'
+              type='text'
               fullWidth
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
+                  <InputAdornment position='end'>
                     <IconButton onClick={() => { saveNombre("") }}>
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
@@ -128,23 +127,23 @@ const DataWitness = () => {
           </div>
           <div>
             <TextField
-              id="cargos"
+              id='cargos'
               value={cargos}
               onChange={(e) => saveCargos(Format.caracteresInvalidos(e.target.value))}
-              helperText="Ejemplo: Guardia, Jefe, Compañero de trabajo"
-              margin="dense"
-              variant="outlined"
-              autoComplete="off"
-              type="text"
+              helperText='Ejemplo: Guardia, Jefe, Compañero de trabajo'
+              margin='dense'
+              variant='outlined'
+              autoComplete='off'
+              type='text'
               fullWidth
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
+                  <InputAdornment position='end'>
                     <IconButton onClick={() => { saveCargos("") }}>
                       <ClearIcon />
                     </IconButton>
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
@@ -166,8 +165,8 @@ const DataWitness = () => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            variant="contained"
-            type="submit"
+            variant='contained'
+            type='submit'
             disabled={!cargos || !nombre || (datosTestig && !telefonoIsValid)}
             onClick={() => clickSendTestigo()}
           >

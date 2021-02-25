@@ -6,11 +6,11 @@ describe("Sucursales", () => {
     const resultado = await obtenerData("70360100-6", await getToken());
 
     const status = resultado ? resultado.status : 0;
-    if (status == 200) {
+    if (status == 200)
       console.log("Sucursales: " + resultado.data.length);
-    } else {
+     else
       console.log("status: " + status);
-    }
+
     expect(resultado.status).toEqual(200);
   });
 });

@@ -1,13 +1,13 @@
 import {
   GET_COMUNA_INIT,
   GET_COMUNA_SUCCESS,
-  GET_COMUNA_FAILURE,
+  GET_COMUNA_FAILURE
 } from "../types/comunaType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function comunaForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function comunaForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_COMUNA_FAILURE:

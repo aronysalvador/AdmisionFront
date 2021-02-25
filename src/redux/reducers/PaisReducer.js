@@ -1,13 +1,13 @@
 import {
   GET_PAIS_INIT,
   GET_PAIS_SUCCESS,
-  GET_PAIS_FAILURE,
+  GET_PAIS_FAILURE
 } from "../types/paisType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function paisForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function paisForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_PAIS_FAILURE:

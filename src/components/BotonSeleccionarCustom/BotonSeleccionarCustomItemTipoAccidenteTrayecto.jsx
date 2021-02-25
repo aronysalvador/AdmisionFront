@@ -1,5 +1,3 @@
-import React from "react";
-
 const BotonSeleccionarCustomItemTipoAccidenteTrayecto = ({ value }) => {
   return (
     <div style={{ textAlign: "center" }}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import AutoComplete from "@material-ui/lab/Autocomplete";
@@ -19,7 +19,7 @@ const Afp = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const [afp, setAFP] = useState(() => {
+  const [ afp, setAFP ] = useState(() => {
     return !afpForm ? "" : afpForm;
   });
   const { data: afpList } = useSelector((state) => state.afpForm, shallowEqual);
@@ -27,8 +27,8 @@ const Afp = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -37,15 +37,15 @@ const Afp = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-          Escribe la 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
+          Escribe la
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;AFP o Previsión Social
-          </Grid>          
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -68,15 +68,15 @@ const Afp = () => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"
+                variant='outlined'
                 InputProps={{
                   ...params.InputProps,
                   style: {
                     paddingTop: "3px",
                     paddingBottom: "3px",
                     paddingLeft: "5xp",
-                    marginTop: "7px",
-                  },
+                    marginTop: "7px"
+                  }
                 }}
               />
             )}
@@ -84,7 +84,7 @@ const Afp = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             disabled={!afp}
             onClick={() => {

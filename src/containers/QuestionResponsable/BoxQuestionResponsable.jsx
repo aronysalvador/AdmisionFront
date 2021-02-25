@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -15,26 +14,26 @@ const BoxQuestionResponsable = (props) => {
 
   const tituloTestigo = "Responsable";
   const contenidoResponsable = [
-    <div className={classes.itemFecha} >{addmissionForm.responsable.nombre}</div>,
-    <br />,
+    <div key={addmissionForm.responsable.nombre} className={classes.itemFecha}>{addmissionForm.responsable.nombre}</div>,
+    <br key={addmissionForm.responsable.nombre + '-space1'} />,
     addmissionForm?.responsable?.cargo,
-    <br />,
+    <br key={addmissionForm.responsable.nombre + '-space2'} />,
     "Avisado el " +
       addmissionForm.fechaHoraResponsable.days +
       "-" +
       addmissionForm.fechaHoraResponsable.month +
       "-" +
-      addmissionForm.fechaHoraResponsable.year,
+      addmissionForm.fechaHoraResponsable.year
   ];
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep("x",17.1))}
+          dispatch={() => dispatch(handleSetStep("x", 17.1))}
           percentage={addmissionForm.percentage}
         />
       </div>
@@ -44,7 +43,7 @@ const BoxQuestionResponsable = (props) => {
         titulo3={"  en la empresa?"}
         tituloTestigo={tituloTestigo}
         contenidoTestigo={contenidoResponsable}
-        irA={() => dispatch(handleSetStep(18.01))} //18.1
+        irA={() => dispatch(handleSetStep(18.01))} // 18.1
       />
     </div>
   );
@@ -52,8 +51,8 @@ const BoxQuestionResponsable = (props) => {
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 }
 

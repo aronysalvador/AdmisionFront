@@ -1,4 +1,3 @@
-import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
@@ -17,20 +16,20 @@ const ErrorCaso = (props) => {
   const dispatch = useDispatch();
 
   const {
-    addmissionForm: { mensajeErrorSAP },
+    addmissionForm: { mensajeErrorSAP }
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space3} />
       <center>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={warning}
           />
         </div>
@@ -52,19 +51,19 @@ const ErrorCaso = (props) => {
         <div className={comunClass.bottomElement} style={{padding: '1.145em'}}>
           {/* <div className={comunClass.paddingElement}> */}
             <Button
-              id="ErrorCaso-Btn1"
-              className={[comunClass.buttonAchs]} //blackStyle.buttonFooterSpace
-              variant="contained"
+              id='ErrorCaso-Btn1'
+              className={[ comunClass.buttonAchs ]} // blackStyle.buttonFooterSpace
+              variant='contained'
               onClick={() => dispatch(handleSetStep(27))}
             >
               Volver a intentarlo
             </Button>
-            <div className={spaceStyle.space1}></div>
+            <div className={spaceStyle.space1} />
             <Button
-              id="ErrorCaso-Btn2"
+              id='ErrorCaso-Btn2'
               className={comunClass.buttonAchs2}
-              variant="contained"
-              onClick={() =>{ dispatch(initSessionDate("")); dispatch(handleSetStep(1))}} // 1.1 Empecemos eliminada
+              variant='contained'
+              onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
             >
               Volver al inicio
             </Button>

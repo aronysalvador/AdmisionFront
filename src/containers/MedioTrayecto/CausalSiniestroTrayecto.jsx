@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -16,19 +16,19 @@ import relato from './../../img/relato.svg';
 
 const CausalSiniestroTrayecto = () => {
   let {
-    addmissionForm: { percentage,  CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos }
   } = useSelector((state) => state, shallowEqual);
 
-  const [mecanismoCausal, setMecanismoCausal] = useState(() => {
+  const [ mecanismoCausal, setMecanismoCausal ] = useState(() => {
     return !CamposDocumentos.Mecanismo ? "" : CamposDocumentos.Mecanismo;
   });
-  const [mecanismoCausalValid, setMecanismoCausalValid] = useState(true);
+  const [ mecanismoCausalValid, setMecanismoCausalValid ] = useState(true);
 
-  const [posibleCausa, setPosibleCausa] = useState(() => {
+  const [ posibleCausa, setPosibleCausa ] = useState(() => {
     return !CamposDocumentos.PosibleCaus ? "" : CamposDocumentos.PosibleCaus;
   });
-  const [posibleCausaValid, setPosibleCausaValid] = useState(true);
-  
+  const [ posibleCausaValid, setPosibleCausaValid ] = useState(true);
+
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
@@ -38,8 +38,8 @@ const CausalSiniestroTrayecto = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -49,16 +49,16 @@ const CausalSiniestroTrayecto = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-        ¿Cuál fue la 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+        ¿Cuál fue la
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;causa del accidente
-          </Grid>        
+          </Grid>
           &nbsp;?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -72,13 +72,13 @@ const CausalSiniestroTrayecto = () => {
           </Typography>
           <TextField
             id={"CausalSiniestroTrayecto-Lbl1"}
-            autoComplete="off"
+            autoComplete='off'
             helperText={!mecanismoCausalValid && "Debes ingresar al menos un mecanismo causal"}
             error={!mecanismoCausalValid}
             value={mecanismoCausal}
-            variant="outlined"
-            size="small"
-            margin="dense"
+            variant='outlined'
+            size='small'
+            margin='dense'
             required
             fullWidth
             onChange={(e) => {
@@ -88,7 +88,7 @@ const CausalSiniestroTrayecto = () => {
             }}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton onClick={() => { setMecanismoCausal("") }}>
                     <ClearIcon />
                   </IconButton>
@@ -107,13 +107,13 @@ const CausalSiniestroTrayecto = () => {
           </Typography>
           <TextField
             id={"CausalSiniestroTrayecto-Lbl2"}
-            autoComplete="off"
+            autoComplete='off'
             helperText={!posibleCausaValid && "Debes ingresar al menos una posible causa"}
             error={!posibleCausaValid}
             value={posibleCausa}
-            variant="outlined"
-            size="small"
-            margin="dense"
+            variant='outlined'
+            size='small'
+            margin='dense'
             required
             fullWidth
             onChange={(e) => {
@@ -123,7 +123,7 @@ const CausalSiniestroTrayecto = () => {
             }}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton onClick={() => { setPosibleCausa("") }}>
                     <ClearIcon />
                   </IconButton>
@@ -140,7 +140,7 @@ const CausalSiniestroTrayecto = () => {
             id={"CausalSiniestroTrayecto-Btn1"}
             disabled={(mecanismoCausal?.length <= 3 || !mecanismoCausalValid) || (posibleCausa?.length <= 3 || !posibleCausaValid)}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             onClick={() => {
               dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, Mecanismo: mecanismoCausal, PosibleCaus: posibleCausa}));
               dispatch(handleSetStep(6.06));

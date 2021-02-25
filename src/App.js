@@ -1,11 +1,11 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Main from "./containers/Main/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { loadStateFromSessionStorage } from "./redux/actions/AdmissionAction";
 import { loadLogStateFromSessionStorage } from "./redux/actions/Log";
 import { getSessionStorageState } from "./util/sessionStorage";
-//ReduxActions
+// ReduxActions
 import { getAFP } from "./redux/actions/AfpAction";
 import { getCentros } from "././redux/actions/CentrosAchsAction";
 import { getComuna } from "./redux/actions/ComunaAction";
@@ -55,33 +55,33 @@ function App() {
 
   const initFn = useCallback(() => {
     const result = getSessionStorageState();
-    const result2 = result["addmissionForm"]
-      ? result["addmissionForm"]
+    const result2 = result.addmissionForm
+      ? result.addmissionForm
       : result;
     dispatch(loadStateFromSessionStorage(result2));
-    const result3 = result["LogForm"]
-      ? result["LogForm"]
+    const result3 = result.LogForm
+      ? result.LogForm
       : {
         ID: 0,
         loading: false,
-        error: null,
+        error: null
       };
    dispatch(loadLogStateFromSessionStorage(result3));
-  }, [dispatch]);
+  }, [ dispatch ]);
 
   useEffect(() => {
     initFn();
-  }, [initFn]);
+  }, [ initFn ]);
 
   useEffect(() => {
-    if(token)
+    if (token)
       getMasterData(dispatch);
-  }, [dispatch, token]);
+  }, [ dispatch, token ]);
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={Main} />
+        <Route path='/' component={Main} />
       </Switch>
     </BrowserRouter>
   );

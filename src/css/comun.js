@@ -9,47 +9,47 @@ export const getComunStyle = makeStyles((theme) => ({
             position: "relative",
             width: "25.715em",
             height: "45.715em",
-            backgroundColor: "#F8F9FA",
+            backgroundColor: "#F8F9FA"
         },
         root: {
             position: "relative",
             // width: "25.715em",
-            height: "44em", //"45.715em",
-            backgroundColor: "#F8F9FA",
+            height: "44em", // "45.715em",
+            backgroundColor: "#F8F9FA"
         },
         rootBegin: {
             position: "relative",
             width: "25.715em",
             height: "45.715em",
             background: "linear-gradient(120deg, #F8F9FA 50%, #E5F5F4 50%)",
-            padding: 0,
+            padding: 0
         },
         rootWhite: {
             position: "relative",
             width: "25.715em",
             height: "45.715em",
-            padding: 0,
+            padding: 0
         },
         rootImg: {
             position: "relative",
             width: "25.715em",
             height: "45.715em",
             backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
-            padding: 0,
+            padding: 0
         },
         // TEXTOS
         textAchsContent: {
             fontFamily: "Catamaran",
             fontSize: "16px",
             fontStyle: "normal",
-            color: "#373737",
+            color: "#373737"
         },
         tituloACHS: {
             fontFamily: "sfUiDisplayCufonfonts",
             fontStyle: "normal",
             fontWeight: "bold",
             fontSize: "0.75em",
-            lineHeight: "0.875em",
+            lineHeight: "0.875em"
         },
         titleBlack: {
             fontFamily: 'Catamaran',
@@ -57,7 +57,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontWeight: 'bold',
             fontSize: '20px',
             lineHeight: '28px',
-            color: '#373737',
+            color: '#373737'
         },
         titleBlue: {
             fontFamily: 'Catamaran',
@@ -66,7 +66,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: '20px',
             lineHeight: '28px',
             color: ' #00b2a9',
-            display: "contents",
+            display: "contents"
         },
         textErrorRed: {
             textAlign: "center",
@@ -76,7 +76,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1.5625em",
             lineHeight: "1.6875em",
             alignItems: "center",
-            color: "red",
+            color: "red"
         },
         textErrorP: {
             fontFamily: "Catamaran",
@@ -86,7 +86,7 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: "1.929em",
             alignItems: "center",
             textAlign: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         textErrorS: {
             fontFamily: "Catamaran",
@@ -95,7 +95,7 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: "1.785em",
             alignItems: "center",
             textAlign: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         txtGreen: {
             fontFamily: 'Helvetica',
@@ -103,26 +103,26 @@ export const getComunStyle = makeStyles((theme) => ({
             fontWeight: 'normal',
             fontSize: '16px',
             lineHeight: '22px',
-            color: '#007A33',
+            color: '#007A33'
         },
 
         textCenter: {
-            textAlign: "center !important",
+            textAlign: "center !important"
         },
-        //BOTONES
+        // BOTONES
         bottomElement: {
-            padding: "1.145em 0", //"1.145em 1.145em 2.4em 1.145em",
+            padding: "1.145em 0", // "1.145em 1.145em 2.4em 1.145em",
             position: "absolute",
             right: "0",
             left: "0",
-            bottom: "0",
+            bottom: "0"
         },
         bottomElementMap: {
-            padding: "1.145em 0", //"1.145em 1.145em 2.4em 1.145em",
+            padding: "1.145em 0", // "1.145em 1.145em 2.4em 1.145em",
             position: "absolute",
             right: "0",
             left: "0",
-            bottom: "0",
+            bottom: "0"
         },
         buttonAchs: {
             width: "100%",
@@ -137,9 +137,9 @@ export const getComunStyle = makeStyles((theme) => ({
             textTransform: "inherit",
             height: "3.5em",
             "&:hover": {
-                background: "#104F28",
+                background: "#104F28"
             },
-            marginTop: "5px",
+            marginTop: "5px"
         },
         buttonAchs2: {
             width: "100%",
@@ -155,7 +155,7 @@ export const getComunStyle = makeStyles((theme) => ({
             color: "#007A33",
             textTransform: "inherit",
             height: "3.5em",
-            marginTop: "5px",
+            marginTop: "5px"
         },
         buttonAchs3: {
             width: "100%",
@@ -171,14 +171,14 @@ export const getComunStyle = makeStyles((theme) => ({
             color: "#007A33",
             textTransform: "inherit",
             height: "3.5em",
-            marginTop: "5px",
+            marginTop: "5px"
         },
         cardsButtonAlign: {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            flexWrap: "wrap",
+            flexWrap: "wrap"
         },
         cardsButton: {
             marginTop: "10px",
@@ -195,7 +195,7 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             paddingTop: "15px",
-            paddingBottom: "10px",
+            paddingBottom: "10px"
         },
         // cardBtn: {
         //     display: "flex",
@@ -218,13 +218,13 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             paddingTop: "15px",
-            paddingBottom: "10px",
+            paddingBottom: "10px"
         },
         botonSeleccionado: {
             // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "45%",
@@ -233,17 +233,17 @@ export const getComunStyle = makeStyles((theme) => ({
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check2.svg")})`,
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
             // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "100%",
@@ -252,11 +252,11 @@ export const getComunStyle = makeStyles((theme) => ({
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check5.svg")})`,
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat"
         },
         cardsButtonOther: {
             marginTop: "10px",
@@ -278,7 +278,7 @@ export const getComunStyle = makeStyles((theme) => ({
                 background: "#DFF3F2",
                 border: "2px solid #00B2A9",
                 justifyContent: "center",
-                flexDirection: "row",
+                flexDirection: "row"
             }
         },
         cardsButtonOtherCheck: {
@@ -289,10 +289,10 @@ export const getComunStyle = makeStyles((theme) => ({
         buttonAchsRight: {
             width: "46%",
             //  height: "90px",
-            background: "#FFFFFF", //#007A33
+            background: "#FFFFFF", // #007A33
             border: "2px solid #787878",
             boxSizing: "border-box",
-            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", // 0.125em 0.125em 0.375em
             borderRadius: "10px",
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -300,22 +300,22 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1.145em",
             lineHeight: "1.285em",
             color: "#373737",
-            textTransform: "inherit", //"capitalize",
+            textTransform: "inherit", // "capitalize",
             height: "4.8em",
             float: "right",
             marginBottom: "16px",
             "&:hover": {
                 background: "#DFF3F2",
-                border: "2px solid #00B2A9",
-            },
+                border: "2px solid #00B2A9"
+            }
         },
         buttonAchsLeft: {
             width: "46%",
-            //height: "90px",
-            background: "#FFFFFF", //#007A33
+            // height: "90px",
+            background: "#FFFFFF", // #007A33
             border: "2px solid #787878",
             boxSizing: "border-box",
-            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", // 0.125em 0.125em 0.375em
             borderRadius: "10px",
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -323,55 +323,55 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1.145em",
             lineHeight: "1.285em",
             color: "#373737",
-            textTransform: "inherit", //"capitalize",
+            textTransform: "inherit", // "capitalize",
             height: "4.8em",
             float: "left",
             marginBottom: "16px",
             "&:hover": {
                 background: "#DFF3F2",
-                border: "2px solid #00B2A9",
-            },
+                border: "2px solid #00B2A9"
+            }
         },
         mediumDivider: {
-            width: "47%",
+            width: "47%"
         },
         flexDivider: {
             display: "flex",
-            alignItems: "center",
+            alignItems: "center"
         },
         emMargin: {
-            margin: "0.5em",
+            margin: "0.5em"
         },
         buttonVolverContainer: {
             width: "20%",
-            float: "left",
+            float: "left"
         },
         buttonVolverContainerBarra: {
             width: "20%",
-            float: "left",
+            float: "left"
         },
         textAchsContentGreen: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
-            color: "#007A33",
+            color: "#007A33"
         },
         barraContainer: {
             paddingTop: "0.5em",
             width: "17.75em",
-            float: "left",
+            float: "left"
         },
         buttonVolverColor: {
-            color: "#373737",
+            color: "#373737"
         },
         cleanFloat: {
             float: "none",
-            clear: "both",
+            clear: "both"
         },
         borderBox: {
             border: "yellow",
             "&:hover": {
-                border: "#007A33",
-            },
+                border: "#007A33"
+            }
         },
         cajaRutSiniestroContainer: {
             width: "48%",
@@ -380,48 +380,48 @@ export const getComunStyle = makeStyles((theme) => ({
             padding: "10px",
             height: "60px",
             paddingBottom: "5px",
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#FFFFFF"
         },
         cajaRutSiniestroItem: {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "left",
-            flexDirection: "column",
+            flexDirection: "column"
         },
         cajaRutSiniestroTextoPrimario: {
             color: "#373737",
             fontWeight: "bold",
-            fontSize: "15px",
+            fontSize: "15px"
         },
         cajaRutSiniestroTextoSecundario: {
             color: "#787878",
             fontWeight: "bold",
-            fontSize: "15px",
+            fontSize: "15px"
         },
         iconLocation: {
             marginRight: '10px',
             maxHeight: "15px",
-            verticalAlign: "middle",
+            verticalAlign: "middle"
         },
         bpList: {
-            paddingRight: '10px',
+            paddingRight: '10px'
         },
         siniesterList: {
             display: 'flow-root',
             overflow: 'auto',
             height: '24.5em',
             '&::-webkit-scrollbar': {
-                width: 8,
+                width: 8
             },
             '&::-webkit-scrollbar-track': {
                 boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
             },
             '&::-webkit-scrollbar-thumb': {
                 backgroundColor: 'rgba(0,0,0,.2)',
                 outline: '0px solid slategrey',
-                borderRadius: 4,
-            },
+                borderRadius: 4
+            }
         },
         boxRootRelato: {
             padding: "5px",
@@ -429,12 +429,12 @@ export const getComunStyle = makeStyles((theme) => ({
             border: "1px solid #FAFAFA",
             borderRadius: "10px",
             minHeight: "350px",
-            overFlowY: "auto",
+            overFlowY: "auto"
         },
         boxRelato: {
             display: "flex",
             justifyContent: "space-between",
-            padding: "10px",
+            padding: "10px"
         },
         boxRelatoText: {
             fontFamily: "Catamaran",
@@ -445,25 +445,25 @@ export const getComunStyle = makeStyles((theme) => ({
             overflow: "auto",
             height: "23em",
             '&::-webkit-scrollbar': {
-                width: 8,
+                width: 8
             },
             '&::-webkit-scrollbar-track': {
                 boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
             },
             '&::-webkit-scrollbar-thumb': {
                 backgroundColor: 'rgba(0,0,0,.2)',
                 outline: '0px solid slategrey',
-                borderRadius: 4,
-            },
+                borderRadius: 4
+            }
         },
         buttonEditRelato: {
             cursor: "pointer",
             // textDecoration: "underline",
-            color: "#373737",
+            color: "#373737"
         },
         imgAchs: {
-            width: '60px', //"4.28125em",
+            width: '60px', // "4.28125em",
             float: 'right'
         },
         imgProfile: {
@@ -472,10 +472,10 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'none'
         },
         imgLoadData: {
-            width: "15.625em",
+            width: "15.625em"
         },
         imgLoadData2: {
-            width: "7.28125em",
+            width: "7.28125em"
         },
         imgPass: {
             width: '146px'
@@ -504,7 +504,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1.5625em",
             lineHeight: "1.6875em",
             alignItems: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         txtLoadData2: {
             textAlign: "center",
@@ -513,7 +513,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1em",
             lineHeight: "1.5625em",
             alignItems: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         txtLoadDataGreen: {
             textAlign: "center",
@@ -523,24 +523,24 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1.5625em",
             lineHeight: "1.6875em",
             alignItems: "center",
-            color: "#007A33",
+            color: "#007A33"
         },
         googleMap: {
             width: "100%",
             borderRadius: "20px",
             padding: "10px",
             textAlign: "center"
-        },
+        }
     },
 
     '@media (min-width: 768px)': {
         /* Medium devices (landscape tablets, 768px and up) */
         root: {
-            width: '100%',
+            width: '100%'
         },
         imgAchs: {
             width: '64px',
-            marginBottom: '40px',
+            marginBottom: '40px'
         },
         header: {
             height: '63px',
@@ -549,7 +549,7 @@ export const getComunStyle = makeStyles((theme) => ({
             display: 'flex'
         },
         headerSesion: {
-            height: '700px', //'813px',
+            height: '700px', // '813px',
             border: '0',
             background: 'linear-gradient(180deg, #007A33 50%, #F4F4F4 50%)',
             // top: '63px',
@@ -558,7 +558,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontFamily: 'Catamaran'
         },
         boxDesk: {
-            width: '60%', //'416px',
+            width: '60%', // '416px',
             maxWidth: '860px',
             minWidth: '700px',
             border: '0',
@@ -567,11 +567,11 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: '8px',
             alignItems: 'center',
             margin: 'auto',
-            padding: '30px 20px 20px', //'33px',
-            textAlign: 'center',
+            padding: '30px 20px 20px', // '33px',
+            textAlign: 'center'
         },
         boxDesk2: {
-            width: '60%', //'416px',
+            width: '60%', // '416px',
             minWidth: '700px',
             border: '0',
             background: 'white !important',
@@ -579,7 +579,7 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: '8px',
             alignItems: 'center',
             margin: 'auto',
-            textAlign: 'center',
+            textAlign: 'center'
         },
         boxDesk3: {
             width: '80%',
@@ -591,7 +591,7 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: 'center',
             margin: 'auto',
             padding: '0 20px 0 20px',
-            textAlign: 'center',
+            textAlign: 'center'
         },
         boxDeskCardBtn: {
             width: '60%',
@@ -604,10 +604,10 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: 'center',
             margin: 'auto',
             padding: '30px 100px',
-            textAlign: 'center',
+            textAlign: 'center'
         },
         boxDesk4: {
-            width: '60%', //'416px',
+            width: '60%', // '416px',
             maxWidth: '860px',
             minWidth: '700px',
             border: '0',
@@ -616,8 +616,8 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: '8px',
             alignItems: 'center',
             margin: 'auto',
-            padding: '5em 8em 4em 8em', //'33px',
-            textAlign: 'center',
+            padding: '5em 8em 4em 8em', // '33px',
+            textAlign: 'center'
         },
         boxCardBtn: {
             width: '100%',
@@ -630,7 +630,7 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: 'center',
             margin: 'auto',
             padding: '30px',
-            textAlign: 'center',
+            textAlign: 'center'
         },
         boxDeskMap: {
             width: '60%',
@@ -644,10 +644,10 @@ export const getComunStyle = makeStyles((theme) => ({
             margin: 'auto',
             textAlign: 'center',
             position: 'relative',
-            height: '573px',
+            height: '573px'
         },
         googleMap: {
-            width: "250px", //"100%",
+            width: "250px", // "100%",
             borderRadius: "20px",
             padding: "10px",
             textAlign: "center"
@@ -661,10 +661,10 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: '8px',
             alignItems: 'center',
             margin: 'auto',
-            marginTop: '50px',
+            marginTop: '50px'
         },
         boxGeneral: {
-            width: '60%', //'416px',
+            width: '60%', // '416px',
             maxWidth: '860px',
             height: '354px',
             border: '0',
@@ -673,7 +673,7 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: '8px',
             alignItems: 'center',
             margin: 'auto',
-            marginTop: '50px',
+            marginTop: '50px'
         },
         imgProfile: {
             width: '64px',
@@ -682,11 +682,11 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         bottomElement: {
             padding: "30px 0",
-            textAlign: "center",
+            textAlign: "center"
         },
         bottomElement2: {
             padding: "15px",
-            textAlign: "center",
+            textAlign: "center"
         },
         bottomElementMap: {
             padding: '40px 0',
@@ -694,7 +694,7 @@ export const getComunStyle = makeStyles((theme) => ({
             position: 'absolute',
             bottom: '2em',
             right: '0',
-            left: '0',
+            left: '0'
         },
         // bottomMargin: {
         //     margin: '11.5%',
@@ -702,7 +702,7 @@ export const getComunStyle = makeStyles((theme) => ({
         // },
         paddingElement: {
             display: 'flex',
-            justifyContent: 'space-around',
+            justifyContent: 'space-around'
         },
         buttonAchs: {
             width: "50%",
@@ -717,11 +717,11 @@ export const getComunStyle = makeStyles((theme) => ({
             textTransform: "inherit",
             height: "3.5em",
             "&:hover": {
-                background: "#104F28",
+                background: "#104F28"
             },
             marginTop: "5px",
             minWidth: "300px",
-            maxWidth: '60%', //"328px",
+            maxWidth: '60%' // "328px",
         },
         buttonAchs2: {
             width: "50%",
@@ -739,7 +739,7 @@ export const getComunStyle = makeStyles((theme) => ({
             height: "3.5em",
             marginTop: "5px",
             minWidth: "300px",
-            maxWidth: '60%', //"328px",
+            maxWidth: '60%' // "328px",
         },
         buttonAchs3: {
             width: "50%",
@@ -757,7 +757,7 @@ export const getComunStyle = makeStyles((theme) => ({
             height: "3.5em",
             marginTop: "5px",
             minWidth: "300px",
-            maxWidth: '60%', //"328px",
+            maxWidth: '60%' // "328px",
         },
         buttonAchsSiniester: {
             width: "40%",
@@ -772,11 +772,11 @@ export const getComunStyle = makeStyles((theme) => ({
             textTransform: "inherit",
             height: "3.5em",
             "&:hover": {
-                background: "#104F28",
+                background: "#104F28"
             },
             marginTop: "5px",
             minWidth: "300px",
-            maxWidth: '60%', //"328px",
+            maxWidth: '60%' // "328px",
         },
         buttonAchsSiniester2: {
             width: "40%",
@@ -794,26 +794,26 @@ export const getComunStyle = makeStyles((theme) => ({
             height: "3.5em",
             marginTop: "5px",
             minWidth: "300px",
-            maxWidth: '60%', //"328px",
+            maxWidth: '60%' // "328px",
         },
         tituloCerrarSesion: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
-            fontWeight: "bold", //"700",
+            fontWeight: "bold", // "700",
             fontSize: "16px",
             lineHeight: "18px",
             margin: 'auto 15px',
             // marginLeft: "40%",
             // marginTop: '22px',
-            color: "#FFFFFF",
+            color: "#FFFFFF"
         },
         titleBlack: {
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
             fontWeight: 'bold',
-            fontSize: '26px', //'32px',
-            lineHeight: '34px', //'44px',
-            color: '#373737',
+            fontSize: '26px', // '32px',
+            lineHeight: '34px', // '44px',
+            color: '#373737'
         },
         subtitleBlack: {
             fontFamily: 'Catamaran',
@@ -821,15 +821,15 @@ export const getComunStyle = makeStyles((theme) => ({
             fontWeight: 'bold',
             fontSize: '20px',
             lineHeight: '28px',
-            color: '#373737',
+            color: '#373737'
         },
         titleGray: {
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
             fontWeight: 'bold',
-            fontSize: '26px', //'32px',
-            lineHeight: '34px', //'44px',
-            color: '#787878',
+            fontSize: '26px', // '32px',
+            lineHeight: '34px', // '44px',
+            color: '#787878'
         },
         titleBlue: {
             fontFamily: 'Catamaran',
@@ -838,24 +838,24 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: '20px',
             lineHeight: '28px',
             color: '#00b2a9',
-            display: "contents",
+            display: "contents"
         },
         titleBlue2: {
             fontFamily: 'Catamaran',
             fontStyle: 'normal',
             fontWeight: 'bold',
-            fontSize: '26px', //'32px',
+            fontSize: '26px', // '32px',
             lineHeight: '34px',
-            color: '#00b2a9',
+            color: '#00b2a9'
         },
         textAchsContentWhite: {
             fontFamily: "Catamaran",
             fontSize: "16px",
             fontStyle: "normal",
-            color: "#FFFFFF",
+            color: "#FFFFFF"
         },
         textCenterDesk: {
-            textAlign: "center !important",
+            textAlign: "center !important"
         },
         titleCenterDesk: {
             textAlign: "center !important",
@@ -874,13 +874,13 @@ export const getComunStyle = makeStyles((theme) => ({
             // width: '90%',
             position: 'relative',
             display: 'flex',
-            justifyContent: 'space-around',
+            justifyContent: 'space-around'
         },
         displayDesk: {
             display: 'block'
         },
         displayDeskFlex: {
-            display: 'flex',
+            display: 'flex'
         },
         displayDeskInline: {
             display: 'inline-flex'
@@ -906,17 +906,17 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         textPrimaryDesk: {
             display: "inline-block",
-            width: "86%", //"73%", "65%",
+            width: "86%", // "73%", "65%",
             textAlign: "left",
             // maxWidth: "460px",
             verticalAlign: "top",
-            minHeight: '73px' //'88px'
+            minHeight: '73px' // '88px'
         },
         imgPrimaryDesk: {
             float: 'right'
         },
         imgPrimaryWidth: {
-            width: '80px' //'100px'
+            width: '80px' // '100px'
         },
         alignBtnSiniesterLeft: {
             position: 'relative',
@@ -931,10 +931,10 @@ export const getComunStyle = makeStyles((theme) => ({
             marginBottom: '32px'
         },
         containerTextBox: {
-            width: '50%', //'328px',
+            width: '50%', // '328px',
             minWidth: '300px',
             textAlign: 'left',
-            margin: 'auto',
+            margin: 'auto'
         },
         containerTextBox2: {
             width: '50%',
@@ -952,19 +952,19 @@ export const getComunStyle = makeStyles((theme) => ({
             position: 'relative',
             width: '90%',
             right: '-70px',
-            marginTop: '-20px',
+            marginTop: '-20px'
         },
         titlePrimaryDesk: {
             width: '90%',
             margin: 'auto',
             marginTop: '20px',
-            marginBottom: '20px', //'30px'
+            marginBottom: '20px' // '30px'
         },
         imgLoadData: {
-            width: "14em",
+            width: "14em"
         },
         imgLoadData2: {
-            width: "116px",
+            width: "116px"
         },
         imgPass: {
             width: '90px'
@@ -977,7 +977,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "36px",
             lineHeight: "42px",
             alignItems: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         txtLoadData2: {
             textAlign: "center",
@@ -986,7 +986,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "20px",
             lineHeight: "28px",
             alignItems: "center",
-            color: "#081C15",
+            color: "#081C15"
         },
         txtLoadDataGreen: {
             textAlign: "center",
@@ -996,28 +996,28 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "36px",
             lineHeight: "42px",
             alignItems: "center",
-            color: "#007A33",
+            color: "#007A33"
         },
         siniesterList: {
             display: 'flow-root',
             overflow: 'auto',
             height: '17em',
             '&::-webkit-scrollbar': {
-                width: 8,
+                width: 8
             },
             '&::-webkit-scrollbar-track': {
                 boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
             },
             '&::-webkit-scrollbar-thumb': {
                 backgroundColor: 'rgba(0,0,0,.2)',
                 outline: '0px solid slategrey',
-                borderRadius: 4,
-            },
+                borderRadius: 4
+            }
         },
         bpList: {
             // paddingRight: '10px',
-            height: '25em !important',
+            height: '25em !important'
         },
         widthDateSex: {
             width: "48%"
@@ -1028,12 +1028,12 @@ export const getComunStyle = makeStyles((theme) => ({
             border: "1px solid #FAFAFA",
             borderRadius: "10px",
             // minHeight: "250px",
-            overFlowY: "auto",
+            overFlowY: "auto"
         },
         boxRelato: {
             display: "flex",
             justifyContent: "space-between",
-            padding: "10px",
+            padding: "10px"
         },
         boxRelatoText: {
             fontFamily: "Catamaran",
@@ -1045,22 +1045,22 @@ export const getComunStyle = makeStyles((theme) => ({
             height: "8em",
             textAlign: "initial",
             '&::-webkit-scrollbar': {
-                width: 8,
+                width: 8
             },
             '&::-webkit-scrollbar-track': {
                 boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
             },
             '&::-webkit-scrollbar-thumb': {
                 backgroundColor: 'rgba(0,0,0,.2)',
                 outline: '0px solid slategrey',
-                borderRadius: 4,
-            },
+                borderRadius: 4
+            }
         },
         buttonEditRelato: {
             cursor: "pointer",
             // textDecoration: "underline",
-            color: "#373737", //"#DEDEDE",
+            color: "#373737" // "#DEDEDE",
         },
         cajaRutSiniestroContainer: {
             width: "12em",
@@ -1076,17 +1076,17 @@ export const getComunStyle = makeStyles((theme) => ({
             display: "flex",
             justifyContent: "space-around",
             alignItems: "left",
-            flexDirection: "column",
+            flexDirection: "column"
         },
         cajaRutSiniestroTextoPrimario: {
             color: "#104F28",
             fontWeight: "bold",
-            fontSize: "22px",
+            fontSize: "22px"
         },
         cajaRutSiniestroTextoSecundario: {
             color: "#787878",
             fontWeight: "bold",
-            fontSize: "16px",
+            fontSize: "16px"
         },
         textErrorRed: {
             textAlign: "center",
@@ -1096,7 +1096,7 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "28px",
             lineHeight: "28px",
             alignItems: "center",
-            color: "red",
+            color: "red"
         },
         textErrorP: {
             fontFamily: "Catamaran",
@@ -1106,7 +1106,7 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: "34px",
             alignItems: "center",
             textAlign: "center",
-            color: "#373737",
+            color: "#373737"
         },
         textErrorS: {
             fontFamily: "Catamaran",
@@ -1115,14 +1115,14 @@ export const getComunStyle = makeStyles((theme) => ({
             lineHeight: "28px",
             alignItems: "center",
             textAlign: "center",
-            color: "#373737",
+            color: "#373737"
         },
         cardsButtonAlign: {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            flexWrap: "wrap",
+            flexWrap: "wrap"
         },
         cardsButton: {
             // marginTop: "10px",
@@ -1139,7 +1139,7 @@ export const getComunStyle = makeStyles((theme) => ({
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             paddingTop: "15px",
-            paddingBottom: "10px",
+            paddingBottom: "10px"
         },
         cardBtn: {
             // flexFlow: "wrap"
@@ -1151,7 +1151,7 @@ export const getComunStyle = makeStyles((theme) => ({
             justifyContent: "space-around",
             alignItems: "center",
             flexDirection: "column",
-            width: "30%", //"45%",
+            width: "30%", // "45%",
             height: "6em",
             background: "#FFF",
             border: "2px solid #787878",
@@ -1166,35 +1166,35 @@ export const getComunStyle = makeStyles((theme) => ({
             // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "45%",
-            height: "6em", //"90px",
+            height: "6em", // "90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check3.svg")})`,
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
             // marginTop: "10px",
             // marginBottom: "10px",
             display: "inline-flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "30%",
-            height: "6em", //"90px",
+            height: "6em", // "90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check2.svg")})`,
@@ -1208,7 +1208,7 @@ export const getComunStyle = makeStyles((theme) => ({
             alignItems: "center",
             flexDirection: "column",
             width: "100%",
-            height: "6em", //"90px",
+            height: "6em", // "90px",
             background: "#FFF",
             border: "2px solid #787878",
             borderSpacing: "2px",
@@ -1221,7 +1221,7 @@ export const getComunStyle = makeStyles((theme) => ({
                 background: "#DFF3F2",
                 border: "2px solid #00B2A9",
                 justifyContent: "center",
-                flexDirection: "row",
+                flexDirection: "row"
             }
         },
         cardsButtonOtherCheck: {
@@ -1231,11 +1231,11 @@ export const getComunStyle = makeStyles((theme) => ({
         },
         buttonAchsRight: {
             width: "46%",
-            height: "4.8em", //"90px",
-            background: "#FFFFFF", //#007A33
+            height: "4.8em", // "90px",
+            background: "#FFFFFF", // #007A33
             border: "2px solid #787878",
             boxSizing: "border-box",
-            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", // 0.125em 0.125em 0.375em
             borderRadius: "10px",
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -1243,21 +1243,21 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1.145em",
             lineHeight: "1.285em",
             color: "#373737",
-            textTransform: "inherit", //"capitalize",
+            textTransform: "inherit", // "capitalize",
             float: "right",
             marginBottom: "16px",
             "&:hover": {
                 background: "#DFF3F2",
-                border: "2px solid #00B2A9",
-            },
+                border: "2px solid #00B2A9"
+            }
         },
         buttonAchsLeft: {
             width: "46%",
-            height: "4.8em", //"90px",
-            background: "#FFFFFF", //#007A33
+            height: "4.8em", // "90px",
+            background: "#FFFFFF", // #007A33
             border: "2px solid #787878",
             boxSizing: "border-box",
-            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", // 0.125em 0.125em 0.375em
             borderRadius: "10px",
             fontFamily: "Catamaran",
             fontStyle: "normal",
@@ -1265,13 +1265,13 @@ export const getComunStyle = makeStyles((theme) => ({
             fontSize: "1.145em",
             lineHeight: "1.285em",
             color: "#373737",
-            textTransform: "inherit", //"capitalize",
+            textTransform: "inherit", // "capitalize",
             float: "left",
             marginBottom: "16px",
             "&:hover": {
                 background: "#DFF3F2",
-                border: "2px solid #00B2A9",
-            },
+                border: "2px solid #00B2A9"
+            }
         },
         deskFlex: {
             display: 'flex',
@@ -1282,7 +1282,7 @@ export const getComunStyle = makeStyles((theme) => ({
         roundedBlueNoMargin: {
             display: 'flex',
             minWidth: '315px',
-            width: '100%',
+            width: '100%'
         },
         roundedNormalNoMargin: {
             display: 'flex',
@@ -1325,9 +1325,9 @@ export const getComunStyle = makeStyles((theme) => ({
         titlePrimaryDesk: {
             width: '75%',
             margin: 'auto',
-            marginTop: '20px', //'30px'
-            marginBottom: '20px', //'30px'
-        },
+            marginTop: '20px', // '30px'
+            marginBottom: '20px' // '30px'
+        }
     },
 
     '@media (min-width: 1060px)': {
@@ -1339,9 +1339,9 @@ export const getComunStyle = makeStyles((theme) => ({
         titlePrimaryDesk: {
             width: '60%',
             margin: 'auto',
-            marginTop: '20px', //'30px'
-            marginBottom: '20px', //'30px'
-        },
+            marginTop: '20px', // '30px'
+            marginBottom: '20px' // '30px'
+        }
     },
 
     '@media (min-width: 1280px)': {
@@ -1349,45 +1349,45 @@ export const getComunStyle = makeStyles((theme) => ({
             // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "45%",
-            height: "6em", //"90px",
+            height: "6em", // "90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check4.svg")})`,
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
             // marginTop: "10px",
             // marginBottom: "10px",
             display: "inline-flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "30%",
-            height: "6em", //"90px",
+            height: "6em", // "90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check6.svg")})`,
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat"
         },
         cardsButtonOtherCheck: {
             position: "relative",
             bottom: "25px",
             left: "240px"
-        },
+        }
     },
 
     '@media (min-width: 1440px)': {
@@ -1395,45 +1395,45 @@ export const getComunStyle = makeStyles((theme) => ({
             // marginTop: "10px",
             marginBottom: "10px",
             display: "flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "45%",
-            height: "6em", //"90px",
+            height: "6em", // "90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check5.svg")})`,
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
             // marginTop: "10px",
             // marginBottom: "10px",
             display: "inline-flex",
-            justifyContent: "center", //"space-around",
+            justifyContent: "center", // "space-around",
             alignItems: "center",
             flexDirection: "column",
             width: "30%",
-            height: "6em", //"90px",
+            height: "6em", // "90px",
             backgroundColor: "#DFF3F2 !important",
             border: "2px solid #00B2A9 !important",
             borderRadius: "10px",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            paddingTop: "15px", //"35px",
+            paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
             backgroundImage: `url(${require("./../img/check7.svg")})`,
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat"
         },
         cardsButtonOtherCheck: {
             position: "relative",
             bottom: "25px",
             left: "280px"
-        },
+        }
     },
 
     '@media (min-width: 1540px)': {
@@ -1445,9 +1445,9 @@ export const getComunStyle = makeStyles((theme) => ({
         titlePrimaryDesk: {
             width: '50%',
             margin: 'auto',
-            marginTop: '20px', //'30px'
-            marginBottom: '20px', //'30px'
-        },
+            marginTop: '20px', // '30px'
+            marginBottom: '20px' // '30px'
+        }
     },
 
     '@media (min-width: 1800px)': {
@@ -1459,9 +1459,9 @@ export const getComunStyle = makeStyles((theme) => ({
         titlePrimaryDesk: {
             width: '40%',
             margin: 'auto',
-            marginTop: '20px', //'30px'
-            marginBottom: '20px', //'30px'
-        },
+            marginTop: '20px', // '30px'
+            marginBottom: '20px' // '30px'
+        }
     },
 
     tituloTextBox: {
@@ -1472,7 +1472,7 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: "14px !important",
         letterSpacing: ".03em !important",
         // textTransform: "uppercase",
-        color: "#787878 !important",
+        color: "#787878 !important"
     },
     textErrorP2: {
         fontFamily: "Catamaran",
@@ -1482,7 +1482,7 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: "1.75em",
         alignItems: "center",
         textAlign: "center",
-        color: "#081C15",
+        color: "#081C15"
     },
     txtGreen: {
         fontFamily: 'Helvetica',
@@ -1490,17 +1490,17 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '16px',
         lineHeight: '22px',
-        color: '#007A33',
+        color: '#007A33'
     },
     tituloSelectorFecha: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
-        fontWeight: "600", //"bold",
+        fontWeight: "600", // "bold",
         fontSize: "14px",
         lineHeight: "14px",
         textAlign: "center",
-        letterSpacing: "0.03em", //"2px",
-        color: "#787878", //"#373737",
+        letterSpacing: "0.03em", // "2px",
+        color: "#787878" // "#373737",
     },
     selectorRuedaItemPrincipal: {
         fontFamily: 'Helvetica',
@@ -1509,7 +1509,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '20px',
         lineHeight: '22px',
         textAlign: "center",
-        color: '#007A33',
+        color: '#007A33'
     },
     selectorRuedaItemsCostados: {
         fontFamily: 'Helvetica',
@@ -1519,7 +1519,7 @@ export const getComunStyle = makeStyles((theme) => ({
         lineHeight: '22px',
         textAlign: "center",
         color: '#787878',
-        padding: "5px 0",
+        padding: "5px 0"
     },
     selectorRuedaItemsCostados2: {
         fontFamily: 'Helvetica',
@@ -1528,12 +1528,12 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '16px',
         lineHeight: '22px',
         textAlign: "center",
-        color: '#DEDEDE !important',
+        color: '#DEDEDE !important'
         // padding: "5px 0",
     },
     selectorRuedaBordesItemPrincipal: {
         margin: "0",
-        opacity: "0.2",
+        opacity: "0.2"
     },
     boxHoras: {
         background: "white",
@@ -1543,7 +1543,7 @@ export const getComunStyle = makeStyles((theme) => ({
     },
     boxTitleHoras: {
         borderRadius: "10px",
-        padding: "8px 25px",
+        padding: "8px 25px"
     },
     boxCalendar: {
         background: "white",
@@ -1557,7 +1557,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: "bold",
         // lineHeight: '22px',
         float: "left",
-        clear: "left",
+        clear: "left"
     },
     txtTodayCalendar: {
         display: "block",
@@ -1571,14 +1571,14 @@ export const getComunStyle = makeStyles((theme) => ({
     buttonEditRelato: {
         cursor: "pointer",
         // textDecoration: "underline",
-        color: "#373737",
+        color: "#373737"
     },
     pullRight: {
         float: "right",
         fontFamily: "Helvetica",
         fontSize: "1em",
         lineHeight: "1.572em",
-        color: "#787878",
+        color: "#787878"
     },
     roundedBlue: {
         color: "#373737",
@@ -1654,7 +1654,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '16px',
         lineHeight: '25px',
-        color: '#373737',
+        color: '#373737'
     },
     textPrimaryRelatoBlue: {
         width: "86%",
@@ -1666,7 +1666,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontSize: '16px',
         lineHeight: '25px',
         color: '#00b2a9',
-        display: "contents",
+        display: "contents"
     },
     backgroundGrey: {
         background: '#f4f4f4',
@@ -1685,34 +1685,34 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '18px',
         lineHeight: '20px',
-        color: '#00b2a9',
+        color: '#00b2a9'
     },
     titleBlackDataCont: {
         fontFamily: 'Catamaran',
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: '18px',
-        color: '#373737',
+        color: '#373737'
     },
     textPrimaryDeskDataCont: {
         display: "inline-block",
         width: "86%",
         textAlign: "left",
-        verticalAlign: "top",
+        verticalAlign: "top"
     },
     containerTextBoxDataCont: {
-        textAlign: 'left',
+        textAlign: 'left'
     },
     boxDeskTestigo: {
-        width: '100%', //'416px',
+        width: '100%', // '416px',
         border: '0',
         background: 'white !important',
         boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
         borderRadius: '8px',
         alignItems: 'center',
         margin: 'auto',
-        padding: '30px 20px 20px', //'33px',
-        textAlign: 'center',
+        padding: '30px 20px 20px', // '33px',
+        textAlign: 'center'
     },
     roundedBlue2: {
         color: "#373737",
@@ -1740,11 +1740,11 @@ export const getComunStyle = makeStyles((theme) => ({
         display: "inline-block",
         textAlign: "center",
         verticalAlign: "top",
-        padding: "30px 0" //40px 0"
+        padding: "30px 0" // 40px 0"
     },
     rootNew: {
         position: "relative",
-        backgroundColor: "#F8F9FA",
+        backgroundColor: "#F8F9FA"
     },
     mobileCaption: {
         fontFamily: "Catamaran !important",
@@ -1762,7 +1762,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: "700",
         lineHeight: "34px",
         letterSpacing: "0em",
-        textAlign: "center",
+        textAlign: "center"
     },
     titleH3: {
         fontFamily: "Catamaran",
@@ -1771,7 +1771,7 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: "700",
         lineHeight: "28px",
         letterSpacing: "0em",
-        textAlign: "center",
+        textAlign: "center"
     },
     subTitleH4: {
         fontFamily: "Catamaran",
@@ -1780,6 +1780,6 @@ export const getComunStyle = makeStyles((theme) => ({
         fontWeight: "400",
         lineHeight: "28px",
         letterSpacing: "0em",
-        textAlign: "center",
+        textAlign: "center"
     }
 }));

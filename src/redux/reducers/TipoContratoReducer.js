@@ -1,13 +1,13 @@
 import {
   GET_TIPOCONTRATO_INIT,
   GET_TIPOCONTRATO_SUCCESS,
-  GET_TIPOCONTRATO_FAILURE,
+  GET_TIPOCONTRATO_FAILURE
 } from "../types/TipoContratoType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function tipoContratoForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function tipoContratoForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_TIPOCONTRATO_FAILURE:

@@ -1,4 +1,3 @@
-import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
@@ -26,14 +25,15 @@ const Session = (props) => {
       <div className={welcomeStyle.avatarContainer}>
         <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
       </div>
-      <Fab size="small" aria-label="edit" className={welcomeStyle.imgEdit}>
-  <EditIcon /></Fab>
+      <Fab size='small' aria-label='edit' className={welcomeStyle.imgEdit}>
+  <EditIcon />
+      </Fab>
       <div className={spaceStyle.space1} />
       <div className={welcomeStyle.bienvenidoContainer}>
         <Typography
-          variant="inherit"
-          component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}
+          variant='inherit'
+          component='p'
+          className={[ comunStyle.textAchsContent, welcomeStyle.bienvenido ]}
         >
           Hola,
           <br />
@@ -43,16 +43,16 @@ const Session = (props) => {
       <div className={spaceStyle.space1} />
       <div>
         <Typography
-          variant="inherit"
-          component="p"
-          className={[comunStyle.textAchsContent, welcomeStyle.admisionText]}
+          variant='inherit'
+          component='p'
+          className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ]}
         >
           Te encuentras en
         </Typography>
       </div>
       <div className={spaceStyle.space1} />
       <div>
-        <Button className={welcomeStyle.button} variant="contained" onClick={() => dispatch(handleSetStep(40))}>
+        <Button className={welcomeStyle.button} variant='contained' onClick={() => dispatch(handleSetStep(40))}>
           <EditIcon className={welcomeStyle.img} />
           {/* <img alt="Centro Alameda" src="./static/editar.png" className={custom.img} /> */}
           &nbsp;Centro Alameda
@@ -63,7 +63,7 @@ const Session = (props) => {
         <div>
           <Button
             className={comunStyle.buttonAchs}
-            variant="contained"
+            variant='contained'
             onClick={() => dispatch(handleSetStep(1))} // 1.1 Empecemos eliminada
           >
             Nueva admisión
@@ -73,7 +73,7 @@ const Session = (props) => {
         <div>
           <Button
             className={comunStyle.buttonAchs2}
-            variant="contained"
+            variant='contained'
             onClick={() => dispatch(logout())}
           >
             Cerrar sesión
@@ -86,8 +86,8 @@ const Session = (props) => {
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer,
+    addmissionForm,
+    microsoftReducer
   };
 }
 export default connect(mapStateToProps)(Session);

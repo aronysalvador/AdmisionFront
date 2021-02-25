@@ -1,13 +1,13 @@
 import {
   GET_SUCURSALES_EMPRESA_SINIESTRO_INIT,
   GET_SUCURSALES_EMPRESA_SINIESTRO_SUCCESS,
-  GET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE,
+  GET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE
 } from "../types/SucursalesEmpresaSiniestroTypes";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function sucursalesEmpresaSiniestro(
@@ -22,7 +22,7 @@ export default function sucursalesEmpresaSiniestro(
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_SUCURSALES_EMPRESA_SINIESTRO_FAILURE:

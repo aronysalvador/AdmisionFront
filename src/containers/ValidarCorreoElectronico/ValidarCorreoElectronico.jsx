@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Typography,
   TextField,
   InputAdornment,
   IconButton,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
@@ -26,7 +26,7 @@ import image from './../../img/relato.svg'
 const ValidarCorreoElectronico = () => {
   const dispatch = useDispatch();
   const {
-    addmissionForm: { percentage, emailusuario },
+    addmissionForm: { percentage, emailusuario }
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -35,22 +35,22 @@ const ValidarCorreoElectronico = () => {
     switchBase: {
       color: "#FAFAFA",
       '&$checked': {
-        color: "#00B2A9",
+        color: "#00B2A9"
       },
       '&$checked + $track': {
-        backgroundColor: "#00B2A9",
-      },
+        backgroundColor: "#00B2A9"
+      }
     },
     checked: {},
-    track: {},
+    track: {}
   })(Switch);
 
-  const [userEmail, setUserEmail] = useState(() => {
+  const [ userEmail, setUserEmail ] = useState(() => {
     return !emailusuario ? "" : emailusuario;
   });
 
-  const [stateCheck,setStateCheck] = useState(emailusuario === "notienecorreo@achs.cl" ? true : false);
-  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [ stateCheck, setStateCheck ] = useState(emailusuario === "notienecorreo@achs.cl");
+  const [ isEmailValid, setIsEmailValid ] = useState(true);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -58,18 +58,18 @@ const ValidarCorreoElectronico = () => {
   const { mobileLabel } = siniestroStyle();
 
   const handleEnd = () => {
-    if(isEmailValid){
+    if (isEmailValid){
       dispatch(updateForm("emailusuario", userEmail));
       dispatch(handleSetStep(1000))
     }
   }
 
   const handleChange = (event) => {
-    setStateCheck( event.target.checked );
-    if(event.target.checked){
+    setStateCheck(event.target.checked);
+    if (event.target.checked){
       setIsEmailValid(validateEmailFormat("notienecorreo@achs.cl"));
       setUserEmail("notienecorreo@achs.cl");
-    }else{
+    } else {
       setIsEmailValid(false);
       setUserEmail("");
     }
@@ -77,26 +77,26 @@ const ValidarCorreoElectronico = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          id="ValidarCorreoElectronico-BtnBack"
+          id='ValidarCorreoElectronico-BtnBack'
           dispatch={() => dispatch(handleSetStep(26.1))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
           Enviaremos los documentos al siguiente&nbsp;
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             e-mail
-          </Grid> 
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -109,13 +109,13 @@ const ValidarCorreoElectronico = () => {
             Email
           </Typography>
           <TextField
-            id="ValidarCorreoElectronico-Input1"
+            id='ValidarCorreoElectronico-Input1'
             value={!stateCheck ? userEmail : ""}
-            variant="outlined"
-            size="small"
-            margin="dense"
+            variant='outlined'
+            size='small'
+            margin='dense'
             fullWidth
-            autoComplete="off"  
+            autoComplete='off'
             helperText={ stateCheck ? null : !isEmailValid && "Escriba un email válido"}
             error={!isEmailValid}
             onChange={(e) => {
@@ -125,9 +125,9 @@ const ValidarCorreoElectronico = () => {
             disabled={stateCheck}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton
-                    id="ValidarCorreoElectronico-ClearIcon1"
+                    id='ValidarCorreoElectronico-ClearIcon1'
                     disabled={stateCheck}
                     onClick={() => {
                       setUserEmail("");
@@ -136,20 +136,20 @@ const ValidarCorreoElectronico = () => {
                     <ClearIcon />
                   </IconButton>
                 </InputAdornment>
-              ),
+              )
             }}
           />
-        
+
           <div className={spaceStyle.space1} />
 
           <div className={welcomeStyle.titleContainerCardsEmail}>
-            <div  className={welcomeStyle.divRowBottomEmail}>
+            <div className={welcomeStyle.divRowBottomEmail}>
               <ErrorOutline />
               <Typography className={welcomeStyle.itemText2}>
                 Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin e-mail</span>
               </Typography>
             </div>
-            <div  className={welcomeStyle.divRowBottomEmail}>
+            <div className={welcomeStyle.divRowBottomEmail}>
               <Typography className={welcomeStyle.pBegin}>
                 ¿Está seguro de continuar sin e-mail?
               </Typography>
@@ -161,10 +161,10 @@ const ValidarCorreoElectronico = () => {
             </div>
             <div className={welcomeStyle.divRowBottomEmail}>
               <CustomSwitch
-                id="ValidarCorreoElectronico-CustomSwitch1"
+                id='ValidarCorreoElectronico-CustomSwitch1'
                 checked={stateCheck}
                 onChange={handleChange}
-                color="default"
+                color='default'
               />
             </div>
           </div>
@@ -172,9 +172,9 @@ const ValidarCorreoElectronico = () => {
 
         <div className={comunClass.bottomElement}>
           <Button
-            id="ValidarCorreoElectronico-Btn1"
+            id='ValidarCorreoElectronico-Btn1'
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={
               (!stateCheck && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck)
             }

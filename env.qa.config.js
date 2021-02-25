@@ -34,3 +34,4 @@ window.REACT_APP_CRITERIOS = "https://qa.salud.achs.cl/orquestador/api/sap/crite
 window.REACT_APP_ADMISION = "https://qa.salud.achs.cl/orquestador/api/admision/"
 window.REACT_APP_GRUPOS="https://qa.salud.achs.cl/orquestador/api/datosPaciente/grupo/"
 window.APPLICATION_INSIGHTS = "d13edc7b-c582-41e9-9c61-58f5b9d1e57c"
+window.GOOGLE_MAPS_API_KEY = "AIzaSyB7A81JqF6R2b0lZ2SAAlR1jYRfNZNm-wM"

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { getComunStyle } from "../../css/comun";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import { TextField } from "@material-ui/core";
@@ -9,7 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 export default (props) => {
     const comunClass = getComunStyle();
 
-    const { first, txt1, txt2, data, setData, listado, options, id } = props 
+    const { first, txt1, txt2, data, setData, listado, options, id } = props
 
     const NoPaddingAutocomplete = withStyles({
         inputRoot: {
@@ -23,25 +21,25 @@ export default (props) => {
         input: {}
       })(AutoComplete);
 
-    return(
+    return (
         <div>
             <div className={comunClass.containerTextBoxDataCont}>
                 {first==="dark" ? (
-                    <Grid className={[comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont]}>
-                        {txt1}                                       
-                        <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlueDataCont]}>
-                            &nbsp; {txt2}   
-                        </Grid> 
-                    </Grid> 
+                    <Grid className={[ comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont ]}>
+                        {txt1}
+                        <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlueDataCont ]}>
+                            &nbsp; {txt2}
+                        </Grid>
+                    </Grid>
                 ) : (
-                    <Grid className={[comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont]}>
-                        <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlueDataCont]}>
-                            {txt1} 
-                        </Grid>          
-                        &nbsp; {txt2} 
-                    </Grid> 
+                    <Grid className={[ comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont ]}>
+                        <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlueDataCont ]}>
+                            {txt1}
+                        </Grid>
+                        &nbsp; {txt2}
+                    </Grid>
                 )}
-                                                 
+
                 <NoPaddingAutocomplete
                     id={id}
                     value={data}
@@ -51,24 +49,25 @@ export default (props) => {
                     options={!listado.error ? (listado.data.length>0 ? listado.data : []): []}
                     getOptionSelected= {(
                         option,
-                        value,
+                        value
                      ) => value.value === option.value}
-                    getOptionLabel={(option) =>{ 
-                        var response = ""
-                        if(option){
-                            if(options.length>0){
+                    getOptionLabel={(option) => {
+                        let response = ""
+                        if (option){
+                            if (options.length>0){
                                 for (let index = 0; index < options.length; index++) {
                                     const element = options[index];
                                     response += option[element]+" ";
                                 }
                             }
-                        }                        
+                        }
+
                         return response
                     }}
                     renderInput={(params) => (
                     <TextField
                         {...params}
-                        variant="outlined"
+                        variant='outlined'
                         InputProps={{
                         ...params.InputProps,
                         style: {
@@ -77,7 +76,7 @@ export default (props) => {
                             paddingLeft: "5xp",
                             marginTop: "7px",
                             background: "#ffff"
-                        },
+                        }
                         }}
                     />
                     )}

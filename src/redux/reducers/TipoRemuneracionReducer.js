@@ -1,13 +1,13 @@
 import {
   GET_REMUNERACION_INIT,
   GET_REMUNERACION_SUCCESS,
-  GET_REMUNERACION_FAILURE,
+  GET_REMUNERACION_FAILURE
 } from "../types/tipoRemuneracionType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function tipoRemuneracionForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function tipoRemuneracionForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_REMUNERACION_FAILURE:

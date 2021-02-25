@@ -1,13 +1,13 @@
 import {
   GET_GRUPO_INIT,
   GET_GRUPO_SUCCESS,
-  GET_GRUPO_FAILURE,
+  GET_GRUPO_FAILURE
 } from "../types/grupoType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function grupoForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function grupoForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_GRUPO_FAILURE:

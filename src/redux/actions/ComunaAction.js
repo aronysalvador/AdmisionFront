@@ -1,7 +1,7 @@
 import {
   GET_COMUNA_INIT,
   GET_COMUNA_SUCCESS,
-  GET_COMUNA_FAILURE,
+  GET_COMUNA_FAILURE
 } from "../types/comunaType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,14 +11,14 @@ export const getData = createHttpGetClient(window.REACT_APP_COMUNA);
 export const getComuna = () => async (dispatch) => {
   dispatch({
     type: GET_COMUNA_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCallComuna(response.data.content[0]));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_COMUNA));
         dispatch(handleSetStep(1004));
@@ -33,11 +33,10 @@ export const getComuna = () => async (dispatch) => {
 
   const successCallComuna = (comuna) => ({
     type: GET_COMUNA_SUCCESS,
-    payload: comuna,
+    payload: comuna
   });
 
   const errorCallComuna = () => ({
-    type: GET_COMUNA_FAILURE,
+    type: GET_COMUNA_FAILURE
   });
 };
-

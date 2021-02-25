@@ -1,13 +1,13 @@
 import {
   GET_IDIOMA_INIT,
   GET_IDIOMA_SUCCESS,
-  GET_IDIOMA_FAILURE,
+  GET_IDIOMA_FAILURE
 } from "../types/idiomaType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function idiomaForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function idiomaForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_IDIOMA_FAILURE:

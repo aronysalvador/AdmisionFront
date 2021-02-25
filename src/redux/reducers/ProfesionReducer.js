@@ -1,13 +1,13 @@
 import {
   GET_PROFESION_INIT,
   GET_PROFESION_SUCCESS,
-  GET_PROFESION_FAILURE,
+  GET_PROFESION_FAILURE
 } from "../types/profesionType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function profesionForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function profesionForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_PROFESION_FAILURE:

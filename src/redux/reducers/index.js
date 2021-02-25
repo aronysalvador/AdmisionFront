@@ -53,5 +53,5 @@ export default combineReducers({
     mediosTransporteForm,
     parteCuerpoAfectadaForm,
     agenteCausaEnfermedadForm,
-    criteriosForm,
+    criteriosForm
 });
