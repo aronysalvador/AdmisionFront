@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const getWelcomeStyle = makeStyles((theme) => ({
+export const getWelcomeStyle = makeStyles(() => ({
 
     bienvenido: {
         fontSize: "2em",

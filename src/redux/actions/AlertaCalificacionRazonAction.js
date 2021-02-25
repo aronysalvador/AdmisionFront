@@ -39,7 +39,7 @@ const successCallRazonAlerta = (razon) => ({
   payload: razon
 });
 
-const errorCallRazonAlerta = (error) => {
+const errorCallRazonAlerta = () => {
   return ({
     type: GET_RAZON_ALERTA_FAILURE
   })

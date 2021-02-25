@@ -206,7 +206,7 @@ alignItems='center'
                   indiceMes > fechaActual.getMonth() - 1 &&
                   anios[indiceAnio] + 1 === fechaActual.getFullYear()
                 )
-                  setIndiceMes((x) => fechaActual.getMonth());
+                  setIndiceMes(() => fechaActual.getMonth());
               }}
               onMouseDown={() => {
                 longPressUp();

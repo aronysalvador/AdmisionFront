@@ -38,7 +38,7 @@ const LugarSiniestroTrayectoMapa = () => {
                 longitude: position.coords.longitude
             })
         },
-        function(error) {
+        function() {
             setCoords({
             latitude: 'notset',
             longitude: 'notset'

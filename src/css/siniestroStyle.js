@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const siniestroStyle = makeStyles((theme) => ({
+export const siniestroStyle = makeStyles(() => ({
   button: {
     width: "100%",
     height: "100%",

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const getTrabajoHabitualCardStyle = makeStyles((theme) => ({
+export const getTrabajoHabitualCardStyle = makeStyles(() => ({
     container: {
         backgroundColor: "#FFF",
         borderRadius: "10px",

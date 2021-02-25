@@ -11,7 +11,7 @@ const packageMiddlewares = () => {
             duration: true,
             timestamp: true,
             // diff: true,
-            collapsed: (getState, action, logEntry) => true// !logEntry.error
+            collapsed: () => true// !logEntry.error
         });
 
         return applyMiddleware(Thunk, Logger, localLogger);

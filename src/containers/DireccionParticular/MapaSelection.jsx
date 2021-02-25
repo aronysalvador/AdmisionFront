@@ -40,8 +40,8 @@ const MapaSelection = () => {
                 longitude: position.coords.longitude
             })
         },
-        function(error) {
-            console.error("Error Code = " + error.code + " - " + error.message);
+        function() {
+            // console.error("Error Code = " + error.code + " - " + error.message);
             setCoords({
               latitude: 'notset',
               longitude: 'notset'

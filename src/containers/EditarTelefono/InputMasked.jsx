@@ -5,14 +5,11 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 export default function InputMasked({
   id,
-  mask,
-  setTelefonoIsValid,
   setTelefono,
   handleOnChange,
   telefono,
   disabled,
-  step,
-  ...props
+  step
 }) {
   return (
     <TextField

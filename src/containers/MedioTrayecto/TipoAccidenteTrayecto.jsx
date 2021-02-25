@@ -87,7 +87,7 @@ const TipoAccidenteTrayecto = () => {
       <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.cardBtn}>
           {tipoAccidenteTrayectoList.length>0 && (
-            <>
+            <div>
               {tipoAccidenteTrayectoList && tipoAccidenteTrayectoList.map((tipo) => (
 
                 <BotonSeleccionarCustomSingle
@@ -101,7 +101,7 @@ const TipoAccidenteTrayecto = () => {
                   <BotonSeleccionarCustomItemTipoAccidenteTrayecto {...tipo} />
                 </BotonSeleccionarCustomSingle>
               ))}
-            </>
+            </div>
           )}
         </div>
         <div className={spaceStyle.space2} />
