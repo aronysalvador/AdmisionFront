@@ -67,7 +67,6 @@ export const validarDireccion = async(direccion) => {
 }
 
 const validarComuna = async(direccion) => {
-    return async function() {
         let COMUNAS = await getComunas()
             // const array = store.getState().comunaForm.data
             // for (let index = 0; index < array.length; index++) {
@@ -86,7 +85,6 @@ const validarComuna = async(direccion) => {
 
         let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));
         if (result.length > 0) return result[0]; else return [];
-    };
 };
 
 const getComunas = () => {
