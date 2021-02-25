@@ -81,7 +81,7 @@
         ],
         "indent": [
             "warn",
-            4,
+            2,
             {
                 "ArrayExpression": 1,
                 "CallExpression": {
@@ -160,7 +160,7 @@
         "no-unneeded-ternary": "warn",
         "no-unused-vars": "warn",
         "no-var": "warn",
-        "object-curly-spacing": ["warn", "always"],
+        "object-curly-spacing": ["off", "always"],
         "object-shorthand": "warn",
         "padded-blocks": ["warn", "never"],
         "padding-line-between-statements": [
@@ -183,7 +183,7 @@
         ],
         "prefer-promise-reject-errors": "warn",
         "quote-props": ["warn", "as-needed"],
-        "quotes": ["warn", "single", "avoid-escape"],
+        "quotes": ["off", "single", "avoid-escape"],
         "radar/cognitive-complexity": ["off", 20],
         "radar/max-switch-cases": ["off", 12],
         "radar/no-duplicate-string": "off",
@@ -194,7 +194,7 @@
         "react-redux/no-unused-prop-types": "warn",
         "react-redux/prefer-separate-component-file": "off",
         "react-redux/useSelector-prefer-selectors": [
-            "warn",
+            "off",
             {
                 "matching": "^.*Selector$"
             }
@@ -206,18 +206,18 @@
         "react/jsx-child-element-spacing": "off",
         "react/jsx-closing-bracket-location": ["warn", "tag-aligned"],
         "react/jsx-closing-tag-location": "warn",
-        "react/jsx-curly-spacing": ["warn", "always"],
+        "react/jsx-curly-spacing": ["off", "always"],
         "react/jsx-fragments": ["warn", "syntax"],
         "react/jsx-handler-names": "warn",
         "react/jsx-indent": [
-            "warn",
-            4,
+            "off",
+            2,
             {
                 "checkAttributes": true,
                 "indentLogicalExpressions": true
             }
         ],
-        "react/jsx-indent-props": ["warn", 4],
+        "react/jsx-indent-props": ["off", 2],
         "react/jsx-key": [
             "error",
             {
@@ -270,14 +270,14 @@
         "react/self-closing-comp": "warn",
         "react/sort-comp": "warn",
         "react/sort-prop-types": "warn",
-        "semi": ["error", "always"],
+        "semi": ["off", "always"],
         "semi-spacing": "warn",
         "semi-style": ["warn", "last"],
         "sort-imports": "off",
         "sort-keys": ["off", "asc"],
-        "space-before-blocks": "warn",
+        "space-before-blocks": "off",
         "space-before-function-paren": [
-            "error",
+            "off",
             {
                 "anonymous": "never",
                 "asyncArrow": "always",
