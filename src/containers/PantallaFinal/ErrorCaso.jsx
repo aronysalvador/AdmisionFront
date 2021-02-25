@@ -9,7 +9,7 @@ import Header from "../../components/header/index";
 import warning from './../../img/WarningErrorCaso.png'
 import { initSessionDate } from "./../../redux/actions/Log";
 
-const ErrorCaso = (props) => {
+const ErrorCaso = () => {
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
   // const blackStyle = getBlackTheme();

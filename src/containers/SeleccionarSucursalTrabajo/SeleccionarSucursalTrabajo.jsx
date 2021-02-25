@@ -18,7 +18,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
 
   const comunClass = getComunStyle();
 
-  const handlerGuradarSucursalTexto = (itemForm, data, step) => {
+  const handlerGuradarSucursalTexto = (itemForm, data) => {
     const { nombre, direccion, comuna, codigo, sucursalCargo } = data;
     const sucursalTexto = nombre;
     dispatch(updateForm(itemForm, sucursalTexto));

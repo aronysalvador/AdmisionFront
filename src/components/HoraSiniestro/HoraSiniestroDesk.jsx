@@ -11,7 +11,6 @@ const HoraSiniestroDesk = ({
   onChange,
   horasFromState,
   indiceMinutosFromState,
-  minutos,
   textLabel,
   UpComponent
 }) => {

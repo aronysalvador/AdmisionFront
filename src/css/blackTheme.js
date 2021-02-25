@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const getBlackTheme = makeStyles((theme) => ({
+export const getBlackTheme = makeStyles(() => ({
 
     textNoAfiliate: {
         textAlign: "center",

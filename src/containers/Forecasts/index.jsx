@@ -239,7 +239,6 @@ listado={afpList} />
                    </div>
                     )}
 
-
                   {isapreList[11] && (
                    <div className='col-md-6' style={{marginBottom: '10px'}}>
                       <div className={checkedIsapre?.id === isapreList[11].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>

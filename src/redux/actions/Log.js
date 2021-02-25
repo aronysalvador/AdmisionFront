@@ -129,7 +129,7 @@ import {
         dispatch(errorCallLogStep(error))
       });
 
-      const successCallLogStep = ID => ({
+      const successCallLogStep = () => ({
         type: POST_LOG_SUCCESS_STEP
       });
 

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const getComunStyle = makeStyles((theme) => ({
+export const getComunStyle = makeStyles(() => ({
 
     '@media (max-width: 767px)': {
         /* For mobile phones */

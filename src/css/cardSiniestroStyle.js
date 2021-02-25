@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-export const cardSiniestroStyles = makeStyles((theme) => ({
+export const cardSiniestroStyles = makeStyles(() => ({
 
     itemId: {
         display: "flex",

@@ -46,7 +46,7 @@ const getUseStyles = makeStyles({
   }
 });
 
-const ErrorSucursal = (props) => {
+const ErrorSucursal = () => {
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();

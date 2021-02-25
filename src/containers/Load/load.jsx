@@ -14,7 +14,7 @@ const getUseStyles = makeStyles({
   }
 });
 
-const Load = (props) => {
+const Load = () => {
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();
