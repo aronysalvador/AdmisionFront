@@ -3,15 +3,10 @@ import {
   GET_CENTROS_SUCCESS,
   GET_CENTROS_FAILURE,
 } from "../types/centrosAchsType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { createHttpGetClient } from '../common';
 
-axiosRetry(Axios, { retries: 3 });
-
-export const getData = async () => {
-  return Axios.get(window.REACT_APP_CENTROSACHS);
-};
+export const getData = createHttpGetClient(window.REACT_APP_CENTROSACHS);
 
 export const getCentros = () => async (dispatch) => {
   dispatch({
@@ -27,7 +22,7 @@ export const getCentros = () => async (dispatch) => {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CENTROSACHS));
         dispatch(handleSetStep(1004));
-      }     
+      }
     })
     .catch((error) => {
       dispatch(errorCallCENTROS());

@@ -3,14 +3,10 @@ import {
   GET_TRAYECTO_PARTECUERPOAFECTADA_SUCCESS,
   GET_TRAYECTO_PARTECUERPOAFECTADA_FAILURE,
 } from "../types/trayectoType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { createHttpGetClient } from '../common';
 
-axiosRetry(Axios, { retries: 3 });
-export const getData = async () => {
-  return Axios.get(window.REACT_APP_PARTES_DEL_CUERPO);
-};
+export const getData = createHttpGetClient(window.REACT_APP_PARTES_DEL_CUERPO);
 
 export const getPartesCuerpo = () => async (dispatch) => {
   dispatch({

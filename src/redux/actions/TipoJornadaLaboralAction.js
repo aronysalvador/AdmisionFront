@@ -3,14 +3,10 @@ import {
   GET_JORNADA_LABORAL_SUCCESS,
   GET_JORNADA_LABORAL_FAILURE,
 } from "../types/tipoJornadaLaboralType";
-import Axios from "axios";
-import axiosRetry from 'axios-retry';
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
+import { createHttpGetClient } from '../common';
 
-axiosRetry(Axios, { retries: 3 });
-export const getData = async () => {
-  return Axios.get(window.REACT_APP_JORNADA_TRABAJO);
-};
+export const getData = createHttpGetClient(window.REACT_APP_JORNADA_TRABAJO);
 
 export const getJornadaLaboralPrincipal = () => async (dispatch) => {
   dispatch({
@@ -26,7 +22,7 @@ export const getJornadaLaboralPrincipal = () => async (dispatch) => {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_JORNADA_TRABAJO));
         dispatch(handleSetStep(1004));
-      }   
+      }
     })
     .catch((error) => {
       dispatch(errorCallTipoJornada());
