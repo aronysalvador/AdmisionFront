@@ -28,7 +28,6 @@
         "react",
         "react-redux",
         "react-hooks",
-        "jsdoc",
         "radar",
         "jest",
         "import"
@@ -37,7 +36,6 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:react-redux/recommended",
-        "plugin:jsdoc/recommended",
         "plugin:radar/recommended"
     ],
     "globals": {
@@ -50,13 +48,6 @@
         "arrow-spacing": "warn",
         "block-scoped-var": "warn",
         "block-spacing": "warn",
-        "brace-style": [
-            "warn",
-            "allman",
-            {
-                "allowSingleLine": true
-            }
-        ],
         "class-methods-use-this": "off",
         "comma-dangle": ["warn", "never"],
         "comma-spacing": [
@@ -105,14 +96,6 @@
         "jest/no-identical-title": "error",
         "jest/prefer-to-have-length": "warn",
         "jest/valid-expect": "error",
-        "jsdoc/check-tag-names": "off",
-        "jsdoc/no-undefined-types": "off",
-        "jsdoc/require-hyphen-before-param-description": "off",
-        "jsdoc/require-jsdoc": "off",
-        "jsdoc/require-param-description": "off",
-        "jsdoc/require-property-description": "off",
-        "jsdoc/require-returns-description": "off",
-        "jsdoc/require-throws": "warn",
         "jsx-quotes": ["warn", "prefer-single"],
         "key-spacing": [
             "warn",
