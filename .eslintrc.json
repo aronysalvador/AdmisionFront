@@ -28,15 +28,13 @@
         "react",
         "react-redux",
         "react-hooks",
-        "radar",
         "jest",
         "import"
     ],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:react-redux/recommended",
-        "plugin:radar/recommended"
+        "plugin:react-redux/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -71,7 +69,7 @@
             }
         ],
         "indent": [
-            "warn",
+            "off",
             2,
             {
                 "ArrayExpression": 1,
@@ -167,10 +165,6 @@
         "prefer-promise-reject-errors": "warn",
         "quote-props": ["warn", "as-needed"],
         "quotes": ["off", "single", "avoid-escape"],
-        "radar/cognitive-complexity": ["off", 20],
-        "radar/max-switch-cases": ["off", 12],
-        "radar/no-duplicate-string": "off",
-        "radar/no-small-switch": "warn",
         "radix": ["warn", "as-needed"],
         "react-hooks/exhaustive-deps": "off",
         "react-hooks/rules-of-hooks": "warn",

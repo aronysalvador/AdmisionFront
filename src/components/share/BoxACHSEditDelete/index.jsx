@@ -5,7 +5,8 @@ import { cardSiniestroStyles } from "../../../css/cardSiniestroStyle";
 const BoxACHSEditDelete = (props) => {
     const { titulo, contenido } = props
     const classes = cardSiniestroStyles();
-    return (<div className={classes.container} style={{margin:'15px 0', width: '100%'}}>
+
+    return (<div className={classes.container} style={{margin: '15px 0', width: '100%'}}>
                 <div className={classes.cuerpo}>
                     <div>
                         <Typography className={classes.itemId}>
@@ -13,9 +14,9 @@ const BoxACHSEditDelete = (props) => {
                         </Typography>
                     </div>
                     <div>
-                        <Typography >
-                            {contenido.map((value) => {
-                            return <div className={classes.itemTipo}>{value}</div>
+                        <Typography>
+                            {contenido.map((value, i) => {
+                            return <div key={i} className={classes.itemTipo}>{value}</div>
                             })}
                         </Typography>
                     </div>

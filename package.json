@@ -42,7 +42,6 @@
     "eslint": "^7.20.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.5",
-    "eslint-plugin-jsdoc": "^32.2.0",
     "eslint-plugin-radar": "^0.2.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
@@ -58,9 +57,6 @@
     "eslint:analyze": "eslint --ext .js,.jsx src/",
     "eslint:fix": "eslint --fix --ext .js,.jsx src/",
     "_packages:force-update": "npx npm-check-updates -u"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
