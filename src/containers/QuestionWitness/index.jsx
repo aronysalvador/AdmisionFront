@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
-import { handleSetStep, updateForm  } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import QuestionTestigoResponsable from "../../components/Questions/QuestionTestigoResponsable";
 import Header from "../../components/header/index";
 
@@ -11,19 +11,18 @@ const QuestionWitness = (props) => {
 
   const comunClass = getComunStyle();
 
-
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep("x",13))}
+          dispatch={() => dispatch(handleSetStep("x", 13))}
           percentage={addmissionForm.percentage}
         />
       </div>
-      
+
         <QuestionTestigoResponsable
           titulo={"¿Alguien fue"}
           titulo2={"testigo "}
@@ -38,21 +37,21 @@ const QuestionWitness = (props) => {
             addmissionForm.CamposDocumentos.TestigoS = ""
             addmissionForm.CamposDocumentos.TestigoN = "x"
             dispatch(updateForm("CamposDocumentos", addmissionForm.CamposDocumentos));
-            dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
-            dispatch(handleSetStep(15))     
+            dispatch(updateForm("testigos", { nombre: "", cargo: "" }));
+            dispatch(handleSetStep(15))
           }}
           tituloA={"Agregar testigo"}
           tituloB={"No hubo testigos"}
         />
-   
+
     </div>
   );
 };
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 }
 

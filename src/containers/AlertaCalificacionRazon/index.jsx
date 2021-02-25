@@ -3,18 +3,15 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
-import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
-
-import BotonSeleccionarCustomItemAlerta from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemAlerta";
+import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";import BotonSeleccionarCustomItemAlerta from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemAlerta";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import image from './../../img/relato.svg'
 
-
 const AlertaCalificacionRazon = () => {
   const {
-    addmissionForm: { percentage, razonAlertaForm, tipoSiniestro },
+    addmissionForm: { percentage, razonAlertaForm, tipoSiniestro }
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
@@ -23,36 +20,35 @@ const AlertaCalificacionRazon = () => {
     shallowEqual
   );
 
-  const razon =  !razonAlertaForm ? "" : razonAlertaForm 
+  const razon = !razonAlertaForm ? "" : razonAlertaForm
   const dispatch = useDispatch();
 
-  const [listado, setListado] = useState([])
+  const [ listado, setListado ] = useState([])
 
   useEffect(() => {
-    if(razonAlertaList.length>0){
+    if (razonAlertaList.length>0)
       FilterbySinister()
-    }
+
     // eslint-disable-next-line
   }, [razonAlertaList]);
 
-
   const FilterbySinister = () => {
-    var response = []  
-    switch(tipoSiniestro.Id){
-      //Caso Acciddente de Trabajo
+    let response = []
+    switch (tipoSiniestro.Id){
+      // Caso Acciddente de Trabajo
       case 1:
-        response =  razonAlertaList
+        response = razonAlertaList
         break;
-      //Caso Accidente de Trayecto  
+      // Caso Accidente de Trayecto
       case 2:
-        response =  razonAlertaList.slice(1,razonAlertaList.length)
+        response = razonAlertaList.slice(1, razonAlertaList.length)
         break;
-      //Caso Enfermedad Profesional
+      // Caso Enfermedad Profesional
       case 3:
-        response =  razonAlertaList.slice(1,3)
+        response = razonAlertaList.slice(1, 3)
         break;
       default:
-        response =  razonAlertaList
+        response = razonAlertaList
         break;
     }
     setListado(response)
@@ -62,26 +58,26 @@ const AlertaCalificacionRazon = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          id="AlertaCalificacionRazon-BtnBack"
+          id='AlertaCalificacionRazon-BtnBack'
           dispatch={() => dispatch(handleSetStep(26.1))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           Selecciona
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;la razón de la alerta
-          </Grid>          
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -92,11 +88,11 @@ const AlertaCalificacionRazon = () => {
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            flexWrap: "wrap",
+            flexWrap: "wrap"
           }}
         >
-          {listado && listado.map((razonAlerta,i) => (
-            <BotonSeleccionarCustom              
+          {listado && listado.map((razonAlerta, i) => (
+            <BotonSeleccionarCustom
               id={"AlertaCalificacionRazon"+i}
               key={"key"+i}
               data={razonAlerta}

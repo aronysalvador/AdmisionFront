@@ -13,32 +13,30 @@ import image from './../../img/identify.svg'
 
 const SinBPInfoPersonal2 = () => {
   const {
-    addmissionForm: { percentage, bpForm, nacionalidadForm, idiomaForm, paisForm,  grupoEtnico },
+    addmissionForm: { percentage, bpForm, nacionalidadForm, idiomaForm, paisForm, grupoEtnico },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
-    
+
   const { data: nacionalidadList } = useSelector((state) => state.nacionalidadForm, shallowEqual);
   const { data: paisesList } = useSelector((state) => state.paisForm, shallowEqual);
   const { data: idiomasList } = useSelector((state) => state.idiomaForm, shallowEqual);
   const { data: grupoList } = useSelector((state) => state.grupoForm, shallowEqual);
 
-  const [nacionalidad, setNacionalidad] = useState(() => {
+  const [ nacionalidad, setNacionalidad ] = useState(() => {
     return !nacionalidadForm ? {key: "CL", value: "chilena"} : nacionalidadForm;
   });
-  const [idioma, setIdioma] = useState(() => {
+  const [ idioma, setIdioma ] = useState(() => {
     return !idiomaForm ? {key: "ES", value: "Español"} : idiomaForm;
   });
-  const [pais, setPais] = useState(() => {
+  const [ pais, setPais ] = useState(() => {
     return !paisForm ? {key: "CL", value: "Chile"} : paisForm;
   });
 
-  const [grupo, setGrupo] = useState(() => {
+  const [ grupo, setGrupo ] = useState(() => {
     return !grupoEtnico ? {id: "00", descripcion: "NINGUNA"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
-  
-
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -51,10 +49,10 @@ const SinBPInfoPersonal2 = () => {
         nombre: bpForm.nombre,
         fechaNacimiento: bpForm.fechaNacimiento,
         masculino: bpForm.sexo === "Masculino" ? "X" : "",
-        femenino:  bpForm.sexo === "Femenino" ? "X" : "",
+        femenino: bpForm.sexo === "Femenino" ? "X" : "",
         nacionalidad: nacionalidad.key,
         lugarNacimiento: pais.key,
-        estadoCivil: "",
+        estadoCivil: ""
       })
     );
     dispatch(updateForm("grupoEtnico", grupo))
@@ -65,8 +63,8 @@ const SinBPInfoPersonal2 = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -76,15 +74,15 @@ const SinBPInfoPersonal2 = () => {
         />
       </div>
       <div className={ comunClass.titlePrimaryDesk }>
-        <Grid component="span" className={[comunClass.textPrimaryDesk, comunClass.titleBlack]}>
+        <Grid component='span' className={[ comunClass.textPrimaryDesk, comunClass.titleBlack ]}>
           Identifica la información
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;personal del paciente
           </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -92,13 +90,13 @@ const SinBPInfoPersonal2 = () => {
         <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
-        <div className="row">
+        <div className='row'>
 
-          <div className="col-md-6">
-            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
+          <div className='col-md-6'>
+            <Grid className={[ comunClass.tituloTextBox ]} style={{textAlign: "left"}}>
               Nacionalidad
             </Grid>
-          
+
             <AutoComplete
               id={"InfoPersonal2-Lbl1"}
               value={nacionalidad}
@@ -109,28 +107,28 @@ const SinBPInfoPersonal2 = () => {
               getOptionLabel={(option) => option ? option.value : ""}
               getOptionSelected= {(
                 option,
-                value,
+                value
               ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  variant="outlined"
+                  variant='outlined'
                   InputProps={{
                     ...params.InputProps,
                     style: {
                       paddingTop: "3px",
                       paddingBottom: "3px",
                       paddingLeft: "5xp",
-                      marginTop: "7px",
-                    },
+                      marginTop: "7px"
+                    }
                   }}
                 />
               )}
             />
-          
+
             <div className={spaceStyle.space2} />
-          
-            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
+
+            <Grid className={[ comunClass.tituloTextBox ]} style={{textAlign: "left"}}>
               País de nacimiento
             </Grid>
             <AutoComplete
@@ -143,28 +141,28 @@ const SinBPInfoPersonal2 = () => {
               getOptionLabel={(option) => option ? option.value : ""}
               getOptionSelected= {(
                 option,
-                value,
+                value
               ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  variant="outlined"
+                  variant='outlined'
                   InputProps={{
                     ...params.InputProps,
                     style: {
                       paddingTop: "3px",
                       paddingBottom: "3px",
                       paddingLeft: "5xp",
-                      marginTop: "7px",
-                    },
+                      marginTop: "7px"
+                    }
                   }}
                 />
               )}
             />
           </div>
-          
-          <div className="col-md-6">
-            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
+
+          <div className='col-md-6'>
+            <Grid className={[ comunClass.tituloTextBox ]} style={{textAlign: "left"}}>
               Grupo étnico
             </Grid>
             <AutoComplete
@@ -177,26 +175,26 @@ const SinBPInfoPersonal2 = () => {
               getOptionLabel={(option) => option ? option.descripcion : ""}
               getOptionSelected= {(
                 option,
-                value,
+                value
               ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  variant="outlined"
+                  variant='outlined'
                   InputProps={{
                     ...params.InputProps,
                     style: {
                       paddingTop: "3px",
                       paddingBottom: "3px",
                       paddingLeft: "5xp",
-                      marginTop: "7px",
-                    },
+                      marginTop: "7px"
+                    }
                   }}
                 />
               )}
             />
             <div className={spaceStyle.space2} />
-            <Grid className={[comunClass.tituloTextBox]} style={{textAlign:"left"}}>
+            <Grid className={[ comunClass.tituloTextBox ]} style={{textAlign: "left"}}>
               Idioma
             </Grid>
             <AutoComplete
@@ -209,20 +207,20 @@ const SinBPInfoPersonal2 = () => {
               getOptionLabel={(option) => option ? option.value : ""}
               getOptionSelected= {(
                 option,
-                value,
+                value
               ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  variant="outlined"
+                  variant='outlined'
                   InputProps={{
                     ...params.InputProps,
                     style: {
                       paddingTop: "3px",
                       paddingBottom: "3px",
                       paddingLeft: "5xp",
-                      marginTop: "7px",
-                    },
+                      marginTop: "7px"
+                    }
                   }}
                 />
               )}
@@ -234,8 +232,8 @@ const SinBPInfoPersonal2 = () => {
           <Button
             id={"InfoPersonal2-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
-            type="submit"
+            variant='contained'
+            type='submit'
             onClick={() => clickConfirmar()}
           >
             Confirmar

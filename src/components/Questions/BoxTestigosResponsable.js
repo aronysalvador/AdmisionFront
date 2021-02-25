@@ -15,16 +15,16 @@ const QuestionTestigoResponsable = (props) => {
   return (
     <div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           {titulo}
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            {titulo2} 
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+            {titulo2}
           </Grid>
           {titulo3}
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -43,8 +43,8 @@ const QuestionTestigoResponsable = (props) => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            variant="contained"
-            type="submit"
+            variant='contained'
+            type='submit'
             onClick={() => irA()}
           >
             Continuar

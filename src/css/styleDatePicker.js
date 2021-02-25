@@ -3,6 +3,6 @@ import { createMuiTheme } from "@material-ui/core";
 
 export const defaultMaterialThemeKeyboardDatePicker = createMuiTheme({
     palette: {
-        primary: specialBlue,
-    },
+        primary: specialBlue
+    }
 });

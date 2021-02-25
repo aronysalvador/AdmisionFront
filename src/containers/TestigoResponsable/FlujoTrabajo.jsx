@@ -17,163 +17,163 @@ import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 
-
 const FlujoTrabajo = () => {
-    const { addmissionForm: { percentage, CamposDocumentos ,  responsableForm, fechaHoraResponsable }, microsoftReducer:{userMsal} } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, CamposDocumentos, responsableForm, fechaHoraResponsable }, microsoftReducer: {userMsal} } = useSelector((state) => state, shallowEqual);
     const dispatch = useDispatch();
 
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
 
-    const [date, setDate] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);  
-    const [validDate, setValidDate] = useState(fechaHoraResponsable.length>0 ? true :false);  
+    const [ date, setDate ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);
+    const [ validDate, setValidDate ] = useState(fechaHoraResponsable.length>0);
 
-    const [hour, setHour] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);    
-    const [validHour, setValidHour] = useState(fechaHoraResponsable.length>0 ? true :false);  
-
+    const [ hour, setHour ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);
+    const [ validHour, setValidHour ] = useState(fechaHoraResponsable.length>0);
 
     const handleOnClick = (respuesta) => {
         let newValue
-        if(respuesta === "Si"){
+        if (respuesta === "Si"){
             newValue = {...CamposDocumentos, TestigoS: "x", TestigoN: ""}
             dispatch(updateForm("testigoTrabajo", true));
             dispatch(updateForm("CamposDocumentos", newValue));
-        }else{
+        } else {
             newValue = {...CamposDocumentos, TestigoS: "", TestigoN: "x"}
             dispatch(updateForm("CamposDocumentos", newValue));
             dispatch(updateForm("testigoTrabajo", false));
-            dispatch(updateForm("testigos",  { nombre: "", cargo: "" }));
+            dispatch(updateForm("testigos", { nombre: "", cargo: "" }));
         }
-        if((newValue.TestigoS === "x" || newValue.TestigoN === "x") && responsableForm === "No" ){
+        if ((newValue.TestigoS === "x" || newValue.TestigoN === "x") && responsableForm === "No")
             dispatch(handleSetStep(18.01))
-        }
-        
     };
 
     const handleOnClickResponsable = (respuesta) => {
-        if(respuesta === "Si"){
+        if (respuesta === "Si"){
             dispatch(updateForm("responsableForm", respuesta));
-        }else{
+        } else {
             dispatch(updateForm("fechaHoraResponsable", ``))
-            dispatch(updateForm("responsable",  { nombre: "", cargo: "" }));
+            dispatch(updateForm("responsable", { nombre: "", cargo: "" }));
             dispatch(updateForm("responsableForm", respuesta));
-            dispatch(handleSetStep(18.01))         
+            dispatch(handleSetStep(18.01))
         }
     };
 
     return (
         <div className={comunClass.root}>
-        <div className={comunClass.displayDesk}> 
-            <Header userMsal={ userMsal }/>
+        <div className={comunClass.displayDesk}>
+            <Header userMsal={ userMsal } />
         </div>
         <div className={comunClass.beginContainerDesk}>
             <Cabecera
-            id="FlujoTrabajo-BtnBack"
+            id='FlujoTrabajo-BtnBack'
             dispatch={() => dispatch(handleSetStep(10.1))}
             percentage={percentage}
             />
         </div>
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12">
+        <div className='container'>
+            <div className='row'>
+                <div className='col-md-12'>
                 <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
 
-                    <div className={['row', comunClass.backgroundGrey].join(' ')}>
-                        <div className="col-md-10" style={{textAlign:"left"}}>
-                        <Grid className={`${comunClass.textPrimaryRelato}`} >
+                    <div className={[ 'row', comunClass.backgroundGrey ].join(' ')}>
+                        <div className='col-md-10' style={{textAlign: "left"}}>
+                        <Grid className={`${comunClass.textPrimaryRelato}`}>
                             ¿Alguien fue
-                            <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                            <Grid component='span' className={`${comunClass.textPrimaryRelatoBlue}`}>
                                 &nbsp;testigo&nbsp;
-                            </Grid> 
+                            </Grid>
                             de lo que sucedió?
                         </Grid>
                         </div>
-                        <div className="col-md-2" style={{ display: "contents" }}>
+                        <div className='col-md-2' style={{ display: "contents" }}>
                             <img
-                            id="FlujoTrabajo-Img1"
-                            alt="siTrabajo"
+                            id='FlujoTrabajo-Img1'
+                            alt='siTrabajo'
                             src={CamposDocumentos.TestigoS ==="x" ? yesActive : yesDisabled}
-                            type="button"
+                            type='button'
                             style={{ marginRight: "5px" }}
                             onClick={() => handleOnClick("Si")}
                             />
 
                             <img
-                            id="FlujoTrabajo-Img2"
-                            alt="noTrabajo"
+                            id='FlujoTrabajo-Img2'
+                            alt='noTrabajo'
                             src={CamposDocumentos.TestigoN ==="x" ? notActive :notDisabled}
-                            type="button"
-                            onClick={() => handleOnClick("No")}                       
+                            type='button'
+                            onClick={() => handleOnClick("No")}
                             />
                         </div>
-                    </div>    
+                    </div>
 
                     <div className={spaceStyle.space1} />
 
-                    <div className={['row', comunClass.backgroundGrey].join(' ')}>
-                        <div className="col-md-10" style={{textAlign:"left"}}>
-                        <Grid className={`${comunClass.textPrimaryRelato}`} >
-                            ¿Se le 
-                            <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                    <div className={[ 'row', comunClass.backgroundGrey ].join(' ')}>
+                        <div className='col-md-10' style={{textAlign: "left"}}>
+                        <Grid className={`${comunClass.textPrimaryRelato}`}>
+                            ¿Se le
+                            <Grid component='span' className={`${comunClass.textPrimaryRelatoBlue}`}>
                                 &nbsp;reportó el accidente a un responsable&nbsp;
-                            </Grid> 
+                            </Grid>
                             en la empresa?
                         </Grid>
                         </div>
-                        <div className="col-md-2" style={{ display: "contents" }}>
-                            <img                            
-                            id="FlujoTrabajo-Img3"
-                            alt="siTrabajo"
+                        <div className='col-md-2' style={{ display: "contents" }}>
+                            <img
+                            id='FlujoTrabajo-Img3'
+                            alt='siTrabajo'
                             src={responsableForm === "Si" ? yesActive : yesDisabled}
-                            type="button"
+                            type='button'
                             style={{ marginRight: "5px" }}
                             onClick={() => handleOnClickResponsable("Si")}
                             />
 
-                            <img         
-                            id="FlujoTrabajo-Img4"
-                            alt="noTrabajo"
+                            <img
+                            id='FlujoTrabajo-Img4'
+                            alt='noTrabajo'
                             src={responsableForm === "No" ? notActive :notDisabled}
-                            type="button"
-                            onClick={() => handleOnClickResponsable("No")}                       
+                            type='button'
+                            onClick={() => handleOnClickResponsable("No")}
                             />
                         </div>
-                    </div> 
+                    </div>
 
                     <div className={spaceStyle.space1} />
-                    
+
                     {responsableForm ==="Si" &&
                     <>
-                    <div className="row justify-content-center">
-                        <div className="col-md-5 " style={{textAlign:"left"}}>
+                    <div className='row justify-content-center'>
+                        <div className='col-md-5 ' style={{textAlign: "left"}}>
                                 <Grid
                                     className={comunClass.tituloTextBox}
-                                    style={{marginBottom:'8px', textAlign: "left"}}
-                                    >
+                                    style={{marginBottom: '8px', textAlign: "left"}}
+                                >
                                         Fecha de aviso
-                                </Grid> 
+                                </Grid>
 
-                                <Date date={date} setDate={setDate} id="FlujoTrabajo-Datepicker1" setValidDate={setValidDate} />
+                                <Date date={date} setDate={setDate} id='FlujoTrabajo-Datepicker1'
+setValidDate={setValidDate}
+                                />
                         </div>
-                        <div className="col-md-5 " style={{textAlign:"left"}}>
+                        <div className='col-md-5 ' style={{textAlign: "left"}}>
                                 <Grid
                                     className={comunClass.tituloTextBox}
-                                    style={{marginBottom:'8px', textAlign: "left"}}
-                                    >
+                                    style={{marginBottom: '8px', textAlign: "left"}}
+                                >
                                         Hora de aviso
-                                </Grid> 
+                                </Grid>
 
-                                <Time  id={"FlujoTrabajo-Timepicker1"}  time={hour} setTime={setHour} setValidHour={setValidHour} />
+                                <Time id={"FlujoTrabajo-Timepicker1"} time={hour} setTime={setHour}
+setValidHour={setValidHour}
+                                />
                         </div>
-                    </div>   
+                    </div>
 
-                    <div className={spaceStyle.space1} />           
+                    <div className={spaceStyle.space1} />
 
-                    <div style={{ position: "relative", textAlign:"center" }}>
+                    <div style={{ position: "relative", textAlign: "center" }}>
                         <Button
-                            id="FlujoTrabajo-Btn1"
+                            id='FlujoTrabajo-Btn1'
                             className={comunClass.buttonAchs}
-                            variant="contained"
+                            variant='contained'
                             disabled={!validDate || !validHour}
                             onClick={() => {
                                 dispatch(updateForm("fechaHoraResponsable", `${date} ${hour}`))
@@ -184,7 +184,7 @@ const FlujoTrabajo = () => {
                         </Button>
                     </div>
                     </>
-                    }                 
+                    }
                 </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ import image from './../../img/relato.svg'
 
 const AtencionMedica = () => {
   const {
-    addmissionForm: { percentage, CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos }
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -33,14 +33,14 @@ const AtencionMedica = () => {
       CamposDocumentos.CuentaConNo = "x",
       "CamposDocumentos", CamposDocumentos
       )))
-      
+
     dispatch(handleSetStep(respuesta === "Si" ? 19.21 : 19.23))
   };
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -49,16 +49,16 @@ const AtencionMedica = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          ¿Registrar 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;atención médica 
-          </Grid>   
-          &nbsp;en otro centro?       
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          ¿Registrar
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+            &nbsp;atención médica
+          </Grid>
+          &nbsp;en otro centro?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -68,13 +68,13 @@ const AtencionMedica = () => {
             <div className={spaceStyle.spaceMin1} />
           </div>
           <Button
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             onClick={() => handleOnClick("Si")}
           >
             Sí
           </Button>
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={spaceStyle.spaceMin1} />
           <Button
             className={comunClass.buttonAchs2}
             onClick={() => handleOnClick("No")}

@@ -11,7 +11,6 @@ import Header from "../../components/header/index";
 import image from './../../img/error-siniestro.svg'
 
 const SucursalesNoVigentes = (props) => {
-
   const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
@@ -20,9 +19,9 @@ const SucursalesNoVigentes = (props) => {
 
   return (
     <div>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
-        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
+        <div style={{position: 'absolute', width: '100%', height: '92%', backgroundColor: '#373737'}} />
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space1} />
@@ -30,14 +29,14 @@ const SucursalesNoVigentes = (props) => {
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
           id={"SucursalesNoVigentes-BtnBack"}
-          dispatch={() => dispatch(handleSetStep(5.4))} 
-          color="#FFFFFF"
+          dispatch={() => dispatch(handleSetStep(5.4))}
+          color='#FFFFFF'
         />
       </div>
       <div className={blackStyle.root}>
       {/* style={{height: "40em"}}  */}
         <img
-          alt="load"
+          alt='load'
           src={image}
           className={blackStyle.imgNoAfiliate}
         />
@@ -51,7 +50,7 @@ const SucursalesNoVigentes = (props) => {
         <div className={spaceStyle.space1} />
 
         <NoAfiliateCard />
-  
+
         <div className={comunClass.bottomElement}>
         <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
@@ -73,8 +72,8 @@ const SucursalesNoVigentes = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(SucursalesNoVigentes);

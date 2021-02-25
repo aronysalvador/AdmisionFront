@@ -12,65 +12,71 @@ import '../../css/sfUiDisplayCufonfonts.css'
 import admisionista from './../../img/relato.svg'
 
 const Welcome = (props) => {
-
     const { dispatch, addmissionForm} = props
 
-    const welcomeStyle = getWelcomeStyle()  
-    const comunStyle = getComunStyle()  
+    const welcomeStyle = getWelcomeStyle()
+    const comunStyle = getComunStyle()
     const spaceStyle = getSpaceStyle()
 
     return (
             <div className={comunStyle.root}>
                 <div className={spaceStyle.space4} />
-                <div   className={welcomeStyle.avatarContainer}>
-                    <img alt="Ejecutivo de admisión" src={admisionista} className={welcomeStyle.avatar} />
+                <div className={welcomeStyle.avatarContainer}>
+                    <img alt='Ejecutivo de admisión' src={admisionista} className={welcomeStyle.avatar} />
                 </div>
                 <div className={spaceStyle.space4} />
-                <div   className={welcomeStyle.bienvenidoContainer}>
-                    <Typography variant="inherit" component="p" className={[comunStyle.textAchsContent, welcomeStyle.bienvenido]}>
+                <div className={welcomeStyle.bienvenidoContainer}>
+                    <Typography variant='inherit' component='p' className={[ comunStyle.textAchsContent, welcomeStyle.bienvenido ]}>
                         Bienvenido/a
                     </Typography>
                 </div>
                 <div>
-                    <Typography variant="inherit" component="p" className={[comunStyle.textAchsContent,welcomeStyle.admisionText]}>
+                    <Typography variant='inherit' component='p' className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ]}>
                             Vamos a hacer una admisión:
                             <br />
                             <br />
-                            - Lorem ipsum dolor sit amet 
-                            <br /> 
-                            - Consectetur adipiscing elit  
+                            - Lorem ipsum dolor sit amet
                             <br />
-                            - Adipiscing velit et, non sed curabitur    
+                            - Consectetur adipiscing elit
+                            <br />
+                            - Adipiscing velit et, non sed curabitur
                     </Typography>
                 </div>
                 <div className={spaceStyle.space5} />
                 <div>
                         <Button
                             className={comunStyle.buttonAchs}
-                            variant="contained"
-                            onClick={()=> dispatch(handleSetStep(++addmissionForm.step))}>
+                            variant='contained'
+                            onClick={() => dispatch(handleSetStep(++addmissionForm.step))}
+                        >
                             Empecemos
                         </Button>
                 </div>
                 <div className={spaceStyle.spaceMin1} />
                 <div>
-                    <Typography variant="inherit" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
+                    <Typography variant='inherit' component='p' display='block'
+className={[ comunStyle.textAchsContent, welcomeStyle.terminos ]}
+                    >
                         Al hacer click en Empecemos,
                     </Typography>
-                    <Typography variant="inherit" component="p" display="block" className={[comunStyle.textAchsContent,welcomeStyle.terminos]} >
-                        aceptas nuestros  
-                        <Link className={[comunStyle.textAchsContent,welcomeStyle.terminos,welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
+                    <Typography variant='inherit' component='p' display='block'
+className={[ comunStyle.textAchsContent, welcomeStyle.terminos ]}
+                    >
+                        aceptas nuestros
+                        <Link className={[ comunStyle.textAchsContent, welcomeStyle.terminos, welcomeStyle.terminos ]} component='button' variant='body2'
+onClick={() => dispatch(handleSetStep(4))}
+                        >
                         Términos y condiciones
                         </Link>
                     </Typography>
                 </div>
-            </div>   
+            </div>
     );
 }
 
 function mapStateToProps({ addmissionForm}) {
     return {
-        addmissionForm : addmissionForm
+        addmissionForm
     }
 }
 export default connect(mapStateToProps)(Welcome)

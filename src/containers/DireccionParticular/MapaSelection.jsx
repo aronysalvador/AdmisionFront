@@ -9,25 +9,24 @@ import Mapa from '../../components/share/DireccionGeo/Mapa'
 import Header from "../../components/header/index";
 
 const MapaSelection = () => {
-
-  const [direccion, setDireccion]=useState(null)
-  const [placeId, setPlaceId]=useState(null)
+  const [ direccion, setDireccion ]=useState(null)
+  const [ placeId, setPlaceId ]=useState(null)
 
   const dispatch = useDispatch()
 
   const {
-    addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal },
+    addmissionForm: { percentage, DireccionTemporal, LatTemporal, LongTemporal },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual)
 
-  useEffect(()=>{
+  useEffect(() => {
       getLocation()
-  },[])
+  }, [])
 
-  const [coords, setCoords]= useState(null)
+  const [ coords, setCoords ]= useState(null)
 
   const getLocation = () => {
-    var options = {
+    let options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0
@@ -38,14 +37,14 @@ const MapaSelection = () => {
         function(position) {
             setCoords({
                 latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
+                longitude: position.coords.longitude
             })
         },
         function(error) {
             console.error("Error Code = " + error.code + " - " + error.message);
             setCoords({
               latitude: 'notset',
-              longitude: 'notset',
+              longitude: 'notset'
             })
         },
         options
@@ -58,18 +57,18 @@ const MapaSelection = () => {
   const handleSelect = async() => {
     googleMapsGetMap(placeId)
     dispatch(updateForm("direccionParticular", direccion))
-    dispatch(updateForm("direccionParticularObj", 
+    dispatch(updateForm("direccionParticularObj",
     {
       description: direccion,
-      place_id: placeId, 
-      reference: placeId, 
-      structured_formatting:{
+      place_id: placeId,
+      reference: placeId,
+      structured_formatting: {
         main_text: direccion.split(',')[0],
         secondary_text: direccion.split(',')[1]+', '+direccion.split(',')[2]
       },
       types: [
         "street_address",
-        "geocode" 
+        "geocode"
       ]
     }
     ))
@@ -77,24 +76,24 @@ const MapaSelection = () => {
   }
 
   const googleMapsGetMap = async(placeId) => {
-    if(placeId){
-      let urlMapa =  `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
+    if (placeId){
+      let urlMapa = `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
       dispatch(updateForm("urlMapaDireccionParticular", urlMapa))
     }
 }
 
   return (
-    <div className={comunClass.rootContainer}> 
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+    <div className={comunClass.rootContainer}>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
-        <div style={{padding: '0.5em'}}> 
+        <div style={{padding: '0.5em'}}>
           <Cabecera
             id={"MapaSelection-BtnBack"}
             dispatch={() => dispatch(handleSetStep(5.2))}
             percentage={percentage}
-            noSpace={true}
+            noSpace
           />
         </div>
       </div>
@@ -104,26 +103,26 @@ const MapaSelection = () => {
       <div className={comunClass.boxDeskMap}>
         <div>
           {coords ? (
-            <Mapa 
+            <Mapa
               lat={coords.latitude}
               lng={coords.longitude}
               direccion={direccion}
               setDireccion={setDireccion}
-              setPlaceId={setPlaceId}    
+              setPlaceId={setPlaceId}
               DireccionTemporal={DireccionTemporal}
-              LatTemporal={LatTemporal}     
-              LongTemporal={LongTemporal}   
+              LatTemporal={LatTemporal}
+              LongTemporal={LongTemporal}
             />
           ) : (
             <Typography>Cargando....</Typography>
           )}
         </div>
-        <div className={[comunClass.bottomElementMap]} style={{padding: '0 20px 20px 20px'}}>
+        <div className={[ comunClass.bottomElementMap ]} style={{padding: '0 20px 20px 20px'}}>
           <Button
             id={"MapaSelection-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
-            disabled={direccion ? false : true}
+            variant='contained'
+            disabled={!direccion}
             onClick={() => {
               handleSelect()
             }}

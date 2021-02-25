@@ -19,46 +19,47 @@ export default function payload(state = AdmissionForm, action) {
       return {
         ...state,
         step: action.payload.step,
-        percentage: action.payload.percentage,
+        percentage: action.payload.percentage
       };
     case UPDATE_FORM:
       return {
         ...state,
-        [action.payload.stateType]: action.payload.value,
+        [action.payload.stateType]: action.payload.value
       };
 
     case SEND_ISAPRES:
       return {
         ...state,
-        isapreSeleccionado: action.payload,
+        isapreSeleccionado: action.payload
       };
 
     case SEND_TESTIGO:
       return {
         ...state,
-        testigos: action.payload,
+        testigos: action.payload
       };
     case SEND_RESPONSABLE:
       return {
         ...state,
-        responsable: action.payload,
+        responsable: action.payload
       };
     case CLEAR_STATE:
       var response = AdmissionForm
       response.centrosForm = state.centrosForm
       response.tipoSiniestro = state.tipoSiniestro
       response.usuarioSAP = state.usuarioSAP
+
       return response;
 
     case DATE_EMPRESA_SUCCESS:
       return {
-        ...state,
-      };      
+        ...state
+      };
     case DATE_EMPRESA_FAILURE:
       return {
         ...state,
-        error: action.payload,
-      };      
+        error: action.payload
+      };
     default:
       return state;
   }

@@ -8,30 +8,28 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import Indiciaciones from "../../components/Indicaciones";
-import Header from "../../components/header/index";
-
-import { getWelcomeStyle } from "../../css/welcomeStyle";
+import Header from "../../components/header/index";import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
-import { getSpaceStyle } from "../../css/spaceStyle";
-
-import espera from './../../img/espera.svg'
+import { getSpaceStyle } from "../../css/spaceStyle";import espera from './../../img/espera.svg'
 import sms from './../../img/sms.svg'
 import work from './../../img/work.svg'
 
-const Start = (props) =>{
+const Start = (props) => {
   const { dispatch, microsoftReducer } = props;
   const welcomeStyle = getWelcomeStyle();
   const comunStyle = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  return(
+  return (
     <div className={comunStyle.rootBegin}>
-      <div className={comunStyle.displayDesk}> 
-        <Header userMsal={microsoftReducer.userMsal}/>
+      <div className={comunStyle.displayDesk}>
+        <Header userMsal={microsoftReducer.userMsal} />
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
-          <Cabecera id={"Start-BtnBack"} dispatch={() => dispatch(handleSetStep(1))} percentage={-1} noSpace={true} />
+          <Cabecera id={"Start-BtnBack"} dispatch={() => dispatch(handleSetStep(1))} percentage={-1}
+noSpace
+          />
           <div className={comunStyle.displayMobile}>
             <div className={welcomeStyle.avatarContainerRight}>
               <Avatar className={welcomeStyle.avatar}>{microsoftReducer.userMsal.iniciales}</Avatar>
@@ -46,10 +44,10 @@ const Start = (props) =>{
             </div>
             <div className={welcomeStyle.titleContainer}>
               <div className={welcomeStyle.divRow}>
-                <ThumbUpIcon />   
+                <ThumbUpIcon />
                 <Typography
                 className={welcomeStyle.txtBegin}
-                style={{display:"inline-flex"}}
+                style={{display: "inline-flex"}}
                 >
                   Mantén una actitud positiva
                 </Typography>
@@ -77,20 +75,20 @@ const Start = (props) =>{
                   icono: espera,
                   textoPrimario: "Identifica al paciente",
                   textoSecundario: "",
-                  clase: welcomeStyle.divRowBottom,
+                  clase: welcomeStyle.divRowBottom
                 },
                 {
                   icono: sms,
                   textoPrimario: "Toma el relato",
                   textoSecundario: "",
-                  clase: welcomeStyle.divRowBottom,
+                  clase: welcomeStyle.divRowBottom
                 },
                 {
                   icono: work,
                   textoPrimario: "Solicita los datos",
                   textoSecundario: "",
-                  clase: welcomeStyle.divRow2,
-                },
+                  clase: welcomeStyle.divRow2
+                }
               ]}
             />
             <div className={comunStyle.displayMobile}>
@@ -98,9 +96,9 @@ const Start = (props) =>{
             </div>
             <div style={{marginTop: "3px"}}>
               <Button
-                id={"Start-Btn1"} 
+                id={"Start-Btn1"}
                 className={comunStyle.buttonAchs}
-                variant="contained"
+                variant='contained'
                 onClick={() => dispatch(handleSetStep(2)) }
               >
                 Entendido
@@ -110,24 +108,24 @@ const Start = (props) =>{
         </div>
         {/* <div style={{padding: "10px 16px 0 16px"}} className={comunStyle.displayMobile}>
             <Typography variant="inherit" component="p" display="block" className={[comunStyle.textAchsContent, welcomeStyle.terminos]} >
-                Al hacer click en empezar,  
+                Al hacer click en empezar,
                 <Link className={[comunStyle.textAchsContent, welcomeStyle.terminos]} component="button" variant="body2" onClick={()=> dispatch(handleSetStep(4))}>
                     aceptas nuestros  <span style={{textDecoration: 'underline'}}>Términos y condiciones</span>
                 </Link>
             </Typography>
         </div> */}
-      </div>   
+      </div>
       <div className={comunStyle.displayDesk}>
         <div className={spaceStyle.space1} />
-      </div>         
+      </div>
     </div>
   )
 }
 
 function mapStateToProps({ addmissionForm, microsoftReducer}) {
     return {
-        addmissionForm : addmissionForm,
-        microsoftReducer: microsoftReducer
+        addmissionForm,
+        microsoftReducer
     }
 }
 export default connect(mapStateToProps)(Start)

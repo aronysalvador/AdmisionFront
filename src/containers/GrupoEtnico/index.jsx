@@ -12,15 +12,13 @@ import image from './../../img/identify.svg'
 
 const GrupoEtnico = () => {
   const {
-    addmissionForm: { percentage,  creacionBP,  grupoEtnico },microsoftReducer
+    addmissionForm: { percentage, creacionBP, grupoEtnico }, microsoftReducer
   } = useSelector((state) => state, shallowEqual)
 
-
-  const [grupo, setGrupo] = useState(() => {
+  const [ grupo, setGrupo ] = useState(() => {
     return !grupoEtnico ? {id: "00", descripcion: "NINGUNA"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
   const { data: grupoList } = useSelector((state) => state.grupoForm, shallowEqual);
-
 
   const dispatch = useDispatch()
 
@@ -29,31 +27,31 @@ const GrupoEtnico = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id={"GrupoEtnico-BtnBack"}
-          dispatch={() => ( creacionBP ? dispatch(handleSetStep(5.4)) : dispatch(handleSetStep(5.1)))}
+          dispatch={() => (creacionBP ? dispatch(handleSetStep(5.4)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
           Ingresa
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;el grupo étnico del paciente
-          </Grid>                  
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
@@ -65,21 +63,21 @@ const GrupoEtnico = () => {
             }}
             // style={{ width: 300 }}
             options={grupoList}
-  
+
             getOptionLabel={(option) => option.descripcion}
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"
-                helperText="Ejemplo: Mapuche, Rapa Nui" 
+                variant='outlined'
+                helperText='Ejemplo: Mapuche, Rapa Nui'
                 InputProps={{
                   ...params.InputProps,
                   style: {
                     paddingTop: "3px",
                     paddingBottom: "3px",
                     paddingLeft: "5xp",
-                    marginTop: "7px",
-                  },
+                    marginTop: "7px"
+                  }
                 }}
               />
             )}
@@ -90,12 +88,11 @@ const GrupoEtnico = () => {
           <Button
             id={"GrupoEtnico-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={!grupo}
             onClick={() => {
               dispatch(updateForm("grupoEtnico", grupo))
               dispatch(handleSetStep(5.1))
-
             }}
           >
             Guardar

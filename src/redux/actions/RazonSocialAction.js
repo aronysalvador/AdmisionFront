@@ -1,10 +1,8 @@
 import {
   GET_RAZONSOCIAL_INIT,
   GET_RAZONSOCIAL_SUCCESS,
-  GET_RAZONSOCIAL_FAILURE,
-} from "../types/razonSocialType";
-
-import { getRazonSocial } from "../../util/fakeApi";
+  GET_RAZONSOCIAL_FAILURE
+} from "../types/razonSocialType";import { getRazonSocial } from "../../util/fakeApi";
 
 export const getRazonSocialPrincipal = (rut) => async (dispatch) => {
   dispatch({ type: GET_RAZONSOCIAL_INIT });
@@ -13,13 +11,13 @@ export const getRazonSocialPrincipal = (rut) => async (dispatch) => {
     .then((result) => {
       dispatch({
         type: GET_RAZONSOCIAL_SUCCESS,
-        payload: result,
+        payload: result
       });
     })
     .catch((error) =>
       dispatch({
         type: GET_RAZONSOCIAL_FAILURE,
-        payload: error,
+        payload: error
       })
     );
 };

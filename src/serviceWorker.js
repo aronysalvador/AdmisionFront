@@ -60,9 +60,9 @@ function registerValidSW(swUrl, config) {
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
-        if (installingWorker == null) {
+        if (installingWorker == null)
           return;
-        }
+
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
             if (navigator.serviceWorker.controller) {
@@ -75,9 +75,8 @@ function registerValidSW(swUrl, config) {
               );
 
               // Execute callback
-              if (config && config.onUpdate) {
+              if (config && config.onUpdate)
                 config.onUpdate(registration);
-              }
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
@@ -85,9 +84,8 @@ function registerValidSW(swUrl, config) {
               console.log('Content is cached for offline use.');
 
               // Execute callback
-              if (config && config.onSuccess) {
+              if (config && config.onSuccess)
                 config.onSuccess(registration);
-              }
             }
           }
         };
@@ -101,7 +99,7 @@ function registerValidSW(swUrl, config) {
 function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl, {
-    headers: { 'Service-Worker': 'script' },
+    headers: { 'Service-Worker': 'script' }
   })
     .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.

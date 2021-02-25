@@ -19,7 +19,7 @@ const TrabajoActualContainer = () => {
     (state) => state.addmissionForm,
     shallowEqual
   );
-  const [ingresoTrabajoActualValue, setIngresoTrabajo] = useState(
+  const [ ingresoTrabajoActualValue, setIngresoTrabajo ] = useState(
     ingresoTrabajoActual
   );
   const meses = [
@@ -34,15 +34,15 @@ const TrabajoActualContainer = () => {
     "Sep",
     "Oct",
     "Nov",
-    "Dic",
+    "Dic"
   ]
 
   const fnAnios = () => {
     let anios = [];
     let i = 1975;
-    for (i; i <= new Date().getFullYear(); i++) {
+    for (i; i <= new Date().getFullYear(); i++)
       anios.push(i);
-    }
+
     return anios;
   }
 
@@ -60,11 +60,11 @@ const TrabajoActualContainer = () => {
     return anios.indexOf(new Date(ingresoTrabajoActualValue).getFullYear());
   }
 
-  let back = TrabajadorIndependiente !== "" ? 25.1 : 25 ;
+  let back = TrabajadorIndependiente !== "" ? 25.1 : 25;
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header
           userMsal={ microsoftReducer.userMsal }
           // step={1}
@@ -77,16 +77,16 @@ const TrabajoActualContainer = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
           Indica la
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;fecha aproximada en que ingresó
-          </Grid>  
+          </Grid>
           &nbsp;a su trabajo actual
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>

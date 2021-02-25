@@ -19,18 +19,18 @@ const HasSinister = (props) => {
 
   return (
     <>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
-        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
+        <div style={{position: 'absolute', width: '100%', height: '92%', backgroundColor: '#373737'}} />
       </div>
       <div className={blackStyle.root}>
         <div className={spaceStyle.space2} />
-        <div className={comunClass.displayDesk}> 
+        <div className={comunClass.displayDesk}>
           <div className={spaceStyle.space2} />
         </div>
         <img
-          alt="load"
-          src={image} //siniestro.png
+          alt='load'
+          src={image} // siniestro.png
           className={blackStyle.img}
         />
         <div className={spaceStyle.space3} />
@@ -59,8 +59,8 @@ const HasSinister = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(HasSinister);

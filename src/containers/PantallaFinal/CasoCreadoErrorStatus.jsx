@@ -20,10 +20,11 @@ const CasoCreadoErrorStatus = (props) => {
   const welcomeStyle = getWelcomeStyle();
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
+
   return (
     <div className={comunClass.rootBegin}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={welcomeStyle.backgroundBoxAchsDesk}>
         <div className={welcomeStyle.beginContainer}>
@@ -40,7 +41,7 @@ const CasoCreadoErrorStatus = (props) => {
               <div className={welcomeStyle.TextContainer}>
                 <div className={comunClass.displayMobile}>
                   <img
-                    alt="Excelente"
+                    alt='Excelente'
                     src={check}
                     className={welcomeStyle.iconCircular}
                   />
@@ -52,39 +53,39 @@ const CasoCreadoErrorStatus = (props) => {
                   </Typography>
                 </div>
                 <div className={comunClass.displayDeskInline} style={{verticalAlign: 'bottom'}}>
-                  <img alt="Excelente" src={check} className={welcomeStyle.iconCircular} />
+                  <img alt='Excelente' src={check} className={welcomeStyle.iconCircular} />
                 </div>
               </div>
-              <div className={spaceStyle.space1} />  
+              <div className={spaceStyle.space1} />
               <div className={comunClass.displayMobile}>
                 <div className={spaceStyle.space1} />
-              </div>          
+              </div>
               <div className={welcomeStyle.rutSiniestroContainer}>
                 <CajaRutSiniestro
                   textoPrincipal={siniestroID}
-                  textoSecundario="ID Siniestro"
+                  textoSecundario='ID Siniestro'
                 />
                 <CajaRutSiniestro
                   textoPrincipal={rut}
-                  textoSecundario="Rut Paciente"
+                  textoSecundario='Rut Paciente'
                 />
               </div>
             </div>
             <div className={comunClass.displayDeskInline}>
-              <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="excelente" src={excelent} />
+              <Grid component='span' className={comunClass.imgPrimaryDesk}>
+                <img alt='excelente' src={excelent} />
               </Grid>
             </div>
           </div>
         </div>
       </div>
       <div className={welcomeStyle.beginContainer}>
-        
+
         <div className={comunClass.textCenterDesk}>
           <div className={comunClass.displayDesk}>
             <div className={spaceStyle.space1} />
           </div>
-     
+
           <Typography className={welcomeStyle.subTitleBegin}>
             Luego de la firma pide al paciente:
           </Typography>
@@ -94,17 +95,17 @@ const CasoCreadoErrorStatus = (props) => {
           </div>
 
           <div className={comunClass.boxDesk4}>
-            
+
             <Grid className={comunClass.titleH1}>
                 ¡Alerta status!
             </Grid>
-            
+
             <div className={spaceStyle.space1} />
-            
+
             <Grid className={comunClass.titleH3}>
                 Paciente se encuentra en recepción ambulatoria
             </Grid>
-            
+
             <div className={spaceStyle.space1} />
 
             <Grid className={comunClass.subTitleH4}>
@@ -118,10 +119,10 @@ const CasoCreadoErrorStatus = (props) => {
                 <div className={spaceStyle.spaceMin1} />
               </div>
               <Button
-                id="CasoCreadoErrorDoc-Btn1"
-                className={[comunClass.buttonAchs, comunClass.pantallaFinalBotones]}
-                variant="contained"
-                onClick={() =>{dispatch(initSessionDate("")); dispatch(handleSetStep(1))}} // 1.1 Empecemos eliminada
+                id='CasoCreadoErrorDoc-Btn1'
+                className={[ comunClass.buttonAchs, comunClass.pantallaFinalBotones ]}
+                variant='contained'
+                onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
               >
                 Firma de documentos en SAP
               </Button>
@@ -132,18 +133,18 @@ const CasoCreadoErrorStatus = (props) => {
           </div>
 
         </div>
-      </div>  
+      </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
-      </div>  
+      </div>
     </div>
   );
 };
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer,
+    addmissionForm,
+    microsoftReducer
   };
 }
 export default connect(mapStateToProps)(CasoCreadoErrorStatus);

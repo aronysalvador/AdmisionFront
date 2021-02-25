@@ -8,7 +8,7 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
         fontSize: "16px",
         lineHeight: "16px",
         color: "#787878",
-        fontFamily: "Catamaran",
+        fontFamily: "Catamaran"
     },
     itemReposo: {
         backgroundColor: "rgba(255, 230, 0, 0.25)",
@@ -23,10 +23,10 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
     },
     itemFecha: {
         margin: "5px auto",
-        fontSize: "20px", //"22px",
-        lineHeight: "24px", //"27px",
+        fontSize: "20px", // "22px",
+        lineHeight: "24px", // "27px",
         fontWeight: "bold",
-        color: "#373737",
+        color: "#373737"
     },
     itemTipo: {
         margin: "0 auto",
@@ -34,17 +34,17 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
         lineHeight: "18px",
         fontWeight: "bold",
         color: "#373737",
-        fontFamily: "Catamaran",
+        fontFamily: "Catamaran"
     },
     cuerpo: {
-        flex: "4 auto",
+        flex: "4 auto"
     },
 
     aside: {
-        flex: "1 auto",
+        flex: "1 auto"
     },
     asidePersonalData: {
-        margin: "auto",
+        margin: "auto"
     },
     itemRazonSocial: {
         margin: "0 auto",
@@ -53,7 +53,7 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '1em',
         lineHeight: '1.25em',
-        color: '#00B2A9',
+        color: '#00B2A9'
     },
     '@media (max-width: 767px)': {
         /* For mobile phones */
@@ -84,7 +84,7 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
             cursor: "pointer",
             boxShadow: "0px 4px 4px rgba(44, 44, 44, 0.06)",
             boxSizing: "border-box"
-        },
+        }
     },
     '@media (min-width: 768px)': {
         /* Medium devices (landscape tablets, 768px and up) */
@@ -101,8 +101,8 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
             cursor: "pointer",
             boxShadow: "1px 1px 5px rgba(44, 44, 44, 0.25)",
             boxSizing: "border-box",
-            width: "30%", //"247px",
-            textAlign: "left",
+            width: "30%", // "247px",
+            textAlign: "left"
         },
         containerBox: {
             margin: "15px 10px",
@@ -117,9 +117,9 @@ export const cardSiniestroStyles = makeStyles((theme) => ({
             cursor: "pointer",
             boxShadow: "1px 1px 5px rgba(44, 44, 44, 0.25)",
             boxSizing: "border-box",
-            width: "30%", //"247px",
+            width: "30%", // "247px",
             textAlign: "left",
-            minHeight: "190px",
+            minHeight: "190px"
         },
         iconRight: {
             float: 'right'

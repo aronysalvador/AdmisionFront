@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     fontSize: "16px",
     lineHeight: "18px",
     minWidth: 155,
-    width: 155,
+    width: 155
   },
   root2: {
     minHeight: 30,
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     fontSize: 16,
     minWidth: 155,
-    width: 155,
+    width: 155
   },
   root3: {
     minHeight: 30,
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     fontSize: 16,
     minWidth: 155,
-    width: 155,
+    width: 155
   },
   root4: {
     minHeight: 30,
@@ -69,13 +69,12 @@ const useStyles = makeStyles({
     lineHeight: "18px",
     minWidth: 155,
     width: 155,
-    verticalAlign:"midle",
-  },
+    verticalAlign: "midle"
+  }
 });
 
 const TabCompany = (props) => {
-
-  const [value, setValue] = useState(0);
+  const [ value, setValue ] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -86,7 +85,7 @@ const TabCompany = (props) => {
 
     return (
       <div
-        role="tabpanel"
+        role='tabpanel'
         hidden={value !== index}
         id={`simple-tabpanel-${index}`}
         aria-labelledby={`simple-tab-${index}`}
@@ -96,28 +95,30 @@ const TabCompany = (props) => {
         )}
       </div>
     );
-  };
+  }
 
   const comunClass = getComunStyle();
   const classes = useStyles();
 
   return (
     <div className={comunClass.containerTextBox}>
-      <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered >
+      <Tabs value={value} onChange={handleChange} indicatorColor='#E18F68'
+centered
+      >
         <Tab
           id={"TabCompany-Tab0"}
           classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 } }
-          label="Razón Social"
+          label='Razón Social'
           style={{textTransform: 'none'}}
         />
         <Tab
           id={"TabCompany-Tab1"}
           classes={ value === 1 ? { root: classes.root3 } : { root: classes.root } }
-          label="RUT"
+          label='RUT'
         />
       </Tabs>
 
-      <TabPanel value={value} index={0} style={{padding:"0"}}>
+      <TabPanel value={value} index={0} style={{padding: "0"}}>
         <Typography className={comunClass.tituloTextBox} style={{marginBottom: '8px'}}>
           Razón Social
         </Typography>
@@ -125,7 +126,7 @@ const TabCompany = (props) => {
           <RazonSocial />
         </div>
       </TabPanel>
-      
+
       <TabPanel value={value} index={1}>
         <Typography className={comunClass.tituloTextBox}>
           RUT
@@ -133,7 +134,7 @@ const TabCompany = (props) => {
         <div>
           <IdentificationCompany />
         </div>
-      </TabPanel> 
+      </TabPanel>
 
     </div>
   );

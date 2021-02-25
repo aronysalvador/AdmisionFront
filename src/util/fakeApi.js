@@ -4,40 +4,40 @@ const sucursales = [
     { id: 3, direccion: "Alameda" },
     { id: 4, direccion: "Huerfanos" },
     { id: 5, direccion: "Juan carlos Rider" },
-    { id: 6, direccion: "Los militares" },
+    { id: 6, direccion: "Los militares" }
 ];
 
 export const getSucursalesUsuarios = async(rut) => {
     return sucursales;
 };
 
-export const sucursalesOficina = [{
+export const sucursalesOficina = [ {
         id: 1,
         key: "13101",
         nombreSucursal: "Av Vicuña Mackenna",
         numero: 1200,
-        comunaNombre: "Santiago",
+        comunaNombre: "Santiago"
     },
     {
         id: 2,
         key: "13101",
         nombreSucursal: "Av Matta",
         numero: 789,
-        comunaNombre: "Santiago",
+        comunaNombre: "Santiago"
     },
     {
         id: 3,
         key: "13107",
         nombreSucursal: "Ciudad Empresarial",
         numero: 7890,
-        comunaNombre: "Huechuraba",
+        comunaNombre: "Huechuraba"
     },
     {
         id: 4,
         key: "13000",
         nombreSucursal: "Florida Center",
         numero: 2000,
-        comunaNombre: "La Florida",
+        comunaNombre: "La Florida"
     },
 
     {
@@ -45,64 +45,64 @@ export const sucursalesOficina = [{
         key: "13109",
         nombreSucursal: "Americo Vespucio",
         numero: 1200,
-        comunaNombre: "La Cisterna",
+        comunaNombre: "La Cisterna"
     },
     {
         id: 6,
         key: "13109",
         nombreSucursal: "Jose M. Carrera",
         numero: 1200,
-        comunaNombre: "La Cisterna",
+        comunaNombre: "La Cisterna"
     },
     {
         id: 7,
         key: "13110",
         nombreSucursal: "Mall Florida Center",
         numero: 2000,
-        comunaNombre: "La Florida",
+        comunaNombre: "La Florida"
     },
     {
         id: 9,
         key: "13110",
         nombreSucursal: "Gran Avenida 6700",
         numero: 2000,
-        comunaNombre: "La Florida",
+        comunaNombre: "La Florida"
     },
     {
         id: 10,
         key: "13110",
         nombreSucursal: "Paulina 6700",
         numero: 2000,
-        comunaNombre: "La Florida",
+        comunaNombre: "La Florida"
     },
     {
         id: 11,
         key: "13110",
         nombreSucursal: "Av la Florida",
         numero: 2000,
-        comunaNombre: "La Florida",
+        comunaNombre: "La Florida"
     },
     {
         id: 12,
         key: "13110",
         nombreSucursal: "La Florida 4",
         numero: 2000,
-        comunaNombre: "La Florida",
+        comunaNombre: "La Florida"
     },
     {
         id: 13,
         key: "13110",
         nombreSucursal: "La Florida 5",
         numero: 2000,
-        comunaNombre: "La Florida",
+        comunaNombre: "La Florida"
     },
     {
         id: 14,
         key: "13110",
         nombreSucursal: "La Florida 6",
         numero: 2000,
-        comunaNombre: "La Florida",
-    },
+        comunaNombre: "La Florida"
+    }
 ];
 
 const razonSocial = [
@@ -117,7 +117,7 @@ const razonSocial = [
     { id: 9, nombre: "FUSIONA S.A" },
     { id: 10, nombre: "TOTTUS S.A" },
     { id: 11, nombre: "KAUFMANN S.A" },
-    { id: 12, nombre: "CLINICA ALEMANA" },
+    { id: 12, nombre: "CLINICA ALEMANA" }
 ];
 
 export const getRazonSocial = async() => {
@@ -131,7 +131,7 @@ const jornadaLaboral = [
     { id: 4, nombre: "Turno Rotativo" },
     { id: 5, nombre: "Medio tiempo" },
     { id: 6, nombre: "Cesante" },
-    { id: 7, nombre: "Trabajo a distancia" },
+    { id: 7, nombre: "Trabajo a distancia" }
 ];
 
 export const getTipoJornadaLaboral = async() => {
@@ -141,7 +141,7 @@ export const getTipoJornadaLaboral = async() => {
 const tipoRemuneracion = [
     { id: 1, nombre: "Salario Fijo", selected: false },
     { id: 2, nombre: "Por comisión", selected: false },
-    { id: 3, nombre: "Honorarios", selected: false },
+    { id: 3, nombre: "Honorarios", selected: false }
 ];
 
 export const getTiposRemuneracion = () => {
@@ -153,7 +153,7 @@ const categoriaOcupacional = [
     { id: 2, nombre: "Trabajador Dependiente" },
     { id: 3, nombre: "Trabajador Independiente" },
     { id: 4, nombre: "Familiar no remunerado" },
-    { id: 5, nombre: "Trabajador voluntario" },
+    { id: 5, nombre: "Trabajador voluntario" }
 ];
 
 export const getCategoriaOcupacional = async() => {
@@ -164,13 +164,12 @@ const tiposDeContrato = [
     { id: 1, nombre: "Indefinido" },
     { id: 2, nombre: "Plazo fijo" },
     { id: 3, nombre: "Por obra" },
-    { id: 4, nombre: "Temporada" },
+    { id: 4, nombre: "Temporada" }
 ];
 
 export const getTiposDeContrato = () => {
     return tiposDeContrato;
 };
-
 
 export const getAffiliateValidations = async(rut) => {
     return {
@@ -183,7 +182,7 @@ export const getAffiliateValidations = async(rut) => {
             lugar: 'Puente Alto',
             unidad: 'Cirugía'
         },
-        siniestros: [{
+        siniestros: [ {
                 id: 17454785,
                 descripcion: 'Trayecto',
                 fecha: '13 Jun 2020',
@@ -210,42 +209,41 @@ export const getAffiliateValidations = async(rut) => {
         ]
     }
 };
-const razonAlerta = [{
+const razonAlerta = [ {
         key: 1,
         nombre: "Posible causa no laboral",
-        tipo: [{
+        tipo: [ {
                 key: 1,
-                nombre: "Accidente sin presentación oportuna, sin testigo y aviso tardío a empresa",
+                nombre: "Accidente sin presentación oportuna, sin testigo y aviso tardío a empresa"
             },
             {
                 key: 2,
-                nombre: "Accidente en Trámites personales",
+                nombre: "Accidente en Trámites personales"
             },
             {
                 key: 3,
-                nombre: "Accidente ocurrido en el extranjero",
+                nombre: "Accidente ocurrido en el extranjero"
             },
             {
                 key: 4,
-                nombre: "Actividad Deportiva y/o Recreativa",
+                nombre: "Actividad Deportiva y/o Recreativa"
             },
             {
                 key: 5,
-                nombre: "Broma en el Lugar de Trabajo",
-            },
-        ],
+                nombre: "Broma en el Lugar de Trabajo"
+            }
+        ]
     },
     { key: 2, nombre: "Dirigente sindical en cometido gremial" },
     { key: 3, nombre: "Trabajo a distancia" },
     { key: 4, nombre: "Fuerza mayor extraña" },
     { key: 5, nombre: "Accidente en control médico" },
-    { key: 6, nombre: "No registra alerta" },
+    { key: 6, nombre: "No registra alerta" }
 ];
 
 export const getRazonAlerta = async() => {
     return razonAlerta;
 };
-
 
 const agenteCausaJson = [
     { id: 1, code: "0001", nombre: "0001 Ruido (estable o fluctuante)", nombreSAP: "Ruido (estable o fluctuante)" },

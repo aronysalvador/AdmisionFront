@@ -28,10 +28,11 @@ const HasSinisterList = (props) => {
       // let nuevaFecha = new Date(Date.parse("08-13-2020 17:00"));
       let nuevaFecha = new Date(Date.parse(x.fecha));
       nuevaFecha.setHours(0, 0, 0, 0);
+
       return nuevaFecha.getTime() === fechaActual.getTime();
     });
     if (busqueda === undefined) {
-      var STEP = "";
+      let STEP = "";
       if (
         !addmissionForm.razonSocial ||
         !addmissionForm.codigoSucursal ||
@@ -39,19 +40,19 @@ const HasSinisterList = (props) => {
         !addmissionForm.rutEmpresa
       ) {
         // si falta info de la empresa
-        STEP = 5.4; //form empresa
+        STEP = 5.4; // form empresa
       } else if (!addmissionForm.direccionParticular) {
         // si no tiene direccion
-        STEP = 5.2; //form direccion
+        STEP = 5.2; // form direccion
       } else if (
         !addmissionForm.telefonoParticular ||
         addmissionForm.telefonoParticular === "0"
       ) {
         // si no tiene telefono
-        STEP = 5.3; //form telefono
+        STEP = 5.3; // form telefono
       }
-      else if(origen === "sameDate"){ //Si ya estaba creando la admisión
-        STEP = 11; //Lugar exacto de siniestro
+      else if (origen === "sameDate"){ // Si ya estaba creando la admisión
+        STEP = 11; // Lugar exacto de siniestro
       }
       else {
         // si todos los datos relevantes están llenos
@@ -59,68 +60,68 @@ const HasSinisterList = (props) => {
       }
       dispatch(handleSetStep(STEP));
     } else {
-      if(origen === "sameDate"){ //Si ya estaba creando la admisión
+      if (origen === "sameDate"){ // Si ya estaba creando la admisión
         dispatch(handleSetStep(11));
-      }else{
+      } else {
         dispatch(handleSetStep(5.833));
       }
     }
   };
 
   const listaSiniestros = contenidoSiniestros.map((siniestro, index) => (
-    <CardSiniestro key={index} siniestro={siniestro}></CardSiniestro>
+    <CardSiniestro key={index} siniestro={siniestro} />
   ));
 
   const listaSiniestros2 = listaSiniestros.reverse();
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div>
         <div className={comunClass.beginContainerDesk}>
-          <CabeceraSinBarra id={"HasSinisterList-BtnBack"} dispatch={() => dispatch(handleSetStep(5.83))} color="#373737" />
+          <CabeceraSinBarra id={"HasSinisterList-BtnBack"} dispatch={() => dispatch(handleSetStep(5.83))} color='#373737' />
         </div>
         <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.titlePrimaryDesk}>
           {origen === "getRut" ? (
-            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} 
-              <br className={comunClass.displayMobile}/>&nbsp;tiene&nbsp;
-              <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
+              {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
+              <br className={comunClass.displayMobile} />&nbsp;tiene&nbsp;
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
                 {contenidoSiniestros.length} siniestros
-              </Grid>                   
+              </Grid>
               &nbsp;creados
             </Grid>
           ) : (
-            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} tiene
-              <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
                 &nbsp;este siniestro
-              </Grid>                 
+              </Grid>
               &nbsp;creado
             </Grid>
           )}
           <div className={comunClass.displayDeskImg}>
-            <Grid component="span" className={comunClass.imgPrimaryDesk}>
-              <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+            <Grid component='span' className={comunClass.imgPrimaryDesk}>
+              <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
             </Grid>
           </div>
         </div>
         <div className={comunClass.boxDesk}>
           <div>
           {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2} </div>)
-          : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp}></CardSiniestro></div>)}
+          : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp} /></div>)}
           </div>
-          
+
           <div className={comunClass.bottomElement}>
             <div className={comunClass.paddingElement}>
               <Button
                 id={"HasSinisterList-Btn1"}
-                className={[comunClass.buttonAchs, comunClass.buttonAchsSiniester]}
+                className={[ comunClass.buttonAchs, comunClass.buttonAchsSiniester ]}
                 onClick={() => dispatch(handleSetStep(5.9))}
               >
                 Continuar en SAP
@@ -130,7 +131,7 @@ const HasSinisterList = (props) => {
               </div>
               <Button
                 id={"HasSinisterList-Btn2"}
-                className={[comunClass.buttonAchs2, comunClass.buttonAchsSiniester2]}
+                className={[ comunClass.buttonAchs2, comunClass.buttonAchsSiniester2 ]}
                 onClick={() => handleNext()}
               >
                 Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
@@ -148,8 +149,8 @@ const HasSinisterList = (props) => {
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 }
 

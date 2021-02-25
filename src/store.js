@@ -8,7 +8,7 @@ import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 const persistConfig = {
   key: "addmissionForm",
   storage: storageSession,
-  stateReconciler: autoMergeLevel2,
+  stateReconciler: autoMergeLevel2
 };
 const persistedReducer = persistReducer(persistConfig, reducer);
 const store = createStore(

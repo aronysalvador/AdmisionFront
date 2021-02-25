@@ -27,47 +27,45 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     shallowEqual
   );
 
-  const [numeroSucursales, setNumeroSucursales] = useState(cantidadSucursales);
-  const [sucursales, setSucursales] = useState(sucursales2);
-  const [comuna, setComuna] = useState(comunaSucursal);
-  const [listaComunas, setListaComunas] = useState([]);
+  const [ numeroSucursales, setNumeroSucursales ] = useState(cantidadSucursales);
+  const [ sucursales, setSucursales ] = useState(sucursales2);
+  const [ comuna, setComuna ] = useState(comunaSucursal);
+  const [ listaComunas, setListaComunas ] = useState([]);
   const dispatch = useDispatch();
-
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   useEffect(() => {
-    var variables = []
-    sucursalesEmpresa.forEach((sucursal,i) =>{
-      variables.push({id: i,codigo_region: sucursal.codigo_region,codigo_comuna:sucursal.id_comuna, nombre: sucursal.comuna})
+    let variables = []
+    sucursalesEmpresa.forEach((sucursal, i) => {
+      variables.push({id: i, codigo_region: sucursal.codigo_region, codigo_comuna: sucursal.id_comuna, nombre: sucursal.comuna})
     })
 
-    var uniqueArray = removeDuplicates(variables, "nombre");
-    uniqueArray.sort((a,b) => a.nombre < b.nombre ? -1 : +(a.nombre > b.nombre));
- 
+    let uniqueArray = removeDuplicates(variables, "nombre");
+    uniqueArray.sort((a, b) => a.nombre < b.nombre ? -1 : +(a.nombre > b.nombre));
+
     setListaComunas(uniqueArray);
 
     // eslint-disable-next-line
   }, [comunaList]);
 
-  const removeDuplicates = (originalArray, prop) =>{
-    var newArray = [];
-    var lookupObject  = {};
+  const removeDuplicates = (originalArray, prop) => {
+    let newArray = [];
+    let lookupObject = {};
 
-    for(var i in originalArray) {
+    for (var i in originalArray)
       lookupObject[originalArray[i][prop]] = originalArray[i];
-    }
 
-    for(i in lookupObject) {
+    for (i in lookupObject)
       newArray.push(lookupObject[i]);
-    }
+
     return newArray;
   }
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -78,25 +76,25 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           Identifica
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;la comuna de la sucursal
-          </Grid>                  
+          </Grid>
           &nbsp;en donde trabaja
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
-        </div> 
+        </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox}  style={{marginBottom: '8px'}}>
+          <Typography className={comunClass.tituloTextBox} style={{marginBottom: '8px'}}>
             Comuna
           </Typography>
           <AutoComplete
@@ -112,11 +110,11 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               setSucursales(sucursalesComuna);
               setComuna(value);
             }}
-            size="small"
+            size='small'
             fullWidth
             options={listaComunas}
             getOptionLabel={(option) => option.nombre}
-            renderInput={(params) => <TextField {...params} variant="outlined" />}
+            renderInput={(params) => <TextField {...params} variant='outlined' />}
           />
           <div className={spaceStyle.space2} />
           {numeroSucursales === 1 ? (
@@ -127,7 +125,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
           <Button
             id={"SeleccionarComuna-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={!comuna}
             onClick={() => {
               dispatch(updateForm("cantidadSucursales", numeroSucursales));

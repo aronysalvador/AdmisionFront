@@ -1,13 +1,13 @@
 import {
   GET_RAZON_ALERTA_INIT,
   GET_RAZON_ALERTA_SUCCESS,
-  GET_RAZON_ALERTA_FAILURE,
+  GET_RAZON_ALERTA_FAILURE
 } from "../types/alertaCalificacionRazonType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function razonAlertaForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function razonAlertaForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_RAZON_ALERTA_FAILURE:

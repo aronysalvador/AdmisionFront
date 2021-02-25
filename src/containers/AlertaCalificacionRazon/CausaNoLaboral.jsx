@@ -19,7 +19,7 @@ const CausaNoLaboral = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const [causas, setCausas] = useState(() => {
+  const [ causas, setCausas ] = useState(() => {
     return !razonAlertaForm ? "" : razonAlertaForm;
   });
 
@@ -30,39 +30,40 @@ const CausaNoLaboral = () => {
     shallowEqual
   );
 
-  const [fixedCausasList, setFixedCausasList] = useState(causasList);
+  const [ fixedCausasList, setFixedCausasList ] = useState(causasList);
 
   useEffect(() => {
     setFixedCausasList(
       causasList.map(causa => {
         causa.glosa = causa.glosa.replace("prestación", "presentación");
+
         return causa
       })
     )
-  }, [causasList])
+  }, [ causasList ])
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          id="CausaNoLaboral-BtnBack"
+          id='CausaNoLaboral-BtnBack'
           dispatch={() => dispatch(handleSetStep(26.2))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           Selecciona la razón de
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;posible causa no laboral
-          </Grid>                  
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -71,11 +72,11 @@ const CausaNoLaboral = () => {
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-          <Typography className={comunClass.tituloTextBox} >
+          <Typography className={comunClass.tituloTextBox}>
             Selecciona
           </Typography>
           <AutoComplete
-            id="CausaNoLaboral-Autocomplete1"
+            id='CausaNoLaboral-Autocomplete1'
             value={causas}
             onChange={(event, value) => {
               setCausas(value);
@@ -85,15 +86,15 @@ const CausaNoLaboral = () => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"
+                variant='outlined'
                 InputProps={{
                   ...params.InputProps,
                   style: {
                     paddingTop: "3px",
                     paddingBottom: "3px",
                     paddingLeft: "5xp",
-                    marginTop: "7px",
-                  },
+                    marginTop: "7px"
+                  }
                 }}
               />
             )}
@@ -101,12 +102,12 @@ const CausaNoLaboral = () => {
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            id="CausaNoLaboral-Btn1"
-            variant="contained"
+            id='CausaNoLaboral-Btn1'
+            variant='contained'
             className={comunClass.buttonAchs}
             disabled={!causas}
             onClick={() => {
-              dispatch(updateForm("razonAlertaForm", {...razonAlertaForm, causasID:causas.id,causasGlosa:causas.glosa}));
+              dispatch(updateForm("razonAlertaForm", {...razonAlertaForm, causasID: causas.id, causasGlosa: causas.glosa}));
               dispatch(handleSetStep(26.4));
             }}
           >

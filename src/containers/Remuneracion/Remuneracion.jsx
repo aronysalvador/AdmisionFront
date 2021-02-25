@@ -24,8 +24,8 @@ const Remuneracion = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -34,22 +34,22 @@ const Remuneracion = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          ¿Qué tipo de  
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          ¿Qué tipo de
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;remuneración
-          </Grid>         
+          </Grid>
           &nbsp;tiene el paciente?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
 
       <div className={comunClass.boxDeskCardBtn}>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
         <div
@@ -58,7 +58,7 @@ const Remuneracion = () => {
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            flexWrap: "wrap",
+            flexWrap: "wrap"
           }}
         >
           {tipoRemuneracionList.map((remuneracion) => (

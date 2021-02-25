@@ -21,7 +21,7 @@ const CreandoCaso = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header
           userMsal={ microsoftReducer.userMsal }
           // step={1}
@@ -30,16 +30,17 @@ const CreandoCaso = (props) => {
       <div className={spaceStyle.space5} />
       <center>
         <div>
-          <img alt="load" 
+          <img alt='load'
             src={image}
-            className={comunClass.imgLoadData} />
+            className={comunClass.imgLoadData}
+          />
         </div>
         <div className={spaceStyle.space3} />
         <Grid
           className={comunClass.txtLoadData}
         >
           Estamos creando&nbsp;
-          <br className={comunClass.displayMobile}/>
+          <br className={comunClass.displayMobile} />
           tu caso
         </Grid>
         <div className={spaceStyle.space1} />
@@ -50,7 +51,7 @@ const CreandoCaso = (props) => {
         </Grid>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={loader}
             className={comunClass.imgLoadData2}
           />
@@ -61,8 +62,8 @@ const CreandoCaso = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(CreandoCaso);

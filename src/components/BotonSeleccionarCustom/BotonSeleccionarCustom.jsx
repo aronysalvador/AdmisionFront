@@ -14,19 +14,18 @@ const BotonSeleccionarCustom = (props) => {
 
   const dispatch = useDispatch();
 
-  const [isSelected, setIsSelected] = useState();
+  const [ isSelected, setIsSelected ] = useState();
   const { botonSeleccionado, cardsButton } = getComunStyle();
 
   useEffect(() => {
     setIsSelected(selected);
-
-  }, [selected]);
+  }, [ selected ]);
 
   useEffect(() => {
-    if(itemForm === "razonAlertaForm"){
-      if(isSelected !== undefined){
-        if(!isSelected && data?.id=== razonAlertaForm?.id){
-          dispatch(updateForm("razonAlertaForm", { id: 7 , glosa: ""}));
+    if (itemForm === "razonAlertaForm"){
+      if (isSelected !== undefined){
+        if (!isSelected && data?.id=== razonAlertaForm?.id){
+          dispatch(updateForm("razonAlertaForm", { id: 7, glosa: ""}));
           setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 500);
         }
       }
@@ -49,14 +48,13 @@ const BotonSeleccionarCustom = (props) => {
               )
             );
             setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
-            //dispatch(handleSetStep(step));
+            // dispatch(handleSetStep(step));
           } else if (itemForm === "razonAlertaForm") {
             if (data.glosa === "Posible causa no laboral") {
-              dispatch(updateForm("razonAlertaForm", { id: 1 , glosa: data.glosa}));
+              dispatch(updateForm("razonAlertaForm", { id: 1, glosa: data.glosa}));
               setTimeout(function(){ dispatch(handleSetStep(26.3)); }, 1000);
-              //dispatch(handleSetStep(26.3));
+              // dispatch(handleSetStep(26.3));
             } else {
-              
                 dispatch(
                   updateForm(
                     itemForm,
@@ -65,8 +63,8 @@ const BotonSeleccionarCustom = (props) => {
                 );
               setTimeout(function(){ dispatch(handleSetStep(26.4)); }, 1000);
             }
-          } 
-          
+          }
+
           else if (itemForm === "categoriaOcupacionalForm") {
             if (data.nombre === "Empleadores" || data.nombre === "Cuenta Propia") {
               dispatch(
@@ -84,7 +82,7 @@ const BotonSeleccionarCustom = (props) => {
                 )
               );
               setTimeout(function(){ dispatch(handleSetStep(26)); }, 1000);
-              //dispatch(handleSetStep(26.4));
+              // dispatch(handleSetStep(26.4));
             }
           }
           else if (itemForm === "tipoAccidenteTrayectoForm") {
@@ -104,14 +102,15 @@ const BotonSeleccionarCustom = (props) => {
               )
             );
             setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
-            //dispatch(handleSetStep(step));
+            // dispatch(handleSetStep(step));
           }
-          //dispatch(handleSetStep(step));
+          // dispatch(handleSetStep(step));
         }
       }}
-      className={isSelected ? botonSeleccionado : cardsButton} >
+      className={isSelected ? botonSeleccionado : cardsButton}
+    >
       {props.children}
-      
+
     </div>
   );
 };

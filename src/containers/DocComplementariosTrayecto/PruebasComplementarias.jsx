@@ -11,7 +11,7 @@ import image from './../../img/relato.svg'
 
 const PruebasComplementarias = () => {
   const {
-    addmissionForm: { percentage, AtencionMedica, CamposDocumentos },
+    addmissionForm: { percentage, AtencionMedica, CamposDocumentos }
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -21,14 +21,14 @@ const PruebasComplementarias = () => {
 
   const handleOnClick = (respuesta) => {
     dispatch(updateForm("PruebasComplementarias", respuesta));
-    
+
     dispatch(updateForm(respuesta === "No" && (
       CamposDocumentos.anteceOtroC = "",
       CamposDocumentos.antecePartP = "",
-      CamposDocumentos.anteceConst = "", 
-      CamposDocumentos.anteceVideS = "", 
-      CamposDocumentos.anteceComSe = "", 
-      CamposDocumentos.anteceOtro = "", 
+      CamposDocumentos.anteceConst = "",
+      CamposDocumentos.anteceVideS = "",
+      CamposDocumentos.anteceComSe = "",
+      CamposDocumentos.anteceOtro = "",
       CamposDocumentos.anteceNocuenta = "x",
       "CamposDocumentos", CamposDocumentos
     )))
@@ -38,28 +38,28 @@ const PruebasComplementarias = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => { 
-            dispatch(handleSetStep(AtencionMedica === "No" ?  19.201 : 19.21))
+          dispatch={() => {
+            dispatch(handleSetStep(AtencionMedica === "No" ? 19.201 : 19.21))
           }}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          ¿El paciente presenta 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          ¿El paciente presenta
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;pruebas complementarias
-          </Grid>   
-          ?       
+          </Grid>
+          ?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -69,13 +69,13 @@ const PruebasComplementarias = () => {
             <div className={spaceStyle.spaceMin1} />
           </div>
           <Button
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             onClick={() => handleOnClick("Si")}
           >
             Sí
           </Button>
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={spaceStyle.spaceMin1} />
           <Button
             className={comunClass.buttonAchs2}
             onClick={() => handleOnClick("No"

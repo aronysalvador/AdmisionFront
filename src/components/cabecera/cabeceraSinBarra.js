@@ -16,8 +16,8 @@ const CabeceraSinBarra = (props) => {
         <div className={spaceStyle.space1} />
 
       <div className={comunClass.buttonVolverContainerBarra}>
-        <div style={{cursor:'pointer'}} onClick={() => dispatch()}>
-          <ArrowBackIosIcon style={{ color: color }} id={id}/> 
+        <div style={{cursor: 'pointer'}} onClick={() => dispatch()}>
+          <ArrowBackIosIcon style={{ color }} id={id} />
         </div>
       </div>
     </div>

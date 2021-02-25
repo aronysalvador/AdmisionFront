@@ -9,12 +9,12 @@ const BotonSeleccionarCustomSingle = (props) => {
 
   const dispatch = useDispatch();
 
-  const [isSelected, setIsSelected] = useState();
+  const [ isSelected, setIsSelected ] = useState();
   const { botonSeleccionadoSingle, cardsButtonTipoAccidenteTrayecto } = getComunStyle();
 
   useEffect(() => {
     setIsSelected(selected);
-  }, [selected]);
+  }, [ selected ]);
 
   return (
     <div
@@ -45,8 +45,8 @@ const BotonSeleccionarCustomSingle = (props) => {
         }
       }}
       className={isSelected ? botonSeleccionadoSingle : cardsButtonTipoAccidenteTrayecto}
-      >
-      {props.children}      
+    >
+      {props.children}
     </div>
   );
 };

@@ -12,19 +12,20 @@ import image from './../../img/identify.svg'
 
 const EditarDireccionSucursal = () => {
   const {
-    addmissionForm: { percentage, sucursales, SucursalEmpresaObjeto },
+    addmissionForm: { percentage, sucursales, SucursalEmpresaObjeto }
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-  const [sucursalEmpresa, setSucursalEmpresa] = useState(SucursalEmpresaObjeto);
-  
+  const [ sucursalEmpresa, setSucursalEmpresa ] = useState(SucursalEmpresaObjeto);
+
   const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
+
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -35,16 +36,16 @@ const EditarDireccionSucursal = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-          Identifica 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;la dirección de la sucursal 
-          </Grid>         
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
+          Identifica
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+            &nbsp;la dirección de la sucursal
+          </Grid>
           &nbsp;en donde trabaja
         </Grid>
         <div className={comunClass.displayDeskInline}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} />
           </Grid>
         </div>
       </div>
@@ -60,17 +61,17 @@ const EditarDireccionSucursal = () => {
             onChange={(event, value) => {
               setSucursalEmpresa(value);
             }}
-            size="small"
+            size='small'
             fullWidth
             options={sucursales}
             getOptionLabel={(option) => option?.direccion}
-            renderInput={(params) => <TextField {...params} variant="outlined" />}
+            renderInput={(params) => <TextField {...params} variant='outlined' />}
           />
-        </div>  
+        </div>
         <div className={comunClass.bottomElement}>
           <Button
             id={"EditarDireccionSucursal-Btn1"}
-            variant="contained"
+            variant='contained'
             disabled={!sucursalEmpresa}
             className={comunClass.buttonAchs}
             onClick={() => {

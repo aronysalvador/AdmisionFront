@@ -24,14 +24,14 @@ const LoadRazonAlerta = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space5} />
       <center>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={exito}
             className={comunClass.imgLoadData}
           />
@@ -53,7 +53,7 @@ const LoadRazonAlerta = () => {
         </Grid>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={loader}
             className={comunClass.imgLoadData2}
           />

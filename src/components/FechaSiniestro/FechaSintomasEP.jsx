@@ -16,15 +16,13 @@ const FechaSintomas = ({
   yearFromState,
   textoPrimario
 }) => {
-
-  if(daysFromState?.toString().length === 1){
+  if (daysFromState?.toString().length === 1)
     daysFromState = ("0" + daysFromState).slice(-2)
-  }
-  if(monthFromState?.toString().length === 1){
-    monthFromState = ("0" + monthFromState).slice(-2)
-  }
 
-  const [inputValue, setInputValue] = useState(() =>{
+  if (monthFromState?.toString().length === 1)
+    monthFromState = ("0" + monthFromState).slice(-2)
+
+  const [ inputValue, setInputValue ] = useState(() => {
     return !daysFromState ? moment().format("DD-MM-YYYY") : `${daysFromState}-${monthFromState}-${yearFromState}`;
   });
 
@@ -32,12 +30,12 @@ const FechaSintomas = ({
 
   const onDateChange = (date, value) => {
     setInputValue(value);
-    if(value){
+    if (value){
       let fechaSplit=value.split('-')
-      onChange({ days:parseInt(fechaSplit[0]),month:parseInt(fechaSplit[1]), year:parseInt(fechaSplit[2])})
+      onChange({ days: parseInt(fechaSplit[0]), month: parseInt(fechaSplit[1]), year: parseInt(fechaSplit[2])})
     }
     else
-      onChange({days:0,month:0, year:0})
+      { onChange({days: 0, month: 0, year: 0}) }
   };
 
   return (
@@ -47,28 +45,28 @@ const FechaSintomas = ({
           {textoPrimario}
         </Grid>
       </div>
-      <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
+      <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
             id={id}
-            inputVariant="outlined"
-            size="small"
+            inputVariant='outlined'
+            size='small'
             disableFuture
-            format="DD-MM-YYYY"
+            format='DD-MM-YYYY'
             inputValue={inputValue}
             onChange={onDateChange}
-            animateYearScrolling            
-            disableToolbar  // seleccionar año
+            animateYearScrolling
+            disableToolbar // seleccionar año
             InputAdornmentProps={{position: 'start', paddingLeft: '6px'}}
             fullWidth
-            invalidDateMessage="Formato invalido"
-            maxDateMessage="La fecha no puede exceder al día de hoy"
-            minDateMessage="La fecha es invalida"
-            keyboardIcon={<img alt="calendar" src={image}/>}
+            invalidDateMessage='Formato invalido'
+            maxDateMessage='La fecha no puede exceder al día de hoy'
+            minDateMessage='La fecha es invalida'
+            keyboardIcon={<img alt='calendar' src={image} />}
           />
         </ThemeProvider>
-      </MuiPickersUtilsProvider>          
-    </>    
+      </MuiPickersUtilsProvider>
+    </>
   );
 };
 

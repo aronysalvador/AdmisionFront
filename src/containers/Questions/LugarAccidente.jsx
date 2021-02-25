@@ -10,26 +10,24 @@ const AccidentPlaceForm = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
   const { lugarAccidente } = addmissionForm;
   const respuestaOriginal = lugarAccidente;
-  
+
   const comunClass = getComunStyle();
 
   const saveAnswer = (value) => {
-    dispatch(updateForm("lugarAccidente", value));    
+    dispatch(updateForm("lugarAccidente", value));
     dispatch(handleSetStep(++addmissionForm.step));
-    if(respuestaOriginal !== value) {
+    if (respuestaOriginal !== value)
       dispatch(updateForm("volverAConcatenar", true));
-    }
   };
- 
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep("x",6))}
+          dispatch={() => dispatch(handleSetStep("x", 6))}
           percentage={addmissionForm.percentage}
         />
       </div>
@@ -50,8 +48,8 @@ const AccidentPlaceForm = (props) => {
 
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(AccidentPlaceForm);

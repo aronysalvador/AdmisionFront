@@ -1,7 +1,7 @@
 import {
   GET_IDIOMA_INIT,
   GET_IDIOMA_SUCCESS,
-  GET_IDIOMA_FAILURE,
+  GET_IDIOMA_FAILURE
 } from "../types/idiomaType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,14 +11,14 @@ export const getData = createHttpGetClient(window.REACT_APP_IDIOMAS);
 export const getIdiomas = () => async (dispatch) => {
   dispatch({
     type: GET_IDIOMA_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCall(response.data.content[0]));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_IDIOMAS));
         dispatch(handleSetStep(1004));
@@ -33,10 +33,10 @@ export const getIdiomas = () => async (dispatch) => {
 
   const successCall = (dato) => ({
     type: GET_IDIOMA_SUCCESS,
-    payload: dato,
+    payload: dato
   });
 
   const errorCall = () => ({
-    type: GET_IDIOMA_FAILURE,
+    type: GET_IDIOMA_FAILURE
   });
 };

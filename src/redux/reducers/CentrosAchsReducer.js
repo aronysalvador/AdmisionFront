@@ -1,13 +1,13 @@
 import {
     GET_CENTROS_INIT,
     GET_CENTROS_SUCCESS,
-    GET_CENTROS_FAILURE,
+    GET_CENTROS_FAILURE
 } from "../types/centrosAchsType";
 
 const INITIAL_STATE = {
     data: [],
     loading: false,
-    error: null,
+    error: null
 };
 
 export default function centrosAchsForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function centrosAchsForm(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 data: action.payload,
-                loading: false,
+                loading: false
             };
 
         case GET_CENTROS_FAILURE:

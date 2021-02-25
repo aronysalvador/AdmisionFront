@@ -9,23 +9,22 @@ import Mapa from '../../components/share/DireccionGeo/MapaInput';
 import Header from "../../components/header/index";
 
 const LugarTrabajoTrayectoMapa = () => {
-
-  const [direccion, setDireccion]=useState(null);
-  const [direccionValida, setDireccionValida] = useState(false)
-  const [placeId, setPlaceId]=useState(null);
-  const [coords, setCoords]= useState(null);
+  const [ direccion, setDireccion ]=useState(null);
+  const [ direccionValida, setDireccionValida ] = useState(false)
+  const [ placeId, setPlaceId ]=useState(null);
+  const [ coords, setCoords ]= useState(null);
   const dispatch = useDispatch();
   const {
-    addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal, sucursalTrabajoTrayecto, DireccionEmpresa },
+    addmissionForm: { percentage, DireccionTemporal, LatTemporal, LongTemporal, sucursalTrabajoTrayecto, DireccionEmpresa },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
-  useEffect(()=>{
+  useEffect(() => {
       getLocation()
-  },[])
+  }, [])
 
   const getLocation = () => {
-    var options = {
+    let options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0
@@ -36,13 +35,13 @@ const LugarTrabajoTrayectoMapa = () => {
         function(position) {
             setCoords({
                 latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
+                longitude: position.coords.longitude
             })
         },
         function(error) {
             setCoords({
             latitude: 'notset',
-            longitude: 'notset',
+            longitude: 'notset'
           })
         },
         options
@@ -54,18 +53,18 @@ const LugarTrabajoTrayectoMapa = () => {
 
   const handleSelect = async() => {
     googleMapsGetMap(placeId)
-    dispatch(updateForm("sucursalTrabajoTrayecto", 
+    dispatch(updateForm("sucursalTrabajoTrayecto",
     {
       description: direccion,
-      place_id: placeId, 
-      reference: placeId, 
-      structured_formatting:{
+      place_id: placeId,
+      reference: placeId,
+      structured_formatting: {
         main_text: direccion.split(',')[0],
         secondary_text: direccion.split(',')[1]+', '+direccion.split(',')[2]
       },
       types: [
         "street_address",
-        "geocode" 
+        "geocode"
       ]
     }
     ))
@@ -73,16 +72,16 @@ const LugarTrabajoTrayectoMapa = () => {
   };
 
   const googleMapsGetMap = async(placeId) => {
-    if(placeId){
-      let urlMapa =  `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
+    if (placeId){
+      let urlMapa = `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
       dispatch(updateForm("urlMapaTrabajoTrayecto", urlMapa))
     }
   };
 
   return (
-    <div className={comunClass.rootContainer}> 
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+    <div className={comunClass.rootContainer}>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <div style={{padding: '0.5em'}}>
@@ -90,7 +89,7 @@ const LugarTrabajoTrayectoMapa = () => {
             id={"LugarSiniestroTrayectoMapa-BtnBack"}
             dispatch={() => dispatch(handleSetStep(6.01))}
             percentage={percentage}
-            noSpace={true}
+            noSpace
           />
         </div>
       </div>
@@ -100,19 +99,19 @@ const LugarTrabajoTrayectoMapa = () => {
       <div className={comunClass.boxDeskMap}>
         <div>
           {coords ? (
-                <Mapa 
+                <Mapa
                     lat={coords.latitude}
                     lng={coords.longitude}
                     setCoords={setCoords}
                     direccion={direccion}
                     setDireccion={setDireccion}
-                    setPlaceId={setPlaceId}    
+                    setPlaceId={setPlaceId}
                     DireccionTemporal={DireccionTemporal}
-                    LatTemporal={LatTemporal}     
-                    LongTemporal={LongTemporal}   
+                    LatTemporal={LatTemporal}
+                    LongTemporal={LongTemporal}
                     direccionValida={direccionValida}
                     setDireccionValida={setDireccionValida}
-                    sucursalEmpresaSiniestro={sucursalTrabajoTrayecto} 
+                    sucursalEmpresaSiniestro={sucursalTrabajoTrayecto}
                     DireccionEmpresa={DireccionEmpresa}
                     disabledDirection
                     showInput
@@ -125,7 +124,7 @@ const LugarTrabajoTrayectoMapa = () => {
           <Button
             id={"LugarSiniestroTrayectoMapa-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={!direccionValida}
             onClick={() => {
               handleSelect()

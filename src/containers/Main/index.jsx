@@ -47,28 +47,18 @@ import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 import Remuneracion from "../Remuneracion/Remuneracion";
 import CategoriaOcupacional from "../CategoriaOcupacional/index";
 import TipoDeContrato from "../TipoDeContrato/TipoDeContrato";
-import Cargo from "../Cargo/index";
-
-// import PersonalSuccess from "../FeedBack/PersonalSuccess";
+import Cargo from "../Cargo/index";// import PersonalSuccess from "../FeedBack/PersonalSuccess";
 // import RelatoSuccess from "../FeedBack/RelatoSuccess";
-import SolicitarDocumentos from "../FeedBack/SolicitarDocumentos";
-
-import DireccionParticular from "../DireccionParticular/index";
-import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
-
-import HasBP from "../AffiliateValidations/HasBP";
+import SolicitarDocumentos from "../FeedBack/SolicitarDocumentos";import DireccionParticular from "../DireccionParticular/index";
+import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";import HasBP from "../AffiliateValidations/HasBP";
 import SinBPInfoPersonal1 from "../NoTieneBP/InfoPersonal1";
-import SinBPInfoPersonal2 from "../NoTieneBP/InfoPersonal2";
-
-import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
+import SinBPInfoPersonal2 from "../NoTieneBP/InfoPersonal2";import HasScheduledMeet from "../AffiliateValidations/HasScheduledMeet";
 import HasSinister from "../AffiliateValidations/HasSinister";
 import HasSinisterDetail from "../AffiliateValidations/HasSinisterDetail";
 import HasSinisterList from "../AffiliateValidations/HasSinisterList";
 import ContinueSAP from "../AffiliateValidations/ContinueSAP";
 import PantallaFinal from "../PantallaFinal/PantallaFinal";
-import CreandoCaso from "../PantallaFinal/CreandoCaso";
-
-import AlertaCalificacion from "../AlertaCalificacion/index";
+import CreandoCaso from "../PantallaFinal/CreandoCaso";import AlertaCalificacion from "../AlertaCalificacion/index";
 import AlertaCalificacionRazon from "../AlertaCalificacionRazon/index";
 import CausaNolaboral from "../AlertaCalificacionRazon/CausaNoLaboral";
 import LoadRazonAlerta from "../Load/loadRazonAlerta";
@@ -80,41 +70,27 @@ import CasoCreadoErrorDoc from "../PantallaFinal/CasoCreadoErrorDoc";
 import CasoCreadoErrorStatus from "../PantallaFinal/CasoCreadoErrorStatus";
 import ErrorApi from "../PantallaFinal/ErrorApi";
 import SameDateSinister from "../AffiliateValidations/SameDateSinister";
-import NoCuentaSap from "../AffiliateValidations/NoCuentaSap";
-
-import Achs from "../IdentificacionACHS/index";
-import SessionAchs from "../IdentificacionACHS/WelcomeAchs";
-
-import Profesion from "../Profesion/index";
+import NoCuentaSap from "../AffiliateValidations/NoCuentaSap";import Achs from "../IdentificacionACHS/index";
+import SessionAchs from "../IdentificacionACHS/WelcomeAchs";import Profesion from "../Profesion/index";
 import DatosContractuales from "../DatosContractuales";
 import RelatoFinal from "../Questions/RelatoFinal";
 import AccidenteEnSucursal from "../AccidenteEnSucursal/AccidenteEnSucursal";
 import NoAfiliate from "../AffiliateValidations/NoAfiliate";
 import NoQuotes from "../AffiliateValidations/NoQuotes";
 import NoVigente from "../AffiliateValidations/NoVigente";
-import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";
-
-import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
+import SucursalesNoVigentes from "../AffiliateValidations/SucursalesNoVigentes";import TrabajadorIndependiente from "../CategoriaOcupacional/TrabajadorIndependiente";
 import MedioTransporteTrayecto from "../MedioTrayecto/MedioTransporteTrayecto";
 import CausalSiniestroTrayecto from "../MedioTrayecto/CausalSiniestroTrayecto";
-import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";
-
-import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
+import TipoAccidenteTrayecto from "../MedioTrayecto/TipoAccidenteTrayecto";import LugarSiniestroTrayectoMapa from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapa";
 import LugarSiniestroTrayectoMapaNew from "../LugarSiniestroTrayecto/LugarSiniestroTrayectoMapaNew";
 import LugarTrabajoTrayectoMapa from "../LugarSiniestroTrayecto/LugarTrabajoTrayectoMapa";
 import LugarSiniestroTrayecto from "../LugarSiniestroTrayecto/LugarSiniestroTrayecto";
-import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";
-
-import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
-import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";
-
-import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
+import ParteCuerpoAfectada from "../ParteAfectadaTrayecto/ParteCuerpoAfectada";import CausaEnfermedadProfesional from "../EnfermedadProfesional/CausaEnfermedadProfesional";
+import AgenteCausaEnfermedadProfesional from "../EnfermedadProfesional/AgenteCausaEnfermedadProfesional";import TipoAvisoResponsable from "../TipoAvisoResponsable/index";
 import AtencionPrevia from "../AtencionPrevia/index";
 import AtencionMedica from "../AtencionPrevia/AtencionMedica";
 import DocComplementariosTrayecto from "../DocComplementariosTrayecto/DocComplementariosTrayecto";
-import PruebasComplementarias from "../DocComplementariosTrayecto/PruebasComplementarias";
-
-import Forecasts from "../Forecasts";
+import PruebasComplementarias from "../DocComplementariosTrayecto/PruebasComplementarias";import Forecasts from "../Forecasts";
 import InfoAccidente from "./../InfoAccidente";
 import CentroPaciente from "../Identification/centroPaciente";
 
@@ -124,16 +100,15 @@ const Main = (props) => {
 
   const initFn = useCallback(() => {
     if (!microsoftReducer.authenticatedMsal) {
-      //Para no tener que estar autenticando siempre se puede comentar esta línea
+      // Para no tener que estar autenticando siempre se puede comentar esta línea
       // addmissionForm.step = 0;
     }
-  }, [microsoftReducer]);
+  }, [ microsoftReducer ]);
 
   useEffect(() => {
     initFn();
-  }, [initFn]);
+  }, [ initFn ]);
 
-  
   const {
     layout,
     paper,
@@ -315,7 +290,7 @@ const Main = (props) => {
       //       </Paper>
       //     </div>
       //   );
-      case 5.7: //Centro Paciente
+      case 5.7: // Centro Paciente
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -395,7 +370,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 6.01: //Inicio Trayecto
+      case 6.01: // Inicio Trayecto
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -403,7 +378,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 6.011: //Inicio Trayecto
+      case 6.011: // Inicio Trayecto
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -451,7 +426,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 6: //notsure
+      case 6: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -459,7 +434,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 7: //notsure
+      case 7: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -467,7 +442,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 8: //notsure
+      case 8: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -475,7 +450,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 8.1: //Resumen Relato Unificado
+      case 8.1: // Resumen Relato Unificado
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -483,7 +458,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 9: //notsure
+      case 9: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -499,7 +474,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 10: //notsure
+      case 10: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -507,7 +482,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 10.1: //Datos accidente Unificado
+      case 10.1: // Datos accidente Unificado
         return (
           <div className={layout}>
             <Paper className={paperAutoHeight}>
@@ -515,7 +490,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 11: //notsure
+      case 11: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -523,7 +498,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 11.1: //notsure
+      case 11.1: // notsure
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>
@@ -531,7 +506,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12: //notsure
+      case 12: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -539,7 +514,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12.1: //notsure
+      case 12.1: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -547,7 +522,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12.2: //notsure
+      case 12.2: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -555,7 +530,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 12.3: //notsure
+      case 12.3: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -571,7 +546,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 13: //notsure
+      case 13: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -579,7 +554,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 14: //notsure
+      case 14: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -587,7 +562,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 14.1: //notsure
+      case 14.1: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -595,7 +570,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 15: //notsure
+      case 15: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -603,7 +578,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 16: //notsure
+      case 16: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -611,7 +586,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 17:  //notsure
+      case 17: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -619,7 +594,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 17.1:  //notsure
+      case 17.1: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -635,7 +610,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 17.3: //Pantalla Testigo-Responsable Flujo Trabajo
+      case 17.3: // Pantalla Testigo-Responsable Flujo Trabajo
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -643,7 +618,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 17.4: //Pantalla Testigo-Responsable Flujo Trayecto
+      case 17.4: // Pantalla Testigo-Responsable Flujo Trayecto
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -659,7 +634,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 18: //notsure
+      case 18: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -667,7 +642,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 18.1: //notsure
+      case 18.1: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -675,7 +650,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19: //notsure
+      case 19: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -683,7 +658,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 19.1: //notsure
+      case 19.1: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -699,7 +674,7 @@ const Main = (props) => {
       //       </Paper>
       //     </div>
       //   );
-      case 19.201: //Atención Médica
+      case 19.201: // Atención Médica
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>
@@ -711,7 +686,7 @@ const Main = (props) => {
         return (
           <div className={layout}>
             <Paper className={paper}>
-              <AtencionPrevia/>
+              <AtencionPrevia />
             </Paper>
           </div>
         );
@@ -719,11 +694,11 @@ const Main = (props) => {
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>
-              <SolicitarDocumentos/>
+              <SolicitarDocumentos />
             </Paper>
           </div>
         );
-      case 19.23: //Pruebas Complementarias
+      case 19.23: // Pruebas Complementarias
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>
@@ -743,11 +718,11 @@ const Main = (props) => {
           return (
             <div className={layoutFix}>
               <Paper className={paperFix}>
-                <SolicitarDocumentos/>
+                <SolicitarDocumentos />
               </Paper>
             </div>
           );
-      case 19.3: //notsure
+      case 19.3: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -763,7 +738,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 20:  //notsure
+      case 20: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -771,7 +746,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 21:  //notsure
+      case 21: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -779,7 +754,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 22:  //notsure
+      case 22: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -787,7 +762,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 23:  //notsure
+      case 23: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -795,7 +770,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 24:  //notsure
+      case 24: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -803,7 +778,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 25:  //notsure
+      case 25: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -819,7 +794,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 26:  //notsure
+      case 26: // notsure
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -851,7 +826,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 26.4: 
+      case 26.4:
         return (
           <div className={layout}>
             <Paper className={paperFix}>
@@ -883,7 +858,7 @@ const Main = (props) => {
             </Paper>
           </div>
         );
-      case 1001.1: // no se usa, luego de maquetar la vista, se decidió no utilizarla 
+      case 1001.1: // no se usa, luego de maquetar la vista, se decidió no utilizarla
         return (
           <div className={layoutFix}>
             <Paper className={paperFix}>
@@ -957,6 +932,7 @@ const Main = (props) => {
         );
       case 500: {
         sessionStorage.clear();
+
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -968,6 +944,7 @@ const Main = (props) => {
 
       default: {
         sessionStorage.clear();
+
         return (
           <div className={layout}>
             <Paper className={paper}>
@@ -991,8 +968,8 @@ const Main = (props) => {
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer,
+    addmissionForm,
+    microsoftReducer
   };
 }
 
@@ -1001,7 +978,5 @@ export default connect(mapStateToProps)(Main);
 /**
  *
  return <SeleccionarSucursalTrabajo />;
-
-
 
  */

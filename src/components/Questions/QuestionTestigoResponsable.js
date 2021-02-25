@@ -14,16 +14,16 @@ const QuestionButton = (props) => {
   return (
     <div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
           {titulo}
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;{titulo2} 
-          </Grid>          
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+            &nbsp;{titulo2}
+          </Grid>
           {titulo3}
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -32,8 +32,8 @@ const QuestionButton = (props) => {
           <div>
             <Button
               className={comunClass.buttonAchs}
-              variant="contained"
-              type="submit"
+              variant='contained'
+              type='submit'
               onClick={() => accionButoonA()}
             >
               {tituloA}
@@ -43,8 +43,8 @@ const QuestionButton = (props) => {
           <div>
             <Button
               className={comunClass.buttonAchs2}
-              variant="contained"
-              type="submit"
+              variant='contained'
+              type='submit'
               onClick={() => accionButoonB()}
             >
               {tituloB}

@@ -7,7 +7,7 @@ const NoAfiliateCard = () => {
   const {
     container,
     cardTextNoAfilate,
-    cardText,
+    cardText
   } = getTrabajoHabitualCardStyle();
   const comunClass = getComunStyle();
 
@@ -21,8 +21,8 @@ const NoAfiliateCard = () => {
       <div className={cardTextNoAfilate}>
         <span className={cardText}>
           Si consideras que es una consulta de urgencia continúa la atención en SAP.
-          <br/>
-          <br className={comunClass.displayMobile}/>
+          <br />
+          <br className={comunClass.displayMobile} />
           En caso contrario, terminar atención y derivar al paciente a su mutualidad.
         </span>
       </div>

@@ -3,6 +3,7 @@ import { getComunStyle } from "../../css/comun";
 
 const CajaRutSiniestro = ({ textoPrincipal, textoSecundario }) => {
   const comunStyle = getComunStyle();
+
   return (
     <div className={comunStyle.cajaRutSiniestroContainer}>
       <div className={comunStyle.cajaRutSiniestroItem}>

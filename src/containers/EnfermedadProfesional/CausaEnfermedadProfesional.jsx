@@ -19,57 +19,57 @@ moment.locale("es");
 
 const CausaEnfermedadProfesional = () => {
   const {
-    addmissionForm: { molestiaEP, parteAfectadaEP, FechaSintomasEP, molestiasAnterioresEP, percentage },
+    addmissionForm: { molestiaEP, parteAfectadaEP, FechaSintomasEP, molestiasAnterioresEP, percentage }
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
-  
+
   const dispatch = useDispatch();
 
   const formatDate = (fecha) => {
     let newfecha = fecha.replace(/[.]/g, '-')
+
     return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
   }
 
-  const [molestia, setMolestia] = useState(() => {
+  const [ molestia, setMolestia ] = useState(() => {
     return !molestiaEP ? "" : molestiaEP;
   });
 
-  const [parteAfectada, setParteAfectada] = useState(() => {
+  const [ parteAfectada, setParteAfectada ] = useState(() => {
     return !parteAfectadaEP ? "" : parteAfectadaEP;
   });
-  
-  const [fechaSiniestro, setFechaSiniestro] = useState(!FechaSintomasEP ? "" : formatDate(FechaSintomasEP));
-  const [validFecha, setValidFecha] = useState(FechaSintomasEP.length>0 ? true :false);
 
+  const [ fechaSiniestro, setFechaSiniestro ] = useState(!FechaSintomasEP ? "" : formatDate(FechaSintomasEP));
+  const [ validFecha, setValidFecha ] = useState(FechaSintomasEP.length>0);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
 
-  const [stateCheckbox, setStateCheckbox] = useState(() => {
-    return !molestiasAnterioresEP ? false : (molestiasAnterioresEP === "si" ? true : false)
+  const [ stateCheckbox, setStateCheckbox ] = useState(() => {
+    return !molestiasAnterioresEP ? false : (molestiasAnterioresEP === "si")
   });
 
   const handleCheckBoxChange = (event) => {
-    setStateCheckbox( event.target.checked );
+    setStateCheckbox(event.target.checked);
   };
 
-  var respMolestias = stateCheckbox ? "si" : "no" ;
+  let respMolestias = stateCheckbox ? "si" : "no";
 
   const BlueCheckbox = withStyles({
     root: {
       '&$checked': {
-        color: '#00B2A9',
-      },
+        color: '#00B2A9'
+      }
     },
-    checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
+    checked: {}
+  })((props) => <Checkbox color='default' {...props} />);
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -79,15 +79,15 @@ const CausaEnfermedadProfesional = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           Indícanos la causa de la
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;enfermedad profesional
-          </Grid>                    
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -105,10 +105,10 @@ const CausaEnfermedadProfesional = () => {
               value={molestia}
               placeholder={"Ejemplo: Dolor de garganta, dolor de espalda, fiebre, tos, dolor de estomago"}
               onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
-              margin="dense"
-              variant="outlined"
-              autoComplete="off"
-              type="text"
+              margin='dense'
+              variant='outlined'
+              autoComplete='off'
+              type='text'
               fullWidth
               rows={2}
               multiline
@@ -123,14 +123,14 @@ const CausaEnfermedadProfesional = () => {
             </Typography>
             <TextField
               id={"CausaEP-Lbl2"}
-              autoComplete="off"
+              autoComplete='off'
               value={parteAfectada}
-              variant="outlined"
-              size="small"
-              margin="dense"
+              variant='outlined'
+              size='small'
+              margin='dense'
               required
               fullWidth
-              onChange={(e) => setParteAfectada (Format.caracteresInvalidos(e.target.value)) }
+              onChange={(e) => setParteAfectada(Format.caracteresInvalidos(e.target.value)) }
               InputProps={{
                 endAdornment: (
                       <ClearIcon onClick={() => { setParteAfectada("") }} />
@@ -138,7 +138,7 @@ const CausaEnfermedadProfesional = () => {
               }}
               inputProps={{ maxLength: 200 }}
             />
-            
+
           </div>
           <div className={spaceStyle.space1} />
 
@@ -146,12 +146,14 @@ const CausaEnfermedadProfesional = () => {
             <Typography className={comunClass.tituloTextBox} style={{marginBottom: "5px"}}>
               Ingresa la fecha de inicio de sintomas
             </Typography>
-            <Date date={fechaSiniestro} setDate={setFechaSiniestro} id="CausaEP-Datepicker1" setValidDate={setValidFecha} />
+            <Date date={fechaSiniestro} setDate={setFechaSiniestro} id='CausaEP-Datepicker1'
+setValidDate={setValidFecha}
+            />
           </div>
 
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
-            <Grid component="span">
+            <Grid component='span'>
               <BlueCheckbox id={"CausaEP-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>
               Existen molestias anteriores a la fecha indicada
@@ -162,14 +164,14 @@ const CausaEnfermedadProfesional = () => {
           <Button
             id={"CausaEP-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={molestia?.length <= 4 || parteAfectada?.length <= 3 || !validFecha}
             onClick={() => {
               dispatch(updateForm("molestiaEP", molestia));
               dispatch(updateForm("parteAfectadaEP", parteAfectada));
               dispatch(updateForm("FechaSintomasEP", validFecha ? fechaSiniestro.replace(/[-]/g, '.') : ""));
               dispatch(updateForm("molestiasAnterioresEP", respMolestias));
-              dispatch(handleSetStep(6.05)); 
+              dispatch(handleSetStep(6.05));
             }}
           >
             Continuar
@@ -178,7 +180,7 @@ const CausaEnfermedadProfesional = () => {
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space1} />
-      </div> 
+      </div>
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import {
   GET_CATEGORIAOCUPACIONAL_INIT,
   GET_CATEGORIAOCUPACIONAL_SUCCESS,
-  GET_CATEGORIAOCUPACIONAL_FAILURE,
+  GET_CATEGORIAOCUPACIONAL_FAILURE
 } from "../types/categoriaOcupacionalType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function categoriaOcupacionalForm(
@@ -22,7 +22,7 @@ export default function categoriaOcupacionalForm(
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_CATEGORIAOCUPACIONAL_FAILURE:

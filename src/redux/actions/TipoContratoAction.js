@@ -1,7 +1,7 @@
 import {
   GET_TIPOCONTRATO_INIT,
   GET_TIPOCONTRATO_SUCCESS,
-  GET_TIPOCONTRATO_FAILURE,
+  GET_TIPOCONTRATO_FAILURE
 } from "../types/TipoContratoType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,14 +11,14 @@ export const getData = createHttpGetClient(window.REACT_APP_TIPO_CONTRATO);
 export const getContrato = () => async (dispatch) => {
   dispatch({
     type: GET_TIPOCONTRATO_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCallContrato(response.data.content[0]));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_CONTRATO));
         dispatch(handleSetStep(1004));
@@ -33,10 +33,10 @@ export const getContrato = () => async (dispatch) => {
 
   const successCallContrato = (contrato) => ({
     type: GET_TIPOCONTRATO_SUCCESS,
-    payload: contrato,
+    payload: contrato
   });
 
   const errorCallContrato = () => ({
-    type: GET_TIPOCONTRATO_FAILURE,
+    type: GET_TIPOCONTRATO_FAILURE
   });
 };

@@ -19,9 +19,9 @@ const HasScheduledMeet = (props) => {
 
   return (
     <>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
-        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
+        <div style={{position: 'absolute', width: '100%', height: '92%', backgroundColor: '#373737'}} />
       </div>
       <div className={blackStyle.root}>
         <div className={comunClass.displayMobile}>
@@ -31,7 +31,7 @@ const HasScheduledMeet = (props) => {
           <div className={spaceStyle.space3} />
         </div>
         <img
-          alt="load"
+          alt='load'
           src={image}
           className={blackStyle.img}
         />
@@ -68,7 +68,7 @@ const HasScheduledMeet = (props) => {
             <div className={comunClass.paddingElement}>
             <Button
               id={"HasScheduledMeet-Btn1"}
-              className={[blackStyle.buttonFooter, blackStyle.buttonFooterSpace]}
+              className={[ blackStyle.buttonFooter, blackStyle.buttonFooterSpace ]}
               onClick={() => {
                 dispatch(handleSetStep(5.9));
               }}
@@ -85,7 +85,7 @@ const HasScheduledMeet = (props) => {
                   const mensajeBoton = "Ver su(s) siniestro(s)";
                   const origen = "getRut";
                   dispatch(
-                    updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen})
+                    updateForm("siniestroOpciones", {mensajeAlerta, mensajeBoton, origen})
                   );
                   dispatch(handleSetStep(5.83));
                 } else {
@@ -104,8 +104,8 @@ const HasScheduledMeet = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(HasScheduledMeet);

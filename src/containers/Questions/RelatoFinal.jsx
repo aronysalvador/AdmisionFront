@@ -14,7 +14,6 @@ import { Format } from "../../helpers/strings";
 import ListadoCriterio from "../../components/CriterioGravedad/ListadoCriterio";
 
 const RelatoFinal = () => {
-
   const {
     addmissionForm: { lugarAccidente, descripcionAccidente, objetoAccidente, relatoAccidente, volverAConcatenar, tipoSiniestro, criteriosForm, percentage },
     microsoftReducer
@@ -35,28 +34,28 @@ const RelatoFinal = () => {
     );
   };
 
-  const [localValue, setLocalValue] = useState(() => {
+  const [ localValue, setLocalValue ] = useState(() => {
     return !relatoAccidente || volverAConcatenar ? getRelato() : relatoAccidente;
   });
 
-  const [isEdit, setEditable] = useState((valor)=>{
-    if(!valor) { //Confirma el relato
+  const [ isEdit, setEditable ] = useState((valor) => {
+    if (!valor) { // Confirma el relato
       dispatch(updateForm("relatoAccidenteTemporal", localValue));
     }
   });
-  
+
   // Listado Criterio de Gravedad
   const { data: criterioList } = useSelector((state) => state.criteriosForm, shallowEqual);
-  const [criterioGravedad, setCriterioGravedad] = useState(criteriosForm ? criteriosForm : {id: 1, descripcion: "Otro"});
+  const [ criterioGravedad, setCriterioGravedad ] = useState(criteriosForm ? criteriosForm : {id: 1, descripcion: "Otro"});
 
   const saveAnswer = (value) => {
     dispatch(updateForm("volverAConcatenar", false));
     dispatch(updateForm("relatoAccidente", value));
     dispatch(updateForm("criteriosForm", criterioGravedad));
-    if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
+    if (tipoSiniestro.Id === 2) { // Accidente de Trayecto
       dispatch(updateForm("desarrollarTrabajoHabitual", "no"))
     }
-    dispatch(handleSetStep("x",8.1))
+    dispatch(handleSetStep("x", 8.1))
   };
 
   const onChangeHandler = (event) => {
@@ -69,7 +68,7 @@ const RelatoFinal = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -82,34 +81,34 @@ const RelatoFinal = () => {
       <div>
         <form onSubmit={() => saveAnswer(localValue)}>
           <div className={comunClass.titlePrimaryDesk}>
-            <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
+            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
               Por favor,
-              <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
                 &nbsp;confirma el relato
-              </Grid>   
+              </Grid>
             </Grid>
             <div className={comunClass.displayDeskImg}>
-              <Grid component="span" className={comunClass.imgPrimaryDesk}>
-                <img alt="identify" src={relato} className={comunClass.imgPrimaryWidth}/>
+              <Grid component='span' className={comunClass.imgPrimaryDesk}>
+                <img alt='identify' src={relato} className={comunClass.imgPrimaryWidth} />
               </Grid>
             </div>
           </div>
           <div className={comunClass.boxDesk}>
-            <div className={comunClass.displayMobile}> 
-              <div className={spaceStyle.space1}></div>
+            <div className={comunClass.displayMobile}>
+              <div className={spaceStyle.space1} />
             </div>
             <div className={comunClass.boxRootRelato}>
               {isEdit ? (
                 <div>
                   <div className={comunClass.boxRelato}>
                     <div style={{ fontWeight: "bold" }}>Relato:</div>
-                    </div>
+                  </div>
                     <TextField
                       id={"RelatoFinal-Lbl1"}
-                      label=""
+                      label=''
                       value={localValue}
-                      margin="dense"
-                      variant="outlined"
+                      margin='dense'
+                      variant='outlined'
                       fullWidth
                       rows={10}
                       multiline
@@ -117,10 +116,10 @@ const RelatoFinal = () => {
                         {width: 8}}
                       inputProps={{
                         maxLength: 700,
-                        style: { 
-                          fontFamily: "Catamaran", 
-                          fontSize: "1em",
-                        },
+                        style: {
+                          fontFamily: "Catamaran",
+                          fontSize: "1em"
+                        }
                       }}
                       onChange={onChangeHandler}
                     />
@@ -129,7 +128,7 @@ const RelatoFinal = () => {
                         {localValue.length}/700
                       </label>
                     </div>
-                  </div>
+                </div>
               ) : (
                 <div>
                   <div className={comunClass.boxRelato}>
@@ -140,7 +139,7 @@ const RelatoFinal = () => {
                         className={comunClass.buttonEditRelato}
                         onClick={() => setEditable(true)}
                       >
-                        <img alt="editar relato" src={editaRelato} />
+                        <img alt='editar relato' src={editaRelato} />
                         &nbsp;Editar
                       </div>
                     </div>
@@ -156,23 +155,23 @@ const RelatoFinal = () => {
               <div className={spaceStyle.space1} />
             </div>
             {!isEdit &&
-            <div className="row">
-              <ListadoCriterio 
-                id="RelatoFinal-ListCriterio"  
-                title="Criterio de gravedad" 
-                data={criterioGravedad} 
-                setData={setCriterioGravedad} 
-                listado={criterioList}  
-                options={['id','descripcion']}
+            <div className='row'>
+              <ListadoCriterio
+                id='RelatoFinal-ListCriterio'
+                title='Criterio de gravedad'
+                data={criterioGravedad}
+                setData={setCriterioGravedad}
+                listado={criterioList}
+                options={[ 'id', 'descripcion' ]}
               />
             </div>}
-            
+
             <div className={comunClass.bottomElement}>
               <Button
                 id={"RelatoFinal-Btn2"}
                 className={comunClass.buttonAchs}
-                variant="contained"
-                type="submit"
+                variant='contained'
+                type='submit'
                 disabled={isDisabled()}
               >
                 Relato correcto

@@ -1,4 +1,4 @@
-import React, {useState, useCallback,useEffect} from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import RutPaciente from "./rutPaciente";
@@ -80,38 +80,39 @@ const useStyles = makeStyles({
     lineHeight: "18px",
     minWidth: 155,
     width: 155,
-    verticalAlign:"midle",
+    verticalAlign: "midle",
     textTransform: "capitalize"
-  },
+  }
 });
 
 const Identification = () => {
   const {
-    addmissionForm: { percentage , tab}, microsoftReducer
+    addmissionForm: { percentage, tab}, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-  
+
   const dispatch = useDispatch();
 
   const initFn = useCallback(() => {
     dispatch({ type: CLEAR_STATE });
     dispatch(handleSetStep(3));
-  }, [dispatch]);
+  }, [ dispatch ]);
 
   useEffect(() => {
     initFn()
-  }, [initFn]);
-  
+  }, [ initFn ]);
+
   const comunClass = getComunStyle();
   const classes = useStyles();
   const spaceStyle = getSpaceStyle();
-  const [value, setValue] = useState(0);
+  const [ value, setValue ] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
     dispatch(updateForm("tab", newValue));
   };
 
   function TabPanel(props) {
-    const { children, value, index, ...other } = props;   
+    const { children, value, index, ...other } = props;
+
     return (
       <div {...other}>
         {value === index && <div p={3}>{children}</div>}
@@ -121,7 +122,7 @@ const Identification = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -133,37 +134,39 @@ const Identification = () => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={`${comunClass.titleBlack} ${comunClass.textPrimaryDesk}`}>
-          Ingresa el           
-          <Grid component="span"  className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`} style={{display: "contents"}}>
+          Ingresa el
+          <Grid component='span' className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`} style={{display: "contents"}}>
             &nbsp;RUT o documento de identidad
           </Grid>
           &nbsp;del paciente
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
-            <Tabs value={value} onChange={handleChange} indicatorColor="#E18F68" centered>
-              <Tab classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 }} label="Nacional" id={"Identification-Tab0"} />
-              <Tab classes={value === 1 ? { root: classes.root3 } : { root: classes.root }} label="Extranjero" id={"Identification-Tab1"} />
+            <Tabs value={value} onChange={handleChange} indicatorColor='#E18F68'
+centered
+            >
+              <Tab classes={ value === 0 ? { root: classes.root2 } : { root: classes.root4 }} label='Nacional' id={"Identification-Tab0"} />
+              <Tab classes={value === 1 ? { root: classes.root3 } : { root: classes.root }} label='Extranjero' id={"Identification-Tab1"} />
             </Tabs>
 
             <TabPanel value={tab} index={0}>
-              <RutPaciente/>
+              <RutPaciente />
             </TabPanel>
 
             <TabPanel value={tab} index={1}>
               {/* <PasaportePaciente/> */}
-              <DocExtranjero/>
+              <DocExtranjero />
             </TabPanel>
-          </div>
+        </div>
       </div>
     </div>
   );

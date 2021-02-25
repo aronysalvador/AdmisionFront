@@ -10,8 +10,8 @@ import image from './../../img/relato.svg'
 const FormQuestion = (props) => {
   const { titulo, titulo2, pregunta, pregunta2, placeholder, accion, valueFromState } = props;
 
-  //const [localValue, setLocalValue] = useState("")
-  const [localValue, setLocalValue] = useState(() => {
+  // const [localValue, setLocalValue] = useState("")
+  const [ localValue, setLocalValue ] = useState(() => {
     return !valueFromState ? "" : valueFromState;
   });
 
@@ -28,37 +28,37 @@ const FormQuestion = (props) => {
     <form onSubmit={() => accion(localValue)}>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid
-          className={[comunClass.titleBlue, comunClass.titleBlue2, comunClass.textPrimaryDesk]}
+          className={[ comunClass.titleBlue, comunClass.titleBlue2, comunClass.textPrimaryDesk ]}
         >
           {titulo}
-          <Grid component="span"  className={[comunClass.titleBlack, comunClass.titleBlack2]}>
+          <Grid component='span' className={[ comunClass.titleBlack, comunClass.titleBlack2 ]}>
             &nbsp;{titulo2}
-          </Grid> 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          </Grid>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;{pregunta}
           </Grid>
-          <Grid component="span"  className={[comunClass.titleBlack, comunClass.titleBlack2]}>
+          <Grid component='span' className={[ comunClass.titleBlack, comunClass.titleBlack2 ]}>
             &nbsp;{pregunta2}
           </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.displayMobile}>
-        <div className={spaceStyle.space2}></div>
+        <div className={spaceStyle.space2} />
       </div>
       <div className={comunClass.boxDesk} style={{textAlign: 'right'}}>
         <div>
           <TextField
-            id="txtRespuesta"
+            id='txtRespuesta'
             placeholder={placeholder}
-            label=""
+            label=''
             value={localValue}
-            margin="dense"
-            variant="outlined"
+            margin='dense'
+            variant='outlined'
             fullWidth
             rows={5}
             multiline
@@ -70,8 +70,8 @@ const FormQuestion = (props) => {
         <div className={comunClass.bottomElement}>
           <Button
             className={comunClass.buttonAchs}
-            variant="contained"
-            type="submit"
+            variant='contained'
+            type='submit'
             disabled={isDisabled()}
           >
             Continuar

@@ -16,7 +16,7 @@ const Conditions = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} /> 
+      <Cabecera dispatch={() => dispatch(handleSetStep(1))} percentage={-1} />
       <div>
         <Typography className={comunClass.pregunta}>
           Términos y condiciones
@@ -42,7 +42,7 @@ const Conditions = (props) => {
       </div>
       <div className={spaceStyle.space3} />
       <div className={classes.condiciones2Container}>
-        <Typography  className={classes.condiciones2}>
+        <Typography className={classes.condiciones2}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras turpis
           amet lorem lorem. In id nisl, vulputate lacus, libero hendrerit. In
           sed sed est, egestas ultrices sed egestas. Diam elementum ut magna
@@ -68,7 +68,7 @@ const Conditions = (props) => {
       <div className={comunClass.bottomElement}>
         <Button
           className={comunClass.buttonAchs}
-          variant="contained"
+          variant='contained'
           onClick={() => dispatch(handleSetStep(2))}
         >
           Aceptar
@@ -79,7 +79,7 @@ const Conditions = (props) => {
 };
 const mapStateToProps = ({ addmissionForm }) => {
   return {
-    addmissionForm: addmissionForm,
+    addmissionForm
   };
 };
 export default connect(mapStateToProps)(Conditions);

@@ -8,11 +8,11 @@ const getUseStyles = makeStyles({
   center2: {
     paddingLeft: "7.625em",
     paddingRight: "7.625em",
-    padding: "0em",
+    padding: "0em"
   },
   img2: {
-    width: "7.28125em",
-  },
+    width: "7.28125em"
+  }
 });
 
 const Load = (props) => {
@@ -25,7 +25,7 @@ const Load = (props) => {
       <div className={spaceStyle.space12} />
       <div className={useStyles.center2}>
         <img
-          alt="load"
+          alt='load'
           src={image}
           className={useStyles.img2}
         />

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
-import {  Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
@@ -12,7 +12,7 @@ const HasSinisterDetail = (props) => {
   const { addmissionForm, dispatch, microsoftReducer } = props;
   const { siniestroDetalle } = addmissionForm;
   useEffect(() => {
-    //dispatch(saveRut(addmissionForm.rut));
+    // dispatch(saveRut(addmissionForm.rut));
   });
 
   const spaceStyle = getSpaceStyle();
@@ -21,19 +21,19 @@ const HasSinisterDetail = (props) => {
 
   return (
     <div>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
-        <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
+        <div style={{position: 'absolute', width: '100%', height: '92%', backgroundColor: '#373737'}} />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <CabeceraSinBarra
           id={"HasSinisterDetail-BtnBack"}
           dispatch={() => dispatch(handleSetStep(5.831))}
-          color="#FFFFFF"
+          color='#FFFFFF'
         />
         <div className={comunClass.displayDesk}>
           <Typography
-            color="textSecondary"
+            color='textSecondary'
             className={blackStyle.textWarning}
           >
             Detalle de siniestro
@@ -49,13 +49,13 @@ const HasSinisterDetail = (props) => {
                 <div className={spaceStyle.space2} />
               </div>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 ID Siniestro
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.id}
@@ -63,13 +63,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 CUN
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.CUN}
@@ -77,13 +77,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 Cod único nac ext
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.codigoUnicoNacionalExterno}
@@ -91,13 +91,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 CeSa
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.cesa}
@@ -105,13 +105,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
-                className={blackStyle.textDetailSimple} 
+                color='textSecondary'
+                className={blackStyle.textDetailSimple}
               >
                 Paciente
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.paciente}
@@ -119,18 +119,18 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 InterL comercial
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.interLComercial}
               </Typography>
-              <div className={spaceStyle.spaceMin1} />              
+              <div className={spaceStyle.spaceMin1} />
             </Grid>
             <Grid item className={comunClass.displayDesk}>
               <hr style={{color: "#FFFFFF", margin: "30px 0", minHeight: "80%"}} />
@@ -140,12 +140,13 @@ const HasSinisterDetail = (props) => {
                 <div className={spaceStyle.space2} />
               </div>
               <Typography
-              color="textSecondary"
-              className={blackStyle.textDetailStrong}>
+              color='textSecondary'
+              className={blackStyle.textDetailStrong}
+              >
                 Descripción siniestro
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.descripcion}
@@ -153,13 +154,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 Descripción Tipo Ley
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailSimple}
               >
                 {siniestroDetalle.tipoLey}
@@ -167,13 +168,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 Creado el
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.fecha}
@@ -181,13 +182,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 Hora creación
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 {/* {siniestroDetalle.hora} */}
@@ -196,13 +197,13 @@ const HasSinisterDetail = (props) => {
               <div className={spaceStyle.spaceMin1} />
 
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 Reposo Activo
               </Typography>
               <Typography
-                color="textSecondary"
+                color='textSecondary'
                 className={blackStyle.textDetailStrong}
               >
                 {siniestroDetalle.reposoActivo === "NO" ? "No" : "Sí"}
@@ -224,8 +225,8 @@ const HasSinisterDetail = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(HasSinisterDetail);

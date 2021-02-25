@@ -1,13 +1,13 @@
 import {
     GET_CRITERIOS_INIT,
     GET_CRITERIOS_SUCCESS,
-    GET_CRITERIOS_FAILURE,
+    GET_CRITERIOS_FAILURE
 } from "../types/criteriosType";
 
 const INITIAL_STATE = {
     data: [],
     loading: false,
-    error: null,
+    error: null
 };
 
 export default function criteriosForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function criteriosForm(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 data: action.payload,
-                loading: false,
+                loading: false
             };
 
         case GET_CRITERIOS_FAILURE:

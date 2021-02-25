@@ -1,8 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
-
-import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";import { cardSiniestroStyles } from "../../css/cardSiniestroStyle";
 import { getComunStyle } from "../../css/comun"
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined';
@@ -26,10 +24,10 @@ const CardSiniestro = (props) => {
     >
       <div className={styles.cuerpo}>
         <div className={styles.itemId}>ID: {id}
-          <div 
+          <div
             className={styles.itemReposo}
             style={reposoActivo === "NO" ? {display: "none"} : {display: "flex"}}
-          > 
+          >
             <ReportProblemOutlinedIcon style={{ fontSize: 14 }} />  Reposo activo
           </div>
         </div>
@@ -41,7 +39,7 @@ const CardSiniestro = (props) => {
       <div className={comunClass.displayMobile}>
         <div className={styles.aside}>
           {" "}
-          <ChevronRightIcon  className={styles.iconRight}/>
+          <ChevronRightIcon className={styles.iconRight} />
         </div>
       </div>
     </div>

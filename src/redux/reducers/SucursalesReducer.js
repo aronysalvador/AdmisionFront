@@ -1,13 +1,13 @@
 import {
   GET_SUCURSALES_INIT,
   GET_SUCURSALES_SUCCESS,
-  GET_SUCURSALES_FAILURE,
+  GET_SUCURSALES_FAILURE
 } from "../types/sucursalesType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function sucursalesForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function sucursalesForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_SUCURSALES_FAILURE:

@@ -18,18 +18,18 @@ const SameDateSinister = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
-      <div className={comunClass.displayMobile}> 
+      <div className={comunClass.displayMobile}>
         <div className={spaceStyle.space3} />
       </div>
       <div className={spaceStyle.space2} />
       <center>
         <div>
-          <img alt="load" src={image} />
+          <img alt='load' src={image} />
         </div>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
         <div className={spaceStyle.space1} />
@@ -39,10 +39,10 @@ const SameDateSinister = (props) => {
         <div className={spaceStyle.space1} />
         <Typography className={blackStyle.textMessage2}>
           Este paciente tiene un siniestro activo&nbsp;
-          <br className={comunClass.displayDesk}/>
+          <br className={comunClass.displayDesk} />
           en la misma fecha
         </Typography>
-        
+
         <div className={comunClass.bottomElement} style={{ padding: '1.145em' }}>
           <Button
             id={"SameDateSinister-Btn1"}
@@ -58,8 +58,8 @@ const SameDateSinister = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(SameDateSinister);

@@ -7,29 +7,25 @@ import { withStyles } from '@material-ui/core/styles';
 import specialBlue from "./../../util/color/specialBlue";
 
 const AfpList = (props) => {
-  
-
   const { checkedAfp: check, setCheckedAfp: setCheck, title, identificador, description, listado, id } = props
-  const [checkInt, setCheckInt] = useState(check?check:"")
+  const [ checkInt, setCheckInt ] = useState(check?check:"")
 
-  useEffect(()=>{
-    if(check.otro===false){
+  useEffect(() => {
+    if (check.otro===false)
       setCheckInt("")
-    }
-  },[check])
+  }, [ check ])
 
   const comunClass = getComunStyle();
 
-  
   const BlueRadio = withStyles({
     root: {
       color: specialBlue,
       '&$checked': {
-        color: specialBlue[600],
-      },
+        color: specialBlue[600]
+      }
     },
-    checked: {},
-  })((props) => <Radio color="default" {...props} />);
+    checked: {}
+  })((props) => <Radio color='default' {...props} />);
 
   const NoPaddingAutocomplete = withStyles({
     inputRoot: {
@@ -43,33 +39,33 @@ const AfpList = (props) => {
   // React.useEffect(()=>{ console.log("checkInt",checkInt) },[checkInt])
 
   return (
-      <div className=""> 
-        <div className={['container', comunClass.backgroundWhite].join(' ')} >
+      <div className=''>
+        <div className={[ 'container', comunClass.backgroundWhite ].join(' ')}>
           <div className={check.otro ? comunClass.roundedBlue : comunClass.roundedNormal} style={{padding: "5px", minWidth: '250px'}}>
-           
-          <div className="row" style={{padding:0,margin:0,width:"100%"}}>
-          <div className="col-md-1">
+
+          <div className='row' style={{padding: 0, margin: 0, width: "100%"}}>
+          <div className='col-md-1'>
               <BlueRadio
                   id={id+"-Check-Another"}
                   checked={check.otro }
-                  onChange={()=>{ var temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
-                  setCheck(temp)}}
+                  onChange={() => { let temp = {}; temp[identificador]=""; temp[description]="Otro"; temp.otro=true;
+                  setCheck(temp) }}
                   value={check}
-                  name="radio-button-demo"
+                  name='radio-button-demo'
                   inputProps={{ 'aria-label': 'C' }}
               />
           </div>
-          <div className="col-md-3" style={{alignSelf: "center"}}>
+          <div className='col-md-3' style={{alignSelf: "center"}}>
               <span className={comunClass.txtRadios}>{title}</span>
           </div>
-          
-            <div className="col-md-8" style={{width:"64%"}}>
+
+            <div className='col-md-8' style={{width: "64%"}}>
               <NoPaddingAutocomplete
                 id={id+"Autocomplete"}
                 value={checkInt}
                 options={listado}
                 onChange={(event, value) => {
-                  if(value){
+                  if (value){
                     value.otro = true
                     setCheckInt(value);
                     setCheck(value);
@@ -77,14 +73,14 @@ const AfpList = (props) => {
                 }}
                 getOptionSelected= {(
                   option,
-                  value,
+                  value
                ) => value.value === option.value}
                 getOptionLabel={(option) => option ? (option.nombre === "Otro" ? "" : option.nombre) : "" }
                 renderInput={(params) => (
                   <TextField
                    id={id+"Input"}
                     {...params}
-                    variant="outlined"
+                    variant='outlined'
                     InputProps={{
                       ...params.InputProps,
                       style: {
@@ -92,14 +88,14 @@ const AfpList = (props) => {
                         paddingBottom: "3px",
                         paddingLeft: "5xp",
                         marginTop: "7px",
-                        backgroundColor:"white"
-                      },
+                        backgroundColor: "white"
+                      }
                     }}
                   />
                 )}
               />
             </div>
-            </div>
+          </div>
 
           </div>
         </div>

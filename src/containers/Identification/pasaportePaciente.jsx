@@ -8,7 +8,6 @@ import Grid from '@material-ui/core/Grid';
 import image from './../../img/exito.svg'
 
 const PasaportePaciente = () => {
-
     const dispatch = useDispatch();
 
     const comunClass = getComunStyle();
@@ -19,8 +18,8 @@ const PasaportePaciente = () => {
       <div className={spaceStyle.space1} />
       <center>
         <img
-          alt="pasaporte"
-          src={image} //validandoAlerta.png"
+          alt='pasaporte'
+          src={image} // validandoAlerta.png"
           className={comunClass.imgPass}
         />
       </center>
@@ -36,7 +35,7 @@ const PasaportePaciente = () => {
         <Button
           id={"PasaportePaciente-Btn1"}
           className={comunClass.buttonAchs2}
-          variant="contained"
+          variant='contained'
           onClick={() => dispatch(handleSetStep(5.9))}
         >
           Continuar en SAP

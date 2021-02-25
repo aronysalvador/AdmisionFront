@@ -9,13 +9,13 @@ import Cabecera from '../../components/cabecera/index'
 import {getSpaceStyle} from '../../css/spaceStyle'
 
 const PacienteNoAfiliadoError = (props) => {
-    const { dispatch,addmissionForm } = props
+    const { dispatch, addmissionForm } = props
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
 
     return (<div className={comunClass.root}>
                 <Cabecera dispatch={() => dispatch(handleSetStep(3))} percentage={100} />
-                <Alert severity="success">
+                <Alert severity='success'>
                     <AlertTitle>Resumén</AlertTitle>
                         <strong>Rut Trabajador: </strong>{formateaRut(addmissionForm.rut)}<br />
                         <strong>Afiliado : </strong>{addmissionForm.isAfiliado}<br />
@@ -23,21 +23,21 @@ const PacienteNoAfiliadoError = (props) => {
                         <strong>Rut Empresa: </strong>{formateaRut(addmissionForm.rutEmpresa)}<br />
                         <strong>Nombre Empresa : </strong>{addmissionForm.empresa}
                         <hr />
-                </Alert>  
+                </Alert>
 
-                <div  className={spaceStyle.space9} />
+                <div className={spaceStyle.space9} />
                 <div>
-                <Button className={comunClass.buttonAchs} variant="contained"  type="submit">
+                <Button className={comunClass.buttonAchs} variant='contained' type='submit'>
                     Si, es correcta
                 </Button>
-                </div>                    
+                </div>
             </div>
     );
 }
 
 function mapStateToProps({ addmissionForm }) {
     return {
-        addmissionForm : addmissionForm
+        addmissionForm
     }
 }
 

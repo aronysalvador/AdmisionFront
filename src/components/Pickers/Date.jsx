@@ -2,7 +2,7 @@ import React from 'react'
 import { withStyles } from "@material-ui/core/styles";
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
 import { ThemeProvider } from "@material-ui/styles";
-import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker"; 
+import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
 import ClearIcon from "@material-ui/icons/Clear";
 import imageDate from './../../img/iconCalendar.svg'
 import MomentUtils from '@date-io/moment';
@@ -24,44 +24,43 @@ const NoPaddingDatePicker = withStyles({
 })(KeyboardDatePicker);
 
 export default (props) => {
-    
     const { date, setDate, id, setValidDate } = props
 
-    const [selectedDate, setSelectedDate ] = React.useState(date ? moment() : null );   
-    
+    const [ selectedDate, setSelectedDate ] = React.useState(date ? moment() : null);
+
     const onDateChange = (date, value) => {
-        if(date){
+        if (date){
             setSelectedDate(date);
             setDate(value);
             setValidDate(true)
-        }else{
+        } else {
             setSelectedDate(date);
             setDate(value);
             setValidDate(false)
         }
     };
 
-    return(        
-        <div  style={{ zIndex: 9 }} >
-            <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
+    return (
+        <div style={{ zIndex: 9 }}>
+            <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
                 <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
-                    <NoPaddingDatePicker         
+                    <NoPaddingDatePicker
                         id={id}
-                        inputVariant="outlined"
-                        disableFuture   
+                        inputVariant='outlined'
+                        disableFuture
                         value={selectedDate}
-                        format="DD-MM-YYYY"
+                        format='DD-MM-YYYY'
                         inputValue={date}
-                        onChange={onDateChange} 
-                        autoComplete="off"                              
+                        onChange={onDateChange}
+                        autoComplete='off'
                         InputAdornmentProps={{ position: 'start'}}
                         fullWidth
-                        onError={(e)=>{if(e){ setValidDate(false) } }}
-                        invalidDateMessage="Formato invalido"
-                        maxDateMessage="La fecha no puede exceder al día de hoy"
+                        onError={(e) => { if (e){ setValidDate(false) } }}
+                        invalidDateMessage='Formato invalido'
+                        maxDateMessage='La fecha no puede exceder al día de hoy'
 
-                        minDateMessage="La fecha es invalida"
-                        keyboardIcon={<img alt="calendar" src={imageDate}/>}
+                        minDateMessage='La fecha es invalida'
+                        keyboardIcon={<img alt='calendar' src={imageDate} />}
                         style={ props.style || {
                             paddingTop: "3px",
                             background: "#ffff",
@@ -69,12 +68,12 @@ export default (props) => {
                         }}
                         InputProps={{
                             endAdornment: (
-                                <ClearIcon onClick={()=>{onDateChange(null,null)}} style={{cursor:'pointer'}} />
+                                <ClearIcon onClick={() => { onDateChange(null, null) }} style={{cursor: 'pointer'}} />
                             )
                         }}
                     />
                 </ThemeProvider>
-            </MuiPickersUtilsProvider>    
+            </MuiPickersUtilsProvider>
         </div>
     )
 }

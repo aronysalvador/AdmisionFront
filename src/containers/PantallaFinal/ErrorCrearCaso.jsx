@@ -11,20 +11,20 @@ import warning from './../../img/errorCaso.svg'
 const ErrorCrearCaso = () => {
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
-  
+
   const dispatch = useDispatch();
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space6} />
       <center>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={warning}
           />
         </div>
@@ -42,27 +42,27 @@ const ErrorCrearCaso = () => {
 
         <div className={spaceStyle.space2} />
 
-        <div className={comunClass.bottomElement} >
-        
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-3"></div>
-                    <div className="col-md-6">
+        <div className={comunClass.bottomElement}>
+
+            <div className='container-fluid'>
+                <div className='row'>
+                    <div className='col-md-3' />
+                    <div className='col-md-6'>
                         <Button
-                            id="ErrorCrearCaso-Btn1"
-                            className={[comunClass.buttonAchs]} 
-                            variant="contained"
+                            id='ErrorCrearCaso-Btn1'
+                            className={[ comunClass.buttonAchs ]}
+                            variant='contained'
                             onClick={() => dispatch(handleSetStep(27))}
-                            >
+                        >
                             Volver a intentarlo
                         </Button>
                     </div>
-                    <div className="col-md-3"></div>
+                    <div className='col-md-3' />
                 </div>
             </div>
-              
+
         </div>
-        
+
       </center>
     </div>
   );

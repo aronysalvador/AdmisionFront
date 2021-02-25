@@ -1,9 +1,8 @@
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var specialBlue = {
+let specialBlue = {
   50: '#00b2a9',
   100: '#00b2a9',
   200: '#00b2a9',
@@ -19,5 +18,5 @@ var specialBlue = {
   A400: '#00b2a9',
   A700: '#00b2a9'
 };
-var _default = specialBlue;
+let _default = specialBlue;
 exports.default = _default;

@@ -21,50 +21,50 @@ const TrabajadorIndependiente = () => {
 
   const handleOnClick = (respuesta) => {
     dispatch(updateForm("TrabajadorIndependiente", respuesta));
-    dispatch(handleSetStep(26.1)); //++stepx
+    dispatch(handleSetStep(26.1)); // ++stepx
   };
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          id="TrabajadorIndependiente-BtnBack"
+          id='TrabajadorIndependiente-BtnBack'
           dispatch={() => dispatch(handleSetStep(19.4))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          ¿<Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          ¿<Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             Paciente declara renta&nbsp;
-          </Grid>   
-          en servicios impuestos internos como trabajador independiente?    
+           </Grid>
+          en servicios impuestos internos como trabajador independiente?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
         <div className={comunClass.bottomElement}>
-          <div className={comunClass.displayMobile}> 
+          <div className={comunClass.displayMobile}>
             <div className={spaceStyle.spaceMin1} />
           </div>
           <Button
-            id="TrabajadorIndependiente-Btn1"
-            variant="contained"
+            id='TrabajadorIndependiente-Btn1'
+            variant='contained'
             className={comunClass.buttonAchs}
             onClick={() => handleOnClick("Si")}
           >
             Sí
           </Button>
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={spaceStyle.spaceMin1} />
           <Button
-            id="TrabajadorIndependiente-Btn2"
+            id='TrabajadorIndependiente-Btn2'
             className={comunClass.buttonAchs2}
             onClick={() => handleOnClick("No")}
           >

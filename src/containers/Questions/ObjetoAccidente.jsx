@@ -12,18 +12,17 @@ const AccidentObjectForm = (props) => {
 
   const comunClass = getComunStyle();
 
-  const respuestaOriginal  = objetoAccidente;
+  const respuestaOriginal = objetoAccidente;
   const saveAnswer = (value) => {
     dispatch(updateForm("objetoAccidente", value));
     dispatch(handleSetStep(8.1));
-    if(respuestaOriginal !== value) {
+    if (respuestaOriginal !== value)
       dispatch(updateForm("volverAConcatenar", true));
-    }
   };
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header
           userMsal={ microsoftReducer.userMsal }
         />
@@ -51,8 +50,8 @@ const AccidentObjectForm = (props) => {
 
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(AccidentObjectForm);

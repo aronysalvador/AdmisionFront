@@ -13,30 +13,26 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import image from './../../img/relato.svg'
 
-
 const FechaHoraSiniestro = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   const { step, percentage, fechaHoraSiniestro, siniestros } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
-  
+
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const { days, month, year, horas, minutos } = fechaHoraSiniestro;
 
-  const [fechaSiniestro, setFechaSiniestro] = useState({});
-  const [horaSiniestro, setHoraSiniestro] = useState({});
-  const [invalidFecha, setInvalidFecha] = useState(true);
-  const [invalidHora, setInvalidHora] = useState(true);
-
+  const [ fechaSiniestro, setFechaSiniestro ] = useState({});
+  const [ horaSiniestro, setHoraSiniestro ] = useState({});
+  const [ invalidFecha, setInvalidFecha ] = useState(true);
+  const [ invalidHora, setInvalidHora ] = useState(true);
 
   const dispatch = useDispatch();
-
 
   const setFechaValueSiniestro = useCallback((value) => {
     setFechaSiniestro({...value})
   }, [])
-
 
   function setHoraValueSiniestro(value) {
     setHoraSiniestro({ ...value });
@@ -45,9 +41,9 @@ const FechaHoraSiniestro = () => {
   React.useEffect(() => {
     let current = new Date();
 
-    //========= Fecha =======
-    if(fechaSiniestro.year <= 1900 || 
-      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month > current.getMonth()+1 ) ||//&& fechaSiniestro.days <= current.getDate()
+    // ========= Fecha =======
+    if (fechaSiniestro.year <= 1900 ||
+      (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month > current.getMonth()+1) ||// && fechaSiniestro.days <= current.getDate()
       (fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days > current.getDate()) ||
       (fechaSiniestro.year > current.getFullYear())
       )
@@ -55,17 +51,16 @@ const FechaHoraSiniestro = () => {
     else
       setInvalidFecha(false)
 
-    //====== Fin Fecha ======
+    // ====== Fin Fecha ======
 
-
-    //====== Hora =======
-    if(horaSiniestro.horas === undefined && horas && minutos){
+    // ====== Hora =======
+    if (horaSiniestro.horas === undefined && horas && minutos){
       setInvalidHora(false)
+
       return;
     }
 
-
-    if(
+    if (
       (horaSiniestro.horas === -1 || horaSiniestro.minutos === -1 || horaSiniestro.minutos === undefined)
       ||
       ((fechaSiniestro.year === current.getFullYear() && fechaSiniestro.month === current.getMonth()+1 && fechaSiniestro.days === current.getDate()) &&
@@ -77,9 +72,8 @@ const FechaHoraSiniestro = () => {
     setInvalidHora(true)
   else
     setInvalidHora(false)
-  //====== Fin Hora =======
-  }, [horaSiniestro.horas, horaSiniestro.minutos, fechaSiniestro, horas, minutos])
-
+  // ====== Fin Hora =======
+  }, [ horaSiniestro.horas, horaSiniestro.minutos, fechaSiniestro, horas, minutos ])
 
   const handleNext = () => {
     let siniestroTemp = undefined;
@@ -89,30 +83,28 @@ const FechaHoraSiniestro = () => {
       const dias = fechaCasted.getDate() + 1;
       const mes = fechaCasted.getMonth() + 1;
       const anio = fechaCasted.getFullYear();
-      if(dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year) {
+      if (dias === fechaSiniestro.days && mes === fechaSiniestro.month && anio === fechaSiniestro.year)
         siniestroTemp = x;
-      }
     });
 
-    if(siniestroTemp === undefined) {
-      //No hay siniestro para esa fecha
-      if(horaSiniestro.horas === undefined && horas && minutos)
-        dispatch(
+    if (siniestroTemp === undefined) {
+      // No hay siniestro para esa fecha
+      if (horaSiniestro.horas === undefined && horas && minutos)
+        { dispatch(
           updateForm("fechaHoraSiniestro", {
             ...fechaSiniestro,
             horas,
             minutos
           })
-        )
+        ) }
       else
-        dispatch(
+        { dispatch(
           updateForm("fechaHoraSiniestro", {
             ...fechaSiniestro,
-            ...horaSiniestro,
+            ...horaSiniestro
           })
-        );
+        ); }
       dispatch(handleSetStep(step + 1));
-
     }
     else {
       const mensajeAlerta = "Este paciente tiene un siniestro activo en la misma fecha";
@@ -121,11 +113,11 @@ const FechaHoraSiniestro = () => {
       dispatch(
         updateForm("fechaHoraSiniestro", {
           ...fechaSiniestro,
-          ...horaSiniestro,
+          ...horaSiniestro
         })
       );
       dispatch(
-        updateForm("siniestroOpciones", {mensajeAlerta,mensajeBoton, origen, siniestroTemp})
+        updateForm("siniestroOpciones", {mensajeAlerta, mensajeBoton, origen, siniestroTemp})
       );
       dispatch(handleSetStep(5.83));
     }
@@ -133,33 +125,33 @@ const FechaHoraSiniestro = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
-          dispatch={() => dispatch(handleSetStep("x",10))}
+          dispatch={() => dispatch(handleSetStep("x", 10))}
           percentage={percentage}
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid
-          className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
-          >
+          className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}
+        >
           ¿
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             Cuándo y a qué hora&nbsp;
-          </Grid> 
+          </Grid>
           sucedió el accidente?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space3} />
         </div>
         <div className={comunClass.containerTextBox}>
@@ -180,16 +172,16 @@ const FechaHoraSiniestro = () => {
               textLabel={"Fecha de accidente"}
             />
           </div>
-          
+
           <div className={spaceStyle.space1} />
-          
+
           <div>
               <HoraSiniestroDesk
                   onChange={setHoraValueSiniestro}
                   horasFromState={horas}
                   minutos={minutos}
                   textLabel={"Hora de accidente"}
-                />
+              />
           </div>
         </div>
         <div className={comunClass.bottomElement}>

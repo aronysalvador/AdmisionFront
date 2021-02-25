@@ -1,13 +1,13 @@
 import {
   GET_AFP_INIT,
   GET_AFP_SUCCESS,
-  GET_AFP_FAILURE,
+  GET_AFP_FAILURE
 } from "../types/afpType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function afpForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function afpForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_AFP_FAILURE:

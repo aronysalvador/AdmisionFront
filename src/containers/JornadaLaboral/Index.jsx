@@ -18,18 +18,18 @@ const JornadaLaboralContainer = () => {
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-  const [inicioJornadaLaboralValue, setInicioJornada] = useState(inicioJornadaLaboral);
-  const [finJornadaLaboralValue, setFinJornada] = useState(finJornadaLaboral);
+  const [ inicioJornadaLaboralValue, setInicioJornada ] = useState(inicioJornadaLaboral);
+  const [ finJornadaLaboralValue, setFinJornada ] = useState(finJornadaLaboral);
 
   const fnHorarios = () => {
     let horarios = [];
     let i = 0;
     let j = 0;
     for (i = 1; i < 24; i++) {
-      for (j = 0; j < 2; j++) {
+      for (j = 0; j < 2; j++)
         horarios.push(i + ":" + (j === 0 ? "00" : 30 * j));
-      }
     }
+
     return horarios;
   }
 
@@ -45,7 +45,7 @@ const JornadaLaboralContainer = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
@@ -55,21 +55,21 @@ const JornadaLaboralContainer = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}>
-          ¿A qué hora 
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
+          ¿A qué hora
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;inicia y termina su jornada laboral?
-          </Grid>           
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
 
       <div className={comunClass.boxDesk}>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
         <JornadaLaboral
