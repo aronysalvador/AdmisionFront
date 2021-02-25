@@ -24,7 +24,7 @@ export const getJornadaLaboralPrincipal = () => async (dispatch) => {
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCallTipoJornada());
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_JORNADA_TRABAJO));

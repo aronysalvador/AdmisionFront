@@ -31,7 +31,7 @@ export const getSucursales = (rut) => async (dispatch, getState) => {
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCallSucursales());
       dispatch(updateForm("errorStep", 3));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_SUCURSALES));
@@ -89,7 +89,7 @@ export const getValidar = (isValid, rut) => async (dispatch, getState) => {
           dispatch(handleSetStep(1004));
         }
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(updateForm("errorStep", 3));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
         dispatch(handleSetStep(1004));

@@ -61,7 +61,7 @@ export const getMediosTransporteTrayecto = () => async (dispatch) => {
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCall());
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_MEDIO_TRANSPORTE_TRAYECTO));

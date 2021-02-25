@@ -25,7 +25,7 @@ export const getAgenteCausa = () => async(dispatch) => {
               dispatch(handleSetStep(1004));
             }
         })
-        .catch((error) => {
+        .catch(() => {
             dispatch(errorCallAgenteCausa());
             dispatch(updateForm("errorStep", 0));
             dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AGENTE_CAUSA_ENFERMEDAD));

@@ -11,10 +11,12 @@ import {
     RESPONSE_ERROR
 } from "../types/addmissionFormType";
 import Axios from "axios";
-import { formateaRut } from "../../helpers/rut";import { handleLog, handlEndLog, stepLogPage } from "./Log";
+import { formateaRut } from "../../helpers/rut";
+import { handleLog, handlEndLog, stepLogPage } from "./Log";
 import { FechaHora } from './../../helpers/utils'
 import { Pipes } from "./../../containers/EditarTelefono/phone";
-import { getSucursales } from "./SucursalesAction";import { getToken } from 'redux/selectors/auth.selector';
+import { getSucursales } from "./SucursalesAction";
+import { getToken } from 'redux/selectors/auth.selector';
 
 const totalSteps = 27;
 
@@ -560,7 +562,7 @@ const saveRazonSocial = (rut) => {
                         dispatch(handleSetStep(1004));
                     }
                 })
-                .catch((error) => {
+                .catch(() => {
                     dispatch(updateForm("errorStep", 3));
                     dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                     dispatch(handleSetStep(1004));

@@ -24,7 +24,7 @@ export const getRemuneracion = () => async (dispatch) => {
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCallRemuneracion());
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_TIPO_REMUNERACIONES));

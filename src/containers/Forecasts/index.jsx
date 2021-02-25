@@ -40,7 +40,7 @@ const Forecasts = () => {
 
   const handeleNextAfp = (txt) => {
     setTimeout(() => {
-      if (checkedAfp.codigo && checkedIsapre.id){
+      if (checkedAfp.codigo && checkedIsapre?.id){
         dispatch(updateForm("afpForm", txt));
         dispatch(updateForm("isapreSeleccionado", checkedIsapre));
         dispatch(handleSetStep("x_next", 18.01))
@@ -50,7 +50,7 @@ const Forecasts = () => {
 
   const handeleNextIsapre = (txt) => {
     setTimeout(() => {
-      if (checkedAfp.codigo && checkedIsapre.id){
+      if (checkedAfp.codigo && checkedIsapre?.id){
         dispatch(updateForm("afpForm", checkedAfp));
         dispatch(updateForm("isapreSeleccionado", txt));
         dispatch(handleSetStep("x_next", 18.01))
@@ -169,11 +169,11 @@ listado={afpList} />
                   <div className='row'>
 
                     <div className='col-md-12' style={{marginBottom: '10px'}}>
-                      <div className={checkedIsapre.id === isapreList[0].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
+                      <div className={checkedIsapre?.id === isapreList[0].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className='col-md-2'>
                               <BlueRadio
                                   id='Forecasts-Check-Isapre1'
-                                  checked={checkedIsapre.id === isapreList[0].id && checkedIsapre.otro === false}
+                                  checked={checkedIsapre?.id === isapreList[0].id && checkedIsapre.otro === false}
                                   onChange={() => {
                                     isapreList[0].otro=false;
                                     setcheckedIsapre(isapreList[0]);
@@ -187,16 +187,16 @@ listado={afpList} />
                         <div className='col-md-10' style={{textAlign: "left"}}>
                               <span className={comunClass.txtRadios}>{Format.formatizar(isapreList[0].nombre)}</span>
                         </div>
-
                       </div>
                     </div>
 
+                  {isapreList[25] && (
                    <div className='col-md-6' style={{marginBottom: '10px'}}>
-                      <div className={checkedIsapre.id === isapreList[25].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
+                      <div className={checkedIsapre?.id === isapreList[25].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className='col-md-3'>
                               <BlueRadio
                                   id='Forecasts-Check-Isapre2'
-                                  checked={checkedIsapre.id === isapreList[25].id && checkedIsapre.otro === false}
+                                  checked={checkedIsapre?.id === isapreList[25].id && checkedIsapre.otro === false}
                                   onChange={() => {
                                      isapreList[25].otro=false;
                                      setcheckedIsapre(isapreList[25]);
@@ -213,13 +213,15 @@ listado={afpList} />
 
                       </div>
                    </div>
+                   )}
 
+                  {isapreList[12] && (
                    <div className='col-md-6' style={{marginBottom: '10px'}}>
-                      <div className={checkedIsapre.id === isapreList[12].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
+                      <div className={checkedIsapre?.id === isapreList[12].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className='col-md-3'>
                               <BlueRadio
                                   id='Forecasts-Check-Isapre3'
-                                  checked={checkedIsapre.id === isapreList[12].id && checkedIsapre.otro === false}
+                                  checked={checkedIsapre?.id === isapreList[12].id && checkedIsapre.otro === false}
                                   onChange={() => {
                                      isapreList[12].otro=false;
                                      setcheckedIsapre(isapreList[12]);
@@ -233,16 +235,18 @@ listado={afpList} />
                         <div className='col-md-9' style={{textAlign: "left"}}>
                               <span className={comunClass.txtRadios}>{Format.formatizar(isapreList[12].nombre)}</span>
                         </div>
-
                       </div>
                    </div>
+                    )}
 
+
+                  {isapreList[11] && (
                    <div className='col-md-6' style={{marginBottom: '10px'}}>
-                      <div className={checkedIsapre.id === isapreList[11].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
+                      <div className={checkedIsapre?.id === isapreList[11].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className='col-md-3'>
                               <BlueRadio
                                   id='Forecasts-Check-Isapre4'
-                                  checked={checkedIsapre.id === isapreList[11].id && checkedIsapre.otro === false}
+                                  checked={checkedIsapre?.id === isapreList[11].id && checkedIsapre.otro === false}
                                   onChange={() => {
                                     isapreList[11].otro=false;
                                     setcheckedIsapre(isapreList[11]);
@@ -256,16 +260,17 @@ listado={afpList} />
                         <div className='col-md-9' style={{textAlign: "left"}}>
                               <span className={comunClass.txtRadios}>{Format.formatizar(isapreList[11].nombre)}</span>
                         </div>
-
                       </div>
                    </div>
+                  )}
 
+                  {isapreList[9] && (
                    <div className='col-md-6' style={{marginBottom: '10px'}}>
-                      <div className={checkedIsapre.id === isapreList[9].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
+                      <div className={checkedIsapre?.id === isapreList[9].id && checkedIsapre.otro === false ? comunClass.roundedRadioBlue : comunClass.roundedRadioNormal}>
                         <div className='col-md-3'>
                               <BlueRadio
                                   id='Forecasts-Check-Isapre5'
-                                  checked={checkedIsapre.id === isapreList[9].id && checkedIsapre.otro === false}
+                                  checked={checkedIsapre?.id === isapreList[9].id && checkedIsapre.otro === false}
                                   onChange={() => {
                                     isapreList[9].otro=false;
                                     setcheckedIsapre(isapreList[9]);
@@ -279,9 +284,9 @@ listado={afpList} />
                         <div className='col-md-9' style={{textAlign: "left"}}>
                               <span className={comunClass.txtRadios}>{Format.formatizar(isapreList[9].nombre)}</span>
                         </div>
-
                       </div>
                    </div>
+                    )}
 
                   </div>
                 </div>
@@ -290,8 +295,8 @@ listado={afpList} />
 
                 <div className='row'>
                   <Listados id='Forecasts-Isapre' title='Otra Isapre' checkedAfp ={ checkedIsapre }
-setCheckedAfp = {setcheckedIsapre} identificador='id' description='nombre'
-listado={isapreList}
+                    setCheckedAfp = {setcheckedIsapre} identificador='id' description='nombre'
+                    listado={isapreList}
                   />
                 </div>
                 <div className={spaceStyle.spaceMin1} />

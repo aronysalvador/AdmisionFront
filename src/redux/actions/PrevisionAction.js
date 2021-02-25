@@ -24,7 +24,7 @@ export const searchIsapres = () => async (dispatch) => {
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCallIsapres());
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_ISAPRES));
