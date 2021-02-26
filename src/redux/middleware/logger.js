@@ -13,6 +13,7 @@ if (window.APPLICATION_INSIGHTS){
 }
 
 const logger = store => next => action => {
+  if(action.type){
     if (window.APPLICATION_INSIGHTS){
       let fechaLog = store.getState().LogForm.fecha
       if (
@@ -27,9 +28,9 @@ const logger = store => next => action => {
         ai.appInsights.trackEvent({ name: 'Redux Action '+fechaLog, properties: action })
       }
     }
-    const result = next(action);
-
-    return result;
+  }
+  const result = next(action);
+  return result;
 };
 
 export default logger
