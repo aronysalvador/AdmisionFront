@@ -67,24 +67,24 @@ export const validarDireccion = async(direccion) => {
 }
 
 const validarComuna = async(direccion) => {
-        let COMUNAS = await getComunas()
-            // const array = store.getState().comunaForm.data
-            // for (let index = 0; index < array.length; index++) {
-            //     const element = array[index];
-            //     element.nombre=eliminarDiacriticos(element.nombre)
-            //     COMUNAS.push(element)
-            // }
+    let COMUNAS = await getComunas();
+        // const array = store.getState().comunaForm.data
+        // for (let index = 0; index < array.length; index++) {
+        //     const element = array[index];
+        //     element.nombre=eliminarDiacriticos(element.nombre)
+        //     COMUNAS.push(element)
+        // }
 
-        // console.log("COMUNAS")
-        // console.log(COMUNAS)
+    // console.log("COMUNAS")
+    // console.log(COMUNAS)
 
-        let comuna = (eliminarDiacriticos(direccion).toUpperCase()).split(",");
+    let comuna = (eliminarDiacriticos(direccion).toUpperCase()).split(",");
 
-        // console.log("comuna")
-        // console.log(comuna)
+    // console.log("comuna")
+    // console.log(comuna)
 
-        let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));
-        if (result.length > 0) return result[0]; else return [];
+    let result = COMUNAS.filter((o) => comuna.includes(eliminarDiacriticos(o.nombre)));
+    if (result.length > 0) return result[0]; else return [];
 };
 
 const getComunas = () => {
