@@ -16,6 +16,7 @@ import Time from './../../components/Pickers/Time'
 import Date from './../../components/Pickers/Date-YM'
 import moment from "moment";
 import "moment/locale/es";
+import { ValidarFechaMesAnio, ValidarHora } from 'helpers/utils';
 moment.locale("es");
 
 const NoTopTextField = withStyles({
@@ -72,7 +73,11 @@ export default () => {
     }
 
     useEffect(() => {
-        if (profesion!=="" && categoriaOcup!=="" && contrato!=="" && cargo!=="" && remuneracion!=="" && jornada!=="" && entrada!=="" && salida!=="" && ingreso!=="")
+        if (
+            (profesion!=="" && categoriaOcup!=="" && contrato!=="" && cargo!=="" && remuneracion!=="" && jornada!=="") &&
+            (ValidarHora(entrada) && ValidarHora(salida)) &&
+            (ValidarFechaMesAnio(ingreso))
+            )
             setValid(true)
         else
             setValid(false)
