@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
@@ -62,18 +62,24 @@ const InfoAccidente = () => {
         dispatch(updateForm("AccidenteEnSucursal", respuesta));
     };
 
+    const updateValues = useCallback(
+        (campo, value) => {
+            dispatch(updateForm(campo, value))
+        },
+        [dispatch],
+    )
 
     useEffect(() => {
         if(validDate && validHour)
-            dispatch(updateForm("fechaHoraSiniestro", `${date} ${hour}`))
-    }, [date, validDate, hour, validHour])
+            updateValues("fechaHoraSiniestro", `${date} ${hour}`);
+    }, [date, validDate, hour, validHour, updateValues])
 
     const handleNext = () => {
-        dispatch(updateForm("fechaHoraSiniestro", `${date} ${hour}`))
-        dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
-        dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
-        dispatch(updateForm("comunaSiniestro", nombreComuna))
-        dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+        updateValues("fechaHoraSiniestro", `${date} ${hour}`)
+        updateValues("sucursalEmpresaSiniestro", sucursal)
+        updateValues("urlMapasucursalEmpresaSiniestro", mapaUrl)
+        updateValues("comunaSiniestro", nombreComuna)
+        updateValues("lugarReferenciaSiniestro", lugarReferencia)
         dispatch(handleSetStep("x_next",10.1))
     }
 
