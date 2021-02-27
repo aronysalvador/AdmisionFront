@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
@@ -24,39 +24,30 @@ const FlujoTrabajo = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
 
-    const [date, setDate] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);  
-    const [validDate, setValidDate] = useState(fechaHoraResponsable.length>0 ? true :false);  
+    const [ date, setDate ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);
+    const [ validDate, setValidDate ] = useState(fechaHoraResponsable.length>0 ? true : false);
 
-    const [hour, setHour] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);    
-    const [validHour, setValidHour] = useState(fechaHoraResponsable.length>0 ? true :false);  
+    const [ hour, setHour ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);
+    const [ validHour, setValidHour ] = useState(fechaHoraResponsable.length>0 ? true : false);
 
-    const [canContinue, setCanContinue] = useState(false);
-
+    const [ canContinue, setCanContinue ] = useState(false);
 
     const updateValid = useCallback(
         (value) => {
             setCanContinue(value)
         },
-        [setCanContinue],
+        [ setCanContinue ]
     )
 
     useEffect(() => {
-        if(!validDate || !validHour){
-            updateValid(false);
-            return;
-        }
-        if(date.includes("_") || date.includes("_")){
-            updateValid(false);
-            return;
-        }
-            
+        if (!validDate || !validHour){ updateValid(false); return; }
+        if (date.includes("_") || date.includes("_")){ updateValid(false); return; }
 
-        let [dia, mes, anio] = date.split("-");
-        let [hora, minutos] = hour.split(":");
+        let [ dia, mes, anio ] = date.split("-");
+        let [ hora, minutos ] = hour.split(":");
         let fecha = new Date(`${+mes}/${dia}/${anio}`);
         let now = new Date();
-        
-        if(fecha.getFullYear() < 1900)
+        if (fecha.getFullYear() < 1900)
             updateValid(false);
         if ((fecha.getFullYear() > now.getFullYear()) ||
         (fecha.getFullYear() === now.getFullYear() && fecha.getMonth() > now.getMonth()) ||
@@ -69,9 +60,7 @@ const FlujoTrabajo = () => {
         }
         updateValid(true);
         return;
-
-    }, [date, validDate, hour, validHour, updateValid])
-
+    }, [ date, validDate, hour, validHour, updateValid ])
 
     const handleOnClick = (respuesta) => {
         let newValue
@@ -192,7 +181,9 @@ const FlujoTrabajo = () => {
                                         Fecha de aviso
                                 </Grid>
 
-                                <PickDate date={date} setDate={setDate} id="FlujoTrabajo-Datepicker1" setValidDate={setValidDate} />
+                                <PickDate id={"FlujoTrabajo-Datepicker1"} date={date} setDate={setDate}
+                                setValidDate={setValidDate}
+                                />
                         </div>
                         <div className='col-md-5 ' style={{textAlign: "left"}}>
                                 <Grid
@@ -213,8 +204,8 @@ setValidHour={setValidHour}
                     <div style={{ position: "relative", textAlign: "center" }}>
                         <Button
                             id='FlujoTrabajo-Btn1'
+                            variant='contained'
                             className={comunClass.buttonAchs}
-                            variant="contained"
                             disabled={!canContinue && responsableForm === "Si"}
                             onClick={() => {
                                 dispatch(updateForm("fechaHoraResponsable", `${date} ${hour}`))

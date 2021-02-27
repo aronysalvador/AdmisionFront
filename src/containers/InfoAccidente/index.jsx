@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
@@ -61,12 +61,24 @@ const InfoAccidente = () => {
         dispatch(updateForm("AccidenteEnSucursal", respuesta));
     };
 
+    const updateValues = useCallback(
+        (campo, value) => {
+            dispatch(updateForm(campo, value))
+        },
+        [ dispatch ]
+    )
+
+    useEffect(() => {
+        if (validDate && validHour)
+            updateValues("fechaHoraSiniestro", `${date} ${hour}`);
+    }, [ date, validDate, hour, validHour, updateValues ])
+
     const handleNext = () => {
-        dispatch(updateForm("fechaHoraSiniestro", `${date} ${hour}`))
-        dispatch(updateForm("sucursalEmpresaSiniestro", sucursal))
-        dispatch(updateForm("urlMapasucursalEmpresaSiniestro", mapaUrl))
-        dispatch(updateForm("comunaSiniestro", nombreComuna))
-        dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
+        updateValues("fechaHoraSiniestro", `${date} ${hour}`)
+        updateValues("sucursalEmpresaSiniestro", sucursal)
+        updateValues("urlMapasucursalEmpresaSiniestro", mapaUrl)
+        updateValues("comunaSiniestro", nombreComuna)
+        updateValues("lugarReferenciaSiniestro", lugarReferencia)
         dispatch(handleSetStep("x_next", 10.1))
     }
 
@@ -196,11 +208,11 @@ setValidHour={setValidHour}
                                                             onChange={(e) => {
                                                                 let texto = Format.caracteresInvalidos(e.target.value);
                                                                 setLugarReferencia(texto);
-                                                                if (texto.length > 0) setIsLugarReferenciaValid(true); else setIsLugarReferenciaValid(false);
+                                                                if (texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); } else { setIsLugarReferenciaValid(false); }
                                                             }}
                                                             InputProps={{
                                                                 endAdornment: (
-                                                                    <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); } } style={{cursor: 'pointer'}} />
+                                                                    <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", "")); } } style={{ cursor: 'pointer' }} />
                                                                 )
                                                             }}
                                                             style={{

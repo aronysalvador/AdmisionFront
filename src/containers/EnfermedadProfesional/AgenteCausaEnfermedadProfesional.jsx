@@ -46,6 +46,8 @@ const AgenteCausaEnfermedadProfesional = () => {
   const [ fechaSiniestro, setFechaSiniestro ] = useState(!FechaExposicionAgenteEP ? "" : formatDate(FechaExposicionAgenteEP));
   const [ validFecha, setValidFecha ] = useState(!!FechaExposicionAgenteEP);
 
+  const [ validTrabajo, setValidTrabajo ] = useState("");
+
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
@@ -139,7 +141,13 @@ const AgenteCausaEnfermedadProfesional = () => {
               id={"AgenteCausaEP-Lbl2"}
               value={molestia}
               placeholder={"Ejemplo: aire acondicionado, silla de escritorio"}
-              onChange={(e) => setMolestia(Format.caracteresInvalidos(e.target.value))}
+              onChange={(e) => {
+                setMolestia(Format.caracteresInvalidos(e.target.value));
+                if (Format.caracteresInvalidos(e.target.value).length < 5){
+                  setValidTrabajo("Se necesitan 5 caracteres");
+                } else {
+                  setValidTrabajo("")
+                } }}
               margin='dense'
               variant='outlined'
               autoComplete='off'
@@ -147,7 +155,9 @@ const AgenteCausaEnfermedadProfesional = () => {
               fullWidth
               rows={2}
               multiline
-              inputProps={{ maxLength: 200 }}
+              inputProps={{ maxLength: 200, minLength: 5 }}
+              error={validTrabajo}
+              helperText={validTrabajo}
             />
             <label className={comunClass.pullRight}>{molestia.length}/200</label>
           </div>
