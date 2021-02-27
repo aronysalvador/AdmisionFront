@@ -1,4 +1,3 @@
-import React from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -12,7 +11,7 @@ import image from './../../img/relato.svg'
 
 const TrabajoHabitual = () => {
   const {
-    addmissionForm: { step, percentage },
+    addmissionForm: { step, percentage }
   } = useSelector((state) => state, shallowEqual);
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
@@ -28,8 +27,8 @@ const TrabajoHabitual = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -37,34 +36,34 @@ const TrabajoHabitual = () => {
           percentage={percentage}
         />
       </div>
-      <div className={comunClass.titlePrimaryDesk}>  
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+      <div className={comunClass.titlePrimaryDesk}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           ¿Al momento del accidente, desarrollaba su
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;trabajo habitual
-          </Grid>  
+          </Grid>
           ?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth}/>
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
         <div className={comunClass.bottomElement}>
           <TrabajoHabitualCard />
-          <div className={comunClass.displayMobile}> 
+          <div className={comunClass.displayMobile}>
             <div className={spaceStyle.spaceMin1} />
           </div>
           <Button
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             onClick={() => handleOnClick("Si")}
           >
             Sí
           </Button>
-          <div className={spaceStyle.spaceMin1}></div>
+          <div className={spaceStyle.spaceMin1} />
           <Button
             className={comunClass.buttonAchs2}
             onClick={() => handleOnClick("No")}

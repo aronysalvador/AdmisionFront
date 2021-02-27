@@ -1,13 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const siniestroStyle = makeStyles((theme) => ({
+export const siniestroStyle = makeStyles(() => ({
   button: {
     width: "100%",
     height: "100%",
-    background: "#FFFFFF", //#007A33
+    background: "#FFFFFF", // #007A33
     border: "2px solid #787878",
     boxSizing: "border-box",
-    boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", //0.125em 0.125em 0.375em
+    boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)", // 0.125em 0.125em 0.375em
     borderRadius: "10px",
     fontFamily: "Catamaran",
     fontStyle: "normal",
@@ -21,42 +21,42 @@ export const siniestroStyle = makeStyles((theme) => ({
     padding: "10px",
     "&:hover": {
       background: "#DFF3F2",
-      border: "2px solid #00B2A9",
-      },
+      border: "2px solid #00B2A9"
+      }
     },
   imgButton: {
-    margin: "16px",
+    margin: "16px"
   },
   textButton: {
     display: "contents",
     fontWeight: "normal",
-    lineHeight: "1.785em",
+    lineHeight: "1.785em"
   },
   item1: {
     height: "0.9375em",
     margin: "0px",
     border: "0px",
-    padding: "0px",
+    padding: "0px"
   },
   item1Text: {
     fontFamily: "sfUiDisplayCufonfonts",
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "0.75em",
-    lineHeight: "0.875em",
+    lineHeight: "0.875em"
   },
   item2: {
     height: "1.16375em",
     margin: "0px",
     border: "0px",
-    padding: "0px",
+    padding: "0px"
   },
   item3: {
     width: "20%",
     height: "1,0475em",
     margin: "0px",
     border: "0px",
-    float: "left",
+    float: "left"
   },
   item4: {
     paddingTop: "0.5em",
@@ -65,26 +65,26 @@ export const siniestroStyle = makeStyles((theme) => ({
     height: "1,0475em",
     margin: "0px",
     border: "0px",
-    float: "left",
+    float: "left"
   },
   item5: {
     float: "none",
     clear: "both",
     margin: "0px",
-    border: "0px",
+    border: "0px"
   },
   item6: {
     height: "3.75em",
     margin: "0px",
     border: "0px",
     padding: "0px",
-    paddingTop: "2em",
+    paddingTop: "2em"
   },
   item7: {
     height: "3.5625em",
     margin: "0px",
     border: "0px",
-    padding: "0px",
+    padding: "0px"
   },
   item8: {
     height: "5em",
@@ -92,13 +92,13 @@ export const siniestroStyle = makeStyles((theme) => ({
     border: "0px",
     padding: "0px",
     textAlign: "left",
-    justifyContent: "flex-start",
+    justifyContent: "flex-start"
   },
   item9: {
     height: "2.5625em",
     margin: "0px",
     border: "0px",
-    padding: "0px",
+    padding: "0px"
   },
   mobileLabel: {
     fontFamily: "Catamaran",
@@ -108,7 +108,7 @@ export const siniestroStyle = makeStyles((theme) => ({
     lineHeight: "14px",
     letterSpacing: "0.3em",
     textTransform: "uppercase",
-    color: "#787878",
+    color: "#787878"
   },
   mobileCaption: {
     fontFamily: "Catamaran",
@@ -116,6 +116,6 @@ export const siniestroStyle = makeStyles((theme) => ({
     fontWeight: "normal",
     fontSize: "13px",
     lineHeight: "16px",
-    color: "#787878",
-  },
+    color: "#787878"
+  }
 }));

@@ -1,15 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const getWelcomeStyle = makeStyles((theme) => ({
+export const getWelcomeStyle = makeStyles(() => ({
 
     bienvenido: {
         fontSize: "2em",
-        fontWeight: "bold",
+        fontWeight: "bold"
     },
     boxCentroAlign: {
         display: "flex",
         justifyContent: "center",
-        minWidth: "335px", //"265px"
+        minWidth: "335px" // "265px"
     },
     boxCentroAchs: {
         display: "inline-flex",
@@ -18,7 +18,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         flexDirection: "column",
         width: "45%",
         minWidth: "146px",
-        minHeight: "116px", //"90px",
+        minHeight: "116px", // "90px",
         border: "2px solid #007A33",
         borderSpacing: "2px",
         borderRadius: "10px",
@@ -29,7 +29,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontWeight: "normal",
         fontFamily: "Catamaran",
         fontStyle: "normal",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#FFFFFF"
     },
     textBoxAchs: {
         fontSize: "16px !important"
@@ -45,7 +45,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         backgroundColor: "#FFFFFF"
     },
     star: {
-        color: "#00B2A9 !important",
+        color: "#00B2A9 !important"
     },
     button: {
         width: "100%",
@@ -63,11 +63,11 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         textAlign: "left",
         justifyContent: "flex-start",
         "&:hover": {
-            background: "#104F28",
-        },
+            background: "#104F28"
+        }
     },
     beginContainer: {
-        padding: "16px 16px 0 16px",
+        padding: "16px 16px 0 16px"
     },
     txtBegin: {
         textAlign: "center",
@@ -87,7 +87,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         fontSize: "16px",
         lineHeight: "18px",
         color: "#373737",
-        marginBottom: "10px",
+        marginBottom: "10px"
     },
     itemText2: {
         fontFamily: "Catamaran",
@@ -100,13 +100,13 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     },
     terminos: {
         fontSize: "0.87em",
-        textAlign: "center",
+        textAlign: "center"
     },
     rutSiniestroContainer: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
-        alignItems: "center",
+        alignItems: "center"
     },
     img: {
         height: "1.5em",
@@ -117,8 +117,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         marginRight: "10px",
         padding: "7px",
         "&:hover": {
-            background: "white",
-        },
+            background: "white"
+        }
     },
     imgCheck: {
         color: "white",
@@ -126,8 +126,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         borderRadius: "50%",
         display: "inline-flex",
         "&:hover": {
-            background: "#104F28",
-        },
+            background: "#104F28"
+        }
     },
     imgEdit: {
         color: "white",
@@ -137,8 +137,8 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         marginLeft: "-5%",
         // marginTop: '-15%',
         "&:hover": {
-            background: "#104F28",
-        },
+            background: "#104F28"
+        }
     },
     avatar: {
         border: "1px solid #DEDEDE !important",
@@ -147,14 +147,14 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         verticalAlign: "middle",
         padding: "1.92em",
         fontSize: "32px !important",
-        boxSizing: "border-box",
+        boxSizing: "border-box"
         // width: "5em",
         // height: "5em",
     },
     divRowBottomEmail: {
         display: "flex",
         alignItems: "center",
-        marginBottom: "5px",
+        marginBottom: "5px"
     },
     switchText: {
         fontFamily: 'Catamaran',
@@ -171,16 +171,16 @@ export const getWelcomeStyle = makeStyles((theme) => ({
     '@media (max-width: 767px)': {
         /* For mobile phones */
         backPosicion: {
-            marginLeft: "0.5em",
+            marginLeft: "0.5em"
         },
         avatarContainer: {
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "center"
         },
         avatarContainerRight: {
             display: "flex",
             justifyContent: "center",
-            float: "right",
+            float: "right"
         },
         backgroundBoxAchs: {
             backgroundColor: "#DFF3F2 !important",
@@ -191,54 +191,54 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         marginStar: {
             display: "table",
             marginLeft: "auto",
-            marginRight: "auto",
+            marginRight: "auto"
         },
         titleContainer: {
             padding: "0.5em 1.5em 0.5em 1.5em",
             background: "#FFFFFF",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            borderRadius: "10px",
+            borderRadius: "10px"
         },
         titleContainerCards: {
             padding: "1.5em",
             background: "#FFFFFF",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            borderRadius: "10px",
+            borderRadius: "10px"
         },
         iconAlignIndicaciones: {
             alignSelf: "flex-start",
-            display: "flex",
+            display: "flex"
         },
         divRow: {
             display: "flex",
-            alignItems: "center",
+            alignItems: "center"
         },
         divRow2: {
             display: "flex",
-            alignItems: "center",
+            alignItems: "center"
         },
         divRowBottom: {
             display: "flex",
             alignItems: "center",
-            marginBottom: "20px",
+            marginBottom: "20px"
         },
         divRowBottom2: {
             display: "flex",
             alignItems: "center",
-            marginBottom: "5px",
+            marginBottom: "5px"
         },
         divRowPantallaFinal: {
             display: "flex",
             alignItems: "center",
-            marginBottom: "20px",
+            marginBottom: "20px"
         },
         titleBegin: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
             fontWeight: "bold",
-            fontSize: "32px", //"25px",
+            fontSize: "32px", // "25px",
             lineHeight: "34px",
-            color: "#007A33",
+            color: "#007A33"
         },
         titleBegin2: {
             fontFamily: "Catamaran",
@@ -246,13 +246,13 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontWeight: "bold",
             fontSize: "20px",
             lineHeight: "28px",
-            color: "#007A33",
+            color: "#007A33"
         },
         textContainer: {
-            padding: "16px 0",
+            padding: "16px 0"
         },
         itemBegin: {
-            marginLeft: "20px",
+            marginLeft: "20px"
         },
         pBegin: {
             fontFamily: "Catamaran",
@@ -261,7 +261,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontSize: "13px",
             lineHeight: "16px",
             color: "#000000",
-            maxWidth: "210px",
+            maxWidth: "210px"
         },
         itemText: {
             fontFamily: "Catamaran",
@@ -269,39 +269,39 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontWeight: "bold",
             fontSize: "16px",
             lineHeight: "18px",
-            color: "#000000",
+            color: "#000000"
         },
         bienvenidoAchs: {
             fontSize: "25px",
-            fontWeight: "bold",
+            fontWeight: "bold"
         },
         iconCircular: {
             width: "54px",
             height: "54px",
-            verticalAlign: "middle",
+            verticalAlign: "middle"
         },
         titleContainerCards2: {
             padding: "1.5em 1.5em 0.5em 1.5em",
             background: "#FFFFFF",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            borderRadius: "10px",
+            borderRadius: "10px"
         },
         titleContainerCardsEmail: {
             padding: "1.5em 1.5em 0.5em 1.5em",
             background: "#FFFFFF",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            borderRadius: "10px",
+            borderRadius: "10px"
         },
         bottomBegin: {
-            marginTop: "10px",
-        },
+            marginTop: "10px"
+        }
 
     },
 
     '@media (min-width: 768px)': {
         /* Medium devices (landscape tablets, 768px and up) */
         backPosicion: {
-            display: 'none',
+            display: 'none'
         },
         avatarHeader: {
             border: "1px solid #DEDEDE !important",
@@ -322,7 +322,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         backgroundBoxAchs: {
             backgroundColor: "#016C2E !important",
-            padding: "64px 12%", //10%
+            padding: "64px 12%" // 10%
         },
         backgroundBoxAchsDesk: {
             backgroundColor: "#016C2E !important",
@@ -340,7 +340,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             padding: "1.5em",
             background: "#FFFFFF",
             // boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            borderRadius: "10px",
+            borderRadius: "10px"
         },
         iconAlignIndicaciones: {
             alignSelf: "flex-start",
@@ -351,38 +351,38 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         divRow: {
             display: "block",
             alignItems: "center",
-            paddingBottom: "10px", //"30px",
+            paddingBottom: "10px" // "30px",
         },
         divRow2: {
             display: "block",
             alignItems: "center",
-            paddingBottom: "10px", //"30px",
+            paddingBottom: "10px", // "30px",
             width: "33%"
         },
         divRowBottom: {
             display: "block",
             alignItems: "center",
-            marginBottom: "10px", //"20px",
+            marginBottom: "10px", // "20px",
             width: "33%"
         },
         divRowBottom2: {
             display: "flex",
             alignItems: "center",
             marginBottom: "5px",
-            justifyContent: "center",
+            justifyContent: "center"
         },
         divRowPantallaFinal: {
             display: "block",
             alignItems: "center",
-            paddingBottom: "10px", //"30px",
-            width: "150px",
+            paddingBottom: "10px", // "30px",
+            width: "150px"
         },
         titleBegin: {
             fontFamily: "Catamaran",
             fontStyle: "normal",
             fontWeight: "bold",
             fontSize: "32px",
-            lineHeight: "34px",
+            lineHeight: "34px"
             // color: "#007A33",
         },
         titleBegin2: {
@@ -390,14 +390,14 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontStyle: "normal",
             fontWeight: "bold",
             fontSize: "20px",
-            lineHeight: "28px",
+            lineHeight: "28px"
             // color: "#007A33",
         },
         textContainer: {
-            paddingBottom: "10px",
+            paddingBottom: "10px"
         },
         itemBegin: {
-            marginLeft: "0px",
+            marginLeft: "0px"
         },
         boxCentroAlignDesk: {
             position: 'absolute',
@@ -405,12 +405,12 @@ export const getWelcomeStyle = makeStyles((theme) => ({
         },
         bienvenidoAchs: {
             fontSize: "20px",
-            fontWeight: "bold",
+            fontWeight: "bold"
         },
         iconCircular: {
             width: "37px",
             height: "37px",
-            verticalAlign: "middle",
+            verticalAlign: "middle"
         },
         pBegin: {
             fontFamily: "Catamaran",
@@ -418,7 +418,7 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontWeight: "normal",
             fontSize: "16px",
             lineHeight: "16px",
-            color: "#000000",
+            color: "#000000"
             // maxWidth: "210px",
         },
         itemText: {
@@ -427,27 +427,27 @@ export const getWelcomeStyle = makeStyles((theme) => ({
             fontWeight: "bold",
             fontSize: "18px",
             lineHeight: "28px",
-            color: "#000000",
+            color: "#000000"
         },
         titleContainerCards2: {
             padding: "1.5em 1.5em 0.5em 1.5em",
             background: "#FFFFFF",
             // boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            borderRadius: "10px",
+            borderRadius: "10px"
         },
         titleContainerCardsEmail: {
             padding: "1.5em 1.5em 0.5em 1.5em",
             background: "#FFFFFF",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
-            borderRadius: "10px",
-        },
+            borderRadius: "10px"
+        }
 
     },
 
     '@media (min-width: 860px)': {
         bienvenidoAchs: {
             fontSize: "25px",
-            fontWeight: "bold",
-        },
-    },
+            fontWeight: "bold"
+        }
+    }
 }));

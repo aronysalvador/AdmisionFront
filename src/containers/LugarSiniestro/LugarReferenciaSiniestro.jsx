@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField, InputAdornment } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
@@ -16,24 +16,25 @@ import image from './../../img/relato.svg'
 
 const LugarReferenciaSiniestro = () => {
   let {
-    addmissionForm: { step, percentage, lugarReferenciaSiniestro, tipoSiniestro },
+    addmissionForm: { step, percentage, lugarReferenciaSiniestro, tipoSiniestro }
   } = useSelector((state) => state, shallowEqual);
   let stepx = step;
-  const [lugarReferencia, setLugarReferencia] = useState(() => {
+  const [ lugarReferencia, setLugarReferencia ] = useState(() => {
     return !lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro;
   });
-  const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(true);
-  
+  const [ isLugarReferenciaValid, setIsLugarReferenciaValid ] = useState(true);
+
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
   const comunClass = getComunStyle();
   const { mobileCaption } = siniestroStyle();
   const spaceStyle = getSpaceStyle();
+
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -42,16 +43,16 @@ const LugarReferenciaSiniestro = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           Pide al paciente el
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
-            &nbsp;sitio específico 
-          </Grid>        
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+            &nbsp;sitio específico
+          </Grid>
           &nbsp;de donde ocurrió el accidente
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -69,9 +70,9 @@ const LugarReferenciaSiniestro = () => {
             }
             error={!isLugarReferenciaValid}
             value={lugarReferencia}
-            variant="outlined"
-            size="small"
-            margin="dense"
+            variant='outlined'
+            size='small'
+            margin='dense'
             required
             fullWidth
             onChange={(e) => {
@@ -81,7 +82,7 @@ const LugarReferenciaSiniestro = () => {
             }}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                     <IconButton
                       onClick={() => {
                         setLugarReferencia("");
@@ -89,8 +90,8 @@ const LugarReferenciaSiniestro = () => {
                     >
                       <ClearIcon />
                     </IconButton>
-                  </InputAdornment>
-              ),
+                </InputAdornment>
+              )
             }}
           />
           <Typography className={mobileCaption}>
@@ -101,13 +102,13 @@ const LugarReferenciaSiniestro = () => {
           <Button
             disabled={lugarReferencia.length === 0 || !isLugarReferenciaValid}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             onClick={() => {
                 dispatch(updateForm("lugarReferenciaSiniestro", lugarReferencia));
-                if(tipoSiniestro.Id === 2) {//Accidente de Trayecto
+                if (tipoSiniestro.Id === 2) { // Accidente de Trayecto
                   dispatch(updateForm("AccidenteEnSucursal", "no"))
-                }                
-                dispatch(handleSetStep("x",12))
+                }
+                dispatch(handleSetStep("x", 12))
             }}
           >
             Continuar

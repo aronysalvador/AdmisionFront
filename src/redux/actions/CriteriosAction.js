@@ -1,7 +1,7 @@
 import {
     GET_CRITERIOS_INIT,
     GET_CRITERIOS_SUCCESS,
-    GET_CRITERIOS_FAILURE,
+    GET_CRITERIOS_FAILURE
 } from "../types/criteriosType";
 // import { CriteriosGravedad } from "../../util/fakeApi";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -12,7 +12,7 @@ export const getData = createHttpGetClient(window.REACT_APP_CRITERIOS);
 export const getCriteriosGravedad = () => async(dispatch) => {
     dispatch({
         type: GET_CRITERIOS_INIT,
-        payload: true,
+        payload: true
     });
 
     getData()
@@ -26,7 +26,7 @@ export const getCriteriosGravedad = () => async(dispatch) => {
                 dispatch(handleSetStep(1004));
             }
         })
-        .catch((error) => {
+        .catch(() => {
             dispatch(errorCallCRITERIOS());
             dispatch(updateForm("errorStep", 0));
             dispatch(updateForm("mensajeErrorApi", window.REACT_APP_CRITERIOS));
@@ -35,10 +35,10 @@ export const getCriteriosGravedad = () => async(dispatch) => {
 
     const successCallCRITERIOS = (criterios) => ({
         type: GET_CRITERIOS_SUCCESS,
-        payload: criterios,
+        payload: criterios
     });
 
     const errorCallCRITERIOS = () => ({
-        type: GET_CRITERIOS_FAILURE,
+        type: GET_CRITERIOS_FAILURE
     });
 };

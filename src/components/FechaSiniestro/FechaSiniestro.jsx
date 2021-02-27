@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { meses, getActualDate } from "../../util/FechasUtils";
 import { Grid } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
@@ -9,21 +9,21 @@ const FechaSiniestro = ({
   onChange,
   daysFromState,
   monthFromState,
-  yearFromState,
+  yearFromState
 }) => {
-  const [days, setDays] = useState(() => {
+  const [ days, setDays ] = useState(() => {
     return !daysFromState ? new Date().getDate() : daysFromState;
   });
 
-  const [month, setMonth] = useState(() => {
+  const [ month, setMonth ] = useState(() => {
     return !monthFromState ? new Date().getMonth() + 1 : monthFromState;
   });
 
-  const [year, setYear] = useState(() => {
+  const [ year, setYear ] = useState(() => {
     return !yearFromState ? new Date().getFullYear() : yearFromState;
   });
 
-  const [monthLastDay, setMonthLastDay] = useState(() => {
+  const [ monthLastDay, setMonthLastDay ] = useState(() => {
     return new Date(year, month, 0).getDate();
   });
 
@@ -63,32 +63,32 @@ const FechaSiniestro = ({
       color: "white",
       background: "#007A33",
       "&:hover": {
-        background: "#007A33",
-      },
+        background: "#007A33"
+      }
     },
     flechasAct: {
       color: "white !important",
-      background: "#F4F4F4 !important",
-    },
+      background: "#F4F4F4 !important"
+    }
   });
 
   const useStyles = getUseStyles();
 
-  const [t, setT] = useState(0);
+  const [ t, setT ] = useState(0);
 
   const TRef = useRef(t);
   TRef.current = t;
 
-  const [t2, setT2] = useState(0);
+  const [ t2, setT2 ] = useState(0);
 
   const TRef2 = useRef(t2);
   TRef2.current = t2;
 
-  let start = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+  let start = 600; // Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
 
-  let start2 = 600; //Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
+  let start2 = 600; // Intervalo de tiempo a esperar (0.6 seg) para empezar a girar
 
-  //Hooks para acceder al estado desde setTimeout
+  // Hooks para acceder al estado desde setTimeout
   const countRef = useRef(days);
   countRef.current = days;
 
@@ -98,19 +98,18 @@ const FechaSiniestro = ({
   const longPressDownFecha = () => {
     setDays((d) => --d);
     setT(setTimeout(longPressDownFecha, start));
-    start = start / 2; //Para que cada vez vaya más rápido
+    start = start / 2; // Para que cada vez vaya más rápido
   };
 
   const longPressUPFecha = () => {
-    if((countRef.current !== actualDay) || (countRef2.current !== actualMonth)){
+    if ((countRef.current !== actualDay) || (countRef2.current !== actualMonth)){
       setDays((d) => ++d);
       setT2(setTimeout(longPressUPFecha, start2));
-      start2 = start2 / 2; //Para que cada vez vaya más rápido
+      start2 = start2 / 2; // Para que cada vez vaya más rápido
     }
-      
   };
 
-  //con MouseUp detengo la selección
+  // con MouseUp detengo la selección
   const onMouseUp = () => {
     clearTimeout(TRef.current);
     start = 600;
@@ -124,21 +123,21 @@ const FechaSiniestro = ({
   return (
     <Grid
       container
-      direction="row"
-      justify="space-between"
-      alignItems="center"
+      direction='row'
+      justify='space-between'
+      alignItems='center'
       style={{
         background: "white",
         borderRadius: "10px",
-        padding: "10px",
+        padding: "10px"
       }}
     >
       <Grid item>
         <IconButton
-          aria-label="Ir atrás"
-          variant="contained"
-          component="span"
-          color="primary"
+          aria-label='Ir atrás'
+          variant='contained'
+          component='span'
+          color='primary'
           // onClick={() => {
           //   setDays((d) => --d);
           // }}
@@ -160,13 +159,14 @@ const FechaSiniestro = ({
             fontSize: "18px",
             fontWeight: "bold",
             float: "left",
-            clear: "left",
+            clear: "left"
           }}
-        >{`${days} ${monthName}`}</span>
+        >{`${days} ${monthName}`}
+        </span>
         <span
           style={{
             display: "block",
-            textAlign: "center",
+            textAlign: "center"
           }}
         >
           {days === actualDay && month === actualMonth ? "Hoy" : ""}
@@ -174,23 +174,18 @@ const FechaSiniestro = ({
       </Grid>
       <Grid item>
         <IconButton
-          aria-label="Ir adelante"
-          component="span"
-          variant="contained"
+          aria-label='Ir adelante'
+          component='span'
+          variant='contained'
           disabled={days === actualDay && month === actualMonth}
           // onClick={() => {
           //   setDays((d) => ++d);
           // }}
           onMouseDown={() => {
-
               longPressUPFecha();
-                                  
           }}
           onMouseUp={() => {
-
               onMouseUp2();
-               
-            
           }}
           className={days === actualDay && month === actualMonth ? useStyles.flechasAct : useStyles.flechas}
         >

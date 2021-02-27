@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { connect, useDispatch, useSelector, shallowEqual } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -11,8 +11,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-
-//Action de Redux
+// Action de Redux
 import { sendIsapres } from "../../redux/actions/AdmissionAction";
 import image from './../../img/relato.svg'
 
@@ -25,10 +24,10 @@ const HealthForecastIsapre = (props) => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  //State
-  const [isapres, saveIsapres] = useState(isapreSeleccionado);
-  const [open, setOpen] = useState(false);
-  const [isIsapresValid, setIsIsapresValid] = useState(true);
+  // State
+  const [ isapres, saveIsapres ] = useState(isapreSeleccionado);
+  const [ open, setOpen ] = useState(false);
+  const [ isIsapresValid, setIsIsapresValid ] = useState(true);
 
   const dispatch1 = useDispatch();
 
@@ -39,6 +38,7 @@ const HealthForecastIsapre = (props) => {
   const clickSendIsapres = () => {
     if (isapres === null) {
       setIsIsapresValid(false);
+
       return;
     }
     dispatch1(sendIsapres(isapres));
@@ -47,7 +47,7 @@ const HealthForecastIsapre = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header
           userMsal={ microsoftReducer.userMsal }
           // step={1}
@@ -62,16 +62,16 @@ const HealthForecastIsapre = (props) => {
       <form>
         <div className={comunClass.titlePrimaryDesk}>
           <Grid
-            className={[comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk]}
+            className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}
           >
-            Escribe la 
-            <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+            Escribe la
+            <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
               &nbsp;Isapre
-            </Grid>                    
+            </Grid>
           </Grid>
           <div className={comunClass.displayDeskImg}>
-            <Grid component="span" className={comunClass.imgPrimaryDesk}>
-              <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+            <Grid component='span' className={comunClass.imgPrimaryDesk}>
+              <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
             </Grid>
           </div>
         </div>
@@ -84,7 +84,7 @@ const HealthForecastIsapre = (props) => {
               Isapre
             </Typography>
             <Autocomplete
-              id="asynchronous-demo"
+              id='asynchronous-demo'
               open={open}
               onOpen={() => { setOpen(true) }}
               onClose={() => { setOpen(false) }}
@@ -105,23 +105,23 @@ const HealthForecastIsapre = (props) => {
                   helperText={
                     !isIsapresValid && "Escribe o Selecciona al menos una Isapre"
                   }
-                  variant="outlined"
+                  variant='outlined'
                   InputProps={{
                     ...params.InputProps,
                     endAdornment: (
-                      <React.Fragment>
+                      <>
                         {loading ? (
-                          <CircularProgress color="inherit" size={20} />
+                          <CircularProgress color='inherit' size={20} />
                         ) : null}
                         {params.InputProps.endAdornment}
-                      </React.Fragment>
+                      </>
                     ),
                     style: {
                       paddingTop: "3px",
                       paddingBottom: "3px",
                       paddingLeft: "5xp",
-                      marginTop: "7px",
-                    },
+                      marginTop: "7px"
+                    }
                   }}
                 />
               )}
@@ -132,7 +132,7 @@ const HealthForecastIsapre = (props) => {
             <Button
               disabled={!isapres}
               className={comunClass.buttonAchs}
-              variant="contained"
+              variant='contained'
               onClick={() => clickSendIsapres()}
             >
               Continuar
@@ -148,7 +148,7 @@ const HealthForecastIsapre = (props) => {
 };
 function mapStateToProps({ addmissionForm }) {
   return {
-    addmissionForm: addmissionForm,
+    addmissionForm
   };
 }
 

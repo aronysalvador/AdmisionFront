@@ -1,13 +1,13 @@
 import {
   GET_JORNADA_LABORAL_INIT,
   GET_JORNADA_LABORAL_SUCCESS,
-  GET_JORNADA_LABORAL_FAILURE,
+  GET_JORNADA_LABORAL_FAILURE
 } from "../types/tipoJornadaLaboralType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function tipoJornadaLaboralForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function tipoJornadaLaboralForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_JORNADA_LABORAL_FAILURE:

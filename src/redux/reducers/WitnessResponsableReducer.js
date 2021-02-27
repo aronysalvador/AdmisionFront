@@ -6,29 +6,27 @@ import {
 import {CargosForm} from '../models/WitnessResponsableForm';
 
 export default function payload(state = CargosForm, action) {
-
     switch (action.type) {
-      
         case SEARCH_POSITION_INIT:
-            return{
+            return {
                 ...state,
                 loading: action.payload
-            } 
+            }
         case SEARCH_POSITION_SUCCESS:
-            return{
+            return {
                 ...state,
                 loading: false,
                 error: null,
-                cargos : action.payload
-            } 
+                cargos: action.payload
+            }
         case SEARCH_POSITION_FAILURE:
-            return{
+            return {
                 ...state,
                 loading: false,
                 error: true,
-                cargos : action.payload
-            } 
-        
+                cargos: action.payload
+            }
+
         default:
             return state;
     }

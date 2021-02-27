@@ -39,12 +39,12 @@ export const AdmissionForm = {
     inicioJornadaLaboral: "",
     finJornadaLaboral: "",
 
-    sucursalTrabajoTrayecto:"",
-    urlMapaTrabajoTrayecto:"",
-    comunaTrabajoTrayecto:"",
+    sucursalTrabajoTrayecto: "",
+    urlMapaTrabajoTrayecto: "",
+    comunaTrabajoTrayecto: "",
 
-    //State de Cargo
-    //Lugar Exacto Sinietsro
+    // State de Cargo
+    // Lugar Exacto Sinietsro
     sucursalEmpresaSiniestro: "",
     urlMapasucursalEmpresaSiniestro: "",
     SucursalEmpresaObjeto: {},
@@ -52,8 +52,8 @@ export const AdmissionForm = {
     centrosForm: {},
 
     siniestros: [],
-    siniestroDetalle: {}, //no va a SAP
-    siniestroOpciones: {}, //no va a SAP
+    siniestroDetalle: {}, // no va a SAP
+    siniestroOpciones: {}, // no va a SAP
 
     tipoSiniestro: {},
 
@@ -61,7 +61,7 @@ export const AdmissionForm = {
     LatTemporal: "", // latitud temporal que es enviada al mapa dinámico
     LongTemporal: "", // longitud temporal que es enviada al mapa dinámico
     AccidenteEnSucursal: "",
-    sucursalCargo: "", //Codigo de la sucursal
+    sucursalCargo: "", // Codigo de la sucursal
 
     comunaSiniestro: "",
     comunaDireccionParticular: "",
@@ -76,12 +76,13 @@ export const AdmissionForm = {
 
     coberturaSoap: "", // se debe pasar a SAP
 
-    responsableForm: "", //Si hay responsable
+    responsableForm: "", // Si hay responsable
 
     CamposDocumentos: {
         anteceContr: "",
+
         /* TRAYECTO */
-        //Atencion Previa
+        // Atencion Previa
         FechaOtroRe: "",
         HoraOtroRec: "",
         OtroRecinto: "",
@@ -90,21 +91,21 @@ export const AdmissionForm = {
         CuentaConSi: "",
         CuentaConNo: "x",
         CuentaCual: "",
-        //Testigo
+        // Testigo
         DatosTestig: "",
-        //Mecanismo Causal
+        // Mecanismo Causal
         Mecanismo: "",
         PosibleCaus: "",
-        //MedioTransporte
+        // MedioTransporte
         MedioTransp: "",
         Otras: "",
-        //TipoAvisoResponsable
+        // TipoAvisoResponsable
         avisoPresen: "",
         avisoMail: "",
         avisoFono: "",
         avisoOtro: "",
         avisoCual: "",
-        //Docuentación Complementaria
+        // Docuentación Complementaria
         antecePartP: "",
         anteceConst: "",
         anteceVideS: "",
@@ -113,14 +114,15 @@ export const AdmissionForm = {
         anteceOtroC: "",
         anteceNocuenta: "x",
 
-        //Antece "" Documento Testigo
+        // Antece "" Documento Testigo
         anteceRespA: "",
         anteceRespO: "",
         anteceRegsA: "",
         anteceCertH: "",
-        //Testigo
+        // Testigo
         TestigoS: "",
         TestigoN: ""
+
             /* TRAYECTO */
 
     },
@@ -135,7 +137,6 @@ export const AdmissionForm = {
     FechaExposicionAgenteEP: "",
     mismasMolestiasCompañerosEP: "",
 
-    TipoAvisoResponsable: {},
+    TipoAvisoResponsable: {}
 
-    
 };

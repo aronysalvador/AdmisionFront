@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep, validarAfiliacion } from "../../redux/actions/AdmissionAction";
@@ -25,54 +24,53 @@ const PersonalData = (props) => {
   //   addmissionForm.razonSocialForm,
   //   addmissionForm.rutEmpresa,
   // ];
-  const contenidoDireccionEmpresa = [Format.formatizar(addmissionForm.DireccionEmpresa)];
-  const contenidoRazonSocialForm = [addmissionForm.razonSocial ? Format.formatizar(addmissionForm.razonSocial.name) : null];
-  const contenidoRutEmpresa = [addmissionForm.rutEmpresa];
+  const contenidoDireccionEmpresa = [ Format.formatizar(addmissionForm.DireccionEmpresa) ];
+  const contenidoRazonSocialForm = [ addmissionForm.razonSocial ? Format.formatizar(addmissionForm.razonSocial.name) : null ];
+  const contenidoRutEmpresa = [ addmissionForm.rutEmpresa ];
   const tituloDireccion = "Dirección particular";
-  const contenidoDireccion = [Format.formatizar(addmissionForm.direccionParticular)];
+  const contenidoDireccion = [ Format.formatizar(addmissionForm.direccionParticular) ];
   const tituloTelefono = "Teléfono personal";
-  const contenidoTelefono = [addmissionForm.telefonoParticular];
+  const contenidoTelefono = [ addmissionForm.telefonoParticular ];
   const tituloGrupo = "Grupo étnico";
-  const contenidoGrupo = [addmissionForm?.grupoEtnico.descripcion];
+  const contenidoGrupo = [ addmissionForm?.grupoEtnico.descripcion ];
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
-  const [loading, setLoading] = useState(false)
+  const [ loading, setLoading ] = useState(false)
 
   const handleNext = () => {
     setLoading(true)
     const {
-      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular,grupoEtnico,
+      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular, grupoEtnico,
       rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
-    if ( !razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa ) {
+    if (!razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa) {
       // si falta info de la empresa
-      dispatch(handleSetStep(5.4)); //form empresa
+      dispatch(handleSetStep(5.4)); // form empresa
     }
     else if (!direccionParticular) {
       // si no tiene direccion
-      dispatch(handleSetStep(5.2));//form direccion
-    } 
-    else if ( !telefonoParticular || telefonoParticular === "0") {
+      dispatch(handleSetStep(5.2));// form direccion
+    }
+    else if (!telefonoParticular || telefonoParticular === "0") {
       // si no tiene telefono
-      dispatch(handleSetStep(5.3)); //form telefono
-    } 
+      dispatch(handleSetStep(5.3)); // form telefono
+    }
     else if (!grupoEtnico) {
       // si no tiene Grupo Etnico
-      dispatch(handleSetStep(5.41)); //form Grupo Etnico
-    } 
-    if(direccionParticular && telefonoParticular && razonSocial && grupoEtnico) {
+      dispatch(handleSetStep(5.41)); // form Grupo Etnico
+    }
+    if (direccionParticular && telefonoParticular && razonSocial && grupoEtnico) {
       // si todos los datos relevantes están llenos
-      if(rut && rutEmpresa && SucursalEmpresaObjeto){
+      if (rut && rutEmpresa && SucursalEmpresaObjeto)
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
-      }else{
+      else
         dispatch(handleSetStep(500));
-      }
     }
   };
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -84,30 +82,31 @@ const PersonalData = (props) => {
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={`${comunClass.titleBlack} ${comunClass.titleBlack2} ${comunClass.textPrimaryDesk}`}>
           Empieza
-          <Grid component="span"  className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
-            &nbsp;verificando los datos de&nbsp;<br className={comunClass.displayMobile}/>
-          </Grid>  
-          <Grid component="span"  className={comunClass.titleGray}>
+          <Grid component='span' className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
+            &nbsp;verificando los datos de&nbsp;<br className={comunClass.displayMobile} />
+          </Grid>
+          <Grid component='span' className={comunClass.titleGray}>
             {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
-          </Grid>         
+          </Grid>
         </Grid>
-      
+
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
         {/* <div className={spaceStyle.space1} /> */}
-        <div className="col-md-12">
+        <div className='col-md-12'>
           <BoxEmpresa
             id={"PersonalData-Box1"}
             contenidoDireccionEmpresa={contenidoDireccionEmpresa}
             contenidoRazonSocialForm={contenidoRazonSocialForm}
             contenidoRutEmpresa={contenidoRutEmpresa}
             titulo={tituloEmpresa}
-            step={5.4} />
+            step={5.4}
+          />
           {/* <div className={spaceStyle.spaceMin1} /> */}
           <BoxACHS
             id={"PersonalData-Box2"}
@@ -116,7 +115,7 @@ const PersonalData = (props) => {
             step={5.3}
           />
         </div>
-        <div className="col-md-12">
+        <div className='col-md-12'>
           <BoxACHS
             id={"PersonalData-Box3"}
             titulo={tituloDireccion}
@@ -132,7 +131,7 @@ const PersonalData = (props) => {
           />
         </div>
         {/* <div className={spaceStyle.spaceMin1} /> */}
-       
+
         {/* <div className={spaceStyle.spaceMin1} /> */}
 
         <div className={comunClass.bottomElement}>
@@ -143,7 +142,7 @@ const PersonalData = (props) => {
             onClick={() => handleNext()}
           >
             {(addmissionForm.direccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.grupoEtnico.descripcion)?"Sí, es correcta":"Rellenar información"}
-            
+
           </Button>
         </div>
       </div>
@@ -156,8 +155,8 @@ const PersonalData = (props) => {
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 }
 

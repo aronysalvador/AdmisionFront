@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
@@ -14,15 +13,15 @@ const QuestionWitness = (props) => {
 
   const tituloTestigo = "Testigo";
   const contenidoTestigo = [
-    <div className={classes.itemFecha} >{addmissionForm.testigos.nombre} </div>,
-    <br />,
-    addmissionForm.testigos.cargo,
+    <div key={addmissionForm.testigos.nombre} className={classes.itemFecha}>{addmissionForm.testigos.nombre} </div>,
+    <br key={addmissionForm.testigos.nombre + '-space'} />,
+    addmissionForm.testigos.cargo
   ];
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -32,7 +31,7 @@ const QuestionWitness = (props) => {
       </div>
         <BoxTestigosResponsable
           titulo={"¿Alguien fue  "}
-          titulo2={"testigo"} 
+          titulo2={"testigo"}
           titulo3={" de lo que sucedió?"}
           tituloTestigo={tituloTestigo}
           contenidoTestigo={contenidoTestigo}
@@ -44,8 +43,8 @@ const QuestionWitness = (props) => {
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 }
 

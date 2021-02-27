@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Button, Typography, withStyles, Checkbox } from "@material-ui/core";
 import { getComunStyle } from "../../css/comun";
@@ -19,61 +19,62 @@ moment.locale("es");
 
 const AgenteCausaEnfermedadProfesional = () => {
   const {
-    addmissionForm: { AgenteCausaEP, TrabajoMolestiasEP, FechaExposicionAgenteEP, mismasMolestiasCompañerosEP, percentage },
+    addmissionForm: { AgenteCausaEP, TrabajoMolestiasEP, FechaExposicionAgenteEP, mismasMolestiasCompañerosEP, percentage }
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
-  
+
   const dispatch = useDispatch();
 
   const formatDate = (fecha) => {
     let newfecha = fecha.replace(/[.]/g, '-')
+
     return moment(newfecha, "DD-MM-YYYY").format("DD-MM-YYYY")
   }
 
-  const [agenteCausa, setAgenteCausa] = useState(() => {
+  const [ agenteCausa, setAgenteCausa ] = useState(() => {
     return !AgenteCausaEP ? {} : AgenteCausaEP;
   });
 
-  const { data: sugerenciasAgenteCausa } = useSelector( 
-    (state) => state.agenteCausaEnfermedadForm, shallowEqual ); 
+  const { data: sugerenciasAgenteCausa } = useSelector(
+    (state) => state.agenteCausaEnfermedadForm, shallowEqual);
 
-  const [molestia, setMolestia] = useState(() => {
+  const [ molestia, setMolestia ] = useState(() => {
     return !TrabajoMolestiasEP ? "" : TrabajoMolestiasEP;
   });
 
-  const [fechaSiniestro, setFechaSiniestro] = useState(!FechaExposicionAgenteEP ? "" : formatDate(FechaExposicionAgenteEP));
-  const [validFecha, setValidFecha] = useState(!FechaExposicionAgenteEP ? false : true);
+  const [ fechaSiniestro, setFechaSiniestro ] = useState(!FechaExposicionAgenteEP ? "" : formatDate(FechaExposicionAgenteEP));
+  const [ validFecha, setValidFecha ] = useState(!!FechaExposicionAgenteEP);
 
-  const [validTrabajo, setValidTrabajo] = useState("");
+  const [ validTrabajo, setValidTrabajo ] = useState("");
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
   const welcomeStyle = getWelcomeStyle();
 
-  const [stateCheckbox, setStateCheckbox] = useState(() => {
-    return !mismasMolestiasCompañerosEP ? false : (mismasMolestiasCompañerosEP === "si" ? true : false)
+  const [ stateCheckbox, setStateCheckbox ] = useState(() => {
+    return !mismasMolestiasCompañerosEP ? false : (mismasMolestiasCompañerosEP === "si")
   });
 
   const handleCheckBoxChange = (event) => {
-    setStateCheckbox( event.target.checked );
+    setStateCheckbox(event.target.checked);
   };
 
-  var respMolestias = stateCheckbox ? "si" : "no" ;
+  let respMolestias = stateCheckbox ? "si" : "no";
 
   const BlueCheckbox = withStyles({
     root: {
       '&$checked': {
-        color: '#00B2A9',
-      },
+        color: '#00B2A9'
+      }
     },
-    checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
+    checked: {}
+  })((props) => <Checkbox color='default' {...props} />);
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -83,16 +84,16 @@ const AgenteCausaEnfermedadProfesional = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid  className={[comunClass.titleBlack, comunClass.textPrimaryDesk]} style={{margin: '-3px'}}>
-          ¿Qué cosas o agentes del trabajo cree Ud. 
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]} style={{margin: '-3px'}}>
+          ¿Qué cosas o agentes del trabajo cree Ud.
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;que le causan estas molestias
-          </Grid> 
-          ?                   
+          </Grid>
+          ?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -112,24 +113,24 @@ const AgenteCausaEnfermedadProfesional = () => {
               onChange={(event, value) => {
                 setAgenteCausa(value);
               }}
-              options={sugerenciasAgenteCausa} 
-              getOptionLabel={(option) =>  option.nombre }
+              options={sugerenciasAgenteCausa}
+              getOptionLabel={(option) => option.nombre }
               getOptionSelected= {(
                 option,
-                value,
+                value
               ) => value.value === option.value}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  variant="outlined"  
-                  size="small"              
+                  variant='outlined'
+                  size='small'
                   InputProps={{
                     ...params.InputProps,
-                    style: { marginTop: "7px" },
+                    style: { marginTop: "7px" }
                   }}
                 />
               )}
-            /> 
+            />
           </div>
           <div className={spaceStyle.space1} />
           <div>
@@ -142,15 +143,15 @@ const AgenteCausaEnfermedadProfesional = () => {
               placeholder={"Ejemplo: aire acondicionado, silla de escritorio"}
               onChange={(e) => {
                 setMolestia(Format.caracteresInvalidos(e.target.value));
-                if(Format.caracteresInvalidos(e.target.value).length < 5) 
-                  setValidTrabajo("Se necesitan 5 caracteres"); 
-                else 
+                if (Format.caracteresInvalidos(e.target.value).length < 5){
+                  setValidTrabajo("Se necesitan 5 caracteres");
+                } else {
                   setValidTrabajo("")
-                }}
-              margin="dense"
-              variant="outlined"
-              autoComplete="off"
-              type="text"
+                } }}
+              margin='dense'
+              variant='outlined'
+              autoComplete='off'
+              type='text'
               fullWidth
               rows={2}
               multiline
@@ -166,12 +167,14 @@ const AgenteCausaEnfermedadProfesional = () => {
             <Typography className={comunClass.tituloTextBox} style={{marginBottom: "5px"}}>
               Ingresa la fecha de exposición al agente
             </Typography>
-            <Date date={fechaSiniestro} setDate={setFechaSiniestro} id="AgenteCausaEP-Datepicker1" setValidDate={setValidFecha} />
+            <Date date={fechaSiniestro} setDate={setFechaSiniestro} id='AgenteCausaEP-Datepicker1'
+setValidDate={setValidFecha}
+            />
           </div>
 
           <div className={spaceStyle.space1} />
           <Typography className={welcomeStyle.switchText} style={{}}>
-            <Grid component="span">
+            <Grid component='span'>
               <BlueCheckbox id={"AgenteCausaEP-Chk1"} checked={stateCheckbox} onChange={handleCheckBoxChange} />
             </Grid>
             Existen compañeros de trabajo con las mismas molestias
@@ -182,14 +185,14 @@ const AgenteCausaEnfermedadProfesional = () => {
           <Button
             id={"AgenteCausaEP-Btn1"}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             disabled={!agenteCausa?.id || molestia?.length <= 4 || !validFecha}
             onClick={() => {
               dispatch(updateForm("AgenteCausaEP", agenteCausa));
               dispatch(updateForm("TrabajoMolestiasEP", molestia));
               dispatch(updateForm("FechaExposicionAgenteEP", validFecha ? fechaSiniestro.replace(/[-]/g, '.') : ""));
               dispatch(updateForm("mismasMolestiasCompañerosEP", respMolestias));
-              dispatch(handleSetStep(18.01)); //18.1 
+              dispatch(handleSetStep(18.01)); // 18.1
             }}
           >
             Continuar
@@ -198,7 +201,7 @@ const AgenteCausaEnfermedadProfesional = () => {
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space1} />
-      </div> 
+      </div>
     </div>
   );
 };

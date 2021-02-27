@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField, InputAdornment } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { Button, Typography } from "@material-ui/core";
@@ -18,12 +18,12 @@ const Cargo = () => {
     addmissionForm: { step, percentage, cargoForm }, microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
-  //State
-  const [cargo, saveCargo] = useState(() => {
+  // State
+  const [ cargo, saveCargo ] = useState(() => {
     return !cargoForm ? "" : cargoForm;
   });
 
-  const [error, setError] = useState(false);
+  const [ error, setError ] = useState(false);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -31,9 +31,10 @@ const Cargo = () => {
   const dispatch = useDispatch();
 
   const clickSendCargo = () => {
-    //Validar Formulario
+    // Validar Formulario
     if (cargo.length < 5) {
       setError(true);
+
       return;
     }
     setError(false);
@@ -43,8 +44,8 @@ const Cargo = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -53,16 +54,16 @@ const Cargo = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          ¿Cuál es el  
-          <Grid component="span" className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          ¿Cuál es el
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;cargo
-          </Grid>                 
+          </Grid>
           &nbsp;del paciente en la empresa?
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -77,7 +78,7 @@ const Cargo = () => {
           </Typography>
           <div>
             <TextField
-              id="cargo"
+              id='cargo'
               value={cargo}
               onChange={(e) => saveCargo(Format.caracteresInvalidos(e.target.value))}
               helperText={
@@ -86,15 +87,15 @@ const Cargo = () => {
                   : "Ejemplo: Analista, Operario, Maestro"
               }
               error={error}
-              margin="dense"
-              variant="outlined"
-              autoComplete="off"
-              type="text"
+              margin='dense'
+              variant='outlined'
+              autoComplete='off'
+              type='text'
               inputProps={{ maxLength: 25 }}
               fullWidth
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
+                  <InputAdornment position='end'>
                       <IconButton
                         onClick={() => {
                           saveCargo("");
@@ -102,15 +103,15 @@ const Cargo = () => {
                       >
                         <ClearIcon />
                       </IconButton>
-                    </InputAdornment>
-                ),
+                  </InputAdornment>
+                )
               }}
             />
           </div>
         </div>
         <div className={comunClass.bottomElement}>
           <Button
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             disabled={!cargo}
             onClick={() => clickSendCargo()}

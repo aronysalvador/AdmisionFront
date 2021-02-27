@@ -1,5 +1,5 @@
 import { MSAL_INIT, MSAL_SUCCESS, MSAL_FAILURE, SAVE_TOKEN } from '../types/microsoftType'
-//import storage from '../../../config/storage'
+// import storage from '../../../config/storage'
 
 /*
 const user = JSON.parse(window.localStorage.getItem(storage.local.ldap.user))
@@ -24,7 +24,7 @@ export default function microsoft(state = initialState, action) {
         ...state,
         authenticatedMsal: true,
         userMsal: action.payload,
-        loading: false,
+        loading: false
       }
 
     case SAVE_TOKEN:

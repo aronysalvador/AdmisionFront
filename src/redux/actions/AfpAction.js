@@ -1,7 +1,7 @@
 import {
   GET_AFP_INIT,
   GET_AFP_SUCCESS,
-  GET_AFP_FAILURE,
+  GET_AFP_FAILURE
 } from "../types/afpType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,20 +11,20 @@ export const getData = createHttpGetClient(window.REACT_APP_AFP);
 export const getAFP = () => async (dispatch) => {
   dispatch({
     type: GET_AFP_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCallAFP(response.data.content[0]));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AFP));
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCallAFP());
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_AFP));
@@ -33,10 +33,10 @@ export const getAFP = () => async (dispatch) => {
 
   const successCallAFP = (afp) => ({
     type: GET_AFP_SUCCESS,
-    payload: afp,
+    payload: afp
   });
 
   const errorCallAFP = () => ({
-    type: GET_AFP_FAILURE,
+    type: GET_AFP_FAILURE
   });
 };

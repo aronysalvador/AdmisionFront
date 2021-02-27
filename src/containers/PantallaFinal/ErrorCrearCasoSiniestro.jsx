@@ -1,4 +1,3 @@
-import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
@@ -11,20 +10,20 @@ import warning from './../../img/errorCaso2.svg'
 const ErrorCrearCasoSiniestro = () => {
   const spaceStyle = getSpaceStyle();
   const comunClass = getComunStyle();
-  
+
   const dispatch = useDispatch();
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space6} />
       <center>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={warning}
           />
         </div>
@@ -39,30 +38,30 @@ const ErrorCrearCasoSiniestro = () => {
         <Grid className={comunClass.textErrorS}>
             Inténtalo de nuevo o ingresa al paciente por SAP
         </Grid>
-        
+
         <div className={spaceStyle.space2} />
 
-        <div className={comunClass.bottomElement} >
-                
-            <div className="container-fluid">
-                <div className="row">
-                  <div className="col-md-3"></div>
-                    <div className="col-md-6">
+        <div className={comunClass.bottomElement}>
+
+            <div className='container-fluid'>
+                <div className='row'>
+                  <div className='col-md-3' />
+                    <div className='col-md-6'>
                         <Button
-                            id="ErrorCrearCasoSiniestro-Btn1"
-                            className={[comunClass.buttonAchs]} 
-                            variant="contained"
+                            id='ErrorCrearCasoSiniestro-Btn1'
+                            className={[ comunClass.buttonAchs ]}
+                            variant='contained'
                             onClick={() => dispatch(handleSetStep(27))}
-                            >
+                        >
                             Volver a intentarlo
                         </Button>
                     </div>
-                    <div className="col-md-3"></div>
+                    <div className='col-md-3' />
                 </div>
             </div>
-              
+
         </div>
-        
+
       </center>
     </div>
   );

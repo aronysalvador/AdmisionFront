@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button, Typography, TextField, } from "@material-ui/core";
+import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -13,10 +13,10 @@ import relato from './../../img/relato.svg';
 
 const MedioTransporteTrayecto = () => {
   let {
-    addmissionForm: { percentage, CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos }
   } = useSelector((state) => state, shallowEqual);
 
-  const [medioTransporte, setMedioTransporte] = useState(() => {
+  const [ medioTransporte, setMedioTransporte ] = useState(() => {
     return !CamposDocumentos.MedioTransp ? "" : CamposDocumentos.MedioTransp;
   });
 
@@ -31,11 +31,10 @@ const MedioTransporteTrayecto = () => {
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -45,16 +44,16 @@ const MedioTransporteTrayecto = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-        Indica  
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+        Indica
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;el medio de transporte
-          </Grid>        
+          </Grid>
           &nbsp;que utilizaba al momento del accidente
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -74,19 +73,19 @@ const MedioTransporteTrayecto = () => {
             }}
             freeSolo
             options={sugerenciasMedios}
-            getOptionLabel={(option) =>  option.nombre }
+            getOptionLabel={(option) => option.nombre }
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"
+                variant='outlined'
                 InputProps={{
                   ...params.InputProps,
                   style: {
                     paddingTop: "3px",
                     paddingBottom: "3px",
                     paddingLeft: "5xp",
-                    marginTop: "7px",
-                  },
+                    marginTop: "7px"
+                  }
                 }}
               />
             )}
@@ -97,7 +96,7 @@ const MedioTransporteTrayecto = () => {
             id={"MedioTransporteTrayecto-Btn1"}
             disabled={medioTransporte?.length < 3}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             onClick={() => {
               dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, MedioTransp: medioTransporte}));
               dispatch(handleSetStep(6.03));

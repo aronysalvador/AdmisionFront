@@ -1,7 +1,7 @@
 import {
   GET_PROFESION_INIT,
   GET_PROFESION_SUCCESS,
-  GET_PROFESION_FAILURE,
+  GET_PROFESION_FAILURE
 } from "../types/profesionType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,20 +11,20 @@ export const getData = createHttpGetClient(window.REACT_APP_PROFESION);
 export const getProfesion = () => async (dispatch) => {
   dispatch({
     type: GET_PROFESION_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCallProfesion(response.data.content.response));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_PROFESION));
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCallProfesion());
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_PROFESION));
@@ -33,10 +33,10 @@ export const getProfesion = () => async (dispatch) => {
 
   const successCallProfesion = (afp) => ({
     type: GET_PROFESION_SUCCESS,
-    payload: afp,
+    payload: afp
   });
 
   const errorCallProfesion = () => ({
-    type: GET_PROFESION_FAILURE,
+    type: GET_PROFESION_FAILURE
   });
 };

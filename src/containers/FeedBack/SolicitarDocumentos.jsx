@@ -1,4 +1,3 @@
-import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
@@ -18,31 +17,31 @@ const SolicitarDocumentos = () => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space3} />
       <center>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={image}
           />
         </div>
         <div className={spaceStyle.space4} />
         <Grid className={comunClass.textErrorP2}>
-        Pide al paciente que te entregue los <br/>
+        Pide al paciente que te entregue los <br />
           documentos para escanearlos
         </Grid>
         <div className={spaceStyle.space5} />
         <div className={comunClass.bottomElement} style={{padding: '1.145em'}}>
           {/* <div className={comunClass.paddingElement}> */}
             <Button
-              id="SolicitarDocumentos-Btn1"
-              className={[comunClass.buttonAchs]} //blackStyle.buttonFooterSpace
-              variant="contained"
-              onClick={() => 
-                {step === 19.22 ?
+              id='SolicitarDocumentos-Btn1'
+              className={[ comunClass.buttonAchs ]} // blackStyle.buttonFooterSpace
+              variant='contained'
+              onClick={() =>
+                { step === 19.22 ?
                   dispatch(handleSetStep(19.23)) : dispatch(handleSetStep(19.4))
                 }
                 // dispatch(handleSetStep(19.23))

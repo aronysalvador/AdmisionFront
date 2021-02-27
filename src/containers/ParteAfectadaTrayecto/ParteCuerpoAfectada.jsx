@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getComunStyle } from "../../css/comun";
-import { Button,  TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
@@ -14,32 +14,32 @@ import AutoComplete from "@material-ui/lab/Autocomplete";
 
 const ParteCuerpoAfectada = () => {
   let {
-    addmissionForm: { percentage, CamposDocumentos },
+    addmissionForm: { percentage, CamposDocumentos }
   } = useSelector((state) => state, shallowEqual);
 
-  const [parteAfectada, setParteAfectada] = useState(() => {
+  const [ parteAfectada, setParteAfectada ] = useState(() => {
     return !CamposDocumentos.ParteAfecta ? "" : CamposDocumentos.ParteAfecta;
   });
 
   // const [parteAfectadaValid, setParteAfectadaValid] = useState(true);
 
-  const [otrasCircunstancias, setOtrasCircunstancias] = useState(() => {
+  const [ otrasCircunstancias, setOtrasCircunstancias ] = useState(() => {
     return !CamposDocumentos.Otras ? "" : CamposDocumentos.Otras;
   });
-  
+
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
   const dispatch = useDispatch();
 
   const { data: sugerenciasParteCuerpo } = useSelector(
-    (state) => state.parteCuerpoAfectadaForm, shallowEqual );
+    (state) => state.parteCuerpoAfectadaForm, shallowEqual);
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -49,12 +49,12 @@ const ParteCuerpoAfectada = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
-          Ahora, completa la información adicional del accidente 
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+          Ahora, completa la información adicional del accidente
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -70,25 +70,25 @@ const ParteCuerpoAfectada = () => {
             id={"ParteCuerpoAfectada-Lbl1"}
             inputValue={parteAfectada}
             freeSolo
-            size="small"
+            size='small'
             options={sugerenciasParteCuerpo}
             onInputChange={(event, value) => {
               event&&setParteAfectada(value);
             }}
-            getOptionLabel={(option) =>  option.nombre }
+            getOptionLabel={(option) => option.nombre }
             renderInput={(params) => (
               <TextField
                 {...params}
-                variant="outlined"  
-                size="small"              
+                variant='outlined'
+                size='small'
                 inputProps={{
                   ...params.inputProps,
-                  maxLength: 100,
+                  maxLength: 100
                   // style: { marginTop: "7px" },
                 }}
               />
             )}
-          /> 
+          />
 
           <div className={spaceStyle.space2} />
 
@@ -98,8 +98,8 @@ const ParteCuerpoAfectada = () => {
           <TextField
             id={"ParteCuerpoAfectada-Lbl2"}
             value={otrasCircunstancias}
-            margin="dense"
-            variant="outlined"
+            margin='dense'
+            variant='outlined'
             fullWidth
             rows={4}
             multiline
@@ -110,14 +110,14 @@ const ParteCuerpoAfectada = () => {
             }}
           />
         <label className={comunClass.pullRight}>{otrasCircunstancias.length}/200</label>
-          
+
         </div>
         <div className={comunClass.bottomElement}>
           <Button
             id={"ParteCuerpoAfectada-Btn1"}
             disabled={parteAfectada?.length < 3}
             className={comunClass.buttonAchs}
-            variant="contained"
+            variant='contained'
             onClick={() => {
               dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, ParteAfecta: parteAfectada, Otras: otrasCircunstancias}));
               // dispatch(handleSetStep(10));

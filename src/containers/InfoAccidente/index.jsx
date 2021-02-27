@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback } from "react";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
@@ -21,7 +21,6 @@ import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
 
-
 const NoPaddingTextField = withStyles({
     root: {
         '&& .MuiOutlinedInput-input': {
@@ -37,26 +36,26 @@ const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
     const dispatch = useDispatch();
-    const {  addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-    const [date, setDate] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));  
-    const [validDate, setValidDate] = useState(true);  
+    const [ date, setDate ] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));
+    const [ validDate, setValidDate ] = useState(true);
 
-    const [hour, setHour] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[1], "HH:mm").format("HH:mm") : moment().format("HH:mm"));    
-    const [validHour, setValidHour] = useState(true);  
+    const [ hour, setHour ] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[1], "HH:mm").format("HH:mm") : moment().format("HH:mm"));
+    const [ validHour, setValidHour ] = useState(true);
 
-    const [sucursal, setSucursal] = useState(sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : "");
-    const [mapaUrl, setMapaUrl] = useState(urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : "");
-    const [nombreComuna,setNombreComuna]=useState(comunaSiniestro?comunaSiniestro:"");
-    const [direccionValida, setDireccionValida] = useState(false)
-        
+    const [ sucursal, setSucursal ] = useState(sucursalEmpresaSiniestro ? sucursalEmpresaSiniestro : "");
+    const [ mapaUrl, setMapaUrl ] = useState(urlMapasucursalEmpresaSiniestro ? urlMapasucursalEmpresaSiniestro : "");
+    const [ nombreComuna, setNombreComuna ]=useState(comunaSiniestro?comunaSiniestro:"");
+    const [ direccionValida, setDireccionValida ] = useState(false)
+
     const clearData = () => {
         dispatch(updateForm("sucursalEmpresaSiniestro", ""))
         dispatch(updateForm("urlMapasucursalEmpresaSiniestro", ""))
     }
 
-    const [lugarReferencia, setLugarReferencia] = useState(!lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro);
-    const [isLugarReferenciaValid, setIsLugarReferenciaValid] = useState(lugarReferenciaSiniestro?lugarReferenciaSiniestro:false);
+    const [ lugarReferencia, setLugarReferencia ] = useState(!lugarReferenciaSiniestro ? "" : lugarReferenciaSiniestro);
+    const [ isLugarReferenciaValid, setIsLugarReferenciaValid ] = useState(lugarReferenciaSiniestro?lugarReferenciaSiniestro:false);
 
     const handleOnClick = (respuesta) => {
         dispatch(updateForm("AccidenteEnSucursal", respuesta));
@@ -66,13 +65,13 @@ const InfoAccidente = () => {
         (campo, value) => {
             dispatch(updateForm(campo, value))
         },
-        [dispatch],
+        [ dispatch ]
     )
 
     useEffect(() => {
-        if(validDate && validHour)
+        if (validDate && validHour)
             updateValues("fechaHoraSiniestro", `${date} ${hour}`);
-    }, [date, validDate, hour, validHour, updateValues])
+    }, [ date, validDate, hour, validHour, updateValues ])
 
     const handleNext = () => {
         updateValues("fechaHoraSiniestro", `${date} ${hour}`)
@@ -80,68 +79,70 @@ const InfoAccidente = () => {
         updateValues("urlMapasucursalEmpresaSiniestro", mapaUrl)
         updateValues("comunaSiniestro", nombreComuna)
         updateValues("lugarReferenciaSiniestro", lugarReferencia)
-        dispatch(handleSetStep("x_next",10.1))
+        dispatch(handleSetStep("x_next", 10.1))
     }
-
 
     return (
         <div className={comunClass.rootNew}>
-            <div className={comunClass.displayDesk}> 
-                <Header userMsal={ microsoftReducer.userMsal }/>
+            <div className={comunClass.displayDesk}>
+                <Header userMsal={ microsoftReducer.userMsal } />
             </div>
             <div className={comunClass.beginContainerDesk}>
                 <Cabecera
                     id={"InfoAccidente-BtnBack"}
-                    dispatch={() => dispatch(handleSetStep("x_back",10.1))}
+                    dispatch={() => dispatch(handleSetStep("x_back", 10.1))}
                     percentage={percentage}
                 />
-            </div>                           
+            </div>
 
             <div className={comunClass.boxDesk3}>
-                <div className={comunClass.bottomElement} style={{position:'inherit'}}>
+                <div className={comunClass.bottomElement} style={{position: 'inherit'}}>
                     <div className={comunClass.displayMobile}>
                         <div className={spaceStyle.spaceMin1} />
                     </div>
 
-                    <div className="container-fluid">
-                        <div className="row">
+                    <div className='container-fluid'>
+                        <div className='row'>
 
-                            <div className="col-md-6">
-                                <div className="col-md-12">
+                            <div className='col-md-6'>
+                                <div className='col-md-12'>
                                     <div className={comunClass.backgroundGrey}>
 
                                         <div>
                                             <Grid className={comunClass.subtitleBlack2}>
                                                 ¿
-                                                <Grid component="span"  className={comunClass.titleBlue}>
+                                                <Grid component='span' className={comunClass.titleBlue}>
                                                 Cuando y a qué hora
-                                                </Grid>      
+                                                </Grid>
                                                 &nbsp;sucedió el accidente?
                                             </Grid>
                                         </div>
 
-
-                                        <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
-                                            <div className="row">
-                                                <div className="col-md-12">
+                                        <div className='container' style={{maxWidth: "30em", minHeight: "210px"}}>
+                                            <div className='row'>
+                                                <div className='col-md-12'>
                                                     <Grid
                                                         className={comunClass.tituloTextBox}
-                                                        style={{marginBottom:'8px', textAlign: "left"}}
+                                                        style={{marginBottom: '8px', textAlign: "left"}}
                                                     >
                                                         Fecha de accidente
-                                                    </Grid> 
+                                                    </Grid>
 
-                                                    <Date date={date} setDate={setDate} id="InfoAccidente-Lbl1" setValidDate={setValidDate} />
+                                                    <Date date={date} setDate={setDate} id='InfoAccidente-Lbl1'
+setValidDate={setValidDate}
+                                                    />
                                                 </div>
-                                                <div className="col-md-12" style={{ paddingTop: '2em' }}>
+                                                <div className='col-md-12' style={{ paddingTop: '2em' }}>
                                                     <Grid
                                                         className={comunClass.tituloTextBox}
-                                                        style={{marginBottom:'8px', textAlign: "left"}}
+                                                        style={{marginBottom: '8px', textAlign: "left"}}
                                                     >
                                                         Hora de accidente
-                                                    </Grid> 
+                                                    </Grid>
 
-                                                    <Time  id={"InfoAccidente-Lbl2"}  time={hour} setTime={setHour} setValidHour={setValidHour} />
+                                                    <Time id={"InfoAccidente-Lbl2"} time={hour} setTime={setHour}
+setValidHour={setValidHour}
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -150,27 +151,27 @@ const InfoAccidente = () => {
                                 </div>
                             </div>
 
-                            <div className="col-md-6">
-                                <div className="col-md-12">
+                            <div className='col-md-6'>
+                                <div className='col-md-12'>
                                     <div className={comunClass.backgroundGrey}>
 
                                         <div>
                                             <Grid className={comunClass.subtitleBlack2}>
-                                                Indica la dirección 
-                                                <Grid component="span"  className={comunClass.titleBlue}>
-                                                &nbsp;en donde ocurrió el 5cidente
-                                                </Grid>      
+                                                Indica la dirección
+                                                <Grid component='span' className={comunClass.titleBlue}>
+                                                &nbsp;en donde ocurrió el accidente
+                                                </Grid>
                                             </Grid>
                                         </div>
-                                        
-                                        <div className="container" style={{maxWidth: "30em", minHeight: "210px"}}>
-                                            <div className="row">
-                                                <div className="col-md-12">
-                                                    <Lugar   
-                                                        titulo={"Dirección"}                                                
+
+                                        <div className='container' style={{maxWidth: "30em", minHeight: "210px"}}>
+                                            <div className='row'>
+                                                <div className='col-md-12'>
+                                                    <Lugar
+                                                        titulo={"Dirección"}
                                                         sucursal={sucursal}
                                                         setSucursal={setSucursal}
-                                                        mapaUrl={mapaUrl} 
+                                                        mapaUrl={mapaUrl}
                                                         setMapaUrl={setMapaUrl}
                                                         nombreComuna={nombreComuna}
                                                         setNombreComuna={setNombreComuna}
@@ -183,13 +184,13 @@ const InfoAccidente = () => {
                                                         tipoSiniestro={tipoSiniestro?.Id ? tipoSiniestro.Id : 1}
                                                     />
                                                 </div>
-                                                <div className="col-md-12" style={{ paddingTop: '2em' }}>
+                                                <div className='col-md-12' style={{ paddingTop: '2em' }}>
                                                     <Grid
                                                     className={comunClass.tituloTextBox}
-                                                    style={{ marginBottom:'0px', textAlign: "left"}}
+                                                    style={{ marginBottom: '0px', textAlign: "left"}}
                                                     >
                                                         Referencia
-                                                    </Grid> 
+                                                    </Grid>
                                                     <div>
                                                         <NoPaddingTextField
                                                             id={"InfoAccidente-Lbl3"}
@@ -198,21 +199,21 @@ const InfoAccidente = () => {
                                                             }
                                                             error={!isLugarReferenciaValid}
                                                             value={lugarReferencia}
-                                                            autoComplete="off"  
-                                                            variant="outlined"
-                                                            size="small"
-                                                            margin="dense"
+                                                            autoComplete='off'
+                                                            variant='outlined'
+                                                            size='small'
+                                                            margin='dense'
                                                             required
                                                             fullWidth
                                                             onChange={(e) => {
                                                                 let texto = Format.caracteresInvalidos(e.target.value);
                                                                 setLugarReferencia(texto);
-                                                                if(texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); }else{ setIsLugarReferenciaValid(false); }
+                                                                if (texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); } else { setIsLugarReferenciaValid(false); }
                                                             }}
                                                             InputProps={{
                                                                 endAdornment: (
-                                                                    <ClearIcon onClick={()=>{setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", ""));} } style={{cursor:'pointer'}}  />
-                                                                ),
+                                                                    <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", "")); } } style={{ cursor: 'pointer' }} />
+                                                                )
                                                             }}
                                                             style={{
                                                                 background: "#ffff",
@@ -231,46 +232,46 @@ const InfoAccidente = () => {
                                 </div>
                             </div>
 
-                            {tipoSiniestro.Id === 1 && 
+                            {tipoSiniestro.Id === 1 &&
                             <>
                             <div className={spaceStyle.spaceMin1} />
-                            <div className={['row', comunClass.backgroundGrey].join(' ')} style={{maxWidth:"90%", margin: "auto"}}>
-                                <div className="col-md-10" style={{textAlign:"left"}}>
+                            <div className={[ 'row', comunClass.backgroundGrey ].join(' ')} style={{maxWidth: "90%", margin: "auto"}}>
+                                <div className='col-md-10' style={{textAlign: "left"}}>
                                 <Grid className={`${comunClass.textPrimaryRelato}`} style={{width: "auto"}}>
-                                    ¿El accidente ocurrió en  
-                                    <Grid component="span"  className={`${comunClass.textPrimaryRelatoBlue}`}>
+                                    ¿El accidente ocurrió en
+                                    <Grid component='span' className={`${comunClass.textPrimaryRelatoBlue}`}>
                                         &nbsp;sucursal
-                                    </Grid> 
+                                    </Grid>
                                     &nbsp;a la que pertenece el trabajador?
                                 </Grid>
                                 </div>
-                                <div className="col-md-2" style={{ display: "contents" }}>
+                                <div className='col-md-2' style={{ display: "contents" }}>
                                     <img
                                         id={"RelatoCompleto-BtnSi"}
-                                        alt="siTrabajo"
+                                        alt='siTrabajo'
                                         src={AccidenteEnSucursal ==="Si" ? yesActive : yesDisabled}
-                                        type="button"
+                                        type='button'
                                         style={{ marginRight: "5px" }}
                                         onClick={() => handleOnClick("Si")}
                                     />
 
                                     <img
                                         id={"RelatoCompleto-BtnNo"}
-                                        alt="noTrabajo"
+                                        alt='noTrabajo'
                                         src={AccidenteEnSucursal ==="No" ? notActive :notDisabled}
-                                        type="button"
-                                        onClick={() => handleOnClick("No")}                       
+                                        type='button'
+                                        onClick={() => handleOnClick("No")}
                                     />
                                 </div>
-                            </div>                   
+                            </div>
                             </>
                             }
 
-                            <div className="col-md-12">
+                            <div className='col-md-12'>
                                 <div className={spaceStyle.space2} />
                                 <Button
                                     id={"InfoAccidente-Btn1"}
-                                    variant="contained"
+                                    variant='contained'
                                     className={comunClass.buttonAchs}
                                     disabled={tipoSiniestro.Id === 1 ? !validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)}
                                     onClick={() => handleNext() }
@@ -285,7 +286,7 @@ const InfoAccidente = () => {
                 </div>
             </div>
 
-      </div>
+        </div>
     )
 }
 

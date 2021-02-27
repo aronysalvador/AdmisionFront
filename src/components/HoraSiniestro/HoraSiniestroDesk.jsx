@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers'
@@ -11,53 +11,49 @@ const HoraSiniestroDesk = ({
   onChange,
   horasFromState,
   indiceMinutosFromState,
-  minutos,
   textLabel,
   UpComponent
 }) => {
-
   const IdComponent = UpComponent ? UpComponent : "";
-  
-  if(horasFromState?.toString().length === 1){
-    horasFromState = ("0" + horasFromState).slice(-2)
-  }
 
-  const [inputValue2,setInputValue2]= useState(() =>{
-    if(!horasFromState){
+  if (horasFromState?.toString().length === 1)
+    horasFromState = ("0" + horasFromState).slice(-2)
+
+  const [ inputValue2, setInputValue2 ]= useState(() => {
+    if (!horasFromState){
       let time = new Date(new Date().setHours(new Date().getHours()-1))
+
       return `${(time.getHours() < 10)?"0"+time.getHours():time.getHours()}:${(time.getMinutes() < 10)?"0"+time.getMinutes():time.getMinutes()}`;
-    }else
-      return `${horasFromState}:${indiceMinutosFromState}0`;
+    } else
+      { return `${horasFromState}:${indiceMinutosFromState}0`; }
   })
 
   const comunClass = getComunStyle();
 
   const onDateChange = (date, value) => {
     setInputValue2(value?value:"")
-    if(value?.length){
+    if (value?.length){
       let horas = -1;
       let indiceMinutos = -1;
       let minutos = -1;
 
       let horasDetails = value.split(':')
-      if(horasDetails[0].includes("_"))
+      if (horasDetails[0].includes("_"))
         horas = -1;
 
-      
       else
         horas = parseInt(horasDetails[0])
 
-      if(horasDetails[1].includes("_")){
+      if (horasDetails[1].includes("_")){
         indiceMinutos = -1
         minutos = -1
       }
-      else if(parseInt(horasDetails[1]) >= 0 && parseInt(horasDetails[1]) <= 59){
-        indiceMinutos = parseInt(horasDetails[1].substr(0,1)) 
+      else if (parseInt(horasDetails[1]) >= 0 && parseInt(horasDetails[1]) <= 59){
+        indiceMinutos = parseInt(horasDetails[1].substr(0, 1))
         minutos = parseInt(horasDetails[1])
       }
-  
-      onChange({ horas, indiceMinutos, minutos});
 
+      onChange({ horas, indiceMinutos, minutos});
     }
   };
 
@@ -66,17 +62,17 @@ const HoraSiniestroDesk = ({
       <div>
         <Grid
           className={comunClass.tituloTextBox}
-          style={{marginBottom:'15px'}}
+          style={{marginBottom: '15px'}}
         >
           {textLabel}
         </Grid>
       </div>
       <div>
-        <MuiPickersUtilsProvider utils={MomentUtils}  >
+        <MuiPickersUtilsProvider utils={MomentUtils}>
           <ThemeProvider theme={defaultMaterialThemeKeyboardTimePicker}>
             <KeyboardTimePicker
-            id={IdComponent+"-TimePicker1"} 
-            inputVariant="outlined"
+            id={IdComponent+"-TimePicker1"}
+            inputVariant='outlined'
             value={new Date(inputValue2)}
             inputValue={inputValue2}
             onChange={onDateChange}
@@ -84,14 +80,13 @@ const HoraSiniestroDesk = ({
 
             ampm={false}
             fullWidth
-            invalidDateMessage="Formato invalido"
-            keyboardIcon={<img alt="clock" src={image} />}
-  
-          />
+            invalidDateMessage='Formato invalido'
+            keyboardIcon={<img alt='clock' src={image} />}
+            />
           </ThemeProvider>
-        </MuiPickersUtilsProvider>   
-    </div>    
-    </>    
+        </MuiPickersUtilsProvider>
+      </div>
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ function getAuthenticatedClient(accessToken) {
     // requests
     authProvider: done => {
       done(null, accessToken.accessToken)
-    },
+    }
   })
 
   return client
@@ -17,5 +17,6 @@ export default async function getUserDetails(accessToken) {
   const client = getAuthenticatedClient(accessToken)
 
   const user = await client.api('/me').get()
+
   return user
 }

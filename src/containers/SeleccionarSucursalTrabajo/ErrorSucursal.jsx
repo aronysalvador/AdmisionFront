@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -13,10 +12,10 @@ const getUseStyles = makeStyles({
   center: {
     paddingLeft: "3.4375em",
     paddingRight: "3.4375em",
-    padding: "0em",
+    padding: "0em"
   },
   img: {
-    width: "15.625em",
+    width: "15.625em"
   },
   text1: {
     textAlign: "center",
@@ -26,7 +25,7 @@ const getUseStyles = makeStyles({
     fontSize: "1.5625em",
     lineHeight: "1.6875em",
     alignItems: "center",
-    color: "#081C15",
+    color: "#081C15"
   },
   text2: {
     textAlign: "center",
@@ -35,19 +34,19 @@ const getUseStyles = makeStyles({
     fontSize: "1em",
     lineHeight: "1.5625em",
     alignItems: "center",
-    color: "#081C15",
+    color: "#081C15"
   },
   center2: {
     paddingLeft: "7.625em",
     paddingRight: "7.625em",
-    padding: "0em",
+    padding: "0em"
   },
   img2: {
-    width: "7.28125em",
-  },
+    width: "7.28125em"
+  }
 });
 
-const ErrorSucursal = (props) => {
+const ErrorSucursal = () => {
   const spaceStyle = getSpaceStyle();
   const useStyles = getUseStyles();
   const comunClass = getComunStyle();
@@ -58,7 +57,7 @@ const ErrorSucursal = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header
           userMsal={ microsoftReducer.userMsal }
           // step={1}
@@ -67,14 +66,14 @@ const ErrorSucursal = (props) => {
       <div className={spaceStyle.space5} />
       <div className={useStyles.center}>
         <img
-          alt="load"
+          alt='load'
           src={image}
           className={useStyles.img}
         />
       </div>
       <div className={spaceStyle.space3} />
       <Typography
-        color="textSecondary"
+        color='textSecondary'
         gutterBottom
         className={useStyles.text1}
       >
@@ -86,7 +85,7 @@ const ErrorSucursal = (props) => {
       </Typography>
       <div className={spaceStyle.space1} />
       <Typography
-        color="textSecondary"
+        color='textSecondary'
         gutterBottom
         className={useStyles.text2}
       >

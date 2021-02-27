@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -22,18 +22,18 @@ const ContinueSAP = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space5} />
       <center>
         <div>
-          <img alt="load" src={image} className={comunClass.imgLoadData} />
+          <img alt='load' src={image} className={comunClass.imgLoadData} />
         </div>
         <div className={spaceStyle.space3} />
         <Grid className={comunClass.txtLoadData}>
           Entendido&nbsp;
-          <br className={comunClass.displayMobile}/>
+          <br className={comunClass.displayMobile} />
           continúa en SAP
         </Grid>
         <div className={spaceStyle.space1} />
@@ -42,7 +42,7 @@ const ContinueSAP = (props) => {
         </Grid>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={loader}
             className={comunClass.imgLoadData2}
           />
@@ -52,9 +52,9 @@ const ContinueSAP = (props) => {
   );
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
-  return { 
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+  return {
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(ContinueSAP);

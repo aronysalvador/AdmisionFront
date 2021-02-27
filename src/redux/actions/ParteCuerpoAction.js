@@ -1,7 +1,7 @@
 import {
   GET_TRAYECTO_PARTECUERPOAFECTADA_INIT,
   GET_TRAYECTO_PARTECUERPOAFECTADA_SUCCESS,
-  GET_TRAYECTO_PARTECUERPOAFECTADA_FAILURE,
+  GET_TRAYECTO_PARTECUERPOAFECTADA_FAILURE
 } from "../types/trayectoType";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { createHttpGetClient } from '../common';
@@ -11,20 +11,20 @@ export const getData = createHttpGetClient(window.REACT_APP_PARTES_DEL_CUERPO);
 export const getPartesCuerpo = () => async (dispatch) => {
   dispatch({
     type: GET_TRAYECTO_PARTECUERPOAFECTADA_INIT,
-    payload: true,
+    payload: true
   });
 
   getData()
     .then((response) => {
-      if(response.status === 200){
+      if (response.status === 200){
         dispatch(successCallParteCuerpo(response.data.content[0]));
-      }else{
+      } else {
         dispatch(updateForm("errorStep", 0));
         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_PARTES_DEL_CUERPO));
         dispatch(handleSetStep(1004));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(errorCallParteCuerpo());
       dispatch(updateForm("errorStep", 0));
       dispatch(updateForm("mensajeErrorApi", window.REACT_APP_PARTES_DEL_CUERPO));
@@ -33,10 +33,10 @@ export const getPartesCuerpo = () => async (dispatch) => {
 
   const successCallParteCuerpo = (partes) => ({
     type: GET_TRAYECTO_PARTECUERPOAFECTADA_SUCCESS,
-    payload: partes,
+    payload: partes
   });
 
   const errorCallParteCuerpo = () => ({
-    type: GET_TRAYECTO_PARTECUERPOAFECTADA_FAILURE,
+    type: GET_TRAYECTO_PARTECUERPOAFECTADA_FAILURE
   });
 };

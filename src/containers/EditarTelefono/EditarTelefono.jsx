@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Typography, withStyles } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
@@ -17,18 +17,18 @@ import image from './../../img/identify.svg'
 
 const EditarTelefono = () => {
   const {
-    addmissionForm: { step, percentage, telefonoParticular: TelefonoEmpleado, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto, direccionParticular },
+    addmissionForm: { step, percentage, telefonoParticular: TelefonoEmpleado, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto, direccionParticular }
   } = useSelector((state) => state, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
 
-  const [telefono, setTelefono] = useState(() => {
+  const [ telefono, setTelefono ] = useState(() => {
     return TelefonoEmpleado ? TelefonoEmpleado : "+56 9";
   });
-  const [telefonoIsValid, setTelefonoIsValid] = useState(() => {
-    return TelefonoEmpleado ? true : false;
+  const [ telefonoIsValid, setTelefonoIsValid ] = useState(() => {
+    return !!TelefonoEmpleado;
   });
 
   const comunClass = getComunStyle();
@@ -45,13 +45,13 @@ const EditarTelefono = () => {
     }
   };
 
-  const [stateCheck,setStateCheck] = useState( TelefonoEmpleado === "+56 00 000 0000" ? true : false);
+  const [ stateCheck, setStateCheck ] = useState(TelefonoEmpleado === "+56 00 000 0000");
   const handleChange = (event) => {
-    setStateCheck( event.target.checked );
-    if(event.target.checked){
+    setStateCheck(event.target.checked);
+    if (event.target.checked){
       setTelefono(Pipes.advanced("000000000"));
       setTelefonoIsValid(true);
-    }else{
+    } else {
       setTelefono("+56");
       setTelefonoIsValid(false)
     }
@@ -60,20 +60,20 @@ const EditarTelefono = () => {
     switchBase: {
       color: "#FAFAFA",
       '&$checked': {
-        color: "#00B2A9",
+        color: "#00B2A9"
       },
       '&$checked + $track': {
-        backgroundColor: "#00B2A9",
-      },
+        backgroundColor: "#00B2A9"
+      }
     },
     checked: {},
-    track: {},
+    track: {}
   })(Switch);
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -84,19 +84,19 @@ const EditarTelefono = () => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={`${comunClass.titleBlack} ${comunClass.titleBlack2} ${comunClass.textPrimaryDesk}`}>
-          Ingresa el 
-          <Grid component="span"  className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
+          Ingresa el
+          <Grid component='span' className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
             &nbsp;teléfono personal
-          </Grid>          
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={comunClass.boxDesk}>
-        <div className={comunClass.displayMobile}> 
+        <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
         <div className={comunClass.containerTextBox}>
@@ -116,13 +116,13 @@ const EditarTelefono = () => {
           <div className={spaceStyle.space1} />
 
           <div className={welcomeStyle.titleContainerCardsEmail}>
-            <div  className={welcomeStyle.divRowBottomEmail}>
+            <div className={welcomeStyle.divRowBottomEmail}>
               <ErrorOutline />
               <Typography
-                variant="inherit"
-                component="p"
+                variant='inherit'
+                component='p'
                 className={welcomeStyle.itemText2}
-               
+
               >
                 Agregar paciente&nbsp;<span style={{ color: "#00B2A9" }}>sin teléfono</span>
               </Typography>
@@ -132,37 +132,36 @@ const EditarTelefono = () => {
                 ¿Está seguro de continuar?
               </Typography>
             </div>
-            <div  className={welcomeStyle.divRowBottomEmail}>
+            <div className={welcomeStyle.divRowBottomEmail}>
               <CustomSwitch
                 id={"EditarTelefono-Chk1"}
                 checked={stateCheck}
                 onChange={handleChange}
-                color="default"
+                color='default'
               />
             </div>
           </div>
-        </div> 
+        </div>
         <div className={comunClass.bottomElement}>
           <Button
             id={"EditarTelefono-Btn1"}
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             disabled={!telefonoIsValid}
             onClick={() => {
               dispatch(updateForm("telefonoParticular", telefono));
-              if(creacionBP)
+              if (creacionBP)
               {
-                if(!direccionParticular){
+                if (!direccionParticular)
                   dispatch(handleSetStep(5.2))
-                }
-                else if(rut && rutEmpresa && SucursalEmpresaObjeto){
+
+                else if (rut && rutEmpresa && SucursalEmpresaObjeto)
                   dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
-                }else{
+                else
                   dispatch(handleSetStep(500));
-                }
               }
-              else 
-              { //Flujo normal
+              else
+              { // Flujo normal
                 dispatch(handleSetStep(5.1))
               }
             }

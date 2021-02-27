@@ -12,12 +12,10 @@ import {
 } from "../types/addmissionFormType";
 import Axios from "axios";
 import { formateaRut } from "../../helpers/rut";
-
 import { handleLog, handlEndLog, stepLogPage } from "./Log";
 import { FechaHora } from './../../helpers/utils'
 import { Pipes } from "./../../containers/EditarTelefono/phone";
 import { getSucursales } from "./SucursalesAction";
-
 import { getToken } from 'redux/selectors/auth.selector';
 
 const totalSteps = 27;
@@ -25,7 +23,7 @@ const totalSteps = 27;
 export const loadStateFromSessionStorage = (state) => {
     return {
         type: LOAD_STATE_SESSIONSTORAGE,
-        payload: state,
+        payload: state
     };
 };
 
@@ -34,8 +32,8 @@ export const setStep = (step, percentage) => {
         type: SET_STEP,
         payload: {
             step,
-            percentage,
-        },
+            percentage
+        }
     };
 };
 
@@ -44,34 +42,32 @@ export const updateForm = (stateType, value) => {
         type: UPDATE_FORM,
         payload: {
             stateType,
-            value,
-        },
+            value
+        }
     };
 };
 
 export const handleSetStep = (step, actual = null) => {
     return (dispatch, getState) => {
-
-        //Mapear logs de pantallas
+        // Mapear logs de pantallas
         const { LogForm: { ID } } = getState();
         if ((step !== -1 && step !== 0 && step !== 1 && step !== 2 && step !== 3 && step !== 26.4) && !actual) { // step !== 1.1 &&
             ID !== 0 && dispatch(stepLogPage({ Id: ID, fecha: FechaHora(), opcion: 7, id_campo: step }))
         }
 
-        var PASO = step
+        let PASO = step
 
         if (actual !== null) { // PANTALLAS QUE EVALUAN SEGUN EL TIPO DE SINIESTRO A DONDE DEBEN DIRIGIRSE
             const { addmissionForm: { tipoSiniestro } } = getState();
             const TIPO = tipoSiniestro.Id
 
             switch (actual) {
-
                 // case 5.1: //PersonalData
-                case 5.7: //CentroPaciente
+                case 5.7: // CentroPaciente
                     // case 5.12: //NoQuotes
                     switch (TIPO) {
                         case 1:
-                            //RelatoUnido
+                            // RelatoUnido
                             PASO = 6.06
                             break;
                         case 2:
@@ -86,7 +82,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 6: //AccidentPlaceForm
+                case 6: // AccidentPlaceForm
                     switch (TIPO) {
                         case 1:
                             PASO = 5.7
@@ -103,8 +99,8 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                    //Relato Unido
-                case 6.06: //AccidentPlaceForm
+                    // Relato Unido
+                case 6.06: // AccidentPlaceForm
                     switch (TIPO) {
                         case 1:
                             PASO = 5.7
@@ -121,7 +117,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 8.1: //RelatoFinal
+                case 8.1: // RelatoFinal
                     switch (TIPO) {
                         case 1:
                             PASO = 10.1
@@ -138,7 +134,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 10: //FechaHoraSiniestro
+                case 10: // FechaHoraSiniestro
                     switch (TIPO) {
                         case 1:
                             PASO = 8.1
@@ -155,8 +151,8 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 10.1: //InfoAccidente
-                    if (step === "x_back") { //hacia atras
+                case 10.1: // InfoAccidente
+                    if (step === "x_back") { // hacia atras
                         switch (TIPO) {
                             case 1:
                                 PASO = 8.1
@@ -171,7 +167,7 @@ export const handleSetStep = (step, actual = null) => {
                                 PASO = 500
                                 break;
                         }
-                    } else { //hacia adelante
+                    } else { // hacia adelante
                         switch (TIPO) {
                             case 1:
                                 PASO = 17.3
@@ -189,7 +185,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 12: //LugarReferenciaSiniestro
+                case 12: // LugarReferenciaSiniestro
                     switch (TIPO) {
                         case 1:
                             PASO = 12.1
@@ -206,7 +202,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 13: //QuestionWitness
+                case 13: // QuestionWitness
                     // case 17.3: //TestigoResponsable
                     switch (TIPO) {
                         case 1:
@@ -224,7 +220,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 17: //FechaHoraResponsable
+                case 17: // FechaHoraResponsable
                     switch (TIPO) {
                         case 1:
                             PASO = 17.1
@@ -241,7 +237,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 17.1: //BoxQuestionResponsable
+                case 17.1: // BoxQuestionResponsable
                     switch (TIPO) {
                         case 1:
                             PASO = 17
@@ -258,7 +254,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 18.1: //BotonesAFP
+                case 18.1: // BotonesAFP
                     switch (TIPO) {
                         case 1:
                         case 2:
@@ -273,8 +269,8 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 18.01: //Previsiones (AFP-Isapre) unificadas
-                    if (step === "x_back") { //hacia atras
+                case 18.01: // Previsiones (AFP-Isapre) unificadas
+                    if (step === "x_back") { // hacia atras
                         switch (TIPO) {
                             case 1:
                                 PASO = 17.3
@@ -289,7 +285,7 @@ export const handleSetStep = (step, actual = null) => {
                                 PASO = 500
                                 break;
                         }
-                    } else { //hacia adelante
+                    } else { // hacia adelante
                         switch (TIPO) {
                             case 1:
                                 PASO = 19.4
@@ -307,7 +303,7 @@ export const handleSetStep = (step, actual = null) => {
                     }
                     break;
 
-                case 19.4: //DatosContractuales
+                case 19.4: // DatosContractuales
                     switch (TIPO) {
                         case 1:
                         case 3:
@@ -365,14 +361,13 @@ export const saveRut = (rut) => {
             .then((result) => {
                 dispatch({
                     type: RESPONSE_SUCCESS,
-                    payload: result,
+                    payload: result
                 });
 
                 if (result.status === 200 || result.status === 206) { // || result.data.status === 304
-
                     let BpCreado = result.data.content.response ? result.data.content.response.BpCreado : "";
                     if (BpCreado) {
-                        //Guardar datos adicionales paciente requeridos por SAP
+                        // Guardar datos adicionales paciente requeridos por SAP
                         const {
                             apellidoMaterno,
                             apellidoPaterno,
@@ -397,7 +392,7 @@ export const saveRut = (rut) => {
                                 femenino,
                                 nacionalidad,
                                 lugarNacimiento,
-                                estadoCivil,
+                                estadoCivil
                             })
                         );
 
@@ -405,13 +400,13 @@ export const saveRut = (rut) => {
                             dispatch(
                                 updateForm("grupoEtnico", {
                                     id: idEtnia,
-                                    descripcion: descripcionEtnia,
+                                    descripcion: descripcionEtnia
                                 })
                             );
                         }
 
                         // determinar siguiente paso
-                        var STEP = "";
+                        let STEP = "";
                         if (result.data.content.response.cita.length > 0) {
                             STEP = 5.82;
                         } else if (result.data.content.response.siniestros.length > 0) {
@@ -422,7 +417,7 @@ export const saveRut = (rut) => {
                                 updateForm("siniestroOpciones", {
                                     mensajeAlerta,
                                     mensajeBoton,
-                                    origen,
+                                    origen
                                 })
                             );
                             STEP = 5.83;
@@ -433,15 +428,15 @@ export const saveRut = (rut) => {
                                 !result.data.content.response.RutPagador
                             ) {
                                 // si falta info de la empresa
-                                STEP = 5.4; //form empresa
+                                STEP = 5.4; // form empresa
                             } else if (!result.data.content.response.direccionParticular) {
                                 // si no tiene direccion
-                                STEP = 5.2; //form direccion
+                                STEP = 5.2; // form direccion
                             } else if (!result.data.content.response.telefonoParticular ||
                                 result.data.content.response.telefonoParticular === "0"
                             ) {
                                 // si no tiene telefono
-                                STEP = 5.3; //form telefono
+                                STEP = 5.3; // form telefono
                             } else {
                                 // si todos los datos relevantes están llenos
                                 STEP = 5.1; // resumen data
@@ -525,36 +520,31 @@ export const saveRut = (rut) => {
                         const { microsoftReducer: { userMsal } } = getState();
                         const { email } = userMsal;
                         const { addmissionForm: { centrosForm, tipoSiniestro, BP } } = getState();
-                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: BP }))
-
+                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro, Rut: rut, BP }))
                     } else {
                         // NO TIENE BP
                         const { microsoftReducer: { userMsal } } = getState();
                         const { email } = userMsal;
                         const { addmissionForm: { centrosForm, tipoSiniestro } } = getState();
-                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro: tipoSiniestro, Rut: rut, BP: "" }))
+                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro, Rut: rut, BP: "" }))
 
                         dispatch(updateForm("bpForm", result.data.content.response));
                         dispatch(setStep(5.812, 0));
                     }
-
                 } else {
-
                     dispatch(updateForm("errorStep", 3));
                     dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                     dispatch(handleSetStep(1004));
-
                 }
             })
             .catch((error) => {
                 dispatch({
                     type: RESPONSE_ERROR,
-                    payload: error,
+                    payload: error
                 });
                 dispatch(updateForm("errorStep", 3));
                 dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
                 dispatch(handleSetStep(1004));
-
             });
     };
 };
@@ -564,7 +554,6 @@ const saveRazonSocial = (rut) => {
         if (rut) {
             obtenerDataRazon(rut, getState().microsoftReducer.token)
                 .then((result) => {
-
                     if (result.status === 200) {
                         dispatch(updateForm("razonSocial", result.data.content.response[0]));
                     } else {
@@ -572,9 +561,8 @@ const saveRazonSocial = (rut) => {
                         dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                         dispatch(handleSetStep(1004));
                     }
-
                 })
-                .catch((error) => {
+                .catch(() => {
                     dispatch(updateForm("errorStep", 3));
                     dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
                     dispatch(handleSetStep(1004));
@@ -590,7 +578,7 @@ export const saveAnswer = (answerType, answerValue, step) => {
     };
 };
 
-//Envia la Isapres Seleccionada
+// Envia la Isapres Seleccionada
 export function sendIsapres(id) {
     return (dispatch) => {
         dispatch(sendCallIsapres(id));
@@ -600,10 +588,10 @@ export function sendIsapres(id) {
 
 const sendCallIsapres = (id) => ({
     type: SEND_ISAPRES,
-    payload: id,
+    payload: id
 });
 
-//Envia Datos de Testigos
+// Envia Datos de Testigos
 export function sendCargo(name, cargo) {
     return (dispatch) => {
         dispatch(sendCallTestigo(name, cargo));
@@ -614,11 +602,11 @@ const sendCallTestigo = (name, cargo) => ({
     type: SEND_TESTIGO,
     payload: {
         nombre: name,
-        cargo: cargo,
-    },
+        cargo
+    }
 });
 
-//Envia Datos de Testigos
+// Envia Datos de Testigos
 export function sendResponsable(name, cargo) {
     return (dispatch) => {
         dispatch(sendCallResponsable(name, cargo));
@@ -629,11 +617,11 @@ const sendCallResponsable = (name, cargo) => ({
     type: SEND_RESPONSABLE,
     payload: {
         nombre: name,
-        cargo: cargo,
-    },
+        cargo
+    }
 });
 
-//Envia Datos de Centro ACHS
+// Envia Datos de Centro ACHS
 export function sendCentroAchs(nombre, codigo, uoMedica, uoTratamiento) {
     return (dispatch) => {
         dispatch(sendCallCentroAchs(nombre, codigo, uoMedica, uoTratamiento));
@@ -643,11 +631,11 @@ export function sendCentroAchs(nombre, codigo, uoMedica, uoTratamiento) {
 const sendCallCentroAchs = (nombre, codigo, uoMedica, uoTratamiento) => ({
     type: SEND_CENTROACHS,
     payload: {
-        nombre: nombre,
-        codigo: codigo,
-        uoMedica: uoMedica,
-        uoTratamiento: uoTratamiento,
-    },
+        nombre,
+        codigo,
+        uoMedica,
+        uoTratamiento
+    }
 });
 
 export const validarData = async(data) => {
@@ -671,9 +659,8 @@ export const validarAfiliacion = (data) => (dispatch) => {
     validarData(data)
         .then((response) => {
             if (response.status === 200) {
-
                 if (Object.entries(response.data.content).length === 0) {
-                    //respuesta vacia
+                    // respuesta vacia
                     dispatch(handleSetStep(500));
                 } else {
                     if (response.data.content.response.length === 0) {
@@ -682,17 +669,16 @@ export const validarAfiliacion = (data) => (dispatch) => {
                         const {
                             Empresa,
                             Sucursal,
-                            CotizacionesPaciente,
+                            CotizacionesPaciente
                         } = response.data.content.response;
-                        if (Empresa !== "Afiliada") {
+                        if (Empresa !== "Afiliada")
                             dispatch(handleSetStep(5.11));
-                        } else if (Sucursal !== "Vigente") {
+                         else if (Sucursal !== "Vigente")
                             dispatch(handleSetStep(5.13));
-                        } else if (!CotizacionesPaciente) {
+                         else if (!CotizacionesPaciente)
                             dispatch(handleSetStep(5.12));
-                        } else {
-                            dispatch(handleSetStep(5.7)); // ("x", 5.1)); 
-                        }
+                         else
+                            dispatch(handleSetStep(5.7)); // ("x", 5.1));
                     }
                 }
             } else {
@@ -704,7 +690,7 @@ export const validarAfiliacion = (data) => (dispatch) => {
         .catch((error) => {
             dispatch({
                 type: DATE_EMPRESA_FAILURE,
-                payload: error,
+                payload: error
             });
             dispatch(updateForm("errorStep", 0));
             dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_EMPRESA));
@@ -721,96 +707,78 @@ export const sendingCaso = async(objeto, token) => {
 }
 
 export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
-
     const { addmissionForm } = getState();
     const { LogForm: { ID } } = getState();
     const { microsoftReducer: { userMsal } } = getState();
 
-    var JsonSap = addmissionForm
-    delete JsonSap["siniestros"];
-    delete JsonSap["cita"];
-    //delete JsonSap["step"];
-    delete JsonSap["percentaje"];
+    let JsonSap = addmissionForm
+    delete JsonSap.siniestros;
+    delete JsonSap.cita;
+    // delete JsonSap.step;
+    delete JsonSap.percentaje;
     if (JsonSap.razonAlertaForm && (JsonSap.razonAlertaForm.id === 6 || JsonSap.razonAlertaForm.id === 7))
-        delete JsonSap["razonAlertaForm"];
+        delete JsonSap.razonAlertaForm;
 
     const objeto = {
         id_tipo: 1,
         id_estado: 2,
-        rut_paciente: addmissionForm.rut, //"8960683-7",
+        rut_paciente: addmissionForm.rut, // "8960683-7",
         mail_admisionista: userMsal.email,
         admision_json: JsonSap,
         telefono_paciente: addmissionForm.telefonoParticular,
         email_paciente: addmissionForm.emailusuario
     };
 
-    //console.log("*********************************************")
-    //console.log(JSON.stringify(objeto))
-    //console.log("*********************************************")
+    // console.log("*********************************************")
+    // console.log(JSON.stringify(objeto))
+    // console.log("*********************************************")
 
     try {
-
         const result = await sendingCaso(objeto, getState().microsoftReducer.token);
         const data = result.data
 
         if (result.status === 200) {
-
             if (Object.keys(result).length > 0) {
-
                 const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
 
                 if (IdEstadoAdmision !== 3) { // error en episodio
                     dispatch(updateForm("mensajeErrorSAP", "Error al crear episodio"));
                     dispatch(handleSetStep(1002.1));
-
                 } else if (IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7) { // error en siniestro
                     dispatch(updateForm("mensajeErrorSAP", "Error al crear siniestro"));
                     dispatch(handleSetStep(1002.2));
-
                 } else if (IdEstadoSiniestro === 7) { // error en documento
                     dispatch(updateForm("siniestroID", siniestroID));
                     dispatch(handleSetStep(1001.2));
-
                 } else if (IdEstadoSiniestro === 8) { // error en status
                     dispatch(updateForm("siniestroID", siniestroID));
                     dispatch(handleSetStep(1001.3));
-
                 } else {
-
                     if (siniestroID.match("[\\D]+") === null) {
-
                         dispatch(updateForm("siniestroID", siniestroID));
                         dispatch(handleSetStep(1001));
-
-
                     } else {
                         dispatch(updateForm("mensajeErrorSAP", siniestroID));
                         dispatch(handleSetStep(1002));
-
                     }
-
                 }
 
                 EndLog(ID, siniestroID, EpisodioID, data.status, dispatch)
-
             } else {
                 dispatch(updateForm("mensajeErrorSAP", "Error de data"));
                 dispatch(handleSetStep(1002));
                 EndLog(ID, "", "", 500, dispatch)
             }
-
         } else {
             dispatch(updateForm("mensajeErrorSAP", data.mensaje));
             dispatch(handleSetStep(1002));
             EndLog(ID, "", "", 500, dispatch)
         }
-
     } catch (error) {
         dispatch(updateForm("mensajeErrorSAP", String(error)));
         dispatch(handleSetStep(1002));
         EndLog(ID, "", "", 500, dispatch)
     }
-
 };
 
 const EndLog = (ID, siniestroID, EpisodioID, status, dispatch) => {

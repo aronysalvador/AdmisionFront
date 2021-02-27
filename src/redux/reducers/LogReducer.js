@@ -9,8 +9,7 @@ import {
   INIT_SESSION_DATE
   } from "../types/LogType";
 
-
-  const getDate = () =>{
+  const getDate = () => {
     return "( "+new Date().toLocaleString("en-US", { timeZone: 'America/Santiago', hour12: false })+" )"
   }
 
@@ -20,41 +19,41 @@ import {
     error: null,
     fecha: getDate()
   };
-  
+
   export default function logForm(state = INITIAL_STATE, action) {
     switch (action.type) {
-
       case INIT_SESSION_DATE:
-        return { 
+        return {
           ...state,
           fecha: getDate()
       };
 
-      case LOAD_LOG_STATE_SESSIONSTORAGE:{
+      case LOAD_LOG_STATE_SESSIONSTORAGE: {
         action.payload.fecha = state.fecha
+
         return { ...action.payload };
       }
 
       case POST_LOG_INIT:
       case POST_LOG_INIT_STEP:
         return { ...state, loading: true };
-  
+
       case POST_LOG_SUCCESS:
         return {
           ...state,
           ID: action.payload,
-          loading: false,
+          loading: false
         };
       case POST_LOG_SUCCESS_STEP:
         return {
           ...state,
-          loading: false,
+          loading: false
         };
-  
+
       case POST_LOG_FAILURE:
       case POST_LOG_FAILURE_STEP:
         return { ...state, error: action.payload, loading: false };
-  
+
       default:
         return { ...state };
     }

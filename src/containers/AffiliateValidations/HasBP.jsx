@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
@@ -9,7 +8,6 @@ import Header from "../../components/header/index";
 import image from './../../img/error-siniestro.svg'
 
 const HasBP = (props) => {
-
   const { dispatch, microsoftReducer } = props;
 
   const spaceStyle = getSpaceStyle();
@@ -18,14 +16,14 @@ const HasBP = (props) => {
 
   return (
   <>
-    <div className={comunClass.displayDesk}> 
-      <Header userMsal={ microsoftReducer.userMsal }/>
-      <div style={{position: 'absolute', width: '100%', height:'92%', backgroundColor: '#373737'}}></div>
+    <div className={comunClass.displayDesk}>
+      <Header userMsal={ microsoftReducer.userMsal } />
+      <div style={{position: 'absolute', width: '100%', height: '92%', backgroundColor: '#373737'}} />
     </div>
     <div className={blackStyle.root}>
       <div className={spaceStyle.space2} />
       <img
-        alt="load"
+        alt='load'
         src={image}
         className={blackStyle.img}
       />
@@ -68,8 +66,8 @@ const HasBP = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(HasBP);

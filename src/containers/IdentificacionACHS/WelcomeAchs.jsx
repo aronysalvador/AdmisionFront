@@ -1,4 +1,3 @@
-import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
@@ -30,12 +29,12 @@ const SessionAchs = (props) => {
   // const classes = useStyles();
 
   const contenidoCentroAchs = [
-    addmissionForm.centrosForm.Centro_m,
+    addmissionForm.centrosForm.Centro_m
   ];
 
   return (
     <div className={comunStyle.rootWhite}>
-      <div className={comunStyle.displayDesk}> 
+      <div className={comunStyle.displayDesk}>
       <Header userMsal={ microsoftReducer.userMsal} />
       </div>
       <div className={welcomeStyle.backgroundBoxAchs}>
@@ -90,13 +89,14 @@ const SessionAchs = (props) => {
           </div>
           <div className={spaceStyle.space1} />
           <div className={welcomeStyle.boxCentroAlignDesk}>
-            <div className={welcomeStyle.boxCentroAlign} >
+            <div className={welcomeStyle.boxCentroAlign}>
               <div className={welcomeStyle.boxCentroAchs}
-                id={"SessionAchs-Btn1"} 
+                id={"SessionAchs-Btn1"}
                 style={{ cursor: 'pointer'}}
-                onClick={() => dispatch(handleSetStep(40))} percentage={-1}>
+                onClick={() => dispatch(handleSetStep(40))} percentage={-1}
+              >
                 <img
-                  alt="Centro ACHS"
+                  alt='Centro ACHS'
                   src={hospital}
                   style={{ color: "#007A33" }}
                 />
@@ -119,8 +119,9 @@ const SessionAchs = (props) => {
       <div className={comunStyle.displayDesk}>
         <div className={spaceStyle.space2} />
       </div>
-      <div className={comunStyle.bottomElement}  
-      style={{padding:'16px 16px 33px 16px', position: 'relative'}} >
+      <div className={comunStyle.bottomElement}
+      style={{padding: '16px 16px 33px 16px', position: 'relative'}}
+      >
         <div className={comunStyle.boxDesk}>
           <div className={comunStyle.displayDesk}>
             <Grid
@@ -136,10 +137,10 @@ const SessionAchs = (props) => {
             <div className={spaceStyle.space1} />
           </div>
           <Button
-            id={"SessionAchs-Btn2"} 
+            id={"SessionAchs-Btn2"}
             className={comunStyle.buttonAchs}
-            variant="contained"
-            onClick={() => dispatch(handleSetStep(2))} //1.1 Empecemos eliminada
+            variant='contained'
+            onClick={() => dispatch(handleSetStep(2))} // 1.1 Empecemos eliminada
           >
             Nueva admisión
           </Button>
@@ -148,21 +149,21 @@ const SessionAchs = (props) => {
         <div className={comunStyle.displayMobile}>
           <Button
             className={comunStyle.buttonAchs2}
-            variant="contained"
+            variant='contained'
             onClick={() => dispatch(logout())}
           >
             Cerrar sesión
           </Button>
         </div>
-      </div> 
+      </div>
     </div>
   );
 };
 
 function mapStateToProps({ addmissionForm, microsoftReducer }) {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer,
+    addmissionForm,
+    microsoftReducer
   };
 }
 export default connect(mapStateToProps)(SessionAchs);

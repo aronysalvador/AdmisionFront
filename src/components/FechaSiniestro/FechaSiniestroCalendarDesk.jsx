@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
@@ -8,7 +8,6 @@ import moment from "moment";
 import {defaultMaterialThemeKeyboardDatePicker} from "../../css/styleDatePicker";
 import image from './../../img/iconCalendar.svg'
 
-
 const FechaSiniestroDesk = ({
   onChange,
   daysFromState,
@@ -17,16 +16,14 @@ const FechaSiniestroDesk = ({
   textLabel,
   UpComponent
 }) => {
-
   const IdComponent = UpComponent ? UpComponent : "";
-  if(daysFromState?.toString().length === 1){
+  if (daysFromState?.toString().length === 1)
     daysFromState = ("0" + daysFromState).slice(-2)
-  }
-  if(monthFromState?.toString().length === 1){
-    monthFromState = ("0" + monthFromState).slice(-2)
-  }
 
-  const [inputValue, setInputValue] = useState(() =>{
+  if (monthFromState?.toString().length === 1)
+    monthFromState = ("0" + monthFromState).slice(-2)
+
+  const [ inputValue, setInputValue ] = useState(() => {
     return !daysFromState ? moment().format("DD-MM-YYYY") : `${daysFromState}-${monthFromState}-${yearFromState}`;
   });
 
@@ -34,13 +31,12 @@ const FechaSiniestroDesk = ({
 
   const onDateChange = (date, value) => {
     setInputValue(value);
-    if(value){
+    if (value){
       let fechaSplit=value.split('-')
-      onChange({ days:parseInt(fechaSplit[0]),month:parseInt(fechaSplit[1]), year:parseInt(fechaSplit[2])})
+      onChange({ days: parseInt(fechaSplit[0]), month: parseInt(fechaSplit[1]), year: parseInt(fechaSplit[2])})
     }
     else
-      onChange({days:0,month:0, year:0})
-    
+      { onChange({days: 0, month: 0, year: 0}) }
   };
 
   return (
@@ -48,33 +44,33 @@ const FechaSiniestroDesk = ({
       <div>
         <Grid
           className={comunClass.tituloTextBox}
-          style={{marginBottom:'15px'}}
+          style={{marginBottom: '15px'}}
         >
           {textLabel}
         </Grid>
       </div>
-      <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} >
+      <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
         <ThemeProvider theme={defaultMaterialThemeKeyboardDatePicker}>
           <KeyboardDatePicker
-            id={IdComponent+"-Desk-DatePicker1"} 
-            inputVariant="outlined"
+            id={IdComponent+"-Desk-DatePicker1"}
+            inputVariant='outlined'
             disableFuture
-            format="DD-MM-YYYY"
+            format='DD-MM-YYYY'
             inputValue={inputValue}
             onChange={onDateChange}
-            animateYearScrolling            
-            disableToolbar  // seleccionar año
+            animateYearScrolling
+            disableToolbar // seleccionar año
             InputAdornmentProps={{ position: 'start', padding: '0 0 0 6px'}}
             fullWidth
-            invalidDateMessage="Formato invalido"
-            maxDateMessage="La fecha no puede exceder al día de hoy"
-            minDateMessage="La fecha es invalida"
+            invalidDateMessage='Formato invalido'
+            maxDateMessage='La fecha no puede exceder al día de hoy'
+            minDateMessage='La fecha es invalida'
 
-            keyboardIcon={<img alt="calendar" src={image}/>}
-      />
-      </ThemeProvider>
-      </MuiPickersUtilsProvider>          
-    </>    
+            keyboardIcon={<img alt='calendar' src={image} />}
+          />
+        </ThemeProvider>
+      </MuiPickersUtilsProvider>
+    </>
   );
 };
 

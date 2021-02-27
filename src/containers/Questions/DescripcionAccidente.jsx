@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
@@ -16,15 +15,13 @@ const AccidentDescriptionForm = (props) => {
   const saveAnswer = (value) => {
     dispatch(updateForm("descripcionAccidente", value));
     dispatch(handleSetStep(++addmissionForm.step));
-    if(respuestaOriginal !== value) {
+    if (respuestaOriginal !== value)
       dispatch(updateForm("volverAConcatenar", true));
-    }
-
   };
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header
           userMsal={ microsoftReducer.userMsal }
           // step={1}
@@ -55,8 +52,8 @@ const AccidentDescriptionForm = (props) => {
 
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(AccidentDescriptionForm);

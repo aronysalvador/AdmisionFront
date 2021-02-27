@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import { getComunStyle } from "../../css/comun"
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { Button, Typography } from "@material-ui/core"
@@ -9,22 +9,21 @@ import Mapa from '../../components/share/DireccionGeo/Mapa';
 import Header from "../../components/header/index";
 
 const LugarSiniestroMapaSelection = () => {
-
-  const [direccion, setDireccion]=useState(null);
-  const [placeId, setPlaceId]=useState(null);
-  const [coords, setCoords]= useState(null);
+  const [ direccion, setDireccion ]=useState(null);
+  const [ placeId, setPlaceId ]=useState(null);
+  const [ coords, setCoords ]= useState(null);
   const dispatch = useDispatch();
   const {
-    addmissionForm: {  percentage, DireccionTemporal, LatTemporal, LongTemporal },
+    addmissionForm: { percentage, DireccionTemporal, LatTemporal, LongTemporal },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
-  useEffect(()=>{
+  useEffect(() => {
       getLocation()
-  },[])
+  }, [])
 
   const getLocation = () => {
-    var options = {
+    let options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0
@@ -35,13 +34,13 @@ const LugarSiniestroMapaSelection = () => {
         function(position) {
             setCoords({
                 latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
+                longitude: position.coords.longitude
             })
         },
-        function(error) {
+        function() {
             setCoords({
             latitude: 'notset',
-            longitude: 'notset',
+            longitude: 'notset'
           })
         },
         options
@@ -53,18 +52,18 @@ const LugarSiniestroMapaSelection = () => {
 
   const handleSelect = async() => {
     googleMapsGetMap(placeId)
-    dispatch(updateForm("sucursalEmpresaSiniestro", 
+    dispatch(updateForm("sucursalEmpresaSiniestro",
     {
       description: direccion,
-      place_id: placeId, 
-      reference: placeId, 
-      structured_formatting:{
+      place_id: placeId,
+      reference: placeId,
+      structured_formatting: {
         main_text: direccion.split(',')[0],
         secondary_text: direccion.split(',')[1]+', '+direccion.split(',')[2]
       },
       types: [
         "street_address",
-        "geocode" 
+        "geocode"
       ]
     }
     ))
@@ -72,23 +71,23 @@ const LugarSiniestroMapaSelection = () => {
   };
 
   const googleMapsGetMap = async(placeId) => {
-    if(placeId){
-      let urlMapa =  `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
+    if (placeId){
+      let urlMapa = `${window.REACT_APP_GEO_STATICMAP}?id=${placeId}&size=300x280`
       dispatch(updateForm("urlMapasucursalEmpresaSiniestro", urlMapa))
     }
   };
 
   return (
-    <div className={comunClass.rootContainer}> 
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+    <div className={comunClass.rootContainer}>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <div style={{padding: '0.5em'}}>
           <Cabecera
             dispatch={() => dispatch(handleSetStep(11))}
             percentage={percentage}
-            noSpace={true}
+            noSpace
           />
         </div>
       </div>
@@ -98,15 +97,15 @@ const LugarSiniestroMapaSelection = () => {
       <div className={comunClass.boxDeskMap}>
         <div>
           {coords ? (
-                <Mapa 
+                <Mapa
                     lat={coords.latitude}
                     lng={coords.longitude}
                     direccion={direccion}
                     setDireccion={setDireccion}
-                    setPlaceId={setPlaceId}    
+                    setPlaceId={setPlaceId}
                     DireccionTemporal={DireccionTemporal}
-                    LatTemporal={LatTemporal}     
-                    LongTemporal={LongTemporal}   
+                    LatTemporal={LatTemporal}
+                    LongTemporal={LongTemporal}
                 />
           ) : (
             <Typography>Cargando....</Typography>
@@ -115,8 +114,8 @@ const LugarSiniestroMapaSelection = () => {
         <div className={comunClass.bottomElementMap} style={{padding: '0 20px 20px 20px'}}>
           <Button
             className={comunClass.buttonAchs}
-            variant="contained"
-            disabled={direccion ? false : true}
+            variant='contained'
+            disabled={!direccion}
             onClick={() => {
               handleSelect()
             }}

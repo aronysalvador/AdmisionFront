@@ -1,4 +1,3 @@
-import React from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -19,7 +18,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
 
   const comunClass = getComunStyle();
 
-  const handlerGuradarSucursalTexto = (itemForm, data, step) => {
+  const handlerGuradarSucursalTexto = (itemForm, data) => {
     const { nombre, direccion, comuna, codigo, sucursalCargo } = data;
     const sucursalTexto = nombre;
     dispatch(updateForm(itemForm, sucursalTexto));
@@ -28,10 +27,11 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
     dispatch(updateForm("codigoSucursal", codigo));
     dispatch(updateForm("sucursalCargo", sucursalCargo));
   };
+
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -43,14 +43,14 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={`${comunClass.titleBlack} ${comunClass.textPrimaryDesk}`}>
           Identifica
-          <Grid component="span"  className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
-            &nbsp;la sucursal 
-          </Grid>         
+          <Grid component='span' className={`${comunClass.titleBlue} ${comunClass.titleBlue2}`}>
+            &nbsp;la sucursal
+          </Grid>
           &nbsp;en donde trabaja
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="identify" src={image} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='identify' src={image} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
@@ -61,7 +61,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            flexWrap: "wrap",
+            flexWrap: "wrap"
           }}
         >
           {sucursalesEmpresa.map((sucursal, index) => (

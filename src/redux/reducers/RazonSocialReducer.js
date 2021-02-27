@@ -1,13 +1,13 @@
 import {
   GET_RAZONSOCIAL_INIT,
   GET_RAZONSOCIAL_SUCCESS,
-  GET_RAZONSOCIAL_FAILURE,
+  GET_RAZONSOCIAL_FAILURE
 } from "../types/razonSocialType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function razonSocialForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function razonSocialForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_RAZONSOCIAL_FAILURE:

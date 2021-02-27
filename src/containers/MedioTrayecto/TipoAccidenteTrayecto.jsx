@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
@@ -14,20 +14,19 @@ import { Button } from "@material-ui/core";
 
 const TipoAccidenteTrayecto = () => {
   const {
-    addmissionForm: { percentage, sucursalEmpresaSiniestro,  DireccionEmpresa, comunaEmpresa, tipoAccidenteTrayectoForm, CamposDocumentos,comunaTrabajoTrayecto,sucursalTrabajoTrayecto, urlMapaTrabajoTrayecto },
+    addmissionForm: { percentage, sucursalEmpresaSiniestro, DireccionEmpresa, comunaEmpresa, tipoAccidenteTrayectoForm, CamposDocumentos, comunaTrabajoTrayecto, sucursalTrabajoTrayecto, urlMapaTrabajoTrayecto },
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
-  
+
   const dispatch = useDispatch();
 
   const { data: tipoAccidenteTrayectoList } = useSelector((state) => state.tipoAccidenteTrayectoForm, shallowEqual);
   let tipoAccidente = !tipoAccidenteTrayectoForm ? "" : tipoAccidenteTrayectoForm
 
-  const [sucursal, setSucursal] = useState(sucursalTrabajoTrayecto ? sucursalTrabajoTrayecto : "");
-  const [mapaUrl, setMapaUrl] = useState(urlMapaTrabajoTrayecto ? urlMapaTrabajoTrayecto : "");
-  const [nombreComuna,setNombreComuna]=useState(comunaTrabajoTrayecto?comunaTrabajoTrayecto:"");
-  const [direccionValida, setDireccionValida] = useState(false)
-
+  const [ sucursal, setSucursal ] = useState(sucursalTrabajoTrayecto ? sucursalTrabajoTrayecto : "");
+  const [ mapaUrl, setMapaUrl ] = useState(urlMapaTrabajoTrayecto ? urlMapaTrabajoTrayecto : "");
+  const [ nombreComuna, setNombreComuna ]=useState(comunaTrabajoTrayecto?comunaTrabajoTrayecto:"");
+  const [ direccionValida, setDireccionValida ] = useState(false)
 
   const clearData = () => {
       dispatch(updateForm("sucursalEmpresaSiniestro", ""))
@@ -43,26 +42,26 @@ const TipoAccidenteTrayecto = () => {
     dispatch(updateForm("comunaTrabajoTrayecto", nombreComuna))
     dispatch(handleSetStep(6.02))
   }
-  
+
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
 
-  const [activo, setActivo] = useState(false)
- 
-  useEffect(() =>{
-    if(direccionValida && tipoAccidenteTrayectoForm){
+  const [ activo, setActivo ] = useState(false)
+
+  useEffect(() => {
+    if (direccionValida && tipoAccidenteTrayectoForm)
       setActivo(false)
-    }else{
+    else
       setActivo(true)
-    }
+
       // console.log(direccionValida)
       // console.log(tipoAccidenteTrayectoForm)
-  },[direccionValida, tipoAccidenteTrayectoForm])
+  }, [ direccionValida, tipoAccidenteTrayectoForm ])
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
-        <Header userMsal={ microsoftReducer.userMsal }/>
+      <div className={comunClass.displayDesk}>
+        <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
@@ -72,25 +71,25 @@ const TipoAccidenteTrayecto = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[comunClass.titleBlack, comunClass.textPrimaryDesk]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
           Selecciona la opción que
-          <Grid component="span"  className={[comunClass.titleBlue, comunClass.titleBlue2]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
             &nbsp;describa la ruta del accidente de trayecto
-          </Grid>          
+          </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
-          <Grid component="span" className={comunClass.imgPrimaryDesk}>
-            <img alt="relato" src={relato} className={comunClass.imgPrimaryWidth} />
+          <Grid component='span' className={comunClass.imgPrimaryDesk}>
+            <img alt='relato' src={relato} className={comunClass.imgPrimaryWidth} />
           </Grid>
         </div>
       </div>
       <div className={spaceStyle.space2} />
       <div className={comunClass.boxDeskCardBtn}>
         <div className={comunClass.cardBtn}>
-          {tipoAccidenteTrayectoList.length>0 && ( 
-            <>
+          {tipoAccidenteTrayectoList.length>0 && (
+            <div>
               {tipoAccidenteTrayectoList && tipoAccidenteTrayectoList.map((tipo) => (
-              
+
                 <BotonSeleccionarCustomSingle
                   id={"TipoAccidenteTrayecto-Btn"+tipo.key}
                   key={tipo.key}
@@ -102,17 +101,17 @@ const TipoAccidenteTrayecto = () => {
                   <BotonSeleccionarCustomItemTipoAccidenteTrayecto {...tipo} />
                 </BotonSeleccionarCustomSingle>
               ))}
-            </>
+            </div>
           )}
         </div>
         <div className={spaceStyle.space2} />
-        <div className="row" style={{width: '70%', margin: 'auto', minWidth: '300px'}}>
-          <div className="col-md-12">
-            <LugarTrabajo    
-              titulo={"Lugar de trabajo del día del accidente"}                                               
+        <div className='row' style={{width: '70%', margin: 'auto', minWidth: '300px'}}>
+          <div className='col-md-12'>
+            <LugarTrabajo
+              titulo={"Lugar de trabajo del día del accidente"}
               sucursal={sucursal}
               setSucursal={setSucursal}
-              mapaUrl={mapaUrl} 
+              mapaUrl={mapaUrl}
               setMapaUrl={setMapaUrl}
               nombreComuna={nombreComuna}
               setNombreComuna={setNombreComuna}
@@ -127,11 +126,11 @@ const TipoAccidenteTrayecto = () => {
           </div>
         </div>
 
-        <div className="col-md-12">
+        <div className='col-md-12'>
           <div className={spaceStyle.space2} />
           <Button
             id={"TipoAccidenteTrayecto-BtnContinuar"}
-            variant="contained"
+            variant='contained'
             className={comunClass.buttonAchs}
             disabled={activo}
             onClick={() => handleNext() }

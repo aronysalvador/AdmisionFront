@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -13,9 +13,9 @@ const LoadPersonalData = (props) => {
 
   const initFn = useCallback(async () => {
     await dispatch(saveRut(addmissionForm.rut));
-  }, [dispatch, addmissionForm ]);
+  }, [ dispatch, addmissionForm ]);
 
-  useEffect( () => {
+  useEffect(() => {
     initFn()
      // eslint-disable-next-line
   },[]);
@@ -25,14 +25,14 @@ const LoadPersonalData = (props) => {
 
   return (
     <div className={comunClass.root}>
-      <div className={comunClass.displayDesk}> 
+      <div className={comunClass.displayDesk}>
         <Header userMsal={ microsoftReducer.userMsal } />
       </div>
       <div className={spaceStyle.space5} />
       <center>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={image}
             className={comunClass.imgLoadData}
           />
@@ -40,7 +40,7 @@ const LoadPersonalData = (props) => {
         <div className={spaceStyle.space3} />
         <Grid className={comunClass.txtLoadData}>
           Estamos validando&nbsp;
-          <br className={comunClass.displayMobile}/>
+          <br className={comunClass.displayMobile} />
           tus datos
         </Grid>
         <div className={spaceStyle.space1} />
@@ -49,7 +49,7 @@ const LoadPersonalData = (props) => {
         </Grid>
         <div>
           <img
-            alt="load"
+            alt='load'
             src={loader}
             className={comunClass.imgLoadData2}
           />
@@ -60,8 +60,8 @@ const LoadPersonalData = (props) => {
 };
 const mapStateToProps = ({ addmissionForm, microsoftReducer }) => {
   return {
-    addmissionForm: addmissionForm,
-    microsoftReducer: microsoftReducer
+    addmissionForm,
+    microsoftReducer
   };
 };
 export default connect(mapStateToProps)(LoadPersonalData);

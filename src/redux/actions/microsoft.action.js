@@ -2,7 +2,7 @@ import {
     MSAL_INIT,
     MSAL_SUCCESS,
     MSAL_FAILURE,
-    SAVE_TOKEN,
+    SAVE_TOKEN
 } from "../types/microsoftType.js";
 import msalservice from "../../services/msalservice";
 import graphservice from "../../services/graphservice";
@@ -13,8 +13,10 @@ export async function getUserProfile(scopes) {
     const accessToken = await msalservice.acquireTokenSilent({ scopes });
     if (accessToken) {
         const user = await graphservice(accessToken);
+
         return user;
     }
+
     return null;
 }
 
@@ -35,19 +37,17 @@ export const login = (scopes) => async(dispatch, getState) => {
         const userMsal = {
             displayName: user.displayName,
             email: user.mail || user.userPrincipalName,
-            iniciales: iniciales,
+            iniciales
         };
         dispatch({ type: MSAL_SUCCESS, payload: userMsal });
-        //PARCHE
-        var userSAP = await homologacionSap(dispatch, userMsal.email, accessToken)
+        // PARCHE
+        let userSAP = await homologacionSap(dispatch, userMsal.email, accessToken)
         if (userSAP) {
-            var step = await isNuevaAdmisionista(dispatch, userMsal.email, getState)
+            let step = await isNuevaAdmisionista(dispatch, userMsal.email, getState)
             dispatch(handleSetStep(step));
         } else {
             dispatch(handleSetStep(1003));
         }
-
-
     } catch (err) {
         let error = {};
         if (typeof err === "string") {
@@ -59,7 +59,7 @@ export const login = (scopes) => async(dispatch, getState) => {
         } else {
             error = {
                 message: err.message,
-                debug: JSON.stringify(err),
+                debug: JSON.stringify(err)
             };
         }
         alert(error.message)
@@ -77,6 +77,7 @@ export const getAccount = () => async(dispatch) => {
     const usermsal = msalservice.getAccount();
     const step = usermsal === null ? 0 : 1;
     dispatch(handleSetStep(step))
+
     return usermsal;
 };
 
@@ -92,8 +93,8 @@ const isNuevaAdmisionista = async(dispatch, email, getState) => {
     const result = await getCenters(email, getState().microsoftReducer.token);
 
     if (result.data.data.centrosForm) {
-
         dispatch(updateForm("centrosForm", result.data.data.centrosForm));
+
         return 1
     } else {
         return 40
@@ -117,6 +118,7 @@ const homologacionSap = async(dispatch, email, token) => {
     if (result.data.content[0].length > 0 && result.data.token) {
         dispatch(guardar_token(result.data.token));
         dispatch(updateForm("usuarioSAP", result.data.content[0]));
+
         return true
     } else {
         return false

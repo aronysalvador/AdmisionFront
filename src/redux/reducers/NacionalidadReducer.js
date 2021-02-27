@@ -1,13 +1,13 @@
 import {
   GET_NACIONALIDAD_INIT,
   GET_NACIONALIDAD_SUCCESS,
-  GET_NACIONALIDAD_FAILURE,
+  GET_NACIONALIDAD_FAILURE
 } from "../types/nacionalidadType";
 
 const INITIAL_STATE = {
   data: [],
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function nacionalidadForm(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ export default function nacionalidadForm(state = INITIAL_STATE, action) {
       return {
         ...state,
         data: action.payload,
-        loading: false,
+        loading: false
       };
 
     case GET_NACIONALIDAD_FAILURE:
