@@ -13,7 +13,7 @@ import { Format } from "../../helpers/strings";
 import ClearIcon from '@material-ui/icons/Clear';
 import Grid from '@material-ui/core/Grid';
 import Time from './../../components/Pickers/Time'
-import Date from './../../components/Pickers/Date-YM'
+import PickerDate from './../../components/Pickers/Date-YM'
 import moment from "moment";
 import "moment/locale/es";
 import { ValidarFechaMesAnio, ValidarHora } from 'helpers/utils';
@@ -33,7 +33,7 @@ export default () => {
 
     const dispatch = useDispatch();
     const {
-        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActualVisual, inicioJornadaLaboral, finJornadaLaboral, CamposDocumentos },
+        addmissionForm: { percentage, profesionForm, cargoForm, tipoDeContrato, tipoJornadaForm, tipoRemuneracion, categoriaOcupacionalForm, ingresoTrabajoActualVisual, inicioJornadaLaboral, finJornadaLaboral, CamposDocumentos, FechaSintomasEP, FechaExposicionAgenteEP },
         microsoftReducer,
         profesionForm: profesionList,
         categoriaOcupacionalForm: categoriaList,
@@ -72,17 +72,44 @@ export default () => {
             setErrorCargo(false);
     }
 
+    const validateEP = (ingreso) => {
+        if ((FechaSintomasEP === undefined || FechaSintomasEP === null || FechaSintomasEP === "") && (FechaExposicionAgenteEP === undefined || FechaExposicionAgenteEP === null || FechaExposicionAgenteEP === ""))
+            return true;
+        if (!ingreso)
+            return false;
+        let [ mes, anio ] = ingreso.split("-");
+        let [ , month, year ] = FechaSintomasEP.split(".");
+        if (
+            parseInt(anio) > parseInt(year) ||
+            parseInt(anio) === parseInt(year) && parseInt(mes) > parseInt(month)
+        )
+            return false;
+        [ , month, year ] = FechaExposicionAgenteEP.split(".");
+        if (
+            parseInt(anio) > parseInt(year) ||
+            parseInt(anio) === parseInt(year) && parseInt(mes) > parseInt(month)
+        )
+            return false;
+
+        return true;
+    }
+
     useEffect(() => {
         if (
             (profesion!=="" && categoriaOcup!=="" && contrato!=="" && cargo!=="" && remuneracion!=="" && jornada!=="") &&
             (ValidarHora(entrada) && ValidarHora(salida)) &&
             (ValidarFechaMesAnio(ingreso))
-            )
-            setValid(true)
-        else
-            setValid(false)
-        // eslint-disable-next-line
-    },[profesion,categoriaOcup,contrato,cargo,remuneracion,jornada,entrada,salida,ingreso])
+            ){
+                setValid(validateEP(ingreso))
+
+                return;
+            }
+        else {
+            setValid(false);
+
+            return;
+        }
+    }, [ profesion, categoriaOcup, contrato, cargo, remuneracion, jornada, entrada, salida, ingreso ])
 
     const handleNext = () => {
         dispatch(updateForm("profesionForm", profesion));
@@ -304,7 +331,7 @@ export default () => {
                                             </Grid>
                                                 &nbsp;a su trabajo
                                         </Grid>
-                                        <Date date={ingreso} setDate={setIngreso} id='DatosContractuales-DatePicker1' />
+                                        <PickerDate date={ingreso} setDate={setIngreso} id='DatosContractuales-DatePicker1' />
                                     </div>
 
                                     <div className={comunClass.displayDesk}>
