@@ -29,16 +29,6 @@ const SinBPInfoPersonal1 = () => {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 
-  const formatDate = (fecha) => {
-    if (fecha){
-      let fechaSplitted = fecha.split("-");
-
-      return fechaSplitted[2] + "/" + fechaSplitted[1] + "/" + fechaSplitted[0];
-    } else {
-      return fecha
-    }
-  };
-
   // State
   const [ nombre, saveNombre ] = useState(() => { return !bpForm?.nombre ? "" : Capitalize(bpForm.nombre); });
 
@@ -46,11 +36,11 @@ const SinBPInfoPersonal1 = () => {
 
   const [ apellidoMaterno, saveApellidoMaterno ] = useState(() => { return !bpForm?.apellidoMaterno ? "" : Capitalize(bpForm.apellidoMaterno); });
 
-  const [ fechaNacimiento, saveFechaNacimiento ] = useState(() => { return !bpForm?.fechaNacimiento ? "" : formatDate(bpForm.fechaNacimiento); });
+  const [ fechaNacimiento, saveFechaNacimiento ] = useState(() => { return !bpForm?.fechaNacimiento ? "" : bpForm.fechaNacimiento });
 
   const [ sexo, saveSexo ] = useState(() => { return bpForm?.masculino ? "Masculino" : "Femenino"; });
 
-  const [ fechaValida, setFechaValida ] = useState(false);
+  const [ fechaValida, setFechaValida ] = useState(bpForm?.fechaNacimiento ? true : false);
 
   const { percentage } = useSelector(
     (state) => state.addmissionForm,
@@ -81,7 +71,7 @@ const SinBPInfoPersonal1 = () => {
         <Grid component='span' className={[ comunClass.textPrimaryDesk, comunClass.titleBlack ]}>
           Identifica la información
           <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
-            &nbsp;personal del paciente
+            &nbsp;personal del paciente......
           </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>

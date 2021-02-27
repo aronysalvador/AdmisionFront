@@ -38,14 +38,13 @@ const SinBPInfoPersonal2 = () => {
     return !grupoEtnico ? {id: "00", descripcion: "NINGUNA"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
 
-  const [isValid, setIsValid] = useState(false);
+  const [ isValid, setIsValid ] = useState(false);
 
   useEffect(() => {
     if (!nacionalidad || !idioma || !pais || !grupo)
       setIsValid(true);
     else
       setIsValid(false);
-    console.log(nacionalidad, idioma, pais, grupo)
   }, [ nacionalidad, idioma, pais, grupo ])
 
   const comunClass = getComunStyle();
