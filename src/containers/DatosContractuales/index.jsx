@@ -81,7 +81,6 @@ export default () => {
             setValid(true)
         else
             setValid(false)
-
         // eslint-disable-next-line
     },[profesion,categoriaOcup,contrato,cargo,remuneracion,jornada,entrada,salida,ingreso])
 
