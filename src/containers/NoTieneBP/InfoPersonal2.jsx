@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -37,6 +37,16 @@ const SinBPInfoPersonal2 = () => {
   const [ grupo, setGrupo ] = useState(() => {
     return !grupoEtnico ? {id: "00", descripcion: "NINGUNA"} : grupoEtnico; // CAMBIAR VALOR POR DEFECTO NINGUNO
   });
+
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    if (!nacionalidad || !idioma || !pais || !grupo)
+      setIsValid(true);
+    else
+      setIsValid(false);
+    console.log(nacionalidad, idioma, pais, grupo)
+  }, [ nacionalidad, idioma, pais, grupo ])
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -235,6 +245,7 @@ const SinBPInfoPersonal2 = () => {
             variant='contained'
             type='submit'
             onClick={() => clickConfirmar()}
+            disabled={isValid}
           >
             Confirmar
           </Button>
