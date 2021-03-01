@@ -1,4 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
+import welcome from './../img/Bienvenido.png';
+import check2 from './../img/check2.svg';
+import check5 from './../img/check5.svg';
+import check3 from './../img/check3.svg';
+import check4 from './../img/check4.svg';
+import check6 from './../img/check6.svg';
+import check7 from './../img/check7.svg';
 
 export const getComunStyle = makeStyles(() => ({
 
@@ -34,7 +41,7 @@ export const getComunStyle = makeStyles(() => ({
             position: "relative",
             width: "25.715em",
             height: "45.715em",
-            backgroundImage: `url(${require("./../img/Bienvenido.png")})`,
+            backgroundImage: `url(${welcome})`,
             padding: 0
         },
         // TEXTOS
@@ -236,7 +243,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check2.svg")})`,
+            backgroundImage: `url(${check2})`,
             backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
@@ -255,7 +262,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check5.svg")})`,
+            backgroundImage: `url(${check5})`,
             backgroundRepeat: "no-repeat"
         },
         cardsButtonOther: {
@@ -1178,7 +1185,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check3.svg")})`,
+            backgroundImage: `url(${check3})`,
             backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
@@ -1197,7 +1204,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check2.svg")})`,
+            backgroundImage: `url(${check2})`,
             backgroundRepeat: "no-repeat",
             margin: "0 5px"
         },
@@ -1361,7 +1368,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check4.svg")})`,
+            backgroundImage: `url(${check4})`,
             backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
@@ -1380,7 +1387,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check6.svg")})`,
+            backgroundImage: `url(${check6})`,
             backgroundRepeat: "no-repeat"
         },
         cardsButtonOtherCheck: {
@@ -1407,7 +1414,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check5.svg")})`,
+            backgroundImage: `url(${check5})`,
             backgroundRepeat: "no-repeat"
         },
         botonSeleccionadoSingle: {
@@ -1426,7 +1433,7 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "15px", // "35px",
             paddingBottom: "10px",
             color: "#373737",
-            backgroundImage: `url(${require("./../img/check7.svg")})`,
+            backgroundImage: `url(${check7})`,
             backgroundRepeat: "no-repeat"
         },
         cardsButtonOtherCheck: {

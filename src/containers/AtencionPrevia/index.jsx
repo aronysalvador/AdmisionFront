@@ -125,7 +125,7 @@ const AtencionPrevia = () => {
                 <div className={comunClass.paddingElement}>
                     <div>
                       <Grid className={[ comunClass.tituloTextBox ]}>
-                        Fecha de accidente
+                        Fecha de atención
                       </Grid>
                       <Date date={FechaOtroRe} setDate={setFechaOtroRe} id='AtencionPrevia-Datepicker1'
 setValidDate={setValidDate}
@@ -134,7 +134,7 @@ setValidDate={setValidDate}
 
                     <div style={{marginLeft: '0.5em'}}>
                       <Grid className={[ comunClass.tituloTextBox ]}>
-                        Hora de accidente
+                        Hora de atención
                       </Grid>
                       <Time id={"AtencionPrevia-TimePicker2"} time={HoraOtroRec} setTime={setHoraOtroRec}
 setValidHour={setValidHour}
