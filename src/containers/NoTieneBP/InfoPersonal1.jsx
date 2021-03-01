@@ -14,6 +14,7 @@ import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import image from './../../img/identify.svg'
 import Date from "../../components/Pickers/Date";
+import { formatoFecha } from "helpers/utils";
 
 const SinBPInfoPersonal1 = () => {
   const bpForm = useSelector(
@@ -36,7 +37,7 @@ const SinBPInfoPersonal1 = () => {
 
   const [ apellidoMaterno, saveApellidoMaterno ] = useState(() => { return !bpForm?.apellidoMaterno ? "" : Capitalize(bpForm.apellidoMaterno); });
 
-  const [ fechaNacimiento, saveFechaNacimiento ] = useState(() => { return !bpForm?.fechaNacimiento ? "" : bpForm.fechaNacimiento });
+  const [ fechaNacimiento, saveFechaNacimiento ] = useState(() => { return !bpForm?.fechaNacimiento ? "" : formatoFecha(bpForm.fechaNacimiento) });
 
   const [ sexo, saveSexo ] = useState(() => { return bpForm?.masculino ? "Masculino" : "Femenino"; });
 
