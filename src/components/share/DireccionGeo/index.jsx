@@ -81,7 +81,7 @@ const DireccionGeo = (props) => {
     }
 
     const handleDinamic = async() => {
-      if (direccion){
+      if (direccion?.description){
         dispatch(updateForm("DireccionTemporal", direccion))
         const test = await fetch(`${window.REACT_APP_GEO_LATLNG}?id=${direccion.place_id}`)
         const json = await test.json()

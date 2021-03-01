@@ -52,6 +52,7 @@ const LugarSiniestroTrayectoMapa = () => {
   const spaceStyle = getSpaceStyle();
 
   const handleSelect = async() => {
+    let address =  direccion ? direccion.split(',') : ""
     googleMapsGetMap(placeId)
     dispatch(updateForm("sucursalEmpresaSiniestro",
     {
@@ -59,8 +60,8 @@ const LugarSiniestroTrayectoMapa = () => {
       place_id: placeId,
       reference: placeId,
       structured_formatting: {
-        main_text: direccion.split(',')[0],
-        secondary_text: direccion.split(',')[1]+', '+direccion.split(',')[2]
+        main_text: address.length>0 ? address[0] : "",
+        secondary_text: address.length>0 ? address[1]+', '+address[2] : ""
       },
       types: [
         "street_address",
