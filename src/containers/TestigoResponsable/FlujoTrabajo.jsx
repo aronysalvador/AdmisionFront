@@ -15,16 +15,18 @@ import yesActive from './../../img/yesActive.svg'
 import notActive from './../../img/notActive.svg'
 import moment from "moment";
 import "moment/locale/es";
+import { returnDateObject } from "helpers/utils";
 moment.locale("es");
 
 const FlujoTrabajo = () => {
-    const { addmissionForm: { percentage, CamposDocumentos, responsableForm, fechaHoraResponsable }, microsoftReducer: {userMsal} } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, CamposDocumentos, responsableForm, fechaHoraResponsable, fechaHoraSiniestro }, microsoftReducer: {userMsal} } = useSelector((state) => state, shallowEqual);
     const dispatch = useDispatch();
 
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
 
     const [ date, setDate ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);
+    const [ errorDate, setErrorDate ] = useState("");
     const [ validDate, setValidDate ] = useState(fechaHoraResponsable.length>0 ? true : false);
 
     const [ hour, setHour ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);
@@ -43,9 +45,18 @@ const FlujoTrabajo = () => {
         if (!validDate || !validHour){ updateValid(false); return; }
         if (date.includes("_") || date.includes("_")){ updateValid(false); return; }
 
-        let [ dia, mes, anio ] = date.split("-");
         let [ hora, minutos ] = hour.split(":");
-        let fecha = new Date(`${+mes}/${dia}/${anio}`);
+        let fsiniestro = returnDateObject(fechaHoraSiniestro);
+        let fecha = returnDateObject(`${date} ${hour}`);
+
+        if (fsiniestro.getTime() > fecha.getTime()){
+            updateValid(false);
+            setErrorDate(`Fecha y hora de aviso no puede ser anterior a fecha de accidente ${fechaHoraSiniestro}`)
+
+            return;
+        }
+        setErrorDate("")
+
         let now = new Date();
         if (fecha.getFullYear() < 1900)
             updateValid(false);
@@ -180,9 +191,11 @@ const FlujoTrabajo = () => {
                                 >
                                         Fecha de aviso
                                 </Grid>
-
-                                <PickDate id={"FlujoTrabajo-Datepicker1"} date={date} setDate={setDate}
-                                setValidDate={setValidDate}
+                                <PickDate
+                                    id={"FlujoTrabajo-Datepicker1"}
+                                    date={date}
+                                    setDate={setDate}
+                                    setValidDate={setValidDate}
                                 />
                         </div>
                         <div className='col-md-5 ' style={{textAlign: "left"}}>
@@ -193,10 +206,13 @@ const FlujoTrabajo = () => {
                                         Hora de aviso
                                 </Grid>
 
-                                <Time id={"FlujoTrabajo-Timepicker1"} time={hour} setTime={setHour}
-setValidHour={setValidHour}
+                                <Time
+                                    id={"FlujoTrabajo-Timepicker1"}
+                                    time={hour} setTime={setHour}
+                                    setValidHour={setValidHour}
                                 />
                         </div>
+                        <div className='row justify-content-center' style={{color: "red"}}>{errorDate}</div>
                     </div>
 
                     <div className={spaceStyle.space1} />
