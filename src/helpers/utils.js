@@ -63,6 +63,23 @@ export function ValidarFechaMesAnio(fecha) {
     return true;
 }
 
+export const formatoFecha = string => {
+    let separator
+    if (string.includes("."))
+        separator = "."
+    else if (string.includes("-"))
+        separator = "-"
+    else if (string.includes("/"))
+        separator = "/"
+    else return string;
+    let [ day, month, year ] = string.split(separator);
+    if (day.length === 4)
+        return `${year}${separator}${month}${separator}${day}`
+    else if (year.length === 4)
+        return `${day}${separator}${month}${separator}${year}`;
+    else return string;
+}
+
 export const eliminarDiacriticos = (texto) => {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 }
