@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
-import Date from './../../components/Pickers/Date'
+import PickerDate from './../../components/Pickers/Date'
 import Time from './../../components/Pickers/Time-ClearIcon'
 import Radio from '@material-ui/core/Radio';
 import { TextField, InputAdornment } from "@material-ui/core";
@@ -21,10 +21,11 @@ import Mask from "../../containers/EditarTelefono/phone";
 import { Pipes } from "../../containers/EditarTelefono/phone";
 import moment from "moment";
 import "moment/locale/es";
+import { returnDateObject } from "helpers/utils";
 moment.locale("es");
 
 const FlujoTrayecto = () => {
-    const { addmissionForm: { percentage, CamposDocumentos, fechaHoraResponsable, responsable, testigos, TipoAvisoResponsable }, microsoftReducer: {userMsal} } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, CamposDocumentos, fechaHoraResponsable, responsable, testigos, TipoAvisoResponsable, fechaHoraSiniestro }, microsoftReducer: {userMsal} } = useSelector((state) => state, shallowEqual);
     const dispatch = useDispatch();
 
     const comunClass = getComunStyle();
@@ -35,6 +36,8 @@ const FlujoTrayecto = () => {
 
     const [ hour, setHour ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);
     const [ validHour, setValidHour ] = useState(false);
+
+    const [ errorDate, setErrorDate ] = useState("");
 
     const [ nombreResponsable, saveNombreResponsable ] = useState(() => {
         return !responsable ? "" : responsable.nombre;
@@ -85,13 +88,25 @@ const FlujoTrayecto = () => {
 
       useEffect(() => {
           let valida = false;
+          setErrorDate("");
           if (nombreResponsable.length>0 || cargoResponsable.length>0 || Object.keys(check).length !==0 || date?.length>0 || hour?.length>0){
               if (!nombreResponsable || !cargoResponsable || !check.id || (check.id===5 && !check.especificacion) || !validDate || !validHour)
                   valida=true
+
+                try {
+                let dateResponsable = returnDateObject(`${date} ${hour}`);
+                let fechaSiniestro = returnDateObject(fechaHoraSiniestro);
+                    if (dateResponsable.getTime() < fechaSiniestro.getTime() && validHour){
+                        setErrorDate(`Fecha y hora de aviso no puede ser anterior a fecha de accidente ${fechaHoraSiniestro}`)
+                        valida = true
+                    }
+                } catch {
+                    valida = true
+                }
           }
 
           setBtnValido2(valida)
-      }, [ nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour ])
+      }, [ nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour, fechaHoraSiniestro ])
 
       useEffect(() => {
         let valida2 = false;
@@ -176,8 +191,11 @@ const FlujoTrayecto = () => {
                                         Fecha de aviso
                                 </Grid>
 
-                                <Date date={date} setDate={setDate} id='FlujoTrayecto-Datepicker1'
-setValidDate={setValidDate}
+                                <PickerDate
+                                    date={date}
+                                    setDate={setDate}
+                                    id='FlujoTrayecto-Datepicker1'
+                                    setValidDate={setValidDate}
                                 />
 
                                 </div>
@@ -220,11 +238,15 @@ setValidDate={setValidDate}
                                         Hora de aviso
                                 </Grid>
 
-                                <Time id={"FlujoTrayecto-Timepicker1"} time={hour} setTime={setHour}
-setValidHour={setValidHour}
+                                <Time 
+                                    id={"FlujoTrayecto-Timepicker1"} 
+                                    time={hour} 
+                                    setTime={setHour}
+                                    setValidHour={setValidHour}
                                 />
-
+                                <div style={{color: "red"}}>{errorDate}</div>
                                 </div>
+
                             </div>
                             <Grid className={`${comunClass.textPrimaryRelato}`}>
                                     ¿Cómo dio

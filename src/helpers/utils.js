@@ -80,6 +80,34 @@ export const formatoFecha = string => {
     else return string;
 }
 
+export const returnDateObject = string => {
+    try {
+        if (string.includes("_"))
+            return null
+        let fecha, hora;
+        if (string.includes(" "))
+            [ fecha, hora ] = string.split(" ");
+        else if (string.includes("T"))
+            [ fecha, hora ] = string.split("T");
+        else
+            fecha = string
+        let separator;
+        if (fecha.includes("/"))
+            separator = "/";
+        else if (fecha.includes("-"))
+            separator = "-";
+        else if (fecha.includes("."))
+            separator = ".";
+        let [ dia, mes, anio ] = fecha.split(separator);
+        if (!hora || hora === "null" || hora === "")
+            return new Date(`${mes}/${dia}/${anio}`);
+        else
+            return new Date(`${mes}/${dia}/${anio} ${hora}`);
+    } catch (error) {
+        return null;
+    }
+}
+
 export const eliminarDiacriticos = (texto) => {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 }
