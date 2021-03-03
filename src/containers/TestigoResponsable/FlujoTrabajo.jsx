@@ -49,6 +49,12 @@ const FlujoTrabajo = () => {
         let fsiniestro = returnDateObject(fechaHoraSiniestro);
         let fecha = returnDateObject(`${date} ${hour}`);
 
+        if (!fecha || !fsiniestro){
+            updateValid(false)
+
+            return;
+        }
+
         if (fsiniestro.getTime() > fecha.getTime()){
             updateValid(false);
             setErrorDate(`Fecha y hora de aviso no puede ser anterior a fecha de accidente ${fechaHoraSiniestro}`)
