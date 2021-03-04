@@ -378,7 +378,7 @@ export const saveRut = (rut) => {
                             masculino,
                             femenino,
                             nacionalidad,
-                            lugarNacimiento,
+                            pais,
                             estadoCivil
                         } = result.data.content.response;
 
@@ -391,7 +391,7 @@ export const saveRut = (rut) => {
                                 masculino,
                                 femenino,
                                 nacionalidad,
-                                lugarNacimiento,
+                                pais,
                                 estadoCivil
                             })
                         );

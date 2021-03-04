@@ -60,7 +60,7 @@ const SinBPInfoPersonal2 = () => {
         masculino: bpForm.sexo === "Masculino" ? "X" : "",
         femenino: bpForm.sexo === "Femenino" ? "X" : "",
         nacionalidad: nacionalidad.key,
-        lugarNacimiento: pais.key,
+        pais: pais.key,
         estadoCivil: ""
       })
     );
