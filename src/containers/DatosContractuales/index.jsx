@@ -50,6 +50,7 @@ export default () => {
     const [ jornada, setJornada ] = useState(tipoJornadaForm?tipoJornadaForm:"");
     const [ errorCargo, setErrorCargo ] = useState(false);
     const [ valid, setValid ] = useState(false);
+    const [ errorFecha, setErrorFecha ] = useState("");
 
     const stringToHours = (str) => {
         return moment(str, "HH:mm").format("HH:mm")
@@ -82,19 +83,27 @@ export default () => {
         if (
             parseInt(anio) > parseInt(year) ||
             parseInt(anio) === parseInt(year) && parseInt(mes) > parseInt(month)
-        )
+        ){
+            setErrorFecha("La fecha debe ser anterior al inicio de sintomas "+FechaSintomasEP)
+
             return false;
+        }
+
         [ , month, year ] = FechaExposicionAgenteEP.split(".");
         if (
             parseInt(anio) > parseInt(year) ||
             parseInt(anio) === parseInt(year) && parseInt(mes) > parseInt(month)
-        )
+        ){
+            setErrorFecha("La fecha debe ser anterior a la exposición de agentes "+FechaExposicionAgenteEP)
+
             return false;
+        }
 
         return true;
     }
 
     useEffect(() => {
+        setErrorFecha("");
         if (
             (profesion!=="" && categoriaOcup!=="" && contrato!=="" && cargo!=="" && remuneracion!=="" && jornada!=="") &&
             (ValidarHora(entrada) && ValidarHora(salida)) &&
@@ -332,6 +341,7 @@ export default () => {
                                                 &nbsp;a su trabajo
                                         </Grid>
                                         <PickerDate date={ingreso} setDate={setIngreso} id='DatosContractuales-DatePicker1' />
+                                        <div style={{color: "red"}}>{errorFecha}</div>
                                     </div>
 
                                     <div className={comunClass.displayDesk}>
