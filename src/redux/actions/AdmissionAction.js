@@ -763,7 +763,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
                     }
                 }
 
-                EndLog(ID, siniestroID, EpisodioID, data.status, dispatch)
+                EndLog(ID, siniestroID, EpisodioID, result.status, dispatch)
             } else {
                 dispatch(updateForm("mensajeErrorSAP", "Error de data"));
                 dispatch(handleSetStep(1002));
