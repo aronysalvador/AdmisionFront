@@ -10,6 +10,13 @@ import {
   } from "../types/LogType";
   import Axios from "axios";
 
+  
+  export const initSessionDate = () => (dispatch) => {
+    dispatch({
+      type: INIT_SESSION_DATE
+    });
+  };
+
   export const loadLogStateFromSessionStorage = (state) => {
     return {
       type: LOAD_LOG_STATE_SESSIONSTORAGE,
@@ -29,15 +36,18 @@ import {
         tipoSiniestro: datos.tipoSiniestro,
         BP: datos.BP
     }
-
     return await Axios.post(window.REACT_APP_LOG, params);
   };
 
-  export const initSessionDate = () => (dispatch) => {
-    dispatch({
-      type: INIT_SESSION_DATE
-    });
-  };
+  const successCallLog = ID => ({
+    type: POST_LOG_SUCCESS,
+    payload: ID
+  });
+
+  const errorCallLog = (error) => ({
+    type: POST_LOG_FAILURE,
+    payload: error
+  });
 
   export const handleLog = (datos) => (dispatch) => {
       dispatch({
@@ -57,28 +67,16 @@ import {
       .catch((error) => {
         dispatch(errorCallLog(error));
       });
-
-    const successCallLog = ID => ({
-      type: POST_LOG_SUCCESS,
-      payload: ID
-    });
-
-    const errorCallLog = (error) => ({
-      type: POST_LOG_FAILURE,
-      payload: error
-    });
   };
 
   export const handleEnd = async (params) => {
     params.opcion=100;
-
     return await Axios.post(window.REACT_APP_LOG, params);
   };
 
   export const handlEndLog = (datos) => (dispatch, getState) => {
       const { addmissionForm: { mensajeErrorSAP } } = getState();
       datos.duplicate = !!((datos.responseSap===200 && mensajeErrorSAP)); // si la respuesta de sap fue exitosa y ademas hay un mensaje de error, quiere decir, que sap fallo al menos 1 vez anteriormente y por ende hay q duplicar el registro
-
       dispatch({
         type: POST_LOG_INIT,
         payload: true
@@ -92,22 +90,12 @@ import {
               if (datos.responseSap === 200)
                 dispatch(errorCallLog(response.data.error));
               else
-                dispatch(errorCallLog("SAP ERROR"));
+                dispatch(errorCallLog("SAP ERROR-"+datos.responseSap+"-"+response.status));
           }
       })
       .catch((error) => {
         dispatch(errorCallLog(error));
-      });
-
-    const successCallLog = ID => ({
-      type: POST_LOG_SUCCESS,
-      payload: ID
-    });
-
-    const errorCallLog = (error) => ({
-      type: POST_LOG_FAILURE,
-      payload: error
-    });
+      })
   };
 
   export const handleStepLogPage = async (params) => {
@@ -122,19 +110,19 @@ import {
 
     handleStepLogPage(datos)
       .then((response) => {
-          if (response.status === 200)
-            dispatch(successCallLogStep());
+          if (response.status === 200){
+            dispatch({
+              type: POST_LOG_SUCCESS_STEP,
+              payload: true
+            });
+          }
+           
       })
       .catch((error) => {
-        dispatch(errorCallLogStep(error))
+        dispatch({
+          type: POST_LOG_FAILURE_STEP,
+          payload: error
+        });
       });
 
-      const successCallLogStep = () => ({
-        type: POST_LOG_SUCCESS_STEP
-      });
-
-      const errorCallLogStep = (error) => ({
-        type: POST_LOG_FAILURE_STEP,
-        payload: error
-      });
   };
