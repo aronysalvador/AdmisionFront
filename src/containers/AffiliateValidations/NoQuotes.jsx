@@ -4,6 +4,7 @@ import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { successCallLog } from "../../redux/actions/Log";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoQuotesCard from './NoQuotesCard';
 import Header from "../../components/header/index";
@@ -76,6 +77,7 @@ const NoQuotes = (props) => {
                 className={blackStyle.buttonFooter2}
                 onClick={() => {
                   dispatch(handleSetStep(1)); // 1.1 Empecemos eliminada
+                  dispatch(successCallLog(0));
                 }}
               >
                 Volver al inicio

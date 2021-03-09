@@ -3,6 +3,7 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 // import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { successCallLog } from "../../redux/actions/Log";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Header from "../../components/header/index";
@@ -54,7 +55,7 @@ const ErrorCaso = () => {
               id='ErrorCaso-Btn1'
               className={[ comunClass.buttonAchs ]} // blackStyle.buttonFooterSpace
               variant='contained'
-              onClick={() => dispatch(handleSetStep(27))}
+              onClick={() => {dispatch(handleSetStep(27)); } }
             >
               Volver a intentarlo
             </Button>
@@ -63,7 +64,7 @@ const ErrorCaso = () => {
               id='ErrorCaso-Btn2'
               className={comunClass.buttonAchs2}
               variant='contained'
-              onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
+              onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(1)); dispatch(successCallLog(0)); }} // 1.1 Empecemos eliminada
             >
               Volver al inicio
             </Button>
