@@ -4,6 +4,7 @@ import { getComunStyle } from "../../css/comun";
 import { Button, Typography } from "@material-ui/core";
 import { getBlackTheme } from "../../css/blackTheme";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { successCallLog } from "../../redux/actions/Log";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import NoAfiliateCard from './NoAfiliateCard';
 import Header from "../../components/header/index";
@@ -57,7 +58,7 @@ const NoVigente = (props) => {
           <Button
             id={"NoVigente-Btn1"}
             className={blackStyle.buttonFooter}
-            onClick={() => { dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
+            onClick={() => { dispatch(handleSetStep(1)); dispatch(successCallLog(0)); }} // 1.1 Empecemos eliminada
           >
             Volver al inicio
           </Button>

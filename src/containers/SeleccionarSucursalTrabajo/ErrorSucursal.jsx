@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { successCallLog } from "../../redux/actions/Log";
 import { Button } from "@material-ui/core";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import Header from "../../components/header/index";
@@ -93,7 +94,7 @@ const ErrorSucursal = () => {
       </Typography>
       <div className={comunClass.bottomElement}>
         <Button
-          onClick={() => dispatch(handleSetStep(5.1))}
+          onClick={() =>{ dispatch(handleSetStep(5.1)); dispatch(successCallLog(0));}}
           className={comunClass.buttonAchs2}
           style={{ borderRadius: "10px" }}
         >

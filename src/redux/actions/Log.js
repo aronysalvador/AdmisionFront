@@ -39,7 +39,7 @@ import {
     return await Axios.post(window.REACT_APP_LOG, params);
   };
 
-  const successCallLog = ID => ({
+  export const successCallLog = ID => ({
     type: POST_LOG_SUCCESS,
     payload: ID
   });
