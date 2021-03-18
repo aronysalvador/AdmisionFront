@@ -9,6 +9,7 @@ import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
 import { Format } from "../../helpers/strings";
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
+import { updateForm } from "./../../redux/actions/AdmissionAction"
 
 const HasSinisterList = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -32,7 +33,15 @@ const HasSinisterList = (props) => {
     });
     if (busqueda === undefined) {
       let STEP = "";
-      if (
+
+      const { apellidoMaterno, apellidoPaterno, nombre, fechaNacimiento, nacionalidad, pais } = addmissionForm.datosAdicionalesSAP
+
+      if (!apellidoMaterno || !apellidoPaterno || !nombre || !fechaNacimiento || !nacionalidad || !pais) {
+          // si no tiene telefono
+          dispatch(updateForm("bpForm", addmissionForm.datosAdicionalesSAP));
+          STEP = 5.812; // form data
+      } 
+      else if (
         !addmissionForm.razonSocial ||
         !addmissionForm.codigoSucursal ||
         !addmissionForm.DireccionEmpresa ||
