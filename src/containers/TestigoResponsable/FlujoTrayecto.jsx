@@ -109,7 +109,6 @@ const FlujoTrayecto = () => {
       }, [ nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour, fechaHoraSiniestro])
 
       useEffect(() => {
-          console.log(btnValido, btnValido2)
         let valida2 = false;
         if ((btnValido && !btnValido2)||(!btnValido && btnValido2)||(btnValido && btnValido2))
             valida2=true
