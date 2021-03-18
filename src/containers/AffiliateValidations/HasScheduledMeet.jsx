@@ -16,6 +16,41 @@ const HasScheduledMeet = (props) => {
 
   const cita = addmissionForm.cita ? addmissionForm.cita : {};
 
+  const handleNext = () => {    
+
+      let STEP = "";
+
+      const { apellidoMaterno, apellidoPaterno, nombre, fechaNacimiento, nacionalidad, pais } = addmissionForm.datosAdicionalesSAP
+      
+      if (!apellidoMaterno || !apellidoPaterno || !nombre || !fechaNacimiento || !nacionalidad || !pais) {
+          // si no tiene telefono
+          dispatch(updateForm("bpForm", addmissionForm.datosAdicionalesSAP));
+          STEP = 5.812; // form data
+      } 
+      else if (
+        !addmissionForm.razonSocial ||
+        !addmissionForm.codigoSucursal ||
+        !addmissionForm.DireccionEmpresa ||
+        !addmissionForm.rutEmpresa
+      ) {
+        // si falta info de la empresa
+        STEP = 5.4; // form empresa
+      } else if (!addmissionForm.direccionParticular) {
+        // si no tiene direccion
+        STEP = 5.2; // form direccion
+      } else if (
+        !addmissionForm.telefonoParticular || addmissionForm.telefonoParticular === "0"
+      ) {
+        // si no tiene telefono
+        STEP = 5.3; // form telefono
+      }
+      else {
+        // si todos los datos relevantes están llenos
+        STEP = 5.1; // primero debe mostrar todos los datos y luego (5.7) pantalla exito
+      }
+      dispatch(handleSetStep(STEP));
+  };
+
   return (
     <>
       <div className={comunClass.displayDesk}>
@@ -88,7 +123,7 @@ const HasScheduledMeet = (props) => {
                   );
                   dispatch(handleSetStep(5.83));
                 } else {
-                  dispatch(handleSetStep(5.1));
+                 handleNext()
                 }
               }}
             >

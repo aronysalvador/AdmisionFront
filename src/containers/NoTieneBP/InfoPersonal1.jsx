@@ -72,7 +72,7 @@ const SinBPInfoPersonal1 = () => {
         <Grid component='span' className={[ comunClass.textPrimaryDesk, comunClass.titleBlack ]}>
           Identifica la información
           <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
-            &nbsp;personal del paciente......
+            &nbsp;personal del paciente
           </Grid>
         </Grid>
         <div className={comunClass.displayDeskImg}>
