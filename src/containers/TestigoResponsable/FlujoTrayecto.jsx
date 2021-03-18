@@ -32,10 +32,10 @@ const FlujoTrayecto = () => {
     const spaceStyle = getSpaceStyle();
 
     const [ date, setDate ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);
-    const [ validDate, setValidDate ] = useState(false);
+    const [ validDate, setValidDate ] = useState(true);
 
     const [ hour, setHour ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);
-    const [ validHour, setValidHour ] = useState(false);
+    const [ validHour, setValidHour ] = useState(true);
 
     const [ errorDate, setErrorDate ] = useState("");
 
@@ -106,9 +106,10 @@ const FlujoTrayecto = () => {
           }
 
           setBtnValido2(valida)
-      }, [ nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour, fechaHoraSiniestro ])
+      }, [ nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour, fechaHoraSiniestro])
 
       useEffect(() => {
+          console.log(btnValido, btnValido2)
         let valida2 = false;
         if ((btnValido && !btnValido2)||(!btnValido && btnValido2)||(btnValido && btnValido2))
             valida2=true
