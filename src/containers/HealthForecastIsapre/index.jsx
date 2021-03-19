@@ -62,10 +62,10 @@ const HealthForecastIsapre = (props) => {
       <form>
         <div className={comunClass.titlePrimaryDesk}>
           <Grid
-            className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}
+            className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}
           >
             Escribe la
-            <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+            <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
               &nbsp;Isapre
             </Grid>
           </Grid>

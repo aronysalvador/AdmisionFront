@@ -27,10 +27,10 @@ const FlujoTrabajo = () => {
 
     const [ date, setDate ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : null);
     const [ errorDate, setErrorDate ] = useState("");
-    const [ validDate, setValidDate ] = useState(fechaHoraResponsable.length>0 ? true : false);
+    const [ validDate, setValidDate ] = useState(fechaHoraResponsable.length > 0);
 
     const [ hour, setHour ] = useState(fechaHoraResponsable ? moment(fechaHoraResponsable.split(" ")[1], "HH:mm").format("HH:mm") : null);
-    const [ validHour, setValidHour ] = useState(fechaHoraResponsable.length>0 ? true : false);
+    const [ validHour, setValidHour ] = useState(fechaHoraResponsable.length > 0);
 
     const [ canContinue, setCanContinue ] = useState(false);
 
@@ -42,8 +42,16 @@ const FlujoTrabajo = () => {
     )
 
     useEffect(() => {
-        if (!validDate || !validHour){ updateValid(false); return; }
-        if (date.includes("_") || date.includes("_")){ updateValid(false); return; }
+        if (!validDate || !validHour){
+            updateValid(false);
+
+            return;
+        }
+        if (date.includes("_") || date.includes("_")){
+            updateValid(false);
+
+            return;
+        }
 
         let [ hora, minutos ] = hour.split(":");
         let fsiniestro = returnDateObject(fechaHoraSiniestro);
@@ -73,9 +81,11 @@ const FlujoTrabajo = () => {
         (fecha.getFullYear() === now.getFullYear() && fecha.getMonth() === now.getMonth() && fecha.getDate() === now.getDate() && parseInt(hora) >= now.getHours() && parseInt(minutos) > now.getMinutes())
         ){
             updateValid(false);
+
             return;
         }
         updateValid(true);
+
         return;
     }, [ date, validDate, hour, validHour, updateValid ])
 

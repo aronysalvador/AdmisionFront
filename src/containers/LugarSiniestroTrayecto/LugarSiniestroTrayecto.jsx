@@ -64,9 +64,9 @@ const LugarSiniestroTrayecto = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]} style={{paddingBottom: '20px'}}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ].join(' ')} style={{paddingBottom: '20px'}}>
           Indica la dirección del
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             &nbsp;lugar de trabajo el día del accidente
           </Grid>
         </Grid>

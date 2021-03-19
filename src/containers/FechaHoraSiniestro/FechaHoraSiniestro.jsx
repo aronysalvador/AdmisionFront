@@ -136,10 +136,10 @@ const FechaHoraSiniestro = () => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid
-          className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}
+          className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}
         >
           ¿
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             Cuándo y a qué hora&nbsp;
           </Grid>
           sucedió el accidente?

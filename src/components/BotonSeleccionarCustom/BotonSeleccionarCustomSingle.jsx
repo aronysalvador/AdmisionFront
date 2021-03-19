@@ -5,7 +5,7 @@ import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 
 const BotonSeleccionarCustomSingle = (props) => {
-  const { id, data, itemForm, selected, step } = props;
+  const { id, data, itemForm, selected, step, children } = props;
 
   const dispatch = useDispatch();
 
@@ -46,7 +46,7 @@ const BotonSeleccionarCustomSingle = (props) => {
       }}
       className={isSelected ? botonSeleccionadoSingle : cardsButtonTipoAccidenteTrayecto}
     >
-      {props.children}
+      {children}
     </div>
   );
 };

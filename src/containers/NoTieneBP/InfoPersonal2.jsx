@@ -85,7 +85,7 @@ const SinBPInfoPersonal2 = () => {
       <div className={ comunClass.titlePrimaryDesk }>
         <Grid component='span' className={[ comunClass.textPrimaryDesk, comunClass.titleBlack ]}>
           Identifica la información
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             &nbsp;personal del paciente
           </Grid>
         </Grid>

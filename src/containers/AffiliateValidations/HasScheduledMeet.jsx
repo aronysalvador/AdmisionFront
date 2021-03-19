@@ -16,17 +16,15 @@ const HasScheduledMeet = (props) => {
 
   const cita = addmissionForm.cita ? addmissionForm.cita : {};
 
-  const handleNext = () => {    
-
+  const handleNext = () => {
       let STEP = "";
-
       const { apellidoMaterno, apellidoPaterno, nombre, fechaNacimiento, nacionalidad, pais } = addmissionForm.datosAdicionalesSAP
-      
+
       if (!apellidoMaterno || !apellidoPaterno || !nombre || !fechaNacimiento || !nacionalidad || !pais) {
           // si no tiene telefono
           dispatch(updateForm("bpForm", addmissionForm.datosAdicionalesSAP));
           STEP = 5.812; // form data
-      } 
+      }
       else if (
         !addmissionForm.razonSocial ||
         !addmissionForm.codigoSucursal ||
@@ -102,7 +100,7 @@ const HasScheduledMeet = (props) => {
             <div className={comunClass.paddingElement}>
             <Button
               id={"HasScheduledMeet-Btn1"}
-              className={[ blackStyle.buttonFooter, blackStyle.buttonFooterSpace ]}
+              className={[ blackStyle.buttonFooter, blackStyle.buttonFooterSpace ].join(' ')}
               onClick={() => {
                 dispatch(handleSetStep(5.9));
               }}

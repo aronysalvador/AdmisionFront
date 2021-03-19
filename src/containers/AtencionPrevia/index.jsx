@@ -82,9 +82,9 @@ const AtencionPrevia = () => {
       </div>
 
       <div className={ comunClass.titlePrimaryDesk }>
-        <Grid component='span' className={[ comunClass.textPrimaryDesk, comunClass.titleBlack ]}>
+        <Grid component='span' className={[ comunClass.textPrimaryDesk, comunClass.titleBlack ].join(' ')}>
           ¿Recibió atención previa por otro
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             &nbsp;centro médico o por un profesional de la salud?
           </Grid>
         </Grid>
@@ -99,7 +99,7 @@ const AtencionPrevia = () => {
           <div className={spaceStyle.space1} />
         </div>
         <div className={comunClass.containerTextBox}>
-            <Grid className={[ comunClass.tituloTextBox ]}>
+            <Grid className={comunClass.tituloTextBox}>
             Nombre del recinto o profesional
             </Grid>
             <TextField
@@ -124,7 +124,7 @@ const AtencionPrevia = () => {
             <div className={spaceStyle.space1} />
                 <div className={comunClass.paddingElement}>
                     <div>
-                      <Grid className={[ comunClass.tituloTextBox ]}>
+                      <Grid className={comunClass.tituloTextBox}>
                         Fecha de atención
                       </Grid>
                       <Date date={FechaOtroRe} setDate={setFechaOtroRe} id='AtencionPrevia-Datepicker1'
@@ -133,7 +133,7 @@ setValidDate={setValidDate}
                     </div>
 
                     <div style={{marginLeft: '0.5em'}}>
-                      <Grid className={[ comunClass.tituloTextBox ]}>
+                      <Grid className={comunClass.tituloTextBox}>
                         Hora de atención
                       </Grid>
                       <Time id={"AtencionPrevia-TimePicker2"} time={HoraOtroRec} setTime={setHoraOtroRec}
@@ -144,7 +144,7 @@ setValidHour={setValidHour}
                 </div>
             <div className={spaceStyle.space1} />
 
-            <Grid className={[ comunClass.tituloTextBox ]}>
+            <Grid className={comunClass.tituloTextBox}>
                 Tipo de documentos
             </Grid>
             <TextField

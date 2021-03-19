@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
@@ -106,7 +106,7 @@ const FlujoTrayecto = () => {
           }
 
           setBtnValido2(valida)
-      }, [ nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour, fechaHoraSiniestro])
+      }, [ nombreResponsable, cargoResponsable, check, validDate, date, validHour, hour, fechaHoraSiniestro ])
 
       useEffect(() => {
         let valida2 = false;
@@ -238,9 +238,9 @@ const FlujoTrayecto = () => {
                                         Hora de aviso
                                 </Grid>
 
-                                <Time 
-                                    id={"FlujoTrayecto-Timepicker1"} 
-                                    time={hour} 
+                                <Time
+                                    id={"FlujoTrayecto-Timepicker1"}
+                                    time={hour}
                                     setTime={setHour}
                                     setValidHour={setValidHour}
                                 />

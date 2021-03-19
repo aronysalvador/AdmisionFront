@@ -116,7 +116,7 @@ const AlertaCalificacion = () => {
               <div className={comunClass.paddingElement}>
                 <Button
                   id='AlertaCalificacion-Btn1'
-                  className={[ comunClass.buttonAchs, blackStyle.buttonFooterSpace ]}
+                  className={[ comunClass.buttonAchs, blackStyle.buttonFooterSpace ].join(' ')}
                   variant='contained'
                   onClick={() => dispatch(handleSetStep(27))}
                 >

@@ -25,15 +25,15 @@ export default (props) => {
         <div>
             <div className={comunClass.containerTextBoxDataCont}>
                 {first==="dark" ? (
-                    <Grid className={[ comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont ]}>
+                    <Grid className={[ comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont ].join(' ')}>
                         {txt1}
-                        <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlueDataCont ]}>
+                        <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlueDataCont ].join(' ')}>
                             &nbsp; {txt2}
                         </Grid>
                     </Grid>
                 ) : (
-                    <Grid className={[ comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont ]}>
-                        <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlueDataCont ]}>
+                    <Grid className={[ comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont ].join(' ')}>
+                        <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlueDataCont ].join(' ')}>
                             {txt1}
                         </Grid>
                         &nbsp; {txt2}

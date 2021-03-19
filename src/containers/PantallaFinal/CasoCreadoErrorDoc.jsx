@@ -111,7 +111,7 @@ const CasoCreadoErrorDoc = (props) => {
               </div>
               <Button
                 id='CasoCreadoErrorDoc-Btn1'
-                className={[ comunClass.buttonAchs, comunClass.pantallaFinalBotones ]}
+                className={[ comunClass.buttonAchs, comunClass.pantallaFinalBotones ].join(' ')}
                 variant='contained'
                 onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
               >

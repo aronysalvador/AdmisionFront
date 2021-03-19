@@ -58,7 +58,6 @@ const AgenteCausaEnfermedadProfesional = () => {
     return !mismasMolestiasCompañerosEP ? false : (mismasMolestiasCompañerosEP === "si")
   });
 
-
   const handleCheckBoxChange = (event) => {
     setStateCheckbox(event.target.checked);
   };
@@ -71,9 +70,7 @@ const AgenteCausaEnfermedadProfesional = () => {
     let fechaExpo = returnDateObject(fechaSiniestro);
     if (fechaExpo.getTime() > fechaSintomas.getTime())
       setErrorFecha(`No se puede ingresar una fecha de exposición posterior a la fecha de primeros síntomas ${FechaSintomasEP}`)
-  }, [fechaSiniestro, FechaSintomasEP])
-
-
+  }, [ fechaSiniestro, FechaSintomasEP ])
 
   let respMolestias = stateCheckbox ? "si" : "no";
 

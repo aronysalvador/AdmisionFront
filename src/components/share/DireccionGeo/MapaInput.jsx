@@ -9,9 +9,10 @@ const mapStyles = {
 };
 
 const Mapa = (props) => {
-    const lat = (props.lat !== 'notset' ? props.lat : -33.436868834634076);
-    const lng = (props.lng !== 'notset' ? props.lng : -70.63447665106504);
-    const { direccion, setDireccion, setPlaceId } = props
+    let { lat, lng } = props;
+    lat = (lat !== 'notset' ? lat : -33.436868834634076);
+    lng = (lng !== 'notset' ? lng : -70.63447665106504);
+    const { direccion, setDireccion, setPlaceId, google } = props
     const { LatTemporal, LongTemporal, DireccionTemporal, disabledDirection, showInput, setCoords, direccionValida, setDireccionValida, DireccionEmpresa, sucursalEmpresaSiniestro } = props
 
     const [ sucursal, setSucursal ] = useState("");
@@ -75,7 +76,7 @@ const Mapa = (props) => {
     return (
         <div>
             <Map
-                google={props.google}
+                google={google}
                 zoom={16}
                 style={mapStyles}
                 center={{

@@ -94,7 +94,7 @@ const ErrorSucursal = () => {
       </Typography>
       <div className={comunClass.bottomElement}>
         <Button
-          onClick={() =>{ dispatch(handleSetStep(5.1)); dispatch(successCallLog(0));}}
+          onClick={() => { dispatch(handleSetStep(5.1)); dispatch(successCallLog(0)); } }
           className={comunClass.buttonAchs2}
           style={{ borderRadius: "10px" }}
         >

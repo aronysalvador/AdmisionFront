@@ -43,7 +43,7 @@ const form = (props) => {
           <Typography
             variant='h1'
             component='h1'
-            className={[ comunClass.titleBlack, comunClass.subtitleBlack ]}
+            className={[ comunClass.titleBlack, comunClass.subtitleBlack ].join(' ')}
           >
             Ingresa el
             <Grid component='span' className={comunClass.titleBlue} style={{display: "contents"}}>

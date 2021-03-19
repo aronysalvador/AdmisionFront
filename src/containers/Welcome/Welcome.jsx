@@ -30,7 +30,7 @@ const Welcome = (props) => {
                     </Typography>
                 </div>
                 <div>
-                    <Typography variant='inherit' component='p' className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ]}>
+                    <Typography variant='inherit' component='p' className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ].join(' ')}>
                             Vamos a hacer una admisión:
                             <br />
                             <br />

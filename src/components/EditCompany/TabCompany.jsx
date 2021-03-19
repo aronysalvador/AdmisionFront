@@ -6,6 +6,7 @@ import { getComunStyle } from "../../css/comun";
 import { makeStyles } from "@material-ui/core/styles";
 import IdentificationCompany from "./identificationCompany";
 import RazonSocial from "./RazonSocial";
+import TabPanel from "./TabPanel";
 
 const useStyles = makeStyles({
   root: {
@@ -79,23 +80,6 @@ const TabCompany = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  function TabPanel(props) {
-    const { children, value, index } = props;
-
-    return (
-      <div
-        role='tabpanel'
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-      >
-        {value === index && (
-          <div>{children} </div>
-        )}
-      </div>
-    );
-  }
 
   const comunClass = getComunStyle();
   const classes = useStyles();
