@@ -10,7 +10,6 @@ import {
   } from "../types/LogType";
   import Axios from "axios";
 
-  
   export const initSessionDate = () => (dispatch) => {
     dispatch({
       type: INIT_SESSION_DATE
@@ -36,6 +35,7 @@ import {
         tipoSiniestro: datos.tipoSiniestro,
         BP: datos.BP
     }
+
     return await Axios.post(window.REACT_APP_LOG, params);
   };
 
@@ -71,6 +71,7 @@ import {
 
   export const handleEnd = async (params) => {
     params.opcion=100;
+
     return await Axios.post(window.REACT_APP_LOG, params);
   };
 
@@ -116,7 +117,6 @@ import {
               payload: true
             });
           }
-           
       })
       .catch((error) => {
         dispatch({
@@ -124,5 +124,4 @@ import {
           payload: error
         });
       });
-
   };

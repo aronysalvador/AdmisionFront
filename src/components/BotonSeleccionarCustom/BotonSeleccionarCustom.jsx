@@ -6,7 +6,7 @@ import { getComunStyle } from "../../css/comun";
 // import { id } from "date-fns/locale";
 
 const BotonSeleccionarCustom = (props) => {
-  const { id, data, itemForm, selected, step, handlerGuardarData } = props;
+  const { id, data, itemForm, selected, step, handlerGuardarData, children } = props;
 
   const {
     addmissionForm: { razonAlertaForm }
@@ -109,7 +109,7 @@ const BotonSeleccionarCustom = (props) => {
       }}
       className={isSelected ? botonSeleccionado : cardsButton}
     >
-      {props.children}
+      {children}
 
     </div>
   );

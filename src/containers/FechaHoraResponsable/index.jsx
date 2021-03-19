@@ -58,8 +58,8 @@ const FechaHoraResponsable = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             ¿Cuándo y a que hora se le avisó
           </Grid>
           &nbsp;al responsable?

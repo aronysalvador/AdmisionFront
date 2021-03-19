@@ -7,7 +7,7 @@ const IndiciacionesPacientes = ({ indicaciones }) => {
   const comunStyle = getComunStyle();
 
   return (
-    <div className={[ welcomeStyle.titleContainerCards ]}>
+    <div className={[ welcomeStyle.titleContainerCards ].join(' ')}>
       <div className={comunStyle.displayDeskFlexFinal}>
       {indicaciones.map(({ icono, textoPrimario, textoSecundario, clase, style }, i) => (
         <div key={i} className={clase} style={style}>

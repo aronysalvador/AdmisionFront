@@ -28,16 +28,16 @@ const FormQuestion = (props) => {
     <form onSubmit={() => accion(localValue)}>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid
-          className={[ comunClass.titleBlue, comunClass.titleBlue2, comunClass.textPrimaryDesk ]}
+          className={[ comunClass.titleBlue, comunClass.titleBlue2, comunClass.textPrimaryDesk ].join(' ')}
         >
           {titulo}
-          <Grid component='span' className={[ comunClass.titleBlack, comunClass.titleBlack2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlack, comunClass.titleBlack2 ].join(' ')}>
             &nbsp;{titulo2}
           </Grid>
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             &nbsp;{pregunta}
           </Grid>
-          <Grid component='span' className={[ comunClass.titleBlack, comunClass.titleBlack2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlack, comunClass.titleBlack2 ].join(' ')}>
             &nbsp;{pregunta2}
           </Grid>
         </Grid>

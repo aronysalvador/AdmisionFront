@@ -12,6 +12,7 @@ import {
 import { AdmissionForm } from "../models/AdmissionForm";
 
 export default function payload(state = AdmissionForm, action) {
+  let response;
   switch (action.type) {
     case LOAD_STATE_SESSIONSTORAGE:
       return { ...action.payload };
@@ -44,7 +45,7 @@ export default function payload(state = AdmissionForm, action) {
         responsable: action.payload
       };
     case CLEAR_STATE:
-      var response = AdmissionForm
+      response = AdmissionForm
       response.centrosForm = state.centrosForm
       response.tipoSiniestro = state.tipoSiniestro
       response.usuarioSAP = state.usuarioSAP

@@ -81,9 +81,9 @@ const RelatoFinal = () => {
       <div>
         <form onSubmit={() => saveAnswer(localValue)}>
           <div className={comunClass.titlePrimaryDesk}>
-            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
+            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}>
               Por favor,
-              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
                 &nbsp;confirma el relato
               </Grid>
             </Grid>

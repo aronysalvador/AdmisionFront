@@ -24,7 +24,7 @@ const NoPaddingDatePicker = withStyles({
 })(KeyboardDatePicker);
 
 export default (props) => {
-    const { date, setDate, id, setValidDate } = props
+    const { date, setDate, id, setValidDate, style } = props
 
     const [ selectedDate, setSelectedDate ] = useState(date ? moment() : null);
 
@@ -61,7 +61,7 @@ export default (props) => {
 
                         minDateMessage='La fecha es invalida'
                         keyboardIcon={<img alt='calendar' src={imageDate} />}
-                        style={ props.style || {
+                        style={ style || {
                             paddingTop: "3px",
                             background: "#ffff",
                             borderRadius: "0.7em"

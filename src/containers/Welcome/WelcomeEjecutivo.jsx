@@ -45,7 +45,7 @@ const Session = (props) => {
         <Typography
           variant='inherit'
           component='p'
-          className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ]}
+          className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ].join(' ')}
         >
           Te encuentras en
         </Typography>

@@ -8,10 +8,11 @@ const mapStyles = {
 };
 
 const Mapa = (props) => {
-    const lat = props.LatTemporal ? props.LatTemporal : (props.lat !== 'notset' ? props.lat : -33.436868834634076);
-    const lng = props.LongTemporal ? props.LongTemporal : (props.lng !== 'notset' ? props.lng : -70.63447665106504);
-    const { direccion, setDireccion, setPlaceId } = props
-    const { LatTemporal, LongTemporal, DireccionTemporal } = props
+    let { lat, lng, LatTemporal, LongTemporal } = props;
+    lat = LatTemporal ? LatTemporal : (lat !== 'notset' ? lat : -33.436868834634076);
+    lng = LongTemporal ? LongTemporal : (lng !== 'notset' ? lng : -70.63447665106504);
+    const { direccion, setDireccion, setPlaceId, google } = props
+    const { DireccionTemporal } = props
 
     const lookForDirection = async(lat, lng) => {
         if (lat && lng){
@@ -47,7 +48,7 @@ const Mapa = (props) => {
     return (
         <div>
             <Map
-                google={props.google}
+                google={google}
                 zoom={16}
                 style={mapStyles}
                 initialCenter={{

@@ -6,7 +6,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import BorderLinearProgress from '../../components/share/BorderLinearProgress/index'
 
 const Cabecera = (props) => {
-    const { id, dispatch, percentage } = props
+    const { id, dispatch, percentage, noSpace } = props
     const comunClass = getComunStyle()
     const spaceStyle = getSpaceStyle()
 
@@ -35,7 +35,7 @@ const Cabecera = (props) => {
 
             <div className={comunClass.cleanFloat} />
 
-            {props.noSpace ? null : (
+            {noSpace ? null : (
             <div className={spaceStyle.space1} />
             )}
 

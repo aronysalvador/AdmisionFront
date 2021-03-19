@@ -41,7 +41,7 @@ const Session = (props) => {
           </Grid>
 
           <Grid
-            className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ]}
+            className={[ comunStyle.textAchsContent, welcomeStyle.admisionText ].join(' ')}
           >
             <br />
             Ingresa a tu cuenta y gestiona

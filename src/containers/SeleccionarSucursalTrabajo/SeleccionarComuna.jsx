@@ -54,10 +54,10 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     let newArray = [];
     let lookupObject = {};
 
-    for (var i in originalArray)
+    for (let i in originalArray)
       lookupObject[originalArray[i][prop]] = originalArray[i];
 
-    for (i in lookupObject)
+    for (let i in lookupObject)
       newArray.push(lookupObject[i]);
 
     return newArray;
@@ -76,9 +76,9 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ].join(' ')}>
           Identifica
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             &nbsp;la comuna de la sucursal
           </Grid>
           &nbsp;en donde trabaja

@@ -14,6 +14,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
+import TabPanel from "./TabPanel";
 
 const useStyles = makeStyles({
   root: {
@@ -109,16 +110,6 @@ const Identification = () => {
     setValue(newValue);
     dispatch(updateForm("tab", newValue));
   };
-
-  function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-      <div {...other}>
-        {value === index && <div p={3}>{children}</div>}
-      </div>
-    );
-  }
 
   return (
     <div className={comunClass.root}>

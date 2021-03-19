@@ -40,7 +40,7 @@ const HasSinisterList = (props) => {
           // si no tiene telefono
           dispatch(updateForm("bpForm", addmissionForm.datosAdicionalesSAP));
           STEP = 5.812; // form data
-      } 
+      }
       else if (
         !addmissionForm.razonSocial ||
         !addmissionForm.codigoSucursal ||
@@ -96,18 +96,18 @@ const HasSinisterList = (props) => {
         </div>
         <div className={comunClass.titlePrimaryDesk}>
           {origen === "getRut" ? (
-            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
+            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}>
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)}
               <br className={comunClass.displayMobile} />&nbsp;tiene&nbsp;
-              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
                 {contenidoSiniestros.length} siniestros
               </Grid>
               &nbsp;creados
             </Grid>
           ) : (
-            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ]}>
+            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}>
               {Format.formatizar(nombre)} {Format.formatizar(apellidoPaterno)} tiene
-              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
                 &nbsp;este siniestro
               </Grid>
               &nbsp;creado
@@ -129,7 +129,7 @@ const HasSinisterList = (props) => {
             <div className={comunClass.paddingElement}>
               <Button
                 id={"HasSinisterList-Btn1"}
-                className={[ comunClass.buttonAchs, comunClass.buttonAchsSiniester ]}
+                className={[ comunClass.buttonAchs, comunClass.buttonAchsSiniester ].join(' ')}
                 onClick={() => dispatch(handleSetStep(5.9))}
               >
                 Continuar en SAP
@@ -139,7 +139,7 @@ const HasSinisterList = (props) => {
               </div>
               <Button
                 id={"HasSinisterList-Btn2"}
-                className={[ comunClass.buttonAchs2, comunClass.buttonAchsSiniester2 ]}
+                className={[ comunClass.buttonAchs2, comunClass.buttonAchsSiniester2 ].join(' ')}
                 onClick={() => handleNext()}
               >
                 Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión

@@ -36,8 +36,8 @@ const TrabajadorIndependiente = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
-          ¿<Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ].join(' ')}>
+          ¿<Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             Paciente declara renta&nbsp;
            </Grid>
           en servicios impuestos internos como trabajador independiente?

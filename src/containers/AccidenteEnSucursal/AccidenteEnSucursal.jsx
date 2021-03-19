@@ -35,9 +35,9 @@ const AccidenteEnSucursal = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ].join(' ')}>
           ¿Accidente ocurrió en
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             &nbsp;sucursal a la que pertenece el trabajador?
           </Grid>
         </Grid>

@@ -14,9 +14,9 @@ const QuestionTestigoResponsable = (props) => {
   return (
     <div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ].join(' ')}>
           {titulo}
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             {titulo2}
           </Grid>
           {titulo3}

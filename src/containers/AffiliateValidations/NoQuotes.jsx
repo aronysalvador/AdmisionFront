@@ -64,7 +64,7 @@ const NoQuotes = (props) => {
             <div className={comunClass.paddingElement}>
               <Button
                 id={"NoQuotes-Btn1"}
-                className={[ blackStyle.buttonFooter, blackStyle.buttonFooterSpace ]}
+                className={[ blackStyle.buttonFooter, blackStyle.buttonFooterSpace ].join(' ')}
                 onClick={() => {
                   dispatch(handleSetStep(5.7)); // ("x", 5.12)
                 }}

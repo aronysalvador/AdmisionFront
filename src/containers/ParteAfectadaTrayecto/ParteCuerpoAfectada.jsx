@@ -49,7 +49,7 @@ const ParteCuerpoAfectada = () => {
         />
       </div>
       <div className={comunClass.titlePrimaryDesk}>
-        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ]}>
+        <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ].join(' ')}>
           Ahora, completa la información adicional del accidente
         </Grid>
         <div className={comunClass.displayDeskImg}>

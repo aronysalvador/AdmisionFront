@@ -41,7 +41,7 @@ const SinBPInfoPersonal1 = () => {
 
   const [ sexo, saveSexo ] = useState(() => { return bpForm?.masculino ? "Masculino" : "Femenino"; });
 
-  const [ fechaValida, setFechaValida ] = useState(bpForm?.fechaNacimiento ? true : false);
+  const [ fechaValida, setFechaValida ] = useState(bpForm?.fechaNacimiento.length() > 0);
 
   const { percentage } = useSelector(
     (state) => state.addmissionForm,
@@ -71,7 +71,7 @@ const SinBPInfoPersonal1 = () => {
       <div className={ comunClass.titlePrimaryDesk }>
         <Grid component='span' className={[ comunClass.textPrimaryDesk, comunClass.titleBlack ]}>
           Identifica la información
-          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ]}>
+          <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
             &nbsp;personal del paciente
           </Grid>
         </Grid>
