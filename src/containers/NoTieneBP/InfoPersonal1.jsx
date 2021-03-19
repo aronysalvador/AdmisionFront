@@ -41,7 +41,7 @@ const SinBPInfoPersonal1 = () => {
 
   const [ sexo, saveSexo ] = useState(() => { return bpForm?.masculino ? "Masculino" : "Femenino"; });
 
-  const [ fechaValida, setFechaValida ] = useState(bpForm?.fechaNacimiento.length() > 0);
+  const [ fechaValida, setFechaValida ] = useState(bpForm?.fechaNacimiento);
 
   const { percentage } = useSelector(
     (state) => state.addmissionForm,
