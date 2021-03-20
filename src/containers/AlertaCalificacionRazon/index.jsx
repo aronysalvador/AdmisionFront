@@ -46,7 +46,7 @@ const AlertaCalificacionRazon = () => {
         break;
       // Caso Enfermedad Profesional
       case 3:
-        response = razonAlertaList.slice(1, 3)
+        response = razonAlertaList.filter((value, i) => [ 1, 2, 5 ].includes(i))
         break;
       default:
         response = razonAlertaList
