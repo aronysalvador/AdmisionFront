@@ -132,7 +132,7 @@ export default () => {
         dispatch(updateForm("ingresoTrabajoActual", `${x[1]}-${x[0]}-01T00:00:00.000Z`)); // formato anterior
         dispatch(updateForm("inicioJornadaLaboral", entrada));
         dispatch(updateForm("finJornadaLaboral", salida));
-        dispatch(handleSetStep((categoriaOcup.nombre==="Empleadores" || categoriaOcup.nombre==="Cuenta Propia") ? 25.1 : 26.1))
+        dispatch(handleSetStep((categoriaOcup.nombre==="Empleadores" || categoriaOcup.nombre==="Trabajador independiente") ? 25.1 : 26.1))
     }
 
     return (
