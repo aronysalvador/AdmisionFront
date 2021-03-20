@@ -35,7 +35,7 @@ const AlertaCalificacion = () => {
           <div className={comunClass.displayMobile}>
             <Cabecera
               id='AlertaCalificacion-BtnBack1'
-              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) }
+              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Trabajador independiente") ? 25.1 : 19.4)) }
               color='#373737'
               percentage={-1}
               noSpace
@@ -44,7 +44,7 @@ const AlertaCalificacion = () => {
           <div className={comunClass.displayDesk}>
             <Cabecera
               id='AlertaCalificacion-BtnBack2'
-              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Cuenta Propia") ? 25.1 : 19.4)) }
+              dispatch={() => dispatch(handleSetStep((categoriaOcupacionalForm.nombre==="Empleadores" || categoriaOcupacionalForm.nombre==="Trabajador independiente") ? 25.1 : 19.4)) }
               color={"#fff" }
               percentage={-1}
               noSpace
