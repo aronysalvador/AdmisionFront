@@ -72,7 +72,7 @@ const EditarDireccionSucursal = () => {
           <Button
             id={"EditarDireccionSucursal-Btn1"}
             variant='contained'
-            disabled={!sucursalEmpresa}
+            disabled={sucursalEmpresa===null || Object.keys(sucursalEmpresa).length === 0}
             className={comunClass.buttonAchs}
             onClick={() => {
               dispatch(updateForm("SucursalEmpresa", sucursalEmpresa.nombre));
