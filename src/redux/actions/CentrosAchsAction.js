@@ -33,7 +33,7 @@ export const getCentros = () => async (dispatch) => {
 
   const successCallCENTROS = (centros) => ({
     type: GET_CENTROS_SUCCESS,
-    payload: centros
+    payload: centros.filter((centro) => centro.Centro_m !== "CAA")
   });
 
   const errorCallCENTROS = () => ({
