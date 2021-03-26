@@ -13,7 +13,11 @@ export function FechaHora() {
     let fecha = (new Date().toLocaleString("en-US", { timeZone: 'America/Santiago', hour12: false })).replace(/[,]/g, "");
     let x = fecha.split(" ");
     let y = x[0].split("/");
+    let separator = x[1].split(":");
     let newFecha = `${y[2]}-${('0'+y[0]).slice(-2)}-${('0'+y[1]).slice(-2)} ${x[1]}`
+    if (separator[0]===24){
+        newFecha= `${y[2]}-${('0'+y[0]).slice(-2)}-${('0'+y[1]).slice(-2)} ${'00:'+separator[1]+':'+separator[2]}`
+    }
 
     return newFecha
 }
@@ -21,7 +25,11 @@ export function FechaHora() {
 export function Hora() {
     let fecha = (new Date().toLocaleString("en-US", { timeZone: 'America/Santiago', hour12: false })).replace(/[,]/g, "");
     let x = fecha.split(" ");
+    let separator = x[1].split(":");
     let newFecha = `${x[1]}`
+    if (separator[0]===24){
+        newFecha = '00:'+separator[1]+':'+separator[2]
+    }
 
     return newFecha
 }
