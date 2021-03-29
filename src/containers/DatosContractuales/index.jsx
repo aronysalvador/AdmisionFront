@@ -104,14 +104,29 @@ export default () => {
 
     useEffect(() => {
         setErrorFecha("");
-        if (
-            (profesion!=="" && categoriaOcup!=="" && contrato!=="" && cargo!=="" && remuneracion!=="" && jornada!=="") &&
-            (ValidarHora(entrada) && ValidarHora(salida)) &&
-            (ValidarFechaMesAnio(ingreso))
-            ){
-                setValid(validateEP(ingreso))
 
-                return;
+        let validprofesion= validObject(profesion);
+        let validcategoriaOcup = validObject(categoriaOcup);
+        let validcontrato = validObject(contrato);
+        let validcargo = validObject(cargo);
+        let validremuneracion = validObject(remuneracion);
+        let validjornada = validObject(jornada);
+
+        if (
+                (
+                    (profesion!=="" && validprofesion) &&
+                    (categoriaOcup!=="" && validcategoriaOcup) &&
+                    (contrato!=="" && validcontrato) &&
+                    (cargo!=="" && validcargo) &&
+                    (remuneracion!=="" && validremuneracion) &&
+                    (jornada!=="" && validjornada)
+                ) &&
+                (ValidarHora(entrada) && ValidarHora(salida)) &&
+                (ValidarFechaMesAnio(ingreso))
+            ){
+               setValid(validateEP(ingreso));
+
+               return;
             }
         else {
             setValid(false);
@@ -119,6 +134,21 @@ export default () => {
             return;
         }
     }, [ profesion, categoriaOcup, contrato, cargo, remuneracion, jornada, entrada, salida, ingreso ])
+
+    const validObject = (data) => {
+        let valid = true;
+        if (typeof data === "object"){
+            if (data === null){
+                valid = false
+            } else {
+                if ((Object.keys(data).length === 0)){
+                    valid = false
+                }
+            }
+        }
+
+        return valid
+    }
 
     const handleNext = () => {
         dispatch(updateForm("profesionForm", profesion));
