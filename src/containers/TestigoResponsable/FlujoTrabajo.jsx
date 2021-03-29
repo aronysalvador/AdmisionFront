@@ -69,6 +69,13 @@ const FlujoTrabajo = () => {
 
             return;
         }
+
+        if (fecha.getTime() > new Date()){
+            updateValid(false);
+            setErrorDate(`Fecha y hora de aviso no puede ser superior a la hora actual`)
+
+            return;
+        }
         setErrorDate("")
 
         let now = new Date();
@@ -228,7 +235,7 @@ const FlujoTrabajo = () => {
                                     setValidHour={setValidHour}
                                 />
                         </div>
-                        <div className='row justify-content-center' style={{color: "red"}}>{errorDate}</div>
+                        <div className='row justify-content-center' style={{color: "red", marginTop: "20px"}}>{errorDate}</div>
                     </div>
 
                     <div className={spaceStyle.space1} />
