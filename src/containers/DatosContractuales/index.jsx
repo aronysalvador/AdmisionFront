@@ -114,37 +114,39 @@ export default () => {
 
         if (
                 (
-                    (profesion!=="" && validprofesion) && 
-                    (categoriaOcup!=="" && validcategoriaOcup) && 
-                    (contrato!=="" && validcontrato) && 
-                    (cargo!=="" && validcargo) && 
-                    (remuneracion!=="" && validremuneracion) && 
+                    (profesion!=="" && validprofesion) &&
+                    (categoriaOcup!=="" && validcategoriaOcup) &&
+                    (contrato!=="" && validcontrato) &&
+                    (cargo!=="" && validcargo) &&
+                    (remuneracion!=="" && validremuneracion) &&
                     (jornada!=="" && validjornada)
                 ) &&
                 (ValidarHora(entrada) && ValidarHora(salida)) &&
                 (ValidarFechaMesAnio(ingreso))
             ){
+               setValid(validateEP(ingreso));
 
-                setValid(validateEP(ingreso))
-                return;
+               return;
             }
         else {
             setValid(false);
+
             return;
         }
     }, [ profesion, categoriaOcup, contrato, cargo, remuneracion, jornada, entrada, salida, ingreso ])
 
     const validObject = (data) => {
         let valid = true;
-        if(typeof data === "object"){
-            if(data === null){
+        if (typeof data === "object"){
+            if (data === null){
                 valid = false
-            }else{
-                if((Object.keys(data).length === 0) ){
+            } else {
+                if ((Object.keys(data).length === 0)){
                     valid = false
                 }
-            }           
-        } 
+            }
+        }
+
         return valid
     }
 
