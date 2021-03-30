@@ -7,10 +7,29 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import Mapa from '../../components/share/DireccionGeo/Mapa'
 import Header from "../../components/header/index";
+import { validarDireccion } from "./../../helpers/utils";
 
 const MapaSelection = () => {
   const [ direccion, setDireccion ]=useState(null)
   const [ placeId, setPlaceId ]=useState(null)
+  const [ nombreComuna, setNombreComuna ]=useState("")
+  const [ valido, setValido ] = useState(false)
+
+  const validaDireccion = async() => {
+    const resultado = await validarDireccion({description: direccion})
+    setNombreComuna(resultado.comuna)
+    setValido(resultado.valida)
+ }
+
+ useEffect(() => {
+  if (direccion){
+    validaDireccion(direccion)
+  } else {
+    setValido(false)
+    setNombreComuna("")
+  }
+  // eslint-disable-next-line
+},[direccion])
 
   const dispatch = useDispatch()
 
@@ -56,6 +75,7 @@ const MapaSelection = () => {
 
   const handleSelect = async() => {
     googleMapsGetMap(placeId)
+    dispatch(updateForm("comunaDireccionParticular", nombreComuna))
     dispatch(updateForm("direccionParticular", direccion))
     dispatch(updateForm("direccionParticularObj",
     {
@@ -122,7 +142,7 @@ const MapaSelection = () => {
             id={"MapaSelection-Btn1"}
             className={comunClass.buttonAchs}
             variant='contained'
-            disabled={!direccion}
+            disabled={!valido || !direccion || !nombreComuna}
             onClick={() => {
               handleSelect()
             }}
