@@ -70,7 +70,7 @@ const FlujoTrabajo = () => {
             return;
         }
 
-        if (fecha.getTime() > new Date()){
+        if (fecha.getTime() > (new Date()).getTime()){
             updateValid(false);
             setErrorDate(`Fecha y hora de aviso no puede ser superior a la hora actual`)
 
