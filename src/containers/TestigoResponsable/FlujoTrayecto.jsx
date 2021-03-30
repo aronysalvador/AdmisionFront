@@ -100,7 +100,7 @@ const FlujoTrayecto = () => {
                         setErrorDate(`Fecha y hora de aviso no puede ser anterior a fecha de accidente ${fechaHoraSiniestro}`)
                         valida = true
                     }
-                    if (dateResponsable.getTime() > new Date()){
+                    if (dateResponsable.getTime() > (new Date()).getTime()){
                         setErrorDate(`Fecha y hora de aviso no puede ser superior a la hora actual`)
                         valida = true
                     }
