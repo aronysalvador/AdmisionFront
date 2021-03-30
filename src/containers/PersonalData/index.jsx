@@ -46,8 +46,8 @@ const PersonalData = (props) => {
       // si falta info de la empresa
       dispatch(handleSetStep(5.4)); // form empresa
     }
-    else if (!direccionParticular || !direccionParticular.match(/\d+/g) || !comunaDireccionParticular) {  // direccion con numero obligatorio 
-      // si no tiene direccion
+    else if (!direccionParticular || !direccionParticular.match(/\d+/g) || !comunaDireccionParticular) {
+      // si no tiene direccion, direccion con numero obligatorio, y comuna
       dispatch(handleSetStep(5.2));// form direccion
     }
     else if (!telefonoParticular || telefonoParticular === "0") {

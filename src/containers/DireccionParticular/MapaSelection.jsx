@@ -17,7 +17,6 @@ const MapaSelection = () => {
 
   const validaDireccion = async() => {
     const resultado = await validarDireccion({description: direccion})
-    console.log("resultado",resultado)
     setNombreComuna(resultado.comuna)
     setValido(resultado.valida)
  }
