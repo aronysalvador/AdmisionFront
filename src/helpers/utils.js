@@ -158,12 +158,6 @@ export const validarDireccion = async(direccion) => {
 
 const validarComuna = async(direccion) => {
     let COMUNAS = await getComunas();
-        // const array = store.getState().comunaForm.data
-        // for (let index = 0; index < array.length; index++) {
-        //     const element = array[index];
-        //     element.nombre=eliminarDiacriticos(element.nombre)
-        //     COMUNAS.push(element)
-        // }
 
     // console.log("COMUNAS")
     // console.log(COMUNAS)

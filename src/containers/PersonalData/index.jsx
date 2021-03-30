@@ -41,12 +41,12 @@ const PersonalData = (props) => {
     setLoading(true)
     const {
       razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular, grupoEtnico,
-      rut, rutEmpresa, SucursalEmpresaObjeto } = addmissionForm
+      rut, rutEmpresa, SucursalEmpresaObjeto, comunaDireccionParticular } = addmissionForm
     if (!razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa) {
       // si falta info de la empresa
       dispatch(handleSetStep(5.4)); // form empresa
     }
-    else if (!direccionParticular) {
+    else if (!direccionParticular || !direccionParticular.match(/\d+/g) || !comunaDireccionParticular) {  // direccion con numero obligatorio 
       // si no tiene direccion
       dispatch(handleSetStep(5.2));// form direccion
     }
