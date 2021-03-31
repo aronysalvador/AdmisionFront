@@ -7,7 +7,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction"
 import Mapa from '../../components/share/DireccionGeo/Mapa'
 import Header from "../../components/header/index";
-import { validarDireccion } from "./../../helpers/utils";
+import { validarDireccionSN } from "./../../helpers/utils";
 
 const MapaSelection = () => {
   const [ direccion, setDireccion ]=useState(null)
@@ -16,7 +16,7 @@ const MapaSelection = () => {
   const [ valido, setValido ] = useState(false)
 
   const validaDireccion = async() => {
-    const resultado = await validarDireccion({description: direccion})
+    const resultado = await validarDireccionSN({description: direccion})
     setNombreComuna(resultado.comuna)
     setValido(resultado.valida)
  }
