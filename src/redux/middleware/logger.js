@@ -25,6 +25,7 @@ const logger = store => next => action => {
         && !action.type.toUpperCase().includes("LOG")
         && fechaLog
       ){
+        // console.log('Redux Action '+fechaLog);
         ai.appInsights.trackEvent({ name: 'Redux Action '+fechaLog, properties: action })
       }
     }

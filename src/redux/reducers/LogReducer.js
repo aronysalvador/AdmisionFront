@@ -8,16 +8,21 @@ import {
   LOAD_LOG_STATE_SESSIONSTORAGE,
   INIT_SESSION_DATE
   } from "../types/LogType";
+import { FechaHora } from "./../../helpers/utils"
 
-  const getDate = () => {
-    return "( "+new Date().toLocaleString("en-US", { timeZone: 'America/Santiago', hour12: false })+" )"
+  const formatDate = (fecha) => {
+    let x = fecha.split(" ");
+    let y = x[0].split("-");
+    let newFecha = "( "+y[2]+"/"+y[1]+"/"+y[0]+" "+x[1]+" )";
+
+    return newFecha
   }
 
   const INITIAL_STATE = {
     ID: 0,
     loading: false,
     error: null,
-    fecha: getDate()
+    fecha: formatDate(FechaHora())
   };
 
   export default function logForm(state = INITIAL_STATE, action) {
@@ -25,7 +30,7 @@ import {
       case INIT_SESSION_DATE:
         return {
           ...state,
-          fecha: getDate()
+          fecha: formatDate(FechaHora())
       };
 
       case LOAD_LOG_STATE_SESSIONSTORAGE: {
