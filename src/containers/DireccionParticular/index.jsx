@@ -3,7 +3,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import DireccionGeo from "../../components/share/DireccionGeo";
-import { validarDireccion } from "./../../helpers/utils";
+import { validarDireccionSN } from "./../../helpers/utils";
 import { Button, Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
@@ -53,7 +53,7 @@ const DireccionParticular = () => {
   },[direccion])
 
   const validaDireccion = async() => {
-    const resultado = await validarDireccion(direccion)
+    const resultado = await validarDireccionSN(direccion)
     setNombreComuna(resultado.comuna)
     setValido(resultado.valida)
  }
