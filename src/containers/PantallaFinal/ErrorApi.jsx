@@ -44,12 +44,13 @@ const ErrorApi = (props) => {
               <div className={spaceStyle.space1} />
 
               {mensajeErrorApi && (
-              <Grid
-                  className={blackStyle.textNoAfiliate}
-              >
-                  Hay un error con la siguiente API&nbsp;
-                  <br />
-                  {mensaje.length>0 ? mensaje[mensaje.length-3]+"/"+mensaje[mensaje.length-2]+"/"+mensaje[mensaje.length-1] : mensajeErrorApi }
+              <Grid className={blackStyle.textNoAfiliate}>
+                  {mensaje.length>1?(
+                      <Grid>
+                        Hay un error con la siguiente API&nbsp;
+                        <br />
+                         {mensaje.length>0 ? mensaje[mensaje.length-3]+"/"+mensaje[mensaje.length-2]+"/"+mensaje[mensaje.length-1] : mensajeErrorApi }
+                      </Grid>):(<Grid>{mensaje}</Grid>)}
               </Grid>
               )}
 
