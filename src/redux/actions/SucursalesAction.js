@@ -58,41 +58,45 @@ export const obtenerValidacion = async (rut, token) => {
 };
 
 export const getValidar = (isValid, rut) => async (dispatch, getState) => {
-  if (rut.length <= 7)
-    return;
-  dispatch({
-    type: GET_SUCURSALES_INIT,
-    payload: true
-  });
-  if (isValid) {
-    dispatch(updateForm("rutEmpresa", rut));
-   await obtenerValidacion(rut, getState().microsoftReducer.token)
-      .then(async(response) => {
-        if (response.status === 200){
-          const json = response.data
-          if (json.content.response[0] !== undefined){
-           await dispatch(updateForm("razonSocial", json.content.response[0]))
-          await dispatch(updateForm("razonSocialForm", json.content.response[0]?.name))
-            // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
-          await dispatch(updateForm("rutEmpresa", rut));
+  if (rut){
+    if (rut.length <= 7)
+      return;
+    dispatch({
+      type: GET_SUCURSALES_INIT,
+      payload: true
+    });
+    if (isValid) {
+      dispatch(updateForm("rutEmpresa", rut));
+    await obtenerValidacion(rut, getState().microsoftReducer.token)
+        .then(async(response) => {
+          if (response.status === 200){
+            const json = response.data
+            if (json.content.response[0] !== undefined){
+            await dispatch(updateForm("razonSocial", json.content.response[0]))
+            await dispatch(updateForm("razonSocialForm", json.content.response[0]?.name))
+              // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')));
+            await dispatch(updateForm("rutEmpresa", rut));
 
-          await dispatch(getSucursales(rut.replace(/\./g, '').toUpperCase()))
+            await dispatch(getSucursales(rut.replace(/\./g, '').toUpperCase()))
+            } else {
+            // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')))
+            dispatch(updateForm("rutEmpresa", rut));
+              dispatch(updateForm("razonSocial", ""))
+              dispatch(updateForm("razonSocialForm", ""))
+            }
           } else {
-          // dispatch(updateForm("rutEmpresa", rut.replace(/\./g,'')))
-          dispatch(updateForm("rutEmpresa", rut));
-            dispatch(updateForm("razonSocial", ""))
-            dispatch(updateForm("razonSocialForm", ""))
+            dispatch(updateForm("errorStep", 3));
+            dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
+            dispatch(handleSetStep(1004));
           }
-        } else {
+        })
+        .catch(() => {
           dispatch(updateForm("errorStep", 3));
           dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
           dispatch(handleSetStep(1004));
-        }
-      })
-      .catch(() => {
-        dispatch(updateForm("errorStep", 3));
-        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_RAZON_SOCIAL_RUT));
-        dispatch(handleSetStep(1004));
-      })
+        })
+    }
+  } else {
+    return;
   }
 };

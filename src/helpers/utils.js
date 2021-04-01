@@ -128,7 +128,7 @@ export const validarDireccionSN = async(direccion) => {
             let comunaSAP = await validarComuna(direccion.description);
             if (Object.keys(comunaSAP).length !== 0) {
                 respuesta.valida = true
-                respuesta.comuna = comunaSAP.nombre
+                respuesta.comuna = comunaSAP
                     // console.log("valida: " + comunaSAP.nombre)
             } else
                 { respuesta.valida = false }
@@ -146,7 +146,7 @@ export const validarDireccion = async(direccion) => {
             let comunaSAP = await validarComuna(direccion.description);
             if (Object.keys(comunaSAP).length !== 0) {
                 respuesta.valida = true
-                respuesta.comuna = comunaSAP.nombre
+                respuesta.comuna = comunaSAP
                     // console.log("valida: "+comunaSAP.nombre)
             } else
                 { respuesta.valida = false }

@@ -17,7 +17,11 @@ const MapaSelection = () => {
 
   const validaDireccion = async() => {
     const resultado = await validarDireccionSN({description: direccion})
-    setNombreComuna(resultado.comuna)
+    if (resultado.valida){
+      const { codigo_region, codigo_comuna } = resultado.comuna;
+      let comuna = "0000000"+codigo_region+codigo_comuna;
+      setNombreComuna(comuna)
+    }
     setValido(resultado.valida)
  }
 
