@@ -532,9 +532,15 @@ export const saveRut = (rut) => {
                         dispatch(setStep(5.812, 0));
                     }
                 } else {
-                    dispatch(updateForm("errorStep", 3));
-                    dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
-                    dispatch(handleSetStep(1004));
+                    if (result.status === 203){
+                        dispatch(updateForm("errorStep", 3));
+                        dispatch(updateForm("mensajeErrorApi", "Paciente tiene 2 BP"));
+                        dispatch(handleSetStep(1004));
+                    } else {
+                        dispatch(updateForm("errorStep", 3));
+                        dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
+                        dispatch(handleSetStep(1004));
+                    }
                 }
             })
             .catch((error) => {
