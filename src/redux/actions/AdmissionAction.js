@@ -496,7 +496,7 @@ export const saveRut = (rut) => {
                         dispatch(
                             updateForm(
                                 "comunaDireccionParticular",
-                                result.data.content.response.direccionParticular.split(",")[1]
+                                result.data.content.response?.codigoComuna
                             )
                         );
                         dispatch(
