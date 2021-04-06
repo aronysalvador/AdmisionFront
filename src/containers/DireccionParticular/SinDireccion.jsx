@@ -116,6 +116,7 @@ const SinDireccion = () => {
               />
             </div>
           </div>
+          <div className={spaceStyle.space1} />
           <div className={[ "row", comunClass.containerTextBox3 ].join(" ")}>
             <div className='col-md-12'>
               <Typography
@@ -132,7 +133,7 @@ const SinDireccion = () => {
                 variant='outlined'
                 onChange={(e) => setNumero(e.target.value)}
                 error={numero?.length === 0}
-                helperText={numero ? 'Si no tiene número la dirección y contiene una letra,favor escribir "0"' : 'Debe ingresar el numero de la casa o apartamento'}
+                helperText={numero ? 'Si no tiene número la dirección y contiene una letra, favor escribir "0"' : 'Debe ingresar el numero de la casa o apartamento'}
                 margin='dense'
                 required
                 fullWidth
@@ -143,6 +144,7 @@ const SinDireccion = () => {
               />
             </div>
           </div>
+          <div className={spaceStyle.space1} />
           <div className={[ "row", comunClass.containerTextBox3 ].join(" ")}>
             <div className='col-md-6'>
               <Typography
@@ -188,6 +190,7 @@ const SinDireccion = () => {
               </Typography>
               <AutoComplete
                 id={"ComunaEP-Lbl1"}
+                disabled={!region}
                 value={comuna}
                 onChange={(event, value) => {
                   setComuna(value);
