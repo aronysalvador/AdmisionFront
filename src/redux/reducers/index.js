@@ -15,6 +15,7 @@ import categoriaOcupacionalForm from "../reducers/CategoriaOcupacionalReducer";
 import tipoRemuneracionForm from "../reducers/TipoRemuneracionReducer";
 import tipoContratoForm from "../reducers/TipoContratoReducer";
 import comunaForm from "../reducers/ComunaReducer";
+import regionForm from "../reducers/RegionReducer";
 import sucursalesForm from "../reducers/SucursalesReducer";
 import razonAlertaForm from "../reducers/AlertaCalificacionRazonReducer";
 import centrosAchsForm from "../reducers/CentrosAchsReducer";
@@ -43,6 +44,7 @@ export default combineReducers({
     tipoRemuneracionForm,
     tipoContratoForm,
     comunaForm,
+    regionForm,
     sucursalesForm,
     razonAlertaForm,
     centrosAchsForm,

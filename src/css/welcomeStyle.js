@@ -440,8 +440,15 @@ export const getWelcomeStyle = makeStyles(() => ({
             background: "#FFFFFF",
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             borderRadius: "10px"
+        },
+        titleContainerCardsEmail2: {
+            padding: "0.5em 1.5em 0.5em 1.5em",
+            background: "#FFFFFF",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+            width: "570px",
+            margin: "auto"
         }
-
     },
 
     '@media (min-width: 860px)': {

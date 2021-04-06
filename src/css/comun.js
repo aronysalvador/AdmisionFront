@@ -943,6 +943,12 @@ export const getComunStyle = makeStyles(() => ({
             textAlign: 'left',
             margin: 'auto'
         },
+        containerTextBox3: {
+            width: '570px', // '328px',
+            minWidth: '300px',
+            textAlign: 'left',
+            margin: 'auto'
+        },
         containerTextBox2: {
             width: '50%',
             minWidth: '300px',

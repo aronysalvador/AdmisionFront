@@ -9,6 +9,7 @@ import { getSessionStorageState } from "./util/sessionStorage";
 import { getAFP } from "./redux/actions/AfpAction";
 import { getCentros } from "././redux/actions/CentrosAchsAction";
 import { getComuna } from "./redux/actions/ComunaAction";
+import { getRegion } from "./redux/actions/RegionAction";
 import { getIdiomas } from "././redux/actions/IdiomasAction";
 import { getGrupo } from "./redux/actions/GrupoAction";
 import { getNacionalidades } from "././redux/actions/NacionalidadesAction";
@@ -31,6 +32,7 @@ const getMasterData = (dispatch) => {
   dispatch(getAFP(""));
   dispatch(getCentros(""));
   dispatch(getComuna(""));
+  dispatch(getRegion(""));
   dispatch(getNacionalidades());
   dispatch(getIdiomas());
   dispatch(getPaises());

@@ -35,3 +35,4 @@ window.REACT_APP_ADMISION = "https://https://desa.sprintName.40.121.134.234.nip.
 window.REACT_APP_GRUPOS = "https://https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/datosPaciente/grupo/"
 window.APPLICATION_INSIGHTS = "ab61277f-d80c-4e3f-8d56-d48f5f2b23e6"
 window.GOOGLE_MAPS_API_KEY = "AIzaSyB7A81JqF6R2b0lZ2SAAlR1jYRfNZNm-wM"
+window.REACT_APP_REGIONES = "https://desa.sprintName.40.121.134.234.nip.io/orquestador/api/sap/regiones"
