@@ -150,7 +150,7 @@ const DireccionParticular = () => {
               <Typography className={welcomeStyle.itemText2}>
                 ¿No encuentras la dirección?
               </Typography>
-              <div style={{ marginLeft:"235px", top:"12px", position:"relative"}}>
+              <div style={{ marginLeft: "235px", top: "12px", position: "relative"}}>
                 <CustomSwitch
                   id='ValidarCorreoElectronico-CustomSwitch1'
                   checked={stateCheck}
