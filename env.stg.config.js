@@ -35,3 +35,4 @@ window.REACT_APP_ADMISION = "https://stg.salud.achs.cl/orquestador/api/admision/
 window.REACT_APP_GRUPOS = "https://stg.salud.achs.cl/orquestador/api/datosPaciente/grupo/"
 window.APPLICATION_INSIGHTS = "b7b4d059-8a03-41c1-879e-5ecffd6f36ff"
 window.GOOGLE_MAPS_API_KEY = "AIzaSyB7A81JqF6R2b0lZ2SAAlR1jYRfNZNm-wM"
+window.REACT_APP_REGIONES = "https://stg.salud.achs.cl/orquestador/api/sap/regiones"

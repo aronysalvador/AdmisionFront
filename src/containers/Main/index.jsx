@@ -52,6 +52,7 @@ import Cargo from "../Cargo/index";
 // import RelatoSuccess from "../FeedBack/RelatoSuccess";
 import SolicitarDocumentos from "../FeedBack/SolicitarDocumentos";
 import DireccionParticular from "../DireccionParticular/index";
+import SinDireccion from "../DireccionParticular/SinDireccion";
 import DireccionParticularMapaSelection from "../DireccionParticular/MapaSelection";
 import HasBP from "../AffiliateValidations/HasBP";
 import SinBPInfoPersonal1 from "../NoTieneBP/InfoPersonal1";
@@ -251,6 +252,14 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <DireccionParticularMapaSelection />
+            </Paper>
+          </div>
+        );
+      case 5.22:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <SinDireccion />
             </Paper>
           </div>
         );

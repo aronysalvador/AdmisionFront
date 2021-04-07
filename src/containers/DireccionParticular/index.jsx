@@ -4,12 +4,15 @@ import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import Cabecera from "../../components/cabecera/index";
 import DireccionGeo from "../../components/share/DireccionGeo";
 import { validarDireccionSN } from "./../../helpers/utils";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, withStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getComunStyle } from "../../css/comun";
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
+import Switch from '@material-ui/core/Switch';
+import { getWelcomeStyle } from "../../css/welcomeStyle";
+import { ErrorOutline } from "@material-ui/icons";
 
 const DireccionParticular = () => {
   const {
@@ -30,6 +33,17 @@ const DireccionParticular = () => {
 
   const [ nombreComuna, setNombreComuna ]=useState("")
 
+  const [ stateCheck, setStateCheck ] = useState(false);
+
+  const handleChange = (event) => {
+    setStateCheck(event.target.checked);
+    if (event.target.checked){
+      setTimeout(() => {
+        dispatch(handleSetStep(5.22))
+      }, 1000);
+    }
+  };
+
   const clearData = () => {
     dispatch(updateForm("direccionParticularObj", ""))
     dispatch(updateForm("urlMapaDireccionParticular", ""))
@@ -39,6 +53,7 @@ const DireccionParticular = () => {
 
   const comunClass = getComunStyle()
   const spaceStyle = getSpaceStyle()
+  const welcomeStyle = getWelcomeStyle();
   const { googleMap } = getComunStyle()
 
   const [ valido, setValido ] = useState(false)
@@ -61,6 +76,20 @@ const DireccionParticular = () => {
     }
     setValido(resultado.valida)
  }
+
+ const CustomSwitch = withStyles({
+    switchBase: {
+      color: "#FAFAFA",
+      '&$checked': {
+        color: "#00B2A9"
+      },
+      '&$checked + $track': {
+        backgroundColor: "#00B2A9"
+      }
+    },
+    checked: {},
+    track: {}
+  })(Switch);
 
   return (
     <div className={comunClass.root}>
@@ -91,7 +120,7 @@ const DireccionParticular = () => {
         <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
         </div>
-        <div className={comunClass.containerTextBox}>
+        <div className={comunClass.containerTextBox3}>
           <Typography className={comunClass.tituloTextBox} variant='subtitle2' style={{marginBottom: '8px'}}>
             Dirección particular
           </Typography>
@@ -114,7 +143,28 @@ const DireccionParticular = () => {
             :null}
           </center>
         </div>
-
+        <div className={spaceStyle.space1} />
+        <div className={welcomeStyle.titleContainerCardsEmail2}>
+            <div className={welcomeStyle.divRowBottomEmail}>
+              <ErrorOutline />
+              <Typography className={welcomeStyle.itemText2}>
+                ¿No encuentras la dirección?
+              </Typography>
+              <div style={{ marginLeft: "235px", top: "12px", position: "relative"}}>
+                <CustomSwitch
+                  id='ValidarCorreoElectronico-CustomSwitch1'
+                  checked={stateCheck}
+                  onChange={handleChange}
+                  color='default'
+                />
+              </div>
+            </div>
+            <div className={welcomeStyle.divRowBottomEmail}>
+              <Typography className={welcomeStyle.pBegin}>
+                Ingresa la dirección del paciente de manera manual
+              </Typography>
+            </div>
+        </div>
         <div className={comunClass.bottomElement}>
           <Button
             id={"DireccionParticular-Btn1"}
