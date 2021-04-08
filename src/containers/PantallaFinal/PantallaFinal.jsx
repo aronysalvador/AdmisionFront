@@ -89,7 +89,7 @@ const PantallaFinal = (props) => {
           </div>
           <div className={comunClass.displayDesk}>
             {duplicate && (
-            <Typography className={welcomeStyle.subTitleBegin} style={{color:'red'}}>
+            <Typography className={welcomeStyle.subTitleBegin} style={{ color: 'red' }}>
               EL SINIESTRO YA estaba creado en SAP.
             </Typography>
            )}
