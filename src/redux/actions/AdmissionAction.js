@@ -762,6 +762,11 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
                 } else {
                     if (siniestroID.match("[\\D]+") === null) {
                         dispatch(updateForm("siniestroID", siniestroID));
+
+                        if (data?.content[0]?.FechaADmision) {
+                            dispatch(updateForm("duplicate", true));
+                        }
+
                         dispatch(handleSetStep(1001));
                     } else {
                         dispatch(updateForm("mensajeErrorSAP", siniestroID));
