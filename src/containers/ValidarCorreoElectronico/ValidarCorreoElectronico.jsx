@@ -119,7 +119,7 @@ const ValidarCorreoElectronico = () => {
             helperText={ stateCheck ? null : !isEmailValid && "Escriba un email válido"}
             error={!isEmailValid}
             onChange={(e) => {
-              setIsEmailValid(validateEmailFormat(Format.caracteresInvalidos(e.target.value)));
+              setIsEmailValid(validateEmailFormat(e.target.value));
               setUserEmail(e.target.value);
             }}
             disabled={stateCheck}
