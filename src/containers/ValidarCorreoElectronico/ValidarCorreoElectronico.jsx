@@ -20,7 +20,6 @@ import { ErrorOutline } from "@material-ui/icons";
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
-import { Format } from "../../helpers/strings";
 import image from './../../img/relato.svg'
 
 const ValidarCorreoElectronico = () => {
