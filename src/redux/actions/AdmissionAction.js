@@ -747,10 +747,10 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
             if (Object.keys(result).length > 0) {
                 const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
 
-                if (IdEstadoAdmision !== 3) { // error en episodio
+                if (IdEstadoAdmision === 5) { // error en episodio
                     dispatch(updateForm("mensajeErrorSAP", "Error al crear episodio"));
                     dispatch(handleSetStep(1002.1));
-                } else if (IdEstadoSiniestro !== 3 && IdEstadoSiniestro < 7) { // error en siniestro
+                } else if (IdEstadoSiniestro === 6 ) { // error en siniestro
                     dispatch(updateForm("mensajeErrorSAP", "Error al crear siniestro"));
                     dispatch(handleSetStep(1002.2));
                 } else if (IdEstadoSiniestro === 7) { // error en documento
@@ -759,7 +759,10 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
                 } else if (IdEstadoSiniestro === 8) { // error en status
                     dispatch(updateForm("siniestroID", siniestroID));
                     dispatch(handleSetStep(1001.3));
-                } else {
+                } else if (IdEstadoSiniestro === 4) { // Rechazo
+                    dispatch(updateForm("siniestroID", siniestroID));
+                    dispatch(handleSetStep(1001.3));
+                }else {
                     if (siniestroID.match("[\\D]+") === null) {
                         dispatch(updateForm("siniestroID", siniestroID));
 
