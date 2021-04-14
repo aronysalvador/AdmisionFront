@@ -15,6 +15,7 @@ import Tab from '@material-ui/core/Tab';
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
 import TabPanel from "./TabPanel";
+import {successCallLog} from './../../redux/actions/Log'
 
 const useStyles = makeStyles({
   root: {
@@ -101,6 +102,14 @@ const Identification = () => {
   useEffect(() => {
     initFn()
   }, [ initFn ]);
+
+  useEffect(() => {
+   resetearIdSesion()
+  }, []);
+
+  const resetearIdSesion = () => {
+    dispatch(successCallLog(0))
+  }
 
   const comunClass = getComunStyle();
   const classes = useStyles();

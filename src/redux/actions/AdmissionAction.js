@@ -356,7 +356,12 @@ export const obtenerDataRazon = async(rutEmpresa, token) => {
 };
 
 export const saveRut = (rut) => {
-    return (dispatch, getState) => {
+    return async(dispatch, getState) => {
+        const { microsoftReducer: { userMsal } } = getState();
+        const { email } = userMsal;
+        const { addmissionForm: { centrosForm, tipoSiniestro } } = getState();
+        await dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro, Rut: rut, BP: "" }))
+
         obtenerData(rut, getState().microsoftReducer.token)
             .then((result) => {
                 dispatch({
@@ -404,46 +409,6 @@ export const saveRut = (rut) => {
                                 })
                             );
                         }
-
-                        // determinar siguiente paso
-                        let STEP = "";
-                        if (result.data.content.response.cita.length > 0) {
-                            STEP = 5.82;
-                        } else if (result.data.content.response.siniestros.length > 0) {
-                            const mensajeAlerta = "Este paciente ya tiene un siniestro";
-                            const mensajeBoton = "Ver su(s) siniestro(s)";
-                            const origen = "getRut";
-                            dispatch(
-                                updateForm("siniestroOpciones", {
-                                    mensajeAlerta,
-                                    mensajeBoton,
-                                    origen
-                                })
-                            );
-                            STEP = 5.83;
-                        } else {
-                            if (!result.data.content.response.NombreEmpresa ||
-                                !result.data.content.response.SucursalEmpresa ||
-                                !result.data.content.response.DireccionEmpresa ||
-                                !result.data.content.response.RutPagador
-                            ) {
-                                // si falta info de la empresa
-                                STEP = 5.4; // form empresa
-                            } else if (!result.data.content.response.direccionParticular) {
-                                // si no tiene direccion
-                                STEP = 5.2; // form direccion
-                            } else if (!result.data.content.response.telefonoParticular ||
-                                result.data.content.response.telefonoParticular === "0"
-                            ) {
-                                // si no tiene telefono
-                                STEP = 5.3; // form telefono
-                            } else {
-                                // si todos los datos relevantes están llenos
-                                STEP = 5.1; // resumen data
-                            }
-                        }
-
-                        dispatch(handleSetStep(STEP));
 
                         dispatch(updateForm("cita", result.data.content.response.cita));
                         dispatch(
@@ -517,19 +482,55 @@ export const saveRut = (rut) => {
                                 ""
                             )
                         );
-                        const { microsoftReducer: { userMsal } } = getState();
-                        const { email } = userMsal;
-                        const { addmissionForm: { centrosForm, tipoSiniestro, BP } } = getState();
-                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro, Rut: rut, BP }))
+
+                        // determinar siguiente paso
+                        let STEP = "";
+                        if (result.data.content.response.cita.length > 0) {
+                            STEP = 5.82;
+                        } else if (result.data.content.response.siniestros.length > 0) {
+                            const mensajeAlerta = "Este paciente ya tiene un siniestro";
+                            const mensajeBoton = "Ver su(s) siniestro(s)";
+                            const origen = "getRut";
+                            dispatch(
+                                updateForm("siniestroOpciones", {
+                                    mensajeAlerta,
+                                    mensajeBoton,
+                                    origen
+                                })
+                            );
+                            STEP = 5.83;
+                        } else {
+                            if (!result.data.content.response.NombreEmpresa ||
+                                !result.data.content.response.SucursalEmpresa ||
+                                !result.data.content.response.DireccionEmpresa ||
+                                !result.data.content.response.RutPagador
+                            ) {
+                                // si falta info de la empresa
+                                STEP = 5.4; // form empresa
+                            } else if (!result.data.content.response.direccionParticular) {
+                                // si no tiene direccion
+                                STEP = 5.2; // form direccion
+                            } else if (!result.data.content.response.telefonoParticular ||
+                                result.data.content.response.telefonoParticular === "0"
+                            ) {
+                                // si no tiene telefono
+                                STEP = 5.3; // form telefono
+                            } else {
+                                // si todos los datos relevantes están llenos
+                                STEP = 5.1; // resumen data
+                            }
+                        }
+
+                        dispatch(handleSetStep(STEP));
+                        // actualizar BP reporte
+                        if (result.data.content.response.BP){
+                            const { LogForm: { ID } } = getState();
+                            dispatch(stepLogPage({ Id: ID, opcion: 2, BP: result.data.content.response.BP }))
+                        }
                     } else {
                         // NO TIENE BP
-                        const { microsoftReducer: { userMsal } } = getState();
-                        const { email } = userMsal;
-                        const { addmissionForm: { centrosForm, tipoSiniestro } } = getState();
-                        dispatch(handleLog({ email, fecha: FechaHora(), centro: centrosForm, tipoSiniestro, Rut: rut, BP: "" }))
-
                         dispatch(updateForm("bpForm", result.data.content.response));
-                        dispatch(setStep(5.812, 0));
+                        dispatch(handleSetStep(5.812));
                     }
                 } else {
                     if (result.status === 203){
