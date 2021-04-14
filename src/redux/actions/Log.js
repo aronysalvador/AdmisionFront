@@ -75,9 +75,7 @@ import {
     return await Axios.post(window.REACT_APP_LOG, params);
   };
 
-  export const handlEndLog = (datos) => (dispatch, getState) => {
-      const { addmissionForm: { mensajeErrorSAP } } = getState();
-      datos.duplicate = !!((datos.responseSap===200 && mensajeErrorSAP)); // si la respuesta de sap fue exitosa y ademas hay un mensaje de error, quiere decir, que sap fallo al menos 1 vez anteriormente y por ende hay q duplicar el registro
+  export const handlEndLog = (datos) => (dispatch) => {
       dispatch({
         type: POST_LOG_INIT,
         payload: true
