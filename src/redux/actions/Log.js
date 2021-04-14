@@ -76,7 +76,7 @@ import {
   };
 
   export const handlEndLog = (datos) => (dispatch) => {
-    if (datos.Id>0){
+    if (datos?.Id>0){
       dispatch({
         type: POST_LOG_INIT,
         payload: true
