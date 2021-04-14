@@ -786,12 +786,12 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
         } else {
             dispatch(updateForm("mensajeErrorSAP", data.content[0].mensaje));
             dispatch(handleSetStep(1002));
-            EndLog(ID, "", "", 500, false,  dispatch)
+            EndLog(ID, "", "", 500, false, dispatch)
         }
     } catch (error) {
         dispatch(updateForm("mensajeErrorSAP", String(error.response.data.content[0].mensaje)));
         dispatch(handleSetStep(1002));
-        EndLog(ID, "", "", 500, false,  dispatch)
+        EndLog(ID, "", "", 500, false, dispatch)
     }
 };
 
