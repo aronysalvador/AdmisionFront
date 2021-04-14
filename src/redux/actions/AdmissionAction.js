@@ -796,5 +796,5 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
 };
 
 const EndLog = (ID, siniestroID, EpisodioID, status, duplicate, dispatch) => {
-    dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: status, duplicate }))
+    dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: status, duplicado: duplicate }))
 }

@@ -76,6 +76,7 @@ import {
   };
 
   export const handlEndLog = (datos) => (dispatch) => {
+    if (datos?.Id>0){
       dispatch({
         type: POST_LOG_INIT,
         payload: true
@@ -95,6 +96,7 @@ import {
       .catch((error) => {
         dispatch(errorCallLog(error));
       })
+    }
   };
 
   export const handleStepLogPage = async (params) => {
