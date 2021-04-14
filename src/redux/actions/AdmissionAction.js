@@ -746,6 +746,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
 
         if (result.status === 200) {
             if (Object.keys(result).length > 0) {
+                let duplicate = false;
                 const { siniestroID, EpisodioID, IdEstadoAdmision, IdEstadoSiniestro } = data.content[0]
 
                 if (IdEstadoAdmision !== 3) { // error en episodio
@@ -765,6 +766,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
                         dispatch(updateForm("siniestroID", siniestroID));
 
                         if (data?.content[0]?.FechaADmision) {
+                            duplicate=true
                             dispatch(updateForm("duplicate", true));
                         }
 
@@ -775,24 +777,24 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
                     }
                 }
 
-                EndLog(ID, siniestroID, EpisodioID, result.status, dispatch)
+                EndLog(ID, siniestroID, EpisodioID, result.status, duplicate, dispatch)
             } else {
                 dispatch(updateForm("mensajeErrorSAP", "Error de data"));
                 dispatch(handleSetStep(1002));
-                EndLog(ID, "", "", 500, dispatch)
+                EndLog(ID, "", "", 500, false, dispatch)
             }
         } else {
             dispatch(updateForm("mensajeErrorSAP", data.content[0].mensaje));
             dispatch(handleSetStep(1002));
-            EndLog(ID, "", "", 500, dispatch)
+            EndLog(ID, "", "", 500, false,  dispatch)
         }
     } catch (error) {
         dispatch(updateForm("mensajeErrorSAP", String(error.response.data.content[0].mensaje)));
         dispatch(handleSetStep(1002));
-        EndLog(ID, "", "", 500, dispatch)
+        EndLog(ID, "", "", 500, false,  dispatch)
     }
 };
 
-const EndLog = (ID, siniestroID, EpisodioID, status, dispatch) => {
-    dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: status }))
+const EndLog = (ID, siniestroID, EpisodioID, status, duplicate, dispatch) => {
+    dispatch(handlEndLog({ Id: ID, fecha: FechaHora(), siniestroID: siniestroID ? siniestroID : 0, EpisodioID: EpisodioID ? EpisodioID : 0, responseSap: status, duplicate }))
 }
