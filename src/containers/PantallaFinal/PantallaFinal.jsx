@@ -18,7 +18,7 @@ import { initSessionDate } from "./../../redux/actions/Log";
 
 const PantallaFinal = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
-  const { siniestroID, rut, duplicate } = addmissionForm;
+  const { siniestroID, rut } = addmissionForm;
   const welcomeStyle = getWelcomeStyle();
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -88,11 +88,6 @@ const PantallaFinal = (props) => {
             <div className={spaceStyle.space1} />
           </div>
           <div className={comunClass.displayDesk}>
-            {duplicate && (
-            <Typography className={welcomeStyle.subTitleBegin} style={{ color: 'red' }}>
-              EL SINIESTRO YA estaba creado en SAP.
-            </Typography>
-           )}
           <Typography className={welcomeStyle.subTitleBegin}>
             Luego de la firma pide al paciente:
           </Typography>

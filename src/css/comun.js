@@ -1794,5 +1794,15 @@ export const getComunStyle = makeStyles(() => ({
         lineHeight: "28px",
         letterSpacing: "0em",
         textAlign: "center"
+    },
+    textsmallErrorRed: {
+        textAlign: "center",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "1em",
+        lineHeight: "1em",
+        alignItems: "center",
+        color: "red"
     }
 }));
