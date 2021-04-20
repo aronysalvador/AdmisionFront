@@ -13,6 +13,7 @@ const ErrorCrearCasoSiniestro = () => {
 
   const dispatch = useDispatch();
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+  const { addmissionForm: { mensajeErrorSAP } } = useSelector((state) => state, shallowEqual);
 
   return (
     <div className={comunClass.root}>
@@ -38,6 +39,15 @@ const ErrorCrearCasoSiniestro = () => {
         <Grid className={comunClass.textErrorS}>
             Inténtalo de nuevo o ingresa al paciente por SAP
         </Grid>
+
+        {mensajeErrorSAP && (
+          <>
+            <div className={spaceStyle.space1} />
+            <Grid className={comunClass.textsmallErrorRed}>
+              Error: "{String(mensajeErrorSAP).trim()}"
+            </Grid>
+          </>
+        )}
 
         <div className={spaceStyle.space2} />
 

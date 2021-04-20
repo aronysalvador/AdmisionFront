@@ -73,6 +73,7 @@ import ErrorCrearCaso from "../PantallaFinal/ErrorCrearCaso";
 import ErrorCrearCasoSiniestro from "../PantallaFinal/ErrorCrearCasoSiniestro";
 import CasoCreado from "../PantallaFinal/CasoCreado";
 import CasoCreadoErrorDoc from "../PantallaFinal/CasoCreadoErrorDoc";
+import CasoDuplicado from "../PantallaFinal/CasoDuplicado";
 import CasoCreadoErrorStatus from "../PantallaFinal/CasoCreadoErrorStatus";
 import ErrorApi from "../PantallaFinal/ErrorApi";
 import SameDateSinister from "../AffiliateValidations/SameDateSinister";
@@ -900,6 +901,14 @@ const Main = (props) => {
           <div className={layoutFix}>
             <Paper className={paperFix}>
               <CasoCreadoErrorStatus />
+            </Paper>
+          </div>
+        );
+      case 1001.4:
+        return (
+          <div className={layoutFix}>
+            <Paper className={paperFix}>
+              <CasoDuplicado />
             </Paper>
           </div>
         );

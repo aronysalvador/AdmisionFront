@@ -136,6 +136,5 @@ export const AdmissionForm = {
     TrabajoMolestiasEP: "",
     FechaExposicionAgenteEP: "",
     mismasMolestiasCompañerosEP: "",
-    TipoAvisoResponsable: {},
-    duplicate: false
+    TipoAvisoResponsable: {}
 };
