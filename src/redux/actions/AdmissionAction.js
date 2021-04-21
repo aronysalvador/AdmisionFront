@@ -368,11 +368,11 @@ export const saveRut = (rut) => {
                     type: RESPONSE_SUCCESS,
                     payload: result
                 });
-
-                if (result.status === 200 || result.status === 206) { // || result.data.status === 304
-                    let BpCreado = result.data.content.response ? result.data.content.response.BpCreado : "";
-                    if (BpCreado) {
-                        // Guardar datos adicionales paciente requeridos por SAP
+                if (result.status === 200 || result.status === 206) {
+                    const { response } = result?.data?.content;
+                    if (!response){ // NO DATA PACIENTE
+                      dispatch(handleSetStep(5.812));
+                    } else {
                         const {
                             apellidoMaterno,
                             apellidoPaterno,
@@ -384,20 +384,24 @@ export const saveRut = (rut) => {
                             femenino,
                             nacionalidad,
                             pais,
-                            estadoCivil
-                        } = result.data.content.response;
+                            estadoCivil,
+                            BpCreado,
+                            direccionParticular,
+                            codigoComuna,
+                            telefonoParticular
+                        } = response;
 
                         dispatch(
                             updateForm("datosAdicionalesSAP", {
-                                apellidoMaterno,
-                                apellidoPaterno,
-                                nombre,
-                                fechaNacimiento,
-                                masculino,
-                                femenino,
-                                nacionalidad,
-                                pais,
-                                estadoCivil
+                                apellidoMaterno: apellidoMaterno?apellidoMaterno:"",
+                                apellidoPaterno: apellidoPaterno?apellidoPaterno:"",
+                                nombre: nombre?nombre:"",
+                                fechaNacimiento: fechaNacimiento?fechaNacimiento:"",
+                                masculino: masculino?masculino:"",
+                                femenino: femenino?femenino:"",
+                                nacionalidad: nacionalidad?nacionalidad:"",
+                                pais: pais?pais:"",
+                                estadoCivil: estadoCivil?estadoCivil:""
                             })
                         );
 
@@ -410,127 +414,35 @@ export const saveRut = (rut) => {
                             );
                         }
 
-                        dispatch(updateForm("cita", result.data.content.response.cita));
-                        dispatch(
-                            updateForm("siniestros", result.data.content.response.siniestros)
-                        );
+                        dispatch(updateForm("direccionParticular", direccionParticular ? direccionParticular : ""));
+                        dispatch(updateForm("comunaDireccionParticular", codigoComuna ? codigoComuna : ""));
+                        dispatch(updateForm("telefonoParticular", telefonoParticular ? (telefonoParticular === "0" ? "" : Pipes.advanced(telefonoParticular)) : ""));
 
-                        if (result.data.content.response.RutPagador) {
-                            dispatch(saveRazonSocial(result.data.content.response.RutPagador));
-                            dispatch(getSucursales(result.data.content.response.RutPagador))
-
-                            dispatch(
-                                updateForm(
-                                    "razonSocial",
-                                    result.data.content.response.NombreEmpresa
-                                )
-                            );
-                            dispatch(
-                                updateForm("rutEmpresa", result.data.content.response.RutPagador)
-                            );
-
-                            dispatch(updateForm("isAfiliado", "Si"));
-                            dispatch(
-                                updateForm(
-                                    "SucursalEmpresa",
-
-                                    result.data.content.response.SucursalEmpresa
-                                )
-                            );
-                            dispatch(
-                                updateForm(
-                                    "DireccionEmpresa",
-
-                                    result.data.content.response.DireccionEmpresa
-                                )
-                            );
-                            dispatch(
-                                updateForm(
-                                    "comunaEmpresa",
-                                    result.data.content.response.comunaEmpresa
-                                )
-                            );
-                        }
-                        dispatch(
-                            updateForm(
-                                "direccionParticular",
-
-                                result.data.content.response.direccionParticular
-                            )
-                        );
-                        dispatch(
-                            updateForm(
-                                "comunaDireccionParticular",
-                                result.data.content.response?.codigoComuna
-                            )
-                        );
-                        dispatch(
-                            updateForm(
-                                "telefonoParticular",
-
-                                result.data.content.response.telefonoParticular === "0" ?
-                                "" :
-                                Pipes.advanced(result.data.content.response.telefonoParticular)
-                            )
-                        );
-                        dispatch(
-                            updateForm(
-                                "BP",
-
-                                result.data.content.response.BP ?
-                                result.data.content.response.BP :
-                                ""
-                            )
-                        );
-
-                        // determinar siguiente paso
-                        let STEP = "";
-                        if (result.data.content.response.cita.length > 0) {
-                            STEP = 5.82;
-                        } else if (result.data.content.response.siniestros.length > 0) {
-                            const mensajeAlerta = "Este paciente ya tiene un siniestro";
-                            const mensajeBoton = "Ver su(s) siniestro(s)";
-                            const origen = "getRut";
-                            dispatch(
-                                updateForm("siniestroOpciones", {
-                                    mensajeAlerta,
-                                    mensajeBoton,
-                                    origen
-                                })
-                            );
-                            STEP = 5.83;
-                        } else {
-                            if (!result.data.content.response.NombreEmpresa ||
-                                !result.data.content.response.SucursalEmpresa ||
-                                !result.data.content.response.DireccionEmpresa ||
-                                !result.data.content.response.RutPagador
-                            ) {
-                                // si falta info de la empresa
-                                STEP = 5.4; // form empresa
-                            } else if (!result.data.content.response.direccionParticular) {
-                                // si no tiene direccion
-                                STEP = 5.2; // form direccion
-                            } else if (!result.data.content.response.telefonoParticular ||
-                                result.data.content.response.telefonoParticular === "0"
-                            ) {
-                                // si no tiene telefono
-                                STEP = 5.3; // form telefono
-                            } else {
-                                // si todos los datos relevantes están llenos
-                                STEP = 5.1; // resumen data
+                        if (BpCreado) {
+                            dispatch(updateForm("BP", response?.BP ? response.BP : ""));
+                            dispatch(updateForm("cita", response?.cita ? response.cita : []));
+                            dispatch(updateForm("siniestros", response?.siniestros ? response.siniestros : []));
+                            if (response?.RutPagador) {
+                                dispatch(saveRazonSocial(response.RutPagador));
+                                dispatch(getSucursales(response.RutPagador))
+                                dispatch(updateForm("RutPagador", response.RutPagador));
+                                dispatch(updateForm("razonSocial", response?.NombreEmpresa ? response.NombreEmpresa : ""));
+                                dispatch(updateForm("isAfiliado", "Si"));
+                                dispatch(updateForm("SucursalEmpresa", response?.SucursalEmpresa ? response.SucursalEmpresa : ""));
+                                dispatch(updateForm("DireccionEmpresa", response?.DireccionEmpresa ? response.DireccionEmpresa : ""));
+                                dispatch(updateForm("comunaEmpresa", response?.comunaEmpresa ? response.comunaEmpresa : ""));
                             }
+                            // determinar siguiente paso
+                            handleNextStep(response, dispatch)
+                            if (response.BP){ // actualizar BP reporte
+                                const { LogForm: { ID } } = getState();
+                                dispatch(stepLogPage({ Id: ID, opcion: 2, BP: response.BP }))
+                            }
+                        } else {
+                            // NO TIENE BP
+                            dispatch(updateForm("bpForm", response));
+                            dispatch(handleSetStep(5.812));
                         }
-
-                        dispatch(handleSetStep(STEP));
-                        // actualizar BP reporte
-                        if (result.data.content.response.BP){
-                            const { LogForm: { ID } } = getState();
-                            dispatch(stepLogPage({ Id: ID, opcion: 2, BP: result.data.content.response.BP }))
-                        }
-                    } else {
-                        // NO TIENE BP
-                        dispatch(updateForm("bpForm", result.data.content.response));
-                        dispatch(handleSetStep(5.812));
                     }
                 } else {
                     if (result.status === 203){
@@ -550,11 +462,52 @@ export const saveRut = (rut) => {
                     payload: error
                 });
                 dispatch(updateForm("errorStep", 3));
-                dispatch(updateForm("mensajeErrorApi", window.REACT_APP_VALIDAR_DATA_PACIENTE));
+                dispatch(updateForm("mensajeErrorApi", error.message));
                 dispatch(handleSetStep(1004));
             });
     };
 };
+
+const handleNextStep = (result, dispatch) => {
+    let STEP = "";
+    if (result.cita.length > 0) {
+        STEP = 5.82;
+    } else if (result.siniestros.length > 0) {
+        const mensajeAlerta = "Este paciente ya tiene un siniestro";
+        const mensajeBoton = "Ver su(s) siniestro(s)";
+        const origen = "getRut";
+        dispatch(
+            updateForm("siniestroOpciones", {
+                mensajeAlerta,
+                mensajeBoton,
+                origen
+            })
+        );
+        STEP = 5.83;
+    } else {
+        if (!result.NombreEmpresa ||
+            !result.SucursalEmpresa ||
+            !result.DireccionEmpresa ||
+            !result.RutPagador
+        ) {
+            // si falta info de la empresa
+            STEP = 5.4; // form empresa
+        } else if (!result.direccionParticular) {
+            // si no tiene direccion
+            STEP = 5.2; // form direccion
+        } else if (!result.telefonoParticular ||
+            result.telefonoParticular === "0"
+        ) {
+            // si no tiene telefono
+            STEP = 5.3; // form telefono
+        } else {
+            // si todos los datos relevantes están llenos
+            STEP = 5.1; // resumen data
+        }
+    }
+    // return STEP
+    dispatch(handleSetStep(STEP));
+}
 
 const saveRazonSocial = (rut) => {
     return (dispatch, getState) => {
