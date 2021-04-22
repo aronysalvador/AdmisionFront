@@ -427,7 +427,7 @@ export const saveRut = (rut) => {
                                 dispatch(getSucursales(response.RutPagador))
                                 dispatch(updateForm("RutPagador", response.RutPagador));
                                 dispatch(updateForm("razonSocial", response?.NombreEmpresa ? response.NombreEmpresa : ""));
-                                dispatch(updateForm("rutEmpresa", response.RutPagado ? response.RutPagado : ""));
+                                dispatch(updateForm("rutEmpresa", response.RutPagador ? response.RutPagador : ""));
                                 dispatch(updateForm("isAfiliado", "Si"));
                                 dispatch(updateForm("SucursalEmpresa", response?.SucursalEmpresa ? response.SucursalEmpresa : ""));
                                 dispatch(updateForm("DireccionEmpresa", response?.DireccionEmpresa ? response.DireccionEmpresa : ""));
