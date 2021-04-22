@@ -436,7 +436,9 @@ export const saveRut = (rut) => {
                             handleNextStep(response, dispatch)
                             if (response.BP){ // actualizar BP reporte
                                 const { LogForm: { ID } } = getState();
-                                dispatch(stepLogPage({ Id: ID, opcion: 2, BP: response.BP }))
+                                if (ID>0){ // actualizar BP reporte
+                                    dispatch(stepLogPage({ Id: ID, opcion: 2, BP: response.BP }))
+                                }
                             }
                         } else {
                             // NO TIENE BP
