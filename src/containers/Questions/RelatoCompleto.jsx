@@ -157,7 +157,7 @@ const RelatoCompleto = () => {
                     <Grid className={`${comunClass.textPrimaryRelato}`}>
                         ¿Con
                         <Grid component='span' className={`${comunClass.textPrimaryRelatoBlue}`}>
-                            &nbsp; qué ocurrió el acciendente
+                            &nbsp; qué ocurrió el accidente
                         </Grid>
                         ?
                     </Grid>
