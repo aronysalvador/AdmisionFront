@@ -75,7 +75,7 @@ onClick={() => {
             onMouseOut={() => { setButtonOverTrabajo(false) }}
           >
             <img alt='Accidente de Trabajo' src={!buttonOverTrabajo ? trabajoimg : trabajoActive} className={classes.imgButton} />
-            <div>Accidente de trabajo <br />
+            <div>Accidente de Trabajo <br />
               <span className={classes.textButton}>En su lugar de trabajo</span>
             </div>
             {buttonOverTrabajo && <img src={checks} alt='check' style={{position: "absolute", top: "3px", right: "3px"}} /> }
