@@ -78,13 +78,13 @@ const FlujoTrayecto = () => {
       useEffect(() => {
           let valida = false;
 
-          if (nombreTestigo.length>0 || cargoTestigo.length>0){
-              if (!nombreTestigo || !cargoTestigo)
+          if (nombreTestigo.length>0 ){
+              if (!nombreTestigo)
                   valida=true
           }
 
           setBtnValido(valida)
-      }, [ nombreTestigo, cargoTestigo ])
+      }, [ nombreTestigo ])
 
       useEffect(() => {
           let valida = false;
@@ -415,7 +415,7 @@ const FlujoTrayecto = () => {
                                 <div className='row'>
                                     <div className='col-md-10'>
                                         <Grid className={comunClass.tituloTextBox} style={{marginTop: "5px "}}>
-                                        Cargo o relación testigo
+                                        Cargo o relación testigo (Opcional)
                                         </Grid>
                                         <TextField
                                         id='FlujoTrayecto-Input5'
@@ -441,22 +441,6 @@ const FlujoTrayecto = () => {
                                         }}
                                         />
                                     </div>
-                                </div>
-
-                                <div className='row'>
-                                <div className='col-md-10'>
-                                    <Grid className={comunClass.tituloTextBox} style={{marginTop: "5px "}}>
-                                    Teléfono (Opcional)
-                                    </Grid>
-                                    <InputMasked
-                                    id='FlujoTrayecto-InputPhone1'
-                                    mask={Mask.advanced}
-                                    setTelefono={setDatosTestig}
-                                    handleOnChange={handleOnChange}
-                                    telefono={datosTestig}
-                                    step={14}
-                                    />
-                                </div>
                                 </div>
                         </div>
                         </div>
