@@ -111,7 +111,7 @@ const CausaNoLaboral = () => {
               dispatch(handleSetStep(26.4));
             }}
           >
-            Confirmar Alerta
+            Listo, crear caso
           </Button>
         </div>
       </div>

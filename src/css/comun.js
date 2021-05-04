@@ -613,6 +613,19 @@ export const getComunStyle = makeStyles(() => ({
             padding: '30px 100px',
             textAlign: 'center'
         },
+        boxDeskCardBtn2: {
+            width: '60%',
+            maxWidth: '860px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '30px 30px',
+            textAlign: 'center'
+        },
         boxDesk4: {
             width: '60%', // '416px',
             maxWidth: '860px',

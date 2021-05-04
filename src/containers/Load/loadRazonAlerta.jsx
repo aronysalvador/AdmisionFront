@@ -14,7 +14,7 @@ const LoadRazonAlerta = () => {
 
   useEffect(() => {
     setTimeout(function () {
-      dispatch(handleSetStep(26.1));
+      dispatch(handleSetStep(1000));
     }, 2000);
     // eslint-disable-next-line
   },[]);
