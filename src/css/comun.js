@@ -919,6 +919,11 @@ export const getComunStyle = makeStyles(() => ({
             verticalAlign: "top",
             minHeight: '73px' // '88px'
         },
+        textPrimaryDesk2: {
+            textAlign: "left",
+            verticalAlign: "top",
+            paddingBottom: "1em"
+        },
         imgPrimaryDesk: {
             float: 'right'
         },
