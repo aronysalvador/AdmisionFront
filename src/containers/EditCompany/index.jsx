@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { getComunStyle } from "../../css/comun";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import { getSucursales } from "../../redux/actions/SucursalesAction";
 import Header from "../../components/header/index";
@@ -34,10 +34,26 @@ const EditCompany = () => {
   useEffect(() => {
     if (cargando){
       if (!loading){
-        if (sucursalesList.length>0)
+        if (sucursalesList.length>0){
+          if (sucursalesList.length>1){
             dispatch(handleSetStep(5.5))
-        else
+          }else{
+            const data = sucursalesList[0];
+            const { nombre, direccion, comuna, codigo, sucursalCargo } = data;
+            dispatch(updateForm("sucursales", sucursalesList));
+            dispatch(updateForm("SucursalEmpresaObjeto", data));
+            dispatch(updateForm("SucursalEmpresa", nombre));
+            dispatch(updateForm("DireccionEmpresa", direccion));
+            dispatch(updateForm("codigoSucursal", codigo));
+            dispatch(updateForm("comunaEmpresa", comuna))
+            dispatch(updateForm("sucursalCargo", sucursalCargo));
+            dispatch(updateForm("cantidadSucursales", 1));
+            dispatch(updateForm("comunaSucursal", comuna));
+            dispatch(handleSetStep(5.1))
+          }
+        } else {
           dispatch(handleSetStep(5.14))
+        }
       }
     }
     // eslint-disable-next-line
