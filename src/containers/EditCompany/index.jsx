@@ -37,7 +37,7 @@ const EditCompany = () => {
         if (sucursalesList.length>0){
           if (sucursalesList.length>1){
             dispatch(handleSetStep(5.5))
-          }else{
+          } else {
             const data = sucursalesList[0];
             const { nombre, direccion, comuna, codigo, sucursalCargo } = data;
             dispatch(updateForm("sucursales", sucursalesList));
