@@ -7,7 +7,7 @@ case $ENTORNO in
     stagingTest) cat env.stg.config.js > src/setupTests.js && echo "Cambiando variables de entorno a $ENTORNO";;
     produccionTest) cat env.prod.config.js > src/setupTests.js && echo "Cambiando variables de entorno a $ENTORNO";;
     desarrollo) cat env.desarrollo.config.js ;;
-    desarrollowebapp) cat env.desarrollowebapp.config.js ;;
+    desarrollowebapp) cat env.desarrollowebapp.config.js && echo "Cambiando variables de entorno a $ENTORNO";;
     qa) cat env.qa.config.js ;;
     staging) cat env.stg.config.js ;;
     produccion) cat env.prod.config.js ;;
