@@ -207,7 +207,7 @@ stages:
             displayName: Build Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(Repository)
+              repository: $(Repositorio)
               command: build
               Dockerfile: /home/vsts/work/1/s/Dockerfile
               tags: $(ImageTag)
@@ -215,14 +215,14 @@ stages:
             displayName: Push Docker Image
             inputs:
               containerRegistry: $(ContainerRegistryName)
-              repository: $(Repository)
+              repository: $(Repositorio)
               command: push
               tags: $(ImageTag)
           - task: AzureWebAppContainer@1
             inputs:
               azureSubscription: $(azureSubcritionDESA)
               appName: $(appNameDESAFront)
-              containers: $(ContainerRegistryName).azurecr.io/$(Repository):$(ImageTag)
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
 # ************** DESPLIEGUE EN WEB APP **************              
 
   # DESA #
