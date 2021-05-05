@@ -27,7 +27,7 @@ const BlueCheckbox = withStyles({
   })((props) => <Checkbox color='default' {...props} />);
 
 const RelatoCompleto = () => {
-    const { addmissionForm: { percentage, lugarAccidente, descripcionAccidente, objetoAccidente, coberturaSoap, desarrollarTrabajoHabitual, tipoSiniestro }, microsoftReducer: {userMsal} } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, lugarAccidente, descripcionAccidente, objetoAccidente, coberturaSoap, desarrollarTrabajoHabitual, tipoSiniestro, CamposDocumentos }, microsoftReducer: {userMsal} } = useSelector((state) => state, shallowEqual);
     const dispatch = useDispatch();
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
@@ -45,9 +45,12 @@ const RelatoCompleto = () => {
         return !objetoAccidente ? "El accidente ocurrio con " : objetoAccidente;
     });
 
+    const [ parteAfectada, setParteAfectada ] = useState(() => {
+        return !CamposDocumentos.ParteAfecta ? "" : CamposDocumentos.ParteAfecta;
+    });
     const [ stateCheckbox, setStateCheckbox ] = useState(() => {
         return coberturaSoap === "si"
-      });
+    });
 
     const onChangeValue1 = (e) => {
         if (e.target.value.search("Al momento del accidente estaba") >= 0)
@@ -70,6 +73,10 @@ const RelatoCompleto = () => {
             setText3(Format.caracteresInvalidos(`El accidente ocurrio con ${e.target.value.slice(0, 174)}`));
     };
 
+    const onChangeValue4 = (e) => {
+        setParteAfectada(Format.caracteresInvalidos(e.target.value));
+    };
+
     const handleCheckBoxChange = (event) => {
         setStateCheckbox(event.target.checked);
     };
@@ -86,6 +93,7 @@ const RelatoCompleto = () => {
         dispatch(updateForm("descripcionAccidente", text2));
         dispatch(updateForm("objetoAccidente", text3));
         dispatch(updateForm("coberturaSoap", respSoap));
+        dispatch(updateForm("CamposDocumentos", {...CamposDocumentos, ParteAfecta: parteAfectada, Otras: ""}));
         dispatch(handleSetStep(8.1));
         if (respuestaOriginal !== text3)
             dispatch(updateForm("volverAConcatenar", true));
@@ -153,7 +161,32 @@ const RelatoCompleto = () => {
                         // defaultValue={"Lo que ocurrio fue que "}
                     />
                     <label className={comunClass.pullRight}>{text2.length}/200</label>
-
+                    {tipoSiniestro.Id === 2 &&
+                    <>
+                        <Grid className={`${comunClass.textPrimaryRelato}`}>
+                            ¿Cuál es la parte del
+                            <Grid component='span' className={`${comunClass.textPrimaryRelatoBlue}`}>
+                                &nbsp; cuerpo afectada
+                            </Grid>
+                            ?
+                        </Grid>
+                        <TextField
+                            id={"RelatoCompleto-Lbl4"}
+                            value={parteAfectada}
+                            margin='dense'
+                            style={{ marginBottom: "10px" }}
+                            variant='outlined'
+                            fullWidth
+                            autoComplete='off'
+                            rows={5}
+                            placeholder='Ejemplo: Pierna y rodilla derechas'
+                            inputProps={{ maxLength: 200 }}
+                            helperText={(parteAfectada.length < 5 && parteAfectada.length > 0) &&"Se necesita al menos 5 caracteres"}
+                            error={parteAfectada.length < 5 && parteAfectada.length > 0}
+                            onChange={ onChangeValue4}
+                        />
+                    </>
+                    }
                     <Grid className={`${comunClass.textPrimaryRelato}`}>
                         ¿Con
                         <Grid component='span' className={`${comunClass.textPrimaryRelatoBlue}`}>
@@ -224,7 +257,7 @@ const RelatoCompleto = () => {
                         id={"RelatoCompleto-Btn1"}
                         className={comunClass.buttonAchs}
                         variant='contained'
-                        disabled={tipoSiniestro.Id === 1 ? !(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual) : (!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4))}
+                        disabled={tipoSiniestro.Id === 1 ? !(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(desarrollarTrabajoHabitual) : (!(text1.length - 32 > 4) || !(text2.length - 23 > 4) || !(text3.length - 25 > 4) || !(parteAfectada.length > 4))}
                         onClick={() => saveAnswer()}
                     >
                         Continuar

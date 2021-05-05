@@ -123,7 +123,7 @@ export const handleSetStep = (step, actual = null) => {
                             PASO = 10.1
                             break;
                         case 2:
-                            PASO = 9.01
+                            PASO = 10.1
                             break;
                         case 3:
                             PASO = 500
@@ -158,7 +158,7 @@ export const handleSetStep = (step, actual = null) => {
                                 PASO = 8.1
                                 break;
                             case 2:
-                                PASO = 9.01
+                                PASO = 8.1
                                 break;
                             case 3:
                                 PASO = 500

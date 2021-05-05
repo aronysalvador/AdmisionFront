@@ -3,9 +3,10 @@ import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
-import BotonSeleccionarCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustom";
+import BotonSeleccionarRadioCustom from "../../components/BotonSeleccionarCustom/BotonSeleccionarRadioCustom";
 import BotonSeleccionarCustomItemAlerta from "../../components/BotonSeleccionarCustom/BotonSeleccionarCustomItemAlerta";
 import { getSpaceStyle } from "../../css/spaceStyle";
+import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import image from './../../img/relato.svg'
@@ -25,11 +26,15 @@ const AlertaCalificacionRazon = () => {
   const dispatch = useDispatch();
 
   const [ listado, setListado ] = useState([])
+  const [ btnSelect, setBtnSelect ] = useState(!razonAlertaForm || razonAlertaForm.glosa ==="Posible causa no laboral" && true)
+
+  const handlerGuradarSucursalTexto = (isSelected) => {
+    setBtnSelect(isSelected)
+  };
 
   useEffect(() => {
     if (razonAlertaList.length>0)
       FilterbySinister()
-
     // eslint-disable-next-line
   }, [razonAlertaList]);
 
@@ -82,28 +87,39 @@ const AlertaCalificacionRazon = () => {
           </Grid>
         </div>
       </div>
-      <div className={comunClass.boxDeskCardBtn}>
+      <div className={comunClass.boxDeskCardBtn2}>
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
             flexWrap: "wrap"
           }}
         >
           {listado && listado.map((razonAlerta, i) => (
-            <BotonSeleccionarCustom
+            <BotonSeleccionarRadioCustom
               id={"AlertaCalificacionRazon"+i}
               key={"key"+i}
               data={razonAlerta}
               itemForm={"razonAlertaForm"}
               selected={razonAlerta.glosa === razon.glosa}
+              handlerGuardarData={handlerGuradarSucursalTexto}
+              listado={listado.length}
             >
               <BotonSeleccionarCustomItemAlerta {...razonAlerta} />
-            </BotonSeleccionarCustom>
+            </BotonSeleccionarRadioCustom>
           ))}
         </div>
+        <div className={spaceStyle.space1} />
+        <Button
+          id='CrearCaso'
+          variant='contained'
+          className={comunClass.buttonAchs}
+          disabled={btnSelect}
+          onClick={() => dispatch(handleSetStep(26.4)) }
+        >
+          Listo, crear caso
+        </Button>
       </div>
       <div className={comunClass.displayDesk}>
         <div className={spaceStyle.space2} />
