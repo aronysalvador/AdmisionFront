@@ -4,17 +4,16 @@ import { useDispatch } from "react-redux"
 import { handleSetStep } from "../../redux/actions/AdmissionAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
 import { validarDireccionSN } from '../../helpers/utils'
-import Grid from '@material-ui/core/Grid';
 
 export default (props) => {
   const { titulo, sucursal, setSucursal, setMapaUrl, comunaEmpresa, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption, tipoSiniestro } = props
 
   const dispatch = useDispatch();
-  const comunClass = getComunStyle();
 
   useEffect(() => {
     if (sucursal){
       validaDireccion(sucursal)
+      setValido(true)
     } else {
       setValido(false)
       setNombreComuna("")
@@ -24,18 +23,13 @@ export default (props) => {
 
   const validaDireccion = async() => {
     const resultado = await validarDireccionSN(sucursal)
-    setNombreComuna(resultado.comuna)
-    setValido(resultado.valida)
+    setNombreComuna(resultado.comuna?resultado.comuna:"")
+    // setValido(resultado.valida)
   }
 
   return (
     <div>
-      <Grid
-        className={comunClass.tituloTextBox}
-        style={{marginBottom: '8px', textAlign: "left"}}
-      >
-        {titulo}
-      </Grid>
+       {titulo}
       <DireccionGeo
         id={"InfoAccidente-LblLugar"}
         comunStyle={getComunStyle()}
@@ -51,6 +45,7 @@ export default (props) => {
         small
         background={"#fff"}
         noFijarOption={noFijarOption}
+        showInputValue
       />
     </div>
   )

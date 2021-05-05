@@ -31,7 +31,7 @@ function sleep(delay = 0) {
 const DireccionGeo = (props) => {
     const dispatch = useDispatch()
     const comunStyle = getComunStyle();
-    const { id, direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal, background, small, noFijarOption } = props
+    const { id, direccion, setMapa, setDireccion, clearData, showDinamicMap, direccionTemporal, background, small, noFijarOption, showInputValue } = props
 
     const [ open, setOpen ] = useState(false)
 
@@ -68,9 +68,19 @@ const DireccionGeo = (props) => {
           const json = await test.json()
           let predictions = (Array.isArray(json.content[0].predictions)) ? json.content[0].predictions : []
           predictions[predictions.length]=DinamycOption
-          setOptions(predictions)
+          if (showInputValue) {
+            const array2 = [ { description: newInputValue } ];
+            const array3 = predictions.length>1? predictions : array2.concat(predictions);
+            setOptions(array3)
+          } else {
+            setOptions(predictions)
+          }
       } else {
-        setOptions([ DinamycOption ])
+        if (showInputValue) {
+          setOptions([ DinamycOption, { description: newInputValue } ])
+        } else {
+          setOptions([ DinamycOption ])
+        }
       }
     }
     const googleMapsGetMap = async(newValue) => {
