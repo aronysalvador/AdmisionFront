@@ -592,7 +592,6 @@ export const getComunStyle = makeStyles(() => ({
             paddingTop: "1.5em",
             width: '60%', // '416px',
             minWidth: '700px',
-            height: '320px',
             border: '0',
             background: 'white !important',
             boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
