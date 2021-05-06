@@ -38,6 +38,7 @@ import EditarSucursal from "../SeleccionarSucursalTrabajo/EditarSucursal";
 import RouteComuna from "../SeleccionarSucursalTrabajo/RouteComuna";
 import EditCompany from "../EditCompany/index";
 import GrupoEtnico from "../GrupoEtnico/index";
+import GrupoEtnicoNew from "../GrupoEtnico/Question";
 import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
 import BotonesAFP from "../Afp/BotonesAFP";
@@ -285,6 +286,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <GrupoEtnico />
+            </Paper>
+          </div>
+        );
+      case 5.42:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <GrupoEtnicoNew />
             </Paper>
           </div>
         );

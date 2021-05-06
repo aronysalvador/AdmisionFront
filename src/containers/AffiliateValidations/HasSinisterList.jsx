@@ -43,6 +43,14 @@ const HasSinisterList = (props) => {
           STEP = 5.812; // form data
       }
       else if (
+        addmissionForm.grupoEtnico.id==="00" ||
+        !addmissionForm.grupoEtnico.id ||
+        !addmissionForm.grupoEtnico.descripcion
+      ) {
+          // si falta grupo etnico
+          STEP = 5.42; // form grupo etnico
+      }
+      else if (
         !addmissionForm.razonSocial ||
         !addmissionForm.codigoSucursal ||
         !addmissionForm.DireccionEmpresa ||

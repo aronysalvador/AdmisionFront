@@ -488,14 +488,23 @@ const handleNextStep = (result, dispatch) => {
         );
         STEP = 5.831;
     } else {
-        if (!result.NombreEmpresa ||
+        if (
+            result.idEtnia==="00" ||
+            !result.idEtnia ||
+            !result.descripcionEtnia
+        ) {
+            // si falta grupo etnico
+            STEP = 5.42; // form grupo etnico
+        }
+        else if (!result.NombreEmpresa ||
             !result.SucursalEmpresa ||
             !result.DireccionEmpresa ||
             !result.RutPagador
         ) {
             // si falta info de la empresa
             STEP = 5.4; // form empresa
-        } else if (!result.direccionParticular) {
+        }
+        else if (!result.direccionParticular) {
             // si no tiene direccion
             STEP = 5.2; // form direccion
         } else if (!result.telefonoParticular ||
