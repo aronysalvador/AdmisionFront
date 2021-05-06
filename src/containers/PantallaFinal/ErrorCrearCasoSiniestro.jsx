@@ -61,7 +61,7 @@ const ErrorCrearCasoSiniestro = () => {
                             id='ErrorCrearCasoSiniestro-Btn1'
                             className={[ comunClass.buttonAchs ]}
                             variant='contained'
-                            onClick={() => dispatch(handleSetStep(27))}
+                            onClick={() => dispatch(handleSetStep(26.1))}
                         >
                             Volver a intentarlo
                         </Button>
