@@ -45,7 +45,7 @@ const CasoCreado = () => {
                         <Button
                             className={[ comunClass.buttonAchs3 ]}
                             variant='contained'
-                            onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(27)) }}
+                            onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(26.1)) }}
                             style={{float: "right"}}
                         >
                             Ir a Firma Digital Admisión
