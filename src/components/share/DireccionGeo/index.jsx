@@ -35,7 +35,7 @@ const DireccionGeo = (props) => {
 
     const [ open, setOpen ] = useState(false)
 
-    const DinamycOption = { description: 'Fijar en el mapa' }
+    const DinamycOption = { description: noFijarOption?'':'Fijar en el mapa' }
     const [ loading, setLoading ] = useState(false)
     const [ options, setOptions ] = useState([ DinamycOption ])
 

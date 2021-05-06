@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { getComunStyle } from "../../css/comun"
-import { useDispatch } from "react-redux"
-import { handleSetStep } from "../../redux/actions/AdmissionAction"
+// import { useDispatch } from "react-redux"
+// import { handleSetStep } from "../../redux/actions/AdmissionAction"
 import DireccionGeo from '../../components/share/DireccionGeo'
 import { validarDireccionSN } from '../../helpers/utils'
 
 export default (props) => {
   const { titulo, sucursal, setSucursal, setMapaUrl, comunaEmpresa, setNombreComuna, setValido, DireccionEmpresa, sucursalEmpresaSiniestro, clearData, noFijarOption, tipoSiniestro } = props
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    if (sucursal){
+    if (sucursal.description){
       validaDireccion(sucursal)
       setValido(true)
     } else {
@@ -38,8 +38,7 @@ export default (props) => {
         setDireccion={setSucursal}
         clearData={clearData}
         showDinamicMap={() => {
-          setSucursal({description: ''});
-          dispatch(handleSetStep(6.011))
+       return
         }}
         direccionTemporal={(!sucursalEmpresaSiniestro && tipoSiniestro===1)?`${DireccionEmpresa}, ${comunaEmpresa}`:""}
         small
