@@ -474,7 +474,7 @@ export const saveRut = (rut) => {
 const handleNextStep = (result, dispatch) => {
     let STEP = "";
     if (result.cita.length > 0) {
-        STEP = 5.82;
+        STEP = 5.831;
     } else if (result.siniestros.length > 0) {
         const mensajeAlerta = "Este paciente ya tiene un siniestro";
         const mensajeBoton = "Ver su(s) siniestro(s)";
@@ -486,7 +486,7 @@ const handleNextStep = (result, dispatch) => {
                 origen
             })
         );
-        STEP = 5.83;
+        STEP = 5.831;
     } else {
         if (!result.NombreEmpresa ||
             !result.SucursalEmpresa ||

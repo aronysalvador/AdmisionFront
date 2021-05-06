@@ -119,7 +119,7 @@ const HasScheduledMeet = (props) => {
                   dispatch(
                     updateForm("siniestroOpciones", {mensajeAlerta, mensajeBoton, origen})
                   );
-                  dispatch(handleSetStep(5.83));
+                  dispatch(handleSetStep(5.831));
                 } else {
                  handleNext()
                 }

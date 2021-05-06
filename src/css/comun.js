@@ -588,6 +588,19 @@ export const getComunStyle = makeStyles(() => ({
             margin: 'auto',
             textAlign: 'center'
         },
+        boxDesk5: {
+            paddingTop: "1.5em",
+            width: '60%', // '416px',
+            minWidth: '700px',
+            height: '320px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            textAlign: 'center'
+        },
         boxDesk3: {
             width: '80%',
             minWidth: '700px',
@@ -1032,7 +1045,6 @@ export const getComunStyle = makeStyles(() => ({
         siniesterList: {
             display: 'flow-root',
             overflow: 'auto',
-            height: '17em',
             '&::-webkit-scrollbar': {
                 width: 8
             },
