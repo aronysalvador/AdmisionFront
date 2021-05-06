@@ -292,6 +292,14 @@ export const getWelcomeStyle = makeStyles(() => ({
             boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
             borderRadius: "10px"
         },
+        titleContainerNotification: {
+            padding: "1.5em 1.5em 1.5em 1.5em",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+            width: '60%',
+            margin: "auto"
+
+        },
         bottomBegin: {
             marginTop: "10px"
         }
@@ -448,6 +456,14 @@ export const getWelcomeStyle = makeStyles(() => ({
             borderRadius: "10px",
             width: "570px",
             margin: "auto"
+        },
+        titleContainerNotification: {
+            padding: "1.5em 1.5em 1.5em 1.5em",
+            boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+            borderRadius: "10px",
+            width: '60%',
+            margin: "auto"
+
         }
     },
 

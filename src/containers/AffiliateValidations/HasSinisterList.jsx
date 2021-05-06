@@ -1,15 +1,16 @@
 import { connect } from "react-redux";
 import { getComunStyle } from "../../css/comun";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { getSpaceStyle } from "../../css/spaceStyle";
 import CabeceraSinBarra from "../../components/cabecera/cabeceraSinBarra";
 import Grid from '@material-ui/core/Grid';
-import { getSpaceStyle } from "../../css/spaceStyle";
 import Button from "@material-ui/core/Button";
 import CardSiniestro from "../../components/CardSiniestro/CardSiniestro";
-import { Format } from "../../helpers/strings";
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
+import { Format } from "../../helpers/strings";
+import { handleSetStep } from "../../redux/actions/AdmissionAction";
 import { updateForm } from "./../../redux/actions/AdmissionAction"
+import Notificacion from "components/Notificacion";
 
 const HasSinisterList = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -89,7 +90,7 @@ const HasSinisterList = (props) => {
       </div>
       <div>
         <div className={comunClass.beginContainerDesk}>
-          <CabeceraSinBarra id={"HasSinisterList-BtnBack"} dispatch={() => dispatch(handleSetStep(5.83))} color='#373737' />
+          <CabeceraSinBarra id={"HasSinisterList-BtnBack"} dispatch={() => dispatch(handleSetStep(3))} color='#373737' />
         </div>
         <div className={comunClass.displayMobile}>
           <div className={spaceStyle.space2} />
@@ -119,8 +120,9 @@ const HasSinisterList = (props) => {
             </Grid>
           </div>
         </div>
-        <div className={comunClass.boxDesk}>
+        <div className={comunClass.boxDesk5}>
           <div>
+            <Notificacion color='#e2f2f1' iconColor='#54b2ab'><b><span className={comunClass.textPrimaryRelatoBlue}>¡Atención!</span> este paciente ya tiene siniestros activos.</b></Notificacion>
           {origen === "getRut" ? (<div className={comunClass.siniesterList}> {listaSiniestros2} </div>)
           : (<div className={comunClass.siniesterList}><CardSiniestro siniestro={siniestroTemp} /></div>)}
           </div>
@@ -129,17 +131,17 @@ const HasSinisterList = (props) => {
             <div className={comunClass.paddingElement}>
               <Button
                 id={"HasSinisterList-Btn1"}
-                className={[ comunClass.buttonAchs, comunClass.buttonAchsSiniester ].join(' ')}
+                className={[ comunClass.buttonAchs2, comunClass.buttonAchsSiniester2 ].join(' ')}
                 onClick={() => dispatch(handleSetStep(5.9))}
               >
-                Continuar en SAP
+                Cancelar admisión
               </Button>
               <div className={comunClass.displayMobile}>
                 <div className={spaceStyle.space1} />
               </div>
               <Button
                 id={"HasSinisterList-Btn2"}
-                className={[ comunClass.buttonAchs2, comunClass.buttonAchsSiniester2 ].join(' ')}
+                className={[ comunClass.buttonAchs, comunClass.buttonAchsSiniester ].join(' ')}
                 onClick={() => handleNext()}
               >
                 Entiendo, {origen === "getRut" ? "crear nueva": "continuar con"} admisión
