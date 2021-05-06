@@ -26,6 +26,14 @@ const HasScheduledMeet = (props) => {
           STEP = 5.812; // form data
       }
       else if (
+        addmissionForm.grupoEtnico.id==="00" ||
+        !addmissionForm.grupoEtnico.id ||
+        !addmissionForm.grupoEtnico.descripcion
+      ) {
+          // si falta grupo etnico
+          STEP = 5.42; // form grupo etnico
+      }
+      else if (
         !addmissionForm.razonSocial ||
         !addmissionForm.codigoSucursal ||
         !addmissionForm.DireccionEmpresa ||
@@ -33,7 +41,8 @@ const HasScheduledMeet = (props) => {
       ) {
         // si falta info de la empresa
         STEP = 5.4; // form empresa
-      } else if (!addmissionForm.direccionParticular) {
+      }
+      else if (!addmissionForm.direccionParticular) {
         // si no tiene direccion
         STEP = 5.2; // form direccion
       } else if (
