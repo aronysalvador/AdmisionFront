@@ -209,7 +209,7 @@ stages:
               containerRegistry: $(ContainerRegistryName)
               repository: $(Repositorio)
               command: build
-              Dockerfile: /home/vsts/work/1/s/Dockerfile
+              Dockerfile: /home/vsts/work/1/s/Dockerfile-webapp
               tags: $(ImageTag)
               arguments: --build-arg ENTORNO=desarrollowebapp
           - task: Docker@2
