@@ -81,12 +81,27 @@ const RelatoFinal = () => {
       <div>
         <form onSubmit={() => saveAnswer(localValue)}>
           <div className={comunClass.titlePrimaryDesk}>
+            {tipoSiniestro.Id === 1
+            ?
             <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}>
               Por favor,
               <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
                 &nbsp;confirma el relato
               </Grid>
             </Grid>
+            :
+            <Grid className={[ comunClass.titleBlack, comunClass.titleBlack2, comunClass.textPrimaryDesk ].join(' ')}>
+              Por favor,
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
+                &nbsp;confirma&nbsp;
+              </Grid>
+              el relato o
+              <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
+                &nbsp;edítalo&nbsp;
+              </Grid>
+              para incorporar información adicional de ser necesario
+            </Grid>
+            }
             <div className={comunClass.displayDeskImg}>
               <Grid component='span' className={comunClass.imgPrimaryDesk}>
                 <img alt='identify' src={relato} className={comunClass.imgPrimaryWidth} />

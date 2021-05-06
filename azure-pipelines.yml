@@ -175,7 +175,57 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-deployment.yaml
                 /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/desaparallel/web-front-admision-ingress.yaml
-              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)              
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)  
+                 
+# ************** DESPLIEGUE EN WEB APP **************
+  - stage: Deploy_DESA_WebApp
+    displayName: "Building Desploy DESA WebApp"
+    condition: |
+      and(
+        startsWith(variables['system.pullRequest.sourceBranch'], 'refs/heads/webapp'),
+        startsWith(variables['system.pullRequest.TargetBranch'], 'refs/heads/develop'),
+        eq(variables['Build.Reason'], 'PullRequest')
+      )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy DESA WebApp"
+        environment: "Deploy_DESA"
+      - job: Build
+        displayName: "Deploy_DESA_WebApp"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=desarrollowebapp
+                sh reemplaza-envs.sh          
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: build
+              Dockerfile: /home/vsts/work/1/s/Dockerfile-webapp
+              tags: $(ImageTag)
+              arguments: --build-arg ENTORNO=desarrollowebapp
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: push
+              tags: $(ImageTag)
+          - task: AzureWebAppContainer@1
+            inputs:
+              azureSubscription: $(azureSubcritionDESA)
+              appName: $(appNameDESAFront)
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)
+# ************** DESPLIEGUE EN WEB APP **************              
+
   # DESA #
 
   # QA #

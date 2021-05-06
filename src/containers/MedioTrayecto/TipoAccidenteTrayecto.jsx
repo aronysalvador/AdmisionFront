@@ -14,7 +14,7 @@ import { Button } from "@material-ui/core";
 
 const TipoAccidenteTrayecto = () => {
   const {
-    addmissionForm: { percentage, sucursalEmpresaSiniestro, DireccionEmpresa, comunaEmpresa, tipoAccidenteTrayectoForm, CamposDocumentos, comunaTrabajoTrayecto, sucursalTrabajoTrayecto, urlMapaTrabajoTrayecto },
+    addmissionForm: { percentage, sucursalEmpresaSiniestro, DireccionEmpresa, comunaEmpresa, CamposDocumentos, comunaTrabajoTrayecto, sucursalTrabajoTrayecto, urlMapaTrabajoTrayecto, tipoAccidenteTrayectoForm},
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
@@ -105,10 +105,25 @@ const TipoAccidenteTrayecto = () => {
           )}
         </div>
         <div className={spaceStyle.space2} />
-        <div className='row' style={{width: '70%', margin: 'auto', minWidth: '300px'}}>
+        <div className='row' style={{margin: 'auto'}}>
           <div className='col-md-12'>
             <LugarTrabajo
-              titulo={"Lugar de trabajo del día del accidente"}
+              titulo={
+                <Grid className={comunClass.textPrimaryDesk2}>
+                  <Grid className={comunClass.titleBlue}>
+                    Confirma
+                  </Grid>
+                  <Grid component='span' className={comunClass.subtitleBlack}>
+                    &nbsp;o
+                  </Grid>
+                  <Grid className={comunClass.titleBlue}>
+                    &nbsp;edita
+                  </Grid>
+                  <Grid component='span' className={comunClass.subtitleBlack}>
+                    &nbsp;la dirección del lugar de trabajo del día del accidente
+                  </Grid>
+                </Grid>
+              }
               sucursal={sucursal}
               setSucursal={setSucursal}
               mapaUrl={mapaUrl}
@@ -122,6 +137,7 @@ const TipoAccidenteTrayecto = () => {
               sucursalEmpresaSiniestro={sucursalTrabajoTrayecto ? sucursalTrabajoTrayecto :sucursalEmpresaSiniestro}
               clearData={clearData}
               tipoSiniestro={1}
+              noFijarOption
             />
           </div>
         </div>

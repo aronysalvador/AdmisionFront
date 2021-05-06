@@ -13,9 +13,9 @@ import check from './../../img/icon-check.png'
 import excelent from './../../img/excelent.svg'
 import { initSessionDate } from "./../../redux/actions/Log";
 
-const CasoCreadoErrorDoc = (props) => {
+const CasoDuplicado = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
-  const { siniestroID, rut, mensajeErrorSAP } = addmissionForm;
+  const { siniestroID, rut } = addmissionForm;
   const welcomeStyle = getWelcomeStyle();
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -93,24 +93,9 @@ const CasoCreadoErrorDoc = (props) => {
 
           <div className={comunClass.boxDesk4}>
 
-            <Grid className={comunClass.titleH3}>
-                Ha ocurrido un error con la creación de los documentos del paciente
+            <Grid className={comunClass.titleH3} style={{ color: 'red' }}>
+               El caso fue creado anteriormente
             </Grid>
-
-            <div className={spaceStyle.space1} />
-
-            <Grid className={comunClass.subTitleH4}>
-                Firma los documentos usando SAP
-            </Grid>
-
-            {mensajeErrorSAP && (
-              <>
-                <div className={spaceStyle.space1} />
-                <Grid className={comunClass.textsmallErrorRed}>
-                  Error: "{String(mensajeErrorSAP).trim()}"
-                </Grid>
-              </>
-            )}
 
             <div className={spaceStyle.space2} />
 
@@ -119,7 +104,7 @@ const CasoCreadoErrorDoc = (props) => {
                 <div className={spaceStyle.spaceMin1} />
               </div>
               <Button
-                id='CasoCreadoErrorDoc-Btn1'
+                id='CasoDuplicado-Btn1'
                 className={[ comunClass.buttonAchs, comunClass.pantallaFinalBotones ].join(' ')}
                 variant='contained'
                 onClick={() => { dispatch(initSessionDate("")); dispatch(handleSetStep(1)) }} // 1.1 Empecemos eliminada
@@ -147,4 +132,4 @@ function mapStateToProps({ addmissionForm, microsoftReducer }) {
     microsoftReducer
   };
 }
-export default connect(mapStateToProps)(CasoCreadoErrorDoc);
+export default connect(mapStateToProps)(CasoDuplicado);

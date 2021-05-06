@@ -15,7 +15,7 @@ import { initSessionDate } from "./../../redux/actions/Log";
 
 const CasoCreadoErrorStatus = (props) => {
   const { dispatch, microsoftReducer, addmissionForm } = props;
-  const { siniestroID, rut } = addmissionForm;
+  const { siniestroID, rut, mensajeErrorSAP } = addmissionForm;
   const welcomeStyle = getWelcomeStyle();
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
@@ -110,6 +110,15 @@ const CasoCreadoErrorStatus = (props) => {
             <Grid className={comunClass.subTitleH4}>
                 Cambia el status a atención ambulatoria usando  SAP
             </Grid>
+
+            {mensajeErrorSAP && (
+              <>
+                <div className={spaceStyle.space1} />
+                <Grid className={comunClass.textsmallErrorRed}>
+                  Error: "{String(mensajeErrorSAP).trim()}"
+                </Grid>
+              </>
+            )}
 
             <div className={spaceStyle.space2} />
 

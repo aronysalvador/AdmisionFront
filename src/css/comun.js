@@ -613,6 +613,19 @@ export const getComunStyle = makeStyles(() => ({
             padding: '30px 100px',
             textAlign: 'center'
         },
+        boxDeskCardBtn2: {
+            width: '60%',
+            maxWidth: '860px',
+            minWidth: '700px',
+            border: '0',
+            background: 'white !important',
+            boxShadow: '0px 4px 4px rgba(55, 55, 55, 0.09)',
+            borderRadius: '8px',
+            alignItems: 'center',
+            margin: 'auto',
+            padding: '30px 30px',
+            textAlign: 'center'
+        },
         boxDesk4: {
             width: '60%', // '416px',
             maxWidth: '860px',
@@ -918,6 +931,11 @@ export const getComunStyle = makeStyles(() => ({
             // maxWidth: "460px",
             verticalAlign: "top",
             minHeight: '73px' // '88px'
+        },
+        textPrimaryDesk2: {
+            textAlign: "left",
+            verticalAlign: "top",
+            paddingBottom: "1em"
         },
         imgPrimaryDesk: {
             float: 'right'
@@ -1794,5 +1812,15 @@ export const getComunStyle = makeStyles(() => ({
         lineHeight: "28px",
         letterSpacing: "0em",
         textAlign: "center"
+    },
+    textsmallErrorRed: {
+        textAlign: "center",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "1em",
+        lineHeight: "1em",
+        alignItems: "center",
+        color: "red"
     }
 }));

@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { getComunStyle } from "../../css/comun";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import { getBlackTheme } from "../../css/blackTheme";
+// import { getBlackTheme } from "../../css/blackTheme";
 import "../../css/catamaranFont.css";
 import "../../css/sfUiDisplayCufonfonts.css";
 import Avatar from "@material-ui/core/Avatar";
@@ -23,7 +23,7 @@ const AlertaCalificacion = () => {
   const welcomeStyle = getWelcomeStyle();
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const blackStyle = getBlackTheme();
+  // const blackStyle = getBlackTheme();
 
   return (
     <div className={comunClass.rootBegin}>
@@ -68,7 +68,7 @@ const AlertaCalificacion = () => {
                 />
               </div>
               <Typography className={welcomeStyle.titleBegin}>
-                ¡WOW!
+                ¡Excelente!
               </Typography>
               <div style={{display: 'flex'}}>
                 <Typography className={welcomeStyle.titleBegin}>
@@ -92,44 +92,48 @@ const AlertaCalificacion = () => {
           <div className={spaceStyle.space1} />
         </div>
         <div className={comunClass.textCenterDesk}>
-          <Typography className={welcomeStyle.subTitleBegin}>
+          {/* <Typography className={welcomeStyle.subTitleBegin}>
             Para la creación del caso
-          </Typography>
+          </Typography> */}
           <div className={comunClass.displayDesk}>
             <div className={spaceStyle.space1} />
           </div>
-          <div className={comunClass.boxDesk}>
+          <div className={comunClass.boxDesk} style={{ padding: "2% 5% 5% 5%" }}>
             <div className={welcomeStyle.titleContainerCards2}>
+              <ErrorOutline />
+              <div className={spaceStyle.space1} />
               <div className={welcomeStyle.divRowBottom2}>
-                <ErrorOutline />
                 <Typography className={welcomeStyle.itemText2}>
-                  Pide un e-mail al paciente
+                Antes de finalizar
                 </Typography>
               </div>
               <div className={welcomeStyle.divRowBottom2}>
                 <Typography className={welcomeStyle.pBegin}>
-                  Es importante solicitar un e-mail al paciente para la entrega de sus documentos. Si el paciente no tiene e-mail puede agregar el de un familiar.
+                Ingresa una alerta de calificación en caso de ser necesario o continúa para terminar la admisión del paciente
                 </Typography>
               </div>
             </div>
+            <div className={spaceStyle.space1} />
+
             <div className={welcomeStyle.bottomBegin}>
               <div className={comunClass.paddingElement}>
                 <Button
-                  id='AlertaCalificacion-Btn1'
-                  className={[ comunClass.buttonAchs, blackStyle.buttonFooterSpace ].join(' ')}
-                  variant='contained'
-                  onClick={() => dispatch(handleSetStep(27))}
-                >
-                  Continuar
-                </Button>
-                <div className={spaceStyle.space1} />
-                <Button
                   id='AlertaCalificacion-Btn2'
                   className={comunClass.buttonAchs2}
+                  style={{marginRight: '20px'}}
                   variant='contained'
                   onClick={() => dispatch(handleSetStep(26.2))}
                 >
                   Levantar alerta de calificación
+                </Button>
+                <div className={spaceStyle.space1} />
+                <Button
+                  id='AlertaCalificacion-Btn1'
+                  className={[ comunClass.buttonAchs ].join(' ')}
+                  variant='contained'
+                  onClick={() => dispatch(handleSetStep(1000))}
+                >
+                  Crear Caso
                 </Button>
               </div>
             </div>

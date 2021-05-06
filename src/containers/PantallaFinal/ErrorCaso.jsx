@@ -55,7 +55,7 @@ const ErrorCaso = () => {
               id='ErrorCaso-Btn1'
               className={[ comunClass.buttonAchs ]} // blackStyle.buttonFooterSpace
               variant='contained'
-              onClick={() => { dispatch(handleSetStep(27)); } }
+              onClick={() => { dispatch(handleSetStep(26.1)); } }
             >
               Volver a intentarlo
             </Button>

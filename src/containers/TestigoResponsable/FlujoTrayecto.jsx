@@ -16,9 +16,6 @@ import ClearIcon from "@material-ui/icons/Clear";
 import { withStyles } from '@material-ui/core/styles';
 import specialBlue from "./../../util/color/specialBlue";
 import { Format } from "../../helpers/strings";
-import InputMasked from "../../containers/EditarTelefono/InputMasked";
-import Mask from "../../containers/EditarTelefono/phone";
-import { Pipes } from "../../containers/EditarTelefono/phone";
 import moment from "moment";
 import "moment/locale/es";
 import { returnDateObject } from "helpers/utils";
@@ -57,34 +54,22 @@ const FlujoTrayecto = () => {
 
     const [ check, setCheck ] = useState(TipoAvisoResponsable? TipoAvisoResponsable : {})
 
-    const [ datosTestig, setDatosTestig ] = useState(() => {
-        return !CamposDocumentos.DatosTestig ? "" : CamposDocumentos.DatosTestig; // "+56 9"
-      });
-
     const [ btnValido, setBtnValido ] = useState(false)
 
     const [ btnValido2, setBtnValido2 ] = useState(false)
 
     const [ btnValidoTotal, setBtnValidoTotal ] = useState(false)
-    const handleOnChange = (e) => {
-        const value = e.target.value;
-        if (value !== datosTestig) {
-          const result = Pipes.advanced(value);
-          // const isValid = /^\+?56\d{9}$/.test(result.replace(/\s/g, ""));
-          setDatosTestig(result);
-        }
-      };
 
       useEffect(() => {
           let valida = false;
 
-          if (nombreTestigo.length>0 || cargoTestigo.length>0){
-              if (!nombreTestigo || !cargoTestigo)
+          if (nombreTestigo.length > 0){
+              if (!nombreTestigo)
                   valida=true
           }
 
           setBtnValido(valida)
-      }, [ nombreTestigo, cargoTestigo ])
+      }, [ nombreTestigo ])
 
       useEffect(() => {
           let valida = false;
@@ -415,7 +400,7 @@ const FlujoTrayecto = () => {
                                 <div className='row'>
                                     <div className='col-md-10'>
                                         <Grid className={comunClass.tituloTextBox} style={{marginTop: "5px "}}>
-                                        Cargo o relación testigo
+                                        Cargo o relación testigo (Opcional)
                                         </Grid>
                                         <TextField
                                         id='FlujoTrayecto-Input5'
@@ -442,22 +427,6 @@ const FlujoTrayecto = () => {
                                         />
                                     </div>
                                 </div>
-
-                                <div className='row'>
-                                <div className='col-md-10'>
-                                    <Grid className={comunClass.tituloTextBox} style={{marginTop: "5px "}}>
-                                    Teléfono (Opcional)
-                                    </Grid>
-                                    <InputMasked
-                                    id='FlujoTrayecto-InputPhone1'
-                                    mask={Mask.advanced}
-                                    setTelefono={setDatosTestig}
-                                    handleOnChange={handleOnChange}
-                                    telefono={datosTestig}
-                                    step={14}
-                                    />
-                                </div>
-                                </div>
                         </div>
                         </div>
                     </div>
@@ -476,7 +445,7 @@ const FlujoTrayecto = () => {
                                 if (nombreTestigo || cargoTestigo){
                                     json.TestigoS = "x"
                                     json.TestigoN = ""
-                                    json.DatosTestig=datosTestig
+                                    json.DatosTestig=""
 
                                     dispatch(sendCargo(nombreTestigo, cargoTestigo));
                                     dispatch(updateForm("testigoForm", nombreTestigo + "-" + cargoTestigo));
