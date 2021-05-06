@@ -23,6 +23,7 @@ RUN apk --no-cache -U upgrade
 RUN apk add dos2unix=7.4.2-r0 --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 
+ENV ENTORNO $ENTORNO
 COPY docker-entrypoint.sh reemplaza-envs.sh /
 RUN dos2unix reemplaza-envs.sh
 COPY *.config.js /
