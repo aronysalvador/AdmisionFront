@@ -84,7 +84,7 @@ const EditarTelefonoCorreo = () => {
   const [ isEmailValid, setIsEmailValid ] = useState(true);
 
   const handleChange2 = (event) => {
-    document.getElementById("userEmail").value="xxx"
+   // document.getElementById("userEmail").value="xxx"
 
     setStateCheck2(event.target.checked);
     if (event.target.checked){
