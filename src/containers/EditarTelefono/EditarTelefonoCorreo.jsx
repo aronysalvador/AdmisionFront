@@ -181,7 +181,7 @@ const EditarTelefonoCorreo = () => {
                 name='userEmail'
                 id='userEmail'
                 // ref={inputRef}
-                className={"form-control"}
+                className={"form-control MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"}
                 domains={ [ 'outlook.com', 'yahoo.com', 'gmail.com', 'hotmail.com', 'icloud.com', 'apple.com', 'aol.com', 'zoho.com' ] }
                 onBlur={(e) => { handleEmailChange(e) }}
                 onChange={(e) => { handleEmailChange(e) }}
