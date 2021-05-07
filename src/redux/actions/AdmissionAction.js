@@ -388,7 +388,8 @@ export const saveRut = (rut) => {
                             BpCreado,
                             direccionParticular,
                             codigoComuna,
-                            telefonoParticular
+                            telefonoParticular,
+                            correoParticular
                         } = response;
 
                         dispatch(
@@ -417,6 +418,7 @@ export const saveRut = (rut) => {
                         dispatch(updateForm("direccionParticular", direccionParticular ? direccionParticular : ""));
                         dispatch(updateForm("comunaDireccionParticular", codigoComuna ? codigoComuna : ""));
                         dispatch(updateForm("telefonoParticular", telefonoParticular ? (telefonoParticular === "0" ? "" : Pipes.advanced(telefonoParticular)) : ""));
+                        dispatch(updateForm("emailusuario", correoParticular ? correoParticular : ""));
 
                         if (BpCreado) {
                             dispatch(updateForm("BP", response?.BP ? response.BP : ""));

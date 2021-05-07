@@ -43,6 +43,7 @@ import JornadaLaboralContainer from "../JornadaLaboral/Index";
 import Afp from "../Afp/index";
 import BotonesAFP from "../Afp/BotonesAFP";
 import EditarTelefono from "../EditarTelefono/EditarTelefono";
+import EditarTelefonoCorreo from "../EditarTelefono/EditarTelefonoCorreo";
 import TrabajoHabitual from "../TrabajoHabitual/TrabajoHabitual";
 import TipoJornadaLaboral from "../TipoJornadaLaboral/index";
 import Remuneracion from "../Remuneracion/Remuneracion";
@@ -270,6 +271,14 @@ const Main = (props) => {
           <div className={layout}>
             <Paper className={paper}>
               <EditarTelefono />
+            </Paper>
+          </div>
+        );
+      case 5.31:
+        return (
+          <div className={layout}>
+            <Paper className={paper}>
+              <EditarTelefonoCorreo />
             </Paper>
           </div>
         );
