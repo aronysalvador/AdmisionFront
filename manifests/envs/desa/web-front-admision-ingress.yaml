@@ -9,16 +9,14 @@ metadata:
           more_set_headers "Access-Control-Allow-Origin: $http_origin";
           more_set_headers "'Access-Control-Allow-Headers: Accept,Content-Type,Keep-Alive,Origin,x-access-token' always";
        kubernetes.io/ingress.class: nginx
-      #  cert-manager.io/cluster-issuer: letsencrypt
-      #  nginx.ingress.kubernetes.io/rewrite-target: /$1
-
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   tls:
     - hosts:
-      - desa.salud.achs.cl
+      - desa-salud.achs.cl
       secretName: wildcard-achs-cl
   rules:
-  - host: desa.salud.achs.cl 
+  - host: desa-salud.achs.cl 
     http:
       paths:
       - path: /web-admision(/?.*)
