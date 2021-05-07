@@ -20,7 +20,7 @@ export default function InputMasked({
       margin='dense'
       required
       fullWidth
-      helperText={disabled ? "" : "Ingresa 9 dígitos"}
+      helperText={disabled ? "" : "Ingresa 8 dígitos"}
       onChange={(e) => handleOnChange(e)}
       InputProps={ step ===14 ? {
         inputMode: 'numeric',

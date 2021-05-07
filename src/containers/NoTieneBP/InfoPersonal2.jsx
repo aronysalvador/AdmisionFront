@@ -67,7 +67,7 @@ const SinBPInfoPersonal2 = () => {
     dispatch(updateForm("grupoEtnico", grupo))
      dispatch(updateForm("bpForm2", {nacionalidad, pais, idioma}));
      dispatch(updateForm("creacionBP", true));
-     dispatch(handleSetStep(5.4));
+     dispatch(handleSetStep(5.31));
   };
 
   return (

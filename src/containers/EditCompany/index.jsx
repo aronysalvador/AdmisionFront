@@ -67,7 +67,7 @@ const EditCompany = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id={"EditCompany-BtnBack"}
-          dispatch={() => (creacionBP ? dispatch(handleSetStep(5.813)) : dispatch(handleSetStep(5.1)))}
+          dispatch={() => (creacionBP ? dispatch(handleSetStep(5.31)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
       </div>

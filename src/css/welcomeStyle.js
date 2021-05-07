@@ -167,6 +167,12 @@ export const getWelcomeStyle = makeStyles(() => ({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    titleContainerCardsEmailCorreo: {
+        padding: "0.5em 1em 0.2em 1em",
+        background: "#FFFFFF",
+        boxShadow: "2px 2px 10px rgba(203, 203, 203, 0.4)",
+        borderRadius: "10px"
+    },
 
     '@media (max-width: 767px)': {
         /* For mobile phones */
