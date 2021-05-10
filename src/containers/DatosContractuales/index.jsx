@@ -197,7 +197,7 @@ export default () => {
                                     <SelectsAutocomplete
                                         id='DatosContractuales-AutocompleteCategorias'
                                         first='dark'
-                                        txt1='Ingresar la'
+                                        txt1='Tipo de'
                                         txt2='categoría ocupacional'
                                         data={categoriaOcup}
                                         setData={setCategoriaOcup}
@@ -317,9 +317,9 @@ export default () => {
 
                                     <div className={comunClass.containerTextBoxDataCont}>
                                         <Grid className={[ comunClass.titleBlackDataCont, comunClass.textPrimaryDeskDataCont ]}>
-                                            Seleccionar
+                                        Horario jornada
                                             <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlueDataCont ]}>
-                                                &nbsp; horario
+                                                &nbsp; del día del accidente
                                             </Grid>
                                         </Grid>
 
