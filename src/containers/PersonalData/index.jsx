@@ -11,6 +11,9 @@ import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
+import BoxACHSTlf from "components/share/BoxACHSTlf";
+import BoxACHSCorreo from "components/share/BoxACHScorreo";
+import Email from 'react-email-autocomplete';
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -29,10 +32,10 @@ const PersonalData = (props) => {
   const contenidoRutEmpresa = [ addmissionForm.rutEmpresa ];
   const tituloDireccion = "Dirección particular";
   const contenidoDireccion = [ Format.formatizar(addmissionForm.direccionParticular) ];
-  const tituloTelefono = "Teléfono personal";
-  const contenidoTelefono = [ addmissionForm.telefonoParticular ];
-  const tituloGrupo = "Grupo étnico";
-  const contenidoGrupo = [ addmissionForm?.grupoEtnico.descripcion ];
+  // const tituloTelefono = "Teléfono personal";
+  // const contenidoTelefono = [ addmissionForm.telefonoParticular ];
+  // const tituloGrupo = "Grupo étnico";
+  // const contenidoGrupo = [ addmissionForm?.grupoEtnico.descripcion ];
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
   const [ loading, setLoading ] = useState(false)
@@ -40,7 +43,7 @@ const PersonalData = (props) => {
   const handleNext = () => {
     setLoading(true)
     const {
-      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular, grupoEtnico,
+      razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular, emailusuario,
       rut, rutEmpresa, SucursalEmpresaObjeto, comunaDireccionParticular } = addmissionForm
     if (!razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa) {
       // si falta info de la empresa
@@ -50,15 +53,15 @@ const PersonalData = (props) => {
       // si no tiene direccion,  y comuna
       dispatch(handleSetStep(5.2));// form direccion
     }
-    else if (!telefonoParticular || telefonoParticular === "0") {
-      // si no tiene telefono
-      dispatch(handleSetStep(5.3)); // form telefono
-    }
-    else if (!grupoEtnico) {
-      // si no tiene Grupo Etnico
-      dispatch(handleSetStep(5.41)); // form Grupo Etnico
-    }
-    else if (direccionParticular && comunaDireccionParticular && telefonoParticular && razonSocial && grupoEtnico) {
+    // else if (!telefonoParticular || telefonoParticular === "0") {
+    //   // si no tiene telefono
+    //   dispatch(handleSetStep(5.31)); // form telefono
+    // }
+    // else if (!grupoEtnico) {
+    //   // si no tiene Grupo Etnico
+    //   dispatch(handleSetStep(5.41)); // form Grupo Etnico
+    // }
+    else if (direccionParticular && comunaDireccionParticular && telefonoParticular && razonSocial && emailusuario) {
       // si todos los datos relevantes están llenos
       if (rut && rutEmpresa && SucursalEmpresaObjeto)
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
@@ -108,11 +111,11 @@ const PersonalData = (props) => {
             step={5.4}
           />
           {/* <div className={spaceStyle.spaceMin1} /> */}
-          <BoxACHS
+          <BoxACHSTlf
             id={"PersonalData-Box2"}
-            titulo={tituloTelefono}
-            contenido={contenidoTelefono}
-            step={5.3}
+            // titulo={tituloTelefono}
+            // contenido={contenidoTelefono}
+            // step={5.31}
           />
         </div>
         <div className='col-md-12'>
@@ -123,11 +126,11 @@ const PersonalData = (props) => {
             step={5.2}
           />
 
-          <BoxACHS
+          <BoxACHSCorreo
             id={"PersonalData-Box4"}
-            titulo={tituloGrupo}
-            contenido={contenidoGrupo}
-            step={5.41}
+            // titulo={tituloGrupo}
+            // contenido={contenidoGrupo}
+            // step={5.41}
           />
         </div>
         {/* <div className={spaceStyle.spaceMin1} /> */}
@@ -141,7 +144,7 @@ const PersonalData = (props) => {
             disabled={loading}
             onClick={() => handleNext()}
           >
-            {(addmissionForm.direccionParticular && addmissionForm.comunaDireccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.grupoEtnico.descripcion)?"Sí, es correcta":"Rellenar información"}
+            {(addmissionForm.direccionParticular && addmissionForm.comunaDireccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.emailusuario)?"Sí, es correcta":"Rellenar información"}
 
           </Button>
         </div>
