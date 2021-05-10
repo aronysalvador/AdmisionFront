@@ -6,14 +6,14 @@ import { getSpaceStyle } from "../../css/spaceStyle";
 import BoxACHS from "../../components/share/BoxACHS/index";
 import BoxEmpresa from "../../components/share/BoxEmpresa/index";
 import Button from "@material-ui/core/Button";
-import { useState } from "react";
+// import { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import { Format } from "../../helpers/strings";
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
 import BoxACHSTlf from "components/share/BoxACHSTlf";
 import BoxACHSCorreo from "components/share/BoxACHScorreo";
-import Email from 'react-email-autocomplete';
+// import Email from 'react-email-autocomplete';
 
 const PersonalData = (props) => {
   const { dispatch, addmissionForm, microsoftReducer } = props;
@@ -38,10 +38,10 @@ const PersonalData = (props) => {
   // const contenidoGrupo = [ addmissionForm?.grupoEtnico.descripcion ];
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
-  const [ loading, setLoading ] = useState(false)
+  // const [ loading, setLoading ] = useState(false)
 
   const handleNext = () => {
-    setLoading(true)
+    // setLoading(true)
     const {
       razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular, emailusuario,
       rut, rutEmpresa, SucursalEmpresaObjeto, comunaDireccionParticular } = addmissionForm
@@ -141,11 +141,12 @@ const PersonalData = (props) => {
           <Button
             id={"PersonalData-Btn1"}
             className={comunClass.buttonAchs}
-            disabled={loading}
+            // disabled={loading}
+            // disabled={!addmissionForm.direccionParticular || !addmissionForm.comunaDireccionParticular || !addmissionForm.telefonoParticular || !addmissionForm.razonSocial || !addmissionForm.emailusuario}
             onClick={() => handleNext()}
           >
-            {(addmissionForm.direccionParticular && addmissionForm.comunaDireccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.emailusuario)?"Sí, es correcta":"Rellenar información"}
-
+            {/* {(addmissionForm.direccionParticular && addmissionForm.comunaDireccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.emailusuario)?"Sí, es correcta":"Rellenar información"} */}
+            Sí, es correcta
           </Button>
         </div>
       </div>

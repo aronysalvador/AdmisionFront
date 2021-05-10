@@ -12,7 +12,7 @@ import { getComunStyle } from "../../../css/comun";
 
 const BoxACHSTlf = () => {
     const {
-        addmissionForm: { step, percentage, telefonoParticular: TelefonoEmpleado }
+        addmissionForm: { step, telefonoParticular: TelefonoEmpleado }
     } = useSelector((state) => state, shallowEqual);
 
     // const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -66,7 +66,7 @@ const BoxACHSTlf = () => {
     track: {}
     })(Switch);
 
-    return (<div className={classes.containerBox} style={{margin: '15px 0', width: '40%'}}>
+    return (<div className={classes.containerBox} style={{margin: '15px 0'}}>
                 <div className={classes.cuerpo}>
                     <div className={comunClass.containerTextBox}>
                         <Typography className={comunClass.tituloTextBox}>

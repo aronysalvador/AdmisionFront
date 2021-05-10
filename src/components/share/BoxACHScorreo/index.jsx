@@ -14,7 +14,7 @@ import { getComunStyle } from "../../../css/comun";
 
 const BoxACHSCorreo = () => {
     const {
-        addmissionForm: { step, percentage, emailusuario }
+        addmissionForm: { step, emailusuario }
     } = useSelector((state) => state, shallowEqual);
 
     // const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -69,7 +69,7 @@ const BoxACHSCorreo = () => {
         setUserEmail(e.target.value);
     };
 
-    return (<div className={classes.containerBox} style={{margin: '15px 0', width: '40%'}}>
+    return (<div className={classes.containerBox} style={{margin: '15px 0'}}>
                 <div className={classes.cuerpo}>
                     <div className={comunClass.containerTextBox}>
                         <Typography className={comunClass.tituloTextBox}>
