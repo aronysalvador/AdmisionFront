@@ -68,7 +68,7 @@ const BoxACHSTlf = () => {
 
     return (<div className={classes.containerBox} style={{margin: '15px 0'}}>
                 <div className={classes.cuerpo}>
-                    <div className={comunClass.containerTextBox}>
+                    <div className={comunClass.containerTextBox} style={{minWidth: '350px'}}>
                         <Typography className={comunClass.tituloTextBox}>
                             Teléfono
                         </Typography>
