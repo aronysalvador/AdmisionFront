@@ -6,6 +6,7 @@ import { getSucursales } from "../../redux/actions/SucursalesAction";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const RazonSocial = () => {
+  
   const {
     addmissionForm: { razonSocial },
     microsoftReducer: {token}
@@ -13,27 +14,40 @@ const RazonSocial = () => {
 
   const dispatch = useDispatch();
   const [ open, setOpen ] = useState(false);
-  const [ search, setSearch ] = useState("");
+  
+  const header = {
+    headers: {
+      "x-access-token": token
+    }
+  }
+  const [ options, setOptions ] = useState([]);  
+  const loading = open && options.length === 0;
+  const [ requestActive, setRequestActive ] = useState(false); 
 
-  const [ options, setOptions ] = useState([]);
+  const reset = (predictions, status)=>{
+    if(Array.isArray(predictions))
+      setOptions(predictions)
+    setRequestActive(status)   
+  }
+  const getPredictions = (json) => {
+    return (Array.isArray(json.content?.response)) ? json.content.response : []
+  }
 
-    const loading = open && options.length === 0;
-
-    const getData = async(newInputValue) => {
-      setSearch(newInputValue)
-      if (newInputValue){
-        if (newInputValue.length % 4 === 0 && newInputValue !== search) {
-          const test = await fetch(window.REACT_APP_RAZONSOCIAL+ newInputValue, {
-            headers: {
-              "x-access-token": token
+  const getData = async(newInputValue) => {
+        reset(null,true)
+        if ((newInputValue.length % 5 === 0) || (!requestActive && newInputValue.length >= 3)) {
+          fetch(window.REACT_APP_RAZONSOCIAL+ newInputValue, header).then((response) => {
+            if(response.ok) { 
+                 response.json().then((json) =>{
+                  reset(getPredictions(json),false)
+              }).catch(() =>{
+                reset([],false)
+              })
             }
-          }
-        )
-          const json = await test.json()
-          let predictions = (Array.isArray(json.content?.response)) ? json.content.response : []
-          setOptions(predictions)
+          }).catch(()=>{
+            reset([],false)
+          })
         }
-      }
     }
 
   return (
@@ -61,7 +75,7 @@ const RazonSocial = () => {
             getData(newInputValue)
           }}
           onChange={(event, value) => {
-            dispatch(getSucursales(value?.rut.replace(/\./g, '').toUpperCase()))
+            dispatch(getSucursales(value?.rut.replace(/\./g,'').toUpperCase()))
             dispatch(updateForm("razonSocial", value))
             dispatch(updateForm("razonSocialForm", value?.name))
             dispatch(updateForm("rutEmpresa", value?.rut));
@@ -74,14 +88,6 @@ const RazonSocial = () => {
               {...params}
               style={{color: 'red'}}
               variant='outlined'
-              // InputProps={{
-              //   ...params.InputProps,
-              //   endAdornment: (
-              //     <>
-              //       {loading ? <CircularProgress color="inherit" size={20} /> : null}
-              //     </>
-              //   ),
-              // }}
               />
           ) }}
 
