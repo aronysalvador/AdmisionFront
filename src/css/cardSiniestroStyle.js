@@ -119,6 +119,7 @@ export const cardSiniestroStyles = makeStyles(() => ({
             boxSizing: "border-box",
             // width: "30%", // "247px",
             minWidth: "45%",
+            maxWidth: "370px",
             textAlign: "left",
             minHeight: "190px"
         },

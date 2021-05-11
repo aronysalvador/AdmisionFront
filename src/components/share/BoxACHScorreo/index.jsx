@@ -14,7 +14,7 @@ import { getComunStyle } from "../../../css/comun";
 
 const BoxACHSCorreo = () => {
     const {
-        addmissionForm: { step, emailusuario }
+        addmissionForm: { emailusuario }
     } = useSelector((state) => state, shallowEqual);
 
     // const { microsoftReducer } = useSelector((state) => state, shallowEqual);
