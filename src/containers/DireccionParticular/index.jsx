@@ -176,10 +176,10 @@ const DireccionParticular = () => {
               dispatch(updateForm("direccionParticularObj", direccion))
               dispatch(updateForm("comunaDireccionParticular", nombreComuna))
               if (creacionBP){
-                if (telefonoParticular)
-                  dispatch(handleSetStep(5.1))
-                else
-                  dispatch(handleSetStep(5.3))
+                // if (telefonoParticular)
+                //   dispatch(handleSetStep(5.1))
+                // else
+                  dispatch(handleSetStep(5.4)) // Empresa
               }
               else
                 { dispatch(handleSetStep(5.1)) }

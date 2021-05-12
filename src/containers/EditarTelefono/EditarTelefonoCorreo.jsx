@@ -221,7 +221,7 @@ const EditarTelefonoCorreo = () => {
             onClick={() => {
                 dispatch(updateForm("telefonoParticular", telefono));
                 dispatch(updateForm("emailusuario", userEmail));
-                dispatch(handleSetStep(5.4))
+                dispatch(handleSetStep(5.2))
             }
           }
           >
