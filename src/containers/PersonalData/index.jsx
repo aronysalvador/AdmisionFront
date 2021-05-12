@@ -86,17 +86,17 @@ const PersonalData = (props) => {
   });
 //   const inputRef  = React.useRef();
   const [ stateCheck2, setStateCheck2 ] = useState(() => {
-    return (emailusuario==="notienecorreo@achs.cl")? 1 : 0
+    return (emailusuario==="notienecorreo@achs.cl") ? 1 : 0
   });
   const [ isEmailValid, setIsEmailValid ] = useState(true);
-
+  console.log(stateCheck2);
   const handleChange2 = (event) => {
-   // document.getElementById("userEmail").value="xxx"
-
     setStateCheck2(event.target.checked);
+    console.log('handleChange2', stateCheck2);
     if (event.target.checked){
       setIsEmailValid(validateEmailFormat("notienecorreo@achs.cl"));
       setUserEmail("notienecorreo@achs.cl");
+      console.log('userEmail-handleChange2', userEmail);
     //   inputRef.current.value = "notienecorreo@achs.cl";
     } else {
       setIsEmailValid(false);
@@ -106,7 +106,7 @@ const PersonalData = (props) => {
   };
 
   const handleEmailChange = (e) => {
-    // console.log("cambiando: "+e.target.value)
+    console.log("cambiando: "+e.target.value)
     let valid = validateEmailFormat(e.target.value)
     setIsEmailValid(valid);
     setUserEmail(e.target.value);
@@ -128,7 +128,7 @@ const PersonalData = (props) => {
 
   // const [ loading, setLoading ] = useState(false)
 
-  const handleNext = () => {
+  const handleNext2 = () => {
     // setLoading(true)
 
     if (!razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa) {
@@ -147,16 +147,25 @@ const PersonalData = (props) => {
     //   // si no tiene Grupo Etnico
     //   dispatch(handleSetStep(5.41)); // form Grupo Etnico
     // }
-    else if (direccionParticular && comunaDireccionParticular && TelefonoEmpleado && razonSocial && emailusuario) {
+    else if (direccionParticular && comunaDireccionParticular && TelefonoEmpleado && razonSocial && (emailusuario || userEmail)) {
       // si todos los datos relevantes están llenos
+      console.log('emailusuario', emailusuario);
+      console.log('userEmail', userEmail);
       dispatch(updateForm("telefonoParticular", telefono));
       dispatch(updateForm("emailusuario", userEmail));
       if (rut && rutEmpresa && SucursalEmpresaObjeto) {
+        console.log('emailusuario', emailusuario);
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
       } else
         dispatch(handleSetStep(500));
     }
   };
+
+  // const handleNext2 = () => {
+  //   dispatch(updateForm("telefonoParticular", telefono));
+  //   dispatch(updateForm("emailusuario", userEmail));
+  //   dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
+  // };
 
   return (
     <div className={comunClass.root}>
@@ -301,7 +310,7 @@ const PersonalData = (props) => {
             className={comunClass.buttonAchs}
             // disabled={loading}
             disabled={!addmissionForm.direccionParticular || !addmissionForm.comunaDireccionParticular || !addmissionForm.razonSocial || !telefonoIsValid || ((!stateCheck2 && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck2))}
-            onClick={() => handleNext()}
+            onClick={() => handleNext2()}
           >
             {/* {(addmissionForm.direccionParticular && addmissionForm.comunaDireccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.emailusuario)?"Sí, es correcta":"Rellenar información"} */}
             Sí, es correcta
