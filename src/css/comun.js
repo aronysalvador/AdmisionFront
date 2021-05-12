@@ -1516,6 +1516,16 @@ export const getComunStyle = makeStyles(() => ({
         // textTransform: "uppercase",
         color: "#787878 !important"
     },
+    tituloTextBox2: {
+        fontFamily: "Catamaran !important",
+        fontStyle: "normal !important",
+        fontWeight: "normal !important",
+        fontSize: "14px!important",
+        lineHeight: "16px !important",
+        // textTransform: "uppercase",
+        color: "#007A33 !important",
+        textDecorationLine: "underline"
+    },
     textErrorP2: {
         fontFamily: "Catamaran",
         fontStyle: "normal",
