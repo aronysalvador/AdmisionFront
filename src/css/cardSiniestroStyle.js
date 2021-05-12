@@ -117,7 +117,9 @@ export const cardSiniestroStyles = makeStyles(() => ({
             cursor: "pointer",
             boxShadow: "1px 1px 5px rgba(44, 44, 44, 0.25)",
             boxSizing: "border-box",
-            width: "30%", // "247px",
+            // width: "30%", // "247px",
+            minWidth: "45%",
+            maxWidth: "370px",
             textAlign: "left",
             minHeight: "190px"
         },
