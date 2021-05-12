@@ -5,11 +5,9 @@ import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import Grid from '@material-ui/core/Grid';
 import Date from './../../components/Pickers/Date'
 import Time from './../../components/Pickers/Time-ClearIcon'
-import { Button, TextField, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Button, TextField, Typography, Grid, Switch, withStyles } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import Lugar from "../LugarSiniestroTrayecto/Lugar"
 import { Format } from "../../helpers/strings";
@@ -17,6 +15,10 @@ import yesDisabled from './../../img/yesWork.svg'
 import notDisabled from './../../img/notWork.svg'
 import yesActive from './../../img/yesActive.svg'
 import notActive from './../../img/notActive.svg'
+import arrow from './../../img/arrow_forward.svg'
+import { getWelcomeStyle } from "../../css/welcomeStyle";
+import { ErrorOutline } from "@material-ui/icons";
+import AutoComplete from "@material-ui/lab/Autocomplete";
 import moment from "moment";
 import "moment/locale/es";
 moment.locale("es");
@@ -35,8 +37,9 @@ const NoPaddingTextField = withStyles({
 const InfoAccidente = () => {
     const comunClass = getComunStyle();
     const spaceStyle = getSpaceStyle();
+    const welcomeStyle = getWelcomeStyle();
     const dispatch = useDispatch();
-    const { addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal, stateCheckSiniestro2, direccionSiniestro2, numeroSiniestro2, regionSiniestro2, comunaSiniestro2 }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [ date, setDate ] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));
     const [ validDate, setValidDate ] = useState(true);
@@ -73,6 +76,46 @@ const InfoAccidente = () => {
             updateValues("fechaHoraSiniestro", `${date} ${hour}`);
     }, [ date, validDate, hour, validHour, updateValues ])
 
+    const [ stateCheck, setStateCheck ] = useState(!stateCheckSiniestro2 ? false : stateCheckSiniestro2);
+    const handleChange = (event) => {
+        setStateCheck(event.target.checked);
+    };
+
+    const [ direccion, setDireccion ] = useState(!direccionSiniestro2 ? "" : direccionSiniestro2);
+    const [ numero, setNumero ] = useState(!numeroSiniestro2 ? "" : numeroSiniestro2);
+    const [ region, setRegion ] = useState(!regionSiniestro2 ? "" : regionSiniestro2);
+    const [ comuna, setComuna ] = useState(!comunaSiniestro2 ? "" : comunaSiniestro2);
+      const { data: segurenciaRegion } = useSelector((state) => state.regionForm, shallowEqual);
+
+      const { data: segurenciaComuna } = useSelector(
+        (state) => state.comunaForm,
+        shallowEqual
+      );
+
+      const comunaFiltrada = segurenciaComuna.filter(comuna => comuna?.codigo_region === region?.codigo)
+
+    const CustomSwitch = withStyles({
+        switchBase: {
+          color: "#FAFAFA",
+          '&$checked': {
+            color: "#00B2A9"
+          },
+          '&$checked + $track': {
+            backgroundColor: "#00B2A9"
+          }
+        },
+        checked: {},
+        track: {}
+    })(Switch);
+
+    const handleNextReal = () => {
+        if (stateCheck){
+            handleNext2()
+        } else {
+            handleNext()
+        }
+    }
+
     const handleNext = () => {
         updateValues("fechaHoraSiniestro", `${date} ${hour}`)
         updateValues("sucursalEmpresaSiniestro", sucursal)
@@ -80,6 +123,54 @@ const InfoAccidente = () => {
         updateValues("comunaSiniestro", nombreComuna)
         updateValues("lugarReferenciaSiniestro", lugarReferencia)
         dispatch(handleSetStep("x_next", 10.1))
+    }
+
+    const handleNext2 = () => {
+        updateValues("fechaHoraSiniestro", `${date} ${hour}`)
+        let direccionFinal = `${direccion} ${numero}, ${comuna.nombre} , Chile`;
+        updateValues("sucursalEmpresaSiniestro", {description: direccionFinal})
+        updateValues("comunaSiniestro", comuna)
+        updateValues("lugarReferenciaSiniestro", lugarReferencia)
+
+        updateValues("direccionSiniestro2", direccion)
+        updateValues("numeroSiniestro2", numero)
+        updateValues("regionSiniestro2", region)
+        updateValues("comunaSiniestro2", comuna)
+        updateValues("stateCheckSiniestro2", stateCheck)
+        dispatch(handleSetStep("x_next", 10.1))
+    }
+
+    const validaButton = () => {
+        if (tipoSiniestro.Id === 1){
+            if (stateCheck){
+                if (!validDate || !validHour || !direccion || !numero || !comuna || !isLugarReferenciaValid || !AccidenteEnSucursal){
+                    return true
+                } else {
+                    return false
+                }
+            } else {
+                if (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal){
+                    return true
+                } else {
+                    return false
+                }
+            }
+        } else {
+            if (stateCheck){
+                if (!validDate || !validHour || !direccion || !numero || !comuna || !isLugarReferenciaValid){
+                    return true
+                } else {
+                    return false
+                }
+            } else {
+                if (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida){
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+      //  tipoSiniestro.Id === 1 ? !validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)
     }
 
     return (
@@ -94,7 +185,6 @@ const InfoAccidente = () => {
                     percentage={percentage}
                 />
             </div>
-
             <div className={comunClass.boxDesk3}>
                 <div className={comunClass.bottomElement} style={{position: 'inherit'}}>
                     <div className={comunClass.displayMobile}>
@@ -104,7 +194,7 @@ const InfoAccidente = () => {
                     <div className='container-fluid'>
                         <div className='row'>
 
-                            <div className='col-md-6'>
+                            <div className='col-md-5'>
                                 <div className='col-md-12'>
                                     <div className={comunClass.backgroundGrey}>
 
@@ -151,10 +241,9 @@ setValidHour={setValidHour}
                                 </div>
                             </div>
 
-                            <div className='col-md-6'>
+                            <div className='col-md-7'>
                                 <div className='col-md-12'>
                                     <div className={comunClass.backgroundGrey}>
-
                                         <div>
                                             <Grid className={comunClass.subtitleBlack2}>
                                                 Indica la dirección
@@ -163,8 +252,183 @@ setValidHour={setValidHour}
                                                 </Grid>
                                             </Grid>
                                         </div>
-
-                                        <div className='container' style={{maxWidth: "30em", minHeight: "210px"}}>
+                                        {stateCheck ?
+                                        <div className='container' style={{maxWidth: "40em", minHeight: "210px"}}>
+                                            <div className='row'>
+                                                <Grid className={comunClass.tituloTextBox} style={{ marginBottom: '0px', textAlign: "left"}}>
+                                                    Nombre de la calle
+                                                </Grid>
+                                                <NoPaddingTextField
+                                                    id={"InfoAccidente-Lbl3"}
+                                                    helperText={
+                                                        direccion?.length < 4 && 'Debe ingresar nombre de la calle'}
+                                                    error={!direccion}
+                                                    value={direccion}
+                                                    autoComplete='off'
+                                                    variant='outlined'
+                                                    size='small'
+                                                    margin='dense'
+                                                    required
+                                                    fullWidth
+                                                    onChange={(e) => {
+                                                        let texto = Format.caracteresInvalidos(e.target.value);
+                                                        setDireccion(texto);
+                                                    }}
+                                                    InputProps={{
+                                                        endAdornment: (
+                                                            <ClearIcon onClick={() => { setDireccion("") } } style={{ cursor: 'pointer' }} />
+                                                        )
+                                                    }}
+                                                    style={{background: "#ffff", borderRadius: "0.7em"}}
+                                                />
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-md-6'>
+                                                    <Grid className={comunClass.tituloTextBox} style={{ marginBottom: '0px', textAlign: "left"}}>
+                                                        Número de la dirección
+                                                    </Grid>
+                                                    <NoPaddingTextField
+                                                        id={"InfoAccidente-Lbl3"}
+                                                        helperText={
+                                                        !numero && "Debe ingresar el numero de la casa o apartamento"
+                                                        }
+                                                        error={!numero}
+                                                        value={numero}
+                                                        autoComplete='off'
+                                                        variant='outlined'
+                                                        size='small'
+                                                        margin='dense'
+                                                        required
+                                                        fullWidth
+                                                        onChange={(e) => {
+                                                            let texto = Format.caracteresInvalidos(e.target.value);
+                                                            setNumero(texto)
+                                                        }}
+                                                        InputProps={{
+                                                            endAdornment: (
+                                                                <ClearIcon onClick={() => { setNumero(""); }} style={{ cursor: 'pointer' }} />
+                                                            )
+                                                        }}
+                                                        style={{background: "#ffff", borderRadius: "0.7em"}}
+                                                    />
+                                                    <Typography className={comunClass.mobileCaption}>
+                                                        Si no tiene número escribir&nbsp;<Grid component='span' style={{ fontFamily: "Roboto, Helvetica, Arial" }}>"0"</Grid>
+                                                    </Typography>
+                                                </div>
+                                                <div className='col-md-6'>
+                                                    <Grid className={comunClass.tituloTextBox} style={{ marginBottom: '0px', textAlign: "left"}}>
+                                                        Sitio específico
+                                                    </Grid>
+                                                    <NoPaddingTextField
+                                                        id={"InfoAccidente-Lbl3"}
+                                                        helperText={
+                                                        !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
+                                                        }
+                                                        error={!isLugarReferenciaValid}
+                                                        value={lugarReferencia}
+                                                        autoComplete='off'
+                                                        variant='outlined'
+                                                        size='small'
+                                                        margin='dense'
+                                                        required
+                                                        fullWidth
+                                                        onChange={(e) => {
+                                                            let texto = Format.caracteresInvalidos(e.target.value);
+                                                            setLugarReferencia(texto);
+                                                            if (texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); } else { setIsLugarReferenciaValid(false); }
+                                                        }}
+                                                        InputProps={{
+                                                            endAdornment: (
+                                                                <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", "")); } } style={{ cursor: 'pointer' }} />
+                                                            )
+                                                        }}
+                                                        style={{background: "#ffff", borderRadius: "0.7em"}}
+                                                    />
+                                                    <Typography className={comunClass.mobileCaption}>
+                                                        Ejemplo: Piso 21, Are 453,Puesto 12A
+                                                    </Typography>
+                                                </div>
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-md-6'>
+                                                    <Typography className={comunClass.tituloTextBox} variant='subtitle2' style={{ float: "left", marginTop: "5px" }}>
+                                                        Region
+                                                    </Typography>
+                                                    <AutoComplete
+                                                        id={"RegionEP-Lbl1"}
+                                                        value={region}
+                                                        onChange={(event, value) => {
+                                                        setRegion(value);
+                                                        }}
+                                                        options={segurenciaRegion}
+                                                        getOptionLabel={(option) => option.nombre}
+                                                        getOptionSelected={(option, value) =>
+                                                        value.value === option.value
+                                                        }
+                                                        renderInput={(params) => (
+                                                        <TextField
+                                                            {...params}
+                                                            variant='outlined'
+                                                            size='small'
+                                                            error={!region}
+                                                            helperText={!region && 'Debe ingresar una región' }
+                                                            InputProps={{
+                                                            ...params.InputProps,
+                                                            style: { marginTop: "7px" }
+                                                            }}
+                                                        />
+                                                        )}
+                                                    />
+                                                </div>
+                                                <div className='col-md-6'>
+                                                    <Typography className={comunClass.tituloTextBox} variant='subtitle2'style={{ float: "left", marginTop: "5px" }}>
+                                                        Comuna
+                                                    </Typography>
+                                                    <AutoComplete
+                                                        id={"ComunaEP-Lbl1"}
+                                                        disabled={!region}
+                                                        value={comuna}
+                                                        onChange={(event, value) => {
+                                                            setComuna(value);
+                                                        }}
+                                                        options={comunaFiltrada}
+                                                        getOptionLabel={(option) => option.nombre}
+                                                        getOptionSelected={(option, value) =>
+                                                            value.value === option.value
+                                                        }
+                                                        renderInput={(params) => (
+                                                        <TextField
+                                                            {...params}
+                                                            variant='outlined'
+                                                            size='small'
+                                                            error={!comuna }
+                                                            helperText={!comuna && 'Debe ingresar una comuna'}
+                                                            InputProps={{
+                                                            ...params.InputProps,
+                                                            style: { marginTop: "7px" }
+                                                            }}
+                                                        />
+                                                        )}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className='row' style={{cursor: 'pointer'}} onClick={() => setStateCheck(false)}>
+                                                <div className='col-md-3'>
+                                                    <img
+                                                        id={"RelatoCompleto-BtnNo"}
+                                                        alt='arrow'
+                                                        src={arrow}
+                                                        style={{ float: 'left'}}
+                                                        type='button'
+                                                    />
+                                                    <Grid className={comunClass.tituloTextBox2}style={{ marginTop: '5px'}}>
+                                                        Volver atrás
+                                                    </Grid>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        :
+                                        <div className='container' style={{maxWidth: "40em", minHeight: "210px"}}>
                                             <div className='row'>
                                                 <div className='col-md-12'>
                                                     <Lugar
@@ -185,53 +449,67 @@ setValidHour={setValidHour}
                                                     />
                                                 </div>
                                                 <div className='col-md-12' style={{ paddingTop: '2em' }}>
-                                                    <Grid
-                                                    className={comunClass.tituloTextBox}
-                                                    style={{ marginBottom: '0px', textAlign: "left"}}
-                                                    >
+                                                    <Grid className={comunClass.tituloTextBox} style={{ marginBottom: '0px', textAlign: "left"}}>
                                                         Referencia
                                                     </Grid>
-                                                    <div>
-                                                        <NoPaddingTextField
-                                                            id={"InfoAccidente-Lbl3"}
-                                                            helperText={
-                                                            !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
-                                                            }
-                                                            error={!isLugarReferenciaValid}
-                                                            value={lugarReferencia}
-                                                            autoComplete='off'
-                                                            variant='outlined'
-                                                            size='small'
-                                                            margin='dense'
-                                                            required
-                                                            fullWidth
-                                                            onChange={(e) => {
-                                                                let texto = Format.caracteresInvalidos(e.target.value);
-                                                                setLugarReferencia(texto);
-                                                                if (texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); } else { setIsLugarReferenciaValid(false); }
-                                                            }}
-                                                            InputProps={{
-                                                                endAdornment: (
-                                                                    <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", "")); } } style={{ cursor: 'pointer' }} />
-                                                                )
-                                                            }}
-                                                            style={{
-                                                                background: "#ffff",
-                                                                borderRadius: "0.7em"
-                                                            }}
-                                                        />
-                                                        <Typography className={comunClass.mobileCaption}>
-                                                            Ejemplo: Piso 21, Área 453, Puesto 12A
-                                                        </Typography>
+                                                    <NoPaddingTextField
+                                                        id={"InfoAccidente-Lbl3"}
+                                                        helperText={
+                                                        !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
+                                                        }
+                                                        error={!isLugarReferenciaValid}
+                                                        value={lugarReferencia}
+                                                        autoComplete='off'
+                                                        variant='outlined'
+                                                        size='small'
+                                                        margin='dense'
+                                                        required
+                                                        fullWidth
+                                                        onChange={(e) => {
+                                                            let texto = Format.caracteresInvalidos(e.target.value);
+                                                            setLugarReferencia(texto);
+                                                            if (texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); } else { setIsLugarReferenciaValid(false); }
+                                                        }}
+                                                        InputProps={{
+                                                            endAdornment: (
+                                                                <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", "")); } } style={{ cursor: 'pointer' }} />
+                                                            )
+                                                        }}
+                                                        style={{background: "#ffff", borderRadius: "0.7em"}}
+                                                    />
+                                                    <Typography className={comunClass.mobileCaption}>
+                                                        Ejemplo: Piso 21, Área 453, Puesto 12A
+                                                    </Typography>
+                                                    <div style={{ paddingTop: '1em'}}>
+                                                        <div className={welcomeStyle.titleContainerCardsEmail3}>
+                                                            <div className={welcomeStyle.divRowBottomEmail}>
+                                                                <ErrorOutline />
+                                                                <Typography className={welcomeStyle.itemText2}>
+                                                                    ¿No encuentras la dirección?
+                                                                </Typography>
+                                                                <div style={{ marginLeft: "176px"}}>
+                                                                    <CustomSwitch
+                                                                        id='ValidarCorreoElectronico-CustomSwitch1'
+                                                                        checked={stateCheck}
+                                                                        onChange={handleChange}
+                                                                        color='default'
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            <div className={welcomeStyle.divRowBottomEmail}>
+                                                                <Typography className={welcomeStyle.pBegin}>
+                                                                    Ingresa la dirección del accidente de manera manual
+                                                                </Typography>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
+                                        }
                                     </div>
                                 </div>
                             </div>
-
                             {tipoSiniestro.Id === 1 &&
                             <>
                             <div className={spaceStyle.spaceMin1} />
@@ -254,7 +532,6 @@ setValidHour={setValidHour}
                                         style={{ marginRight: "5px" }}
                                         onClick={() => handleOnClick("Si")}
                                     />
-
                                     <img
                                         id={"RelatoCompleto-BtnNo"}
                                         alt='noTrabajo'
@@ -266,23 +543,20 @@ setValidHour={setValidHour}
                             </div>
                             </>
                             }
-
                             <div className='col-md-12'>
                                 <div className={spaceStyle.space2} />
                                 <Button
                                     id={"InfoAccidente-Btn1"}
                                     variant='contained'
                                     className={comunClass.buttonAchs}
-                                    disabled={tipoSiniestro.Id === 1 ? !validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)}
-                                    onClick={() => handleNext() }
+                                    disabled={validaButton()}
+                                    onClick={ () => handleNextReal()}
                                 >
                                     Continuar
                                 </Button>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
 
