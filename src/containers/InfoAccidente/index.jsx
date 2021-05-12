@@ -128,7 +128,7 @@ const InfoAccidente = () => {
     const handleNext2 = () => {
         updateValues("fechaHoraSiniestro", `${date} ${hour}`)
         let direccionFinal = `${direccion} ${numero}, ${comuna.nombre} , Chile`;
-        updateValues("sucursalEmpresaSiniestro", {descripcion: direccionFinal})
+        updateValues("sucursalEmpresaSiniestro", {description: direccionFinal})
         updateValues("comunaSiniestro", comuna)
         updateValues("lugarReferenciaSiniestro", lugarReferencia)
 

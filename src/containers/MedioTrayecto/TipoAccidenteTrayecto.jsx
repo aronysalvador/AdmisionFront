@@ -14,7 +14,7 @@ import { Button } from "@material-ui/core";
 
 const TipoAccidenteTrayecto = () => {
   const {
-    addmissionForm: { percentage, sucursalEmpresaSiniestro, DireccionEmpresa, comunaEmpresa, CamposDocumentos, comunaTrabajoTrayecto, sucursalTrabajoTrayecto, urlMapaTrabajoTrayecto}, tipoAccidenteTrayectoForm,
+    addmissionForm: { percentage, sucursalEmpresaSiniestro, DireccionEmpresa, comunaEmpresa, CamposDocumentos, comunaTrabajoTrayecto, sucursalTrabajoTrayecto, urlMapaTrabajoTrayecto, tipoAccidenteTrayectoForm}, 
     microsoftReducer
   } = useSelector((state) => state, shallowEqual);
 
