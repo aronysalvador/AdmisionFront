@@ -54,6 +54,7 @@ const LugarSiniestroTrayectoMapa = () => {
   const handleSelect = async() => {
     let address = direccion ? direccion.split(',') : "";
     googleMapsGetMap(placeId)
+    dispatch(updateForm("stateCheckSiniestro2", false))
     dispatch(updateForm("sucursalEmpresaSiniestro",
     {
       description: direccion,

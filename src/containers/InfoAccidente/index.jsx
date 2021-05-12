@@ -5,11 +5,9 @@ import Cabecera from "../../components/cabecera/index";
 import { getComunStyle } from "../../css/comun";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getSpaceStyle } from "../../css/spaceStyle";
-import Grid from '@material-ui/core/Grid';
 import Date from './../../components/Pickers/Date'
 import Time from './../../components/Pickers/Time-ClearIcon'
-import { Button, TextField, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Button, TextField, Typography, Grid, Switch, withStyles } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import Lugar from "../LugarSiniestroTrayecto/Lugar"
 import { Format } from "../../helpers/strings";
@@ -20,7 +18,6 @@ import notActive from './../../img/notActive.svg'
 import arrow from './../../img/arrow_forward.svg'
 import { getWelcomeStyle } from "../../css/welcomeStyle";
 import { ErrorOutline } from "@material-ui/icons";
-import Switch from '@material-ui/core/Switch';
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import moment from "moment";
 import "moment/locale/es";
@@ -42,7 +39,7 @@ const InfoAccidente = () => {
     const spaceStyle = getSpaceStyle();
     const welcomeStyle = getWelcomeStyle();
     const dispatch = useDispatch();
-    const { addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal }, microsoftReducer } = useSelector((state) => state, shallowEqual);
+    const { addmissionForm: { percentage, sucursalEmpresaSiniestro, urlMapasucursalEmpresaSiniestro, comunaSiniestro, DireccionEmpresa, comunaEmpresa, lugarReferenciaSiniestro, fechaHoraSiniestro, tipoSiniestro, AccidenteEnSucursal, stateCheckSiniestro2, direccionSiniestro2, numeroSiniestro2, regionSiniestro2, comunaSiniestro2 }, microsoftReducer } = useSelector((state) => state, shallowEqual);
 
     const [ date, setDate ] = useState(fechaHoraSiniestro ? moment(fechaHoraSiniestro.split(" ")[0], "DD-MM-YYYY").format("DD-MM-YYYY") : moment().format("DD-MM-YYYY"));
     const [ validDate, setValidDate ] = useState(true);
@@ -79,25 +76,15 @@ const InfoAccidente = () => {
             updateValues("fechaHoraSiniestro", `${date} ${hour}`);
     }, [ date, validDate, hour, validHour, updateValues ])
 
-    const handleNext = () => {
-        updateValues("fechaHoraSiniestro", `${date} ${hour}`)
-        updateValues("sucursalEmpresaSiniestro", sucursal)
-        updateValues("urlMapasucursalEmpresaSiniestro", mapaUrl)
-        updateValues("comunaSiniestro", nombreComuna)
-        updateValues("lugarReferenciaSiniestro", lugarReferencia)
-        dispatch(handleSetStep("x_next", 10.1))
-    }
-
-    const [ stateCheck, setStateCheck ] = useState(false);
+    const [ stateCheck, setStateCheck ] = useState(!stateCheckSiniestro2 ? false : stateCheckSiniestro2);
     const handleChange = (event) => {
         setStateCheck(event.target.checked);
-        if (event.target.checked){
-            console.log('marcado')
-        }
     };
 
-      const [ region, setRegion ] = useState();
-      const [ comuna, setComuna ] = useState();
+    const [ direccion, setDireccion ] = useState(!direccionSiniestro2 ? "" : direccionSiniestro2);
+    const [ numero, setNumero ] = useState(!numeroSiniestro2 ? "" : numeroSiniestro2);
+    const [ region, setRegion ] = useState(!regionSiniestro2 ? "" : regionSiniestro2);
+    const [ comuna, setComuna ] = useState(!comunaSiniestro2 ? "" : comunaSiniestro2);
       const { data: segurenciaRegion } = useSelector((state) => state.regionForm, shallowEqual);
 
       const { data: segurenciaComuna } = useSelector(
@@ -120,6 +107,71 @@ const InfoAccidente = () => {
         checked: {},
         track: {}
     })(Switch);
+
+    const handleNextReal = () => {
+        if (stateCheck){
+            handleNext2()
+        } else {
+            handleNext()
+        }
+    }
+
+    const handleNext = () => {
+        updateValues("fechaHoraSiniestro", `${date} ${hour}`)
+        updateValues("sucursalEmpresaSiniestro", sucursal)
+        updateValues("urlMapasucursalEmpresaSiniestro", mapaUrl)
+        updateValues("comunaSiniestro", nombreComuna)
+        updateValues("lugarReferenciaSiniestro", lugarReferencia)
+        dispatch(handleSetStep("x_next", 10.1))
+    }
+
+    const handleNext2 = () => {
+        updateValues("fechaHoraSiniestro", `${date} ${hour}`)
+        let direccionFinal = `${direccion} ${numero}, ${comuna.nombre} , Chile`;
+        updateValues("sucursalEmpresaSiniestro", {descripcion: direccionFinal})
+        updateValues("comunaSiniestro", comuna)
+        updateValues("lugarReferenciaSiniestro", lugarReferencia)
+
+        updateValues("direccionSiniestro2", direccion)
+        updateValues("numeroSiniestro2", numero)
+        updateValues("regionSiniestro2", region)
+        updateValues("comunaSiniestro2", comuna)
+        updateValues("stateCheckSiniestro2", stateCheck)
+        dispatch(handleSetStep("x_next", 10.1))
+    }
+
+    const validaButton = () => {
+        if (tipoSiniestro.Id === 1){
+            if (stateCheck){
+                if (!validDate || !validHour || !direccion || !numero || !comuna || !isLugarReferenciaValid || !AccidenteEnSucursal){
+                    return true
+                } else {
+                    return false
+                }
+            } else {
+                if (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal){
+                    return true
+                } else {
+                    return false
+                }
+            }
+        } else {
+            if (stateCheck){
+                if (!validDate || !validHour || !direccion || !numero || !comuna || !isLugarReferenciaValid){
+                    return true
+                } else {
+                    return false
+                }
+            } else {
+                if (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida){
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+      //  tipoSiniestro.Id === 1 ? !validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)
+    }
 
     return (
         <div className={comunClass.rootNew}>
@@ -209,10 +261,9 @@ setValidHour={setValidHour}
                                                 <NoPaddingTextField
                                                     id={"InfoAccidente-Lbl3"}
                                                     helperText={
-                                                    !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
-                                                    }
-                                                    error={!isLugarReferenciaValid}
-                                                    value={lugarReferencia}
+                                                        direccion?.length < 4 && 'Debe ingresar nombre de la calle'}
+                                                    error={!direccion}
+                                                    value={direccion}
                                                     autoComplete='off'
                                                     variant='outlined'
                                                     size='small'
@@ -221,12 +272,11 @@ setValidHour={setValidHour}
                                                     fullWidth
                                                     onChange={(e) => {
                                                         let texto = Format.caracteresInvalidos(e.target.value);
-                                                        setLugarReferencia(texto);
-                                                        if (texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); } else { setIsLugarReferenciaValid(false); }
+                                                        setDireccion(texto);
                                                     }}
                                                     InputProps={{
                                                         endAdornment: (
-                                                            <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", "")); } } style={{ cursor: 'pointer' }} />
+                                                            <ClearIcon onClick={() => { setDireccion("") } } style={{ cursor: 'pointer' }} />
                                                         )
                                                     }}
                                                     style={{background: "#ffff", borderRadius: "0.7em"}}
@@ -240,10 +290,10 @@ setValidHour={setValidHour}
                                                     <NoPaddingTextField
                                                         id={"InfoAccidente-Lbl3"}
                                                         helperText={
-                                                        !isLugarReferenciaValid && "Debes ingresar al menos una referencia"
+                                                        !numero && "Debe ingresar el numero de la casa o apartamento"
                                                         }
-                                                        error={!isLugarReferenciaValid}
-                                                        value={lugarReferencia}
+                                                        error={!numero}
+                                                        value={numero}
                                                         autoComplete='off'
                                                         variant='outlined'
                                                         size='small'
@@ -252,12 +302,11 @@ setValidHour={setValidHour}
                                                         fullWidth
                                                         onChange={(e) => {
                                                             let texto = Format.caracteresInvalidos(e.target.value);
-                                                            setLugarReferencia(texto);
-                                                            if (texto.length > 0){ setIsLugarReferenciaValid(true); dispatch(updateForm("lugarReferenciaSiniestro", texto)); } else { setIsLugarReferenciaValid(false); }
+                                                            setNumero(texto)
                                                         }}
                                                         InputProps={{
                                                             endAdornment: (
-                                                                <ClearIcon onClick={() => { setLugarReferencia(""); setIsLugarReferenciaValid(false); dispatch(updateForm("lugarReferenciaSiniestro", "")); } } style={{ cursor: 'pointer' }} />
+                                                                <ClearIcon onClick={() => { setNumero(""); }} style={{ cursor: 'pointer' }} />
                                                             )
                                                         }}
                                                         style={{background: "#ffff", borderRadius: "0.7em"}}
@@ -363,7 +412,7 @@ setValidHour={setValidHour}
                                                     />
                                                 </div>
                                             </div>
-                                            <div className='row' style={{cursor: 'left'}} onClick={() => setStateCheck(false)}>
+                                            <div className='row' style={{cursor: 'pointer'}} onClick={() => setStateCheck(false)}>
                                                 <div className='col-md-3'>
                                                     <img
                                                         id={"RelatoCompleto-BtnNo"}
@@ -500,8 +549,8 @@ setValidHour={setValidHour}
                                     id={"InfoAccidente-Btn1"}
                                     variant='contained'
                                     className={comunClass.buttonAchs}
-                                    disabled={tipoSiniestro.Id === 1 ? !validDate || !validHour || !isLugarReferenciaValid || !direccionValida || !AccidenteEnSucursal : (!validDate || !validHour || !isLugarReferenciaValid || !direccionValida)}
-                                    onClick={() => handleNext() }
+                                    disabled={validaButton()}
+                                    onClick={ () => handleNextReal()}
                                 >
                                     Continuar
                                 </Button>
