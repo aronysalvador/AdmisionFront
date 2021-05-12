@@ -29,26 +29,15 @@ const PersonalData = (props) => {
   const classes = cardSiniestroStyles();
 
   const tituloEmpresa = "Dirección de la Sucursal";
-  // const contenidoEmpresa = [
-  //   addmissionForm.DireccionEmpresa,
-  //   addmissionForm.SucursalEmpresa,
-  //   addmissionForm.razonSocialForm,
-  //   addmissionForm.rutEmpresa,
-  // ];
   const contenidoDireccionEmpresa = [ Format.formatizar(addmissionForm.DireccionEmpresa) ];
   const contenidoRazonSocialForm = [ addmissionForm.razonSocial ? Format.formatizar(addmissionForm.razonSocial.name) : null ];
   const contenidoRutEmpresa = [ addmissionForm.rutEmpresa ];
   const tituloDireccion = "Dirección particular";
   const contenidoDireccion = [ Format.formatizar(addmissionForm.direccionParticular) ];
-  // const tituloTelefono = "Teléfono personal";
-  // const contenidoTelefono = [ addmissionForm.telefonoParticular ];
-  // const tituloGrupo = "Grupo étnico";
-  // const contenidoGrupo = [ addmissionForm?.grupoEtnico.descripcion ];
 
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
-  const {
-    razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular: TelefonoEmpleado, emailusuario,
+  const { razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular: TelefonoEmpleado, emailusuario,
     rut, rutEmpresa, SucursalEmpresaObjeto, comunaDireccionParticular } = addmissionForm
 
   const [ telefono, setTelefono ] = useState(() => {
@@ -82,31 +71,26 @@ const PersonalData = (props) => {
   };
 
   const [ userEmail, setUserEmail ] = useState(() => {
-    return !emailusuario || emailusuario==="notienecorreo@achs.cl" ? "" : emailusuario;
+    return !emailusuario ? "" : emailusuario;
   });
-//   const inputRef  = React.useRef();
+
   const [ stateCheck2, setStateCheck2 ] = useState(() => {
     return (emailusuario==="notienecorreo@achs.cl") ? 1 : 0
   });
   const [ isEmailValid, setIsEmailValid ] = useState(true);
-  console.log(stateCheck2);
+
   const handleChange2 = (event) => {
     setStateCheck2(event.target.checked);
-    console.log('handleChange2', stateCheck2);
     if (event.target.checked){
       setIsEmailValid(validateEmailFormat("notienecorreo@achs.cl"));
       setUserEmail("notienecorreo@achs.cl");
-      console.log('userEmail-handleChange2', userEmail);
-    //   inputRef.current.value = "notienecorreo@achs.cl";
     } else {
       setIsEmailValid(false);
       setUserEmail("");
-    //   inputRef.current.value = "";
     }
   };
 
   const handleEmailChange = (e) => {
-    console.log("cambiando: "+e.target.value)
     let valid = validateEmailFormat(e.target.value)
     setIsEmailValid(valid);
     setUserEmail(e.target.value);
@@ -126,11 +110,7 @@ const PersonalData = (props) => {
     track: {}
   })(Switch);
 
-  // const [ loading, setLoading ] = useState(false)
-
-  const handleNext2 = () => {
-    // setLoading(true)
-
+  const handleNext = () => {
     if (!razonSocial || !Object.entries(SucursalEmpresaObjeto).length === 0 || !DireccionEmpresa || !rutEmpresa) {
       // si falta info de la empresa
       dispatch(handleSetStep(5.4)); // form empresa
@@ -139,33 +119,16 @@ const PersonalData = (props) => {
       // si no tiene direccion, y comuna
       dispatch(handleSetStep(5.2));// form direccion
     }
-    // else if (!telefonoParticular || telefonoParticular === "0") {
-    //   // si no tiene telefono
-    //   dispatch(handleSetStep(5.31)); // form telefono
-    // }
-    // else if (!grupoEtnico) {
-    //   // si no tiene Grupo Etnico
-    //   dispatch(handleSetStep(5.41)); // form Grupo Etnico
-    // }
-    else if (direccionParticular && comunaDireccionParticular && TelefonoEmpleado && razonSocial && (emailusuario || userEmail)) {
+    else if (direccionParticular && comunaDireccionParticular && razonSocial) {
       // si todos los datos relevantes están llenos
-      console.log('emailusuario', emailusuario);
-      console.log('userEmail', userEmail);
       dispatch(updateForm("telefonoParticular", telefono));
       dispatch(updateForm("emailusuario", userEmail));
       if (rut && rutEmpresa && SucursalEmpresaObjeto) {
-        console.log('emailusuario', emailusuario);
         dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
       } else
         dispatch(handleSetStep(500));
     }
   };
-
-  // const handleNext2 = () => {
-  //   dispatch(updateForm("telefonoParticular", telefono));
-  //   dispatch(updateForm("emailusuario", userEmail));
-  //   dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
-  // };
 
   return (
     <div className={comunClass.root}>
@@ -266,7 +229,6 @@ const PersonalData = (props) => {
                             value={userEmail}
                             name='userEmail'
                             id='userEmail'
-                            // ref={inputRef}
                             className={"form-control MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"}
                             domains={ [ 'outlook.com', 'yahoo.com', 'gmail.com', 'hotmail.com', 'icloud.com', 'apple.com', 'aol.com', 'zoho.com' ] }
                             onBlur={(e) => { handleEmailChange(e) }}
@@ -307,12 +269,11 @@ const PersonalData = (props) => {
         <div className={comunClass.bottomElement}>
           <Button
             id={"PersonalData-Btn1"}
+            variant='contained'
             className={comunClass.buttonAchs}
-            // disabled={loading}
-            disabled={!addmissionForm.direccionParticular || !addmissionForm.comunaDireccionParticular || !addmissionForm.razonSocial || !telefonoIsValid || ((!stateCheck2 && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck2))}
-            onClick={() => handleNext2()}
+            disabled={!direccionParticular || !comunaDireccionParticular || !razonSocial || !telefonoIsValid || ((!stateCheck2 && (userEmail === undefined || userEmail.length === 0)) || (!isEmailValid && !stateCheck2))}
+            onClick={() => handleNext()}
           >
-            {/* {(addmissionForm.direccionParticular && addmissionForm.comunaDireccionParticular && addmissionForm.telefonoParticular && addmissionForm.razonSocial && addmissionForm?.emailusuario)?"Sí, es correcta":"Rellenar información"} */}
             Sí, es correcta
           </Button>
         </div>

@@ -15,6 +15,7 @@ export default function InputMasked({
     <TextField
       id={id}
       value={disabled ? "" : telefono}
+      autoComplete='off'
       variant='outlined'
       size='small'
       margin='dense'
