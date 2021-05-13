@@ -49,7 +49,7 @@ const EditCompany = () => {
             dispatch(updateForm("sucursalCargo", sucursalCargo));
             dispatch(updateForm("cantidadSucursales", 1));
             dispatch(updateForm("comunaSucursal", comuna));
-            dispatch(handleSetStep(5.1))
+            creacionBP ? dispatch(handleSetStep(5.7)) : dispatch(handleSetStep(5.1));
           }
         } else {
           dispatch(handleSetStep(5.14))

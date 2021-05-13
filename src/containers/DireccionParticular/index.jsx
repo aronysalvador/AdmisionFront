@@ -16,7 +16,7 @@ import { ErrorOutline } from "@material-ui/icons";
 
 const DireccionParticular = () => {
   const {
-    addmissionForm: { percentage, urlMapaDireccionParticular, direccionParticularObj, creacionBP, telefonoParticular }
+    addmissionForm: { percentage, urlMapaDireccionParticular, direccionParticularObj, creacionBP }
   } = useSelector((state) => state, shallowEqual)
 
   const {

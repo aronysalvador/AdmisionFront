@@ -11,6 +11,7 @@ import Header from "../../components/header/index";
 import image from "./../../img/identify.svg";
 import ClearIcon from "@material-ui/icons/Clear";
 import AutoComplete from "@material-ui/lab/Autocomplete";
+import { Format } from "helpers/strings";
 
 const SinDireccion = () => {
   const {
@@ -105,7 +106,10 @@ const SinDireccion = () => {
                 variant='outlined'
                 error={direccion?.length < 4}
                 helperText={direccion?.length < 4 && 'Debe ingresar nombre de la calle'}
-                onChange={(e) => setDireccion(e.target.value)}
+                onChange={(e) => {
+                  let texto = Format.caracteresInvalidos(e.target.value)
+                  setDireccion(texto);
+                }}
                 margin='dense'
                 required
                 fullWidth
