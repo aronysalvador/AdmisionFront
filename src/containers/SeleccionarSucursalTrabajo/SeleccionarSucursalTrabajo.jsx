@@ -13,10 +13,8 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
 
-  const { percentage, SucursalEmpresa: SucursalEmpresaObjeto } = useSelector(
+  const { percentage, SucursalEmpresa: SucursalEmpresaObjeto, creacionBP } = useSelector(
     (state) => state.addmissionForm, shallowEqual);
-
-  const { addmissionForm: creacionBP } = useSelector((state) => state, shallowEqual)
 
   const comunClass = getComunStyle();
 
@@ -73,8 +71,7 @@ const SeleccionarSucursalTrabajo = ({ sucursalesEmpresa }) => {
               data={sucursal}
               itemForm={"SucursalEmpresa"}
               selected={sucursal.codigo === SucursalEmpresaObjeto.codigo}
-              step={5.1}
-              // step={creacionBP ? 5.7 : 5.1}
+              step={creacionBP ? 5.7 : 5.1}
               handlerGuardarData={handlerGuradarSucursalTexto}
             >
               <BotonSeleccionarCustomSucursalItem {...sucursal} />

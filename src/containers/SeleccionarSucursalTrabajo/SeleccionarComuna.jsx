@@ -144,7 +144,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
                 dispatch(
                   updateForm("sucursalCargo", sucursales[0].sucursalCargo)
                 );
-                creacionBP ? dispatch(handleSetStep(5.2)) : dispatch(handleSetStep(5.1));
+                creacionBP ? dispatch(handleSetStep(5.7)) : dispatch(handleSetStep(5.1));
               }
             }}
           >
