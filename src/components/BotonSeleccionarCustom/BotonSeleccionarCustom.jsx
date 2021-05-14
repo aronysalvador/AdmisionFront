@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { updateForm } from "../../redux/actions/AdmissionAction";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm, validarAfiliacion } from "../../redux/actions/AdmissionAction";
 import { getComunStyle } from "../../css/comun";
 // import { id } from "date-fns/locale";
 
@@ -9,7 +8,7 @@ const BotonSeleccionarCustom = (props) => {
   const { id, data, itemForm, selected, step, handlerGuardarData, children } = props;
 
   const {
-    addmissionForm: { razonAlertaForm }
+    addmissionForm: { razonAlertaForm, creacionBP, rut, rutEmpresa, SucursalEmpresaObjeto }
   } = useSelector((state) => state, shallowEqual);
 
   const dispatch = useDispatch();
@@ -47,7 +46,8 @@ const BotonSeleccionarCustom = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
-            setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
+            // setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
+            setTimeout(function(){ creacionBP ? dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo})) : dispatch(handleSetStep(step)) }, 1000);
             // dispatch(handleSetStep(step));
           } else if (itemForm === "razonAlertaForm") {
             if (data.glosa === "Posible causa no laboral") {
@@ -101,7 +101,8 @@ const BotonSeleccionarCustom = (props) => {
                 !isSelected ? { ...data, selected: !isSelected } : {}
               )
             );
-            setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
+            // setTimeout(function(){ dispatch(handleSetStep(step)); }, 1000);
+            setTimeout(function(){ creacionBP ? dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo})) : dispatch(handleSetStep(step)) }, 1000);
             // dispatch(handleSetStep(step));
           }
           // dispatch(handleSetStep(step));

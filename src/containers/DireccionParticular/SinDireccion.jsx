@@ -17,8 +17,7 @@ const SinDireccion = () => {
   const {
     addmissionForm: {
       percentage,
-      creacionBP,
-      telefonoParticular
+      creacionBP
     }
   } = useSelector((state) => state, shallowEqual);
 
@@ -135,7 +134,10 @@ const SinDireccion = () => {
                 autoComplete='off'
                 value={numero}
                 variant='outlined'
-                onChange={(e) => setNumero(e.target.value)}
+                onChange={(e) => {
+                  let texto = Format.caracteresInvalidos(e.target.value)
+                  setNumero(texto);
+                }}
                 error={numero?.length === 0}
                 helperText={numero ? 'Si no tiene número la dirección y contiene una letra, favor escribir "0"' : 'Debe ingresar el numero de la casa o apartamento'}
                 margin='dense'
@@ -233,8 +235,7 @@ const SinDireccion = () => {
               dispatch(updateForm("direccionParticular", direccionFinal))
               dispatch(updateForm("comunaDireccionParticular", comunaFinal))
               if (creacionBP) {
-                if (telefonoParticular) dispatch(handleSetStep(5.1));
-                else dispatch(handleSetStep(5.3));
+                dispatch(handleSetStep(5.4)) // Empresa
               } else {
                 dispatch(handleSetStep(5.1));
               }
