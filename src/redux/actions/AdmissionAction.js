@@ -491,7 +491,7 @@ const handleNextStep = (result, dispatch) => {
         STEP = 5.831;
     } else {
         if (
-            result.idEtnia==="00" ||
+            // result.idEtnia==="00" ||
             !result.idEtnia ||
             !result.descripcionEtnia
         ) {

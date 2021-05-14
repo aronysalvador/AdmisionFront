@@ -26,7 +26,7 @@ const HasScheduledMeet = (props) => {
           STEP = 5.812; // form data
       }
       else if (
-        addmissionForm.grupoEtnico.id==="00" ||
+        // addmissionForm.grupoEtnico.id==="00" ||
         !addmissionForm.grupoEtnico.id ||
         !addmissionForm.grupoEtnico.descripcion
       ) {
