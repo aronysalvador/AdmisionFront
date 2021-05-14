@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Header from "../../components/header/index";
 import Cabecera from "../../components/cabecera/index";
 import TextField from "@material-ui/core/TextField";
@@ -36,6 +36,7 @@ const RelatoCompleto = () => {
     const [ text1, setText1 ] = useState(() => {
         return !lugarAccidente ? "Al momento del accidente estaba " : lugarAccidente;
     });
+    const refText1 = useRef(null)
 
     const [ text2, setText2 ] = useState(() => {
         return !descripcionAccidente ? "Lo que ocurrio fue que " : descripcionAccidente;
@@ -55,22 +56,23 @@ const RelatoCompleto = () => {
     const onChangeValue1 = (e) => {
         if (e.target.value.search("Al momento del accidente estaba") >= 0)
             setText1(Format.caracteresInvalidos(e.target.value));
-        else
-            setText1(Format.caracteresInvalidos(`Al momento del accidente estaba ${e.target.value.slice(0, 167)}`));
+         // else{
+        //     setText1(Format.caracteresInvalidos(`Al momento del accidente estaba ${e.target.value.slice(0, 167)}`));
+        // }
     };
 
     const onChangeValue2 = (e) => {
          if (e.target.value.search("Lo que ocurrio fue que") >= 0)
             setText2(Format.caracteresInvalidos(e.target.value));
-        else
-            setText2(Format.caracteresInvalidos(`Lo que ocurrio fue que ${e.target.value.slice(0, 176)}`));
+        // else
+        //     setText2(Format.caracteresInvalidos(`Lo que ocurrio fue que ${e.target.value.slice(0, 176)}`));
     };
 
     const onChangeValue3 = (e) => {
         if (e.target.value.search("El accidente ocurrio con") >= 0)
             setText3(Format.caracteresInvalidos(e.target.value));
-        else
-            setText3(Format.caracteresInvalidos(`El accidente ocurrio con ${e.target.value.slice(0, 174)}`));
+        // else
+        //     setText3(Format.caracteresInvalidos(`El accidente ocurrio con ${e.target.value.slice(0, 174)}`));
     };
 
     const onChangeValue4 = (e) => {
@@ -126,16 +128,18 @@ const RelatoCompleto = () => {
                     <TextField
                         id={"RelatoCompleto-Lbl1"}
                         value={text1}
+                        ref={refText1}
                         margin='dense'
                         variant='outlined'
                         fullWidth
+                        autoFocus
                         autoComplete='off'
                         rows={5}
                         inputProps={{ maxLength: 200 }}
                         helperText={(text1.length - 32 < 5 && text1.length - 32 > 0) &&"Se necesita al menos 5 caracteres"}
                         error={text1.length - 32 < 5 && text1.length - 32 > 0}
                         onChange={text1.length >= 32 ? onChangeValue1 : setText1("Al momento del accidente estaba ")}
-                        // defaultValue="Al momento del accidente estaba "
+
                     />
                     <label className={comunClass.pullRight}>{text1.length }/200</label>
 
