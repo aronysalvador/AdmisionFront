@@ -1,7 +1,8 @@
 import Typography from '@material-ui/core/Typography'
 import { useDispatch } from "react-redux";
 import { handleSetStep } from "../../../redux/actions/AdmissionAction";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import editaRelato from '../../../img/editar-relatoPD.svg'
+import { getComunStyle } from "../../../css/comun";
 import { cardSiniestroStyles } from '../../../css/cardSiniestroStyle';
 import { Grid } from '@material-ui/core';
 
@@ -9,12 +10,13 @@ import { Grid } from '@material-ui/core';
 
 const BoxEmpresa = (props) => {
     const { id, titulo, contenidoDireccionEmpresa, contenidoRazonSocialForm, contenidoRutEmpresa, step } = props
+    const comunClass = getComunStyle();
     const classes = cardSiniestroStyles();
     const dispatch = useDispatch();
 
     return (<div className={classes.containerBox}>
                 <Grid container id={id} onClick={() => dispatch(handleSetStep(step))}>
-                    <Grid item xs={11}>
+                    <Grid item xs={10}>
                         <div className={classes.cuerpo}>
                             <div>
                                 <Typography color='textSecondary' className={classes.itemId}>
@@ -35,10 +37,14 @@ const BoxEmpresa = (props) => {
                             </div>
                         </div>
                     </Grid>
-                    <Grid item xs={1} className={classes.asidePersonalData}>
-                        <div>
-                            {" "}
-                            <ChevronRightIcon style={{cursor: "pointer"}} onClick={() => dispatch(handleSetStep(step))} />
+                    <Grid item xs={2}>
+                        <div
+                            id={"BoxEmpresa-BtnEdit1"}
+                            className={comunClass.buttonEditPersonalData}
+                            onClick={() => dispatch(handleSetStep(step))}
+                        >
+                            <img alt='editar relato' src={editaRelato} />
+                            Editar
                         </div>
                     </Grid>
                 </Grid>

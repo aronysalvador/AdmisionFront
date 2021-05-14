@@ -1625,6 +1625,16 @@ export const getComunStyle = makeStyles(() => ({
         // textDecoration: "underline",
         color: "#373737"
     },
+    buttonEditPersonalData: {
+        cursor: "pointer",
+        color: "#00B2A9",
+        textDecoration: "underline",
+        fontFamily: "Catamaran",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "16px",
+        lineHeight: "16px"
+    },
     pullRight: {
         float: "right",
         fontFamily: "Helvetica",
