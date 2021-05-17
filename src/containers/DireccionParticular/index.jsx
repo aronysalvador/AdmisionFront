@@ -99,7 +99,7 @@ const DireccionParticular = () => {
       <div className={comunClass.beginContainerDesk}>
         <Cabecera
           id={"DireccionParticular-BtnBack"}
-          dispatch={() => (creacionBP ? dispatch(handleSetStep(5.4)) : dispatch(handleSetStep(5.1)))}
+          dispatch={() => (creacionBP ? dispatch(handleSetStep(5.31)) : dispatch(handleSetStep(5.1)))}
           percentage={percentage}
         />
       </div>
