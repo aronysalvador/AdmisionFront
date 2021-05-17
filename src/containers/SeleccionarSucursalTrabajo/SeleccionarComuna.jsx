@@ -18,7 +18,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     cantidadSucursales,
     sucursales: sucursales2,
     creacionBP,
-    rut, rutEmpresa, SucursalEmpresaObjeto
+    rut, rutEmpresa
   } = useSelector((state) => state.addmissionForm, shallowEqual);
 
   const { microsoftReducer } = useSelector((state) => state, shallowEqual);
@@ -143,12 +143,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
                 dispatch(updateForm("codigoSucursal", sucursales[0].codigo));
                 dispatch(updateForm("comunaEmpresa", sucursales[0].comuna))
                 dispatch(updateForm("sucursalCargo", sucursales[0].sucursalCargo));
-                // creacionBP ? dispatch(handleSetStep(5.7)) : dispatch(handleSetStep(5.1));
-                creacionBP ? dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo})) : dispatch(handleSetStep(5.1));
-                // if (rut && rutEmpresa && SucursalEmpresaObjeto) {
-                //   dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: SucursalEmpresaObjeto.codigo}));
-                // } else
-                //   dispatch(handleSetStep(500));
+                creacionBP ? dispatch(validarAfiliacion({ rutPaciente: rut, rutEmpresa, BpSucursal: sucursales[0].codigo})) : dispatch(handleSetStep(5.1));
               }
             }}
           >
