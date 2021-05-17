@@ -13,6 +13,7 @@ import ClearIcon from "@material-ui/icons/Clear";
 import Header from "../../components/header/index";
 import image from './../../img/identify.svg'
 import moment from "moment";
+import { Format } from "../../helpers/strings";
 import "moment/locale/es";
 moment.locale("es");
 
@@ -105,7 +106,7 @@ const AtencionPrevia = () => {
             <TextField
                 id='AtencionPrevia-nombre'
                 value={OtroRecinto}
-                onChange={(e) => saveOtroRecinto(e.target.value)}
+                onChange={(e) => saveOtroRecinto(Format.caracteresInvalidos(e.target.value))}
                 margin='dense'
                 variant='outlined'
                 autoComplete='off'
@@ -150,7 +151,7 @@ setValidHour={setValidHour}
             <TextField
                 id='AtencionPrevia-CuentaCual'
                 value={CuentaCual}
-                onChange={(e) => saveCuentaCual(e.target.value)}
+                onChange={(e) => saveCuentaCual(Format.caracteresInvalidos(e.target.value))}
                 margin='dense'
                 variant='outlined'
                 autoComplete='off'
