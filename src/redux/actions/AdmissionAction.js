@@ -759,7 +759,7 @@ export const crearAdmisionSiniestroSAP = () => async(dispatch, getState) => {
             EndLog(ID, "", "", 500, false, dispatch)
         }
     } catch (error) {
-        dispatch(updateForm("mensajeErrorSAP", String(error.response.data.content[0].mensaje)));
+        dispatch(updateForm("mensajeErrorSAP", String(error.message)));
         dispatch(handleSetStep(1002));
         EndLog(ID, "", "", 500, false, dispatch)
     }
