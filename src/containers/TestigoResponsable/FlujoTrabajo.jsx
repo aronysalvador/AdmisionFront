@@ -16,6 +16,7 @@ import notActive from './../../img/notActive.svg'
 import moment from "moment";
 import "moment/locale/es";
 import { returnDateObject } from "helpers/utils";
+
 moment.locale("es");
 
 const FlujoTrabajo = () => {
@@ -33,6 +34,20 @@ const FlujoTrabajo = () => {
     const [ validHour, setValidHour ] = useState(fechaHoraResponsable.length > 0);
 
     const [ canContinue, setCanContinue ] = useState(false);
+
+    const getInit = () => {
+        let num = 0;
+        if (CamposDocumentos.TestigoS){
+            num++
+        }
+        if (responsableForm){
+            num++
+        }
+
+        return num
+    }
+
+    const [ respuestas, setRespuestas ] = useState(() => { return getInit() });
 
     const updateValid = useCallback(
         (value) => {
@@ -97,30 +112,39 @@ const FlujoTrabajo = () => {
     }, [ date, validDate, hour, validHour, updateValid ])
 
     const handleOnClick = (respuesta) => {
-        let newValue
-        if (respuesta === "Si"){
-            newValue = {...CamposDocumentos, TestigoS: "x", TestigoN: ""}
-            dispatch(updateForm("testigoTrabajo", true));
-            dispatch(updateForm("CamposDocumentos", newValue));
-        } else {
-            newValue = {...CamposDocumentos, TestigoS: "", TestigoN: "x"}
-            dispatch(updateForm("CamposDocumentos", newValue));
-            dispatch(updateForm("testigoTrabajo", false));
-            dispatch(updateForm("testigos", { nombre: "", cargo: "" }));
-        }
-        if ((newValue.TestigoS === "x" || newValue.TestigoN === "x") && responsableForm === "No")
-            dispatch(handleSetStep(18.01))
+        let rspta = respuestas+1
+            let newValue
+            if (respuesta === "Si"){
+                newValue = {...CamposDocumentos, TestigoS: "x", TestigoN: ""}
+                dispatch(updateForm("testigoTrabajo", true));
+                dispatch(updateForm("CamposDocumentos", newValue));
+            } else {
+                newValue = {...CamposDocumentos, TestigoS: "", TestigoN: "x"}
+                dispatch(updateForm("CamposDocumentos", newValue));
+                dispatch(updateForm("testigoTrabajo", false));
+                dispatch(updateForm("testigos", { nombre: "", cargo: "" }));
+            }
+            if ((newValue.TestigoS === "x" || newValue.TestigoN === "x") && responsableForm === "No"){
+                if (rspta>1){
+                    dispatch(handleSetStep(18.01))
+                }
+            }
+        setRespuestas(rspta)
     };
 
     const handleOnClickResponsable = (respuesta) => {
-        if (respuesta === "Si"){
-            dispatch(updateForm("responsableForm", respuesta));
-        } else {
-            dispatch(updateForm("fechaHoraResponsable", ``))
-            dispatch(updateForm("responsable", { nombre: "", cargo: "" }));
-            dispatch(updateForm("responsableForm", respuesta));
-            dispatch(handleSetStep(18.01))
-        }
+        let rspta = respuestas+1
+            if (respuesta === "Si"){
+                dispatch(updateForm("responsableForm", respuesta));
+            } else {
+                dispatch(updateForm("fechaHoraResponsable", ``))
+                dispatch(updateForm("responsable", { nombre: "", cargo: "" }));
+                dispatch(updateForm("responsableForm", respuesta));
+                if (rspta>1){
+                    dispatch(handleSetStep(18.01))
+                }
+            }
+        setRespuestas(rspta)
     };
 
     return (
