@@ -14,7 +14,7 @@ import Header from "../../components/header/index";
 import { Format } from "../../helpers/strings";
 import image from './../../img/identify.svg'
 import Date from "../../components/Pickers/Date";
-import { formatoFecha } from "helpers/utils";
+import { formatoFecha, Capitalize } from "helpers/utils";
 
 const SinBPInfoPersonal1 = () => {
   const bpForm = useSelector(
@@ -26,9 +26,6 @@ const SinBPInfoPersonal1 = () => {
 
   const comunClass = getComunStyle();
   const spaceStyle = getSpaceStyle();
-  const Capitalize = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  };
 
   // State
   const [ nombre, saveNombre ] = useState(() => { return !bpForm?.nombre ? "" : Capitalize(bpForm.nombre); });
