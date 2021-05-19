@@ -21,12 +21,15 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
     rut, rutEmpresa
   } = useSelector((state) => state.addmissionForm, shallowEqual);
 
-  const { microsoftReducer } = useSelector((state) => state, shallowEqual);
+  const { microsoftReducer, sucursalesForm } = useSelector((state) => state, shallowEqual);
 
   const { data: comunaList } = useSelector(
     (state) => state.comunaForm,
     shallowEqual
   );
+
+  const [ switchvalid, setValidSwitch ] = useState(false);
+  const [ stateCheck, setStateCheck ] = useState(false);
 
   const [ numeroSucursales, setNumeroSucursales ] = useState(cantidadSucursales);
   const [ sucursales, setSucursales ] = useState(sucursales2);
@@ -50,6 +53,16 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
 
     // eslint-disable-next-line
   }, [comunaList]);
+
+  useEffect(() => {
+    let result = sucursalesForm?.data ? sucursalesForm.data.filter((o) => o.tipo_sucursal === "CASA MATRIZ") : [];
+    if (result.length>0){
+      setSucursales(result)
+      setNumeroSucursales(1)
+      setComuna({id: 0, codigo_region: result.codigo_region, codigo_comuna: result.id_comuna, nombre: result.comuna});
+      setValidSwitch(true)
+    }
+  }, []);
 
   const removeDuplicates = (originalArray, prop) => {
     let newArray = [];
@@ -110,6 +123,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
               setNumeroSucursales(sucursalesComuna.length);
               setSucursales(sucursalesComuna);
               setComuna(value);
+              setValidSwitch(false)
             }}
             size='small'
             fullWidth
@@ -119,7 +133,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
           />
           <div className={spaceStyle.space2} />
           {numeroSucursales === 1 ? (
-            <CardSucursal sucursales={sucursales[0]} />
+            <CardSucursal sucursales={sucursales[0]} stateCheck={stateCheck} setStateCheck={setStateCheck} />
           ) : null}
         </div>
         <div className={comunClass.bottomElement}>
@@ -127,7 +141,7 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
             id={"SeleccionarComuna-Btn1"}
             className={comunClass.buttonAchs}
             variant='contained'
-            disabled={!comuna}
+            disabled={!comuna || (switchvalid && !stateCheck)}
             onClick={() => {
               dispatch(updateForm("cantidadSucursales", numeroSucursales));
               dispatch(updateForm("comunaSucursal", comuna));
