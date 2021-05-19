@@ -32,6 +32,7 @@ const DireccionParticular = () => {
   })
 
   const [ nombreComuna, setNombreComuna ]=useState("")
+  const [ objcomuna, setObjcomuna ]=useState({})
 
   const [ stateCheck, setStateCheck ] = useState(false);
 
@@ -63,6 +64,7 @@ const DireccionParticular = () => {
     } else {
       setValido(false)
       setNombreComuna("")
+      setObjcomuna({})
     }
     // eslint-disable-next-line
   },[direccion])
@@ -73,6 +75,7 @@ const DireccionParticular = () => {
       const { codigo_region, codigo_comuna } = resultado.comuna;
       let comuna = "0000000"+codigo_region+codigo_comuna;
       setNombreComuna(comuna)
+      setObjcomuna(resultado.comuna)
     }
     setValido(resultado.valida)
  }
@@ -175,6 +178,7 @@ const DireccionParticular = () => {
               dispatch(updateForm("direccionParticular", direccion.description))
               dispatch(updateForm("direccionParticularObj", direccion))
               dispatch(updateForm("comunaDireccionParticular", nombreComuna))
+              dispatch(updateForm("comunaDireccionParticularObjeto", objcomuna))
               if (creacionBP){
                 // if (telefonoParticular)
                 //   dispatch(handleSetStep(5.1))

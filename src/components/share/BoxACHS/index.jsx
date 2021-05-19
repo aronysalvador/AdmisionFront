@@ -7,7 +7,7 @@ import { cardSiniestroStyles } from "../../../css/cardSiniestroStyle";
 import { Grid } from '@material-ui/core';
 
 const BoxACHS = (props) => {
-    const { id, titulo, contenido, step } = props
+    const { id, titulo, contenido, contenidoComuna, step } = props
     const comunClass = getComunStyle();
     const classes = cardSiniestroStyles();
     const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const BoxACHS = (props) => {
                                     return <div key={index} id={index} className={classes.itemFecha}>{item}</div>
                                 })}
                             </div>
+                            {contenidoComuna && (<div className={classes.itemSubtitle}>{contenidoComuna}</div>) }
                         </div>
                     </Grid>
                     <Grid item xs={2}>

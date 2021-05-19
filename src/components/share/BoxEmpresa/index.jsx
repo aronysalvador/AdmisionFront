@@ -9,7 +9,7 @@ import { Grid } from '@material-ui/core';
 // import { Format } from '../../../helpers/strings';
 
 const BoxEmpresa = (props) => {
-    const { id, titulo, contenidoDireccionEmpresa, contenidoRazonSocialForm, contenidoRutEmpresa, step } = props
+    const { id, titulo, contenidoDireccionEmpresa, contenidoComunaEmpresa, contenidoRazonSocialForm, contenidoRutEmpresa, step } = props
     const comunClass = getComunStyle();
     const classes = cardSiniestroStyles();
     const dispatch = useDispatch();
@@ -28,6 +28,9 @@ const BoxEmpresa = (props) => {
                                 {contenidoDireccionEmpresa.map((item, index) => {
                                     return <div key={index} id={index} className={classes.itemFecha}>{item}</div>
                                 })}
+
+                               {contenidoComunaEmpresa && (<div className={classes.itemSubtitle}>{contenidoComunaEmpresa}</div>) }
+
                                 {contenidoRazonSocialForm.map((item, index) => {
                                     return <div key={index} id={index} className={classes.itemRazonSocial}>{item}</div>
                                 })}
