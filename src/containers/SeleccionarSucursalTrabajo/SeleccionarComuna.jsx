@@ -78,11 +78,11 @@ const SeleccionarComuna = ({ sucursalesEmpresa }) => {
       </div>
       <div className={comunClass.titlePrimaryDesk}>
         <Grid className={[ comunClass.titleBlack, comunClass.textPrimaryDesk ].join(' ')}>
-          Identifica
+          Identifica la comuna de la
           <Grid component='span' className={[ comunClass.titleBlue, comunClass.titleBlue2 ].join(' ')}>
-            &nbsp;la comuna de la sucursal
+            &nbsp;sucursal del trabajador
           </Grid>
-          &nbsp;en donde trabaja
+          &nbsp;
         </Grid>
         <div className={comunClass.displayDeskImg}>
           <Grid component='span' className={comunClass.imgPrimaryDesk}>
