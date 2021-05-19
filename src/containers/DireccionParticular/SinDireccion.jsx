@@ -234,6 +234,7 @@ const SinDireccion = () => {
               let direccionFinal = `${direccion} ${numero}, ${comuna.nombre} , Chile`;
               dispatch(updateForm("direccionParticular", direccionFinal))
               dispatch(updateForm("comunaDireccionParticular", comunaFinal))
+              dispatch(updateForm("comunaDireccionParticularObjeto", {id: "", codigo_region: "0000000"+region.codigo, codigo_comuna: comuna.codigo_comuna, nombre: comuna.nombre}))
               if (creacionBP) {
                 dispatch(handleSetStep(5.4)) // Empresa
               } else {

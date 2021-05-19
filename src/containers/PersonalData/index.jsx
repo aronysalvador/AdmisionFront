@@ -38,7 +38,7 @@ const PersonalData = (props) => {
   const { apellidoPaterno, nombre } = addmissionForm.datosAdicionalesSAP;
 
   const { razonSocial, DireccionEmpresa, direccionParticular, telefonoParticular: TelefonoEmpleado, emailusuario,
-    rut, rutEmpresa, SucursalEmpresaObjeto, comunaDireccionParticular } = addmissionForm
+    rut, rutEmpresa, SucursalEmpresaObjeto, comunaDireccionParticular, comunaDireccionParticularObjeto } = addmissionForm
 
   const [ telefono, setTelefono ] = useState(() => {
     return TelefonoEmpleado ? TelefonoEmpleado : "+56 9";
@@ -165,6 +165,7 @@ const PersonalData = (props) => {
           <BoxEmpresa
             id={"PersonalData-Box1"}
             contenidoDireccionEmpresa={contenidoDireccionEmpresa}
+            contenidoComunaEmpresa={ Format.formatizar(SucursalEmpresaObjeto.comuna)+", "+Format.formatizar(SucursalEmpresaObjeto.region) }
             contenidoRazonSocialForm={contenidoRazonSocialForm}
             contenidoRutEmpresa={contenidoRutEmpresa}
             titulo={tituloEmpresa}
@@ -216,6 +217,7 @@ const PersonalData = (props) => {
             id={"PersonalData-Box3"}
             titulo={tituloDireccion}
             contenido={contenidoDireccion}
+            contenidoComuna={ Object.keys(comunaDireccionParticularObjeto).length>0 ? Format.formatizar(comunaDireccionParticularObjeto.nombre) : "" }
             step={5.2}
           />
 

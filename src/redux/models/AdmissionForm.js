@@ -65,6 +65,7 @@ export const AdmissionForm = {
 
     comunaSiniestro: "",
     comunaDireccionParticular: "",
+    comunaDireccionParticularObjeto: {},
 
     BP: "",
     mensajeErrorSAP: "",

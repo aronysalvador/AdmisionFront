@@ -28,6 +28,13 @@ export const cardSiniestroStyles = makeStyles(() => ({
         fontWeight: "bold",
         color: "#373737"
     },
+    itemSubtitle: {
+        margin: "5px auto",
+        fontSize: "15px", // "22px",
+        lineHeight: "24px", // "27px",
+        fontWeight: "bold",
+        color: "#373737"
+    },
     itemTipo: {
         margin: "0 auto",
         fontSize: "16px",

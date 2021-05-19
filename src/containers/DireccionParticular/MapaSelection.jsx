@@ -13,6 +13,7 @@ const MapaSelection = () => {
   const [ direccion, setDireccion ]=useState(null)
   const [ placeId, setPlaceId ]=useState(null)
   const [ nombreComuna, setNombreComuna ]=useState("")
+  const [ objcomuna, setObjcomuna ]=useState({})
   const [ valido, setValido ] = useState(false)
 
   const validaDireccion = async() => {
@@ -21,6 +22,7 @@ const MapaSelection = () => {
       const { codigo_region, codigo_comuna } = resultado.comuna;
       let comuna = "0000000"+codigo_region+codigo_comuna;
       setNombreComuna(comuna)
+      setObjcomuna(resultado.comuna)
     }
     setValido(resultado.valida)
  }
@@ -31,6 +33,7 @@ const MapaSelection = () => {
   } else {
     setValido(false)
     setNombreComuna("")
+    setObjcomuna({})
   }
   // eslint-disable-next-line
 },[direccion])
@@ -80,6 +83,7 @@ const MapaSelection = () => {
   const handleSelect = async() => {
     googleMapsGetMap(placeId)
     dispatch(updateForm("comunaDireccionParticular", nombreComuna))
+    dispatch(updateForm("comunaDireccionParticularObjeto", objcomuna))
     dispatch(updateForm("direccionParticular", direccion))
     dispatch(updateForm("direccionParticularObj",
     {
