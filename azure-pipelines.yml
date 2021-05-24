@@ -397,6 +397,70 @@ stages:
                 /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-service.yaml
                 /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-ingress.yaml
               containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(TagFrontAdmision)   
+
+  # HOTFIX #
+  - stage: Deploy_STG_Hotfix
+    displayName: "Building Desploy STG Hotfix"
+    condition: |
+       and(
+         startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployProdHotfix']),
+         startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchStg']),
+         eq(variables['Build.Reason'], 'PullRequest')
+       )
+    jobs:
+      - deployment: Deploy
+        displayName: "Deploy STG Hotfix"
+        environment: "Deploy_STG"
+      - job: Build
+        displayName: "Deploy STG Hotfix"
+        steps:
+          - task: CmdLine@2
+            displayName: Set environment
+            inputs:
+              script: |
+                export ENTORNO=stagingTest
+                sh reemplaza-envs.sh
+          - task: Npm@1
+            displayName: Npm Install
+            inputs:
+              command: 'install'
+          - task: Npm@1
+            displayName: Npm Test
+            inputs:
+              command: 'custom'
+              workingDir: 'src/__tests__'
+              customCommand: 'test'  
+          - task: Docker@2
+            displayName: Build Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: build
+              Dockerfile: ./Dockerfile
+              tags: $(ImageTag)
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              containerRegistry: $(ContainerRegistryName)
+              repository: $(Repositorio)
+              command: push
+              tags: $(ImageTag)
+          - task: CmdLine@2
+            displayName: Get secrets
+            inputs:
+              script: |
+                sed -i "s?imagen?$(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)?" /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+                sed -i "s?azureID?$(azureAdStg)?" /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+          - task: KubernetesManifest@0
+            inputs:
+              action: "deploy"
+              kubernetesServiceConnection: "AKS-STG-SALUD-NS-ADMISIONDIGITAL"
+              namespace: "admisiondigital"
+              manifests: |
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-deployment.yaml
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-service.yaml
+                /home/vsts/work/1/s/manifests/envs/stg/web-front-admision-ingress.yaml
+              containers: $(ContainerRegistryName).azurecr.io/$(Repositorio):$(ImageTag)               
   # STG #
 
   # PROD #
@@ -455,6 +519,7 @@ stages:
     condition: |
        and(
          startsWith(variables['system.pullRequest.sourceBranch'], variables['sourceBranchDeployProdHotfix']),
+         startsWith(variables['system.pullRequest.TargetBranch'], variables['TargetBranchProd']),
          eq(variables['Build.Reason'], 'PullRequest')
        )
     jobs:
