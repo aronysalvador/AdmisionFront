@@ -68,8 +68,11 @@ const FlujoTrayecto = () => {
                   valida=true
           }
 
+          if (cargoTestigo.length > 0 && !nombreTestigo)
+            valida = true;
+
           setBtnValido(valida)
-      }, [ nombreTestigo ])
+      }, [ nombreTestigo, cargoTestigo ])
 
       useEffect(() => {
           let valida = false;
@@ -78,20 +81,20 @@ const FlujoTrayecto = () => {
               if (!nombreResponsable || !cargoResponsable || !check.id || (check.id===5 && !check.especificacion) || !validDate || !validHour)
                   valida=true
 
-                try {
+            try {
                 let dateResponsable = returnDateObject(`${date} ${hour}`);
                 let fechaSiniestro = returnDateObject(fechaHoraSiniestro);
-                    if (dateResponsable.getTime() < fechaSiniestro.getTime() && validHour){
-                        setErrorDate(`Fecha y hora de aviso no puede ser anterior a fecha de accidente ${fechaHoraSiniestro}`)
-                        valida = true
-                    }
-                    if (dateResponsable.getTime() > (new Date()).getTime()){
-                        setErrorDate(`Fecha y hora de aviso no puede ser superior a la hora actual`)
-                        valida = true
-                    }
-                } catch {
+                if (dateResponsable.getTime() < fechaSiniestro.getTime() && validHour){
+                    setErrorDate(`Fecha y hora de aviso no puede ser anterior a fecha de accidente ${fechaHoraSiniestro}`)
                     valida = true
                 }
+                if (dateResponsable.getTime() > (new Date()).getTime()){
+                    setErrorDate(`Fecha y hora de aviso no puede ser superior a la hora actual`)
+                    valida = true
+                }
+            } catch {
+                valida = true
+            }
           }
 
           setBtnValido2(valida)
