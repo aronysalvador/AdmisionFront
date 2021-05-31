@@ -68,7 +68,7 @@ const FlujoTrayecto = () => {
                   valida=true
           }
 
-          if(cargoTestigo.length > 0 && !nombreTestigo)
+          if (cargoTestigo.length > 0 && !nombreTestigo)
             valida = true;
 
           setBtnValido(valida)
