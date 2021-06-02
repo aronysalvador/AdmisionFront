@@ -3,13 +3,13 @@ import { getComunStyle } from "../../css/comun";
 import { Button, Typography, TextField } from "@material-ui/core";
 import Cabecera from "../../components/cabecera/index";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { handleSetStep } from "../../redux/actions/AdmissionAction";
-import { updateForm } from "../../redux/actions/AdmissionAction";
+import { handleSetStep, updateForm } from "../../redux/actions/AdmissionAction";
 import { getSpaceStyle } from "../../css/spaceStyle";
 import Grid from '@material-ui/core/Grid';
 import Header from "../../components/header/index";
 import AutoComplete from "@material-ui/lab/Autocomplete";
 import relato from './../../img/relato.svg';
+import { Format } from "../../helpers/strings";
 
 const MedioTransporteTrayecto = () => {
   let {
@@ -69,7 +69,8 @@ const MedioTransporteTrayecto = () => {
             id={"MedioTransporteTrayecto-Lbl1"}
             inputValue={medioTransporte}
             onInputChange={(event, value) => {
-              event&&setMedioTransporte(value);
+              let texto = Format.caracteresInvalidos(value);
+              event&&setMedioTransporte(texto);
             }}
             freeSolo
             options={sugerenciasMedios}
